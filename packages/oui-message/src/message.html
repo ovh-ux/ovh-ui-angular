@@ -1,0 +1,14 @@
+<div data-ng-if="!$ctrl.dismissed" data-ng-class="'oui-message oui-message_' + $ctrl.type" role="alert">
+  <i class="oui-icon oui-icon_bicolor" data-ng-class="'oui-icon-' + $ctrl.type + '_circle'" aria-hidden="true"></i>
+
+  <div class="oui-message__body" data-ng-class="'oui-message__body_' + $ctrl.type" ng-transclude>
+    <span ng-bind="$ctrl.message"></span>
+  </div>
+
+  <button data-ng-if="$ctrl.dismissable === true || ($ctrl.type !== 'error' && $ctrl.type !== 'warning')"
+          class="oui-icon oui-icon-close oui-message__close-button"
+          type="button"
+          data-ng-click="$ctrl.dismiss()"
+          aria-label="Close">
+  </button>
+</div>

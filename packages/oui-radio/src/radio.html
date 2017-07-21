@@ -1,0 +1,22 @@
+<div class="oui-radio" data-ng-class="{
+    'oui-radio_big': $ctrl.big,
+    'oui-radio_thumbnail': $ctrl.thumbnail
+}">
+    <input class="oui-radio__input"
+           type="radio"
+           id="{{:: $ctrl.id }}"
+           value="{{:: $ctrl.value }}"
+           name="{{:: $ctrl.name }}"
+           data-ng-checked="$ctrl.checked"
+           data-ng-disabled="$ctrl.disabled">
+    <label class="oui-radio__label-container" for="{{:: $ctrl.id }}">
+        <span class="oui-radio__label" data-ng-transclude="label">
+            <span data-ng-bind="$ctrl.label"></span>
+        </span>
+        <span class="oui-radio__description"
+              data-ng-transclude="description"
+              data-ng-if="$ctrl.hasDescription">
+            <span data-ng-bind="$ctrl.description"></span>
+        </span>
+    </label>
+</div>

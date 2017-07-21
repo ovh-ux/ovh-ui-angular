@@ -1,0 +1,5 @@
+<svg class="oui-message__icon oui-message__icon_warning" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <path class="oui-message__icon_triangle" d="M29.33,7.26c1.47-2.53,3.88-2.53,5.35,0L46.35,27.32l5.35,9.2L63.37,56.58c1.47,2.53.28,4.6-2.64,4.6H3.28c-2.93,0-4.12-2.07-2.64-4.6L12.3,36.52l5.35-9.2Z"/>
+  <path class="oui-message__icon_exclamation" d="M35.23,21c0-1.82-1.15-2.87-3.15-2.87S28.74,19.21,28.74,21a160.94,160.94,0,0,0,1,20.8c.19,1.81,1.37,2,2.37,2a2,2,0,0,0,2.28-2A152.5,152.5,0,0,0,35.23,21Z"/>
+  <circle class="oui-message__icon_exclamation" cx="32" cy="50.83" r="3.34"/>
+</svg>

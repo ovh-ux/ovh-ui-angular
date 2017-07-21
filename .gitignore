@@ -1,0 +1,4 @@
+.preview-host
+coverage
+node_modules
+*.log

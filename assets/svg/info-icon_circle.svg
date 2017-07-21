@@ -1,0 +1,4 @@
+<svg class="oui-message__icon oui-message__icon_info" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <circle class="oui-message__icon_circle" cx="32" cy="32" r="32"/>
+  <path class="oui-message__icon_i" d="M27.53 17c0-2.36 1.89-4 4.47-4s4.47 1.63 4.47 4-1.84 4-4.47 4-4.47-1.61-4.47-4zm.63 9.06h7.72V51h-7.72z"/>
+</svg>

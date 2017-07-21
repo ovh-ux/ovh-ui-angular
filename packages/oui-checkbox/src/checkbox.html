@@ -1,0 +1,28 @@
+<div class="oui-checkbox" data-ng-class="{
+    'oui-checkbox_big': $ctrl.big,
+    'oui-checkbox_thumbnail': $ctrl.thumbnail
+}">
+  <input class="oui-checkbox__input"
+         type="checkbox"
+         id="{{:: $ctrl.name }}"
+         name="{{:: $ctrl.name }}"
+         data-ng-model="$ctrl.value"
+         data-ng-change="$ctrl.callOnChange($ctrl.value)"
+         data-ng-checked="$ctrl.checked"
+         data-ng-disabled="$ctrl.disabled">
+  <label for="{{:: $ctrl.name }}" class="oui-checkbox__label-container">
+    <span class="oui-checkbox__label" data-ng-transclude="label">
+      <span data-ng-bind="$ctrl.label"></span>
+    </span>
+    <span class="oui-checkbox__description"
+          data-ng-transclude="description"
+          data-ng-if="$ctrl.hasDescription">
+      <span data-ng-bind="$ctrl.description"></span>
+    </span>
+    <span class="oui-checkbox__icon">
+      <i class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></i>
+      <i class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></i>
+      <i class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></i>
+    </span>
+  </label>
+</div>
