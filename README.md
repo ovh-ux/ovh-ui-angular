@@ -24,20 +24,20 @@ npm install --save ovh-ui-angular
 
 ## Usage
 
-1. In your `index.html`, you need to load `ovh-ui-angular` :
+1. In your `index.html`, you need to load `oui-angular.js`:
 
 ```html
   ...
-  <script src="ovh-ui-angular/packages/oui-angular/dist/ovh-ui-angular.js" type="text/javascript"></script>
+  <script src="ovh-ui-angular/packages/oui-angular/dist/oui-angular.js" type="text/javascript"></script>
   ...
 ```
 
-2. You need to add ```ovh-ui-angular``` in your angular module dependencies like that:
+2. You need to add `oui` in your angular module dependencies like that:
 
 ```javascript
 angular.module("myAwesomeApp", [
     ...
-    "ovh-ui-angular"
+    "oui"
     ...
 ]);
 ```
@@ -64,14 +64,14 @@ Follow guides for those dependencies, because you need to integrate them by _you
 For those using npm instead of yarn here is a list of equivalences: [https://yarnpkg.com/en/docs/migrating-from-npm](https://yarnpkg.com/en/docs/migrating-from-npm)
 
 
-You've developed a new cool feature ? Fixed an annoying bug ? We'd be happy
-to hear from you !
+You've developed a new cool feature? Fixed an annoying bug? We'd be happy
+to hear from you!
 
 see [CONTRIBUTING](https://github.com/ovh-ux/ovh-ui-angular/blob/master/CONTRIBUTING.md)
 
 # Related links
 
- * Contribute: [https://github.com/ovh-ux/ovh-ui-angular/CONTRIBUTING.md](https://github.com/ovh-ux/ovh-ui-angular/CONTRIBUTING.md)
+ * Contribute: [https://github.com/ovh-ux/ovh-ui-angular/blob/master/CONTRIBUTING.md](https://github.com/ovh-ux/ovh-ui-angular/blob/master/CONTRIBUTING.md)
  * Report bugs: [https://github.com/ovh-ux/ovh-ui-angular/issues](https://github.com/ovh-ux/ovh-ui-angular/issues)
  * Get latest version: [https://github.com/ovh-ux/ovh-ui-angular](https://github.com/ovh-ux/ovh-ui-angular)
 
