@@ -9,7 +9,7 @@ export default {
     type: '@',
     dismissable: '<',
     dismissed: '<',
-    onDismiss: '&'
+    onDismiss: '&?'
   },
   transclude: true
 }
