@@ -1,5 +1,7 @@
 # Radio group
 
+<component-status cx-design="partial" ux="rc"></component-status>
+
 ## One-way binding properties
 
 ### value
