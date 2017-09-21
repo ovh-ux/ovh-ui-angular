@@ -13,7 +13,8 @@
     "@oui-angular/checkbox": "^1.0.0",
     "@oui-angular/message": "^1.0.0",
     "@oui-angular/radio": "^1.0.0",
-    "@oui-angular/radio-group": "^1.0.0"
+    "@oui-angular/radio-group": "^1.0.0",
+    "@oui-angular/loader": "^1.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",

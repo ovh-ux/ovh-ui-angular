@@ -9,7 +9,8 @@
   ],
   "repository": "ovh-ux/ovh-ui-angular",
   "main": "./packages/oui-angular/dist/oui-angular.js",
-  "webpack": "packages/oui-angular/src/index.js",
+  "browser": "./packages/oui-angular/dist/oui-angular.js",
+  "module": "packages/oui-angular/src/index.js",
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "wipe": "lerna clean",
