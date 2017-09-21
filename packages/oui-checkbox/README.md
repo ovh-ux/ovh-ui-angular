@@ -1,5 +1,7 @@
 # Checkbox
 
+<component-status cx-design="partial" ux="rc"></component-status>
+
 ## Usage
 
 ### Label
