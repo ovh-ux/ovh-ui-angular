@@ -1,11 +1,31 @@
 {
-	"dependencies": {
-		"angular": "^1.6.5",
-		"babel-cli": "^6.24.1",
-		"cross-env": "^3.2.4",
-		"karma": "^1.7.0",
-		"protractor": "^4.0.14",
-		"rimraf": "^2.6.1",
-		"webpack": "^1.15.0"
-	}
+  "name": "@oui-angular/oui-radio-group",
+  "version": "1.0.0",
+  "main": "dist/component.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "rimraf dist && webpack --progress --colors --hide-modules --config webpack.config.babel.js",
+    "karma:watch": "cross-env NODE_ENV=test babel-node $(npm bin)/karma start karma.conf.js --watch",
+    "karma": "cross-env NODE_ENV=test babel-node $(npm bin)/karma start karma.conf.js --reporters spec,coverage-istanbul --single-run",
+    "webdriver:update": "webdriver-manager update",
+    "protractor": "babel-node $(yarn bin)/protractor",
+    "test": "yarn karma && yarn protractor"
+  },
+  "dependencies": {
+    "angular": "^1.6.5"
+  },
+  "devDependencies": {
+    "@oui-angular/checkbox": "^1.0.0",
+    "babel-cli": "^6.24.1",
+    "cross-env": "^3.2.4",
+    "karma": "^1.7.0",
+    "protractor": "^4.0.14",
+    "rimraf": "^2.6.1",
+    "webpack": "^1.15.0"
+  },
+  "engines": {
+    "node": ">= 6.9.0",
+    "npm": ">= 3.10.0",
+    "yarn": ">= 0.17.0"
+  }
 }

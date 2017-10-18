@@ -11,9 +11,6 @@ export default {
   resolve: {
     extensions: ['.js', '.json'],
     alias: {
-      // src: path.resolve('.', 'src'),
-      // build: path.resolve(__dirname),
-      // docs: path.resolve('.', 'docs'),
       '@oui-angular': path.resolve(__dirname, '../packages')
     }
   },
