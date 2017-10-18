@@ -7,7 +7,7 @@
   "keywords": [
     "angular"
   ],
-  "main": "./packages/oui-angular/dist/oui-angular.js",
+  "main": "./dist/oui-angular.min.js",
   "ignore": [
     "node_modules"
   ],
