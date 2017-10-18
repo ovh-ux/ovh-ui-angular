@@ -1,8 +1,8 @@
-import '@oui-angular/checkbox/src'
-import '@oui-angular/radio/src'
-import '@oui-angular/radio-group/src'
-import '@oui-angular/message/src'
-import '@oui-angular/loader/src'
+import '@oui-angular/oui-checkbox/src'
+import '@oui-angular/oui-radio/src'
+import '@oui-angular/oui-radio-group/src'
+import '@oui-angular/oui-message/src'
+import '@oui-angular/oui-loader/src'
 
 angular.module('oui', [
   'oui.checkbox',
