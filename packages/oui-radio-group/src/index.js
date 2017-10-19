@@ -1,4 +1,4 @@
-import '@oui-angular/radio/src'
+import '@oui-angular/oui-radio/src'
 import RadioGroup from './radio-group.component.js'
 
 angular.module('oui.radio-group', [

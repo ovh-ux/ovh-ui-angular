@@ -1,5 +1,5 @@
 {
-  "name": "@oui-angular/radio-group",
+  "name": "@oui-angular/oui-radio-group",
   "version": "1.0.0",
   "main": "dist/component.js",
   "license": "MIT",
@@ -12,10 +12,10 @@
     "test": "yarn karma && yarn protractor"
   },
   "dependencies": {
-    "@oui-angular/radio": "^1.0.0",
     "angular": "^1.6.5"
   },
   "devDependencies": {
+    "@oui-angular/checkbox": "^1.0.0",
     "babel-cli": "^6.24.1",
     "cross-env": "^3.2.4",
     "karma": "^1.7.0",

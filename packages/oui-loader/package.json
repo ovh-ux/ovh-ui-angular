@@ -1,12 +1,11 @@
 {
-  "name": "@oui-angular/loader",
+  "name": "@oui-angular/oui-loader",
   "version": "1.0.0",
   "main": "dist/component.js",
   "license": "MIT",
   "scripts": {
     "build": "rimraf dist && webpack --progress --colors --hide-modules --config webpack.config.babel.js",
     "karma:watch": "cross-env NODE_ENV=test babel-node $(npm bin)/karma start karma.conf.js --watch",
-    "karma:chrome": "cross-env NODE_ENV=test babel-node $(npm bin)/karma start karma.conf.js --browsers Chromium",
     "karma": "cross-env NODE_ENV=test babel-node $(npm bin)/karma start karma.conf.js --reporters spec,coverage-istanbul --single-run",
     "webdriver:update": "webdriver-manager update",
     "protractor": "babel-node $(yarn bin)/protractor",
@@ -16,6 +15,7 @@
     "angular": "^1.6.5"
   },
   "devDependencies": {
+    "@oui-angular/checkbox": "^1.0.0",
     "babel-cli": "^6.24.1",
     "cross-env": "^3.2.4",
     "karma": "^1.7.0",

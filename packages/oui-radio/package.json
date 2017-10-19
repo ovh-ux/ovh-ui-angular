@@ -1,5 +1,5 @@
 {
-  "name": "@oui-angular/radio",
+  "name": "@oui-angular/oui-radio",
   "version": "1.0.0",
   "main": "dist/component.js",
   "license": "MIT",
