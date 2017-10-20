@@ -18,10 +18,6 @@ class TestUtils {
     const element = this.compileTemplate(template, context)
     return element.controller(componentName)
   }
-
-  $ (element) {
-    return angular.element(element)
-  }
 }
 
 angular.module('oui.test-utils', [])

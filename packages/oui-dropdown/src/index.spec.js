@@ -15,13 +15,13 @@ describe('ouiDropdown', () => {
       const element = TestUtils.compileTemplate(`
         <oui-dropdown>
           <button class="oui-button" oui-dropdown-trigger></button>
-          <div oui-dropdown-menu>
+          <div oui-dropdown-content>
             <b>the menu</b>
           </div>
         </oui-dropdown>`)
 
       const trigger = element[0].querySelector('[oui-dropdown-trigger]')
-      const dropdown = element[0].querySelector('[oui-dropdown-menu]').parentNode
+      const dropdown = element[0].querySelector('[oui-dropdown-content]').parentNode
       const arrow = element[0].querySelector('.oui-dropdown__arrow')
 
       expect(angular.element(trigger)
@@ -35,12 +35,12 @@ describe('ouiDropdown', () => {
       const element = TestUtils.compileTemplate(`
         <oui-dropdown display-arrow="true">
           <button class="oui-button" oui-dropdown-trigger></button>
-          <div oui-dropdown-menu>
+          <div oui-dropdown-content>
             <b>the menu</b>
           </div>
         </oui-dropdown>`)
 
-      const dropdown = element[0].querySelector('[oui-dropdown-menu]').parentNode
+      const dropdown = element[0].querySelector('[oui-dropdown-content]').parentNode
       const $dropdown = angular.element(dropdown)
       const arrow = element[0].querySelector('.oui-dropdown__arrow')
 
@@ -53,12 +53,12 @@ describe('ouiDropdown', () => {
         const element = TestUtils.compileTemplate(`
           <oui-dropdown>
             <button class="oui-button" oui-dropdown-trigger></button>
-            <div oui-dropdown-menu>
+            <div oui-dropdown-content>
               <b>the menu</b>
             </div>
           </oui-dropdown>`)
 
-        const dropdown = element[0].querySelector('[oui-dropdown-menu]').parentNode
+        const dropdown = element[0].querySelector('[oui-dropdown-content]').parentNode
         const $dropdown = angular.element(dropdown)
 
         expect($dropdown.hasClass('oui-dropdown__menu_active')).toBeFalsy()
@@ -68,14 +68,14 @@ describe('ouiDropdown', () => {
         const element = TestUtils.compileTemplate(`
           <oui-dropdown>
             <button class="oui-button" oui-dropdown-trigger></button>
-            <div oui-dropdown-menu>
+            <div oui-dropdown-content>
               <b>the menu</b>
             </div>
           </oui-dropdown>`)
 
         const trigger = element[0].querySelector('[oui-dropdown-trigger]')
         const $trigger = angular.element(trigger)
-        const dropdown = element[0].querySelector('[oui-dropdown-menu]').parentNode
+        const dropdown = element[0].querySelector('[oui-dropdown-content]').parentNode
         const $dropdown = angular.element(dropdown)
 
         expect($dropdown.hasClass('oui-dropdown__menu_active')).toBeFalsy()

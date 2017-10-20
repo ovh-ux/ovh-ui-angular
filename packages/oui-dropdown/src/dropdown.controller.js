@@ -17,7 +17,13 @@ export default class {
     this.isDropdownOpen = false
     this.hasFocus = false
     this.currentFocusedElement = null
-    this.arrowElement = addBooleanParameter(this, 'arrowElement')
+    addBooleanParameter(this, 'arrow')
+    addBooleanParameter(this, 'start')
+    addBooleanParameter(this, 'end')
+
+    if (this.start && this.end) {
+      console.error('A dropdown cannot be positionned at the start and at the end at the same time.')
+    }
 
     this.documentClickHandler = evt => {
       if (evt &&
@@ -82,20 +88,21 @@ export default class {
     this.$document.off('click', this.documentClickHandler)
   }
 
-  // bindKeys () {
-  //   this.$document.on('keydown', this.triggerKeyHandler)
-  // }
-
-  // unbindKeys () {
-  //   this.$document.on('keydown', this.triggerKeyHandler)
-  // }
-
   createPopper () {
+    this.placement = this.placement ? this.placement : 'bottom'
+
+    if (this.start) {
+      this.placement += '-start'
+    } else if (this.end) {
+      this.placement += '-end'
+    }
+
+    // Let Popper.js manage the arrow position when it's centered (default).
     if (this.arrowElement && ['top', 'bottom'].indexOf(this.placement) > -1) {
       this.arrowElement.setAttribute('x-arrow', '')
     }
     this.popper = new Popper(this.referenceElement, this.popperElement, {
-      placement: this.placement ? this.placement : 'bottom-start'
+      placement: this.placement
     })
   }
 
