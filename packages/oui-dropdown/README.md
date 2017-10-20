@@ -1,125 +1,186 @@
 # Dropdown
 
-## Bottom
+<component-status cx-design="complete" ux="prototype"></component-status>
+
+## Centered by default
 
 ```html:preview
-<div>
-  <oui-dropdown placement="bottom-start">
+<div style="text-align: center">
+  <oui-dropdown>
     <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
       <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
     </button>
-    <div oui-dropdown-menu>
-      <b>bottom-start placement</b>
-      <button type="button">AAA</button>
-      <button type="button">BBB</button>
-      <button type="button">CCC</button>
-    </div>
-  </oui-dropdown>
-</div>
-<div>
-  <oui-dropdown placement="bottom-end" style="text-align: right">
-    <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
-      <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
-    </button>
-    <div oui-dropdown-menu>
-      <b>bottom-end placement</b>
+    <div oui-dropdown-content>
+      <oui-action-menu>
+        <oui-action-menu-item
+          data-text="Action 1"
+          data-on-click="$ctrl.showCurrentValueInPopup('Action 1')"></oui-action-menu-item>
+        <oui-action-menu-item
+          data-text="Action 2"
+          data-on-click="$ctrl.showCurrentValueInPopup('Action 2')"></oui-action-menu-item>
+        <oui-action-menu-item divider
+          data-text="Lien externe"
+          data-type="external"
+          data-href="#"></oui-action-menu-item>
+      </oui-action-menu>
     </div>
   </oui-dropdown>
 </div>
 ```
 
-## Top
+## Alignment
 
 ```html:preview
 <div>
-  <oui-dropdown placement="top-start">
+  <oui-dropdown start>
     <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
       <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
     </button>
-    <div oui-dropdown-menu>
-      <b>top-start placement</b>
+    <div oui-dropdown-content>
+      <oui-action-menu>
+        <oui-action-menu-item
+          data-text="Action 1"
+          data-on-click="$ctrl.showCurrentValueInPopup('Action 1')"></oui-action-menu-item>
+        <oui-action-menu-item
+          data-text="Action 2"
+          data-on-click="$ctrl.showCurrentValueInPopup('Action 2')"></oui-action-menu-item>
+        <oui-action-menu-item divider
+          data-text="Lien externe"
+          data-type="external"
+          data-href="#"></oui-action-menu-item>
+      </oui-action-menu>
     </div>
   </oui-dropdown>
 </div>
-<div>
-  <oui-dropdown placement="top-end" style="text-align: right">
+<div style="text-align: right">
+  <oui-dropdown end>
     <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
       <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
     </button>
-    <div oui-dropdown-menu>
-      <b>top-end placement</b>
+    <div oui-dropdown-content>
+      <oui-action-menu>
+        <oui-action-menu-item
+          data-text="Action 1"
+          data-on-click="$ctrl.showCurrentValueInPopup('Action 1')"></oui-action-menu-item>
+        <oui-action-menu-item
+          data-text="Action 2"
+          data-on-click="$ctrl.showCurrentValueInPopup('Action 2')"></oui-action-menu-item>
+        <oui-action-menu-item divider
+          data-text="Lien externe"
+          data-type="external"
+          data-href="#"></oui-action-menu-item>
+      </oui-action-menu>
     </div>
   </oui-dropdown>
 </div>
 ```
 
-## Centered
+## With arrow
 
 ```html:preview
 <div>
-  <oui-dropdown placement="top" style="text-align: center">
+  <oui-dropdown start arrow>
     <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
       <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
     </button>
-    <div oui-dropdown-menu>
-      <b>top placement</b>
+    <div oui-dropdown-content>
+      <oui-action-menu>
+        <oui-action-menu-item
+          data-text="Action 1"
+          data-on-click="$ctrl.showCurrentValueInPopup('Action 1')"></oui-action-menu-item>
+        <oui-action-menu-item
+          data-text="Action 2"
+          data-on-click="$ctrl.showCurrentValueInPopup('Action 2')"></oui-action-menu-item>
+        <oui-action-menu-item divider
+          data-text="Lien externe"
+          data-type="external"
+          data-href="#"></oui-action-menu-item>
+      </oui-action-menu>
     </div>
   </oui-dropdown>
 </div>
-<div>
-  <oui-dropdown placement="bottom" style="text-align: center">
+<div style="text-align: center">
+  <oui-dropdown arrow>
     <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
       <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
     </button>
-    <div oui-dropdown-menu>
-      <b>bottom placement</b>
+    <div oui-dropdown-content>
+      <oui-action-menu>
+        <oui-action-menu-item
+          data-text="Action 1"
+          data-on-click="$ctrl.showCurrentValueInPopup('Action 1')"></oui-action-menu-item>
+        <oui-action-menu-item
+          data-text="Action 2"
+          data-on-click="$ctrl.showCurrentValueInPopup('Action 2')"></oui-action-menu-item>
+        <oui-action-menu-item divider
+          data-text="Lien externe"
+          data-type="external"
+          data-href="#"></oui-action-menu-item>
+      </oui-action-menu>
+    </div>
+  </oui-dropdown>
+</div>
+<div style="text-align: right">
+  <oui-dropdown end arrow>
+    <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
+      <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
+    </button>
+    <div oui-dropdown-content>
+      <oui-action-menu>
+        <oui-action-menu-item
+          data-text="Action 1"
+          data-on-click="$ctrl.showCurrentValueInPopup('Action 1')"></oui-action-menu-item>
+        <oui-action-menu-item
+          data-text="Action 2"
+          data-on-click="$ctrl.showCurrentValueInPopup('Action 2')"></oui-action-menu-item>
+        <oui-action-menu-item divider
+          data-text="Lien externe"
+          data-type="external"
+          data-href="#"></oui-action-menu-item>
+      </oui-action-menu>
     </div>
   </oui-dropdown>
 </div>
 ```
 
-## Arrow
-
-```html:preview
-<div>
-  <oui-dropdown placement="bottom-start" display-arrow="true">
-    <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
-      <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
-    </button>
-    <div oui-dropdown-menu>
-      <b>bottom-start placement</b>
-    </div>
-  </oui-dropdown>
-</div>
-<div>
-  <oui-dropdown placement="bottom-end" display-arrow="true" style="text-align: right">
-    <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
-      <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
-    </button>
-    <div oui-dropdown-menu>
-      <b>bottom-end placement</b>
-    </div>
-  </oui-dropdown>
-</div>
-<div>
-  <oui-dropdown placement="bottom" style="text-align: center" display-arrow="true">
-    <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
-      <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
-    </button>
-    <div oui-dropdown-menu>
-      <b>bottom-end placement</b>
-    </div>
-  </oui-dropdown>
-</div>
-```
-
-## Usage
+## API
 
 ### oui-dropdown
 
-| Name            | Type            | Values              | Default             | Description         |
-| ----            | ----            | ----                | ----                | ----                |
-| `placement`     | String          | see <a href="https://popper.js.org/popper-documentation.html#Popper.placements">Popper.js documentation</a>             | `bottom`                   | Dropdown position         |
-| `display-arrow` | Boolean         |                     | `false`             | True if you want an arrow         |
+The component for a dropdown.
 
+Availability:
 
+ - Element
+
+| Attribute         | Type            | Binding | Values              | Default             | Description                        |
+| ----              | ----            | ----    | ----                | ----                | ----                               |
+| arrow             |                 |         |                     |                     | display the dropdown arrow         |
+| start             |                 |         |                     |                     | modifier for left alignment        |
+| end               |                 |         |                     |                     | modifier for right alignment       |
+
+### oui-dropdown-trigger
+
+The directive that triggers the dropdown apparition.
+
+Availability:
+
+ - Element
+ - Attribute
+
+| Attribute         | Type            | Binding | Values              | Default             | Description                                         |
+| ----              | ----            | ----    | ----                | ----                | ----                                                |
+| text              | string          | @?      |                     | null                | Display the default dropdown with this text         |
+
+### oui-dropdown-content
+
+The directive that wrap the dropdown content.
+
+Availability:
+
+ - Element
+ - Attribute
+
+# TODO
+
+ - Add aria-labelledby: require an id on the trigger.
