@@ -10,6 +10,9 @@
     </button>
     <div oui-dropdown-menu>
       <b>bottom-start placement</b>
+      <button type="button">AAA</button>
+      <button type="button">BBB</button>
+      <button type="button">CCC</button>
     </div>
   </oui-dropdown>
 </div>
