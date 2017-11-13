@@ -1,5 +1,90 @@
 # Dropdown
 
+<component-status cx-design="complete" ux="prototype"></component-status>
+
+## Usage
+
+```html
+<oui-dropdown
+  arrow
+  start
+  end>
+  <button oui-dropdown-trigger>O</button>
+  <oui-dropdown-content>
+    [dropdown content]
+  </oui-dropdown-content>
+</oui-dropdown>
+```
+
+## Examples
+
+### Without arrow, centered by default, with a simple list
+
+```html
+<oui-dropdown>
+  <button type="button" class="oui-button oui-button_dropdown" oui-dropdown-trigger>
+    <i class="oui-icon oui-icon-chevron-down" aria-hidden="true"></i>
+  </button>
+  <ul oui-dropdown-content>
+    <li>// Menu item</li>
+  </ul>
+</oui-dropdown>
+```
+
+### With arrow, at the end, with complex content
+
+```html
+<oui-dropdown arrow end>
+  <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
+    <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
+  </button>
+  <oui-dropdown-content>
+    <ul>
+      <li>// Menu item</li>
+    </ul>
+    <br>
+    <div>
+      // Menu footer
+    </div>
+  </oui-dropdown-content>
+</oui-dropdown>
+```
+
+## API
+
+### oui-dropdown
+
+The component for a dropdown.
+
+Availability:
+
+ - Element
+
+| Attribute         | Type            | Binding | Values              | Default             | Description                        |
+| ----              | ----            | ----    | ----                | ----                | ----                               |
+| arrow             |                 |         |                     |                     | display the dropdown arrow         |
+| start             |                 |         |                     |                     | modifier for left alignment        |
+| end               |                 |         |                     |                     | modifier for right alignment       |
+
+### oui-dropdown-trigger
+
+The directive that triggers the dropdown apparition.
+
+Availability:
+
+ - Attribute
+
+### oui-dropdown-content
+
+The directive that wrap the dropdown content.
+
+Availability:
+
+ - Element
+ - Attribute
+
+# OLD
+
 ## Bottom
 
 ```html:preview
