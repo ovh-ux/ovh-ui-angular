@@ -72,8 +72,8 @@ Text is used as an aria-label.
 | disabled          | boolean         | <?      |                     | false               | disabled flag                      |
 | text              | string          | @       |                     |                     | button text                        |
 | icon              | string          | @?      | see icon ids        | null                | button icon for icon buttons       |
-| left              | string          | @?      | see icon ids        | null                | chrevron-left icon (left side)     |
-| right             | string          | @?      | see icon ids        | null                | chrevron-right icon (right side)   |
+| previous          | string          | @?      | see icon ids        | null                | chrevron-left icon (left side)     |
+| next              | string          | @?      | see icon ids        | null                | chrevron-right icon (right side)   |
 | type              | string          | @?      | submit,button,reset | button              | click handler                      |
 | primary           |                 |         |                     |                     | modifier for primary button        |
 | secondary         |                 |         |                     |                     | modifier for secondary button      |
