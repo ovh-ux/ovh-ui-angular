@@ -1,8 +1,40 @@
 # Checkbox
 
-<component-status cx-design="partial" ux="rc"></component-status>
+<component-status cx-design="complete" ux="prototype"></component-status>
 
 ## Usage
+
+```html
+<oui-checkbox
+  on-change="..."
+  model="..."
+  name="..."
+  text="..."
+  description="..."
+  disabled
+  required
+  thumbnail
+  big
+></oui-checkbox>
+```
+
+## API
+
+| Attribute         | Type            | Binding | Values              | Default             | Description                        |
+| ----              | ----            | ----    | ----                | ----                | ----                               |
+| on-change         | function        | &?      |                     |                     | change handle                      |
+| model             | boolean         | =       |                     |                     | model value                        |
+| name              | string          | @?      |                     | null                | name attribute of the checkbox     |
+| text              | string          | @       |                     |                     | checkbox label                     |
+| description       | string          | @?      |                     | null                | long description                   |
+| disabled          | boolean         | <?      |                     | false               | disabled flag                      |
+| required          | boolean         | <?      |                     | false               | disabled flag                      |
+| thumbnail         |                 |         |                     |                     | modifier for thumbnail checkbox    |
+| big               |                 |         |                     |                     | modifier for big checkbox          |
+
+# OLD
+
+## Examples
 
 ### Label
 

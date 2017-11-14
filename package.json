@@ -19,10 +19,11 @@
     "build:webpack": "webpack --progress --colors --config build/webpack.dist.babel.js",
     "build:watch": "webpack --progress --colors --config build/webpack.dist.babel.js --watch",
     "karma": "cross-env NODE_ENV=test babel-node $(npm bin)/karma start build/karma.conf.js --reporters nyan,coverage --single-run",
-    "karma:watch": "cross-env NODE_ENV=test BABEL_ENV=test node -r babel-register $(npm bin)/karma start build/karma.conf.js --watch"
+    "karma:watch": "cross-env NODE_ENV=test BABEL_ENV=test node -r babel-register $(npm bin)/karma start build/karma.conf.js --watch --reporters nyan,coverage"
   },
   "dependencies": {
-    "ovh-ui-kit": "https://github.com/ovh-ux/ovh-ui-kit.git"
+    "ovh-ui-kit": "https://github.com/ovh-ux/ovh-ui-kit.git",
+    "popper.js": "^1.12.6"
   },
   "devDependencies": {
     "angular": "^1.6.1",
