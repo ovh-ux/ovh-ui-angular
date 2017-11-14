@@ -14,8 +14,8 @@
   disabled
   text="..."
   icon="..."
-  left
-  right
+  previous
+  next
   type="[submit|button|reset]"  // 💡 primary auto if button type is "submit" and form is detected?
   primary   ───┐
   secondary ───┤ OR
@@ -45,7 +45,7 @@
 
 ```html
 <oui-button secondary
-  right
+  next
   text="Next"
   on-click="next()"></oui-button>
 ```
