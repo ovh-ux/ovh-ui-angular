@@ -4,104 +4,69 @@
 
 ## Usage
 
-### Label
-
-```html:preview
-<oui-checkbox label="Checked" checked></oui-checkbox>
-<oui-checkbox>
-  <oui-checkbox-label>Unchecked</oui-checkbox-label>
-</oui-checkbox>
-<oui-checkbox label="Disabled [checked]" checked disabled></oui-checkbox>
-<oui-checkbox label="Disabled [unchecked]" disabled></oui-checkbox>
+```html
+<oui-checkbox
+  text="..."
+  id="..."
+  name="..."
+  disabled="..."
+  model="..."
+  on-change="..."
+></oui-checkbox>
 ```
 
-### Description
+## Examples
+
+### Unchecked
 
 ```html:preview
-<oui-checkbox label="Checked" description="A short description" checked></oui-checkbox>
-<oui-checkbox label="Unchecked">
-  <oui-checkbox-description>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque est ipsum, condimentum ornare condimentum quis, ultrices sit amet augue. Phasellus mollis dui quis nunc ultrices tempus. Praesent dignissim, felis in ornare euismod, augue elit mattis nibh, a tincidunt nunc enim et nulla. Nam ac blandit mauris. Donec semper tellus et felis viverra, in molestie lacus sodales. Proin fringilla vestibulum tempus. In feugiat risus mauris, tempus lacinia dolor posuere vel.
-  </oui-checkbox-description>
-</oui-checkbox>
-<oui-checkbox label="Disabled [checked]" checked disabled>
-  <oui-checkbox-description>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque est ipsum, condimentum ornare condimentum quis, ultrices sit amet augue. Phasellus mollis dui quis nunc ultrices tempus. Praesent dignissim, felis in ornare euismod, augue elit mattis nibh, a tincidunt nunc enim et nulla. Nam ac blandit mauris. Donec semper tellus et felis viverra, in molestie lacus sodales. Proin fringilla vestibulum tempus. In feugiat risus mauris, tempus lacinia dolor posuere vel.
-  </oui-checkbox-description>
-</oui-checkbox>
-<oui-checkbox label="Disabled [unchecked]" disabled>
-  <oui-checkbox-description>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque est ipsum, condimentum ornare condimentum quis, ultrices sit amet augue. Phasellus mollis dui quis nunc ultrices tempus. Praesent dignissim, felis in ornare euismod, augue elit mattis nibh, a tincidunt nunc enim et nulla. Nam ac blandit mauris. Donec semper tellus et felis viverra, in molestie lacus sodales. Proin fringilla vestibulum tempus. In feugiat risus mauris, tempus lacinia dolor posuere vel.
-  </oui-checkbox-description>
-</oui-checkbox>
+<oui-checkbox data-text="Normal"></oui-checkbox>
+<oui-checkbox data-text="Disabled" disabled></oui-checkbox>
 ```
 
-### Big
+### Checked
 
 ```html:preview
-<oui-checkbox big label="Checked" checked></oui-checkbox>
-<oui-checkbox big label="Unchecked">
-  <oui-checkbox-description>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque est ipsum, condimentum ornare condimentum quis, ultrices sit amet augue. Phasellus mollis dui quis nunc ultrices tempus. Praesent dignissim, felis in ornare euismod, augue elit mattis nibh, a tincidunt nunc enim et nulla. Nam ac blandit mauris. Donec semper tellus et felis viverra, in molestie lacus sodales. Proin fringilla vestibulum tempus. In feugiat risus mauris, tempus lacinia dolor posuere vel.
-  </oui-checkbox-description>
-</oui-checkbox>
-<oui-checkbox big label="Disabled [checked]" checked disabled>
-  <oui-checkbox-description>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque est ipsum, condimentum ornare condimentum quis, ultrices sit amet augue. Phasellus mollis dui quis nunc ultrices tempus. Praesent dignissim, felis in ornare euismod, augue elit mattis nibh, a tincidunt nunc enim et nulla. Nam ac blandit mauris. Donec semper tellus et felis viverra, in molestie lacus sodales. Proin fringilla vestibulum tempus. In feugiat risus mauris, tempus lacinia dolor posuere vel.
-  </oui-checkbox-description>
-</oui-checkbox>
-<oui-checkbox big label="Disabled [unchecked]" disabled>
-  <oui-checkbox-description>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque est ipsum, condimentum ornare condimentum quis, ultrices sit amet augue. Phasellus mollis dui quis nunc ultrices tempus. Praesent dignissim, felis in ornare euismod, augue elit mattis nibh, a tincidunt nunc enim et nulla. Nam ac blandit mauris. Donec semper tellus et felis viverra, in molestie lacus sodales. Proin fringilla vestibulum tempus. In feugiat risus mauris, tempus lacinia dolor posuere vel.
-  </oui-checkbox-description>
-</oui-checkbox>
+<div ng-init="$ctrl.checked = true">
+  <oui-checkbox data-text="Normal" data-model="$ctrl.checked"></oui-checkbox>
+  <oui-checkbox data-text="Disabled" data-model="$ctrl.checked" disabled></oui-checkbox>
+</div>
 ```
 
-### Thumbnail
+### Indeterminate
 
 ```html:preview
-<oui-checkbox thumbnail label="Checked" checked></oui-checkbox>
-<oui-checkbox thumbnail label="Unchecked">
-  <oui-checkbox-description>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque est ipsum, condimentum ornare condimentum quis, ultrices sit amet augue. Phasellus mollis dui quis nunc ultrices tempus. Praesent dignissim, felis in ornare euismod, augue elit mattis nibh, a tincidunt nunc enim et nulla. Nam ac blandit mauris. Donec semper tellus et felis viverra, in molestie lacus sodales. Proin fringilla vestibulum tempus. In feugiat risus mauris, tempus lacinia dolor posuere vel.
-  </oui-checkbox-description>
-</oui-checkbox>
-<oui-checkbox thumbnail label="Disabled [checked]" checked disabled>
-  <oui-checkbox-description>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque est ipsum, condimentum ornare condimentum quis, ultrices sit amet augue. Phasellus mollis dui quis nunc ultrices tempus. Praesent dignissim, felis in ornare euismod, augue elit mattis nibh, a tincidunt nunc enim et nulla. Nam ac blandit mauris. Donec semper tellus et felis viverra, in molestie lacus sodales. Proin fringilla vestibulum tempus. In feugiat risus mauris, tempus lacinia dolor posuere vel.
-  </oui-checkbox-description>
-</oui-checkbox>
-<oui-checkbox thumbnail label="Disabled [unchecked]" disabled>
-  <oui-checkbox-description>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque est ipsum, condimentum ornare condimentum quis, ultrices sit amet augue. Phasellus mollis dui quis nunc ultrices tempus. Praesent dignissim, felis in ornare euismod, augue elit mattis nibh, a tincidunt nunc enim et nulla. Nam ac blandit mauris. Donec semper tellus et felis viverra, in molestie lacus sodales. Proin fringilla vestibulum tempus. In feugiat risus mauris, tempus lacinia dolor posuere vel.
-  </oui-checkbox-description>
-</oui-checkbox>
+<div ng-init="$ctrl.indeterminate = null">
+  <oui-checkbox data-text="Normal" data-model="$ctrl.indeterminate"></oui-checkbox>
+  <oui-checkbox data-text="Disabled" data-model="$ctrl.indeterminate" disabled></oui-checkbox>
+</div>
 ```
 
-## One-way binding properties
+### On change
 
-### checked
-
-<oui-checkbox on-change="$ctrl.checked = $event.value" label="Click to check/uncheck the test checkbox"></oui-checkbox>
+**Note:** Model will not be refreshed until the `on-change` callback as not finished. If you want to access the new model inside the `on-change` callback you need to use the `model` variable as below.
 
 ```html:preview
-<oui-checkbox label="Test" checked="$ctrl.checked" disabled></oui-checkbox>
+<oui-checkbox
+  data-text="Normal"
+  data-model="$ctrl.onChangeValue"
+  data-on-change="$ctrl.lastOnChangeValue = model"
+></oui-checkbox>
+
+<span>Last onChange value: {{ $ctrl.lastOnChangeValue }}</span>
 ```
 
-### disabled
+## Accessibility
 
-<oui-checkbox on-change="$ctrl.disabled = $event.value" label="Click to disable the test checkbox"></oui-checkbox>
+Needs to be done.
 
-```html:preview
-<oui-checkbox checked disabled="$ctrl.disabled" label="Test"></oui-checkbox>
-```
+## API
 
-## Events
-
-### on-change
-
-```html:preview
-<oui-checkbox on-change="$ctrl.showCurrentValueInPopup($event.value)">
-    <oui-checkbox-label>Click here to show a popup with the current value</oui-checkbox-label>
-</oui-checkbox>
-```
+| Attribute     | Type                    | Binding | One-time Binding | Values                   | Default | Description
+| ----          | ----                    | ----    | ----             | ----                     | ----    | ----
+| text          | string                  | @       |                  |                          |         | checkbox text
+| id            | string                  | @?      | `true`           |                          |         | id attribute of the checkbox
+| name          | string                  | @?      | `true`           |                          |         | name attribute of the checkbox
+| disabled      | boolean                 | <?      |                  |                          | false   | disabled flag
+| model         | nullable&lt;boolean&gt; | =?      |                  | `true`, `false`, `null`  |         | current value of the checkbox and null is considered as `indeterminate`
+| on-change     | function                | &?      |                  |                          |         | handler triggered when value has changed

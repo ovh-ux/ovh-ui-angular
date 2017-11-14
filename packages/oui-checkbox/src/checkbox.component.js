@@ -5,15 +5,11 @@ export default {
   template,
   controller,
   bindings: {
-    label: '@?',
-    description: '@?',
+    text: '@',
+    id: '@?',
     name: '@?',
+    model: '=?',
     onChange: '&?',
-    checked: '<?',
     disabled: '<?'
-  },
-  transclude: {
-    label: '?ouiCheckboxLabel',
-    description: '?ouiCheckboxDescription'
   }
 }
