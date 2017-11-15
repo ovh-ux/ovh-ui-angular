@@ -1,5 +1,6 @@
 import '@oui-angular/common/test-utils'
 
+loadTests(require.context('../../oui-button/src/', true, /.*((\.spec)|(index))$/))
 loadTests(require.context('../../oui-checkbox/src/', true, /.*((\.spec)|(index))$/))
 loadTests(require.context('../../oui-message/src/', true, /.*((\.spec)|(index))$/))
 loadTests(require.context('../../oui-radio/src/', true, /.*((\.spec)|(index))$/))

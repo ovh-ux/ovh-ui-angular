@@ -10,6 +10,7 @@
     "karma:watch": "cross-env NODE_ENV=test babel-node ./node_modules/karma/bin/karma start ../../build/karma.global.conf.js --watch"
   },
   "dependencies": {
+    "@oui-angular/button": "^1.0.0",
     "@oui-angular/checkbox": "^1.0.0",
     "@oui-angular/message": "^1.0.0",
     "@oui-angular/radio": "^1.0.0",
