@@ -2,15 +2,13 @@
 
 <component-status cx-design="complete" ux="prototype"></component-status>
 
-## Centered by default
+## Centered by default with default trigger
 
 ```html:preview
 <div style="text-align: center">
   <oui-dropdown>
-    <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
-      <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
-    </button>
-    <div oui-dropdown-content>
+    <oui-dropdown-trigger data-text="Actions..."></oui-dropdown-trigger>
+    <oui-dropdown-content>
       <oui-action-menu>
         <oui-action-menu-item
           data-text="Action 1"
@@ -23,7 +21,7 @@
           data-type="external"
           data-href="#"></oui-action-menu-item>
       </oui-action-menu>
-    </div>
+    </oui-dropdown-content>
   </oui-dropdown>
 </div>
 ```
@@ -36,7 +34,7 @@
     <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
       <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
     </button>
-    <div oui-dropdown-content>
+    <oui-dropdown-content>
       <oui-action-menu>
         <oui-action-menu-item
           data-text="Action 1"
@@ -49,7 +47,7 @@
           data-type="external"
           data-href="#"></oui-action-menu-item>
       </oui-action-menu>
-    </div>
+    </oui-dropdown-content>
   </oui-dropdown>
 </div>
 <div style="text-align: right">
@@ -57,7 +55,7 @@
     <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
       <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
     </button>
-    <div oui-dropdown-content>
+    <oui-dropdown-content>
       <oui-action-menu>
         <oui-action-menu-item
           data-text="Action 1"
@@ -70,7 +68,7 @@
           data-type="external"
           data-href="#"></oui-action-menu-item>
       </oui-action-menu>
-    </div>
+    </oui-dropdown-content>
   </oui-dropdown>
 </div>
 ```
@@ -83,7 +81,7 @@
     <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
       <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
     </button>
-    <div oui-dropdown-content>
+    <oui-dropdown-content>
       <oui-action-menu>
         <oui-action-menu-item
           data-text="Action 1"
@@ -96,7 +94,7 @@
           data-type="external"
           data-href="#"></oui-action-menu-item>
       </oui-action-menu>
-    </div>
+    </oui-dropdown-content>
   </oui-dropdown>
 </div>
 <div style="text-align: center">
@@ -104,7 +102,7 @@
     <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
       <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
     </button>
-    <div oui-dropdown-content>
+    <oui-dropdown-content>
       <oui-action-menu>
         <oui-action-menu-item
           data-text="Action 1"
@@ -117,7 +115,7 @@
           data-type="external"
           data-href="#"></oui-action-menu-item>
       </oui-action-menu>
-    </div>
+    </oui-dropdown-content>
   </oui-dropdown>
 </div>
 <div style="text-align: right">
@@ -125,7 +123,7 @@
     <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
       <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
     </button>
-    <div oui-dropdown-content>
+    <oui-dropdown-content>
       <oui-action-menu>
         <oui-action-menu-item
           data-text="Action 1"
@@ -138,7 +136,7 @@
           data-type="external"
           data-href="#"></oui-action-menu-item>
       </oui-action-menu>
-    </div>
+    </oui-dropdown-content>
   </oui-dropdown>
 </div>
 ```
