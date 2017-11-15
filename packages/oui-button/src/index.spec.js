@@ -1,7 +1,7 @@
-describe('ouiRadio', () => {
+describe('ouiButton', () => {
   let $componentController
 
-  beforeEach(angular.mock.module('oui.radio'))
+  beforeEach(angular.mock.module('oui.button'))
 
   beforeEach(inject((_$componentController_) => {
     $componentController = _$componentController_
@@ -9,16 +9,16 @@ describe('ouiRadio', () => {
 
   describe('Controller', () => {
     it('should exist', () => {
-      const ctrl = $componentController('ouiRadio', {
-        $element: {},
+      const ctrl = $componentController('ouiButton', {
         $attrs: {},
-        $transclude: {}
+        $element: {},
+        $log: {}
       })
       expect(ctrl).toBeDefined()
     })
   })
 
   describe('Component', () => {
-    xit('should display a radio')
+    xit('should display a button')
   })
 })
