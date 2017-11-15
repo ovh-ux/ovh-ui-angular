@@ -1,9 +1,9 @@
 <button
   arial-label="{{$ctrl.text}}"
   class="oui-button"
-  ng-attr-id="{{$ctrl.id}}"
-  ng-attr-name="{{$ctrl.name}}"
-  ng-attr-type="{{$ctrl.type}}"
+  ng-attr-id="{{::$ctrl.id}}"
+  ng-attr-name="{{::$ctrl.name}}"
+  ng-attr-type="{{::$ctrl.type}}"
   ng-class="{
     'oui-button_primary': $ctrl.primary,
     'oui-button_secondary': $ctrl.secondary,
@@ -14,7 +14,7 @@
   ng-click="$ctrl.ngClick()"
   ng-disabled="$ctrl.disabled"
 >
-  <i aria-hidden="true" class="oui-icon oui-icon_circle oui-icon-chevron-left" ng-if="$ctrl.previousStep"></i>
+  <span aria-hidden="true" class="oui-icon oui-icon_circle oui-icon-chevron-left" ng-if="$ctrl.previousStep"></span>
   {{$ctrl.text}}
-  <i aria-hidden="true" class="oui-icon oui-icon_circle oui-icon-chevron-right" ng-if="$ctrl.nextStep"></i>
+  <span aria-hidden="true" class="oui-icon oui-icon_circle oui-icon-chevron-right" ng-if="$ctrl.nextStep"></span>
 </button>

@@ -10,9 +10,14 @@ export default class {
   }
 
   $onInit () {
-    this.checkModifiers()
-    this.checkSteps()
-    this.checkType()
+    this.createOrAttrs(['primary', 'secondary', 'link'], 'secondary') // Modifiers
+    this.createOrAttrs(['nextStep', 'previousStep']) // Steps
+    this.createAttrWithOrValues('type', ['submit', 'reset'], 'button') // Type
+
+    // Support presence of attribute 'disabled' with no value
+    if (this.$attrs.hasOwnProperty('disabled') && this.$attrs.disabled === '') {
+      this.disabled = true
+    }
   }
 
   $postLink () {
@@ -21,49 +26,32 @@ export default class {
     this.$element.removeAttr('name')
   }
 
-  // Check presence of attributes for modifiers
-  checkModifiers () {
-    this.primary = this.$attrs.hasOwnProperty('primary')
-    this.secondary = this.$attrs.hasOwnProperty('secondary')
-    this.link = this.$attrs.hasOwnProperty('link')
+  // TODO: Put in a common service
+  createOrAttrs (attrsName, defaultAttr) {
+    // Check presence of attributes
+    _.forEach(attrsName, (attrName) => {
+      this[attrName] = this.$attrs.hasOwnProperty(attrName)
+    })
 
-    // Warning for multiple declaration
-    this.checkAttrs([
-      this.primary,
-      this.secondary,
-      this.link
-    ], 'primary|secondary|link')
+    const sum = _.sum(_.values(_.pick(this, attrsName)))
 
-    // Default modifier style
-    if (!this.primary && !this.secondary && !this.link) {
-      this.secondary = true
+    // Check unauthorized multiple declaration of attributes
+    if (sum > 1) {
+      const formattedAttrs = _.map(attrsName, (attrName) => _.kebabCase(attrName)).join('|')
+
+      this.$log.warn(`Unauthorized multiple declaration of attributes (${formattedAttrs})`)
+    }
+
+    // Set default attribute, if no declaration of attributes
+    if (defaultAttr && sum === 0) {
+      this[defaultAttr] = true
     }
   }
 
-  // Check presence of attributes for steps
-  checkSteps () {
-    this.nextStep = this.$attrs.hasOwnProperty('nextStep')
-    this.previousStep = this.$attrs.hasOwnProperty('previousStep')
-
-    // Warning for multiple declaration
-    this.checkAttrs([
-      this.nextStep,
-      this.previousStep
-    ], 'next-step|previous-step')
-  }
-
-  // Check type for button (default is 'button')
-  checkType () {
-    const types = ['submit', 'reset']
-    if (_.indexOf(types, this.type) !== -1) {
-      this.type = 'button'
-    }
-  }
-
-  // Check unauthorized multiple declaration of attributes
-  checkAttrs (attrs, values) {
-    if (_.sum(attrs) > 1) {
-      this.$log.warn(`Unauthorized multiple declaration of attributes (${values})`)
+  // TODO: Put in a common service
+  createAttrWithOrValues (attrName, attrValues, defaultValue) {
+    if (_.indexOf(attrValues, this[attrName]) === -1) {
+      this[attrName] = defaultValue
     }
   }
 }
