@@ -168,7 +168,7 @@ Availability:
 
 | Attribute         | Type            | Binding | Values              | Default             | Description                                         |
 | ----              | ----            | ----    | ----                | ----                | ----                                                |
-| text              | string          | @?      |                     | null                | Display the default dropdown with this text         |
+| text              | string          |         |                     | null                | Display the default dropdown with this text         |
 
 ### oui-dropdown-content
 

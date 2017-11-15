@@ -7,7 +7,7 @@ const defaultTrigger = `
     <i class="oui-icon oui-icon-chevron-down" aria-hidden="true"></i>
   </button>`
 
-export default $compile => {
+export default ($compile, $log) => {
   'ngInject'
 
   return {
@@ -24,7 +24,7 @@ export default $compile => {
 
       if (element[0].tagName.toLowerCase() === 'oui-dropdown-trigger') {
         if (!attrs.text) {
-          console.error('You must define a text for a dropdown trigger.')
+          $log.warn('You must define a text for a dropdown trigger.')
         }
 
         const compiled = $compile(defaultTrigger)
