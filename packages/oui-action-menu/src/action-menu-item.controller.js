@@ -9,5 +9,6 @@ export default class {
 
   $onInit () {
     addBooleanParameter(this, 'divider')
+    addBooleanParameter(this, 'external')
   }
 }

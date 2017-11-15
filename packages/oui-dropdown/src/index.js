@@ -1,4 +1,4 @@
-import Dropdown from './dropdown.component.js'
+import Dropdown from './dropdown.directive.js'
 import DropdownContent from './dropdown-content.directive.js'
 import DropdownTrigger from './dropdown-trigger.directive.js'
 

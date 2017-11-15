@@ -13,10 +13,11 @@
     <oui-action-menu-item
       data-text="Action 2"
       data-on-click="$ctrl.showCurrentValueInPopup('Action 2')"></oui-action-menu-item>
-    <oui-action-menu-item divider
+    <oui-action-menu-item
       data-text="Lien externe"
-      data-type="external"
-      data-href="#"></oui-action-menu-item>
+      data-href="#"
+      data-external
+      data-divider></oui-action-menu-item>
   </oui-action-menu>
 </div>
 ```

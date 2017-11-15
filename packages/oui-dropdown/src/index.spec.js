@@ -11,6 +11,19 @@ describe('ouiDropdown', () => {
   }))
 
   describe('Component', () => {
+    it('should display the default trigger', () => {
+      const element = TestUtils.compileTemplate(`
+        <oui-dropdown>
+          <oui-dropdown-trigger data-text="TRIGGER"></oui-dropdown-trigger>
+          <oui-dropdown-content>
+            <b>the menu</b>
+          </oui-dropdown-content>
+        </oui-dropdown>`)
+
+      const trigger = element[0].querySelector('.oui-dropdown__trigger')
+      expect(angular.element(trigger).hasClass('oui-button_dropdown')).toBeTruthy()
+    })
+
     it('should have trigger and dropdown elements but no arrow', () => {
       const element = TestUtils.compileTemplate(`
         <oui-dropdown>
@@ -27,13 +40,13 @@ describe('ouiDropdown', () => {
       expect(angular.element(trigger)
         .hasClass('oui-dropdown__trigger')).toBeTruthy()
       expect(angular.element(dropdown)
-        .hasClass('oui-dropdown__menu')).toBeTruthy()
+        .hasClass('oui-dropdown__content')).toBeTruthy()
       expect(arrow).toBeFalsy()
     })
 
     it('should have arrow element', () => {
       const element = TestUtils.compileTemplate(`
-        <oui-dropdown display-arrow="true">
+        <oui-dropdown arrow>
           <button class="oui-button" oui-dropdown-trigger></button>
           <div oui-dropdown-content>
             <b>the menu</b>
@@ -45,7 +58,52 @@ describe('ouiDropdown', () => {
       const arrow = element[0].querySelector('.oui-dropdown__arrow')
 
       expect(arrow).toBeTruthy()
-      expect($dropdown.hasClass('oui-dropdown__menu_arrow')).toBeTruthy()
+      expect($dropdown.hasClass('oui-dropdown__content_arrow')).toBeTruthy()
+    })
+
+    it('should display the dropdown at the bottom (center) by default', () => {
+      const element = TestUtils.compileTemplate(`
+        <oui-dropdown arrow>
+          <button class="oui-button" oui-dropdown-trigger></button>
+          <div oui-dropdown-content>
+            <b>the menu</b>
+          </div>
+        </oui-dropdown>`)
+
+      const controller = element.controller('ouiDropdown')
+      controller.toggle()
+
+      expect(controller.placement).toEqual('bottom')
+    })
+
+    it('should display the dropdown at the bottom-start', () => {
+      const element = TestUtils.compileTemplate(`
+        <oui-dropdown arrow start>
+          <button class="oui-button" oui-dropdown-trigger></button>
+          <div oui-dropdown-content>
+            <b>the menu</b>
+          </div>
+        </oui-dropdown>`)
+
+      const controller = element.controller('ouiDropdown')
+      controller.toggle()
+
+      expect(controller.placement).toEqual('bottom-start')
+    })
+
+    it('should display the dropdown at the bottom-end', () => {
+      const element = TestUtils.compileTemplate(`
+        <oui-dropdown arrow end>
+          <button class="oui-button" oui-dropdown-trigger></button>
+          <div oui-dropdown-content>
+            <b>the menu</b>
+          </div>
+        </oui-dropdown>`)
+
+      const controller = element.controller('ouiDropdown')
+      controller.toggle()
+
+      expect(controller.placement).toEqual('bottom-end')
     })
 
     describe('Events', () => {
@@ -61,7 +119,7 @@ describe('ouiDropdown', () => {
         const dropdown = element[0].querySelector('[oui-dropdown-content]').parentNode
         const $dropdown = angular.element(dropdown)
 
-        expect($dropdown.hasClass('oui-dropdown__menu_active')).toBeFalsy()
+        expect($dropdown.hasClass('oui-dropdown__content_active')).toBeFalsy()
       })
 
       it('should display and hide dropdown on click', () => {
@@ -73,20 +131,20 @@ describe('ouiDropdown', () => {
             </div>
           </oui-dropdown>`)
 
+        const rootElement = element[0].querySelector('.oui-dropdown')
+        const $rootElement = angular.element(rootElement)
         const trigger = element[0].querySelector('[oui-dropdown-trigger]')
         const $trigger = angular.element(trigger)
-        const dropdown = element[0].querySelector('[oui-dropdown-content]').parentNode
-        const $dropdown = angular.element(dropdown)
 
-        expect($dropdown.hasClass('oui-dropdown__menu_active')).toBeFalsy()
+        expect($rootElement.hasClass('oui-dropdown_active')).toBeFalsy()
         $trigger.triggerHandler('click')
-        expect($dropdown.hasClass('oui-dropdown__menu_active')).toBeTruthy()
+        expect($rootElement.hasClass('oui-dropdown_active')).toBeTruthy()
         $trigger.triggerHandler('click')
-        expect($dropdown.hasClass('oui-dropdown__menu_active')).toBeFalsy()
+        expect($rootElement.hasClass('oui-dropdown_active')).toBeFalsy()
         $trigger.triggerHandler('click')
-        expect($dropdown.hasClass('oui-dropdown__menu_active')).toBeTruthy()
+        expect($rootElement.hasClass('oui-dropdown_active')).toBeTruthy()
         $document.triggerHandler('click')
-        expect($dropdown.hasClass('oui-dropdown__menu_active')).toBeFalsy()
+        expect($rootElement.hasClass('oui-dropdown_active')).toBeFalsy()
       })
     })
   })
