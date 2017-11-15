@@ -4,12 +4,13 @@ import { addBooleanParameter } from '@oui-angular/common/component-utils'
 const KEY_ESCAPE = 27
 
 export default class {
-  constructor ($attrs, $document, $element, $scope) {
+  constructor ($attrs, $document, $element, $log, $scope) {
     'ngInject'
 
     this.$attrs = $attrs
     this.$document = $document
     this.$element = $element
+    this.$log = $log
     this.$scope = $scope
   }
 
@@ -22,7 +23,7 @@ export default class {
     addBooleanParameter(this, 'end')
 
     if (this.start && this.end) {
-      console.error('A dropdown cannot be positionned at the start and at the end at the same time.')
+      this.$log.warn('A dropdown cannot be positionned at the start and at the end at the same time.')
     }
 
     this.documentClickHandler = evt => {
