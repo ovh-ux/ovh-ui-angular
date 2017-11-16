@@ -6,9 +6,9 @@
 
 ```html
 <oui-button
-  primary|secondary|link
-  previous-step|next-step
   text="..."
+  variant="[primary|secondary|link]"
+  variant-nav="[previous|next]"
   type="[submit|button|reset]"
   id="..."
   name="..."
@@ -29,15 +29,15 @@
 
 ```html:preview
 <div>
-  <oui-button primary text="Primary"></oui-button>
-  <oui-button secondary text="Secondary"></oui-button>
-  <oui-button link text="Link"></oui-button>
+  <oui-button variant="primary" text="Primary"></oui-button>
+  <oui-button variant="secondary" text="Secondary"></oui-button>
+  <oui-button variant="link" text="Link"></oui-button>
 </div>
 
 <div>
-  <oui-button primary text="Primary" disabled="true"></oui-button>
-  <oui-button secondary text="Secondary" disabled="true"></oui-button>
-  <oui-button link text="Link" disabled="true"></oui-button>
+  <oui-button variant="primary" text="Primary" disabled></oui-button>
+  <oui-button variant="secondary" text="Secondary" disabled></oui-button>
+  <oui-button variant="link" text="Link" disabled></oui-button>
 </div>
 ```
 
@@ -45,13 +45,13 @@
 
 ```html:preview
 <div>
-  <oui-button previous-step text="Previous" on-click="previous()"></oui-button>
-  <oui-button primary next-step text="Next" on-click="next()"></oui-button>
+  <oui-button variant-nav="previous" text="Previous" on-click="previous()"></oui-button>
+  <oui-button variant="primary" variant-nav="next" text="Next" on-click="next()"></oui-button>
 </div>
 
 <div>
-  <oui-button previous-step text="Previous" disabled="true" on-click="previous()"></oui-button>
-  <oui-button primary next-step text="Next" disabled="true" on-click="next()"></oui-button>
+  <oui-button variant-nav="previous-step" text="Previous" on-click="previous()" disabled></oui-button>
+  <oui-button variant="primary" variant-nav="next" text="Next" on-click="next()" disabled></oui-button>
 </div>
 ```
 
@@ -61,16 +61,13 @@
 
 ## API
 
-| Attribute     | Type     | Binding | Values              | Default | Description                      |
-| ----          | ----     | ----    | ----                | ----    | ----                             |
-| on-click      | function | &?      |                     |         | click handler                    |
-| text          | string   | @       |                     |         | button text                      |
-| id            | string   | @?      |                     |         | id attribute of the button       |
-| name          | string   | @?      |                     |         | name attribute of the button     |
-| type          | string   | @?      | submit,button,reset | button  | click handler                    |
-| disabled      | boolean  | <?      |                     | false   | disabled flag                    |
-| primary       |          |         |                     |         | modifier for primary button      |
-| secondary     |          |         |                     |         | modifier for secondary button    |
-| link          |          |         |                     |         | modifier for link button         |
-| previous-step |          |         |                     |         | chrevron-left icon (left side)   |
-| next-step     |          |         |                     |         | chrevron-right icon (right side) |
+| Attribute     | Type     | Binding | Values                 | Default   | Description                      |
+| ----          | ----     | ----    | ----                   | ----      | ----                             |
+| on-click      | function | &?      |                        |           | click handler                    |
+| text          | string   | @       |                        |           | button text                      |
+| id            | string   | @?      |                        |           | id attribute of the button       |
+| name          | string   | @?      |                        |           | name attribute of the button     |
+| type          | string   | @?      | submit,button,reset    | button    | type attribute of the button     |
+| variant       | string   | @?      | primary,secondary,link | secondary | modifier for button              |
+| variant-nav   | string   | @?      | next,previous          |           | nav modifier for button          |
+| disabled      | boolean  | <?      |                        | false     | disabled flag                    |

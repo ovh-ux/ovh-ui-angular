@@ -19,6 +19,17 @@ describe('ouiButton', () => {
   })
 
   describe('Component', () => {
-    xit('should display a button')
+    let element;
+    let scope;
+
+    beforeEach(inject(($rootScope, $compile) => {
+      scope = $rootScope.$new()
+      element = angular.element('<oui-button type="submit" text="Lorem ipsum dolor sit amet" disabled></oui-button>')
+      element = $compile(element)(scope)
+      scope.$apply()
+    }))
+
+    it('should display a button', () => {
+    })
   })
 })

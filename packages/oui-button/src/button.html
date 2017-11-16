@@ -5,11 +5,11 @@
   ng-attr-name="{{::$ctrl.name}}"
   ng-attr-type="{{::$ctrl.type}}"
   ng-class="{
-    'oui-button_primary': $ctrl.primary,
-    'oui-button_secondary': $ctrl.secondary,
-    'oui-button_link': $ctrl.link,
-    'oui-button_icon-left': $ctrl.previousStep,
-    'oui-button_icon-right': $ctrl.nextStep
+    'oui-button_primary': $ctrl.variant === 'primary',
+    'oui-button_secondary': $ctrl.variant === 'secondary',
+    'oui-button_link': $ctrl.variant === 'link',
+    'oui-button_icon-left': $ctrl.variantNav === 'previous',
+    'oui-button_icon-right': $ctrl.variantNav === 'next'
   }"
   ng-click="$ctrl.ngClick()"
   ng-disabled="$ctrl.disabled"
