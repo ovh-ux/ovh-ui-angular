@@ -1,0 +1,13 @@
+<li class="oui-action-menu__item"
+  data-ng-class="::{ 'oui-action-menu__item_divider': $ctrl.divider }">
+  <a
+    class="oui-button oui-button_action-menu"
+    data-ng-href="{{::$ctrl.href}}"
+    data-ng-attr-target="{{::$ctrl.linkTarget}}"
+    data-ng-attr-rel="{{::$ctrl.linkRel}}">
+    <span data-ng-bind="::$ctrl.text"></span>
+    <i data-ng-if="::$ctrl.external"
+      class="oui-icon oui-icon-external_link"
+      aria-hidden="true"></i>
+  </a>
+</li>
