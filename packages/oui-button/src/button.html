@@ -14,7 +14,7 @@
   ng-click="$ctrl.ngClick()"
   ng-disabled="$ctrl.disabled"
 >
-  <span aria-hidden="true" class="oui-icon oui-icon_circle oui-icon-chevron-left" ng-if="$ctrl.previousStep"></span>
+  <span aria-hidden="true" class="oui-icon oui-icon_circle oui-icon-chevron-left" ng-if="$ctrl.variantNav === 'previous'"></span>
   {{$ctrl.text}}
-  <span aria-hidden="true" class="oui-icon oui-icon_circle oui-icon-chevron-right" ng-if="$ctrl.nextStep"></span>
+  <span aria-hidden="true" class="oui-icon oui-icon_circle oui-icon-chevron-right" ng-if="$ctrl.variantNav === 'next'"></span>
 </button>
