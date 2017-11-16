@@ -61,7 +61,7 @@ describe('ouiDropdown', () => {
       expect($dropdown.hasClass('oui-dropdown__content_arrow')).toBeTruthy()
     })
 
-    it('should display the dropdown at the bottom (center) by default', () => {
+    it('should display at bottom with the arrow centered by default', () => {
       const element = TestUtils.compileTemplate(`
         <oui-dropdown arrow>
           <button class="oui-button" oui-dropdown-trigger></button>
@@ -73,12 +73,13 @@ describe('ouiDropdown', () => {
       const controller = element.controller('ouiDropdown')
       controller.toggle()
 
-      expect(controller.placement).toEqual('bottom')
+      expect(controller.popper.options.placement).toEqual('bottom')
+      expect(element[0].querySelector('[x-arrow]')).toBeDefined()
     })
 
-    it('should display the dropdown at the bottom-start', () => {
+    it('should display the dropdown aligned with the left border', () => {
       const element = TestUtils.compileTemplate(`
-        <oui-dropdown arrow start>
+        <oui-dropdown align="start">
           <button class="oui-button" oui-dropdown-trigger></button>
           <div oui-dropdown-content>
             <b>the menu</b>
@@ -88,12 +89,15 @@ describe('ouiDropdown', () => {
       const controller = element.controller('ouiDropdown')
       controller.toggle()
 
-      expect(controller.placement).toEqual('bottom-start')
+      expect(controller.popper.options.placement).toEqual('bottom-start')
+
+      // Popper.js must not manage the arrow position in this case.
+      expect(element[0].querySelector('[x-arrow]')).toBeNull()
     })
 
-    it('should display the dropdown at the bottom-end', () => {
+    it('should display the dropdown aligned with the right border', () => {
       const element = TestUtils.compileTemplate(`
-        <oui-dropdown arrow end>
+        <oui-dropdown align="end">
           <button class="oui-button" oui-dropdown-trigger></button>
           <div oui-dropdown-content>
             <b>the menu</b>
@@ -103,7 +107,10 @@ describe('ouiDropdown', () => {
       const controller = element.controller('ouiDropdown')
       controller.toggle()
 
-      expect(controller.placement).toEqual('bottom-end')
+      expect(controller.popper.options.placement).toEqual('bottom-end')
+
+      // Popper.js must not manage the arrow position in this case.
+      expect(element[0].querySelector('[x-arrow]')).toBeNull()
     })
 
     describe('Events', () => {

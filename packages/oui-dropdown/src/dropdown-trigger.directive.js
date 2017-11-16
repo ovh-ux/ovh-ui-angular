@@ -1,13 +1,8 @@
+import defaultTriggerTemplate from './dropdown-trigger-default.html'
+
 const dropdownTriggerClass = 'oui-dropdown__trigger'
 
-const defaultTrigger = `
-  <button type="text"
-    class="oui-button oui-button_dropdown oui-dropdown__trigger">
-    <span data-ng-bind="::$ctrl.text"></span>
-    <i class="oui-icon oui-icon-chevron-down" aria-hidden="true"></i>
-  </button>`
-
-export default ($compile, $log) => {
+export default $compile => {
   'ngInject'
 
   return {
@@ -20,32 +15,28 @@ export default ($compile, $log) => {
     },
     scope: {},
     link: (scope, element, attrs, ctrl) => {
-      element.addClass(dropdownTriggerClass)
+      let triggerElement = element
 
-      if (element[0].tagName.toLowerCase() === 'oui-dropdown-trigger') {
-        if (!attrs.text) {
-          $log.warn('You must define a text for a dropdown trigger.')
-        }
+      triggerElement.addClass(dropdownTriggerClass)
 
-        const compiled = $compile(defaultTrigger)
-        const triggerElement = compiled(scope)
+      if (triggerElement[0].tagName.toLowerCase() === 'oui-dropdown-trigger') {
+        triggerElement = $compile(defaultTriggerTemplate)(scope)
         element.replaceWith(triggerElement)
-        element = triggerElement
       }
 
-      element.on('click', () => ctrl.onTriggerClick())
-      element.on('keydown', evt => ctrl.triggerKeyHandler(evt))
-      element.on('blur', evt => ctrl.triggerBlurHandler(evt))
+      triggerElement.on('click', () => ctrl.onTriggerClick())
+      triggerElement.on('keydown', evt => ctrl.triggerKeyHandler(evt))
+      triggerElement.on('blur', evt => ctrl.triggerBlurHandler(evt))
 
-      element.attr({ 'aria-haspopup': true, 'aria-expanded': false })
+      triggerElement.attr({ 'aria-haspopup': true, 'aria-expanded': false })
       scope.$watch(() => ctrl.isOpen(), open => {
-        element.attr('aria-expanded', !!open)
+        triggerElement.attr('aria-expanded', !!open)
       })
 
       scope.$on('$destroy', () => {
-        element.off('click')
-        element.off('keydown')
-        element.off('blur')
+        triggerElement.off('click')
+        triggerElement.off('keydown')
+        triggerElement.off('blur')
       })
     }
   }

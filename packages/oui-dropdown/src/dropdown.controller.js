@@ -1,16 +1,15 @@
 import Popper from 'popper.js'
-import { addBooleanParameter } from '@oui-angular/common/component-utils'
+import { addBooleanParameter, addDefaultParameter } from '@oui-angular/common/component-utils'
 
 const KEY_ESCAPE = 27
 
 export default class {
-  constructor ($attrs, $document, $element, $log, $scope) {
+  constructor ($attrs, $document, $element, $scope) {
     'ngInject'
 
     this.$attrs = $attrs
     this.$document = $document
     this.$element = $element
-    this.$log = $log
     this.$scope = $scope
   }
 
@@ -18,13 +17,9 @@ export default class {
     this.isDropdownOpen = false
     this.hasFocus = false
     this.currentFocusedElement = null
-    addBooleanParameter(this, 'arrow')
-    addBooleanParameter(this, 'start')
-    addBooleanParameter(this, 'end')
 
-    if (this.start && this.end) {
-      this.$log.warn('A dropdown cannot be positionned at the start and at the end at the same time.')
-    }
+    addBooleanParameter(this, 'arrow')
+    addDefaultParameter(this, 'align', 'center')
 
     this.documentClickHandler = evt => {
       if (evt &&
@@ -60,6 +55,14 @@ export default class {
     }
   }
 
+  $postLink () {
+    this.referenceElement = this.$element[0].querySelector('.oui-dropdown__trigger')
+    this.popperElement = this.$element[0].querySelector('.oui-dropdown__content')
+    this.arrowElement = this.$element[0].querySelector('.oui-dropdown__arrow')
+
+    this.$scope.$on('$destroy', () => this.closeDropdown())
+  }
+
   isOpen () {
     return this.isDropdownOpen
   }
@@ -90,20 +93,18 @@ export default class {
   }
 
   createPopper () {
-    this.placement = this.placement ? this.placement : 'bottom'
+    let placement = 'bottom'
 
-    if (this.start) {
-      this.placement += '-start'
-    } else if (this.end) {
-      this.placement += '-end'
+    if (['start', 'end'].indexOf(this.align) > -1) {
+      placement += `-${this.align}`
     }
 
     // Let Popper.js manage the arrow position when it's centered (default).
-    if (this.arrowElement && ['top', 'bottom'].indexOf(this.placement) > -1) {
+    if (this.arrowElement && placement === 'bottom') {
       this.arrowElement.setAttribute('x-arrow', '')
     }
     this.popper = new Popper(this.referenceElement, this.popperElement, {
-      placement: this.placement
+      placement
     })
   }
 

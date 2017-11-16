@@ -30,7 +30,7 @@
 
 ```html:preview
 <div>
-  <oui-dropdown start>
+  <oui-dropdown data-align="start">
     <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
       <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
     </button>
@@ -51,7 +51,7 @@
   </oui-dropdown>
 </div>
 <div style="text-align: right">
-  <oui-dropdown end>
+  <oui-dropdown data-align="end">
     <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
       <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
     </button>
@@ -77,7 +77,7 @@
 
 ```html:preview
 <div>
-  <oui-dropdown start arrow>
+  <oui-dropdown data-align="start" data-arrow>
     <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
       <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
     </button>
@@ -98,7 +98,7 @@
   </oui-dropdown>
 </div>
 <div style="text-align: center">
-  <oui-dropdown arrow>
+  <oui-dropdown data-arrow>
     <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
       <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
     </button>
@@ -119,7 +119,7 @@
   </oui-dropdown>
 </div>
 <div style="text-align: right">
-  <oui-dropdown end arrow>
+  <oui-dropdown data-align="end" data-arrow>
     <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
       <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
     </button>
@@ -153,9 +153,8 @@ Availability:
 
 | Attribute         | Type            | Binding | Values              | Default             | Description                        |
 | ----              | ----            | ----    | ----                | ----                | ----                               |
-| arrow             |                 |         |                     |                     | display the dropdown arrow         |
-| start             |                 |         |                     |                     | modifier for left alignment        |
-| end               |                 |         |                     |                     | modifier for right alignment       |
+| align             | string          | @?      | start,center,end    | center              | modifier for alignment             |
+| arrow             |                 | <?      |                     |                     | display the dropdown arrow         |
 
 ### oui-dropdown-trigger
 
@@ -168,7 +167,7 @@ Availability:
 
 | Attribute         | Type            | Binding | Values              | Default             | Description                                         |
 | ----              | ----            | ----    | ----                | ----                | ----                                                |
-| text              | string          |         |                     | null                | Display the default dropdown with this text         |
+| text              | string          | @?      |                     | null                | Display the default dropdown with this text         |
 
 ### oui-dropdown-content
 
