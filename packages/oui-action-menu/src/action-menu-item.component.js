@@ -5,7 +5,8 @@ export default {
   bindings: {
     onClick: '&?',
     href: '@?',
-    external: '@?',
+    divider: '<?',
+    external: '<?',
     text: '@'
   }
 }
