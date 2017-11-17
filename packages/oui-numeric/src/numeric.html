@@ -2,13 +2,14 @@
        class="oui-label">
   <span ng-bind=":: $ctrl.text"></span>
   <span ng-if="$ctrl.unit"
-        ng-bind=":: '&nbsp;(' + $ctrl.unit + ')'"></span>
+        ng-bind=":: '(' + $ctrl.unit + ')'"></span>
 </label>
 <div class="oui-input-group oui-input-group_numeric">
   <button class="oui-button oui-button_icon-only oui-button_small-width"
           type="button"
           ng-disabled="$ctrl.disabled || $ctrl.model <= $ctrl.min"
           ng-click="$ctrl.decrement()"
+          tabindex="-1"
           aria-labelledby="-">
     <i class="oui-icon oui-icon-remove" aria-hidden="true"></i>
   </button>
@@ -23,6 +24,7 @@
           type="button"
           ng-disabled="$ctrl.disabled || $ctrl.model >= $ctrl.max"
           ng-click="$ctrl.increment()"
+          tabindex="-1"
           aria-labelledby="+">
     <i class="oui-icon oui-icon-add" aria-hidden="true"></i>
   </button>
