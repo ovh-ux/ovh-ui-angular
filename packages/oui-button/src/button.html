@@ -1,20 +1,22 @@
 <button
-  arial-label="{{$ctrl.text}}"
   class="oui-button"
-  ng-attr-id="{{::$ctrl.id}}"
-  ng-attr-name="{{::$ctrl.name}}"
-  ng-attr-type="{{::$ctrl.type}}"
-  ng-class="{
+  data-ng-attr-aria-label="{{::$ctrl.ariaLabel}}"
+  data-ng-attr-id="{{::$ctrl.id}}"
+  data-ng-attr-name="{{::$ctrl.name}}"
+  data-ng-attr-type="{{::$ctrl.type}}"
+  data-ng-class="::{
     'oui-button_primary': $ctrl.variant === 'primary',
     'oui-button_secondary': $ctrl.variant === 'secondary',
     'oui-button_link': $ctrl.variant === 'link',
     'oui-button_icon-left': $ctrl.variantNav === 'previous',
     'oui-button_icon-right': $ctrl.variantNav === 'next'
   }"
-  ng-click="$ctrl.ngClick()"
-  ng-disabled="$ctrl.disabled"
+  data-ng-click="$ctrl.onClick()"
+  data-ng-disabled="$ctrl.disabled"
 >
-  <span aria-hidden="true" class="oui-icon oui-icon_circle oui-icon-chevron-left" ng-if="$ctrl.variantNav === 'previous'"></span>
-  {{$ctrl.text}}
-  <span aria-hidden="true" class="oui-icon oui-icon_circle oui-icon-chevron-right" ng-if="$ctrl.variantNav === 'next'"></span>
+  <span aria-hidden="true" class="oui-icon oui-icon_circle oui-icon-chevron-left"
+    data-ng-if="$ctrl.variantNav === 'previous'"></span>
+  <span data-ng-bind="::$ctrl.text"></span>
+  <span aria-hidden="true" class="oui-icon oui-icon_circle oui-icon-chevron-right"
+    data-ng-if="$ctrl.variantNav === 'next'"></span>
 </button>

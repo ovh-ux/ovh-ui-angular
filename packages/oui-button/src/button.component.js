@@ -9,6 +9,7 @@ export default {
     type: '@?', // values: submit|button|reset (default: button)
     variant: '@?', // values: primary|secondary|link (default: secondary)
     variantNav: '@?', // values: previous|next
+    ariaLabel: '@?',
 
     disabled: '<?',
 

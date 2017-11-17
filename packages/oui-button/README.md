@@ -12,17 +12,32 @@
   type="[submit|button|reset]"
   id="..."
   name="..."
-  disabled="..."
+  disabled|disabled="[true|false]"
+  aria-label="..."
   on-click="..."
 ></oui-button>
 ```
+
+## API
+
+| Attribute     | Type     | Binding | One-time Binding | Values                 | Default   | Description                      |
+| ----          | ----     | ----    | ----             | ----                   | ----      | ----                             |
+| text          | string   | @       | true             |                        |           | button text                      |
+| id            | string   | @?      | true             |                        |           | id attribute of the button       |
+| name          | string   | @?      | true             |                        |           | name attribute of the button     |
+| type          | string   | @?      | true             | submit,button,reset    | button    | type attribute of the button     |
+| variant       | string   | @?      | true             | primary,secondary,link | secondary | modifier for button              |
+| variant-nav   | string   | @?      | true             | next,previous          |           | nav modifier for button          |
+| aria-label    | string   | @?      | true             |                        |           | accessibility label              |
+| disabled      | boolean  | <?      |                  |                        | false     | disabled flag                    |
+| on-click      | function | &?      |                  |                        |           | click handler                    |
 
 ## Examples
 
 ### Default
 
 ```html:preview
-<oui-button text="Default button" on-click="click()"></oui-button>
+<oui-button text="Default button" on-click="onClick()"></oui-button>
 ```
 
 ### Action buttons
@@ -50,24 +65,15 @@
 </div>
 
 <div>
-  <oui-button variant-nav="previous-step" text="Previous" on-click="previous()" disabled></oui-button>
+  <oui-button variant-nav="previous" text="Previous" on-click="previous()" disabled></oui-button>
   <oui-button variant="primary" variant-nav="next" text="Next" on-click="next()" disabled></oui-button>
 </div>
 ```
 
-### Accessibility
+### Accessibilty
 
-`text` is used as an `aria-label`.
+```html:preview
+<oui-button aria-label="Accessibility text" text="Button with accessibility" on-click="onClick()"></oui-button>
+```
 
-## API
-
-| Attribute     | Type     | Binding | Values                 | Default   | Description                      |
-| ----          | ----     | ----    | ----                   | ----      | ----                             |
-| on-click      | function | &?      |                        |           | click handler                    |
-| text          | string   | @       |                        |           | button text                      |
-| id            | string   | @?      |                        |           | id attribute of the button       |
-| name          | string   | @?      |                        |           | name attribute of the button     |
-| type          | string   | @?      | submit,button,reset    | button    | type attribute of the button     |
-| variant       | string   | @?      | primary,secondary,link | secondary | modifier for button              |
-| variant-nav   | string   | @?      | next,previous          |           | nav modifier for button          |
-| disabled      | boolean  | <?      |                        | false     | disabled flag                    |
+- `aria-label` add an attribute `aria-label` on the button.
