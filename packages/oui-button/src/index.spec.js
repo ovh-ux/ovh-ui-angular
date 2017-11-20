@@ -38,12 +38,13 @@ describe('ouiButton', () => {
       expect(component.attr('id')).toBe(undefined)
       expect(button.attr('id')).toBe('foo')
 
-      expect(component.attr('name')).toBe(undefined)
-      expect(button.attr('name')).toBe('bar')
+      expect(element.find('button').length).toBe(1)
+      expect(element.find('button').eq(0).text().trim()).toBe('foo')
     })
 
-    it('should have an attribute aria-label on the button, and removed on the root component', () => {
-      const component = testUtils.compileTemplate('<oui-button aria-label="foo"></oui-button>')
+    it('should have an attribute id and name on the button, not the root component', () => {
+      let element = angular.element('<oui-button id="foo" name="bar"></oui-button>')
+      let scope = $rootScope.$new()
 
       expect(component.attr('aria-label')).toBe(undefined)
       expect(component.find('button').eq(0).attr('aria-label')).toBe('foo')
@@ -61,14 +62,22 @@ describe('ouiButton', () => {
       const component = testUtils.compileTemplate('<oui-button text="foo" type="submit" disabled></oui-button>')
       const button = component.find('button').eq(0)
 
-      expect(button.attr('disabled')).toBe('disabled')
-      expect(button.attr('type')).toBe('submit')
+      $compile(element)(scope)
+      scope.$digest()
+
+      expect(element.attr('aria-label')).toBe(undefined)
+      expect(element.find('button').eq(0).attr('aria-label')).toBe('foo')
     })
 
-    it('should call function of onClick attribute, when button is clicked', () => {
-      const component = testUtils.compileTemplate('<oui-button text="foo" on-click="$ctrl.onClickTest()"></oui-button>', {
-        onClickTest: jasmine.createSpy('onClick')
-      })
+    it('should have a disabled button', () => {
+      let element = angular.element('<oui-button text="foo" disabled></oui-button>')
+      let scope = $rootScope.$new()
+
+      $compile(element)(scope)
+      scope.$digest()
+
+      expect(element.find('button').attr('disabled')).toBe('disabled')
+    })
 
       component.find('button').eq(0).triggerHandler('click')
       expect(component.scope().$ctrl.onClickTest).toHaveBeenCalled()
