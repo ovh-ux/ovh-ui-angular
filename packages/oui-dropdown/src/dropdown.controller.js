@@ -21,6 +21,9 @@ export default class {
     addBooleanParameter(this, 'arrow')
     addDefaultParameter(this, 'align', 'center')
 
+    // Use internal id to map trigger and content with aria-label and aria-labelledby.
+    this.id = this.$scope.$id
+
     this.documentClickHandler = evt => {
       if (evt &&
         evt.type === 'click' &&

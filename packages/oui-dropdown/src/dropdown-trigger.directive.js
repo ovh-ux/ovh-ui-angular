@@ -11,18 +11,26 @@ export default $compile => {
     controller: class {},
     controllerAs: '$ctrl',
     bindToController: {
+      ariaLabel: '@?',
       text: '@?'
     },
     scope: {},
     link: (scope, element, attrs, ctrl) => {
       let triggerElement = element
 
-      triggerElement.addClass(dropdownTriggerClass)
+      if (!ctrl.text) {
+        element.removeAttr('aria-label')
+      }
 
       if (triggerElement[0].tagName.toLowerCase() === 'oui-dropdown-trigger') {
         triggerElement = $compile(defaultTriggerTemplate)(scope)
         element.replaceWith(triggerElement)
       }
+
+      ctrl.referenceElement = triggerElement[0]
+      triggerElement.addClass(dropdownTriggerClass)
+
+      triggerElement.attr('id', ctrl.id)
 
       triggerElement.on('click', () => ctrl.onTriggerClick())
       triggerElement.on('keydown', evt => ctrl.triggerKeyHandler(evt))

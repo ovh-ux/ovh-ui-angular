@@ -20,29 +20,34 @@ describe('ouiActionMenu', () => {
     })
 
     it('should display a button item', () => {
+      const clickSpy = jasmine.createSpy('spy')
       const element = TestUtils.compileTemplate(`
         <oui-action-menu>
-          <oui-action-menu-item data-text="Action 1"
-            data-on-click="clickHandler()"></oui-action-menu-item>
+          <oui-action-menu-item text="Action 1"
+            on-click="$ctrl.clickHandler()"></oui-action-menu-item>
         </oui-action-menu>`,
         {
-          clickHandler: () => {}
+          clickHandler: clickSpy
         })
 
-      const buttonElement = element[0].querySelector('li button')
+      const buttonElement = element[0].querySelector('button')
       expect(buttonElement).toBeTruthy()
       expect(angular.element(buttonElement).text()).toBe('Action 1')
+
+      angular.element(buttonElement).triggerHandler('click')
+      expect(clickSpy).toHaveBeenCalled()
+      expect(clickSpy.calls.count()).toEqual(1)
     })
 
     it('should display a link item', () => {
       const element = TestUtils.compileTemplate(`
         <oui-action-menu>
           <oui-action-menu-item
-            data-text="Action 1"
-            data-href="http://foo.bar"></oui-action-menu-item>
+            text="Action 1"
+            href="http://foo.bar"></oui-action-menu-item>
         </oui-action-menu>`)
 
-      const linkElement = element[0].querySelector('li a')
+      const linkElement = element[0].querySelector('a')
       expect(linkElement).toBeTruthy()
       expect(angular.element(linkElement).attr('href')).toBe('http://foo.bar')
     })

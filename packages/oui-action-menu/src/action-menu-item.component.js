@@ -3,10 +3,11 @@ import controller from './action-menu-item.controller'
 export default {
   controller,
   bindings: {
-    onClick: '&?',
+    text: '@',
+    ariaLabel: '@?',
     href: '@?',
     divider: '<?',
     external: '<?',
-    text: '@'
+    onClick: '&?'
   }
 }

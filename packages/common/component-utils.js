@@ -1,8 +1,6 @@
-import _ from 'lodash'
-
 export function addBooleanParameter (controller, parameterName) {
   if (angular.isDefined(controller.$attrs[parameterName]) &&
-    !_.isBoolean(controller[parameterName])) {
+    controller.$attrs[parameterName] === '') {
     controller[parameterName] = true
   }
 }

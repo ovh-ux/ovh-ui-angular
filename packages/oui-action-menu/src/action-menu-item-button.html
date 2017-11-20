@@ -1,8 +1,9 @@
-<li class="oui-action-menu__item"
-  data-ng-class="::{ 'oui-action-menu__item_divider': $ctrl.divider }">
+<div role="menuitem"
+  class="oui-action-menu__item">
   <button
     class="oui-button oui-button_action-menu"
     type="button"
-    data-ng-click="$ctrl.onClick()"
-    data-ng-bind="::$ctrl.text"></button>
-</li>
+    ng-click="$ctrl.onClick()"
+    ng-bind="::$ctrl.text"
+    ng-attr-aria-label="{{::$ctrl.ariaLabel}}"></button>
+</div>

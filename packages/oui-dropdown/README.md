@@ -7,20 +7,9 @@
 ```html:preview
 <div style="text-align: center">
   <oui-dropdown>
-    <oui-dropdown-trigger data-text="Actions..."></oui-dropdown-trigger>
+    <oui-dropdown-trigger text="Actions..."></oui-dropdown-trigger>
     <oui-dropdown-content>
-      <oui-action-menu>
-        <oui-action-menu-item
-          data-text="Action 1"
-          data-on-click="$ctrl.showCurrentValueInPopup('Action 1')"></oui-action-menu-item>
-        <oui-action-menu-item
-          data-text="Action 2"
-          data-on-click="$ctrl.showCurrentValueInPopup('Action 2')"></oui-action-menu-item>
-        <oui-action-menu-item divider
-          data-text="Lien externe"
-          data-type="external"
-          data-href="#"></oui-action-menu-item>
-      </oui-action-menu>
+      XXX
     </oui-dropdown-content>
   </oui-dropdown>
 </div>
@@ -30,44 +19,22 @@
 
 ```html:preview
 <div>
-  <oui-dropdown data-align="start">
+  <oui-dropdown align="start">
     <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
       <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
     </button>
     <oui-dropdown-content>
-      <oui-action-menu>
-        <oui-action-menu-item
-          data-text="Action 1"
-          data-on-click="$ctrl.showCurrentValueInPopup('Action 1')"></oui-action-menu-item>
-        <oui-action-menu-item
-          data-text="Action 2"
-          data-on-click="$ctrl.showCurrentValueInPopup('Action 2')"></oui-action-menu-item>
-        <oui-action-menu-item divider
-          data-text="Lien externe"
-          data-type="external"
-          data-href="#"></oui-action-menu-item>
-      </oui-action-menu>
+      XXX
     </oui-dropdown-content>
   </oui-dropdown>
 </div>
 <div style="text-align: right">
-  <oui-dropdown data-align="end">
+  <oui-dropdown align="end">
     <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
       <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
     </button>
     <oui-dropdown-content>
-      <oui-action-menu>
-        <oui-action-menu-item
-          data-text="Action 1"
-          data-on-click="$ctrl.showCurrentValueInPopup('Action 1')"></oui-action-menu-item>
-        <oui-action-menu-item
-          data-text="Action 2"
-          data-on-click="$ctrl.showCurrentValueInPopup('Action 2')"></oui-action-menu-item>
-        <oui-action-menu-item divider
-          data-text="Lien externe"
-          data-type="external"
-          data-href="#"></oui-action-menu-item>
-      </oui-action-menu>
+      XXX
     </oui-dropdown-content>
   </oui-dropdown>
 </div>
@@ -77,65 +44,32 @@
 
 ```html:preview
 <div>
-  <oui-dropdown data-align="start" data-arrow>
+  <oui-dropdown align="start" arrow>
     <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
       <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
     </button>
     <oui-dropdown-content>
-      <oui-action-menu>
-        <oui-action-menu-item
-          data-text="Action 1"
-          data-on-click="$ctrl.showCurrentValueInPopup('Action 1')"></oui-action-menu-item>
-        <oui-action-menu-item
-          data-text="Action 2"
-          data-on-click="$ctrl.showCurrentValueInPopup('Action 2')"></oui-action-menu-item>
-        <oui-action-menu-item divider
-          data-text="Lien externe"
-          data-type="external"
-          data-href="#"></oui-action-menu-item>
-      </oui-action-menu>
+      XXXXXXXX
     </oui-dropdown-content>
   </oui-dropdown>
 </div>
 <div style="text-align: center">
-  <oui-dropdown data-arrow>
+  <oui-dropdown arrow>
     <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
       <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
     </button>
     <oui-dropdown-content>
-      <oui-action-menu>
-        <oui-action-menu-item
-          data-text="Action 1"
-          data-on-click="$ctrl.showCurrentValueInPopup('Action 1')"></oui-action-menu-item>
-        <oui-action-menu-item
-          data-text="Action 2"
-          data-on-click="$ctrl.showCurrentValueInPopup('Action 2')"></oui-action-menu-item>
-        <oui-action-menu-item divider
-          data-text="Lien externe"
-          data-type="external"
-          data-href="#"></oui-action-menu-item>
-      </oui-action-menu>
+      XXXXXXXX
     </oui-dropdown-content>
   </oui-dropdown>
 </div>
 <div style="text-align: right">
-  <oui-dropdown data-align="end" data-arrow>
+  <oui-dropdown align="end" arrow>
     <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
       <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
     </button>
     <oui-dropdown-content>
-      <oui-action-menu>
-        <oui-action-menu-item
-          data-text="Action 1"
-          data-on-click="$ctrl.showCurrentValueInPopup('Action 1')"></oui-action-menu-item>
-        <oui-action-menu-item
-          data-text="Action 2"
-          data-on-click="$ctrl.showCurrentValueInPopup('Action 2')"></oui-action-menu-item>
-        <oui-action-menu-item divider
-          data-text="Lien externe"
-          data-type="external"
-          data-href="#"></oui-action-menu-item>
-      </oui-action-menu>
+      XXXXXXXX
     </oui-dropdown-content>
   </oui-dropdown>
 </div>
@@ -167,7 +101,8 @@ Availability:
 
 | Attribute         | Type            | Binding | Values              | Default             | Description                                         |
 | ----              | ----            | ----    | ----                | ----                | ----                                                |
-| text              | string          | @?      |                     | null                | Display the default dropdown with this text         |
+| text              | string          | @?      |                     | null                | display the default dropdown with this text         |
+| aria-label        | string          | @?      |                     | null                | accessibility label                                 |
 
 ### oui-dropdown-content
 
@@ -177,7 +112,3 @@ Availability:
 
  - Element
  - Attribute
-
-# TODO
-
- - Add aria-labelledby: require an id on the trigger.

@@ -1,5 +1,6 @@
 <button type="button"
+  ng-attr-aria-label="{{::$ctrl.ariaLabel}}"
   class="oui-button oui-button_dropdown oui-dropdown__trigger">
-  <span data-ng-bind="::$ctrl.text"></span>
+  <span ng-bind="::$ctrl.text"></span>
   <i class="oui-icon oui-icon-chevron-down" aria-hidden="true"></i>
 </button>

@@ -14,7 +14,7 @@ describe('ouiDropdown', () => {
     it('should display the default trigger', () => {
       const element = TestUtils.compileTemplate(`
         <oui-dropdown>
-          <oui-dropdown-trigger data-text="TRIGGER"></oui-dropdown-trigger>
+          <oui-dropdown-trigger text="TRIGGER"></oui-dropdown-trigger>
           <oui-dropdown-content>
             <b>the menu</b>
           </oui-dropdown-content>

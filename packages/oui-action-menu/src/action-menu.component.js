@@ -5,8 +5,9 @@ export default {
   template,
   controller,
   bindings: {
-    align: '@',
     text: '@',
+    align: '@?',
+    ariaLabel: '@?',
     compact: '<?'
   },
   transclude: true

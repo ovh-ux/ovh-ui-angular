@@ -12,6 +12,8 @@ export default $compile => {
     link: (scope, element, attrs, ctrl) => {
       const wrapped = element.wrap(`<div class="${dropdownContentClass}"></div>`).parent()
 
+      element.attr('aria-labelledby', ctrl.id)
+
       if (ctrl.arrow) {
         wrapped.addClass(arrowDropdownContentModifierClass)
         wrapped.prepend(`<div class="${arrowDropdownContentClass}"></div>`)

@@ -25,12 +25,15 @@ export default class {
   $postLink () {
     let compiled
 
+    this.$element.removeAttr('aria-label')
+
     if (this.$attrs.onClick) {
       compiled = this.$compile(buttomTemplate)
     } else {
       compiled = this.$compile(linkTemplate)
     }
 
-    this.$element.replaceWith(compiled(this.$scope))
+    this.$element.empty()
+    this.$element.append(compiled(this.$scope))
   }
 }
