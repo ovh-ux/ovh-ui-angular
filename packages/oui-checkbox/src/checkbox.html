@@ -3,11 +3,11 @@
          type="checkbox"
          id="{{:: $ctrl.id }}"
          name="{{:: $ctrl.name }}"
-         data-ng-model="$ctrl.model"
-         data-ng-change="$ctrl.onChange({ model: $ctrl.model })"
-         data-ng-disabled="$ctrl.disabled">
+         ng-model="$ctrl.model"
+         ng-change="$ctrl.onChange({ modelValue: $ctrl.model })"
+         ng-disabled="$ctrl.disabled">
   <label for="{{:: $ctrl.id }}" class="oui-checkbox__label-container">
-    <span class="oui-checkbox__label" data-ng-bind="$ctrl.text"></span>
+    <span class="oui-checkbox__label" ng-bind="$ctrl.text"></span>
     <span class="oui-checkbox__icon">
       <i class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></i>
       <i class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></i>
