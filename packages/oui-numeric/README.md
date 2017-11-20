@@ -4,11 +4,67 @@
 
 ## Usage
 
+```html
+<oui-numeric
+  id="..."
+  name="..."
+  text="..."
+  unit="..."
+  model="..."
+  min="..."
+  max="..."
+  disabled:"[true|false]"
+  on-change="...">
+</oui-numeric>
+```
+
+## Examples
+
+#### Default
+
 ```html:preview
-<oui-numeric id="someId"
-             text="CPU"
-             unit="core"
-             model="$ctrl.cpuCores">
+<oui-numeric
+  id="partitionSize"
+  name="partitionSize"
+  text="Disk size"
+  unit="Gb"
+  model="$ctrl.size">
+</oui-numeric>
+```
+
+#### Limits
+
+```html:preview
+<oui-numeric
+  id="core"
+  name="core"
+  text="CPU"
+  unit="core"
+  min="2"
+  max="8"
+  model="$ctrl.core">
+</oui-numeric>
+```
+
+#### Disabled
+
+```html:preview
+<oui-numeric
+  id="foo"
+  name="foo"
+  text="Disbled"
+  model="$ctrl.foo"
+  disabled>
+</oui-numeric>
+```
+
+```html:preview
+<oui-numeric
+  id="bar"
+  name="bar"
+  text="Disbled"
+  model="$ctrl.bar"
+  disabled="true">
 </oui-numeric>
 ```
 
