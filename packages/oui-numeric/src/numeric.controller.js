@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import { clamp } from 'lodash'
 
 // By design, value is restricted to [0, 99999] interval
 const MIN_VALUE = 0
@@ -53,7 +53,7 @@ export default class {
       this.$log.warn(`Invalid attribute min, value should be greater than '${MIN_VALUE}'`)
     }
 
-    if (this.max < MAX_VALUE) {
+    if (this.max > MAX_VALUE) {
       this.$log.warn(`Invalid attribute max, value should be lower than '${MAX_VALUE}'`)
     }
 
@@ -61,8 +61,8 @@ export default class {
       this.disabled = true
     }
 
-    this.min = _.clamp(this.min, MIN_VALUE, MAX_VALUE)
-    this.max = _.clamp(this.max, MIN_VALUE, MAX_VALUE)
+    this.min = clamp(this.min, MIN_VALUE, MAX_VALUE)
+    this.max = clamp(this.max, this.min, MAX_VALUE)
 
     // used to trigger only onChange when necessary and
     // reset input if invalid characters are used

@@ -2,6 +2,10 @@ describe('ouiNumeric', () => {
   let $rootScope
   let $compile
 
+  let getDecrementBtn = elt => angular.element(elt.find('button')[0])
+  let getIncrementBtn = elt => angular.element(elt.find('button')[1])
+  let getInput = elt => angular.element(elt.find('input')[0])
+
   beforeEach(angular.mock.module('oui.numeric'))
 
   beforeEach(inject((_$rootScope_, _$compile_) => {
@@ -63,7 +67,7 @@ describe('ouiNumeric', () => {
       $compile(elt)(scope)
       scope.foo = 10
       scope.$digest()
-      angular.element(elt.find('button')[0]).triggerHandler('click')
+      getDecrementBtn(elt).triggerHandler('click')
       expect(scope.foo).toBe(9)
     })
 
@@ -73,7 +77,7 @@ describe('ouiNumeric', () => {
       $compile(elt)(scope)
       scope.foo = 10
       scope.$digest()
-      angular.element(elt.find('button')[1]).triggerHandler('click')
+      getIncrementBtn(elt).triggerHandler('click')
       expect(scope.foo).toBe(11)
     })
 
@@ -83,13 +87,13 @@ describe('ouiNumeric', () => {
       $compile(elt)(scope)
       scope.foo = 5
       scope.$digest()
-      expect(angular.element(elt.find('button')[0]).attr('disabled')).not.toBeDefined()
+      expect(getDecrementBtn(elt).attr('disabled')).not.toBeDefined()
       scope.foo = 3
       scope.$digest()
-      expect(angular.element(elt.find('button')[0]).attr('disabled')).toBeDefined()
+      expect(getDecrementBtn(elt).attr('disabled')).toBeDefined()
       scope.foo = 1
       scope.$digest()
-      expect(angular.element(elt.find('button')[0]).attr('disabled')).toBeDefined()
+      expect(getDecrementBtn(elt).attr('disabled')).toBeDefined()
     })
 
     it('should disable right button is value is greater or equal to max', () => {
@@ -98,13 +102,23 @@ describe('ouiNumeric', () => {
       $compile(elt)(scope)
       scope.foo = 3
       scope.$digest()
-      expect(angular.element(elt.find('button')[1]).attr('disabled')).not.toBeDefined()
+      expect(getIncrementBtn(elt).attr('disabled')).not.toBeDefined()
       scope.foo = 5
       scope.$digest()
-      expect(angular.element(elt.find('button')[1]).attr('disabled')).toBeDefined()
+      expect(getIncrementBtn(elt).attr('disabled')).toBeDefined()
       scope.foo = 7
       scope.$digest()
-      expect(angular.element(elt.find('button')[1]).attr('disabled')).toBeDefined()
+      expect(getIncrementBtn(elt).attr('disabled')).toBeDefined()
+    })
+
+    it('should disable component when disabled attribut exists', () => {
+      let elt = angular.element('<oui-numeric model="foo" disabled></oui-numeric>')
+      let scope = $rootScope.$new()
+      $compile(elt)(scope)
+      scope.$digest()
+      expect(getInput(elt).attr('disabled')).toBeDefined()
+      expect(getDecrementBtn(elt).attr('disabled')).toBeDefined()
+      expect(getIncrementBtn(elt).attr('disabled')).toBeDefined()
     })
 
     it('should disable component when disabled attribut is set', () => {
@@ -114,42 +128,36 @@ describe('ouiNumeric', () => {
       scope.foo = 3
       scope.isDisabled = true
       scope.$digest()
-      expect(angular.element(elt.find('input')[0]).attr('disabled')).toBeDefined()
-      expect(angular.element(elt.find('button')[0]).attr('disabled')).toBeDefined()
-      expect(angular.element(elt.find('button')[1]).attr('disabled')).toBeDefined()
+      expect(getInput(elt).attr('disabled')).toBeDefined()
+      expect(getDecrementBtn(elt).attr('disabled')).toBeDefined()
+      expect(getIncrementBtn(elt).attr('disabled')).toBeDefined()
       scope.isDisabled = false
       scope.$digest()
-      expect(angular.element(elt.find('input')[0]).attr('disabled')).not.toBeDefined()
-      expect(angular.element(elt.find('button')[0]).attr('disabled')).not.toBeDefined()
-      expect(angular.element(elt.find('button')[1]).attr('disabled')).not.toBeDefined()
+      expect(getInput(elt).attr('disabled')).not.toBeDefined()
+      expect(getDecrementBtn(elt).attr('disabled')).not.toBeDefined()
+      expect(getIncrementBtn(elt).attr('disabled')).not.toBeDefined()
     })
 
     it('should trigger onChange callback when value changes', () => {
       let elt = angular.element('<oui-numeric model="foo" on-change="onChange($event)"></oui-numeric>')
       let scope = $rootScope.$new()
-      let tmp
       scope.foo = 5
-      scope.onChange = (ev) => {
-        tmp = ev.value
-      }
+      scope.onChange = jasmine.createSpy('onChange')
       $compile(elt)(scope)
       scope.$digest()
       elt.find('input').controller('ngModel').$setViewValue('10')
-      expect(tmp).toBe(10)
+      expect(scope.onChange).toHaveBeenCalledWith({ value: 10 })
     })
 
     it('should not trigger onChange callback when value is updated with no changes', () => {
       let elt = angular.element('<oui-numeric model="foo" on-change="onChange($event)"></oui-numeric>')
       let scope = $rootScope.$new()
-      let tmp
       scope.foo = 5
-      scope.onChange = (ev) => {
-        tmp = ev.value
-      }
+      scope.onChange = jasmine.createSpy('onChange')
       $compile(elt)(scope)
       scope.$digest()
       elt.find('input').controller('ngModel').$setViewValue('5')
-      expect(tmp).not.toBeDefined()
+      expect(scope.onChange).not.toHaveBeenCalled()
     })
   })
 })
