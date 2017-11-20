@@ -7,12 +7,12 @@
 ```html
 <oui-button
   text="..."
-  variant="[primary|secondary|link]"
-  variant-nav="[previous|next]"
-  type="[submit|button|reset]"
+  variant="primary|secondary|link"
+  variant-nav="previous|next"
+  type="submit|button|reset"
   id="..."
   name="..."
-  disabled|disabled="[true|false]"
+  disabled|disabled="true|false"
   aria-label="..."
   on-click="..."
 ></oui-button>
@@ -70,7 +70,7 @@
 </div>
 ```
 
-### Accessibilty
+### Accessibility
 
 ```html:preview
 <oui-button aria-label="Accessibility text" text="Button with accessibility" on-click="onClick()"></oui-button>
