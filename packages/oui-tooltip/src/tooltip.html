@@ -1,0 +1,13 @@
+<div class="oui-tooltip oui-message" role="tooltip">
+  <span aria-hidden="true"
+    ng-class="{
+      'oui-tip-top':                  (!$ctrl.flipped && $ctrl.placement === 'top') || ($ctrl.flipped && $ctrl.placement === 'bottom'),
+      'oui-tip-top oui-tip_start':    (!$ctrl.flipped && $ctrl.placement === 'top-start') || ($ctrl.flipped && $ctrl.placement === 'bottom-start'),
+      'oui-tip-top oui-tip_end':      (!$ctrl.flipped && $ctrl.placement === 'top-end') || ($ctrl.flipped && $ctrl.placement === 'bottom-end'),
+      'oui-tip-bottom':               (!$ctrl.flipped && $ctrl.placement === 'bottom') || ($ctrl.flipped && $ctrl.placement === 'top'),
+      'oui-tip-bottom oui-tip_start': (!$ctrl.flipped && $ctrl.placement === 'bottom-start') || ($ctrl.flipped && $ctrl.placement === 'top-start'),
+      'oui-tip-bottom oui-tip_end':   (!$ctrl.flipped && $ctrl.placement === 'bottom-end') || ($ctrl.flipped && $ctrl.placement === 'top-end')
+    }">
+  </span>
+  <p class="oui-message__body" ng-bind="::$ctrl.text"></p>
+</div>
