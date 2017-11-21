@@ -18,7 +18,7 @@
 
 ## Examples
 
-#### Default
+### Default
 
 ```html:preview
 <oui-numeric
@@ -28,7 +28,7 @@
 </oui-numeric>
 ```
 
-#### Limits
+### Limits
 
 ```html:preview
 <oui-numeric
@@ -40,7 +40,7 @@
 </oui-numeric>
 ```
 
-#### Disabled
+### Disabled
 
 ```html:preview
 <oui-numeric
