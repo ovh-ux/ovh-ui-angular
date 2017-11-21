@@ -139,18 +139,18 @@ describe('ouiNumeric', () => {
     })
 
     it('should trigger onChange callback when value changes', () => {
-      let elt = angular.element('<oui-numeric model="foo" on-change="onChange($event)"></oui-numeric>')
+      let elt = angular.element('<oui-numeric model="foo" on-change="onChange(modelValue)"></oui-numeric>')
       let scope = $rootScope.$new()
       scope.foo = 5
       scope.onChange = jasmine.createSpy('onChange')
       $compile(elt)(scope)
       scope.$digest()
       elt.find('input').controller('ngModel').$setViewValue('10')
-      expect(scope.onChange).toHaveBeenCalledWith({ value: 10 })
+      expect(scope.onChange).toHaveBeenCalledWith(10)
     })
 
     it('should not trigger onChange callback when value is updated with no changes', () => {
-      let elt = angular.element('<oui-numeric model="foo" on-change="onChange($event)"></oui-numeric>')
+      let elt = angular.element('<oui-numeric model="foo" on-change="onChange(modelValue)"></oui-numeric>')
       let scope = $rootScope.$new()
       scope.foo = 5
       scope.onChange = jasmine.createSpy('onChange')

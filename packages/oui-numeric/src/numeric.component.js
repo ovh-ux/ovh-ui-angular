@@ -5,10 +5,8 @@ export default {
   template,
   controller,
   bindings: {
-    id: '@',
+    id: '@?',
     name: '@?',
-    text: '@',
-    unit: '@?',
     model: '=',
     min: '<?',
     max: '<?',

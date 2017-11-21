@@ -23,10 +23,6 @@ export default class {
       this.$log.warn(`Missing required attribute id`)
     }
 
-    if (!this.text) {
-      this.$log.warn(`Missing required attribute text`)
-    }
-
     if (!angular.isNumber(this.min)) {
       if (angular.isDefined(this.min)) {
         this.$log.warn(`Invalid attribute min, expected number got '${this.min}'`)
@@ -76,9 +72,7 @@ export default class {
     // only trigger onChange if model value changed
     if (this.previousValue !== this.model && angular.isFunction(this.onChange)) {
       this.onChange({
-        $event: {
-          value: this.model
-        }
+        modelValue: this.model
       })
     }
 
