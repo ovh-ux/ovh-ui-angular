@@ -9,7 +9,7 @@ describe('ouiActionMenu', () => {
   }))
 
   describe('Component', () => {
-    it('should an action menu', () => {
+    it('should display an action menu', () => {
       const element = TestUtils.compileTemplate(`
         <oui-action-menu>
           <oui-action-menu-item text="Action 1"></oui-action-menu-item>

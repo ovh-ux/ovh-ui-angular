@@ -32,7 +32,6 @@
 ```html:preview
 <div class="oui-action-menu-container">
   <oui-action-menu
-    text="Actions"
     aria-label="Server: actions"
     align="start"
     compact>

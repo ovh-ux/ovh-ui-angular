@@ -5,7 +5,7 @@
 ## Centered by default with default trigger
 
 ```html:preview
-<div style="text-align: center">
+<div style="text-align: center" class="oui-doc-preview-only-keep-children">
   <oui-dropdown>
     <oui-dropdown-trigger text="Actions..."></oui-dropdown-trigger>
     <oui-dropdown-content>
@@ -18,7 +18,7 @@
 ## Alignment
 
 ```html:preview
-<div>
+<div class="oui-doc-preview-only-keep-children">
   <oui-dropdown align="start">
     <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
       <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
@@ -28,7 +28,7 @@
     </oui-dropdown-content>
   </oui-dropdown>
 </div>
-<div style="text-align: right">
+<div style="text-align: right" class="oui-doc-preview-only-keep-children">
   <oui-dropdown align="end">
     <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
       <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
@@ -43,7 +43,7 @@
 ## With arrow
 
 ```html:preview
-<div>
+<div class="oui-doc-preview-only-keep-children">
   <oui-dropdown align="start" arrow>
     <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
       <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
@@ -53,7 +53,7 @@
     </oui-dropdown-content>
   </oui-dropdown>
 </div>
-<div style="text-align: center">
+<div style="text-align: center" class="oui-doc-preview-only-keep-children">
   <oui-dropdown arrow>
     <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
       <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
@@ -63,7 +63,7 @@
     </oui-dropdown-content>
   </oui-dropdown>
 </div>
-<div style="text-align: right">
+<div style="text-align: right" class="oui-doc-preview-only-keep-children">
   <oui-dropdown align="end" arrow>
     <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
       <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
