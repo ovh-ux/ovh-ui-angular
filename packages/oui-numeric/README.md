@@ -11,7 +11,7 @@
   model="..."
   min="..."
   max="..."
-  disabled|disabled="[true|false]"
+  disabled|disabled="true|false"
   on-change="...">
 </oui-numeric>
 ```
@@ -48,15 +48,6 @@
   name="foo"
   model="$ctrl.foo"
   disabled>
-</oui-numeric>
-```
-
-```html:preview
-<oui-numeric
-  id="bar"
-  name="bar"
-  model="$ctrl.bar"
-  disabled="true">
 </oui-numeric>
 ```
 
