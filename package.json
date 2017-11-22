@@ -21,9 +21,6 @@
     "karma": "cross-env NODE_ENV=test babel-node node_modules/karma/bin/karma start build/karma.conf.js --reporters nyan,coverage --single-run",
     "karma:watch": "cross-env NODE_ENV=test BABEL_ENV=test node -r babel-register node_modules/karma/bin/karma start build/karma.conf.js --watch"
   },
-  "dependencies": {
-    "ovh-ui-kit": "https://github.com/ovh-ux/ovh-ui-kit.git"
-  },
   "devDependencies": {
     "angular": "^1.6.1",
     "angular-mocks": "^1.6.1",
@@ -84,6 +81,9 @@
     "webpack-dev-middleware": "^1.12.0",
     "webpack-hot-middleware": "^2.20.0",
     "webpack-merge": "^4.1.0"
+  },
+  "peerDependencies": {
+    "ovh-ui-kit": "https://github.com/ovh-ux/ovh-ui-kit.git"
   },
   "engines": {
     "node": ">= 6.9.0",
