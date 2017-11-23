@@ -11,8 +11,7 @@ class TestUtils {
     angular.merge(scope, { $ctrl: context })
     const element = this.$compile(template)(scope)
     scope.$digest()
-
-    return { element, scope }
+    return element
   }
 
   getController (componentName, template, context) {
