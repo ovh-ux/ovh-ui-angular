@@ -42,17 +42,7 @@ export default class {
 
     // Let Popper.js position the tooltip
     this.popper = new Popper(trigger, tooltip, {
-      placement: this.placement,
-      onCreate: popper => this.updatePlacement(popper),
-      onUpdate: popper => this.updatePlacement(popper)
+      placement: this.placement
     })
-  }
-
-  updatePlacement (popper) {
-    // Update placement if flipped
-    if (this.flipped !== popper.flipped) {
-      this.flipped = popper.flipped
-      this.$scope.$apply()
-    }
   }
 }
