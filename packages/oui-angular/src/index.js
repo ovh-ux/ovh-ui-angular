@@ -6,6 +6,7 @@ import '@oui-angular/oui-loader/src'
 import '@oui-angular/oui-back-button/src'
 import '@oui-angular/oui-dropdown/src'
 import '@oui-angular/oui-action-menu/src'
+import '@oui-angular/oui-tooltip/src'
 
 angular.module('oui', [
   'oui.checkbox',
@@ -15,5 +16,6 @@ angular.module('oui', [
   'oui.loader',
   'oui.back-button',
   'oui.dropdown',
-  'oui.action-menu'
+  'oui.action-menu',
+  'oui.tooltip'
 ])
