@@ -1,49 +1,36 @@
-import _ from 'lodash'
-
 export default class {
-  constructor ($scope, $attrs, $transclude) {
+  constructor ($scope, $element, $attrs) {
     'ngInject'
 
     this.$scope = $scope
+    this.$element = $element
     this.$attrs = $attrs
-    this.$transclude = $transclude
+  }
 
-    if (this.onChange) {
-      this.onChange = this.onChange.bind(this)
-    }
+  $postLink () {
+    this.$element.removeAttr(['name', 'id'])
+
+    this.checkboxElement = this.$element.find('input')
+
+    // $watch is required because there is no other way
+    // to be notified when the value has changed from the
+    // outside
+    this.$scope.$watch('$ctrl.model', (newValue) =>
+      this._updateIndeterminateState(newValue)
+    )
   }
 
   $onInit () {
-    if (_.has(this.$attrs, 'checked') && _.isEmpty(this.$attrs.checked)) {
-      this.checked = true
-    }
-
-    if (_.has(this.$attrs, 'disabled') && _.isEmpty(this.$attrs.disabled)) {
+    if (angular.isDefined(this.$attrs.disabled) && this.$attrs.disabled === '') {
       this.disabled = true
     }
 
-    if (!self.name) {
-      this.name = `oui-checked-${this.$scope.$id}`
+    if (!self.id) {
+      this.id = `oui-checkbox-${this.$scope.$id}`
     }
-
-    if (_.has(this.$attrs, 'big')) {
-      this.big = true
-    }
-
-    if (_.has(this.$attrs, 'thumbnail')) {
-      this.thumbnail = true
-    }
-
-    this.hasDescription = Boolean(this.$transclude.isSlotFilled('description') || this.description)
   }
 
-  callOnChange (value) {
-    if (this.onChange) {
-      this.onChange({
-        $event: {
-          value: value
-        }
-      })
-    }
+  _updateIndeterminateState (model) {
+    this.checkboxElement.prop('indeterminate', model === null)
   }
 }
