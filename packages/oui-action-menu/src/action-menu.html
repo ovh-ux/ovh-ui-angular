@@ -4,16 +4,16 @@
     ng-if="!$ctrl.compact"
     aria-label="{{::$ctrl.ariaLabel}}"
     text="{{::$ctrl.text}}"></oui-dropdown-trigger>
-  <svg oui-dropdown-trigger
+  <button aria-label="{{::($ctrl.ariaLabel || $ctrl.text)}}"
     ng-if="$ctrl.compact"
-    aria-label="{{::($ctrl.ariaLabel || $ctrl.text)}}"
-    class="oui-action-menu-button"
-    xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 66 66">
-    <circle class="oui-action-menu-button__background" cx="32" cy="32" r="32"></circle>
-    <circle class="oui-action-menu-button__foreground" cx="18.02" cy="32" r="5.31"></circle>
-    <circle class="oui-action-menu-button__foreground" cx="32.18" cy="32" r="5.31"></circle>
-    <circle class="oui-action-menu-button__foreground" cx="46.34" cy="32" r="5.31"></circle>
-  </svg>
+    oui-dropdown-trigger
+    class="oui-action-menu-button">
+    <svg xmlns="http://www.w3.org/2000/svg" viewbox="-1 -1 74 74">
+      <circle class="oui-action-menu-button__foreground" cx="22.27" cy="36" r="4"></circle>
+      <circle class="oui-action-menu-button__foreground" cx="36.20" cy="36" r="4"></circle>
+      <circle class="oui-action-menu-button__foreground" cx="50.13" cy="36" r="4"></circle>
+    </svg>
+  </button>
   <div oui-dropdown-content
     role="menu"
     ng-class="::$ctrl.baseClass"
