@@ -5,9 +5,15 @@
 ## Usage
 
 ```html
-<oui-back-button>
+<oui-back-button
+    id="..."
+    name="..."
+    aria-label="..."
+    on-click="...">
 </oui-back-button>
 ```
+
+If ```on-click``` is not specified, the default action on user click will be angular's ```$window.history.back()```.
 
 ## Examples
 
@@ -34,9 +40,9 @@
 
 ## API
 
-| Attribute     | Type     | Binding | One-time binding | Values              | Default | Description                         |
-| ----          | ----     | ----    | ----             | ----                | ----    | ----                                |
-| id            | string   | @?      | true             |                     |         | id attribute of the input           |
-| name          | string   | @?      | true             |                     |         | name attribute of the input         |
-| aria-label    | string   | @?      | true             |                     |         | accessibility label                 |
-| on-click      | function | &?      | true             |                     |         | callback on component click         |
+| Attribute     | Type     | Binding | One-time binding | Values              | Default                | Description                         |
+| ----          | ----     | ----    | ----             | ----                | ----                   | ----                                |
+| id            | string   | @?      | true             |                     |                        | id attribute of the input           |
+| name          | string   | @?      | true             |                     |                        | name attribute of the input         |
+| aria-label    | string   | @?      | true             |                     |                        | accessibility label                 |
+| on-click      | function | &?      |                  |                     | $window.history.back() | callback on component click         |
