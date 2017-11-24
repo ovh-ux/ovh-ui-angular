@@ -8,6 +8,7 @@ import '@oui-angular/oui-back-button/src'
 import '@oui-angular/oui-dropdown/src'
 import '@oui-angular/oui-action-menu/src'
 import '@oui-angular/oui-tooltip/src'
+import '@oui-angular/oui-numeric/src'
 
 angular.module('oui', [
   'oui.button',
@@ -19,5 +20,6 @@ angular.module('oui', [
   'oui.back-button',
   'oui.dropdown',
   'oui.action-menu',
-  'oui.tooltip'
+  'oui.tooltip',
+  'oui.numeric'
 ])
