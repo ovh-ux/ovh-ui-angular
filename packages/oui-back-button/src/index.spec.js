@@ -9,9 +9,7 @@ describe('ouiBackButton', () => {
     $rootScope = _$rootScope_
     $compile = _$compile_
     $window = _$window_
-    $window.history = {
-      back: jasmine.createSpy('back')
-    }
+    spyOn($window.history, 'back')
   }))
 
   const compile = (template) => {
