@@ -3412,10 +3412,6 @@ less-loader@^4.0.5:
     loader-utils "^1.1.0"
     pify "^2.3.0"
 
-less-plugin-remcalc@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/less-plugin-remcalc/-/less-plugin-remcalc-0.0.1.tgz#f6a52d0d340964935e07be0e7d6f752210ea53a7"
-
 less@^3.0.0-alpha.3:
   version "3.0.0-alpha.3"
   resolved "https://registry.yarnpkg.com/less/-/less-3.0.0-alpha.3.tgz#d3da9234fd16e60a47d6291e772e65a841ec8410"
@@ -4061,12 +4057,6 @@ output-file-sync@^1.1.2:
     mkdirp "^0.5.1"
     object-assign "^4.1.0"
 
-"ovh-ui-kit@https://github.com/ovh-ux/ovh-ui-kit.git":
-  version "1.0.0-alpha.19"
-  resolved "https://github.com/ovh-ux/ovh-ui-kit.git#2f8be2a38c0bf15edff15e4d8f9961e88545a6a6"
-  dependencies:
-    less-plugin-remcalc "^0.0.1"
-
 p-finally@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/p-finally/-/p-finally-1.0.0.tgz#3fbcfb15b899a44123b34b6dcc18b724336a2cae"
@@ -4248,9 +4238,9 @@ pluralize@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-7.0.0.tgz#298b89df8b93b0221dbf421ad2b1b1ea23fc6777"
 
-popper.js@^1.12.6:
-  version "1.12.6"
-  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.12.6.tgz#91e12a97b07815258b76915d64044e8ac053d426"
+popper.js@^1.12.9:
+  version "1.12.9"
+  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.12.9.tgz#0dfbc2dff96c451bb332edcfcfaaf566d331d5b3"
 
 portscanner@^2.1.1:
   version "2.1.1"

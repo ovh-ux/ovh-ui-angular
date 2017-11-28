@@ -1,3 +1,3 @@
-import BackButton from './back-button.component.js'
+import BackButton from "./back-button.component.js";
 
-angular.module('oui.back-button', []).component('ouiBackButton', BackButton)
+angular.module("oui.back-button", []).component("ouiBackButton", BackButton);

@@ -1,3 +1,3 @@
-import Loader from './loader.component.js'
+import Loader from "./loader.component.js";
 
-angular.module('oui.loader', []).component('ouiLoader', Loader)
+angular.module("oui.loader", []).component("ouiLoader", Loader);

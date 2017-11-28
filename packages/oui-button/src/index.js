@@ -1,3 +1,3 @@
-import Button from './button.component.js'
+import Button from "./button.component.js";
 
-angular.module('oui.button', []).component('ouiButton', Button)
+angular.module("oui.button", []).component("ouiButton", Button);
