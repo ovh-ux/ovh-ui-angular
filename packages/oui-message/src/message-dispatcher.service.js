@@ -45,7 +45,7 @@ export default class {
             filteredListeners = this._listeners;
         } else {
             filteredListeners = this._listeners.filter((listener) =>
-                !listener.namespaceParam || listener.namespaceParam === namespaceParam);
+                !listener.namespace || listener.namespace === namespaceParam);
         }
 
         filteredListeners.forEach((listener) => listener.onMessage(messageParam));
