@@ -86,7 +86,7 @@
     "webpack-merge": "^4.1.0"
   },
   "peerDependencies": {
-    "ovh-ui-kit": "https://github.com/ovh-ux/ovh-ui-kit.git"
+    "ovh-ui-kit": "*"
   },
   "engines": {
     "node": ">= 6.9.0",
