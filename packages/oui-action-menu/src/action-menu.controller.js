@@ -1,21 +1,21 @@
-import { addBooleanParameter } from '@oui-angular/common/component-utils'
+import { addBooleanParameter } from "@oui-angular/common/component-utils";
 
-const baseClass = 'oui-action-menu'
+const baseClass = "oui-action-menu";
 
 export default class {
-  constructor ($attrs, $element) {
-    'ngInject'
+    constructor ($attrs, $element) {
+        "ngInject";
 
-    this.$attrs = $attrs
-    this.$element = $element
-  }
+        this.$attrs = $attrs;
+        this.$element = $element;
+    }
 
-  $onInit () {
-    this.baseClass = baseClass
-    addBooleanParameter(this, 'compact')
-  }
+    $onInit () {
+        this.baseClass = baseClass;
+        addBooleanParameter(this, "compact");
+    }
 
-  $postLink () {
-    this.$element.removeAttr('aria-label')
-  }
+    $postLink () {
+        this.$element.removeAttr("aria-label");
+    }
 }

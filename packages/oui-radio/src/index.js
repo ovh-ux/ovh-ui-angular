@@ -1,3 +1,3 @@
-import Radio from './radio.component.js'
+import Radio from "./radio.component.js";
 
-angular.module('oui.radio', []).component('ouiRadio', Radio)
+angular.module("oui.radio", []).component("ouiRadio", Radio);

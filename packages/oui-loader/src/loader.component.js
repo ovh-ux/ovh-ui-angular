@@ -1,11 +1,11 @@
-import template from './loader.html'
-import controller from './loader.controller'
+import controller from "./loader.controller";
+import template from "./loader.html";
 
 export default {
-  template,
-  controller,
-  bindings: {
-    inline: '<?',
-    size: '@?'
-  }
-}
+    template,
+    controller,
+    bindings: {
+        inline: "<?",
+        size: "@?"
+    }
+};

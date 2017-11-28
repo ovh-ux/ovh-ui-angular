@@ -1,14 +1,14 @@
-import template from './action-menu.html'
-import controller from './action-menu.controller.js'
+import controller from "./action-menu.controller.js";
+import template from "./action-menu.html";
 
 export default {
-  template,
-  controller,
-  bindings: {
-    text: '@',
-    align: '@?',
-    ariaLabel: '@?',
-    compact: '<?'
-  },
-  transclude: true
-}
+    template,
+    controller,
+    bindings: {
+        text: "@",
+        align: "@?",
+        ariaLabel: "@?",
+        compact: "<?"
+    },
+    transclude: true
+};

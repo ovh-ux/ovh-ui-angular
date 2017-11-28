@@ -1,77 +1,77 @@
-describe('OuiMessageListenerFactory: ', () => {
-  beforeEach(angular.mock.module('oui.message'))
+describe("OuiMessageListenerFactory: ", () => {
+    beforeEach(angular.mock.module("oui.message"));
 
-  beforeEach(inject((OuiMessageDispatcher) => {
-    spyOn(OuiMessageDispatcher, 'register')
-  }))
+    beforeEach(inject((OuiMessageDispatcher) => {
+        spyOn(OuiMessageDispatcher, "register");
+    }));
 
-  describe('createListener method', () => {
-    it('registers the newly created listener to OuiMessageDispatcher service',
-      inject((OuiMessageListenerFactory, OuiMessageDispatcher) => {
-        let listener = OuiMessageListenerFactory.createLastMessageListener()
+    describe("createListener method", () => {
+        it("registers the newly created listener to OuiMessageDispatcher service",
+           inject((OuiMessageListenerFactory, OuiMessageDispatcher) => {
+               const listener = OuiMessageListenerFactory.createLastMessageListener();
 
-        expect(OuiMessageDispatcher.register).toHaveBeenCalledWith(listener)
-      })
-    )
+               expect(OuiMessageDispatcher.register).toHaveBeenCalledWith(listener);
+           })
+        );
 
-    it('adds the namespace to the listener',
-      inject((OuiMessageListenerFactory, OuiMessageDispatcher) => {
-        let listener = OuiMessageListenerFactory.createLastMessageListener('fakeNamespace')
+        it("adds the namespace to the listener",
+           inject((OuiMessageListenerFactory) => {
+               const listener = OuiMessageListenerFactory.createLastMessageListener("fakeNamespace");
 
-        expect(listener.namespace).toBe('fakeNamespace')
-      })
-    )
-  })
-})
+               expect(listener.namespace).toBe("fakeNamespace");
+           })
+        );
+    });
+});
 
-describe('OuiLastMessageListener: ', () => {
-  beforeEach(angular.mock.module('oui.message'))
+describe("OuiLastMessageListener: ", () => {
+    beforeEach(angular.mock.module("oui.message"));
 
-  beforeEach(inject((OuiMessageDispatcher) => {
-    spyOn(OuiMessageDispatcher, 'unregister')
-  }))
+    beforeEach(inject((OuiMessageDispatcher) => {
+        spyOn(OuiMessageDispatcher, "unregister");
+    }));
 
-  describe('on initialization', () => {
-    it('sets hasMessage to false', inject((OuiMessageListenerFactory) => {
-      let listener = OuiMessageListenerFactory.createLastMessageListener()
+    describe("on initialization", () => {
+        it("sets hasMessage to false", inject((OuiMessageListenerFactory) => {
+            const listener = OuiMessageListenerFactory.createLastMessageListener();
 
-      expect(listener.hasMessage).toBe(false)
-    }))
+            expect(listener.hasMessage).toBe(false);
+        }));
 
-    it('sets lastMessage to null', inject((OuiMessageListenerFactory) => {
-      let listener = OuiMessageListenerFactory.createLastMessageListener()
+        it("sets lastMessage to null", inject((OuiMessageListenerFactory) => {
+            const listener = OuiMessageListenerFactory.createLastMessageListener();
 
-      expect(listener.lastMessage).toBe(null)
-    }))
-  })
+            expect(listener.lastMessage).toBe(null);
+        }));
+    });
 
-  describe('when a message is dispatched', () => {
-    it('sets hasMessage to true', inject((OuiMessageListenerFactory) => {
-      let listener = OuiMessageListenerFactory.createLastMessageListener()
+    describe("when a message is dispatched", () => {
+        it("sets hasMessage to true", inject((OuiMessageListenerFactory) => {
+            const listener = OuiMessageListenerFactory.createLastMessageListener();
 
-      listener.onMessage('test')
+            listener.onMessage("test");
 
-      expect(listener.hasMessage).toBe(true)
-    }))
+            expect(listener.hasMessage).toBe(true);
+        }));
 
-    it('stores the message in lastMessage', inject((OuiMessageListenerFactory) => {
-      let listener = OuiMessageListenerFactory.createLastMessageListener()
+        it("stores the message in lastMessage", inject((OuiMessageListenerFactory) => {
+            const listener = OuiMessageListenerFactory.createLastMessageListener();
 
-      listener.onMessage('test')
+            listener.onMessage("test");
 
-      expect(listener.lastMessage).toBe('test')
-    }))
-  })
+            expect(listener.lastMessage).toBe("test");
+        }));
+    });
 
-  describe('unregister method', () => {
-    it('unregisters from OuiMessageDispatcher service',
-      inject((OuiMessageListenerFactory, OuiMessageDispatcher) => {
-        let listener = OuiMessageListenerFactory.createLastMessageListener()
+    describe("unregister method", () => {
+        it("unregisters from OuiMessageDispatcher service",
+           inject((OuiMessageListenerFactory, OuiMessageDispatcher) => {
+               const listener = OuiMessageListenerFactory.createLastMessageListener();
 
-        listener.unregister()
+               listener.unregister();
 
-        expect(OuiMessageDispatcher.unregister).toHaveBeenCalledWith(listener)
-      })
-    )
-  })
-})
+               expect(OuiMessageDispatcher.unregister).toHaveBeenCalledWith(listener);
+           })
+        );
+    });
+});

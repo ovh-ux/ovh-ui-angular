@@ -1,40 +1,40 @@
 export class OuiMessageListener {
-  constructor (OuiMessageDispatcher, namespace) {
-    this.OuiMessageDispatcher = OuiMessageDispatcher
-    this.namespace = namespace
-  }
+    constructor (OuiMessageDispatcher, namespace) {
+        this.OuiMessageDispatcher = OuiMessageDispatcher;
+        this.namespace = namespace;
+    }
 
-  unregister () {
-    this.OuiMessageDispatcher.unregister(this)
-  }
+    unregister () {
+        this.OuiMessageDispatcher.unregister(this);
+    }
 }
 
 export class OuiLastMessageListener extends OuiMessageListener {
-  constructor (OuiMessageDispatcher, namespace) {
-    super(OuiMessageDispatcher, namespace)
+    constructor (OuiMessageDispatcher, namespace) {
+        super(OuiMessageDispatcher, namespace);
 
-    this.hasMessage = false
-    this.lastMessage = null
-  }
+        this.hasMessage = false;
+        this.lastMessage = null;
+    }
 
-  onMessage (message) {
-    this.hasMessage = true
-    this.lastMessage = message
-  }
+    onMessage (message) {
+        this.hasMessage = true;
+        this.lastMessage = message;
+    }
 }
 
 export class OuiMessageListenerFactory {
-  constructor (OuiMessageDispatcher) {
-    'ngInject'
+    constructor (OuiMessageDispatcher) {
+        "ngInject";
 
-    this.OuiMessageDispatcher = OuiMessageDispatcher
-  }
+        this.OuiMessageDispatcher = OuiMessageDispatcher;
+    }
 
-  createLastMessageListener (namespace) {
-    let listener = new OuiLastMessageListener(this.OuiMessageDispatcher, namespace)
+    createLastMessageListener (namespace) {
+        const listener = new OuiLastMessageListener(this.OuiMessageDispatcher, namespace);
 
-    this.OuiMessageDispatcher.register(listener)
+        this.OuiMessageDispatcher.register(listener);
 
-    return listener
-  }
+        return listener;
+    }
 }
