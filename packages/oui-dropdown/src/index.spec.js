@@ -13,12 +13,13 @@ describe("ouiDropdown", () => {
     describe("Component", () => {
         it("should display the default trigger", () => {
             const element = TestUtils.compileTemplate(`
-        <oui-dropdown>
-          <oui-dropdown-trigger text="TRIGGER"></oui-dropdown-trigger>
-          <oui-dropdown-content>
-            <b>the menu</b>
-          </oui-dropdown-content>
-        </oui-dropdown>`);
+                <oui-dropdown>
+                  <oui-dropdown-trigger text="TRIGGER"></oui-dropdown-trigger>
+                  <oui-dropdown-content>
+                    <b>the menu</b>
+                  </oui-dropdown-content>
+                </oui-dropdown>`
+            );
 
             const trigger = element[0].querySelector(".oui-dropdown__trigger");
             expect(angular.element(trigger).hasClass("oui-button_dropdown")).toBeTruthy();
@@ -26,12 +27,13 @@ describe("ouiDropdown", () => {
 
         it("should have trigger and dropdown elements but no arrow", () => {
             const element = TestUtils.compileTemplate(`
-        <oui-dropdown>
-          <button class="oui-button" oui-dropdown-trigger></button>
-          <div oui-dropdown-content>
-            <b>the menu</b>
-          </div>
-        </oui-dropdown>`);
+                <oui-dropdown>
+                  <button class="oui-button" oui-dropdown-trigger></button>
+                  <div oui-dropdown-content>
+                    <b>the menu</b>
+                  </div>
+                </oui-dropdown>`
+            );
 
             const trigger = element[0].querySelector("[oui-dropdown-trigger]");
             const dropdown = element[0].querySelector("[oui-dropdown-content]").parentNode;
@@ -46,12 +48,13 @@ describe("ouiDropdown", () => {
 
         it("should have arrow element", () => {
             const element = TestUtils.compileTemplate(`
-        <oui-dropdown arrow>
-          <button class="oui-button" oui-dropdown-trigger></button>
-          <div oui-dropdown-content>
-            <b>the menu</b>
-          </div>
-        </oui-dropdown>`);
+                <oui-dropdown arrow>
+                  <button class="oui-button" oui-dropdown-trigger></button>
+                  <div oui-dropdown-content>
+                    <b>the menu</b>
+                  </div>
+                </oui-dropdown>`
+            );
 
             const dropdown = element[0].querySelector("[oui-dropdown-content]").parentNode;
             const $dropdown = angular.element(dropdown);
@@ -63,12 +66,13 @@ describe("ouiDropdown", () => {
 
         it("should display at bottom with the arrow centered by default", () => {
             const element = TestUtils.compileTemplate(`
-        <oui-dropdown arrow>
-          <button class="oui-button" oui-dropdown-trigger></button>
-          <div oui-dropdown-content>
-            <b>the menu</b>
-          </div>
-        </oui-dropdown>`);
+                <oui-dropdown arrow>
+                  <button class="oui-button" oui-dropdown-trigger></button>
+                  <div oui-dropdown-content>
+                    <b>the menu</b>
+                  </div>
+                </oui-dropdown>`
+            );
 
             const controller = element.controller("ouiDropdown");
             controller.toggle();
@@ -79,12 +83,13 @@ describe("ouiDropdown", () => {
 
         it("should display the dropdown aligned with the left border", () => {
             const element = TestUtils.compileTemplate(`
-        <oui-dropdown align="start">
-          <button class="oui-button" oui-dropdown-trigger></button>
-          <div oui-dropdown-content>
-            <b>the menu</b>
-          </div>
-        </oui-dropdown>`);
+                <oui-dropdown align="start">
+                  <button class="oui-button" oui-dropdown-trigger></button>
+                  <div oui-dropdown-content>
+                    <b>the menu</b>
+                  </div>
+                </oui-dropdown>`
+            );
 
             const controller = element.controller("ouiDropdown");
             controller.toggle();
@@ -97,12 +102,13 @@ describe("ouiDropdown", () => {
 
         it("should display the dropdown aligned with the right border", () => {
             const element = TestUtils.compileTemplate(`
-        <oui-dropdown align="end">
-          <button class="oui-button" oui-dropdown-trigger></button>
-          <div oui-dropdown-content>
-            <b>the menu</b>
-          </div>
-        </oui-dropdown>`);
+                <oui-dropdown align="end">
+                  <button class="oui-button" oui-dropdown-trigger></button>
+                  <div oui-dropdown-content>
+                    <b>the menu</b>
+                  </div>
+                </oui-dropdown>`
+            );
 
             const controller = element.controller("ouiDropdown");
             controller.toggle();
@@ -116,12 +122,13 @@ describe("ouiDropdown", () => {
         describe("Events", () => {
             it("should not be visible", () => {
                 const element = TestUtils.compileTemplate(`
-          <oui-dropdown>
-            <button class="oui-button" oui-dropdown-trigger></button>
-            <div oui-dropdown-content>
-              <b>the menu</b>
-            </div>
-          </oui-dropdown>`);
+                    <oui-dropdown>
+                      <button class="oui-button" oui-dropdown-trigger></button>
+                      <div oui-dropdown-content>
+                        <b>the menu</b>
+                      </div>
+                    </oui-dropdown>`
+                );
 
                 const dropdown = element[0].querySelector("[oui-dropdown-content]").parentNode;
                 const $dropdown = angular.element(dropdown);
@@ -131,12 +138,13 @@ describe("ouiDropdown", () => {
 
             it("should display and hide dropdown on click", () => {
                 const element = TestUtils.compileTemplate(`
-          <oui-dropdown>
-            <button class="oui-button" oui-dropdown-trigger></button>
-            <div oui-dropdown-content>
-              <b>the menu</b>
-            </div>
-          </oui-dropdown>`);
+                    <oui-dropdown>
+                      <button class="oui-button" oui-dropdown-trigger></button>
+                      <div oui-dropdown-content>
+                        <b>the menu</b>
+                      </div>
+                    </oui-dropdown>`
+                );
 
                 const rootElement = element[0].querySelector(".oui-dropdown");
                 const $rootElement = angular.element(rootElement);
