@@ -18,6 +18,10 @@ class TestUtils {
         const element = this.compileTemplate(template, context);
         return element.controller(componentName);
     }
+
+    getElementController (element) {
+        return angular.element(element).scope().$ctrl;
+    }
 }
 
 angular.module("oui.test-utils", [])

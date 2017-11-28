@@ -7,6 +7,7 @@
 ```html
 <oui-checkbox
   text="..."
+  description="..."
   id="..."
   name="..."
   disabled="..."
@@ -20,6 +21,7 @@
 | Attribute     | Type                    | Binding | One-time Binding | Values                   | Default | Description
 | ----          | ----                    | ----    | ----             | ----                     | ----    | ----
 | text          | string                  | @       |                  |                          |         | checkbox text
+| description   | string                  | @?      |                  |                          |         | description text
 | id            | string                  | @?      | `true`           |                          |         | id attribute of the checkbox
 | name          | string                  | @?      | `true`           |                          |         | name attribute of the checkbox
 | disabled      | boolean                 | <?      |                  |                          | false   | disabled flag
@@ -50,6 +52,15 @@
 <div ng-init="$ctrl.indeterminate = null">
   <oui-checkbox text="Normal" model="$ctrl.indeterminate"></oui-checkbox>
   <oui-checkbox text="Disabled" model="$ctrl.indeterminate" disabled></oui-checkbox>
+</div>
+```
+
+### Description
+
+```html:preview
+<div ng-init="$ctrl.indeterminate = null">
+  <oui-checkbox text="Normal" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod magna rutrum lectus gravida semper. Praesent ultrices feugiat enim, nec cursus ipsum fringilla luctus. Sed vel ornare neque. Vestibulum bibendum."></oui-checkbox>
+  <oui-checkbox text="Disabled" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod magna rutrum lectus gravida semper. Praesent ultrices feugiat enim, nec cursus ipsum fringilla luctus. Sed vel ornare neque. Vestibulum bibendum." disabled></oui-checkbox>
 </div>
 ```
 

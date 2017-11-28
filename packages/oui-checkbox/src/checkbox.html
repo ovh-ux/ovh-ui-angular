@@ -8,6 +8,7 @@
          ng-disabled="$ctrl.disabled">
   <label for="{{:: $ctrl.id }}" class="oui-checkbox__label-container">
     <span class="oui-checkbox__label" ng-bind="$ctrl.text"></span>
+    <span class="oui-checkbox__description" ng-bind="$ctrl.description" ng-if="$ctrl.description"></span>
     <span class="oui-checkbox__icon">
       <i class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></i>
       <i class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></i>
