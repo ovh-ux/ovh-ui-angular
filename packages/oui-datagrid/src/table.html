@@ -1,0 +1,95 @@
+<div ng-class="tableCtrl.css.tablePanel">
+  <table ng-class="tableCtrl.css.table">
+    <thead ng-class="tableCtrl.css.thead">
+      <tr ng-class="tableCtrl.css.tr">
+        <th ng-if="tableCtrl.isSelectable()"
+          ng-class="[ tableCtrl.css.th, tableCtrl.css.thSelector ]">
+          <input ng-if="!tableCtrl.compiledSelectorTemplate"
+            name="allSelected"
+            type="checkbox"
+            ng-model="tableCtrl.allSelected"
+            ng-change="tableCtrl.allSelectedChange()">
+          <oui-table-selector
+            ng-if="tableCtrl.compiledSelectorTemplate"
+            name="allSelected"
+            value="tableCtrl.allSelected"
+            on-change="tableCtrl.allSelectedChange()"
+            compiled-template="tableCtrl.compiledSelectorTemplate"></oui-table-selector>
+        </th>
+        <th ng-class="[ tableCtrl.css.th, tableCtrl.getSortableClasses(column) ]"
+          ng-repeat="column in tableCtrl.columns track by $index"
+          ng-click="tableCtrl.sort(column)"
+          ng-bind="::column.title"></th>
+      </tr>
+    </thead>
+    <tbody ng-class="tableCtrl.css.tbody"
+      ng-hide="tableCtrl.loading">
+      <tr ng-class="[ tableCtrl.css.tr, tableCtrl.getClosedClass($index), {
+        'tableCtrl.css.trClickable': tableCtrl.canClickOnRow
+      } ]"
+        ng-init="rowIndex = $index"
+        ng-repeat="row in tableCtrl.displayedRows track by $index"ng-click="tableCtrl.rowClick(row, $event)"
+        ng-keydown="tableCtrl.rowKeyDown(row, $event)"
+        row-clickable="tableCtrl.canClickOnRow"
+        row-label="tableCtrl.getRowLabel(row)">
+        <td ng-if="tableCtrl.isSelectable()"
+          ng-class="[ tableCtrl.css.td, tableCtrl.css.tdSelector ]">
+          <input ng-if="!tableCtrl.config.selectorTemplate"
+            type="checkbox"
+            ng-model="tableCtrl.selection[$index]"
+            ng-change="tableCtrl.selectionChange()">
+          <oui-table-selector
+            ng-if="tableCtrl.compiledSelectorTemplate"
+            name="selection_{{$index}}"
+            value="tableCtrl.selection[$index]"
+            on-change="tableCtrl.selectionChange()"
+            compiled-template="tableCtrl.compiledSelectorTemplate"></oui-table-selector>
+        </td>
+        <td ng-class="[ tableCtrl.css.td, column.class ]" ng-if="!column.name || tableCtrl.hasProperty(row, column.name)"
+          ng-repeat-start="column in tableCtrl.columns track by $index"
+          data-title="{{::column.title}}">
+          <span ng-if="!column.template" ng-bind="column.getValue(row)"></span>
+          <oui-table-cell ng-if="column.template" row="row" column="column"></oui-table-cell>
+        </td>
+        <td ng-repeat-end ng-class="tableCtrl.css.td"
+          ng-if="column.name && !tableCtrl.hasProperty(row, column.name)"
+          class="oui-skeleton">
+          <div class="oui-skeleton__loader"></div>
+        </td>
+      </tr>
+    </tbody>
+    <tbody ng-class="tableCtrl.css.tbody"
+      ng-show="tableCtrl.loading">
+      <tr ng-class="tableCtrl.css.tr"
+        ng-repeat="row in tableCtrl.getPageRepeatRange() track by $index">
+        <td
+          ng-class="tableCtrl.css.td"
+          class="oui-skeleton"
+          ng-repeat="row in tableCtrl.getRepeatRange(tableCtrl.columns.length) track by $index">
+          <div class="oui-skeleton__loader"></div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <oui-table-pagination
+    ng-hide="tableCtrl.loading"
+    ng-if="tableCtrl.paginationTemplate"
+    template="tableCtrl.paginationTemplate"
+    table="tableCtrl"
+    ng-class="[ tableCtrl.css.tablePanel + '__pagination', tableCtrl.css.tablePanel + '__pagination_bottom' ]">
+  </oui-table-pagination>
+  <div
+    ng-hide="tableCtrl.loading"
+    ng-if="!tableCtrl.paginationTemplate"
+    ng-class="[ tableCtrl.css.tablePanel + '__pagination', tableCtrl.css.tablePanel + '__pagination_bottom' ]">
+    <oui-table-default-pagination
+      page-size="tableCtrl.getPageSize()"
+      current-page="tableCtrl.getCurrentPage()"
+      page-count="tableCtrl.getPageCount()"
+      total-items="tableCtrl.getTotalCount()"
+      on-next-page="tableCtrl.nextPage()"
+      on-previous-page="tableCtrl.previousPage()"
+      on-page="tableCtrl.goToPage($page)"
+      on-page-size-change="tableCtrl.setPageSize($pageSize)"></oui-table-default-pagination>
+  </div>
+</div>

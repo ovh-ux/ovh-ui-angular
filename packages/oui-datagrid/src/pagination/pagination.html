@@ -1,0 +1,61 @@
+<div class="tui-pagination">
+  <oui-dropdown arrow>
+    <span role="button"
+        class="oui-link"
+        oui-dropdown-trigger>
+        <span ng-bind="$ctrl.getOffset()"></span> -
+        <span ng-bind="$ctrl.getLastElementOffset()"></span>
+    </span>
+    <oui-dropdown-content>
+      <h6 class="oui-header_6"
+        ng-bind="$ctrl.config.words.resultsPerPage">Results per page</h6>
+      <div role="menu" class="oui-action-menu">
+        <div role="menuitem"
+          class="oui-action-menu__item"
+          ng-repeat="pageSize in $ctrl.config.pageSizes">
+          <button class="oui-button oui-button_action-menu"
+            ng-class="{ 'oui-button_selected': $ctrl.pageSize === pageSize }"
+            ng-bind="pageSize"
+            ng-click="$ctrl.setPageSize(pageSize)"></button>
+        </div>
+      </div>
+    </oui-dropdown-content>
+  </oui-dropdown>
+  <span ng-bind="$ctrl.config.words.of"></span>
+  <span ng-bind="$ctrl.totalItems"></span>
+  <span ng-bind="$ctrl.config.words.results"></span>
+
+  <div class="tui-pagination__selector"
+    ng-if="$ctrl.pageCount > 1">
+    <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width"
+      ng-disabled="$ctrl.currentPage <= 1"
+      ng-click="$ctrl.onPreviousPage()"
+      aria-label="{{$ctrl.config.words.previous}}">
+      <i class="oui-icon oui-icon-chevron-left" aria-hidden="true"></i>
+    </button>
+    <div class="oui-button-group"
+      ng-if="$ctrl.pageCount <= 5">
+      <button
+        ng-repeat="button in $ctrl.buttons track by button.page"
+        class="oui-button oui-button_small-width"
+        ng-class="button.page === $ctrl.currentPage ? 'oui-button_primary' : 'oui-button_secondary'"
+        ng-bind="button.page"
+        ng-click="$ctrl.setPageNumber(button.page)"></button>
+    </div>
+    <div class="oui-select oui-select_inline"
+      ng-if="$ctrl.pageCount > 5">
+      <select class="oui-select__input"
+          ng-model="$ctrl.currentPage"
+          ng-change="$ctrl.setPageNumber(page)"
+          ng-options="page as $ctrl.capitalize($ctrl.config.words.page) + ' ' + page + ' ' + $ctrl.config.words.of + ' ' + $ctrl.pageCount for page in $ctrl.pagesList">
+      </select>
+      <i class="oui-icon oui-icon-chevron-down" aria-hidden="true"></i>
+    </div>
+    <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width"
+      ng-disabled="$ctrl.currentPage >= $ctrl.pageCount"
+      ng-click="$ctrl.onNextPage()"
+      aria-label="{{$ctrl.config.words.next}}">
+        <i class="oui-icon oui-icon-chevron-right" aria-hidden="true"></i>
+      </button>
+  </div>
+</div>

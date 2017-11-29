@@ -9,6 +9,7 @@ import "@oui-angular/oui-dropdown/src";
 import "@oui-angular/oui-action-menu/src";
 import "@oui-angular/oui-tooltip/src";
 import "@oui-angular/oui-numeric/src";
+import "@oui-angular/oui-datagrid/src";
 
 angular.module("oui", [
     "oui.button",
@@ -21,5 +22,6 @@ angular.module("oui", [
     "oui.dropdown",
     "oui.action-menu",
     "oui.tooltip",
-    "oui.numeric"
+    "oui.numeric",
+    "oui.datagrid"
 ]);
