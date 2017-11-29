@@ -10,6 +10,7 @@ import "@oui-angular/oui-action-menu/src";
 import "@oui-angular/oui-tooltip/src";
 import "@oui-angular/oui-numeric/src";
 import "@oui-angular/oui-pagination/src";
+import "@oui-angular/oui-datagrid/src";
 
 angular.module("oui", [
     "oui.button",
@@ -24,4 +25,5 @@ angular.module("oui", [
     "oui.tooltip",
     "oui.numeric",
     "oui.pagination"
+    "oui.datagrid"
 ]);
