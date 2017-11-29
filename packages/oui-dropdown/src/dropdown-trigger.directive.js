@@ -2,7 +2,7 @@ import defaultTriggerTemplate from "./dropdown-trigger-default.html";
 
 const dropdownTriggerClass = "oui-dropdown__trigger";
 
-export default $compile => {
+export default ($compile, $document) => {
     "ngInject";
 
     return {
@@ -33,8 +33,8 @@ export default $compile => {
             triggerElement.attr("id", ctrl.id);
 
             triggerElement.on("click", () => ctrl.onTriggerClick());
-            triggerElement.on("keydown", evt => ctrl.triggerKeyHandler(evt));
             triggerElement.on("blur", evt => ctrl.triggerBlurHandler(evt));
+            $document.on("keydown", evt => ctrl.triggerKeyHandler(evt));
 
             triggerElement.attr({ "aria-haspopup": true, "aria-expanded": false });
             scope.$watch(() => ctrl.isOpen(), open => {
@@ -43,8 +43,8 @@ export default $compile => {
 
             scope.$on("$destroy", () => {
                 triggerElement.off("click");
-                triggerElement.off("keydown");
                 triggerElement.off("blur");
+                $document.off("keydown");
             });
         }
     };
