@@ -34,11 +34,18 @@ export default ($compile, $document) => {
 
             triggerElement.on("click", () => ctrl.onTriggerClick());
             triggerElement.on("blur", evt => ctrl.triggerBlurHandler(evt));
-            $document.on("keydown", evt => ctrl.triggerKeyHandler(evt));
 
             triggerElement.attr({ "aria-haspopup": true, "aria-expanded": false });
             scope.$watch(() => ctrl.isOpen(), open => {
                 triggerElement.attr("aria-expanded", !!open);
+
+                if (open) {
+                    // Force focus on Firefox
+                    triggerElement[0].focus();
+                    $document.on("keydown", evt => ctrl.triggerKeyHandler(evt));
+                } else {
+                    $document.off("keydown");
+                }
             });
 
             scope.$on("$destroy", () => {
