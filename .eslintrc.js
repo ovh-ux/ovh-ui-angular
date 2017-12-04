@@ -24,10 +24,6 @@ module.exports = {
         "no-debugger": isDistribution ? 2 : 0,
         "no-magic-numbers": ["error", {
             "ignore": [0, -1, 1]
-        }],
-        "class-methods-use-this": "off",
-        "no-underscore-dangle": ["error", {
-            "allowAfterThis": true
         }]
     },
     "overrides": {
