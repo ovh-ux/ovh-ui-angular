@@ -19,7 +19,7 @@ class TestUtils {
         return element.controller(componentName);
     }
 
-    getElementController (element) {
+    static getElementController (element) {
         return angular.element(element).scope().$ctrl;
     }
 }

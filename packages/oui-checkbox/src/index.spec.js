@@ -17,7 +17,7 @@ describe("ouiCheckbox", () => {
     }
 
     function getCheckboxTextContainerElement (element) {
-        return element[0].querySelector(".oui-checkbox__label");
+        return element[0].querySelector(".oui-checkbox__label span:first-child");
     }
 
     function getCheckboxDescriptionElement (element) {
@@ -131,7 +131,7 @@ describe("ouiCheckbox", () => {
                 };
 
                 const element = TestUtils.compileTemplate("<oui-checkbox model=\"$ctrl.currentModel\"></oui-checkbox>", context);
-                const $ctrl = TestUtils.getElementController(element);
+                const $ctrl = TestUtils.constructor.getElementController(element);
 
                 const checkboxElement = getCheckboxInputElement(element);
                 const $checkboxElement = angular.element(checkboxElement);
