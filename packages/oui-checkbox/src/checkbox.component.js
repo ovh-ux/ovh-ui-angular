@@ -6,6 +6,7 @@ export default {
     controller,
     bindings: {
         text: "@",
+        description: "@?",
         id: "@?",
         name: "@?",
         model: "=?",

@@ -1,25 +1,12 @@
 describe("ouiCheckbox", () => {
-    let $rootScope;
-    let $compile;
+    let TestUtils;
 
     beforeEach(angular.mock.module("oui.checkbox"));
+    beforeEach(angular.mock.module("oui.test-utils"));
 
-    beforeEach(inject((_$rootScope_, _$compile_) => {
-        $rootScope = _$rootScope_;
-        $compile = _$compile_;
+    beforeEach(inject((_TestUtils_) => {
+        TestUtils = _TestUtils_;
     }));
-
-    function compileTemplate (template, context = {}) {
-        const scope = $rootScope.$new(true);
-        angular.merge(scope, { $ctrl: context });
-        const element = $compile(template)(scope);
-        scope.$digest();
-        return element;
-    }
-
-    function getComponentController (element) {
-        return angular.element(element).scope().$ctrl;
-    }
 
     function getCheckboxInputElement (element) {
         return element[0].querySelector("input[type=checkbox]");
@@ -33,10 +20,14 @@ describe("ouiCheckbox", () => {
         return element[0].querySelector(".oui-checkbox__label");
     }
 
+    function getCheckboxDescriptionElement (element) {
+        return element[0].querySelector(".oui-checkbox__description");
+    }
+
     describe("Component", () => {
         describe("id attribute", () => {
             it("should generate an id for the input and label when undefined", () => {
-                const element = compileTemplate("<oui-checkbox></oui-checkbox>");
+                const element = TestUtils.compileTemplate("<oui-checkbox></oui-checkbox>");
 
                 const checkboxElement = getCheckboxInputElement(element);
                 expect(angular.element(checkboxElement).prop("id")).toMatch(/^oui-checkbox-\d+$/);
@@ -46,7 +37,7 @@ describe("ouiCheckbox", () => {
             });
 
             it("should set the id for the input and label when defined", () => {
-                const element = compileTemplate("<oui-checkbox data-id=\"test\"></oui-checkbox>");
+                const element = TestUtils.compileTemplate("<oui-checkbox id=\"test\"></oui-checkbox>");
 
                 const checkboxElement = getCheckboxInputElement(element);
                 expect(angular.element(checkboxElement).prop("id")).toBe("test");
@@ -58,7 +49,7 @@ describe("ouiCheckbox", () => {
 
         describe("name attribute", () => {
             it("should set the name attribute on input when defined", () => {
-                const element = compileTemplate("<oui-checkbox data-name=\"test\"></oui-checkbox>");
+                const element = TestUtils.compileTemplate("<oui-checkbox name=\"test\"></oui-checkbox>");
 
                 const checkboxElement = getCheckboxInputElement(element);
                 expect(angular.element(checkboxElement).prop("name")).toBe("test");
@@ -67,16 +58,32 @@ describe("ouiCheckbox", () => {
 
         describe("text attribute", () => {
             it("should display a text inside the checkbox's text container", () => {
-                const element = compileTemplate("<oui-checkbox data-text=\"test\"></oui-checkbox>");
+                const element = TestUtils.compileTemplate("<oui-checkbox text=\"test\"></oui-checkbox>");
 
                 const textContainerCheckboxElement = getCheckboxTextContainerElement(element);
                 expect(angular.element(textContainerCheckboxElement).html()).toBe("test");
             });
         });
 
+        describe("description attribute", () => {
+            it("should display the checkbox's description container when empty", () => {
+                const element = TestUtils.compileTemplate("<oui-checkbox></oui-checkbox>");
+
+                const descriptionCheckboxElement = getCheckboxDescriptionElement(element);
+                expect(angular.element(descriptionCheckboxElement).length).toBe(0);
+            });
+
+            it("should display a text inside the checkbox's description container", () => {
+                const element = TestUtils.compileTemplate("<oui-checkbox description=\"test\"></oui-checkbox>");
+
+                const descriptionCheckboxElement = getCheckboxDescriptionElement(element);
+                expect(angular.element(descriptionCheckboxElement).html()).toBe("test");
+            });
+        });
+
         describe("model attribute", () => {
             it("should display an unchecked checkbox when no model", () => {
-                const element = compileTemplate("<oui-checkbox></oui-checkbox>");
+                const element = TestUtils.compileTemplate("<oui-checkbox></oui-checkbox>");
 
                 const checkboxElement = getCheckboxInputElement(element);
                 const $checkboxElement = angular.element(checkboxElement);
@@ -86,7 +93,7 @@ describe("ouiCheckbox", () => {
             });
 
             it("should display a checked checkbox when true", () => {
-                const element = compileTemplate("<oui-checkbox data-model=\"$ctrl.checked\"></oui-checkbox>", {
+                const element = TestUtils.compileTemplate("<oui-checkbox model=\"$ctrl.checked\"></oui-checkbox>", {
                     checked: true
                 });
 
@@ -98,7 +105,7 @@ describe("ouiCheckbox", () => {
             });
 
             it("should display a an unchecked checkbox when false", () => {
-                const element = compileTemplate("<oui-checkbox data-model=\"$ctrl.checked\"></oui-checkbox>", {
+                const element = TestUtils.compileTemplate("<oui-checkbox model=\"$ctrl.checked\"></oui-checkbox>", {
                     checked: false
                 });
 
@@ -110,7 +117,7 @@ describe("ouiCheckbox", () => {
             });
 
             it("should display a indeterminate checkbox when null", () => {
-                const element = compileTemplate("<oui-checkbox data-model=\"$ctrl.indeterminate\"></oui-checkbox>", {
+                const element = TestUtils.compileTemplate("<oui-checkbox model=\"$ctrl.indeterminate\"></oui-checkbox>", {
                     indeterminate: null
                 });
 
@@ -123,8 +130,8 @@ describe("ouiCheckbox", () => {
                     currentModel: false
                 };
 
-                const element = compileTemplate("<oui-checkbox data-model=\"$ctrl.currentModel\"></oui-checkbox>", context);
-                const $ctrl = getComponentController(element);
+                const element = TestUtils.compileTemplate("<oui-checkbox model=\"$ctrl.currentModel\"></oui-checkbox>", context);
+                const $ctrl = TestUtils.getElementController(element);
 
                 const checkboxElement = getCheckboxInputElement(element);
                 const $checkboxElement = angular.element(checkboxElement);
@@ -138,21 +145,21 @@ describe("ouiCheckbox", () => {
 
         describe("disabled attribute", () => {
             it("should display an active checkbox when no attribute", () => {
-                const element = compileTemplate("<oui-checkbox></oui-checkbox>");
+                const element = TestUtils.compileTemplate("<oui-checkbox></oui-checkbox>");
 
                 const checkboxElement = getCheckboxInputElement(element);
                 expect(angular.element(checkboxElement).prop("disabled")).toBe(false);
             });
 
             it("should display a disabled checkbox when defined but no value", () => {
-                const element = compileTemplate("<oui-checkbox data-disabled></oui-checkbox>");
+                const element = TestUtils.compileTemplate("<oui-checkbox disabled></oui-checkbox>");
 
                 const checkboxElement = getCheckboxInputElement(element);
                 expect(angular.element(checkboxElement).prop("disabled")).toBe(true);
             });
 
             it("should display a disabled checkbox when true", () => {
-                const element = compileTemplate("<oui-checkbox data-disabled=\"$ctrl.disabled\"></oui-checkbox>", {
+                const element = TestUtils.compileTemplate("<oui-checkbox disabled=\"$ctrl.disabled\"></oui-checkbox>", {
                     disabled: true
                 });
 
@@ -161,7 +168,7 @@ describe("ouiCheckbox", () => {
             });
 
             it("should display an active checkbox when false", () => {
-                const element = compileTemplate("<oui-checkbox data-disabled=\"$ctrl.notDisabled\"></oui-checkbox>", {
+                const element = TestUtils.compileTemplate("<oui-checkbox disabled=\"$ctrl.notDisabled\"></oui-checkbox>", {
                     notDisabled: false
                 });
 
@@ -174,7 +181,7 @@ describe("ouiCheckbox", () => {
             it("should trigger callback when the checkbox is clicked", () => {
                 const onChangeSpy = jasmine.createSpy("onChangeSpy");
 
-                const element = compileTemplate("<oui-checkbox data-on-change=\"$ctrl.onChange(modelValue)\"></oui-checkbox>", {
+                const element = TestUtils.compileTemplate("<oui-checkbox on-change=\"$ctrl.onChange(modelValue)\"></oui-checkbox>", {
                     onChange: onChangeSpy
                 });
 
