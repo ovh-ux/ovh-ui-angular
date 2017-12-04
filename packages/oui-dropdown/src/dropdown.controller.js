@@ -110,8 +110,14 @@ export default class {
         if (this.arrowElement && placement === "bottom") {
             this.arrowElement.setAttribute("x-arrow", "");
         }
+
         this.popper = new Popper(this.referenceElement, this.popperElement, {
-            placement
+            placement,
+            modifiers: {
+                preventOverflow: {
+                    boundariesElement: this.$document[0].body
+                }
+            }
         });
     }
 
