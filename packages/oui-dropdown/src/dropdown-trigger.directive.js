@@ -2,7 +2,7 @@ import defaultTriggerTemplate from "./dropdown-trigger-default.html";
 
 const dropdownTriggerClass = "oui-dropdown__trigger";
 
-export default $compile => {
+export default ($compile, $document) => {
     "ngInject";
 
     return {
@@ -33,18 +33,25 @@ export default $compile => {
             triggerElement.attr("id", ctrl.id);
 
             triggerElement.on("click", () => ctrl.onTriggerClick());
-            triggerElement.on("keydown", evt => ctrl.triggerKeyHandler(evt));
             triggerElement.on("blur", evt => ctrl.triggerBlurHandler(evt));
 
             triggerElement.attr({ "aria-haspopup": true, "aria-expanded": false });
             scope.$watch(() => ctrl.isOpen(), open => {
                 triggerElement.attr("aria-expanded", !!open);
+
+                if (open) {
+                    // Force focus on Firefox
+                    triggerElement[0].focus();
+                    $document.on("keydown", evt => ctrl.triggerKeyHandler(evt));
+                } else {
+                    $document.off("keydown");
+                }
             });
 
             scope.$on("$destroy", () => {
                 triggerElement.off("click");
-                triggerElement.off("keydown");
                 triggerElement.off("blur");
+                $document.off("keydown");
             });
         }
     };

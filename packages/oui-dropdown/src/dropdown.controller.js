@@ -26,11 +26,10 @@ export default class {
 
         this.documentClickHandler = evt => {
             if (evt &&
-        evt.type === "click" &&
-        this.referenceElement.contains(evt.target)) {
+                evt.type === "click" &&
+                this.referenceElement.contains(evt.target)) {
                 return;
             }
-
             this.referenceElement.focus();
             this.$scope.$apply(() => this.closeDropdown());
         };
@@ -38,9 +37,11 @@ export default class {
         // Handle espace key press
         this.triggerKeyHandler = evt => {
             if (evt &&
-        evt.type === "keydown" &&
-        evt.which === KEY_ESCAPE) {
-                this.onTriggerClick();
+                evt.type === "keydown" &&
+                evt.which === KEY_ESCAPE) {
+                this.$scope.$apply(() => {
+                    this.closeDropdown();
+                });
             }
         };
 
