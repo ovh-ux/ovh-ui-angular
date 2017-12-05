@@ -1,4 +1,8 @@
-<oui-dropdown align="{{::$ctrl.align}}"
+<!--
+  Use data-align to avoid conflict with native align attribute.
+  For some reason, align can't be deleted in controller $postLink method.
+ -->
+<oui-dropdown data-align="{{::$ctrl.align}}"
   arrow="::$ctrl.compact">
   <oui-dropdown-trigger
     ng-if="!$ctrl.compact"
