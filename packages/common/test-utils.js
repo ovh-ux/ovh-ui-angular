@@ -19,9 +19,11 @@ class TestUtils {
         return element.controller(componentName);
     }
 
+    /* eslint-disable class-methods-use-this */
     getElementController (element) {
         return angular.element(element).scope().$ctrl;
     }
+    /* eslint-enable class-methods-use-this */
 }
 
 angular.module("oui.test-utils", [])

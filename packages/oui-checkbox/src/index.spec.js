@@ -17,7 +17,7 @@ describe("ouiCheckbox", () => {
     }
 
     function getCheckboxTextContainerElement (element) {
-        return element[0].querySelector(".oui-checkbox__label");
+        return element[0].querySelector(".oui-checkbox__label span:first-child");
     }
 
     function getCheckboxDescriptionElement (element) {
