@@ -131,7 +131,7 @@ describe("ouiCheckbox", () => {
                 };
 
                 const element = TestUtils.compileTemplate("<oui-checkbox model=\"$ctrl.currentModel\"></oui-checkbox>", context);
-                const $ctrl = TestUtils.constructor.getElementController(element);
+                const $ctrl = TestUtils.getElementController(element);
 
                 const checkboxElement = getCheckboxInputElement(element);
                 const $checkboxElement = angular.element(checkboxElement);
