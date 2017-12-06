@@ -8,7 +8,7 @@ export default class {
             tr: "oui-datagrid__row",
             th: "oui-datagrid__header",
             td: "oui-datagrid__cell",
-            sortable: "oui-datagrid__header_sortable oui-datagrid__header_sortable-asc",
+            sortable: "oui-datagrid__header_sortable",
             sorted: "oui-datagrid__cell_sorted",
             sortableAsc: "oui-datagrid__header_sortable-asc",
             sortableDesc: "oui-datagrid__header_sortable-desc",
