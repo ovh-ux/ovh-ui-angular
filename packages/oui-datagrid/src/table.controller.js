@@ -57,8 +57,6 @@ export default class {
         this.selection = [];
 
         this.canClickOnRow = this.$attrs.onRowClick;
-
-        this.subscribeToEvents();
     }
 
     init () {
@@ -85,15 +83,6 @@ export default class {
                 .catch(this.handleError.bind(this));
         } else {
             throw new Error("No data nor data loader found");
-        }
-    }
-
-    subscribeToEvents () {
-        // Id attribute is mandatory to avoid refreshing multiple list-views.
-        if (this.id) {
-            this.$scope.$on(`oui-table:${this.id}:refresh`, (event, $filterConfig) => {
-                this.refreshFilter($filterConfig);
-            });
         }
     }
 
