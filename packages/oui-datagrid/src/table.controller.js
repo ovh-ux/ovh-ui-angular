@@ -5,6 +5,12 @@ const keyCodes = {
     space: 32
 };
 
+const cssSorted = "oui-datagrid__cell_sorted";
+const cssSortable = "oui-datagrid__header_sortable";
+const cssSortableAsc = "oui-datagrid__header_sortable-asc";
+const cssSortableDesc = "oui-datagrid__header_sortable-desc";
+const cssClosed = "oui-datagrid__row_closed";
+
 export default class {
     constructor ($attrs, $compile, $element, $parse, $q, $sce, $scope, $timeout, orderByFilter, ouiTableConfiguration) {
         "ngInject";
@@ -20,7 +26,6 @@ export default class {
         this.orderBy = orderByFilter;
 
         this.config = ouiTableConfiguration;
-        this.css = ouiTableConfiguration.cssClasses;
 
         if (this.config.selectorTemplate && !this.compiledSelectorTemplate) {
             this.compiledSelectorTemplate = this.$compile(`<div>${this.config.selectorTemplate}</div>`);
@@ -372,14 +377,14 @@ export default class {
     getSortableClasses (column) {
         if (column.name !== this.currentSorting.columnName) {
             return {
-                [this.css.sortable]: !!column.sortable
+                [cssSortable]: !!column.sortable
             };
         }
         return {
-            [this.css.sortable]: !!column.sortable,
-            [this.css.sorted]: true,
-            [this.css.sortableAsc]: this.currentSorting.dir === 1,
-            [this.css.sortableDesc]: this.currentSorting.dir === -1
+            [cssSortable]: !!column.sortable,
+            [cssSorted]: true,
+            [cssSortableAsc]: this.currentSorting.dir === 1,
+            [cssSortableDesc]: this.currentSorting.dir === -1
         };
     }
 
@@ -389,7 +394,7 @@ export default class {
 
     getClosedClass (index) {
         return {
-            [this.css.closed]: this.isClosed(index)
+            [cssClosed]: this.isClosed(index)
         };
     }
 
