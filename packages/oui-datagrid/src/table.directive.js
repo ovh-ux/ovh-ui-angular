@@ -41,8 +41,8 @@ export default $compile => {
                     elem.empty();
                     if (newValue && !newValue.length && emptyPlaceholderElement.length) {
                         elem.append($compile(`
-                <div ng-class="tableCtrl.css.emptyTable">${emptyPlaceholderElement.html()}</div>
-              `)(scope));
+                            <div class="oui-datagrid-empty">${emptyPlaceholderElement.html()}</div>
+                        `)(scope));
                     } else {
                         elem.append($compile(template)(scope));
                     }
