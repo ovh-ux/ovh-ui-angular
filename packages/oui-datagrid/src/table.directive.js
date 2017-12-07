@@ -1,7 +1,7 @@
 import controller from "./table.controller";
 import template from "./table.html";
 
-export default $compile => {
+export default ($compile, ouiTableColumnBuilder) => {
     "ngInject";
 
     return {
@@ -21,7 +21,10 @@ export default $compile => {
         compile: () => ({
             post: (scope, elem, attrs, tableCtrl) => {
                 const columnElements = elem.find("column");
-                tableCtrl.buildColumns(columnElements);
+
+                const builtColumns = ouiTableColumnBuilder.build(columnElements, scope);
+                tableCtrl.columns = builtColumns.columns;
+                tableCtrl.currentSorting = builtColumns.currentSorting;
 
                 // Once columns has been processed,
                 // we can proceed with the first loading

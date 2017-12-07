@@ -1,4 +1,4 @@
-import { capitalize, hasProperty, range } from "./util";
+import { hasProperty, range } from "./util";
 
 const keyCodes = {
     escape: 27,
@@ -16,7 +16,6 @@ export default class {
         "ngInject";
 
         this.$attrs = $attrs;
-        this.$compile = $compile;
         this.$element = $element;
         this.$parse = $parse;
         this.$q = $q;
@@ -28,7 +27,7 @@ export default class {
         this.config = ouiTableConfiguration;
 
         if (this.config.selectorTemplate && !this.compiledSelectorTemplate) {
-            this.compiledSelectorTemplate = this.$compile(`<div>${this.config.selectorTemplate}</div>`);
+            this.compiledSelectorTemplate = $compile(`<div>${this.config.selectorTemplate}</div>`);
         }
     }
 
@@ -431,80 +430,9 @@ export default class {
         return null;
     }
 
-    getColumnTemplate (column) {
-        if (!column.compiledTemplate) {
-            column.compiledTemplate = this.$compile(`<div>${column.template}</div>`);
-        }
-        return column.compiledTemplate;
-    }
-
     setPaginationTemplate (paginationTemplate) {
         if (paginationTemplate) {
             this.paginationTemplate = `<div>${paginationTemplate}</div>`;
-        }
-    }
-
-    buildColumns (columnElements) {
-        this.columns = [];
-
-        angular.forEach(columnElements, columnElement => {
-            const column = {};
-
-            angular.forEach(columnElement.attributes, attr => {
-                const attrName = attr.name;
-
-                switch (attrName) {
-                case "property":
-                    column.name = attr.value;
-                    column.getValue = this.$parse(attr.value);
-                    break;
-
-                case "template":
-                    column.template = this.$parse(attr.value)(this.$scope);
-                    break;
-
-                case "sortable":
-                    column.sortable = attr.value !== undefined;
-                    this.defineDefaultSorting(column, attr.value);
-                    break;
-
-                case "title":
-                    column.title = this.$parse(attr.value)(this.$scope);
-                    break;
-
-                default:
-                    column[attrName] = attr.value;
-                }
-            });
-
-            if (!column.title) {
-                column.title = capitalize(column.name);
-            }
-
-            if (!column.sortProperty) {
-                column.sortProperty = column.name;
-            }
-
-            if (!column.template && columnElement.innerHTML) {
-                column.template = columnElement.innerHTML;
-            }
-
-            if (column.template) {
-                column.compiledTemplate = this.getColumnTemplate(column);
-            }
-
-            this.columns.push(column);
-        });
-    }
-
-    defineDefaultSorting (column, attrValue) {
-        column.sortable = attrValue !== undefined;
-        if (attrValue.length) {
-            column.defaultSortDir = attrValue === "asc" ? 1 : -1;
-            this.currentSorting = {
-                columnName: column.name,
-                dir: column.defaultSortDir
-            };
         }
     }
 }
