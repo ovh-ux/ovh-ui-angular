@@ -1,4 +1,5 @@
 import { hasProperty, range } from "./util";
+import template from "./table.html";
 
 const keyCodes = {
     escape: 27,
@@ -12,17 +13,18 @@ const cssSortableDesc = "oui-datagrid__header_sortable-desc";
 const cssClosed = "oui-datagrid__row_closed";
 
 export default class {
-    constructor ($attrs, $compile, $element, $parse, $q, $sce, $scope, $timeout, orderByFilter, ouiTableConfiguration) {
+    constructor ($attrs, $compile, $element, $parse, $q, $scope, $timeout, orderByFilter, ouiTableColumnBuilder, ouiTableConfiguration) {
         "ngInject";
 
         this.$attrs = $attrs;
+        this.$compile = $compile;
         this.$element = $element;
         this.$parse = $parse;
         this.$q = $q;
-        this.$sce = $sce;
         this.$scope = $scope;
         this.$timeout = $timeout;
         this.orderBy = orderByFilter;
+        this.ouiTableColumnBuilder = ouiTableColumnBuilder;
 
         this.config = ouiTableConfiguration;
 
@@ -63,31 +65,76 @@ export default class {
         this.canClickOnRow = this.$attrs.onRowClick;
     }
 
-    init () {
-        // Local data
-        if (this.rows) {
-            this.$scope.$watchCollection("tableCtrl.rows", () => {
-                this.filteredRows = this.rows;
-                this.sortedRows = this.rows;
+    $postLink () {
+        const columnElements = this.$element.find("column");
 
-                this.updatePageMeta({
-                    currentOffset: 0,
-                    pageCount: Math.ceil(this.rows.length / this._pageSize),
-                    totalCount: this.rows.length
-                });
+        const builtColumns = this.ouiTableColumnBuilder.build(columnElements, this.$scope);
+        this.columns = builtColumns.columns;
+        this.currentSorting = builtColumns.currentSorting;
 
-                this.changePage()
-                    .catch(this.handleError.bind(this));
-            });
-        } else
+        // Once columns has been processed,
+        // we can proceed with the first loading
+        this.initPage();
 
-        // Remote data
+        const paginationElement = this.$element.find("pagination");
+        if (paginationElement.length) {
+            this.setPaginationTemplate(paginationElement.html());
+        }
+
+        this.emptyPlaceholderElement = this.$element.find("empty-placeholder");
+        if (this.emptyPlaceholderElement) {
+            this.$element.empty();
+        }
+
+        this._compileGrid(this.rows && !this.rows.length && this.emptyPlaceholderElement.length);
+    }
+
+    $onChanges (changes) {
+        if (changes.rows && !changes.rows.isFirstChange()) {
+            const newValue = changes.rows.currentValue;
+
+            this._compileGrid(newValue && !newValue.length && this.emptyPlaceholderElement.length);
+            this._updateRows();
+        }
+    }
+
+    _compileGrid (isEmptyTemplate) {
+        this.$element.empty();
+
+        if (isEmptyTemplate) {
+            this.$element.append(this.$compile(`
+                <div class="oui-datagrid-empty">${this.emptyPlaceholderElement.html()}</div>
+            `)(this.$scope));
+        } else {
+            this.$element.append(this.$compile(template)(this.$scope));
+        }
+    }
+
+    initPage () {
         if (this.rowsLoader) {
             this.changePage({ skipSort: true })
                 .catch(this.handleError.bind(this));
-        } else {
+        } else if (!this.rows) {
             throw new Error("No data nor data loader found");
         }
+    }
+
+    _updateRows () {
+        this.filteredRows = this.rows;
+        this.sortedRows = this.rows;
+
+        this.updatePageMeta({
+            currentOffset: 0,
+            pageCount: Math.ceil(this.rows.length / this._pageSize),
+            totalCount: this.rows.length
+        });
+
+        this.changePage()
+            .catch(this.handleError.bind(this));
+    }
+
+    getParentScope () {
+        return this.$scope.$parent;
     }
 
     isSelectable () {

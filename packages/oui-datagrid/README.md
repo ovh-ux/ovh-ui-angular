@@ -15,10 +15,10 @@ Remote data + on-the-fly loading
   <column property="firstName" sortable="asc"></column>
   <column property="lastName" sortable></column>
   <column title="'Mère'" property="parents.mother.lastName" sortable>
-    {{row.parents.mother.lastName}}, {{row.parents.mother.firstName}}
+    {{$row.parents.mother.lastName}}, {{$row.parents.mother.firstName}}
   </column>
   <column title="'Père'" property="parents.father.lastName" sortable>
-    {{row.parents.father.lastName}}, {{row.parents.father.firstName}}
+    {{$row.parents.father.lastName}}, {{$row.parents.father.firstName}}
   </column>
   <column property="email" sortable>
     <a href="mailto:{{$value}}">{{$ctrl.label}}: {{$value}}</a>
