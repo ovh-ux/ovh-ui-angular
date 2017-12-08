@@ -1,95 +1,51 @@
 <div class="oui-datagrid-panel">
-  <table class="oui-datagrid oui-datagrid_responsive">
-    <thead class="oui-datagrid__headers">
-      <tr class="oui-datagrid__row">
-        <th ng-if="$ctrl.isSelectable()"
-          class="oui-datagrid__header oui-datagrid__header_selector">
-          <input ng-if="!$ctrl.compiledSelectorTemplate"
-            name="allSelected"
-            type="checkbox"
-            ng-model="$ctrl.allSelected"
-            ng-change="$ctrl.allSelectedChange()">
-          <oui-table-selector
-            ng-if="$ctrl.compiledSelectorTemplate"
-            name="allSelected"
-            value="$ctrl.allSelected"
-            on-change="$ctrl.allSelectedChange()"
-            compiled-template="$ctrl.compiledSelectorTemplate"></oui-table-selector>
-        </th>
-        <th class="oui-datagrid__header"
-          ng-class="$ctrl.getSortableClasses(column)"
-          ng-repeat="column in $ctrl.columns track by $index"
-          ng-click="$ctrl.sort(column)"
-          ng-bind="::column.title"></th>
-      </tr>
-    </thead>
-    <tbody class="oui-datagrid__body"
-      ng-hide="$ctrl.loading">
-      <tr class="oui-datagrid__row"
-        ng-class="[ $ctrl.getClosedClass($index) ]"
-        ng-init="rowIndex = $index"
-        ng-repeat="row in $ctrl.displayedRows track by $index"ng-click="$ctrl.rowClick(row, $event)"
-        ng-keydown="$ctrl.rowKeyDown(row, $event)"
-        row-clickable="$ctrl.canClickOnRow"
-        row-label="$ctrl.getRowLabel(row)">
-        <td ng-if="$ctrl.isSelectable()"
-          class="oui-datagrid__cell oui-datagrid__cell_selector">
-          <input ng-if="!$ctrl.config.selectorTemplate"
-            type="checkbox"
-            ng-model="$ctrl.selection[$index]"
-            ng-change="$ctrl.selectionChange()">
-          <oui-table-selector
-            ng-if="$ctrl.compiledSelectorTemplate"
-            name="selection_{{$index}}"
-            value="$ctrl.selection[$index]"
-            on-change="$ctrl.selectionChange()"
-            compiled-template="$ctrl.compiledSelectorTemplate"></oui-table-selector>
-        </td>
-        <td class="oui-datagrid__cell"
-            ng-class="column.class"
-            ng-if="!column.name || $ctrl.hasProperty(row, column.name)"
-            ng-repeat-start="column in $ctrl.columns track by $index"
-            data-title="{{::column.title}}">
-          <span ng-if="!column.template" ng-bind="column.getValue(row)"></span>
-          <oui-table-cell ng-if="column.template" row="row" column="column"></oui-table-cell>
-        </td>
-        <td ng-repeat-end
-            class="oui-datagrid__cell oui-skeleton"
-            ng-if="column.name && !$ctrl.hasProperty(row, column.name)">
-          <div class="oui-skeleton__loader"></div>
-        </td>
-      </tr>
-    </tbody>
-    <tbody class="oui-datagrid__body"
-      ng-show="$ctrl.loading">
-      <tr class="oui-datagrid__row"
-        ng-repeat="row in $ctrl.getPageRepeatRange() track by $index">
-        <td class="oui-datagrid__cell oui-skeleton"
-          ng-repeat="row in $ctrl.getRepeatRange($ctrl.columns.length) track by $index">
-          <div class="oui-skeleton__loader"></div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <oui-table-pagination
-    ng-hide="$ctrl.loading"
-    ng-if="$ctrl.paginationTemplate"
-    template="$ctrl.paginationTemplate"
-    table="$ctrl"
-    class="oui-datagrid-panel__pagination oui-datagrid-panel__pagination_bottom">
-  </oui-table-pagination>
-  <div
-    ng-hide="$ctrl.loading"
-    ng-if="!$ctrl.paginationTemplate"
-    class="oui-datagrid-panel__pagination oui-datagrid-panel__pagination_bottom">
-    <oui-table-default-pagination
-      page-size="$ctrl.getPageSize()"
-      current-page="$ctrl.getCurrentPage()"
-      page-count="$ctrl.getPageCount()"
-      total-items="$ctrl.getTotalCount()"
-      on-next-page="$ctrl.nextPage()"
-      on-previous-page="$ctrl.previousPage()"
-      on-page="$ctrl.goToPage($page)"
-      on-page-size-change="$ctrl.setPageSize($pageSize)"></oui-table-default-pagination>
-  </div>
+    <table class="oui-datagrid oui-datagrid_responsive">
+        <thead class="oui-datagrid__headers">
+            <tr class="oui-datagrid__row">
+                <th class="oui-datagrid__header"
+                    ng-class="$ctrl.getSortableClasses(column)"
+                    ng-repeat="column in $ctrl.columns track by $index"
+                    ng-click="$ctrl.sort(column)"
+                    ng-bind="::column.title">
+                </th>
+            </tr>
+        </thead>
+        <tbody class="oui-datagrid__body"
+            ng-hide="$ctrl.loading">
+            <tr class="oui-datagrid__row"
+                ng-repeat="row in $ctrl.displayedRows track by $index">
+                <td class="oui-datagrid__cell"
+                    ng-class="column.class"
+                    ng-repeat="column in $ctrl.columns track by $index"
+                    data-title="{{::column.title}}">
+                    <span ng-if="!column.name || $ctrl.hasProperty(row, column.name) && !column.template"
+                        ng-bind="column.getValue(row)">
+                    </span>
+                    <oui-table-cell ng-if="!column.name || $ctrl.hasProperty(row, column.name) && column.template"
+                        row="row"
+                        column="column">
+                    </oui-table-cell>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <oui-table-pagination ng-hide="$ctrl.loading"
+        ng-if="$ctrl.paginationTemplate"
+        template="$ctrl.paginationTemplate"
+        table="$ctrl"
+        class="oui-datagrid-panel__pagination oui-datagrid-panel__pagination_bottom">
+    </oui-table-pagination>
+    <div ng-hide="$ctrl.loading"
+        ng-if="!$ctrl.paginationTemplate"
+        class="oui-datagrid-panel__pagination oui-datagrid-panel__pagination_bottom">
+        <oui-table-default-pagination page-size="$ctrl.getPageSize()"
+            current-page="$ctrl.getCurrentPage()"
+            page-count="$ctrl.getPageCount()"
+            total-items="$ctrl.getTotalCount()"
+            on-next-page="$ctrl.nextPage()"
+            on-previous-page="$ctrl.previousPage()"
+            on-page="$ctrl.goToPage($page)"
+            on-page-size-change="$ctrl.setPageSize($pageSize)">
+        </oui-table-default-pagination>
+    </div>
 </div>
