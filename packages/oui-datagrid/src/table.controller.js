@@ -1,5 +1,4 @@
 import { hasProperty, range } from "./util";
-import template from "./table.html";
 
 const keyCodes = {
     escape: 27,
@@ -12,13 +11,14 @@ const cssSortableAsc = "oui-datagrid__header_sortable-asc";
 const cssSortableDesc = "oui-datagrid__header_sortable-desc";
 const cssClosed = "oui-datagrid__row_closed";
 
-export default class {
-    constructor ($attrs, $compile, $element, $parse, $q, $scope, $timeout, orderByFilter, ouiTableColumnBuilder, ouiTableConfiguration) {
+export default class DatagridController {
+    constructor ($attrs, $compile, $element, $transclude, $parse, $q, $scope, $timeout, orderByFilter, ouiTableColumnBuilder, ouiTableConfiguration) {
         "ngInject";
 
         this.$attrs = $attrs;
         this.$compile = $compile;
         this.$element = $element;
+        this.$transclude = $transclude;
         this.$parse = $parse;
         this.$q = $q;
         this.$scope = $scope;
@@ -66,48 +66,45 @@ export default class {
     }
 
     $postLink () {
-        const columnElements = this.$element.find("column");
+        this.$transclude((clone) => {
+            const columnElements = DatagridController.filterElements(clone, "column");
 
-        const builtColumns = this.ouiTableColumnBuilder.build(columnElements, this.$scope);
-        this.columns = builtColumns.columns;
-        this.currentSorting = builtColumns.currentSorting;
+            const builtColumns = this.ouiTableColumnBuilder.build(columnElements, this.$scope);
+            this.columns = builtColumns.columns;
+            this.currentSorting = builtColumns.currentSorting;
 
-        // Once columns has been processed,
-        // we can proceed with the first loading
-        this.initPage();
+            // Once columns has been processed,
+            // we can proceed with the first loading
+            this.initPage();
 
-        const paginationElement = this.$element.find("pagination");
-        if (paginationElement.length) {
-            this.setPaginationTemplate(paginationElement.html());
-        }
-
-        this.emptyPlaceholderElement = this.$element.find("empty-placeholder");
-        if (this.emptyPlaceholderElement) {
-            this.$element.empty();
-        }
-
-        this._compileGrid(this.rows && !this.rows.length && this.emptyPlaceholderElement.length);
+            const paginationElement = this.$element.find("pagination");
+            if (paginationElement.length) {
+                this.setPaginationTemplate(paginationElement.html());
+            }
+        });
     }
 
-    $onChanges (changes) {
-        if (changes.rows && !changes.rows.isFirstChange()) {
-            const newValue = changes.rows.currentValue;
+    $doCheck () {
+        if (!angular.equals(this.previousRows, this.rows)) {
+            this.previousRows = angular.copy(this.rows);
 
-            this._compileGrid(newValue && !newValue.length && this.emptyPlaceholderElement.length);
-            this._updateRows();
+            if (this.rows) {
+                this.updateRows();
+            }
         }
     }
 
-    _compileGrid (isEmptyTemplate) {
-        this.$element.empty();
+    static filterElements (elements, tagName) {
+        const tagNameUpper = tagName.toUpperCase();
+        const filteredElements = [];
 
-        if (isEmptyTemplate) {
-            this.$element.append(this.$compile(`
-                <div class="oui-datagrid-empty">${this.emptyPlaceholderElement.html()}</div>
-            `)(this.$scope));
-        } else {
-            this.$element.append(this.$compile(template)(this.$scope));
-        }
+        angular.forEach(elements, element => {
+            if (element.tagName === tagNameUpper) {
+                filteredElements.push(element);
+            }
+        });
+
+        return filteredElements;
     }
 
     initPage () {
@@ -119,7 +116,7 @@ export default class {
         }
     }
 
-    _updateRows () {
+    updateRows () {
         this.filteredRows = this.rows;
         this.sortedRows = this.rows;
 
@@ -129,8 +126,13 @@ export default class {
             totalCount: this.rows.length
         });
 
-        this.changePage()
-            .catch(this.handleError.bind(this));
+        // TODO: Use a custom template when empty
+        if (this.rows.length) {
+            this.changePage()
+                .catch(this.handleError.bind(this));
+        } else {
+            this.displayedRows = this.rows;
+        }
     }
 
     getParentScope () {
@@ -292,44 +294,37 @@ export default class {
      * Change page with local data
      */
     localLoadData (config = {}, filterConfig = {}) {
-        const deferred = this.$q.defer();
+        // Filter data
+        this.filteredRows = this.rows;
+        if (filterConfig.searchText) {
+            const regExp = new RegExp(filterConfig.searchText, "i");
 
-        this.$timeout(() => {
-            // Filter data
-            this.filteredRows = this.rows;
-            if (filterConfig.searchText) {
-                const regExp = new RegExp(filterConfig.searchText, "i");
-
-                this.filteredRows = this.rows.filter(row => {
-                    const columnsPropertiesGetters = this.columns
-                        .filter(column => !!column.getValue) // column must have a name
-                        .map(column => column.getValue);
-                    for (let i = 0; i < columnsPropertiesGetters.length; i++) {
-                        if (regExp.test(columnsPropertiesGetters[i](row))) {
-                            return true;
-                        }
+            this.filteredRows = this.rows.filter(row => {
+                const columnsPropertiesGetters = this.columns
+                    .filter(column => !!column.getValue) // column must have a name
+                    .map(column => column.getValue);
+                for (let i = 0; i < columnsPropertiesGetters.length; i++) {
+                    if (regExp.test(columnsPropertiesGetters[i](row))) {
+                        return true;
                     }
-                    return false;
-                });
-            }
-
-            // Sorting, only executed if sortConfiguration has changed
-            if (!config.skipSort) {
-                const sortConfiguration = this.getSortingConfiguration();
-                this.sortedRows = this.orderBy(this.filteredRows, sortConfiguration.property, sortConfiguration.dir < 0);
-            }
-
-            // Pagination
-            deferred.resolve({
-                data: this.sortedRows.slice(this.getCurrentOffset(), this.getCurrentOffset() + this.getPageSize()),
-                meta: Object.assign(this.pageMeta, {
-                    pageCount: Math.ceil(this.sortedRows.length / this.pageMeta.pageSize),
-                    totalCount: this.sortedRows.length
-                })
+                }
+                return false;
             });
-        });
+        }
 
-        return deferred.promise;
+        // Sorting, only executed if sortConfiguration has changed
+        if (!config.skipSort) {
+            const sortConfiguration = this.getSortingConfiguration();
+            this.sortedRows = this.orderBy(this.filteredRows, sortConfiguration.property, sortConfiguration.dir < 0);
+        }
+
+        return this.$q.when({
+            data: this.sortedRows.slice(this.getCurrentOffset(), this.getCurrentOffset() + this.getPageSize()),
+            meta: Object.assign(this.pageMeta, {
+                pageCount: Math.ceil(this.sortedRows.length / this.pageMeta.pageSize),
+                totalCount: this.sortedRows.length
+            })
+        });
     }
 
     /**
