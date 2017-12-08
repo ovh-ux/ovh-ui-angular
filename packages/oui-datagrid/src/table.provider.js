@@ -15,15 +15,6 @@ export default class {
     }
 
     /**
-     * Set custom template for row selector.
-     * @param {String} selectorTemplate template
-     */
-    setSelectorTemplate (selectorTemplate) {
-        this.selectorTemplate = selectorTemplate;
-        return this;
-    }
-
-    /**
      * St the default page size
      * @param {Number} pageSize the default page size
      */
