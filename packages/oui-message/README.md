@@ -49,5 +49,5 @@
 | Attribute               | Type            | Binding | One-time binding | Values                                 | default | Description                            |
 | ----                    | ----            | ----    | ----             | ----                                   | ----    | ----                                   |
 | type                    | String          | @       | yes              | `info`, `success`, `warning`, `error`  |         | Message type                           |
-| aria-close-button-label | function        | &?      | yes              |                                        |         | accessibility label for close button   |
+| aria-close-button-label | function        | @?      | yes              |                                        |         | accessibility label for close button   |
 | on-dismissed            | function        | &?      |                  |                                        |         | dismissed handler                      |
