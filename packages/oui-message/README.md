@@ -6,7 +6,7 @@
 
 ```html
 <oui-message 
-    type="info|warning|error"
+    type="info|success|warning|error"
     on-dismissed="..."
     aria-close-button-label="...">
 </oui-message>
@@ -18,6 +18,12 @@
 
 ```html:preview
 <oui-message type="info">Message</oui-message>
+```
+
+### Success
+
+```html:preview
+<oui-message type="success">Message</oui-message>
 ```
 
 ### Warning
@@ -40,8 +46,8 @@
 
 ## API
 
-| Attribute               | Type            | Binding | One-time binding | Values                      | default | Description                            |
-| ----                    | ----            | ----    | ----             | ----                        | ----    | ----                                   |
-| type                    | String          | @       | yes              | `info`, `warning`, `error`  |         | Message type                           |
-| aria-close-button-label | function        | &?      | yes              |                             |         | accessibility label for close button   |
-| on-dismissed            | function        | &?      |                  |                             |         | dismissed handler                      |
+| Attribute               | Type            | Binding | One-time binding | Values                                 | default | Description                            |
+| ----                    | ----            | ----    | ----             | ----                                   | ----    | ----                                   |
+| type                    | String          | @       | yes              | `info`, `success`, `warning`, `error`  |         | Message type                           |
+| aria-close-button-label | function        | &?      | yes              |                                        |         | accessibility label for close button   |
+| on-dismissed            | function        | &?      |                  |                                        |         | dismissed handler                      |
