@@ -1,36 +1,23 @@
 import { hasProperty, range } from "./util";
 
-const keyCodes = {
-    escape: 27,
-    space: 32
-};
-
 const cssSorted = "oui-datagrid__cell_sorted";
 const cssSortable = "oui-datagrid__header_sortable";
 const cssSortableAsc = "oui-datagrid__header_sortable-asc";
 const cssSortableDesc = "oui-datagrid__header_sortable-desc";
-const cssClosed = "oui-datagrid__row_closed";
 
 export default class DatagridController {
-    constructor ($attrs, $compile, $element, $transclude, $parse, $q, $scope, $timeout, orderByFilter, ouiTableColumnBuilder, ouiTableConfiguration) {
+    constructor ($attrs, $element, $transclude, $q, $scope, orderByFilter, ouiTableColumnBuilder, ouiTableConfiguration) {
         "ngInject";
 
         this.$attrs = $attrs;
-        this.$compile = $compile;
         this.$element = $element;
         this.$transclude = $transclude;
-        this.$parse = $parse;
         this.$q = $q;
         this.$scope = $scope;
-        this.$timeout = $timeout;
         this.orderBy = orderByFilter;
         this.ouiTableColumnBuilder = ouiTableColumnBuilder;
 
         this.config = ouiTableConfiguration;
-
-        if (this.config.selectorTemplate && !this.compiledSelectorTemplate) {
-            this.compiledSelectorTemplate = $compile(`<div>${this.config.selectorTemplate}</div>`);
-        }
     }
 
     $onInit () {
@@ -49,20 +36,12 @@ export default class DatagridController {
         this.filteredRows = this.rows;
         this.sortedRows = this.rows;
 
-        // Opened rows (for phone screens)
-        this.isRowOpen = {};
-
         this._pageSize = parseInt(this.pageSize, 10) || this.config.pageSize;
         this.pageMeta = {
             currentOffset: 0,
             currentPage: 1,
             pageSize: this._pageSize
         };
-
-        this.allSelected = false;
-        this.selection = [];
-
-        this.canClickOnRow = this.$attrs.onRowClick;
     }
 
     $postLink () {
@@ -139,25 +118,6 @@ export default class DatagridController {
         return this.$scope.$parent;
     }
 
-    isSelectable () {
-        return this.$attrs.onSelectionChange;
-    }
-
-    selectionChange () {
-        const $selection = this.displayedRows.filter((row, index) => this.selection[index]);
-        this.onSelectionChange({ $selection });
-        this.allSelected = $selection.length === this.getPageRepeatRange().length;
-    }
-
-    allSelectedChange () {
-        this.getPageRepeatRange().forEach(index => {
-            this.selection[index] = this.allSelected;
-        });
-        this.onSelectionChange({
-            $selection: this.allSelected ? this.displayedRows : []
-        });
-    }
-
     hasProperty (obj, prop) { // eslint-disable-line
         return hasProperty(obj, prop);
     }
@@ -219,23 +179,14 @@ export default class DatagridController {
 
     changeOffset (newOffset) {
         const oldOffset = this.getCurrentOffset();
-        const oldSelection = angular.copy(this.selection);
-        const oldAllSelected = this.allSelected;
 
         this.scrollToTop();
 
         this.pageMeta.currentOffset = newOffset;
-        this.selection = [];
-        this.allSelected = false;
 
         this.changePage({ skipSort: true })
-            .then(() => {
-                this.selectionChange();
-            })
             .catch(() => {
                 this.pageMeta.currentOffset = oldOffset;
-                this.selection = oldSelection;
-                this.allSelected = oldAllSelected;
             });
     }
 
@@ -271,10 +222,7 @@ export default class DatagridController {
 
                 this.loadRowsData(this.displayedRows);
 
-                this.$timeout(() => {
-                    this.isRowOpen = {};
-                    this.loading = false;
-                });
+                this.loading = false;
             })
             .catch(this.handleError.bind(this));
     }
@@ -381,8 +329,6 @@ export default class DatagridController {
 
         const oldOffset = this.getCurrentOffset();
         const oldSorting = angular.copy(this.currentSorting);
-        const oldSelection = angular.copy(this.selection);
-        const oldAllSelected = this.allSelected;
 
         if (column.name === this.currentSorting.columnName) {
             this.currentSorting.dir = this.currentSorting.dir === -1 ? 1 : -1;
@@ -394,17 +340,10 @@ export default class DatagridController {
         }
 
         this.pageMeta.currentOffset = 0;
-        this.selection = [];
-        this.allSelected = false;
         this.changePage()
-            .then(() => {
-                this.selectionChange();
-            })
             .catch(() => {
                 this.pageMeta.currentOffset = oldOffset;
                 this.currentSorting = oldSorting;
-                this.selection = oldSelection;
-                this.allSelected = oldAllSelected;
             });
     }
 
@@ -427,40 +366,6 @@ export default class DatagridController {
             [cssSortableAsc]: this.currentSorting.dir === 1,
             [cssSortableDesc]: this.currentSorting.dir === -1
         };
-    }
-
-    isClosed (index) {
-        return !this.isRowOpen[index];
-    }
-
-    getClosedClass (index) {
-        return {
-            [cssClosed]: this.isClosed(index)
-        };
-    }
-
-    toggleLine (index) {
-        this.isRowOpen[index] = !this.isRowOpen[index];
-    }
-
-    rowClick ($row, $event) {
-        if (this.canClickOnRow) {
-            this.onRowClick({ $row, $event });
-        }
-    }
-
-    rowKeyDown ($row, $event) {
-        // Space
-        if ($event.keyCode === keyCodes.space && this.canClickOnRow) {
-            this.onRowClick({ $row, $event });
-        }
-    }
-
-    getRowLabel ($row) {
-        if (this.$attrs.onRowClick) {
-            return this.$parse(this.rowLabel)({ $row });
-        }
-        return "";
     }
 
     getColumn (name) {
