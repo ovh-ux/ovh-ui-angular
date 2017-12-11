@@ -35,7 +35,7 @@
 ### Accessibility
 
 ```html:preview
-<oui-message aria-close-button-label="Accessibility text" type="info">Message</oui-message>
+<oui-message aria-close-button-label="Close" type="info">Message</oui-message>
 ```
 
 ## API
