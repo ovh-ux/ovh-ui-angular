@@ -5,7 +5,7 @@
                 <th class="oui-datagrid__header"
                     ng-class="$ctrl.getSortableClasses(column)"
                     ng-repeat="column in $ctrl.columns track by $index"
-                    ng-click="$ctrl.sort(column)"
+                    ng-click="::$ctrl.sort(column)"
                     ng-bind="::column.title">
                 </th>
             </tr>
