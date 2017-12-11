@@ -1,14 +1,14 @@
 import Cell from "./cell/cell.component";
+import Datagrid from "./datagrid.component";
+import DatagridColumnBuilder from "./datagrid-column-builder.service";
+import DatagridProvider from "./datagrid.provider.js";
 import DefaultPagination from "./pagination/default-pagination.component.js";
 import Pagination from "./pagination.directive.js";
-import Table from "./table.component";
-import TableColumnBuilder from "./table-column-builder.service";
-import TableProvider from "./table.provider.js";
 
 angular.module("oui.datagrid", [])
-    .service("ouiTableColumnBuilder", TableColumnBuilder)
-    .component("ouiTable", Table)
-    .component("ouiTableCell", Cell)
+    .service("ouiDatagridColumnBuilder", DatagridColumnBuilder)
+    .component("ouiDatagrid", Datagrid)
+    .component("ouiDatagridCell", Cell)
     .directive("ouiTablePagination", Pagination)
     .component("ouiTableDefaultPagination", DefaultPagination)
-    .provider("ouiTableConfiguration", TableProvider);
+    .provider("ouiDatagridConfiguration", DatagridProvider);

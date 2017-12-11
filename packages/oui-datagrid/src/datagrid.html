@@ -21,10 +21,10 @@
                     <span ng-if="!column.name || $ctrl.hasProperty(row, column.name) && !column.template"
                         ng-bind="column.getValue(row)">
                     </span>
-                    <oui-table-cell ng-if="!column.name || $ctrl.hasProperty(row, column.name) && column.template"
+                    <oui-datagrid-cell ng-if="!column.name || $ctrl.hasProperty(row, column.name) && column.template"
                         row="row"
                         column="column">
-                    </oui-table-cell>
+                    </oui-datagrid-cell>
                 </td>
             </tr>
         </tbody>

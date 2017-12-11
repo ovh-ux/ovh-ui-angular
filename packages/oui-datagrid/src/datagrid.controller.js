@@ -6,7 +6,7 @@ const cssSortableAsc = "oui-datagrid__header_sortable-asc";
 const cssSortableDesc = "oui-datagrid__header_sortable-desc";
 
 export default class DatagridController {
-    constructor ($attrs, $element, $transclude, $q, $scope, orderByFilter, ouiTableColumnBuilder, ouiTableConfiguration) {
+    constructor ($attrs, $element, $transclude, $q, $scope, orderByFilter, ouiDatagridColumnBuilder, ouiDatagridConfiguration) {
         "ngInject";
 
         this.$attrs = $attrs;
@@ -15,9 +15,9 @@ export default class DatagridController {
         this.$q = $q;
         this.$scope = $scope;
         this.orderBy = orderByFilter;
-        this.ouiTableColumnBuilder = ouiTableColumnBuilder;
+        this.ouiDatagridColumnBuilder = ouiDatagridColumnBuilder;
 
-        this.config = ouiTableConfiguration;
+        this.config = ouiDatagridConfiguration;
     }
 
     $onInit () {
@@ -46,9 +46,9 @@ export default class DatagridController {
 
     $postLink () {
         this.$transclude((clone) => {
-            const columnElements = DatagridController.filterElements(clone, "column");
+            const columnElements = DatagridController.filterElements(clone, "oui-column");
 
-            const builtColumns = this.ouiTableColumnBuilder.build(columnElements, this.$scope);
+            const builtColumns = this.ouiDatagridColumnBuilder.build(columnElements, this.$scope);
             this.columns = builtColumns.columns;
             this.currentSorting = builtColumns.currentSorting;
 

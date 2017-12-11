@@ -1,5 +1,5 @@
-import controller from "./table.controller";
-import template from "./table.html";
+import controller from "./datagrid.controller";
+import template from "./datagrid.html";
 
 export default {
     controller,
