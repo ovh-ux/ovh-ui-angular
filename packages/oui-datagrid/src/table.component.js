@@ -7,12 +7,12 @@ export default {
     transclude: true,
     bindings: {
         id: "@?",
-        pageSize: "@",
-        rows: "<",
-        rowsLoader: "&",
-        rowLoader: "&",
-        onSelectionChange: "&",
-        onRowClick: "&",
-        rowLabel: "@"
+        pageSize: "@?",
+        rows: "<?",
+        rowsLoader: "&?",
+        rowLoader: "&?",
+        onSelectionChange: "&?",
+        onRowClick: "&?",
+        rowLabel: "@?"
     }
 };
