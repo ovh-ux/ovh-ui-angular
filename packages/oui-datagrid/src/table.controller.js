@@ -11,18 +11,20 @@ const cssSortableAsc = "oui-datagrid__header_sortable-asc";
 const cssSortableDesc = "oui-datagrid__header_sortable-desc";
 const cssClosed = "oui-datagrid__row_closed";
 
-export default class {
-    constructor ($attrs, $compile, $element, $parse, $q, $sce, $scope, $timeout, orderByFilter, ouiTableConfiguration) {
+export default class DatagridController {
+    constructor ($attrs, $compile, $element, $transclude, $parse, $q, $scope, $timeout, orderByFilter, ouiTableColumnBuilder, ouiTableConfiguration) {
         "ngInject";
 
         this.$attrs = $attrs;
+        this.$compile = $compile;
         this.$element = $element;
+        this.$transclude = $transclude;
         this.$parse = $parse;
         this.$q = $q;
-        this.$sce = $sce;
         this.$scope = $scope;
         this.$timeout = $timeout;
         this.orderBy = orderByFilter;
+        this.ouiTableColumnBuilder = ouiTableColumnBuilder;
 
         this.config = ouiTableConfiguration;
 
@@ -63,31 +65,78 @@ export default class {
         this.canClickOnRow = this.$attrs.onRowClick;
     }
 
-    init () {
-        // Local data
-        if (this.rows) {
-            this.$scope.$watchCollection("tableCtrl.rows", () => {
-                this.filteredRows = this.rows;
-                this.sortedRows = this.rows;
+    $postLink () {
+        this.$transclude((clone) => {
+            const columnElements = DatagridController.filterElements(clone, "column");
 
-                this.updatePageMeta({
-                    currentOffset: 0,
-                    pageCount: Math.ceil(this.rows.length / this._pageSize),
-                    totalCount: this.rows.length
-                });
+            const builtColumns = this.ouiTableColumnBuilder.build(columnElements, this.$scope);
+            this.columns = builtColumns.columns;
+            this.currentSorting = builtColumns.currentSorting;
 
-                this.changePage()
-                    .catch(this.handleError.bind(this));
-            });
-        } else
+            // Once columns has been processed,
+            // we can proceed with the first loading
+            this.initPage();
 
-        // Remote data
+            const paginationElement = this.$element.find("pagination");
+            if (paginationElement.length) {
+                this.setPaginationTemplate(paginationElement.html());
+            }
+        });
+    }
+
+    $doCheck () {
+        if (!angular.equals(this.previousRows, this.rows)) {
+            this.previousRows = angular.copy(this.rows);
+
+            if (this.rows) {
+                this.updateRows();
+            }
+        }
+    }
+
+    static filterElements (elements, tagName) {
+        const tagNameUpper = tagName.toUpperCase();
+        const filteredElements = [];
+
+        angular.forEach(elements, element => {
+            if (element.tagName === tagNameUpper) {
+                filteredElements.push(element);
+            }
+        });
+
+        return filteredElements;
+    }
+
+    initPage () {
         if (this.rowsLoader) {
             this.changePage({ skipSort: true })
                 .catch(this.handleError.bind(this));
-        } else {
+        } else if (!this.rows) {
             throw new Error("No data nor data loader found");
         }
+    }
+
+    updateRows () {
+        this.filteredRows = this.rows;
+        this.sortedRows = this.rows;
+
+        this.updatePageMeta({
+            currentOffset: 0,
+            pageCount: Math.ceil(this.rows.length / this._pageSize),
+            totalCount: this.rows.length
+        });
+
+        // TODO: Use a custom template when empty
+        if (this.rows.length) {
+            this.changePage()
+                .catch(this.handleError.bind(this));
+        } else {
+            this.displayedRows = this.rows;
+        }
+    }
+
+    getParentScope () {
+        return this.$scope.$parent;
     }
 
     isSelectable () {
@@ -245,44 +294,37 @@ export default class {
      * Change page with local data
      */
     localLoadData (config = {}, filterConfig = {}) {
-        const deferred = this.$q.defer();
+        // Filter data
+        this.filteredRows = this.rows;
+        if (filterConfig.searchText) {
+            const regExp = new RegExp(filterConfig.searchText, "i");
 
-        this.$timeout(() => {
-            // Filter data
-            this.filteredRows = this.rows;
-            if (filterConfig.searchText) {
-                const regExp = new RegExp(filterConfig.searchText, "i");
-
-                this.filteredRows = this.rows.filter(row => {
-                    const columnsPropertiesGetters = this.columns
-                        .filter(column => !!column.getValue) // column must have a name
-                        .map(column => column.getValue);
-                    for (let i = 0; i < columnsPropertiesGetters.length; i++) {
-                        if (regExp.test(columnsPropertiesGetters[i](row))) {
-                            return true;
-                        }
+            this.filteredRows = this.rows.filter(row => {
+                const columnsPropertiesGetters = this.columns
+                    .filter(column => !!column.getValue) // column must have a name
+                    .map(column => column.getValue);
+                for (let i = 0; i < columnsPropertiesGetters.length; i++) {
+                    if (regExp.test(columnsPropertiesGetters[i](row))) {
+                        return true;
                     }
-                    return false;
-                });
-            }
-
-            // Sorting, only executed if sortConfiguration has changed
-            if (!config.skipSort) {
-                const sortConfiguration = this.getSortingConfiguration();
-                this.sortedRows = this.orderBy(this.filteredRows, sortConfiguration.property, sortConfiguration.dir < 0);
-            }
-
-            // Pagination
-            deferred.resolve({
-                data: this.sortedRows.slice(this.getCurrentOffset(), this.getCurrentOffset() + this.getPageSize()),
-                meta: Object.assign(this.pageMeta, {
-                    pageCount: Math.ceil(this.sortedRows.length / this.pageMeta.pageSize),
-                    totalCount: this.sortedRows.length
-                })
+                }
+                return false;
             });
-        });
+        }
 
-        return deferred.promise;
+        // Sorting, only executed if sortConfiguration has changed
+        if (!config.skipSort) {
+            const sortConfiguration = this.getSortingConfiguration();
+            this.sortedRows = this.orderBy(this.filteredRows, sortConfiguration.property, sortConfiguration.dir < 0);
+        }
+
+        return this.$q.when({
+            data: this.sortedRows.slice(this.getCurrentOffset(), this.getCurrentOffset() + this.getPageSize()),
+            meta: Object.assign(this.pageMeta, {
+                pageCount: Math.ceil(this.sortedRows.length / this.pageMeta.pageSize),
+                totalCount: this.sortedRows.length
+            })
+        });
     }
 
     /**
