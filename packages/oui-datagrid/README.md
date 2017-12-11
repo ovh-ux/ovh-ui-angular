@@ -8,45 +8,45 @@
 
 Local
 
-<oui-table
+<oui-datagrid
   rows="$ctrl.data"
   page-size="25">
-  <column property="firstName" sortable="asc"></column>
-  <column property="lastName" sortable></column>
-  <column title="'Mère'" property="parents.mother.lastName" sortable>
+  <oui-column property="firstName" sortable="asc"></oui-column>
+  <oui-column property="lastName" sortable></oui-column>
+  <oui-column title="'Mère'" property="parents.mother.lastName" sortable>
     {{$row.parents.mother.lastName}}, {{$row.parents.mother.firstName}}
-  </column>
-  <column title="'Père'" property="parents.father.lastName" sortable>
+  </oui-column>
+  <oui-column title="'Père'" property="parents.father.lastName" sortable>
     {{$row.parents.father.lastName}}, {{$row.parents.father.firstName}}
-  </column>
-  <column property="email" sortable>
+  </oui-column>
+  <oui-column property="email" sortable>
     <a href="mailto:{{$value}}">{{$ctrl.label}}: {{$value}}</a>
-  </column>
-  <column property="phone"></column>
-  <column property="birth" sortable>
+  </oui-column>
+  <oui-column property="phone"></oui-column>
+  <oui-column property="birth" sortable>
     {{$value|date:short}}
-  </column>
-</oui-table>
+  </oui-column>
+</oui-datagrid>
 
 Remote data + on-the-fly loading
 
-<oui-table
+<oui-datagrid
   rows-loader="$ctrl.loadPartialData($config)"
   row-loader="$ctrl.loadRow($row)"
   page-size="25">
-  <column property="firstName" sortable="asc"></column>
-  <column property="lastName" sortable></column>
-  <column title="'Mère'" property="parents.mother.lastName" sortable>
+  <oui-column property="firstName" sortable="asc"></oui-column>
+  <oui-column property="lastName" sortable></oui-column>
+  <oui-column title="'Mère'" property="parents.mother.lastName" sortable>
     {{$row.parents.mother.lastName}}, {{$row.parents.mother.firstName}}
-  </column>
-  <column title="'Père'" property="parents.father.lastName" sortable>
+  </oui-column>
+  <oui-column title="'Père'" property="parents.father.lastName" sortable>
     {{$row.parents.father.lastName}}, {{$row.parents.father.firstName}}
-  </column>
-  <column property="email" sortable>
+  </oui-column>
+  <oui-column property="email" sortable>
     <a href="mailto:{{$value}}">{{$ctrl.label}}: {{$value}}</a>
-  </column>
-  <column property="phone"></column>
-  <column property="birth" sortable>
+  </oui-column>
+  <oui-column property="phone"></oui-column>
+  <oui-column property="birth" sortable>
     {{$value|date:short}}
-  </column>
-</oui-table>
+  </oui-column>
+</oui-datagrid>

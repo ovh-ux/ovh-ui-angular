@@ -22,11 +22,11 @@ export default {
         onPageSizeChange: "&"
     },
     controller: class {
-        constructor ($timeout, ouiTableConfiguration) {
+        constructor ($timeout, ouiDatagridConfiguration) {
             "ngInject";
 
             this.$timeout = $timeout;
-            this.config = ouiTableConfiguration;
+            this.config = ouiDatagridConfiguration;
         }
 
         $onInit () {

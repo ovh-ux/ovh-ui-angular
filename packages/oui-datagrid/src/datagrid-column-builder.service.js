@@ -1,6 +1,6 @@
 import { capitalize } from "./util";
 
-export default class TableColumnBuilder {
+export default class DatagridColumnBuilder {
     constructor ($parse, $compile) {
         "ngInject";
 
@@ -33,7 +33,7 @@ export default class TableColumnBuilder {
 
                 case "sortable":
                     column.sortable = attr.value !== undefined;
-                    Object.assign(currentSorting, TableColumnBuilder.defineDefaultSorting(column, attr.value));
+                    Object.assign(currentSorting, DatagridColumnBuilder.defineDefaultSorting(column, attr.value));
                     break;
 
                 case "title":

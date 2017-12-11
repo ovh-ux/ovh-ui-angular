@@ -3,7 +3,7 @@ import controller from "./cell.controller";
 export default {
     controller,
     require: {
-        datagridCtrl: "^^ouiTable"
+        datagridCtrl: "^^ouiDatagrid"
     },
     bindings: {
         row: "<",
