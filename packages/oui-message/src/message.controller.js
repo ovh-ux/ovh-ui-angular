@@ -1,8 +1,4 @@
 export default class {
-    constructor () {
-        "ngInject";
-    }
-
     dismiss () {
         this.dismissed = true;
 
