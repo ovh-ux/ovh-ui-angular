@@ -1,8 +1,7 @@
 export default class {
-    constructor ($scope, $element) {
+    constructor ($element) {
         "ngInject";
 
-        this.$scope = $scope;
         this.$element = $element;
     }
 
@@ -11,7 +10,7 @@ export default class {
         // values inside cells
         this.cellScope = this.datagridCtrl.getParentScope().$new(false);
 
-        this.$element[0].style.display = "block";
+        this.$element.css("display", "block");
 
         this._compileCell();
     }
