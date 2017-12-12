@@ -6,7 +6,7 @@ const cssSortableAsc = "oui-datagrid__header_sortable-asc";
 const cssSortableDesc = "oui-datagrid__header_sortable-desc";
 
 export default class DatagridController {
-    constructor ($attrs, $element, $transclude, $q, $scope, orderByFilter, ouiDatagridColumnBuilder, ouiDatagridConfiguration) {
+    constructor ($attrs, $element, $transclude, $q, $scope, orderByFilter, ouiDatagridPaging, ouiDatagridColumnBuilder, ouiDatagridConfiguration) {
         "ngInject";
 
         this.$attrs = $attrs;
@@ -15,27 +15,13 @@ export default class DatagridController {
         this.$q = $q;
         this.$scope = $scope;
         this.orderBy = orderByFilter;
+        this.ouiDatagridPaging = ouiDatagridPaging;
         this.ouiDatagridColumnBuilder = ouiDatagridColumnBuilder;
 
         this.config = ouiDatagridConfiguration;
     }
 
     $onInit () {
-        if (this.$attrs.rows && (!this.rows || !(this.rows instanceof Array))) {
-            this.rows = [];
-        }
-
-        this.loading = false;
-        this.currentSorting = {
-            columnName: undefined,
-            dir: 0
-        };
-        this.filterConfig = {};
-
-        this.displayedRows = [];
-        this.filteredRows = this.rows;
-        this.sortedRows = this.rows;
-
         this._pageSize = parseInt(this.pageSize, 10) || this.config.pageSize;
         this.pageMeta = {
             currentOffset: 0,
@@ -50,11 +36,14 @@ export default class DatagridController {
 
             const builtColumns = this.ouiDatagridColumnBuilder.build(columnElements, this.$scope);
             this.columns = builtColumns.columns;
-            this.currentSorting = builtColumns.currentSorting;
 
-            // Once columns has been processed,
-            // we can proceed with the first loading
-            this.initPage();
+            if (this.rowsLoader || this.rowLoader) {
+                this.paging = this.ouiDatagridPaging.createRemote(this.columns, builtColumns.currentSorting, this.pageMeta.pageSize, this.rowsLoader, this.rowLoader);
+                this.pageMeta.currentOffset = 0;
+                this.refreshData(() => this.paging.setOffset(this.pageMeta.currentOffset));
+            } else {
+                this.paging = this.ouiDatagridPaging.createLocal(this.columns, builtColumns.currentSorting, this.pageMeta.pageSize, this.rows);
+            }
 
             const paginationElement = this.$element.find("pagination");
             if (paginationElement.length) {
@@ -68,49 +57,9 @@ export default class DatagridController {
             this.previousRows = angular.copy(this.rows);
 
             if (this.rows) {
-                this.updateRows();
+                this.pageMeta.currentOffset = 0;
+                this.refreshData(() => this.paging.setRows(this.rows));
             }
-        }
-    }
-
-    static filterElements (elements, tagName) {
-        const tagNameUpper = tagName.toUpperCase();
-        const filteredElements = [];
-
-        angular.forEach(elements, element => {
-            if (element.tagName === tagNameUpper) {
-                filteredElements.push(element);
-            }
-        });
-
-        return filteredElements;
-    }
-
-    initPage () {
-        if (this.rowsLoader) {
-            this.changePage({ skipSort: true })
-                .catch(this.handleError.bind(this));
-        } else if (!this.rows) {
-            throw new Error("No data nor data loader found");
-        }
-    }
-
-    updateRows () {
-        this.filteredRows = this.rows;
-        this.sortedRows = this.rows;
-
-        this.updatePageMeta({
-            currentOffset: 0,
-            pageCount: Math.ceil(this.rows.length / this._pageSize),
-            totalCount: this.rows.length
-        });
-
-        // TODO: Use a custom template when empty
-        if (this.rows.length) {
-            this.changePage()
-                .catch(this.handleError.bind(this));
-        } else {
-            this.displayedRows = this.rows;
         }
     }
 
@@ -169,8 +118,7 @@ export default class DatagridController {
 
         this.scrollToTop();
 
-        this.changePage({ skipSort: true })
-            .catch(this.handleError.bind(this));
+        this.refreshData(() => this.paging.setPageSize(pageSize));
     }
 
     scrollToTop () {
@@ -178,50 +126,22 @@ export default class DatagridController {
     }
 
     changeOffset (newOffset) {
-        const oldOffset = this.getCurrentOffset();
-
         this.scrollToTop();
 
         this.pageMeta.currentOffset = newOffset;
 
-        this.changePage({ skipSort: true })
-            .catch(() => {
-                this.pageMeta.currentOffset = oldOffset;
-            });
+        this.refreshData(() => this.paging.setOffset(newOffset, true));
     }
 
-    refreshFilter (filterConfig = {}) {
-        this.pageMeta.currentOffset = 0;
-        this.filterConfig = filterConfig;
-        this.changePage();
-    }
-
-    /**
-     * Show current data frame according currentOffset, pageSize and currentSorting.
-     * Controls the loading state.
-     * Possibility to skip sort on page change with local data.
-     */
-    changePage (config = {}) {
+    refreshData (callback) {
         if (this.loading) {
             return this.$q.reject(false);
         }
 
-        let loadPage;
-
-        if (this.rows) {
-            loadPage = this.localLoadData.bind(this, config, this.filterConfig);
-        } else {
-            loadPage = this.loadData.bind(this, this.filterConfig);
-        }
-
-        this.loading = true;
-        return this.$q.when(loadPage())
+        return callback()
             .then(result => {
                 this.displayedRows = result.data;
-                this.updatePageMeta(result.meta);
-
-                this.loadRowsData(this.displayedRows);
-
+                this.updatePageMeta(Object.assign(this.pageMeta, result.meta));
                 this.loading = false;
             })
             .catch(this.handleError.bind(this));
@@ -236,78 +156,6 @@ export default class DatagridController {
             totalCount,
             pageSize: newPageSize
         };
-    }
-
-    /**
-     * Change page with local data
-     */
-    localLoadData (config = {}, filterConfig = {}) {
-        // Filter data
-        this.filteredRows = this.rows;
-        if (filterConfig.searchText) {
-            const regExp = new RegExp(filterConfig.searchText, "i");
-
-            this.filteredRows = this.rows.filter(row => {
-                const columnsPropertiesGetters = this.columns
-                    .filter(column => !!column.getValue) // column must have a name
-                    .map(column => column.getValue);
-                for (let i = 0; i < columnsPropertiesGetters.length; i++) {
-                    if (regExp.test(columnsPropertiesGetters[i](row))) {
-                        return true;
-                    }
-                }
-                return false;
-            });
-        }
-
-        // Sorting, only executed if sortConfiguration has changed
-        if (!config.skipSort) {
-            const sortConfiguration = this.getSortingConfiguration();
-            this.sortedRows = this.orderBy(this.filteredRows, sortConfiguration.property, sortConfiguration.dir < 0);
-        }
-
-        return this.$q.when({
-            data: this.sortedRows.slice(this.getCurrentOffset(), this.getCurrentOffset() + this.getPageSize()),
-            meta: Object.assign(this.pageMeta, {
-                pageCount: Math.ceil(this.sortedRows.length / this.pageMeta.pageSize),
-                totalCount: this.sortedRows.length
-            })
-        });
-    }
-
-    /**
-     * Change page with remote data
-     */
-    loadData (config = {}) {
-        return this.rowsLoader({
-            $config: Object.assign({
-                offset: this.getCurrentOffset(),
-                pageSize: this.getPageSize(),
-                sort: this.getSortingConfiguration()
-            }, config)
-        });
-    }
-
-    loadRowsData (rows) {
-        rows.forEach(row => this.loadRowData(row));
-    }
-
-    loadRowData (row) {
-        if (!this.isRowLoaded(row)) {
-            this.$q.when(this.rowLoader({ $row: row }))
-                .then(fullRow => Object.assign(row, fullRow))
-                .catch(this.handleError.bind(this));
-        }
-    }
-
-    /**
-     * Check if all data is loaded on this row
-     * @param  {object}  row a row
-     * @return {Boolean}     true if loaded
-     */
-    isRowLoaded (row) {
-        return this.columns.map(column => this.hasProperty(row, column.name))
-            .reduce((a, b) => a && b, true);
     }
 
     getPageRepeatRange () {
@@ -327,35 +175,11 @@ export default class DatagridController {
             return;
         }
 
-        const oldOffset = this.getCurrentOffset();
-        const oldSorting = angular.copy(this.currentSorting);
-
-        if (column.name === this.currentSorting.columnName) {
-            this.currentSorting.dir = this.currentSorting.dir === -1 ? 1 : -1;
-        } else {
-            this.currentSorting = {
-                columnName: column.name,
-                dir: 1
-            };
-        }
-
-        this.pageMeta.currentOffset = 0;
-        this.changePage()
-            .catch(() => {
-                this.pageMeta.currentOffset = oldOffset;
-                this.currentSorting = oldSorting;
-            });
-    }
-
-    getSortingConfiguration () {
-        const selectedColumn = this.getColumn(this.currentSorting.columnName);
-        return Object.assign({
-            property: selectedColumn && selectedColumn.sortProperty
-        }, this.currentSorting);
+        this.refreshData(() => this.paging.setSort(column.name));
     }
 
     getSortableClasses (column) {
-        if (column.name !== this.currentSorting.columnName) {
+        if (column.name !== this.paging.getSortColumnName()) {
             return {
                 [cssSortable]: !!column.sortable
             };
@@ -363,23 +187,27 @@ export default class DatagridController {
         return {
             [cssSortable]: !!column.sortable,
             [cssSorted]: true,
-            [cssSortableAsc]: this.currentSorting.dir === 1,
-            [cssSortableDesc]: this.currentSorting.dir === -1
+            [cssSortableAsc]: this.paging.isSortAsc(),
+            [cssSortableDesc]: this.paging.isSortDesc()
         };
-    }
-
-    getColumn (name) {
-        for (let i = 0; i < this.columns.length; i++) {
-            if (this.columns[i].name === name) {
-                return this.columns[i];
-            }
-        }
-        return null;
     }
 
     setPaginationTemplate (paginationTemplate) {
         if (paginationTemplate) {
             this.paginationTemplate = `<div>${paginationTemplate}</div>`;
         }
+    }
+
+    static filterElements (elements, tagName) {
+        const tagNameUpper = tagName.toUpperCase();
+        const filteredElements = [];
+
+        angular.forEach(elements, element => {
+            if (element.tagName === tagNameUpper) {
+                filteredElements.push(element);
+            }
+        });
+
+        return filteredElements;
     }
 }
