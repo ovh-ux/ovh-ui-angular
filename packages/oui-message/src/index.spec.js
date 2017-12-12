@@ -21,19 +21,19 @@ describe("oui-message: ", () => {
 
         describe("when info type", () => {
             it("should display info icon", () => {
-                const element = TestUtils.compileTemplate("<oui-message type=\"info\"></oui-message>");
+                const element = TestUtils.compileTemplate('<oui-message type="info"></oui-message>');
 
                 expect(getIcons(element, "oui-icon-info_circle").length).toBe(1);
             });
 
             it("should display close button", () => {
-                const element = TestUtils.compileTemplate("<oui-message type=\"info\"></oui-message>");
+                const element = TestUtils.compileTemplate('<oui-message type="info"></oui-message>');
 
                 expect(getCloseButton(element)).toBeDefined();
             });
 
             it("should dismiss message when close button is clicked", () => {
-                const element = TestUtils.compileTemplate("<oui-message type=\"info\"></oui-message>");
+                const element = TestUtils.compileTemplate('<oui-message type="info"></oui-message>');
 
                 getCloseButton(element).click();
 
@@ -42,7 +42,7 @@ describe("oui-message: ", () => {
 
             it("should assign binding value to aria-label attribute on close button", () => {
                 const closeButtonLabel = "My label";
-                const element = TestUtils.compileTemplate(`<oui-message type=\"info\" aria-close-button-label="${closeButtonLabel}"></oui-message>`);
+                const element = TestUtils.compileTemplate(`<oui-message type="info" aria-close-button-label="${closeButtonLabel}"></oui-message>`);
 
                 expect(angular.element(getCloseButton(element)).attr("aria-label")).toBe(closeButtonLabel);
             });
@@ -50,7 +50,7 @@ describe("oui-message: ", () => {
 
             it("should raise on-dismissed event after close button is clicked", () => {
                 const onDismissedSpy = jasmine.createSpy("onDismissedSpy");
-                const element = TestUtils.compileTemplate("<oui-message type=\"info\" on-dismissed=\"$ctrl.onDismissed()\"></oui-message>", {
+                const element = TestUtils.compileTemplate('<oui-message type="info" on-dismissed="$ctrl.onDismissed()"></oui-message>', {
                     onDismissed: onDismissedSpy
                 });
 
@@ -62,19 +62,19 @@ describe("oui-message: ", () => {
 
         describe("when success type", () => {
             it("should display success icon", () => {
-                const element = TestUtils.compileTemplate("<oui-message type=\"success\"></oui-message>");
+                const element = TestUtils.compileTemplate('<oui-message type="success"></oui-message>');
 
                 expect(getIcons(element, "oui-icon-success_circle").length).toBe(1);
             });
 
             it("should display close button", () => {
-                const element = TestUtils.compileTemplate("<oui-message type=\"success\"></oui-message>");
+                const element = TestUtils.compileTemplate('<oui-message type="success"></oui-message>');
 
                 expect(getCloseButton(element)).toBeDefined();
             });
 
             it("should dismiss message when close button is clicked", () => {
-                const element = TestUtils.compileTemplate("<oui-message type=\"success\"></oui-message>");
+                const element = TestUtils.compileTemplate('<oui-message type="success"></oui-message>');
 
                 getCloseButton(element).click();
 
@@ -83,7 +83,7 @@ describe("oui-message: ", () => {
 
             it("should assign binding value to aria-label attribute on close button", () => {
                 const closeButtonLabel = "My label";
-                const element = TestUtils.compileTemplate(`<oui-message type=\"success\" aria-close-button-label="${closeButtonLabel}"></oui-message>`);
+                const element = TestUtils.compileTemplate(`<oui-message type="success" aria-close-button-label="${closeButtonLabel}"></oui-message>`);
 
                 expect(angular.element(getCloseButton(element)).attr("aria-label")).toBe(closeButtonLabel);
             });
@@ -91,7 +91,7 @@ describe("oui-message: ", () => {
 
             it("should raise on-dismissed event after close button is clicked", () => {
                 const onDismissedSpy = jasmine.createSpy("onDismissedSpy");
-                const element = TestUtils.compileTemplate("<oui-message type=\"success\" on-dismissed=\"$ctrl.onDismissed()\"></oui-message>", {
+                const element = TestUtils.compileTemplate('<oui-message type="success" on-dismissed="$ctrl.onDismissed()"></oui-message>', {
                     onDismissed: onDismissedSpy
                 });
 
@@ -104,7 +104,7 @@ describe("oui-message: ", () => {
         describe("when error type", () => {
             let element;
             beforeEach(() => {
-                element = TestUtils.compileTemplate("<oui-message type=\"error\"></oui-message>");
+                element = TestUtils.compileTemplate('<oui-message type="error"></oui-message>');
             });
 
             it("should display error icon", () => {
@@ -119,7 +119,7 @@ describe("oui-message: ", () => {
         describe("when warning type", () => {
             let element;
             beforeEach(() => {
-                element = TestUtils.compileTemplate("<oui-message type=\"warning\"></oui-message>");
+                element = TestUtils.compileTemplate('<oui-message type="warning"></oui-message>');
             });
 
             it("should display warning icon", () => {
