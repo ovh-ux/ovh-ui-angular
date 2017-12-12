@@ -1,10 +1,11 @@
 import DatagridPagingAbstract from "./datagrid-paging-abstract";
 
 export default class DatagridLocalPaging extends DatagridPagingAbstract {
-    constructor (columns, currentSorting, pageSize, pagingService, rows) {
-        super(columns, currentSorting, pageSize, pagingService);
+    constructor (columns, currentSorting, pageSize, rowLoader, pagingService, rows) {
+        super(columns, currentSorting, pageSize, rowLoader, pagingService);
 
         this.rows = rows;
+        this.rowLoader = rowLoader;
     }
 
     setRows (rows) {
@@ -24,7 +25,12 @@ export default class DatagridLocalPaging extends DatagridPagingAbstract {
                 pageCount: Math.ceil(this.sortedRows.length / this.pageSize),
                 totalCount: this.sortedRows.length
             }
-        });
+        })
+            .then(result => {
+                this.loadRowsData(result.data);
+
+                return result;
+            });
     }
 
     _sort () {

@@ -37,12 +37,12 @@ export default class DatagridController {
             const builtColumns = this.ouiDatagridColumnBuilder.build(columnElements, this.$scope);
             this.columns = builtColumns.columns;
 
-            if (this.rowsLoader || this.rowLoader) {
-                this.paging = this.ouiDatagridPaging.createRemote(this.columns, builtColumns.currentSorting, this.pageMeta.pageSize, this.rowsLoader, this.rowLoader);
+            if (this.rowsLoader) {
+                this.paging = this.ouiDatagridPaging.createRemote(this.columns, builtColumns.currentSorting, this.pageMeta.pageSize, this.rowLoader, this.rowsLoader);
                 this.pageMeta.currentOffset = 0;
                 this.refreshData(() => this.paging.setOffset(this.pageMeta.currentOffset));
             } else {
-                this.paging = this.ouiDatagridPaging.createLocal(this.columns, builtColumns.currentSorting, this.pageMeta.pageSize, this.rows);
+                this.paging = this.ouiDatagridPaging.createLocal(this.columns, builtColumns.currentSorting, this.pageMeta.pageSize, this.rowLoader, this.rows);
             }
 
             const paginationElement = this.$element.find("pagination");
