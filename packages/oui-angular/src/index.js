@@ -24,6 +24,6 @@ angular.module("oui", [
     "oui.action-menu",
     "oui.tooltip",
     "oui.numeric",
-    "oui.pagination"
+    "oui.pagination",
     "oui.datagrid"
 ]);

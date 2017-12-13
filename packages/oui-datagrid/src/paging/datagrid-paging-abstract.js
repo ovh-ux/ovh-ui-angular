@@ -5,7 +5,7 @@ export default class DatagridPagingAbstract {
         this.columns = columns;
         this.currentSorting = currentSorting;
         this.pageSize = pageSize;
-        this.offset = 0;
+        this.offset = 1;
         this.rowLoader = rowLoader;
 
         this.$q = pagingService.$q;

@@ -29,23 +29,13 @@
             </tr>
         </tbody>
     </table>
-    <oui-table-pagination ng-hide="$ctrl.loading"
-        ng-if="$ctrl.paginationTemplate"
-        template="$ctrl.paginationTemplate"
-        table="$ctrl"
-        class="oui-datagrid-panel__pagination oui-datagrid-panel__pagination_bottom">
-    </oui-table-pagination>
-    <div ng-hide="$ctrl.loading"
-        ng-if="!$ctrl.paginationTemplate"
-        class="oui-datagrid-panel__pagination oui-datagrid-panel__pagination_bottom">
-        <oui-table-default-pagination page-size="$ctrl.getPageSize()"
-            current-page="$ctrl.getCurrentPage()"
-            page-count="$ctrl.getPageCount()"
-            total-items="$ctrl.getTotalCount()"
-            on-next-page="$ctrl.nextPage()"
-            on-previous-page="$ctrl.previousPage()"
-            on-page="$ctrl.goToPage($page)"
-            on-page-size-change="$ctrl.setPageSize($pageSize)">
-        </oui-table-default-pagination>
+    <div ng-hide="$ctrl.firstLoading">
+        <oui-pagination
+            class="oui-datagrid-panel__pagination oui-datagrid-panel__pagination_bottom"
+            current-offset="$ctrl.paging.offset"
+            page-size="$ctrl.paging.pageSize"
+            total-items="$ctrl.paging.totalCount"
+            on-change="$ctrl.onPaginationChange($event)">
+        </oui-pagination>
     </div>
 </div>

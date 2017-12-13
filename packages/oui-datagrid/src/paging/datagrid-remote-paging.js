@@ -19,6 +19,7 @@ export default class DatagridRemotePaging extends DatagridPagingAbstract {
         })
             .then(result => {
                 this.loadRowsData(result.data);
+                this.totalCount = result.meta.totalCount;
 
                 return result;
             });

@@ -19,8 +19,10 @@ export default class DatagridLocalPaging extends DatagridPagingAbstract {
             this._sort();
         }
 
+        console.log(this.offset);
+
         return this.$q.when({
-            data: this.sortedRows.slice(this.offset, this.offset + this.pageSize),
+            data: this.sortedRows.slice(this.offset - 1, this.offset - 1 + this.pageSize),
             meta: {
                 pageCount: Math.ceil(this.sortedRows.length / this.pageSize),
                 totalCount: this.sortedRows.length
@@ -28,6 +30,7 @@ export default class DatagridLocalPaging extends DatagridPagingAbstract {
         })
             .then(result => {
                 this.loadRowsData(result.data);
+                this.totalCount = result.meta.totalCount;
 
                 return result;
             });

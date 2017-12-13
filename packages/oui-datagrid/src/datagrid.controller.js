@@ -1,4 +1,4 @@
-import { hasProperty, range } from "./util";
+import { hasProperty } from "./util";
 
 const cssSorted = "oui-datagrid__cell_sorted";
 const cssSortable = "oui-datagrid__header_sortable";
@@ -22,12 +22,8 @@ export default class DatagridController {
     }
 
     $onInit () {
-        this._pageSize = parseInt(this.pageSize, 10) || this.config.pageSize;
-        this.pageMeta = {
-            currentOffset: 0,
-            currentPage: 1,
-            pageSize: this._pageSize
-        };
+        this.firstLoading = true;
+        this.pageSize = parseInt(this.pageSize, 10) || this.config.pageSize;
     }
 
     $postLink () {
@@ -38,11 +34,10 @@ export default class DatagridController {
             this.columns = builtColumns.columns;
 
             if (this.rowsLoader) {
-                this.paging = this.ouiDatagridPaging.createRemote(this.columns, builtColumns.currentSorting, this.pageMeta.pageSize, this.rowLoader, this.rowsLoader);
-                this.pageMeta.currentOffset = 0;
-                this.refreshData(() => this.paging.setOffset(this.pageMeta.currentOffset));
+                this.paging = this.ouiDatagridPaging.createRemote(this.columns, builtColumns.currentSorting, this.pageSize, this.rowLoader, this.rowsLoader);
+                this.refreshData(() => this.paging.setOffset(1));
             } else {
-                this.paging = this.ouiDatagridPaging.createLocal(this.columns, builtColumns.currentSorting, this.pageMeta.pageSize, this.rowLoader, this.rows);
+                this.paging = this.ouiDatagridPaging.createLocal(this.columns, builtColumns.currentSorting, this.pageSize, this.rowLoader, this.rows);
             }
 
             const paginationElement = this.$element.find("pagination");
@@ -57,7 +52,6 @@ export default class DatagridController {
             this.previousRows = angular.copy(this.rows);
 
             if (this.rows) {
-                this.pageMeta.currentOffset = 0;
                 this.refreshData(() => this.paging.setRows(this.rows));
             }
         }
@@ -76,61 +70,30 @@ export default class DatagridController {
         // do nothing.
     }
 
-    getCurrentOffset () {
-        return this.pageMeta.currentOffset;
-    }
+    onPaginationChange ($event) {
+        if ($event.offset !== this.paging.offset) {
+            this.changeOffset($event.offset);
+        }
 
-    getCurrentPage () {
-        return Math.floor(this.getCurrentOffset() / this.getPageSize()) + 1;
-    }
-
-    getPageCount () {
-        return this.pageMeta.pageCount;
-    }
-
-    getPageSize () {
-        return this.pageMeta.pageSize;
-    }
-
-    getTotalCount () {
-        return this.pageMeta.totalCount;
-    }
-
-    previousPage () {
-        this.changeOffset(+this.getCurrentOffset() - this.getPageSize());
-    }
-
-    nextPage () {
-        this.changeOffset(+this.getCurrentOffset() + this.getPageSize());
-    }
-
-    goToPage (newPage) {
-        this.changeOffset(((newPage - 1) * this.getPageSize()) + 1);
+        if ($event.pageSize !== this.paging.pageSize) {
+            this.setPageSize($event.pageSize);
+        }
     }
 
     setPageSize (pageSize) {
-        this._pageSize = pageSize;
-        this.updatePageMeta({
-            currentOffset: 0,
-            pageCount: Math.ceil(this.pageMeta.totalCount / this._pageSize),
-            totalCount: this.pageMeta.totalCount
+        this.refreshData(() => {
+            // Reset offset without trigger reload.
+            this.paging.offset = 1;
+            return this.paging.setPageSize(pageSize);
         });
+    }
 
-        this.scrollToTop();
-
-        this.refreshData(() => this.paging.setPageSize(pageSize));
+    changeOffset (newOffset) {
+        this.refreshData(() => this.paging.setOffset(newOffset, true));
     }
 
     scrollToTop () {
         this.$element[0].scrollIntoView(true);
-    }
-
-    changeOffset (newOffset) {
-        this.scrollToTop();
-
-        this.pageMeta.currentOffset = newOffset;
-
-        this.refreshData(() => this.paging.setOffset(newOffset, true));
     }
 
     refreshData (callback) {
@@ -138,36 +101,17 @@ export default class DatagridController {
             return this.$q.reject(false);
         }
 
+        this.loading = true;
         return callback()
             .then(result => {
                 this.displayedRows = result.data;
-                this.updatePageMeta(Object.assign(this.pageMeta, result.meta));
+                this.scrollToTop();
+            })
+            .finally(() => {
                 this.loading = false;
+                this.firstLoading = false;
             })
             .catch(this.handleError.bind(this));
-    }
-
-    updatePageMeta ({ currentOffset, pageCount, totalCount, pageSize }) {
-        const newPageSize = pageSize || this._pageSize;
-        this.pageMeta = {
-            currentOffset,
-            currentPage: Math.ceil(currentOffset / newPageSize),
-            pageCount,
-            totalCount,
-            pageSize: newPageSize
-        };
-    }
-
-    getPageRepeatRange () {
-        if (this.getPageCount() === this.getCurrentPage()) {
-            return range(this.getTotalCount() - ((this.getPageCount() - 1) * this.getPageSize()));
-        }
-
-        return range(this.getPageSize());
-    }
-
-    getRepeatRange (size) { // eslint-disable-line
-        return range(size);
     }
 
     sort (column) {
