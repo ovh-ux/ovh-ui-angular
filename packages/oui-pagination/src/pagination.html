@@ -25,7 +25,8 @@
         <span ng-bind="$ctrl.translations.ofNResults"></span>
     </div>
 
-    <div class="oui-pagination__selector">
+    <div class="oui-pagination__selector"
+        ng-if="$ctrl.totalItems > $ctrl.pageSize">
         <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width"
             type="button"
             ng-attr-aria-label="{{ ::$ctrl.translations.previousPage }}"

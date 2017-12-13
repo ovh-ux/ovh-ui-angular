@@ -27,6 +27,16 @@
     </oui-pagination>
 ```
 
+### One page
+
+```html:preview
+<oui-pagination
+    current-offset="1"
+    page-size="100"
+    total-items="12">
+    </oui-pagination>
+```
+
 ## API
 
 | Attribute         | Type     | Binding | One-time Binding | Values                 | Default             | Description                                      |
@@ -55,7 +65,9 @@ angular.module("myModule", [
     ouiPaginationConfigurationProvider.setTranslations({ // Translations (double curly braces for placeholders)
         resultsPerPage: "Results per page",
         ofNResults: "of {{totalItems}} results",
-        currentPageOfPageCount: "Page {{currentPage}} of {{pageCount}}"
+        currentPageOfPageCount: "Page {{currentPage}} of {{pageCount}}",
+        previousPage: "Previous page",
+        nextPage: "Next page"
     });
 });
 ```
