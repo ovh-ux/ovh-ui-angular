@@ -1,20 +1,21 @@
 import { hasProperty } from "./util";
 
+import template from "./datagrid.html";
+
 const cssSorted = "oui-datagrid__cell_sorted";
 const cssSortable = "oui-datagrid__header_sortable";
 const cssSortableAsc = "oui-datagrid__header_sortable-asc";
 const cssSortableDesc = "oui-datagrid__header_sortable-desc";
 
 export default class DatagridController {
-    constructor ($attrs, $element, $transclude, $q, $scope, orderByFilter, ouiDatagridPaging, ouiDatagridColumnBuilder, ouiDatagridConfiguration) {
+    constructor ($compile, $element, $transclude, $q, $scope, ouiDatagridPaging, ouiDatagridColumnBuilder, ouiDatagridConfiguration) {
         "ngInject";
 
-        this.$attrs = $attrs;
+        this.$compile = $compile;
         this.$element = $element;
         this.$transclude = $transclude;
         this.$q = $q;
         this.$scope = $scope;
-        this.orderBy = orderByFilter;
         this.ouiDatagridPaging = ouiDatagridPaging;
         this.ouiDatagridColumnBuilder = ouiDatagridColumnBuilder;
 
@@ -27,24 +28,27 @@ export default class DatagridController {
     }
 
     $postLink () {
-        this.$transclude((clone) => {
-            const columnElements = DatagridController.filterElements(clone, "oui-column");
-
-            const builtColumns = this.ouiDatagridColumnBuilder.build(columnElements, this.$scope);
-            this.columns = builtColumns.columns;
-
-            if (this.rowsLoader) {
-                this.paging = this.ouiDatagridPaging.createRemote(this.columns, builtColumns.currentSorting, this.pageSize, this.rowLoader, this.rowsLoader);
-                this.refreshData(() => this.paging.setOffset(1));
-            } else {
-                this.paging = this.ouiDatagridPaging.createLocal(this.columns, builtColumns.currentSorting, this.pageSize, this.rowLoader, this.rows);
-            }
-
-            const paginationElement = this.$element.find("pagination");
-            if (paginationElement.length) {
-                this.setPaginationTemplate(paginationElement.html());
-            }
+        this.$compile(template)(this.$scope, (clone) => {
+            this.$element.append(clone);
         });
+
+        const originalContent = angular.element(this.$element.data("originalContent"));
+        const columnElements = DatagridController.filterElements(originalContent, "oui-column");
+
+        const builtColumns = this.ouiDatagridColumnBuilder.build(columnElements, this.$scope);
+        this.columns = builtColumns.columns;
+
+        if (this.rowsLoader) {
+            this.paging = this.ouiDatagridPaging.createRemote(this.columns, builtColumns.currentSorting, this.pageSize, this.rowLoader, this.rowsLoader);
+            this.refreshData(() => this.paging.setOffset(1));
+        } else {
+            this.paging = this.ouiDatagridPaging.createLocal(this.columns, builtColumns.currentSorting, this.pageSize, this.rowLoader, this.rows);
+        }
+
+        const paginationElement = this.$element.find("pagination");
+        if (paginationElement.length) {
+            this.setPaginationTemplate(paginationElement.html());
+        }
     }
 
     $doCheck () {
@@ -142,12 +146,12 @@ export default class DatagridController {
         }
     }
 
-    static filterElements (elements, tagName) {
-        const tagNameUpper = tagName.toUpperCase();
+    static filterElements (elements, ...tagsName) {
+        const tagsNameUpper = tagsName.map(tagName => tagName.toUpperCase());
         const filteredElements = [];
 
         angular.forEach(elements, element => {
-            if (element.tagName === tagNameUpper) {
+            if (tagsNameUpper.includes(element.tagName)) {
                 filteredElements.push(element);
             }
         });
