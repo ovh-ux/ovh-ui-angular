@@ -8,7 +8,8 @@ const cssSortableAsc = "oui-datagrid__header_sortable-asc";
 const cssSortableDesc = "oui-datagrid__header_sortable-desc";
 
 export default class DatagridController {
-    constructor ($compile, $element, $transclude, $q, $scope, ouiDatagridPaging, ouiDatagridColumnBuilder, ouiDatagridConfiguration) {
+    constructor ($compile, $element, $transclude, $q, $scope, $window, ouiDatagridPaging,
+                 ouiDatagridColumnBuilder, ouiDatagridConfiguration) {
         "ngInject";
 
         this.$compile = $compile;
@@ -16,13 +17,36 @@ export default class DatagridController {
         this.$transclude = $transclude;
         this.$q = $q;
         this.$scope = $scope;
+        this.$window = $window;
         this.ouiDatagridPaging = ouiDatagridPaging;
         this.ouiDatagridColumnBuilder = ouiDatagridColumnBuilder;
 
         this.config = ouiDatagridConfiguration;
+
+        this.checkScroll = () => {
+            const panel = this.scrollablePanel;
+            const stickyBorderWidth = 10;
+
+            this.$scope.$apply(() => {
+                if (panel.scrollWidth - panel.scrollLeft - stickyBorderWidth <= panel.clientWidth) {
+                    this.scrollBegin = false;
+                } else {
+                    this.scrollBegin = true;
+                }
+
+                if (panel.scrollLeft <= stickyBorderWidth) {
+                    this.scrollEnd = false;
+                } else {
+                    this.scrollEnd = true;
+                }
+            });
+        };
     }
 
     $onInit () {
+        this.hasActionMenu = false;
+        this.scrollBegin = false;
+        this.scrollEnd = false;
         this.firstLoading = true;
         this.pageSize = parseInt(this.pageSize, 10) || this.config.pageSize;
     }
@@ -34,8 +58,15 @@ export default class DatagridController {
 
         const originalContent = angular.element(this.$element.data("originalContent"));
         const columnElements = DatagridController.filterElements(originalContent, "oui-column");
+        const actionColumnElements = DatagridController.filterElements(originalContent, "oui-action-menu");
 
         const builtColumns = this.ouiDatagridColumnBuilder.build(columnElements, this.$scope);
+
+        if (actionColumnElements.length) {
+            builtColumns.columns.push(this.ouiDatagridColumnBuilder.buildActionColumn(actionColumnElements[0]));
+            this.hasActionMenu = true;
+        }
+
         this.columns = builtColumns.columns;
 
         if (this.rowsLoader) {
@@ -45,9 +76,11 @@ export default class DatagridController {
             this.paging = this.ouiDatagridPaging.createLocal(this.columns, builtColumns.currentSorting, this.pageSize, this.rowLoader, this.rows);
         }
 
-        const paginationElement = this.$element.find("pagination");
-        if (paginationElement.length) {
-            this.setPaginationTemplate(paginationElement.html());
+        // Manage responsiveness
+        this.scrollablePanel = this.$element[0].querySelector(".oui-datagrid-responsive-container__overflow-container");
+        if (this.scrollablePanel) {
+            angular.element(this.$window).on("resize", this.checkScroll);
+            angular.element(this.scrollablePanel).on("scroll", this.checkScroll);
         }
     }
 
@@ -59,6 +92,11 @@ export default class DatagridController {
                 this.refreshData(() => this.paging.setRows(this.rows));
             }
         }
+    }
+
+    $onDestroy () {
+        angular.element(this.$window).off("resize", this.checkScroll);
+        angular.element(this.scrollablePanel).off("scroll");
     }
 
     getParentScope () {
@@ -138,12 +176,6 @@ export default class DatagridController {
             [cssSortableAsc]: this.paging.isSortAsc(),
             [cssSortableDesc]: this.paging.isSortDesc()
         };
-    }
-
-    setPaginationTemplate (paginationTemplate) {
-        if (paginationTemplate) {
-            this.paginationTemplate = `<div>${paginationTemplate}</div>`;
-        }
     }
 
     static filterElements (elements, ...tagsName) {

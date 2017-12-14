@@ -70,6 +70,14 @@ export default class DatagridColumnBuilder {
         };
     }
 
+    buildActionColumn (actionColumnElement) {
+        const column = {
+            template: actionColumnElement.outerHTML
+        };
+        column.compiledTemplate = this._getColumnTemplate(column);
+        return column;
+    }
+
     static defineDefaultSorting (column, attrValue) {
         column.sortable = attrValue !== undefined;
 

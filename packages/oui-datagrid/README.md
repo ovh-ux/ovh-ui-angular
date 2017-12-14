@@ -69,22 +69,20 @@ With actions
   <oui-column property="birth" sortable>
     {{$value|date:short}}
   </oui-column>
-  <oui-column>
-    <oui-action-menu
-        align="end"
-        compact>
-        <oui-action-menu-item
-            text="Action 1"
-            on-click="$ctrl.action1Row = $row">
-        </oui-action-menu-item>
-        <oui-action-menu-divider></oui-action-menu-divider>
-        <oui-action-menu-item
-            text="Lien externe"
-            href="#"
-            external>
-        </oui-action-menu-item>
-    </oui-action-menu>
-  </oui-column>
+  <oui-action-menu
+      align="end"
+      compact>
+      <oui-action-menu-item
+          text="Action 1"
+          on-click="$ctrl.action1Row = $row">
+      </oui-action-menu-item>
+      <oui-action-menu-divider></oui-action-menu-divider>
+      <oui-action-menu-item
+          text="Lien externe"
+          href="#"
+          external>
+      </oui-action-menu-item>
+  </oui-action-menu>
 </oui-datagrid>
 
 Clicked row action 1: <span ng-if="$ctrl.action1Row">{{$ctrl.action1Row.lastName}}, {{$ctrl.action1Row.firstName}}</span>
