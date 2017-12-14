@@ -57,6 +57,7 @@ export default class {
 
     onPageSizeChange (pageSize) {
         this.pageSize = pageSize;
+        this.currentOffset = 1;
 
         // If page-size attribute is not set on the component (default value),
         // $onChanges is never triggered and other values are not calculated.

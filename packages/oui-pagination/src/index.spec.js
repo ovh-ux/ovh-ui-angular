@@ -292,6 +292,28 @@ describe("ouiPagination", () => {
                 expect(pageButtons.length).toEqual(20);
             });
 
+            it("should reset offset to 1 when page size is changed", () => {
+                const clickSpy = jasmine.createSpy("clickSpy");
+                const element = TestUtils.compileTemplate(`
+                    <oui-pagination
+                        current-offset="999"
+                        page-size="$ctrl.pageSize"
+                        total-items="1000"
+                        on-change="$ctrl.clickHandler($event)">
+                    </oui-pagination>
+                `, {
+                        clickHandler: clickSpy
+                    });
+
+                const pageSizesButtons = getProgress(element).querySelectorAll(".oui-pagination-menu__items-list .oui-pagination-menu__item");
+                angular.element(pageSizesButtons[1]).triggerHandler("click");
+
+                expect(clickSpy).toHaveBeenCalledWith(jasmine.objectContaining({ offset: 1 }));
+                expect(clickSpy.calls.count()).toEqual(1);
+                const paginationController = element.controller("ouiPagination");
+                expect(paginationController.currentOffset).toEqual(1);
+            });
+
             it("should have max page size limiting the page size list (without creating a new value in this list)", () => {
                 const element = TestUtils.compileTemplate(`
                     <oui-pagination
