@@ -8,13 +8,10 @@ export default () => {
         controllerAs: "$ctrl",
         bindToController: true,
         scope: {
-            id: "@?",
             pageSize: "@?",
             rows: "<?",
             rowsLoader: "&?",
-            rowLoader: "&?",
-            onSelectionChange: "&?",
-            rowLabel: "@?"
+            rowLoader: "&?"
         },
         compile: elm => {
             // Transclude can't be used here otherwise transcluded
