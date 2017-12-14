@@ -4,55 +4,50 @@
 
 ## Usage
 
-### Success
-
-```html:preview
-<oui-message message="Nullam a pellentesque nisl. Aliquam erat volutpat. Sed sed ornare diam, ut sollicitudin mauris. Quisque tincidunt dapibus augue, et tincidunt arcu sagittis et. Nam sed aliquet tellus, vel tincidunt urna. Aliquam a placerat enim. Donec condimentum sed nibh a egestas. Maecenas at leo et magna lobortis pretium. Praesent vitae fermentum dui. Interdum et malesuada fames ac ante ipsum primis in faucibus." type="success"></oui-message>
+```html
+<oui-message 
+    type="info|success|warning|error"
+    on-dismissed="..."
+    aria-close-button-label="...">
+</oui-message>
 ```
+
+## Examples
 
 ### Information
 
 ```html:preview
-<oui-message message="Nullam a pellentesque nisl. Aliquam erat volutpat. Sed sed ornare diam, ut sollicitudin mauris. Quisque tincidunt dapibus augue, et tincidunt arcu sagittis et. Nam sed aliquet tellus, vel tincidunt urna. Aliquam a placerat enim. Donec condimentum sed nibh a egestas. Maecenas at leo et magna lobortis pretium. Praesent vitae fermentum dui. Interdum et malesuada fames ac ante ipsum primis in faucibus." type="info"></oui-message>
+<oui-message type="info">Message</oui-message>
+```
+
+### Success
+
+```html:preview
+<oui-message type="success">Message</oui-message>
 ```
 
 ### Warning
 
 ```html:preview
-<oui-message message="Nullam a pellentesque nisl. Aliquam erat volutpat. Sed sed ornare diam, ut sollicitudin mauris. Quisque tincidunt dapibus augue, et tincidunt arcu sagittis et. Nam sed aliquet tellus, vel tincidunt urna. Aliquam a placerat enim. Donec condimentum sed nibh a egestas. Maecenas at leo et magna lobortis pretium. Praesent vitae fermentum dui. Interdum et malesuada fames ac ante ipsum primis in faucibus." type="warning"></oui-message>
+<oui-message type="warning">Message</oui-message>
 ```
 
 ### Error
 
 ```html:preview
-<oui-message message="Nullam a pellentesque nisl. Aliquam erat volutpat. Sed sed ornare diam, ut sollicitudin mauris. Quisque tincidunt dapibus augue, et tincidunt arcu sagittis et. Nam sed aliquet tellus, vel tincidunt urna. Aliquam a placerat enim. Donec condimentum sed nibh a egestas. Maecenas at leo et magna lobortis pretium. Praesent vitae fermentum dui. Interdum et malesuada fames ac ante ipsum primis in faucibus." type="error"></oui-message>
+<oui-message type="error">Message</oui-message>
 ```
 
-### Complexe message
+### Accessibility
 
 ```html:preview
-<oui-message type="info">
-  <span>Grocery list</span>
-  <ul>
-    <li>Coffee</li>
-    <li>Tea</li>
-    <li>Milk</li>
-  </ul>
-</oui-message>
+<oui-message aria-close-button-label="Close" type="info">Message</oui-message>
 ```
 
-## Attributes
+## API
 
-|Attribute        | Value           | Description         |
-| ----            | ----            | ----                |
-| __message__     |                 | Text message        |
-| __type__        | success         | Success message     |
-|                 | info            | Information message |
-|                 | warn            | Warning message     |
-|                 | error           | Error message       |
-
-
-## Services
-
-- [OuiMessageDispatcher](#!/oui-angular/message-dispatcher)
-- [OuiMessageListenerFactory](#!/oui-angular/message-listener)
+| Attribute               | Type            | Binding | One-time binding | Values                                 | default | Description                            |
+| ----                    | ----            | ----    | ----             | ----                                   | ----    | ----                                   |
+| type                    | String          | @       | yes              | `info`, `success`, `warning`, `error`  |         | Message type                           |
+| aria-close-button-label | function        | @?      | yes              |                                        |         | accessibility label for close button   |
+| on-dismissed            | function        | &?      |                  |                                        |         | dismissed handler                      |

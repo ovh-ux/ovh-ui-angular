@@ -5,11 +5,9 @@ export default {
     template,
     controller,
     bindings: {
-        message: "@",
         type: "@",
-        dismissable: "<",
-        dismissed: "<",
-        onDismiss: "&?"
+        ariaCloseButtonLabel: "@?",
+        onDismissed: "&?"
     },
     transclude: true
 };
