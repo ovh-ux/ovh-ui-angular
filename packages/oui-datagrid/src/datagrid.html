@@ -1,6 +1,9 @@
 <div>
     <div class="oui-datagrid-responsive-container"
-        ng-class="::{ 'oui-datagrid-responsive-container_sticky-actions': $ctrl.hasCheckboxes || $ctrl.hasActionMenu }">
+        ng-class="::{
+            'oui-datagrid-responsive-container_sticky-checkbox': $ctrl.hasCheckboxes,
+            'oui-datagrid-responsive-container_sticky-actions': $ctrl.hasActionMenu
+        }">
         <div class="oui-datagrid-responsive-container__sticky-container"
             ng-class="{
                 'oui-datagrid-responsive-container__sticky-container_scroll-begin': $ctrl.scrollBegin && $ctrl.hasActionMenu,

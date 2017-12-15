@@ -8,7 +8,7 @@ const cssSortableAsc = "oui-datagrid__header_sortable-asc";
 const cssSortableDesc = "oui-datagrid__header_sortable-desc";
 
 export default class DatagridController {
-    constructor ($compile, $element, $transclude, $q, $scope, $window, ouiDatagridPaging,
+    constructor ($compile, $element, $transclude, $q, $scope, $timeout, $window, ouiDatagridPaging,
                  ouiDatagridColumnBuilder, ouiDatagridConfiguration) {
         "ngInject";
 
@@ -17,6 +17,7 @@ export default class DatagridController {
         this.$transclude = $transclude;
         this.$q = $q;
         this.$scope = $scope;
+        this.$timeout = $timeout;
         this.$window = $window;
         this.ouiDatagridPaging = ouiDatagridPaging;
         this.ouiDatagridColumnBuilder = ouiDatagridColumnBuilder;
@@ -29,7 +30,7 @@ export default class DatagridController {
 
             // Ugly and not efficient way to instantly add or remove classes because
             // checkScroll is run thousands times.
-            this.$scope.$apply(() => {
+            this.$timeout(() => {
                 if (panel.scrollWidth - panel.scrollLeft - stickyBorderWidth <= panel.clientWidth) {
                     this.scrollBegin = false;
                 } else {
@@ -41,7 +42,7 @@ export default class DatagridController {
                 } else {
                     this.scrollEnd = true;
                 }
-            });
+            }, 1000); // eslint-disable-line
         };
     }
 
@@ -156,6 +157,7 @@ export default class DatagridController {
                 if (requireScrollToTop) {
                     this.scrollToTop();
                 }
+                this.checkScroll();
             })
             .finally(() => {
                 this.loading = false;
