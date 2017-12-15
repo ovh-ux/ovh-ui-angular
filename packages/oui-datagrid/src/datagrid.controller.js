@@ -131,18 +131,18 @@ export default class DatagridController {
             // Reset offset without trigger reload.
             this.paging.offset = 1;
             return this.paging.setPageSize(pageSize);
-        });
+        }, true);
     }
 
     changeOffset (newOffset) {
-        this.refreshData(() => this.paging.setOffset(newOffset, true));
+        this.refreshData(() => this.paging.setOffset(newOffset, true), true);
     }
 
     scrollToTop () {
         this.$element[0].scrollIntoView(true);
     }
 
-    refreshData (callback) {
+    refreshData (callback, requireScrollToTop) {
         if (this.loading) {
             return this.$q.reject(false);
         }
@@ -151,7 +151,10 @@ export default class DatagridController {
         return callback()
             .then(result => {
                 this.displayedRows = result.data;
-                this.scrollToTop();
+
+                if (requireScrollToTop) {
+                    this.scrollToTop();
+                }
             })
             .finally(() => {
                 this.loading = false;
