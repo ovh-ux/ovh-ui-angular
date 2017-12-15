@@ -4,96 +4,79 @@
 
 ## Usage
 
-### Label
+```html
+<oui-radio
+  text="..."
+  description="..."
+  id="..."
+  name="..."
+  disabled="..."
+  model="..."
+  value="..."
+  on-change="..."
+></oui-radio>
+```
+
+## Examples
+
+### Basic
 
 ```html:preview
-<oui-radio label="Checked" checked></oui-radio>
-<oui-radio label="Unchecked"></oui-radio>
-<oui-radio label="Disabled [checked]" checked disabled></oui-radio>
-<oui-radio label="Disabled [unchecked]" disabled></oui-radio>
+<div ng-init="$ctrl.value1 = 'a'">
+    <oui-radio text="Value A"
+        name="oui-radio-1"
+        model="$ctrl.value1"
+        value="'a'"></oui-radio>
+    <oui-radio text="Value B"
+        name="oui-radio-1"
+        model="$ctrl.value1"
+        value="'b'"></oui-radio>
+    <oui-radio text="Value C"
+        name="oui-radio-1"
+        model="$ctrl.value1"
+        value="'c'"
+        disabled></oui-radio>
+</div>
 ```
 
 ### Description
 
 ```html:preview
-<oui-radio label="Checked" description="A short description" checked></oui-radio>
-<oui-radio label="Unchecked">
-  <oui-radio-description>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque est ipsum, condimentum ornare condimentum quis, ultrices sit amet augue. Phasellus mollis dui quis nunc ultrices tempus. Praesent dignissim, felis in ornare euismod, augue elit mattis nibh, a tincidunt nunc enim et nulla. Nam ac blandit mauris. Donec semper tellus et felis viverra, in molestie lacus sodales. Proin fringilla vestibulum tempus. In feugiat risus mauris, tempus lacinia dolor posuere vel.
-  </oui-radio-description>
-</oui-radio>
-<oui-radio label="Disabled [checked]" checked disabled>
-    <oui-radio-description>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque est ipsum, condimentum ornare condimentum quis, ultrices sit amet augue. Phasellus mollis dui quis nunc ultrices tempus. Praesent dignissim, felis in ornare euismod, augue elit mattis nibh, a tincidunt nunc enim et nulla. Nam ac blandit mauris. Donec semper tellus et felis viverra, in molestie lacus sodales. Proin fringilla vestibulum tempus. In feugiat risus mauris, tempus lacinia dolor posuere vel.
-  </oui-radio-description>
-</oui-radio>
-<oui-radio label="Disabled [unchecked]" disabled>
-  <oui-radio-description>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque est ipsum, condimentum ornare condimentum quis, ultrices sit amet augue. Phasellus mollis dui quis nunc ultrices tempus. Praesent dignissim, felis in ornare euismod, augue elit mattis nibh, a tincidunt nunc enim et nulla. Nam ac blandit mauris. Donec semper tellus et felis viverra, in molestie lacus sodales. Proin fringilla vestibulum tempus. In feugiat risus mauris, tempus lacinia dolor posuere vel.
-  </oui-radio-description>
-</oui-radio>
+<oui-radio text="Checked"
+    description="Checked radio"></oui-radio>
+<oui-radio text="Disabled"
+    description="Disabled radio"
+    disabled></oui-radio>
 ```
 
-### Big
+### On change
 
 ```html:preview
-<oui-radio big label="Checked" checked></oui-radio>
-<oui-radio big label="Unchecked">
-  <oui-radio-description>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque est ipsum, condimentum ornare condimentum quis, ultrices sit amet augue. Phasellus mollis dui quis nunc ultrices tempus. Praesent dignissim, felis in ornare euismod, augue elit mattis nibh, a tincidunt nunc enim et nulla. Nam ac blandit mauris. Donec semper tellus et felis viverra, in molestie lacus sodales. Proin fringilla vestibulum tempus. In feugiat risus mauris, tempus lacinia dolor posuere vel.
-  </oui-radio-description>
-</oui-radio>
-<oui-radio big label="Disabled [checked]" checked disabled>
-    <oui-radio-description>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque est ipsum, condimentum ornare condimentum quis, ultrices sit amet augue. Phasellus mollis dui quis nunc ultrices tempus. Praesent dignissim, felis in ornare euismod, augue elit mattis nibh, a tincidunt nunc enim et nulla. Nam ac blandit mauris. Donec semper tellus et felis viverra, in molestie lacus sodales. Proin fringilla vestibulum tempus. In feugiat risus mauris, tempus lacinia dolor posuere vel.
-  </oui-radio-description>
-</oui-radio>
-<oui-radio big label="Disabled [unchecked]" disabled>
-  <oui-radio-description>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque est ipsum, condimentum ornare condimentum quis, ultrices sit amet augue. Phasellus mollis dui quis nunc ultrices tempus. Praesent dignissim, felis in ornare euismod, augue elit mattis nibh, a tincidunt nunc enim et nulla. Nam ac blandit mauris. Donec semper tellus et felis viverra, in molestie lacus sodales. Proin fringilla vestibulum tempus. In feugiat risus mauris, tempus lacinia dolor posuere vel.
-  </oui-radio-description>
-</oui-radio>
+<div ng-init="$ctrl.value2 = 'a'">
+    <oui-radio text="Value A"
+        name="oui-radio-2"
+        model="$ctrl.value2"
+        value="'a'"
+        on-change="$ctrl.lastOnChangeValue = modelValue"></oui-radio>
+    <oui-radio text="Value B"
+        name="oui-radio-2"
+        model="$ctrl.value2"
+        value="'b'"
+        on-change="$ctrl.lastOnChangeValue = modelValue"></oui-radio>
+</div>
+
+<span>Last onChange value: {{ $ctrl.lastOnChangeValue }}</span>
 ```
 
-### Thumbnail
+## API
 
-```html:preview
-<oui-radio thumbnail label="Checked" checked></oui-radio>
-<oui-radio thumbnail label="Unchecked">
-  <oui-radio-description>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque est ipsum, condimentum ornare condimentum quis, ultrices sit amet augue. Phasellus mollis dui quis nunc ultrices tempus. Praesent dignissim, felis in ornare euismod, augue elit mattis nibh, a tincidunt nunc enim et nulla. Nam ac blandit mauris. Donec semper tellus et felis viverra, in molestie lacus sodales. Proin fringilla vestibulum tempus. In feugiat risus mauris, tempus lacinia dolor posuere vel.
-  </oui-radio-description>
-</oui-radio>
-<oui-radio thumbnail label="Disabled [checked]" checked disabled>
-    <oui-radio-description>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque est ipsum, condimentum ornare condimentum quis, ultrices sit amet augue. Phasellus mollis dui quis nunc ultrices tempus. Praesent dignissim, felis in ornare euismod, augue elit mattis nibh, a tincidunt nunc enim et nulla. Nam ac blandit mauris. Donec semper tellus et felis viverra, in molestie lacus sodales. Proin fringilla vestibulum tempus. In feugiat risus mauris, tempus lacinia dolor posuere vel.
-  </oui-radio-description>
-</oui-radio>
-<oui-radio thumbnail label="Disabled [unchecked]" disabled>
-  <oui-radio-description>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque est ipsum, condimentum ornare condimentum quis, ultrices sit amet augue. Phasellus mollis dui quis nunc ultrices tempus. Praesent dignissim, felis in ornare euismod, augue elit mattis nibh, a tincidunt nunc enim et nulla. Nam ac blandit mauris. Donec semper tellus et felis viverra, in molestie lacus sodales. Proin fringilla vestibulum tempus. In feugiat risus mauris, tempus lacinia dolor posuere vel.
-  </oui-radio-description>
-</oui-radio>
-```
-
-## One-way binding properties
-
-### checked
-
-<oui-checkbox on-change="$ctrl.checked = $event.value" label="Click to check/uncheck the test radio"></oui-checkbox>
-
-```html:preview
-<oui-radio label="Test" checked="$ctrl.checked" disabled></oui-radio>
-```
-
-### disabled
-
-<oui-checkbox on-change="$ctrl.disabled = $event.value" label="Click to disable the test radio"></oui-checkbox>
-
-```html:preview
-<oui-radio label="Test" checked disabled="$ctrl.disabled"></oui-radio>
-```
-
-## Groups
-
-see `oui-radio-group` for details
+| Attribute     | Type                    | Binding | One-time Binding | Values                   | Default | Description
+| ----          | ----                    | ----    | ----             | ----                     | ----    | ----
+| text          | string                  | @       |                  |                          |         | radio text
+| description   | string                  | @?      |                  |                          |         | description text
+| id            | string                  | @?      | `true`           |                          |         | id attribute of the radio
+| name          | string                  | @?      | `true`           |                          |         | name attribute of the radio
+| disabled      | boolean                 | <?      |                  |                          | false   | disabled flag
+| model         | Object                  | =?      |                  |                          |         | current value of the radio
+| value         | Object                  | <       |                  |                          |         | value of the radio
+| on-change     | function                | &?      |                  |                          |         | handler triggered when value has changed
