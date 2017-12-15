@@ -19,8 +19,6 @@ export default class DatagridLocalPaging extends DatagridPagingAbstract {
             this._sort();
         }
 
-        console.log(this.offset);
-
         return this.$q.when({
             data: this.sortedRows.slice(this.offset - 1, this.offset - 1 + this.pageSize),
             meta: {

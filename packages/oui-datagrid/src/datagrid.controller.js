@@ -74,6 +74,10 @@ export default class DatagridController {
             this.refreshData(() => this.paging.setOffset(1));
         } else {
             this.paging = this.ouiDatagridPaging.createLocal(this.columns, builtColumns.currentSorting, this.pageSize, this.rowLoader, this.rows);
+
+            if (this.rows) {
+                this.refreshData(() => this.paging.setRows(this.rows));
+            }
         }
 
         // Manage responsiveness
@@ -88,7 +92,7 @@ export default class DatagridController {
         if (!angular.equals(this.previousRows, this.rows)) {
             this.previousRows = angular.copy(this.rows);
 
-            if (this.rows) {
+            if (this.rows && this.paging) {
                 this.refreshData(() => this.paging.setRows(this.rows));
             }
         }
@@ -178,12 +182,12 @@ export default class DatagridController {
         };
     }
 
-    static filterElements (elements, ...tagsName) {
-        const tagsNameUpper = tagsName.map(tagName => tagName.toUpperCase());
+    static filterElements (elements, tagName) {
+        const tagNameUpper = tagName.toUpperCase();
         const filteredElements = [];
 
         angular.forEach(elements, element => {
-            if (tagsNameUpper.includes(element.tagName)) {
+            if (element.tagName === tagNameUpper) {
                 filteredElements.push(element);
             }
         });

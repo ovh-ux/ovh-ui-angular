@@ -66,16 +66,23 @@ export default class DatagridPagingAbstract {
     }
 
     loadRowsData (rows) {
+        if (!this.rowLoader) {
+            return;
+        }
+
         rows.forEach(row => this.loadRowData(row));
     }
 
     loadRowData (row) {
-        if (!this.isRowLoaded(row)) {
-            this.$q.when(this.rowLoader({ $row: row }))
+        if (!this.isRowLoaded(row) && !row.$promise) {
+            row.$promise = this.$q.when(this.rowLoader({ $row: row }))
                 .then(fullRow => Object.assign(row, fullRow))
+                .finally(() => {
+                    delete row.$promise;
+                });
 
-                // TODO: Find a way to forward those error to datagrid
-                /* .catch(this.handleError.bind(this)) */;
+            // TODO: Find a way to forward those error to datagrid
+            /* .catch(this.handleError.bind(this)) */
         }
     }
 
