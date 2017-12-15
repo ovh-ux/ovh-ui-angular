@@ -9,15 +9,3 @@ export function hasProperty (obj, prop = "") {
     }
     return true;
 }
-
-export function capitalize (string) {
-    if (typeof string === "string") {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    }
-    return null;
-}
-
-export function range (size) {
-    // Generate a range: [0, 1, 2, ..., size - 1]
-    return Array(...{ length: size }).map(Number.call, Number);
-}

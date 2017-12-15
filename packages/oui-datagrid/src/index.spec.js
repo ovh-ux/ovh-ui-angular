@@ -7,12 +7,14 @@ describe("ouiDatagrid", () => {
     const getRow = (element, lineNumber) => angular.element(getRows(element)[lineNumber]);
     const getHeaderCell = (element, columnNumber) => angular.element(element[0].querySelectorAll(".oui-datagrid__header")[columnNumber]);
     const getCell = (element, columnNumber) => angular.element(element[0].querySelectorAll(".oui-datagrid__cell")[columnNumber]);
-    const getPaginationOffset = (element) => angular.element(element[0].querySelector(".oui-pagination .oui-dropdown .oui-button span:first-child"));
-    const getPaginationLastItemOffset = (element) => angular.element(element[0].querySelector(".oui-pagination .oui-dropdown .oui-button span:nth-child(2)"));
-    const getNextPagePaginationButton = (element) => angular.element(element[0].querySelector(".oui-pagination__selector > .oui-button:last-child"));
-    const isSortableCell = (element) => element.hasClass("oui-datagrid__header_sortable");
-    const isSortableAscCell = (element) => element.hasClass("oui-datagrid__header_sortable-asc");
-    const isSortableDescCell = (element) => element.hasClass("oui-datagrid__header_sortable-desc");
+    const getPaginationOffset = element => angular.element(element[0].querySelector(".oui-pagination .oui-dropdown .oui-button span:first-child"));
+    const getPaginationLastItemOffset = element => angular.element(element[0].querySelector(".oui-pagination .oui-dropdown .oui-button span:nth-child(2)"));
+    const getNextPagePaginationButton = element => angular.element(element[0].querySelector(".oui-pagination__selector > .oui-button:last-child"));
+    const isSortableCell = element => element.hasClass("oui-datagrid__header_sortable");
+    const isSortableAscCell = element => element.hasClass("oui-datagrid__header_sortable-asc");
+    const isSortableDescCell = element => element.hasClass("oui-datagrid__header_sortable-desc");
+    const getActionMenu = element => angular.element(element[0].querySelectorAll("oui-action-menu"));
+    const isStickyCell = element => element.hasClass("oui-datagrid__cell-sticky");
 
     beforeEach(angular.mock.module("oui.datagrid"));
     beforeEach(angular.mock.module("oui.test-utils"));
@@ -520,6 +522,28 @@ describe("ouiDatagrid", () => {
 
             expect(getCell($secondRow, 0).children().html()).toBe(fakeData[3].firstName);
             expect(getCell($secondRow, 1).children().html()).toBe(fakeData[3].lastName);
+        });
+
+        it("should support action-menu as column", () => {
+            const element = TestUtils.compileTemplate(`
+                    <oui-datagrid rows="$ctrl.rows">
+                        <oui-column property="firstName"></oui-column>
+                        <oui-column property="lastName"></oui-column>
+                        <oui-action-menu>
+                            <oui-action-menu-item text="Action 1"></oui-action-menu-item>
+                            <oui-action-menu-item text="Action 2"></oui-action-menu-item>
+                        </oui-action-menu>
+                    </oui-datagrid>
+                `, {
+                    rows: fakeData.slice(0, 5)
+                }
+            );
+
+            const $firstRow = getRow(element, 1);
+            const $actionCell = getCell($firstRow, 2);
+
+            expect(getActionMenu($actionCell)).toBeDefined();
+            expect(isStickyCell($actionCell)).toBe(true);
         });
     });
 });

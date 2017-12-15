@@ -1,5 +1,3 @@
-import { capitalize } from "./util";
-
 export default class DatagridColumnBuilder {
     constructor ($parse, $compile) {
         "ngInject";
@@ -8,7 +6,7 @@ export default class DatagridColumnBuilder {
         this.$compile = $compile;
     }
 
-    build (columnElements, scope) {
+    build (columnElements) {
         const columns = [];
         const currentSorting = {
             columnName: undefined,
@@ -27,27 +25,15 @@ export default class DatagridColumnBuilder {
                     column.getValue = this.$parse(attr.value);
                     break;
 
-                case "template":
-                    column.template = this.$parse(attr.value)(scope);
-                    break;
-
                 case "sortable":
                     column.sortable = attr.value !== undefined;
                     Object.assign(currentSorting, DatagridColumnBuilder.defineDefaultSorting(column, attr.value));
-                    break;
-
-                case "title":
-                    column.title = this.$parse(attr.value)(scope);
                     break;
 
                 default:
                     column[attrName] = attr.value;
                 }
             });
-
-            if (!column.title) {
-                column.title = capitalize(column.name);
-            }
 
             if (!column.sortProperty) {
                 column.sortProperty = column.name;
