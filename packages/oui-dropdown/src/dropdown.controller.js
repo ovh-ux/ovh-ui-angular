@@ -4,13 +4,14 @@ import Popper from "popper.js";
 const KEY_ESCAPE = 27;
 
 export default class {
-    constructor ($attrs, $document, $element, $scope) {
+    constructor ($attrs, $document, $element, $scope, $timeout) {
         "ngInject";
 
         this.$attrs = $attrs;
         this.$document = $document;
         this.$element = $element;
         this.$scope = $scope;
+        this.$timeout = $timeout;
     }
 
     $onInit () {
@@ -47,7 +48,9 @@ export default class {
 
         this.triggerBlurHandler = evt => {
             if (!this.$element[0].contains(evt.relatedTarget)) {
-                this.$scope.$apply(() => this.closeDropdown());
+                // Sometime Angular is already in a digest loop here.
+                // Let's delay dropdown closing after that instead of $applying again.
+                this.$timeout(() => this.closeDropdown());
             }
 
             // else blur is listen on another contained element
