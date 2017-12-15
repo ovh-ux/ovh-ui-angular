@@ -1,6 +1,6 @@
 <div>
     <div class="oui-datagrid-responsive-container"
-        ng-class="::{ 'oui-datagrid-responsive-container_sticky-actions': $ctrl.hasActionMenu }">
+        ng-class="::{ 'oui-datagrid-responsive-container_sticky-actions': $ctrl.hasCheckboxes || $ctrl.hasActionMenu }">
         <div class="oui-datagrid-responsive-container__sticky-container"
             ng-class="{
                 'oui-datagrid-responsive-container__sticky-container_scroll-begin': $ctrl.scrollBegin && $ctrl.hasActionMenu,
@@ -23,7 +23,7 @@
                         <tr class="oui-datagrid__row oui-action-menu-container"
                             ng-repeat="row in $ctrl.displayedRows track by $index">
                             <td class="oui-datagrid__cell"
-                                ng-class="::[column.class, { 'oui-datagrid__cell-sticky': $ctrl.hasActionMenu && $last }]"
+                                ng-class="::[column.class, { 'oui-datagrid__cell-sticky': ($ctrl.hasCheckboxes && $first) || ($ctrl.hasActionMenu && $last) }]"
                                 ng-repeat="column in $ctrl.columns track by $index"
                                 data-title="{{::column.title}}">
                                 <span ng-if="!column.name || $ctrl.hasProperty(row, column.name) && !column.template"
@@ -34,6 +34,16 @@
                                     column="::column">
                                 </oui-datagrid-cell>
                             </td>
+                        </tr>
+                        <tr ng-if="!$ctrl.loading && !$ctrl.displayedRows.length"
+                             class="oui-datagrid__row">
+                            <td ng-if="$ctrl.hasCheckboxes"
+                                class="oui-datagrid__cell oui-datagrid__cell-sticky"></td>
+                            <td class="oui-datagrid__cell"
+                                ng-attr-colspan="{{ $ctrl.columns.length - ( $ctrl.hasActionMenu + $ctrl.hasCheckboxes) }}"
+                                ng-bind="$ctrl.config.translations.emptyPlaceholder"></td>
+                            <td ng-if="$ctrl.hasActionMenu"
+                                class="oui-datagrid__cell oui-datagrid__cell-sticky"></td>
                         </tr>
                     </tbody>
                 </table>

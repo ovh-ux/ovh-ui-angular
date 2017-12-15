@@ -27,6 +27,8 @@ export default class DatagridController {
             const panel = this.scrollablePanel;
             const stickyBorderWidth = 10;
 
+            // Ugly and not efficient way to instantly add or remove classes because
+            // checkScroll is run thousands times.
             this.$scope.$apply(() => {
                 if (panel.scrollWidth - panel.scrollLeft - stickyBorderWidth <= panel.clientWidth) {
                     this.scrollBegin = false;
@@ -151,7 +153,6 @@ export default class DatagridController {
         return callback()
             .then(result => {
                 this.displayedRows = result.data;
-
                 if (requireScrollToTop) {
                     this.scrollToTop();
                 }
