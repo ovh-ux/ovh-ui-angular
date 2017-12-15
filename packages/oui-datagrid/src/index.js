@@ -7,7 +7,8 @@ import DatagridProvider from "./datagrid.provider.js";
 angular
     .module("oui.datagrid", [
         "oui.pagination",
-        "oui.dropdown"
+        "oui.dropdown",
+        "ngAria"
     ])
     .service("ouiDatagridColumnBuilder", DatagridColumnBuilder)
     .directive("ouiDatagrid", Datagrid)
