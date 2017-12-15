@@ -35,13 +35,18 @@
                                 </oui-datagrid-cell>
                             </td>
                         </tr>
-                        <tr ng-if="!$ctrl.loading && !$ctrl.displayedRows.length"
+                        <tr ng-show="!$ctrl.displayedRows.length || $ctrl.firstLoading"
                              class="oui-datagrid__row">
                             <td ng-if="$ctrl.hasCheckboxes"
                                 class="oui-datagrid__cell oui-datagrid__cell-sticky"></td>
                             <td class="oui-datagrid__cell"
                                 ng-attr-colspan="{{ $ctrl.columns.length - ( $ctrl.hasActionMenu + $ctrl.hasCheckboxes) }}"
-                                ng-bind="$ctrl.config.translations.emptyPlaceholder"></td>
+                                >
+                                <span ng-if="!$ctrl.firstLoading"
+                                    ng-bind="$ctrl.config.translations.emptyPlaceholder"></span>
+                                <oui-spinner ng-if="$ctrl.firstLoading"
+                                    size="s"></oui-spinner>
+                            </td>
                             <td ng-if="$ctrl.hasActionMenu"
                                 class="oui-datagrid__cell oui-datagrid__cell-sticky"></td>
                         </tr>
@@ -50,7 +55,7 @@
             </div>
         </div>
     </div>
-    <div ng-hide="$ctrl.firstLoading">
+    <div ng-hide="!$ctrl.displayedRows.length || $ctrl.firstLoading">
         <oui-pagination
             class="oui-datagrid-panel__pagination oui-datagrid-panel__pagination_bottom"
             current-offset="$ctrl.paging.offset"
