@@ -8,7 +8,7 @@ const cssSortableAsc = "oui-datagrid__header_sortable-asc";
 const cssSortableDesc = "oui-datagrid__header_sortable-desc";
 
 export default class DatagridController {
-    constructor ($compile, $element, $transclude, $q, $scope, $window, ouiDatagridPaging,
+    constructor ($compile, $element, $transclude, $q, $scope, $window, $timeout, ouiDatagridPaging,
                  ouiDatagridColumnBuilder, ouiDatagridConfiguration) {
         "ngInject";
 
@@ -18,6 +18,7 @@ export default class DatagridController {
         this.$q = $q;
         this.$scope = $scope;
         this.$window = $window;
+        this.$timeout = $timeout;
         this.ouiDatagridPaging = ouiDatagridPaging;
         this.ouiDatagridColumnBuilder = ouiDatagridColumnBuilder;
 
@@ -110,6 +111,10 @@ export default class DatagridController {
     }
 
     hasProperty (obj, prop) { // eslint-disable-line
+        if (!obj) {
+            return false;
+        }
+
         return hasProperty(obj, prop);
     }
 
@@ -137,20 +142,29 @@ export default class DatagridController {
     }
 
     changeOffset (newOffset) {
-        this.refreshData(() => this.paging.setOffset(newOffset, true), true);
+        this.refreshData(() => this.paging.setOffset(newOffset), true, true);
     }
 
     scrollToTop () {
-        this.$element[0].scrollIntoView(true);
+        // Small delay otherwise rows could not be rendered
+        // yet and position would be wrong
+        this.$timeout(() => {
+            this.$element[0].scrollIntoView(true);
+        });
     }
 
-    refreshData (callback, requireScrollToTop) {
+    refreshData (callback, skipSort, requireScrollToTop) {
         if (this.loading) {
             return this.$q.reject(false);
         }
 
         this.loading = true;
-        return callback()
+
+        return this.$q.when(callback())
+            .then(() => {
+                this.displayedRows = DatagridController.createEmptyRows(25); // eslint-disable-line no-magic-numbers
+                return this.paging.loadData(skipSort);
+            })
             .then(result => {
                 this.displayedRows = result.data;
                 if (requireScrollToTop) {
@@ -185,6 +199,11 @@ export default class DatagridController {
             [cssSortableAsc]: this.paging.isSortAsc(),
             [cssSortableDesc]: this.paging.isSortDesc()
         };
+    }
+
+    static createEmptyRows (pageSize) {
+        return Array(...{ length: pageSize })
+            .map(() => undefined);
     }
 
     static filterElements (elements, tagName) {

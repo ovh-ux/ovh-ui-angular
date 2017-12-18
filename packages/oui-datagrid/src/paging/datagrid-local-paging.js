@@ -6,12 +6,13 @@ export default class DatagridLocalPaging extends DatagridPagingAbstract {
 
         this.rows = rows;
         this.rowLoader = rowLoader;
+
+        this.totalCount = rows ? rows.length : 0;
     }
 
     setRows (rows) {
         this.rows = rows;
-
-        return this.loadData();
+        this.totalCount = rows ? rows.length : 0;
     }
 
     loadData (skipSort) {

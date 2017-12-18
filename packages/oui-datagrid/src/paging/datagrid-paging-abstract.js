@@ -12,16 +12,20 @@ export default class DatagridPagingAbstract {
         this.orderByFilter = pagingService.orderByFilter;
     }
 
-    setOffset (offset, skipSort) {
+    setOffset (offset) {
         this.offset = offset;
-
-        return this.loadData(skipSort);
     }
 
     setPageSize (pageSize) {
         this.pageSize = pageSize;
+    }
 
-        return this.loadData();
+    getCurrentPageSize () {
+        if (!this.totalCount) {
+            return 0;
+        }
+
+        return Math.min(this.pageSize, this.totalCount - (this.offset - 1));
     }
 
     setSort (columnName) {
@@ -33,8 +37,6 @@ export default class DatagridPagingAbstract {
                 dir: 1
             };
         }
-
-        return this.loadData();
     }
 
     getSortColumnName () {
