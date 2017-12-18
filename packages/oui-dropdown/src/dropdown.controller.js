@@ -115,6 +115,8 @@ export default class {
             this.arrowElement.setAttribute("x-arrow", "");
         }
 
+        this.popperElement.style.minWidth = `${this.getTriggerWidth()}px`;
+
         this.popper = new Popper(this.referenceElement, this.popperElement, {
             placement,
             modifiers: {
@@ -141,4 +143,9 @@ export default class {
         this.popper.destroy();
         this.popper = null;
     }
+
+    getTriggerWidth () {
+        return this.referenceElement.offsetWidth;
+    }
+
 }
