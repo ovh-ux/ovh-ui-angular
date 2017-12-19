@@ -1,3 +1,5 @@
+const copyValueProperties = ["title"];
+
 export default class DatagridColumnBuilder {
     constructor ($parse, $compile) {
         "ngInject";
@@ -16,22 +18,23 @@ export default class DatagridColumnBuilder {
         angular.forEach(columnElements, columnElement => {
             const column = {};
 
-            angular.forEach(columnElement.attributes, attr => {
-                const attrName = attr.name;
+            if (columnElement.attributes.property) {
+                const propertyValue = columnElement.attributes.property.value;
 
-                switch (attrName) {
-                case "property":
-                    column.name = attr.value;
-                    column.getValue = this.$parse(attr.value);
-                    break;
+                column.name = propertyValue;
+                column.getValue = this.$parse(propertyValue);
+            }
 
-                case "sortable":
-                    column.sortable = attr.value !== undefined;
-                    Object.assign(currentSorting, DatagridColumnBuilder.defineDefaultSorting(column, attr.value));
-                    break;
+            if (columnElement.attributes.sortable) {
+                const sortableValue = columnElement.attributes.sortable.value;
 
-                default:
-                    column[attrName] = attr.value;
+                column.sortable = sortableValue !== undefined;
+                Object.assign(currentSorting, DatagridColumnBuilder.defineDefaultSorting(column, sortableValue));
+            }
+
+            copyValueProperties.forEach(propertyName => {
+                if (columnElement.attributes[propertyName]) {
+                    column[propertyName] = columnElement.attributes[propertyName].value;
                 }
             });
 
