@@ -3,7 +3,7 @@ import fakeData from "./index.spec.data.json";
 describe("ouiDatagrid", () => {
     let TestUtils;
 
-    const getRows = element => element[0].querySelectorAll(".oui-datagrid__row");
+    const getRows = element => element[0].querySelectorAll(".oui-datagrid__row:not(.oui-datagrid__row_loading)");
     const getRow = (element, lineNumber) => angular.element(getRows(element)[lineNumber]);
     const getHeaderCell = (element, columnNumber) => angular.element(element[0].querySelectorAll(".oui-datagrid__header")[columnNumber]);
     const getCell = (element, columnNumber) => angular.element(element[0].querySelectorAll(".oui-datagrid__cell")[columnNumber]);
