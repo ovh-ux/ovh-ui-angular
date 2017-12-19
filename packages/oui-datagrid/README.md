@@ -4,12 +4,28 @@
 
 ## Usage
 
+```html
+<oui-datagrid
+  page-size="..."
+  rows="..."
+  rows-loader="..."
+  row-loader="...">
+  <oui-column
+    title="..."
+    property="..."
+    sortable="...">
+  </oui-column>
+</oui-datagrid>
+```
+
+## Examples
+
 ### Local data
 
 ```html:preview
 <oui-datagrid
   rows="$ctrl.data"
-  page-size="25">
+  page-size="5">
   <oui-column title="First name" property="firstName" sortable="asc"></oui-column>
   <oui-column title="Last name" property="lastName" sortable></oui-column>
   <oui-column title="Mère" property="parents.mother.lastName" sortable>
@@ -28,13 +44,13 @@
 </oui-datagrid>
 ```
 
-### Remote data + on-the-fly loading
+### Remote data and on-the-fly loading
 
 ```html:preview
 <oui-datagrid
   rows-loader="$ctrl.loadPartialData($config)"
   row-loader="$ctrl.loadRow($row)"
-  page-size="25">
+  page-size="5">
   <oui-column title="First name" property="firstName" sortable="asc"></oui-column>
   <oui-column title="Last name" property="lastName" sortable></oui-column>
   <oui-column title="Mère" property="parents.mother.lastName" sortable>
@@ -53,10 +69,10 @@
 </oui-datagrid>
 ```
 
-### With actions
+### Actions
 
 ```html:preview
-<oui-datagrid rows-loader="$ctrl.loadPartialData($config)" row-loader="$ctrl.loadRow($row)" page-size="25">
+<oui-datagrid rows-loader="$ctrl.loadPartialData($config)" row-loader="$ctrl.loadRow($row)" page-size="5">
   <oui-column title="First name" property="firstName" sortable="asc"></oui-column>
   <oui-column title="Last name" property="lastName" sortable></oui-column>
   <oui-column title="Mère" property="parents.mother.lastName" sortable>
@@ -96,7 +112,7 @@ Clicked row action 1: <span ng-if="$ctrl.action1Row">{{$ctrl.action1Row.lastName
 ```html:preview
 <oui-datagrid
   rows="$ctrl.emptyList"
-  page-size="25">
+  page-size="5">
   <oui-column title="First name" property="firstName" sortable="asc"></oui-column>
   <oui-column title="Last name" property="lastName" sortable></oui-column>
   <oui-column title="Mère" property="parents.mother.lastName" sortable>
@@ -128,3 +144,27 @@ Clicked row action 1: <span ng-if="$ctrl.action1Row">{{$ctrl.action1Row.lastName
   </oui-action-menu>
 </oui-datagrid>
 ```
+
+## API
+
+### oui-datagrid
+
+| Attribute         | Type            | Binding | One-time binding | Values                    | Default             | Description                                       |
+| ----              | ----            | ----    | ----             | ----                      | ----                | ----                                              |
+| `page-size`       | number          | @?      |                  |                           | 25                  | maximum number of rows to show on each pages      |
+| `rows`            | string          | <?      | yes              |                           |                     | rows to show                                      |
+| `rows-loader`     | function        | &?      | yes              |                           |                     | gets all rows (returns a promise with all rows)   |
+| `row-loader`      | function        | &?      | yes              |                           |                     | gets row details (returns a promise with details) |
+
+
+### oui-column
+
+| Attribute         | Type            | Binding | One-time binding | Values                    | Default                | Description                                 |
+| ----              | ----            | ----    | ----             | ----                      | ----                   | ----                                        |
+| `title`           | string          | N/A     | yes              |                           |                        | column title put in header                  |
+| `property`        | string          | N/A     | yes              |                           |                        | property path used to get value from value  |
+| `sortable`        | string          | N/A     | yes              | `asc`, `desc`             | `asc` on `sortable=""` | makes a column sortable and gives the order |
+
+### oui-action-menu
+
+Can be used as a column and will be sticked on side on smaller devices. Documentation about `oui-action-menu` can be found [here](#!/oui-angular/action-menu).
