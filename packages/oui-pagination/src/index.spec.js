@@ -1,6 +1,9 @@
 describe("ouiPagination", () => {
     let TestUtils;
 
+    const customPageSize = 50;
+    const customPageSizesList = [25, 50, 100, 200];
+
     const getPagination = elt => elt[0].querySelector(".oui-pagination");
     const getProgress = elt => elt[0].querySelector(".oui-pagination__progress");
     const getSelector = elt => elt[0].querySelector(".oui-pagination__selector");
@@ -22,8 +25,8 @@ describe("ouiPagination", () => {
         angular.module("test.paginationConfiguration", [
             "oui.pagination"
         ]).config(ouiPaginationConfigurationProvider => {
-            ouiPaginationConfigurationProvider.setPageSize(50);
-            ouiPaginationConfigurationProvider.setPageSizeList([25, 50, 100, 200]);
+            ouiPaginationConfigurationProvider.setPageSize(customPageSize);
+            ouiPaginationConfigurationProvider.setPageSizeList(customPageSizesList);
             ouiPaginationConfigurationProvider.setTranslations({
                 resultsPerPage: "Results per page",
                 ofNResults: "of {{totalItems}} results",
@@ -37,8 +40,8 @@ describe("ouiPagination", () => {
         }));
 
         it("should have custom values", () => {
-            expect(paginationConfiguration.pageSize).toEqual(50);
-            expect(paginationConfiguration.pageSizeList).toEqual([25, 50, 100, 200]);
+            expect(paginationConfiguration.pageSize).toEqual(customPageSize);
+            expect(paginationConfiguration.pageSizeList).toEqual(customPageSizesList);
             expect(paginationConfiguration.translations.foo).toEqual("bar");
         });
     });
@@ -302,6 +305,9 @@ describe("ouiPagination", () => {
                     </oui-pagination>
                 `);
 
+                // Page sizes list should not list page size above pageSizeMax (50).
+                // So, instead of displaying 4 values (see customPageSizesList = [25, 50, 100, 200]) the page size list
+                // is limited to all values lower or equal to pageSizeMax: [25, 50] (length: 2).
                 const pageSizesButtons = getProgress(element).querySelectorAll(".oui-pagination-menu__items-list .oui-pagination-menu__item");
                 expect(pageSizesButtons.length).toEqual(2);
             });
@@ -318,18 +324,36 @@ describe("ouiPagination", () => {
                         pageSizeMax: 80
                     });
 
-                let pageSizesButtons = getPageSizeButtons(element);
-                const contextController = element.scope().$ctrl;
+                // Page sizes list should not list page size above pageSizeMax (80).
+                // So, instead of displaying 4 values (see customPageSizesList = [25, 50, 100, 200]) the page size list
+                // is limited to all values lower or equal to pageSizeMax and pageSizeMax: [25, 50, 80] (length: 3).
+                const pageSizesButtons = getPageSizeButtons(element);
 
                 expect(pageSizesButtons.length).toEqual(3);
                 expect(pageSizesButtons[2].innerHTML).toEqual("80");
+            });
+
+            it("should be reinitilized", () => {
+                const element = TestUtils.compileTemplate(`
+                        <oui-pagination
+                            current-offset="1"
+                            page-size="25"
+                            page-size-max="$ctrl.pageSizeMax"
+                            total-items="1000">
+                        </oui-pagination>
+                    `, {
+                        pageSizeMax: 80
+                    });
+
+                const contextController = element.scope().$ctrl;
+                let pageSizesButtons = getPageSizeButtons(element);
 
                 // Reset to all page sizes
                 delete contextController.pageSizeMax;
                 element.scope().$digest();
+
                 pageSizesButtons = getPageSizeButtons(element);
-                expect(pageSizesButtons.length).toEqual(4);
-                expect(pageSizesButtons[3].innerHTML).toEqual("200");
+                expect(pageSizesButtons.length).toEqual(customPageSizesList.length);
             });
         });
     });
