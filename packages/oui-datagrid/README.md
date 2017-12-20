@@ -168,3 +168,20 @@ Clicked row action 1: <span ng-if="$ctrl.action1Row">{{$ctrl.action1Row.lastName
 ### oui-action-menu
 
 Can be used as a column and will be sticked on side on smaller devices. Documentation about `oui-action-menu` can be found [here](#!/oui-angular/action-menu).
+
+## Configuration
+
+The datagrid can be globally configured with a provider.
+
+```js
+angular.module("myModule", [
+    "oui.datagrid"
+]).config(ouiDatagridConfigurationProvider => {
+    ouiDatagridConfigurationProvider.setPageSize(25); // default page size (when page-size attribute is not set)
+    ouiPaginationConfigurationProvider.setTranslations({ // Translations (double curly braces for placeholders)
+        emptyPlaceholder: "No data available"
+    });
+});
+```
+
+
