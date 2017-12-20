@@ -124,25 +124,10 @@ export default class DatagridController {
     }
 
     onPaginationChange ($event) {
-        if ($event.offset !== this.paging.offset) {
-            this.changeOffset($event.offset);
-        }
-
-        if ($event.pageSize !== this.paging.pageSize) {
-            this.setPageSize($event.pageSize);
-        }
-    }
-
-    setPageSize (pageSize) {
         this.refreshData(() => {
-            // Reset offset without trigger reload.
-            this.paging.offset = 1;
-            return this.paging.setPageSize(pageSize);
-        }, true);
-    }
-
-    changeOffset (newOffset) {
-        this.refreshData(() => this.paging.setOffset(newOffset), true, true);
+            this.paging.setOffset($event.offset);
+            this.paging.setPageSize($event.pageSize);
+        }, true, true);
     }
 
     scrollToTop () {
