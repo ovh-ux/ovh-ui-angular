@@ -22,7 +22,7 @@ export default class DatagridPagingAbstract {
 
     getCurrentPageSize () {
         if (!this.totalCount) {
-            return 0;
+            return this.pageSize;
         }
 
         return Math.min(this.pageSize, this.totalCount - (this.offset - 1));

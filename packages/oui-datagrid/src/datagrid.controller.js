@@ -162,7 +162,7 @@ export default class DatagridController {
 
         return this.$q.when(callback())
             .then(() => {
-                this.displayedRows = DatagridController.createEmptyRows(25); // eslint-disable-line no-magic-numbers
+                this.displayedRows = DatagridController.createEmptyRows(this.paging.getCurrentPageSize());
                 return this.paging.loadData(skipSort);
             })
             .then(result => {

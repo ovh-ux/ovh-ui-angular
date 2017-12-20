@@ -1,7 +1,9 @@
-import fakeData from "./index.spec.data.json";
+import originalFakeData from "./index.spec.data.json";
 
 describe("ouiDatagrid", () => {
     let TestUtils;
+    let $rootScope;
+    let fakeData;
 
     const getRows = element => element[0].querySelectorAll(".oui-datagrid__row:not(.oui-datagrid__row_loading)");
     const getRow = (element, lineNumber) => angular.element(getRows(element)[lineNumber]);
@@ -20,8 +22,11 @@ describe("ouiDatagrid", () => {
     beforeEach(angular.mock.module("oui.test-utils"));
     beforeEach(angular.mock.module("oui.action-menu"));
 
-    beforeEach(inject((_TestUtils_) => {
+    beforeEach(inject((_TestUtils_, _$rootScope_) => {
         TestUtils = _TestUtils_;
+        $rootScope = _$rootScope_;
+
+        fakeData = angular.copy(originalFakeData);
     }));
 
     describe("Component", () => {
@@ -65,8 +70,9 @@ describe("ouiDatagrid", () => {
                 expect($paginationLastItemOffset.html()).toBe("5");
             });
 
-            it("should refresh when rows changed", inject(($rootScope) => {
+            it("should refresh when rows changed", () => {
                 const fakeDataCopy = angular.copy(fakeData.slice(0, 5));
+                const newCellValue = "fakeFirstName";
 
                 const element = TestUtils.compileTemplate(`
                         <oui-datagrid rows="$ctrl.rows">
@@ -77,33 +83,24 @@ describe("ouiDatagrid", () => {
                         rows: fakeDataCopy
                     }
                 );
-                const controller = TestUtils.getElementController(element);
 
-                controller.rows[0].firstName = "fakeFirstName";
-
-                $rootScope.$digest();
+                changeCellValue(element, 0, "firstName", newCellValue);
 
                 const $firstRow = getRow(element, 1);
 
-                expect(getCell($firstRow, 0).children().html()).toBe("fakeFirstName");
-            }));
+                expect(getCell($firstRow, 0).children().html()).toBe(newCellValue);
+            });
 
-            it("should load data later and display it", inject(($q, $rootScope) => {
-                const deferred = $q.defer();
-                let deferredRow;
+            it("should load data instantly if data is already available", inject(($q) => {
                 const loadRowSpy = jasmine.createSpy("loadRow");
+                const additionnalDataValue = "+";
 
-                loadRowSpy.and.callFake(($row) => {
-                    if ($row.firstName === fakeData[1].firstName && $row.lastName === fakeData[1].lastName) {
-                        deferredRow = $row;
-                        return deferred.promise;
-                    }
-
-                    return $q.when({
+                loadRowSpy.and.callFake(($row) =>
+                    $q.when({
                         ...$row,
-                        more: "+"
-                    });
-                });
+                        more: additionnalDataValue
+                    })
+                );
 
                 const element = TestUtils.compileTemplate(`
                         <oui-datagrid rows="$ctrl.rows" row-loader="$ctrl.loadRow($row)">
@@ -118,24 +115,68 @@ describe("ouiDatagrid", () => {
                 );
 
                 const $firstRow = getRow(element, 1);
-                const $secondRow = getRow(element, 2);
 
                 expect(loadRowSpy.calls.count()).toEqual(5);
 
                 expect(getCell($firstRow, 0).children().html()).toBe(fakeData[0].firstName);
-                expect(getCell($firstRow, 2).children().html()).toBe("+");
-                expect(getCell($secondRow, 0).children().html()).toBe(fakeData[1].firstName);
-                expect(getCell($secondRow, 2).children().html()).toBeUndefined();
+                expect(getCell($firstRow, 2).children().html()).toBe(additionnalDataValue);
+            }));
+
+            it("should keep undefined when a cell is not loaded", inject(($q) => {
+                const deferred = $q.defer();
+                const loadRowSpy = jasmine.createSpy("loadRow");
+
+                loadRowSpy.and.returnValue(deferred.promise);
+
+                const element = TestUtils.compileTemplate(`
+                        <oui-datagrid rows="$ctrl.rows" row-loader="$ctrl.loadRow($row)">
+                            <oui-column property="firstName"></oui-column>
+                            <oui-column property="lastName"></oui-column>
+                            <oui-column property="more"></oui-column>
+                        </oui-datagrid>
+                    `, {
+                        rows: fakeData.slice(0, 1),
+                        loadRow: loadRowSpy
+                    }
+                );
+
+                const $firstRow = getRow(element, 1);
+
+                expect(loadRowSpy.calls.count()).toEqual(1);
+
+                expect(getCell($firstRow, 0).children().html()).toBe(fakeData[0].firstName);
+                expect(getCell($firstRow, 2).children().html()).toBeUndefined();
+            }));
+
+            it("should load data later and display it", inject(($q) => {
+                const additionnalDataValue = "+";
+                const deferred = $q.defer();
+                const loadRowSpy = jasmine.createSpy("loadRow");
+
+                loadRowSpy.and.returnValue(deferred.promise);
+
+                const element = TestUtils.compileTemplate(`
+                        <oui-datagrid rows="$ctrl.rows" row-loader="$ctrl.loadRow($row)">
+                            <oui-column property="firstName"></oui-column>
+                            <oui-column property="lastName"></oui-column>
+                            <oui-column property="more"></oui-column>
+                        </oui-datagrid>
+                    `, {
+                        rows: fakeData.slice(0, 1),
+                        loadRow: loadRowSpy
+                    }
+                );
 
                 deferred.resolve({
-                    ...deferredRow,
-                    more: "++"
+                    more: additionnalDataValue
                 });
 
                 $rootScope.$digest();
 
-                expect(getCell($secondRow, 0).children().html()).toBe(fakeData[1].firstName);
-                expect(getCell($secondRow, 2).children().html()).toBe("++");
+                const $firstRow = getRow(element, 1);
+
+                expect(getCell($firstRow, 0).children().html()).toBe(fakeData[0].firstName);
+                expect(getCell($firstRow, 2).children().html()).toBe(additionnalDataValue);
             }));
 
             it("should display rows that can only be contained in a page", () => {
@@ -237,22 +278,21 @@ describe("ouiDatagrid", () => {
                 expect($paginationLastItemOffset.html()).toBe("5");
             });
 
-            it("should load data later and display it", inject(($q, $rootScope) => {
+            it("should keep undefined when a cell is not loaded", inject(($q) => {
                 const deferred = $q.defer();
-                let deferredRow;
                 const loadRowSpy = jasmine.createSpy("loadRow");
 
-                loadRowSpy.and.callFake(($row) => {
-                    if ($row.firstName === fakeData[1].firstName && $row.lastName === fakeData[1].lastName) {
-                        deferredRow = $row;
-                        return deferred.promise;
-                    }
+                loadRowSpy.and.returnValue(deferred.promise);
 
-                    return $q.when({
-                        ...$row,
-                        more: "+"
-                    });
-                });
+                rowsLoaderSpy.and.returnValue($q.when({
+                    data: fakeData.slice(0, 1),
+                    meta: {
+                        currentOffset: 0,
+                        pageCount: 1,
+                        totalCount: 1,
+                        pageSize: 1
+                    }
+                }));
 
                 const element = TestUtils.compileTemplate(`
                         <oui-datagrid rows-loader="$ctrl.loadRows($config)" row-loader="$ctrl.loadRow($row)">
@@ -267,28 +307,61 @@ describe("ouiDatagrid", () => {
                 );
 
                 const $firstRow = getRow(element, 1);
-                const $secondRow = getRow(element, 2);
 
-                expect(loadRowSpy.calls.count()).toEqual(5);
+                expect(loadRowSpy.calls.count()).toEqual(1);
 
                 expect(getCell($firstRow, 0).children().html()).toBe(fakeData[0].firstName);
-                expect(getCell($firstRow, 2).children().html()).toBe("+");
-                expect(getCell($secondRow, 0).children().html()).toBe(fakeData[1].firstName);
-                expect(getCell($secondRow, 2).children().html()).toBeUndefined();
+                expect(getCell($firstRow, 2).children().html()).toBeUndefined();
+            }));
+
+            it("should load data later and display it", inject(($q) => {
+                const additionnalDataValue = "+";
+                const deferred = $q.defer();
+                const loadRowSpy = jasmine.createSpy("loadRow");
+
+                loadRowSpy.and.returnValue(deferred.promise);
+
+                rowsLoaderSpy.and.returnValue($q.when({
+                    data: fakeData.slice(0, 1),
+                    meta: {
+                        currentOffset: 0,
+                        pageCount: 1,
+                        totalCount: 1,
+                        pageSize: 1
+                    }
+                }));
+
+                const element = TestUtils.compileTemplate(`
+                        <oui-datagrid rows-loader="$ctrl.loadRows($config)" row-loader="$ctrl.loadRow($row)">
+                            <oui-column property="firstName"></oui-column>
+                            <oui-column property="lastName"></oui-column>
+                            <oui-column property="more"></oui-column>
+                        </oui-datagrid>
+                    `, {
+                        loadRows: rowsLoaderSpy,
+                        loadRow: loadRowSpy
+                    }
+                );
 
                 deferred.resolve({
-                    ...deferredRow,
-                    more: "++"
+                    more: additionnalDataValue
                 });
 
                 $rootScope.$digest();
 
-                expect(getCell($secondRow, 0).children().html()).toBe(fakeData[1].firstName);
-                expect(getCell($secondRow, 2).children().html()).toBe("++");
+                const $firstRow = getRow(element, 1);
+
+                expect(loadRowSpy.calls.count()).toEqual(1);
+                expect(getCell($firstRow, 0).children().html()).toBe(fakeData[0].firstName);
+                expect(getCell($firstRow, 2).children().html()).toBe(additionnalDataValue);
             }));
 
-            it("should display rows that can only be contained in a page", () => {
-                TestUtils.compileTemplate(`
+            it("should display rows that can only be contained in a page", inject(($q) => {
+                rowsLoaderSpy.and.callFake(config =>
+                    $q.when(fakeData.slice(config.offset - 1, config.pageSize))
+                );
+
+                const element = TestUtils.compileTemplate(`
                         <oui-datagrid rows-loader="$ctrl.loadRows($config)" page-size="2">
                             <oui-column property="firstName"></oui-column>
                             <oui-column property="lastName"></oui-column>
@@ -298,11 +371,10 @@ describe("ouiDatagrid", () => {
                     }
                 );
 
-                expect(rowsLoaderSpy).toHaveBeenCalledWith(jasmine.objectContaining({
-                    offset: 1,
-                    pageSize: 2
-                }));
-            });
+                const rows = getRows(element);
+
+                expect(rows.length).toEqual(3);
+            }));
 
             it("should display rows sorted", () => {
                 TestUtils.compileTemplate(`
@@ -546,4 +618,12 @@ describe("ouiDatagrid", () => {
             expect(isStickyCell($actionCell)).toBe(true);
         });
     });
+
+    function changeCellValue (element, rowNumber, columnName, newValue) {
+        const controller = TestUtils.getElementController(element);
+
+        controller.rows[rowNumber][columnName] = newValue;
+
+        $rootScope.$digest();
+    }
 });
