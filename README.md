@@ -10,6 +10,17 @@ A set of maintainable components for the OVH ecosystem (Angular).
 
 ## Installation
 
+### Prerequisites
+
+This library has been tested with AngularJS 1.6.
+
+You will also need these dependencies in your project:
+
+- [angular-aria](https://www.npmjs.com/package/angular-aria)
+- [ovh-ui-kit](https://github.com/ovh-ux/ovh-ui-kit)
+
+Follow the [guide](https://github.com/ovh-ux/ovh-ui-kit) for _ovh-ui-kit_, because you need to integrate it by _yourself_.
+
 ### bower
 
 ```bash
@@ -41,12 +52,6 @@ angular.module("myAwesomeApp", [
     ...
 ]);
 ```
-
-### Dependencies
-
-Follow guides for those dependencies, because you need to integrate them by _yourself_:
-
-- [ovh-ui-kit](https://github.com/ovh-ux/ovh-ui-kit)
 
 ## Get the sources
 
