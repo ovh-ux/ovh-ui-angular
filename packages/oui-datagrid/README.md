@@ -26,19 +26,19 @@
 <oui-datagrid
   rows="$ctrl.data"
   page-size="5">
-  <oui-column title="First name" property="firstName" sortable="asc"></oui-column>
-  <oui-column title="Last name" property="lastName" sortable></oui-column>
-  <oui-column title="Mère" property="parents.mother.lastName" sortable>
+  <oui-column title="'First name'" property="firstName" sortable="asc"></oui-column>
+  <oui-column title="'Last name'" property="lastName" sortable></oui-column>
+  <oui-column title="'Mother'" property="parents.mother.lastName" sortable>
     {{$row.parents.mother.lastName}}, {{$row.parents.mother.firstName}}
   </oui-column>
-  <oui-column title="Père" property="parents.father.lastName" sortable>
+  <oui-column title="'Father'" property="parents.father.lastName" sortable>
     {{$row.parents.father.lastName}}, {{$row.parents.father.firstName}}
   </oui-column>
-  <oui-column title="Email" property="email" sortable>
+  <oui-column title="'Email'" property="email" sortable>
     <a href="mailto:{{$value}}">{{$ctrl.label}}: {{$value}}</a>
   </oui-column>
-  <oui-column title="Phone" property="phone"></oui-column>
-  <oui-column title="Birth" property="birth" sortable>
+  <oui-column title="'Phone'" property="phone"></oui-column>
+  <oui-column title="'Birth'" property="birth" sortable>
     {{$value|date:short}}
   </oui-column>
 </oui-datagrid>
@@ -51,19 +51,19 @@
   rows-loader="$ctrl.loadPartialData($config)"
   row-loader="$ctrl.loadRow($row)"
   page-size="5">
-  <oui-column title="First name" property="firstName" sortable="asc"></oui-column>
-  <oui-column title="Last name" property="lastName" sortable></oui-column>
-  <oui-column title="Mère" property="parents.mother.lastName" sortable>
+  <oui-column title="'First name'" property="firstName" sortable="asc"></oui-column>
+  <oui-column title="'Last name'" property="lastName" sortable></oui-column>
+  <oui-column title="'Mother'" property="parents.mother.lastName" sortable>
     {{$row.parents.mother.lastName}}, {{$row.parents.mother.firstName}}
   </oui-column>
-  <oui-column title="Père" property="parents.father.lastName" sortable>
+  <oui-column title="'Father'" property="parents.father.lastName" sortable>
     {{$row.parents.father.lastName}}, {{$row.parents.father.firstName}}
   </oui-column>
-  <oui-column title="Email" property="email" sortable>
+  <oui-column title="'Email'" property="email" sortable>
     <a href="mailto:{{$value}}">{{$ctrl.label}}: {{$value}}</a>
   </oui-column>
-  <oui-column title="Phone" property="phone"></oui-column>
-  <oui-column title="Birth" property="birth" sortable>
+  <oui-column title="'Phone'" property="phone"></oui-column>
+  <oui-column title="'Birth'" property="birth" sortable>
     {{$value|date:short}}
   </oui-column>
 </oui-datagrid>
@@ -73,19 +73,19 @@
 
 ```html:preview
 <oui-datagrid rows-loader="$ctrl.loadPartialData($config)" row-loader="$ctrl.loadRow($row)" page-size="5">
-  <oui-column title="First name" property="firstName" sortable="asc"></oui-column>
-  <oui-column title="Last name" property="lastName" sortable></oui-column>
-  <oui-column title="Mère" property="parents.mother.lastName" sortable>
+  <oui-column title="'First name'" property="firstName" sortable="asc"></oui-column>
+  <oui-column title="'Last name'" property="lastName" sortable></oui-column>
+  <oui-column title="'Mother'" property="parents.mother.lastName" sortable>
     {{$row.parents.mother.lastName}}, {{$row.parents.mother.firstName}}
   </oui-column>
-  <oui-column title="Père" property="parents.father.lastName" sortable>
+  <oui-column title="'Father'" property="parents.father.lastName" sortable>
     {{$row.parents.father.lastName}}, {{$row.parents.father.firstName}}
   </oui-column>
-  <oui-column title="Email" property="email" sortable>
+  <oui-column title="'Email'" property="email" sortable>
     <a href="mailto:{{$value}}">{{$ctrl.label}}: {{$value}}</a>
   </oui-column>
-  <oui-column title="Phone" property="phone"></oui-column>
-  <oui-column title="Birth" property="birth" sortable>
+  <oui-column title="'Phone'" property="phone"></oui-column>
+  <oui-column title="'Birth'" property="birth" sortable>
     {{$value|date:short}}
   </oui-column>
   <oui-action-menu
@@ -113,19 +113,19 @@ Clicked row action 1: <span ng-if="$ctrl.action1Row">{{$ctrl.action1Row.lastName
 <oui-datagrid
   rows="$ctrl.emptyList"
   page-size="5">
-  <oui-column title="First name" property="firstName" sortable="asc"></oui-column>
-  <oui-column title="Last name" property="lastName" sortable></oui-column>
-  <oui-column title="Mère" property="parents.mother.lastName" sortable>
+  <oui-column title="'First name'" property="firstName" sortable="asc"></oui-column>
+  <oui-column title="'Last name'" property="lastName" sortable></oui-column>
+  <oui-column title="'Mother'" property="parents.mother.lastName" sortable>
     {{$row.parents.mother.lastName}}, {{$row.parents.mother.firstName}}
   </oui-column>
-  <oui-column title="Père" property="parents.father.lastName" sortable>
+  <oui-column title="'Father'" property="parents.father.lastName" sortable>
     {{$row.parents.father.lastName}}, {{$row.parents.father.firstName}}
   </oui-column>
-  <oui-column title="Email" property="email" sortable>
+  <oui-column title="'Email'" property="email" sortable>
     <a href="mailto:{{$value}}">{{$ctrl.label}}: {{$value}}</a>
   </oui-column>
-  <oui-column title="Phone" property="phone"></oui-column>
-  <oui-column title="Birth" property="birth" sortable>
+  <oui-column title="'Phone'" property="phone"></oui-column>
+  <oui-column title="'Birth'" property="birth" sortable>
     {{$value|date:short}}
   </oui-column>
   <oui-action-menu

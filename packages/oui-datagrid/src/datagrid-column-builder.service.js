@@ -8,7 +8,7 @@ export default class DatagridColumnBuilder {
         this.$compile = $compile;
     }
 
-    build (columnElements) {
+    build (columnElements, $scope) {
         const columns = [];
         const currentSorting = {
             columnName: undefined,
@@ -37,6 +37,12 @@ export default class DatagridColumnBuilder {
                     column[propertyName] = columnElement.attributes[propertyName].value;
                 }
             });
+
+            if (columnElement.attributes.title) {
+                const titleValue = columnElement.attributes.title.value;
+
+                column.title = this.$parse(titleValue)($scope);
+            }
 
             if (!column.sortProperty) {
                 column.sortProperty = column.name;
