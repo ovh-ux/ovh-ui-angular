@@ -76,14 +76,11 @@ export default class {
 
     // Handle click, space key press and enter key press
     onTriggerClick () {
-        this.$scope.$apply(() => {
-            this.toggle();
-        });
+        this.toggle();
     }
 
     toggle () {
-        this.isDropdownOpen = !this.isDropdownOpen;
-        if (this.isDropdownOpen) {
+        if (!this.isDropdownOpen) {
             this.openDropdown();
         } else {
             this.closeDropdown();
@@ -91,15 +88,18 @@ export default class {
     }
 
     openDropdown () {
+        // Don't use ng-class here, it could cause issue on positionning.
+        this.isDropdownOpen = true;
+        angular.element(this.$element.children()[0]).addClass("oui-dropdown_active");
         this.updatePopper();
-
         this.$document.on("click", this.documentClickHandler);
     }
 
     closeDropdown () {
+        // Don't use ng-class here, it could cause issue on positionning.
         this.isDropdownOpen = false;
+        angular.element(this.$element.children()[0]).removeClass("oui-dropdown_active");
         this.destroyPopper();
-
         this.$document.off("click", this.documentClickHandler);
     }
 
