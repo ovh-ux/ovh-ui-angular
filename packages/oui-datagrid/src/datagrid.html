@@ -1,0 +1,70 @@
+<div>
+    <div class="oui-datagrid-responsive-container"
+        ng-class="::{
+            'oui-datagrid-responsive-container_sticky-actions': $ctrl.hasActionMenu
+        }">
+        <div class="oui-datagrid-responsive-container__sticky-container"
+            ng-class="{
+                'oui-datagrid-responsive-container__sticky-container_scroll-begin': $ctrl.scrollBegin && $ctrl.hasActionMenu,
+                'oui-datagrid-responsive-container__sticky-container_scroll-end': $ctrl.scrollEnd && $ctrl.hasCheckboxes
+            }">
+            <div class="oui-datagrid-responsive-container__overflow-container">
+                <table class="oui-datagrid oui-datagrid_responsive">
+                    <thead class="oui-datagrid__headers">
+                        <tr class="oui-datagrid__row">
+                            <th class="oui-datagrid__header"
+                                ng-class="[$ctrl.getSortableClasses(column), { 'oui-datagrid__cell-sticky': $ctrl.hasActionMenu && $last }]"
+                                ng-repeat="column in $ctrl.columns track by $index"
+                                ng-click="::$ctrl.sort(column)"
+                                ng-bind="::column.title">
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="oui-datagrid__body"
+                        ng-hide="$ctrl.loading">
+                        <tr class="oui-datagrid__row oui-action-menu-container"
+                            ng-repeat="row in $ctrl.displayedRows track by $index">
+                            <td class="oui-datagrid__cell"
+                                ng-class="::[column.class, { 'oui-datagrid__cell-sticky': ($ctrl.hasCheckboxes && $first) || ($ctrl.hasActionMenu && $last) }]"
+                                ng-repeat="column in $ctrl.columns track by $index"
+                                data-title="{{::column.title}}">
+                                <span ng-if="!column.name || $ctrl.hasProperty(row, column.name) && !column.template"
+                                    ng-bind="column.getValue(row)">
+                                </span>
+                                <oui-datagrid-cell ng-if="row && (!column.name || $ctrl.hasProperty(row, column.name) && column.template)"
+                                    row="row"
+                                    column="::column">
+                                </oui-datagrid-cell>
+                            </td>
+                        </tr>
+                        <tr ng-show="!$ctrl.displayedRows.length || $ctrl.firstLoading"
+                             class="oui-datagrid__row oui-datagrid__row_loading">
+                            <td ng-if="$ctrl.hasCheckboxes"
+                                class="oui-datagrid__cell oui-datagrid__cell-sticky"></td>
+                            <td class="oui-datagrid__cell"
+                                ng-attr-colspan="{{ $ctrl.columns.length - ( $ctrl.hasActionMenu + $ctrl.hasCheckboxes) }}"
+                                >
+                                <span ng-if="!$ctrl.firstLoading"
+                                    ng-bind="$ctrl.config.translations.emptyPlaceholder"></span>
+                                <oui-spinner ng-if="$ctrl.firstLoading"
+                                    size="s"></oui-spinner>
+                            </td>
+                            <td ng-if="$ctrl.hasActionMenu"
+                                class="oui-datagrid__cell oui-datagrid__cell-sticky"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div ng-hide="!$ctrl.displayedRows.length || $ctrl.firstLoading">
+        <oui-pagination
+            class="oui-datagrid-panel__pagination"
+            current-offset="$ctrl.paging.offset"
+            page-size="$ctrl.paging.pageSize"
+            total-items="$ctrl.paging.totalCount"
+            on-change="$ctrl.onPaginationChange($event)">
+        </oui-pagination>
+    </div>
+</div>
+
