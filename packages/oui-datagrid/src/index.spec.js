@@ -52,24 +52,6 @@ describe("ouiDatagrid", () => {
                 expect(getCell($fifthRow, 1).children().html()).toBe(fakeData[4].lastName);
             });
 
-            it("should display a pagination component", () => {
-                const element = TestUtils.compileTemplate(`
-                        <oui-datagrid rows="$ctrl.rows">
-                            <oui-column property="firstName"></oui-column>
-                            <oui-column property="lastName"></oui-column>
-                        </oui-datagrid>
-                    `, {
-                        rows: fakeData.slice(0, 5)
-                    }
-                );
-
-                const $paginationOffset = getPaginationOffset(element);
-                const $paginationLastItemOffset = getPaginationLastItemOffset(element);
-
-                expect($paginationOffset.html()).toBe("1");
-                expect($paginationLastItemOffset.html()).toBe("5");
-            });
-
             it("should refresh when rows changed", () => {
                 const fakeDataCopy = angular.copy(fakeData.slice(0, 5));
                 const newCellValue = "fakeFirstName";
@@ -260,24 +242,6 @@ describe("ouiDatagrid", () => {
                 expect(getCell($fifthRow, 1).children().html()).toBe(fakeData[4].lastName);
             });
 
-            it("should display a pagination component", () => {
-                const element = TestUtils.compileTemplate(`
-                        <oui-datagrid rows-loader="$ctrl.loadRows($config)">
-                            <oui-column property="firstName"></oui-column>
-                            <oui-column property="lastName"></oui-column>
-                        </oui-datagrid>
-                    `, {
-                        loadRows: rowsLoaderSpy
-                    }
-                );
-
-                const $paginationOffset = getPaginationOffset(element);
-                const $paginationLastItemOffset = getPaginationLastItemOffset(element);
-
-                expect($paginationOffset.html()).toBe("1");
-                expect($paginationLastItemOffset.html()).toBe("5");
-            });
-
             it("should keep undefined when a cell is not loaded", inject(($q) => {
                 const deferred = $q.defer();
                 const loadRowSpy = jasmine.createSpy("loadRow");
@@ -358,7 +322,12 @@ describe("ouiDatagrid", () => {
 
             it("should display rows that can only be contained in a page", inject(($q) => {
                 rowsLoaderSpy.and.callFake(config =>
-                    $q.when(fakeData.slice(config.offset - 1, config.pageSize))
+                    $q.when({
+                        data: fakeData.slice(config.offset - 1, config.pageSize),
+                        meta: {
+                            totalCount: config.pageSize - config.offset
+                        }
+                    })
                 );
 
                 const element = TestUtils.compileTemplate(`
@@ -390,14 +359,29 @@ describe("ouiDatagrid", () => {
                 expect(rowsLoaderSpy).toHaveBeenCalledWith(jasmine.objectContaining({
                     sort: {
                         property: "lastName",
-
-                        // TODO: Remove it, since columnName seems to be the same
-                        // thing than property ?
                         columnName: "lastName",
                         dir: 1
                     }
                 }));
             });
+        });
+
+        it("should display a pagination component", () => {
+            const element = TestUtils.compileTemplate(`
+                    <oui-datagrid rows="$ctrl.rows">
+                        <oui-column property="firstName"></oui-column>
+                        <oui-column property="lastName"></oui-column>
+                    </oui-datagrid>
+                `, {
+                    rows: fakeData.slice(0, 5)
+                }
+            );
+
+            const $paginationOffset = getPaginationOffset(element);
+            const $paginationLastItemOffset = getPaginationLastItemOffset(element);
+
+            expect($paginationOffset.html()).toBe("1");
+            expect($paginationLastItemOffset.html()).toBe("5");
         });
 
         it("should support row data binding inside cell", () => {

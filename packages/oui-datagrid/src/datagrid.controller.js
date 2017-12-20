@@ -7,6 +7,12 @@ const cssSortable = "oui-datagrid__header_sortable";
 const cssSortableAsc = "oui-datagrid__header_sortable-asc";
 const cssSortableDesc = "oui-datagrid__header_sortable-desc";
 
+// On initial render we need to wait few seconds before calling
+// the checkScroll method otherwise panel size would be wrong.
+// This timing is not perfect, if the page render takes more time
+// than usual the scroll position could be miscalculated.
+const checkScrollOnRefreshDataDelay = 1000;
+
 export default class DatagridController {
     constructor ($compile, $element, $transclude, $q, $scope, $window, $timeout, ouiDatagridPaging,
                  ouiDatagridColumnBuilder, ouiDatagridConfiguration) {
@@ -84,10 +90,12 @@ export default class DatagridController {
         }
 
         // Manage responsiveness
-        this.scrollablePanel = this.$element[0].querySelector(".oui-datagrid-responsive-container__overflow-container");
-        if (this.scrollablePanel) {
-            angular.element(this.$window).on("resize", this.checkScroll);
-            angular.element(this.scrollablePanel).on("scroll", this.checkScroll);
+        if (this.hasActionMenu) {
+            this.scrollablePanel = this.$element[0].querySelector(".oui-datagrid-responsive-container__overflow-container");
+            if (this.scrollablePanel) {
+                angular.element(this.$window).on("resize", this.checkScroll);
+                angular.element(this.scrollablePanel).on("scroll", this.checkScroll);
+            }
         }
     }
 
@@ -102,8 +110,10 @@ export default class DatagridController {
     }
 
     $onDestroy () {
-        angular.element(this.$window).off("resize", this.checkScroll);
-        angular.element(this.scrollablePanel).off("scroll");
+        if (this.hasActionMenu) {
+            angular.element(this.$window).off("resize", this.checkScroll);
+            angular.element(this.scrollablePanel).off("scroll");
+        }
     }
 
     getParentScope () {
@@ -116,11 +126,6 @@ export default class DatagridController {
         }
 
         return hasProperty(obj, prop);
-    }
-
-    // TODO
-    handleError () { // eslint-disable-line
-        // do nothing.
     }
 
     onPaginationChange ($event) {
@@ -155,13 +160,14 @@ export default class DatagridController {
                 if (requireScrollToTop) {
                     this.scrollToTop();
                 }
-                setTimeout(() => this.checkScroll(), 1000); // eslint-disable-line no-magic-numbers
+                if (this.hasActionMenu) {
+                    setTimeout(() => this.checkScroll(), checkScrollOnRefreshDataDelay);
+                }
             })
             .finally(() => {
                 this.loading = false;
                 this.firstLoading = false;
-            })
-            .catch(this.handleError.bind(this));
+            });
     }
 
     sort (column) {

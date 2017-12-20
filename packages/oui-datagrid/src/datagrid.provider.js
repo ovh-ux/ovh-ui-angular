@@ -7,7 +7,7 @@ export default class {
     }
 
     /**
-     * St the default page size
+     * Set the default page size
      * @param {Number} pageSize the default page size
      */
     setPageSize (pageSize) {
