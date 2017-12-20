@@ -127,7 +127,7 @@ export default class DatagridController {
         this.refreshData(() => {
             this.paging.setOffset($event.offset);
             this.paging.setPageSize($event.pageSize);
-        }, true);
+        }, true, true);
     }
 
     scrollToTop () {
