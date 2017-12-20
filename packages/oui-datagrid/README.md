@@ -178,7 +178,7 @@ angular.module("myModule", [
     "oui.datagrid"
 ]).config(ouiDatagridConfigurationProvider => {
     ouiDatagridConfigurationProvider.setPageSize(25); // default page size (when page-size attribute is not set)
-    ouiPaginationConfigurationProvider.setTranslations({ // Translations (double curly braces for placeholders)
+    ouiDatagridConfigurationProvider.setTranslations({ // Translations (double curly braces for placeholders)
         emptyPlaceholder: "No data available"
     });
 });
