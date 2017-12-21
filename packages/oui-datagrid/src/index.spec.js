@@ -601,6 +601,41 @@ describe("ouiDatagrid", () => {
             expect(getActionMenu($actionCell)).toBeDefined();
             expect(isStickyCell($actionCell)).toBe(true);
         });
+
+        it("should support ng-repeat", () => {
+            const firstDatagridSize = 5;
+            const secondDatagridSize = 10;
+            const multiData = [
+                fakeData.slice(0, firstDatagridSize),
+                fakeData.slice(0, secondDatagridSize)
+            ];
+
+            const element = TestUtils.compileTemplate(`
+                    <div>
+                        <div ng-repeat="data in $ctrl.multiData track by $index">
+                            <oui-datagrid rows="data">
+                                <oui-column property="firstName"></oui-column>
+                                <oui-column property="lastName"></oui-column>
+                                <oui-action-menu>
+                                    <oui-action-menu-item text="Action 1"></oui-action-menu-item>
+                                    <oui-action-menu-item text="Action 2"></oui-action-menu-item>
+                                </oui-action-menu>
+                            </oui-datagrid>
+                        </div>
+                    </div>
+                `, {
+                    multiData
+                });
+
+            const datagridElements = element.find("oui-datagrid");
+            expect(datagridElements.length).toEqual(multiData.length);
+
+            const firstDatagridRows = datagridElements[0].querySelectorAll(".oui-datagrid__body .oui-datagrid__row:not(.oui-datagrid__row_loading)");
+            expect(firstDatagridRows.length).toEqual(firstDatagridSize);
+
+            const secondDatagridRows = datagridElements[1].querySelectorAll(".oui-datagrid__body .oui-datagrid__row:not(.oui-datagrid__row_loading)");
+            expect(secondDatagridRows.length).toEqual(secondDatagridSize);
+        });
     });
 
     function changeCellValue (element, rowNumber, columnName, newValue) {
