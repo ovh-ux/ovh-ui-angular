@@ -5,8 +5,9 @@ describe("ouiDatagrid", () => {
     let $rootScope;
     let fakeData;
 
-    const getRows = element => element[0].querySelectorAll(".oui-datagrid__row:not(.oui-datagrid__row_loading)");
+    const getRows = element => element[0].querySelectorAll(".oui-datagrid__body .oui-datagrid__row:not(.oui-datagrid__row_loading)");
     const getRow = (element, lineNumber) => angular.element(getRows(element)[lineNumber]);
+    const getHeaderRow = element => angular.element(element[0].querySelector(".oui-datagrid__headers .oui-datagrid__row:not(.oui-datagrid__row_loading)"));
     const getHeaderCell = (element, columnNumber) => angular.element(element[0].querySelectorAll(".oui-datagrid__header")[columnNumber]);
     const getCell = (element, columnNumber) => angular.element(element[0].querySelectorAll(".oui-datagrid__cell")[columnNumber]);
     const getPaginationOffset = element => angular.element(element[0].querySelector(".oui-pagination .oui-dropdown .oui-button span:first-child"));
@@ -42,8 +43,8 @@ describe("ouiDatagrid", () => {
                     }
                 );
 
-                const $firstRow = getRow(element, 1);
-                const $fifthRow = getRow(element, 5);
+                const $firstRow = getRow(element, 0);
+                const $fifthRow = getRow(element, 4);
 
                 expect(getCell($firstRow, 0).children().html()).toBe(fakeData[0].firstName);
                 expect(getCell($firstRow, 1).children().html()).toBe(fakeData[0].lastName);
@@ -68,7 +69,7 @@ describe("ouiDatagrid", () => {
 
                 changeCellValue(element, 0, "firstName", newCellValue);
 
-                const $firstRow = getRow(element, 1);
+                const $firstRow = getRow(element, 0);
 
                 expect(getCell($firstRow, 0).children().html()).toBe(newCellValue);
             });
@@ -96,7 +97,7 @@ describe("ouiDatagrid", () => {
                     }
                 );
 
-                const $firstRow = getRow(element, 1);
+                const $firstRow = getRow(element, 0);
 
                 expect(loadRowSpy.calls.count()).toEqual(5);
 
@@ -122,7 +123,7 @@ describe("ouiDatagrid", () => {
                     }
                 );
 
-                const $firstRow = getRow(element, 1);
+                const $firstRow = getRow(element, 0);
 
                 expect(loadRowSpy.calls.count()).toEqual(1);
 
@@ -155,7 +156,7 @@ describe("ouiDatagrid", () => {
 
                 $rootScope.$digest();
 
-                const $firstRow = getRow(element, 1);
+                const $firstRow = getRow(element, 0);
 
                 expect(getCell($firstRow, 0).children().html()).toBe(fakeData[0].firstName);
                 expect(getCell($firstRow, 2).children().html()).toBe(additionnalDataValue);
@@ -174,8 +175,7 @@ describe("ouiDatagrid", () => {
 
                 const rows = getRows(element);
 
-                // 2 per page + 1 header row
-                expect(rows.length).toEqual(3);
+                expect(rows.length).toEqual(2);
             });
 
             it("should display rows sorted", () => {
@@ -197,7 +197,7 @@ describe("ouiDatagrid", () => {
                     "Torres"
                 ]
                     .forEach((lastName, index) => {
-                        const $row = getRow(element, index + 1);
+                        const $row = getRow(element, index);
 
                         expect(getCell($row, 1).children().html()).toBe(lastName);
                     });
@@ -232,8 +232,8 @@ describe("ouiDatagrid", () => {
                     }
                 );
 
-                const $firstRow = getRow(element, 1);
-                const $fifthRow = getRow(element, 5);
+                const $firstRow = getRow(element, 0);
+                const $fifthRow = getRow(element, 4);
 
                 expect(getCell($firstRow, 0).children().html()).toBe(fakeData[0].firstName);
                 expect(getCell($firstRow, 1).children().html()).toBe(fakeData[0].lastName);
@@ -270,7 +270,7 @@ describe("ouiDatagrid", () => {
                     }
                 );
 
-                const $firstRow = getRow(element, 1);
+                const $firstRow = getRow(element, 0);
 
                 expect(loadRowSpy.calls.count()).toEqual(1);
 
@@ -313,7 +313,7 @@ describe("ouiDatagrid", () => {
 
                 $rootScope.$digest();
 
-                const $firstRow = getRow(element, 1);
+                const $firstRow = getRow(element, 0);
 
                 expect(loadRowSpy.calls.count()).toEqual(1);
                 expect(getCell($firstRow, 0).children().html()).toBe(fakeData[0].firstName);
@@ -342,7 +342,7 @@ describe("ouiDatagrid", () => {
 
                 const rows = getRows(element);
 
-                expect(rows.length).toEqual(3);
+                expect(rows.length).toEqual(2);
             }));
 
             it("should display rows sorted", () => {
@@ -397,7 +397,7 @@ describe("ouiDatagrid", () => {
                 }
             );
 
-            const $firstRow = getRow(element, 1);
+            const $firstRow = getRow(element, 0);
 
             const actualCellHtml = getCell($firstRow, 1)
                 .children()
@@ -421,7 +421,7 @@ describe("ouiDatagrid", () => {
                 }
             );
 
-            const $firstRow = getRow(element, 1);
+            const $firstRow = getRow(element, 0);
 
             const actualCellHtml = getCell($firstRow, 1)
                 .children()
@@ -446,7 +446,7 @@ describe("ouiDatagrid", () => {
                 }
             );
 
-            const $firstRow = getRow(element, 1);
+            const $firstRow = getRow(element, 0);
 
             const actualCellHtml = getCell($firstRow, 1)
                 .children()
@@ -474,7 +474,7 @@ describe("ouiDatagrid", () => {
                 }
             );
 
-            const $firstRow = getRow(element, 1);
+            const $firstRow = getRow(element, 0);
             const $actionCell = getCell($firstRow, 2);
 
             const actions = $actionCell[0].querySelectorAll(".oui-button_action-menu");
@@ -494,7 +494,7 @@ describe("ouiDatagrid", () => {
                 }
             );
 
-            const $headerRow = getRow(element, 0);
+            const $headerRow = getHeaderRow(element);
 
             expect(isSortableCell(getHeaderCell($headerRow, 0))).toBe(true);
             expect(isSortableCell(getHeaderCell($headerRow, 1))).toBe(false);
@@ -513,7 +513,7 @@ describe("ouiDatagrid", () => {
                 }
             );
 
-            const $headerRow = getRow(element, 0);
+            const $headerRow = getHeaderRow(element);
 
             expect(isSortableCell(getHeaderCell($headerRow, 0))).toBe(true);
             expect(isSortableCell(getHeaderCell($headerRow, 1))).toBe(false);
@@ -540,7 +540,7 @@ describe("ouiDatagrid", () => {
                 }
             );
 
-            const $headerRow = getRow(element, 0);
+            const $headerRow = getHeaderRow(element, 0);
 
             getHeaderCell($headerRow, 0).triggerHandler("click");
 
@@ -570,8 +570,8 @@ describe("ouiDatagrid", () => {
 
             getNextPagePaginationButton(element).triggerHandler("click");
 
-            const $firstRow = getRow(element, 1);
-            const $secondRow = getRow(element, 2);
+            const $firstRow = getRow(element, 0);
+            const $secondRow = getRow(element, 1);
 
             expect(getCell($firstRow, 0).children().html()).toBe(fakeData[2].firstName);
             expect(getCell($firstRow, 1).children().html()).toBe(fakeData[2].lastName);
@@ -595,7 +595,7 @@ describe("ouiDatagrid", () => {
                 }
             );
 
-            const $firstRow = getRow(element, 1);
+            const $firstRow = getRow(element, 0);
             const $actionCell = getCell($firstRow, 2);
 
             expect(getActionMenu($actionCell)).toBeDefined();
@@ -630,10 +630,10 @@ describe("ouiDatagrid", () => {
             const datagridElements = element.find("oui-datagrid");
             expect(datagridElements.length).toEqual(multiData.length);
 
-            const firstDatagridRows = datagridElements[0].querySelectorAll(".oui-datagrid__body .oui-datagrid__row:not(.oui-datagrid__row_loading)");
+            const firstDatagridRows = getRows(angular.element(datagridElements[0]));
             expect(firstDatagridRows.length).toEqual(firstDatagridSize);
 
-            const secondDatagridRows = datagridElements[1].querySelectorAll(".oui-datagrid__body .oui-datagrid__row:not(.oui-datagrid__row_loading)");
+            const secondDatagridRows = getRows(angular.element(datagridElements[1]));
             expect(secondDatagridRows.length).toEqual(secondDatagridSize);
         });
     });
