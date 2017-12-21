@@ -18,6 +18,32 @@
 </oui-datagrid>
 ```
 
+## Bug
+
+<div ng-init="multiData = [$ctrl.data, $ctrl.data]">
+    <div ng-repeat="data in multiData track by $index">
+        <oui-datagrid
+          rows="data"
+          page-size="5">
+          <oui-column title="'First name'" property="firstName" sortable="asc"></oui-column>
+          <oui-column title="'Last name'" property="lastName" sortable></oui-column>
+          <oui-column title="'Mother'" property="parents.mother.lastName" sortable>
+            {{$row.parents.mother.lastName}}, {{$row.parents.mother.firstName}}
+          </oui-column>
+          <oui-column title="'Father'" property="parents.father.lastName" sortable>
+            {{$row.parents.father.lastName}}, {{$row.parents.father.firstName}}
+          </oui-column>
+          <oui-column title="'Email'" property="email" sortable>
+            <a href="mailto:{{$value}}">{{$ctrl.label}}: {{$value}}</a>
+          </oui-column>
+          <oui-column title="'Phone'" property="phone"></oui-column>
+          <oui-column title="'Birth'" property="birth" sortable>
+            {{$value|date:short}}
+          </oui-column>
+        </oui-datagrid>
+    </div>
+</div>
+
 ## Examples
 
 ### Local data
