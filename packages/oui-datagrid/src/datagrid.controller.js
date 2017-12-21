@@ -65,7 +65,7 @@ export default class DatagridController {
             this.$element.append(clone);
         });
 
-        const originalContent = angular.element(this.$element.data("originalContent"));
+        const originalContent = angular.element(this.htmlContent);
         const columnElements = DatagridController.filterElements(originalContent, "oui-column");
         const actionColumnElements = DatagridController.filterElements(originalContent, "oui-action-menu");
 

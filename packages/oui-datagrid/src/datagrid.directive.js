@@ -16,8 +16,12 @@ export default () => {
         compile: elm => {
             // Transclude can't be used here otherwise transcluded
             // components would be compiled before we can read it.
-            elm.data("originalContent", elm.html());
+            const htmlContent = elm.html();
             elm.empty();
+
+            return (scope, elem, attrs, tableCtrl) => {
+                tableCtrl.htmlContent = htmlContent;
+            };
         }
     };
 };
