@@ -24,11 +24,8 @@ export default class {
     }
 
     $postLink () {
-    // Remove ID and Name to avoid duplicate
-        this.$element.removeAttr("id");
-        this.$element.removeAttr("name");
-
-        // Remove accessibility attributes on the root component
-        this.$element.removeAttr("aria-label");
+        // Remove ID and Name to avoid duplicate
+        // And accessibility attributes on the root component
+        this.$element.removeAttr("id name aria-label");
     }
 }

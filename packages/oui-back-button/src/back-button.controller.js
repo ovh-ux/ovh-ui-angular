@@ -7,9 +7,7 @@ export default class {
     }
 
     $postLink () {
-        this.$element.removeAttr("id");
-        this.$element.removeAttr("name");
-        this.$element.removeAttr("aria-label");
+        this.$element.removeAttr("id name aria-label");
     }
 
     onBtnClick () {
