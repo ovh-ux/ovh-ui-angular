@@ -5,6 +5,8 @@ export default {
     template,
     controller,
     bindings: {
-        size: "@?"
+        align: "@?",
+        size: "@?",
+        inline: "<?"
     }
 };

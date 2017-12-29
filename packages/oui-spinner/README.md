@@ -5,28 +5,38 @@
 ## Usage
 
 ```html
-<oui-spinner size="s|m|l"></oui-spinner>
+<oui-spinner
+    align="left|center|right"
+    inline|inline="true|false"
+    size="s|m|l">
+</oui-spinner>
 ```
 
 ## Examples
 
-### Small
+### Size
 ```html:preview
 <oui-spinner size="s"></oui-spinner>
-```
-
-### Medium
-```html:preview
 <oui-spinner size="m"></oui-spinner>
+<oui-spinner size="l"></oui-spinner>
 ```
 
-### Big
+### Alignment
 ```html:preview
-<oui-spinner size="l"></oui-spinner>
+<oui-spinner align="left"></oui-spinner>
+<oui-spinner align="center"></oui-spinner>
+<oui-spinner align="right"></oui-spinner>
+```
+
+### Inline
+```html:preview
+<oui-spinner inline></oui-spinner>
 ```
 
 ## API
 
-| Attribute       | Type            | Binding | One-time binding | Values              | Default             | Description         |
-| ----            | ----            | ----    | ----             | ----                | ----                | ----                |
-| size            | String          | @?      | yes              | `s`, `m`, `l`       | `m`                 | Spinner size        |
+| Attribute       | Type            | Binding | One-time binding | Values                    | Default   | Description         |
+| ----            | ----            | ----    | ----             | ----                      | ----      | ----                |
+| align           | String          | @?      | yes              | `left`, `center`, `right` | `left`    | Spinner alignment   |
+| inline          | boolean         | <?      | yes              |                           | `false`   | inline flag         |
+| size            | String          | @?      | yes              | `s`, `m`, `l`             | `m`       | Spinner size        |
