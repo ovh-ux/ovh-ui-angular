@@ -2,7 +2,7 @@
 
 [![NPM](https://nodei.co/npm/ovh-ui-angular.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/ovh-ui-angular/)
 
-[![Maintenance](https://img.shields.io/maintenance/yes/2017.svg)]() [![Chat on gitter](https://img.shields.io/gitter/room/ovh/ux.svg)](https://gitter.im/ovh/ux) [![Build Status](https://travis-ci.org/ovh-ux/ovh-ui-angular.svg)](https://travis-ci.org/ovh-ux/ovh-ui-angular) [![Build Status](https://travis-ci.org/ovh/ovh-ui-angular.svg)](https://travis-ci.org/ovh-ux/ovh-ui-angular)
+[![Maintenance](https://img.shields.io/maintenance/yes/2018.svg)]() [![Chat on gitter](https://img.shields.io/gitter/room/ovh/ux.svg)](https://gitter.im/ovh/ux) [![Build Status](https://travis-ci.org/ovh-ux/ovh-ui-angular.svg)](https://travis-ci.org/ovh-ux/ovh-ui-angular) [![Build Status](https://travis-ci.org/ovh/ovh-ui-angular.svg)](https://travis-ci.org/ovh-ux/ovh-ui-angular)
 
 # OVH UI (Angular)
 
