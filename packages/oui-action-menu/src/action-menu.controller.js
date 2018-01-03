@@ -16,7 +16,6 @@ export default class {
     }
 
     $postLink () {
-        this.$element.removeAttr("align");
-        this.$element.removeAttr("aria-label");
+        this.$element.removeAttr("align aria-label");
     }
 }

@@ -8,7 +8,7 @@ export default class {
     }
 
     $postLink () {
-        this.$element.removeAttr(["name", "id"]);
+        this.$element.removeAttr("id name");
 
         this.checkboxElement = this.$element.find("input");
 
