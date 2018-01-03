@@ -1,6 +1,6 @@
 # Pagination
 
-<component-status cx-design="complete" ux="prototype"></component-status>
+<component-status cx-design="complete" ux="rc"></component-status>
 
 
 
@@ -13,7 +13,7 @@
     current-offset="$ctrl.pagination1.offset"
     total-items="$ctrl.pagination1.totalItems"
     on-change="$ctrl.onChange('pagination1', $event)">
-    </oui-pagination>
+</oui-pagination>
 ```
 
 ### Lots of pages
@@ -24,7 +24,7 @@
     page-size="$ctrl.pagination2.pageSize"
     total-items="$ctrl.pagination2.totalItems"
     on-change="$ctrl.onChange('pagination2', $event)">
-    </oui-pagination>
+</oui-pagination>
 ```
 
 ### One page
@@ -34,7 +34,7 @@
     current-offset="1"
     page-size="100"
     total-items="12">
-    </oui-pagination>
+</oui-pagination>
 ```
 
 ## API

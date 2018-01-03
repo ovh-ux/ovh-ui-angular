@@ -1,11 +1,11 @@
 # oui-message
 
-<component-status cx-design="partial" ux="rc"></component-status>
+<component-status cx-design="complete" ux="rc"></component-status>
 
 ## Usage
 
 ```html
-<oui-message 
+<oui-message
     type="info|success|warning|error"
     on-dismissed="..."
     aria-close-button-label="...">

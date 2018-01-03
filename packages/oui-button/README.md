@@ -1,6 +1,6 @@
 # Button
 
-<component-status cx-design="complete" ux="prototype"></component-status>
+<component-status cx-design="complete" ux="rc"></component-status>
 
 ## Usage
 
