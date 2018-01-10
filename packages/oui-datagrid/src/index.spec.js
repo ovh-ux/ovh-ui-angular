@@ -31,7 +31,7 @@ describe("ouiDatagrid", () => {
     }));
 
     describe("Component", () => {
-        describe("local rows", () => {
+        describe("Local rows", () => {
             it("should display rows using rows attribute", () => {
                 const element = TestUtils.compileTemplate(`
                         <oui-datagrid rows="$ctrl.rows">
@@ -204,7 +204,7 @@ describe("ouiDatagrid", () => {
             });
         });
 
-        describe("remote rows", () => {
+        describe("Remote rows", () => {
             let rowsLoaderSpy;
 
             beforeEach(inject(($q) => {
@@ -635,6 +635,40 @@ describe("ouiDatagrid", () => {
 
             const secondDatagridRows = getRows(angular.element(datagridElements[1]));
             expect(secondDatagridRows.length).toEqual(secondDatagridSize);
+        });
+
+        describe("Columns", () => {
+            it("should support dataset notation", () => {
+                const element = TestUtils.compileTemplate(`
+                        <oui-datagrid data-rows="$ctrl.rows">
+                            <oui-column data-property="firstName"
+                                data-sortable="asc"
+                                data-title="'First name'"></oui-column>
+                            <oui-column property="lastName"
+                                data-sortable
+                                data-title="'Last name'"></oui-column>
+                            <oui-action-menu>
+                                <oui-action-menu-item text="Action 1"></oui-action-menu-item>
+                                <oui-action-menu-item text="Action 2"></oui-action-menu-item>
+                            </oui-action-menu>
+                        </oui-datagrid>
+                    `, {
+                        rows: fakeData.slice(0, 5)
+                    }
+                );
+
+                // Check data-sortable and data-title
+                const $headerRow = getHeaderRow(element);
+                expect(getHeaderCell($headerRow, 0).html()).toEqual("First name");
+                expect(isSortableAscCell(getHeaderCell($headerRow, 0))).toBe(true);
+                expect(getHeaderCell($headerRow, 1).html()).toEqual("Last name");
+                expect(isSortableCell(getHeaderCell($headerRow, 1))).toBe(true);
+
+                // Check data-property
+                const firstRow = getRow(element, 0);
+                expect(getCell(firstRow, 0).text().trim()).toEqual("Ann");
+                expect(getCell(firstRow, 1).text().trim()).toEqual("Cole");
+            });
         });
     });
 
