@@ -1,0 +1,151 @@
+<!-- Toggler -->
+<button class="oui-navbar-toggler" type="button"
+    aria-haspopup="true" aria-expanded="{{$ctrl.navigation['toggler']}}"
+    ng-if="::$ctrl.mainLinks"
+    ng-click="$ctrl.toggleMenu('toggler')"
+    oui-navbar-group="toggler">
+    <span class="oui-navbar-toggler__hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </span>
+</button>
+<oui-navbar-menu
+    ng-if="::$ctrl.mainLinks"
+    class="oui-navbar-menu_fixed oui-navbar-menu_toggle"
+    children-class="oui-navbar-menu_fixed oui-navbar-menu_right"
+    name="toggler"
+    links="::$ctrl.mainLinks"
+    navigation="$ctrl.navigation"
+    expanded="$ctrl.navigation['toggler']">
+</oui-navbar-menu>
+<!-- /Toggler -->
+
+<!-- Brand -->
+<a class="oui-navbar__brand" ng-if="::$ctrl.brand"
+    ng-attr-aria-label="{{::!!$ctrl.brand.title ? $ctrl.brand.title : null}}"
+    ng-href="{{::$ctrl.brand.url}}">
+    <img class="navbar-logo"
+        ng-if="::!!$ctrl.brand.iconSrc"
+        ng-attr-alt="::!!$ctrl.brand.iconAlt ? $ctrl.brand.iconAlt : null"
+        ng-class="::!!$ctrl.brand.iconClass ? $ctrl.brand.iconClass : null"
+        ng-src="::$ctrl.brand.iconSrc">
+    <span ng-if="::!$ctrl.brand.iconSrc"
+        ng-class="::$ctrl.brand.iconClass">
+    </span>
+</a>
+<!-- /Brand -->
+
+<!-- Main Links -->
+<ul class="oui-navbar-list oui-navbar_desktop-only" ng-if="::$ctrl.mainLinks">
+    <li class="oui-navbar-list__item"
+        ng-repeat="managerLink in ::$ctrl.mainLinks track by $index"
+        ng-class="::!!internalLink.class ? internalLink.class : null">
+        <a class="oui-navbar-link {{::managerLink.name}}"
+            ng-attr-aria-label="{{::!!managerLink.label ? managerLink.label : null}}"
+            ng-class="::{
+                'oui-navbar-link_active': managerLink.name === $ctrl.universe,
+                'oui-navbar-link_primary': managerLink.isPrimary,
+                'oui-navbar-link_secondary': !managerLink.isPrimary
+            }"
+            ng-href="{{::managerLink.url}}"
+            ng-bind="::managerLink.title">
+        </a>
+    </li>
+</ul>
+<!-- /Main Links -->
+
+<!-- Aside Links -->
+<ul class="oui-navbar-list oui-navbar-list_end">
+
+    <!-- Internal -->
+    <li class="oui-navbar-list__item" ng-if="::$ctrl.asideLinks"
+        ng-repeat="internalLink in $ctrl.asideLinks"
+        ng-class="::!!internalLink.class ? internalLink.class : null"
+        ng-switch="::internalLink.name">
+        <button class="oui-navbar-link oui-navbar-link_tertiary" type="button"
+            aria-haspopup="true" aria-expanded="{{$ctrl.navigation[internalLink.name]}}"
+            ng-attr-aria-label="{{::!!internalLink.label ? internalLink.label : null}}"
+            ng-class="::!!internalLink.iconClass ? 'oui-navbar-link_icon' : null"
+            ng-click="$ctrl.toggleMenu(internalLink.name)"
+            oui-navbar-group="{{::internalLink.name}}">
+            <span class="oui-icon" aria-hidden="true"
+                ng-if="::!!internalLink.iconClass"
+                ng-class="::'navbar-' + internalLink.iconClass">
+                <span class="oui-icon__badge"
+                    ng-if="::!!internalLink.subLinks && (internalLink.subLinks | filter: {isUnread: 'true'}).length"
+                    ng-bind="::(internalLink.subLinks | filter: {isUnread: 'true'}).length">
+                </span>
+            </span>
+            <span ng-bind="::internalLink.title"></span>
+        </button>
+
+        <!-- Notifications Menu -->
+        <div ng-switch-when="notifications"
+            class="oui-navbar-menu oui-navbar-menu_fixed oui-navbar-menu_right">
+            <header class="oui-navbar-menu__header oui-navbar_desktop-only"
+                ng-if="::!!internalLink.headerTemplate"
+                ng-bind-html="::internalLink.headerTemplate">
+            </header>
+            <header class="oui-navbar-menu__header oui-navbar_mobile-only">
+                <h3 class="oui-navbar-menu__title" ng-bind="::internalLink.title"></h3>
+            </header>
+            <a class="oui-navbar-menu__item"
+                ng-repeat="subLink in ::internalLink.subLinks | limitTo: internalLink.limitTo"
+                ng-class="::!!subLink.isUnread ? 'oui-navbar-menu__item_active' : null"
+                ng-href="{{::subLink.url}}"
+                ng-bind-html="::subLink.template"
+                oui-navbar-group="{{::internalLink.name}}">
+            </a>
+            <footer class="oui-navbar-menu__footer"
+                ng-if="::!internalLink.footerTemplate">
+                <a class="oui-button oui-button_secondary"
+                    ng-href="{{::internalLink.footerUrl}}"
+                    ng-bind="::internalLink.footerTitle"
+                    oui-navbar-group="{{::internalLink.name}}"
+                    oui-navbar-group-last>
+                </a>
+            </footer>
+            <footer class="oui-navbar-menu__footer"
+                ng-if="::!!internalLink.footerTemplate"
+                ng-bind-html="::subLink.footerTemplate">
+            </footer>
+        </div>
+        <!-- /Notifications Menu -->
+
+        <!-- User Menu -->
+        <oui-navbar-menu ng-switch-when="user"
+            class="oui-navbar-menu_fixed oui-navbar-menu_right"
+            header-breadcrumb="{{::internalLink.nichandle}}"
+            header-title="{{::internalLink.fullName}}"
+            name="{{::internalLink.name}}"
+            links="::internalLink.subLinks"
+            navigation="$ctrl.navigation"
+            expanded="$ctrl.navigation[internalLink.name]">
+        </oui-navbar-menu>
+        <!-- /User Menu -->
+
+        <!-- Default Menu -->
+        <oui-navbar-menu ng-switch-default
+            class="oui-navbar-menu_fixed oui-navbar-menu_right"
+            header-class="oui-navbar_mobile-only"
+            header-title="{{::internalLink.title}}"
+            name="{{::internalLink.name}}"
+            links="::internalLink.subLinks"
+            navigation="$ctrl.navigation"
+            expanded="$ctrl.navigation[internalLink.name]">
+        </oui-navbar-menu>
+        <!-- Default Menu -->
+
+    </li>
+
+</ul>
+<!-- Aside Links -->
+
+<!-- Backdrop -->
+<div class="oui-navbar-backdrop" aria-hidden="true"
+    ng-class="{ 'oui-navbar-backdrop_active': !!$ctrl.navigation }"
+    ng-click="$ctrl.toggleMenu()">
+</div>
+<!-- /Backdrop -->
