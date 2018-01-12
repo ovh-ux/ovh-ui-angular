@@ -41,7 +41,8 @@ export default class DatagridColumnBuilder {
             if (DatagridColumnBuilder.hasAttribute(columnElement, "title")) {
                 const titleValue = DatagridColumnBuilder.getAttribute(columnElement, "title");
 
-                column.title = this.$parse(titleValue)($scope);
+                column.title = this.buildTitle(titleValue, $scope);
+                column.rawTitle = titleValue;
             }
 
             if (!column.sortProperty) {
@@ -63,6 +64,10 @@ export default class DatagridColumnBuilder {
             columns,
             currentSorting
         };
+    }
+
+    buildTitle (titleValue, $scope) {
+        return this.$parse(titleValue)($scope);
     }
 
     buildActionColumn (actionColumnElement) {

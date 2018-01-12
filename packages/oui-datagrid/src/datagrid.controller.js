@@ -78,6 +78,22 @@ export default class DatagridController {
 
         this.columns = builtColumns.columns;
 
+        this.columns.forEach(column => {
+            if (column.title) {
+                return;
+            }
+
+            column.disableWatcher = this.$scope.$watch(
+                () => this.ouiDatagridColumnBuilder.buildTitle(column.rawTitle, this.getParentScope()),
+                newTitle => {
+                    if (newTitle) {
+                        column.title = newTitle;
+                        column.disableWatcher();
+                    }
+                }
+            );
+        });
+
         if (this.rowsLoader) {
             this.paging = this.ouiDatagridPaging.createRemote(this.columns, builtColumns.currentSorting, this.pageSize, this.rowLoader, this.rowsLoader);
             this.refreshData(() => this.paging.setOffset(1));
