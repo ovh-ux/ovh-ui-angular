@@ -83,7 +83,7 @@
 
         <!-- Notifications Menu -->
         <div ng-switch-when="notifications"
-            class="oui-navbar-menu oui-navbar-menu_fixed oui-navbar-menu_right">
+            class="oui-navbar-menu oui-navbar-menu_fixed oui-navbar-menu_notifications oui-navbar-menu_right">
             <header class="oui-navbar-menu__header oui-navbar_desktop-only"
                 ng-if="::!!internalLink.headerTemplate"
                 ng-bind-html="::internalLink.headerTemplate">
@@ -116,7 +116,7 @@
 
         <!-- User Menu -->
         <oui-navbar-menu ng-switch-when="user"
-            class="oui-navbar-menu_fixed oui-navbar-menu_right"
+            class="oui-navbar-menu_fixed oui-navbar-menu_user oui-navbar-menu_right"
             header-breadcrumb="{{::internalLink.nichandle}}"
             header-title="{{::internalLink.fullName}}"
             name="{{::internalLink.name}}"
