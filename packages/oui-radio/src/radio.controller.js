@@ -10,7 +10,9 @@ export default class {
     }
 
     $postLink () {
-        this.$element.removeAttr("id name");
+        this.$element
+            .removeAttr("id")
+            .removeAttr("name");
     }
 
     $onInit () {

@@ -26,8 +26,9 @@ export default class {
     $postLink () {
         // Remove ID and Name to avoid duplicate
         // And accessibility attributes on the root component
-        this.$element.removeAttr("aria-label");
-        this.$element.removeAttr("id");
-        this.$element.removeAttr("name");
+        this.$element
+            .removeAttr("aria-label")
+            .removeAttr("id")
+            .removeAttr("name");
     }
 }
