@@ -64,7 +64,7 @@
 
         <!-- Button for Next Level -->
         <button class="oui-navbar-link" type="button"
-            aria-haspopup="true" aria-expanded="{{$ctrl.navigation[menuLink.name]}}"
+            aria-haspopup="true" aria-expanded="{{!!$ctrl.navigation[menuLink.name]}}"
             ng-if="::!!menuLink.subLinks"
             ng-attr-aria-label="{{::!!menuLink.label ? menuLink.label : null}}"
             ng-click="$ctrl.toggleMenu(menuLink.name, true)"

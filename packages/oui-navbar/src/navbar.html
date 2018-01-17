@@ -1,6 +1,6 @@
 <!-- Toggler -->
 <button class="oui-navbar-toggler" type="button"
-    aria-haspopup="true" aria-expanded="{{$ctrl.navigation['toggler']}}"
+    aria-haspopup="true" aria-expanded="{{!!$ctrl.navigation['toggler']}}"
     ng-if="::$ctrl.mainLinks"
     ng-click="$ctrl.toggleMenu('toggler')"
     oui-navbar-group="toggler">
@@ -24,7 +24,7 @@
 
 <!-- Brand -->
 <a class="oui-navbar__brand" ng-if="::$ctrl.brand"
-    ng-attr-aria-label="{{::!!$ctrl.brand.title ? $ctrl.brand.title : null}}"
+    ng-attr-aria-label="{{::!!$ctrl.brand.label ? $ctrl.brand.label : null}}"
     ng-href="{{::$ctrl.brand.url}}">
     <img class="navbar-logo"
         ng-if="::!!$ctrl.brand.iconSrc"
@@ -38,7 +38,7 @@
 <!-- /Brand -->
 
 <!-- Main Links -->
-<ul class="oui-navbar-list oui-navbar_desktop-only" ng-if="::$ctrl.mainLinks">
+<ul class="oui-navbar-list oui-navbar-list_main oui-navbar_desktop-only" ng-if="::$ctrl.mainLinks">
     <li class="oui-navbar-list__item"
         ng-repeat="managerLink in ::$ctrl.mainLinks track by $index"
         ng-class="::!!internalLink.class ? internalLink.class : null">
@@ -57,15 +57,15 @@
 <!-- /Main Links -->
 
 <!-- Aside Links -->
-<ul class="oui-navbar-list oui-navbar-list_end">
+<ul class="oui-navbar-list oui-navbar-list_aside oui-navbar-list_end" ng-if="::$ctrl.asideLinks">
 
     <!-- Internal -->
-    <li class="oui-navbar-list__item" ng-if="::$ctrl.asideLinks"
+    <li class="oui-navbar-list__item"
         ng-repeat="internalLink in $ctrl.asideLinks"
         ng-class="::!!internalLink.class ? internalLink.class : null"
         ng-switch="::internalLink.name">
         <button class="oui-navbar-link oui-navbar-link_tertiary" type="button"
-            aria-haspopup="true" aria-expanded="{{$ctrl.navigation[internalLink.name]}}"
+            aria-haspopup="true" aria-expanded="{{!!$ctrl.navigation[internalLink.name]}}"
             ng-attr-aria-label="{{::!!internalLink.label ? internalLink.label : null}}"
             ng-class="::!!internalLink.iconClass ? 'oui-navbar-link_icon' : null"
             ng-click="$ctrl.toggleMenu(internalLink.name)"
