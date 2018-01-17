@@ -7,7 +7,7 @@ export default class {
     }
 
     $onInit () {
-    // Add default value for attribute 'type'
+        // Add default value for attribute 'type'
         if (angular.isUndefined(this.type)) {
             this.type = "button";
         }
@@ -26,6 +26,8 @@ export default class {
     $postLink () {
         // Remove ID and Name to avoid duplicate
         // And accessibility attributes on the root component
-        this.$element.removeAttr("id name aria-label");
+        this.$element.removeAttr("aria-label");
+        this.$element.removeAttr("id");
+        this.$element.removeAttr("name");
     }
 }

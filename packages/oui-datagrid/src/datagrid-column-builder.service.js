@@ -18,30 +18,31 @@ export default class DatagridColumnBuilder {
         angular.forEach(columnElements, columnElement => {
             const column = {};
 
-            if (columnElement.attributes.property) {
-                const propertyValue = columnElement.attributes.property.value;
+            if (DatagridColumnBuilder.hasAttribute(columnElement, "property")) {
+                const propertyValue = DatagridColumnBuilder.getAttribute(columnElement, "property");
 
                 column.name = propertyValue;
                 column.getValue = this.$parse(propertyValue);
             }
 
-            if (columnElement.attributes.sortable) {
-                const sortableValue = columnElement.attributes.sortable.value;
+            if (DatagridColumnBuilder.hasAttribute(columnElement, "sortable")) {
+                const sortableValue = DatagridColumnBuilder.getAttribute(columnElement, "sortable");
 
                 column.sortable = sortableValue !== undefined;
                 Object.assign(currentSorting, DatagridColumnBuilder.defineDefaultSorting(column, sortableValue));
             }
 
             copyValueProperties.forEach(propertyName => {
-                if (columnElement.attributes[propertyName]) {
-                    column[propertyName] = columnElement.attributes[propertyName].value;
+                if (DatagridColumnBuilder.hasAttribute(columnElement, propertyName)) {
+                    column[propertyName] = DatagridColumnBuilder.getAttribute(columnElement, propertyName);
                 }
             });
 
-            if (columnElement.attributes.title) {
-                const titleValue = columnElement.attributes.title.value;
+            if (DatagridColumnBuilder.hasAttribute(columnElement, "title")) {
+                const titleValue = DatagridColumnBuilder.getAttribute(columnElement, "title");
 
-                column.title = this.$parse(titleValue)($scope);
+                column.title = this.buildTitle(titleValue, $scope);
+                column.rawTitle = titleValue;
             }
 
             if (!column.sortProperty) {
@@ -65,6 +66,10 @@ export default class DatagridColumnBuilder {
         };
     }
 
+    buildTitle (titleValue, $scope) {
+        return this.$parse(titleValue)($scope);
+    }
+
     buildActionColumn (actionColumnElement) {
         const column = {
             template: actionColumnElement.outerHTML
@@ -85,6 +90,17 @@ export default class DatagridColumnBuilder {
         }
 
         return {};
+    }
+
+    static hasAttribute (element, attributeName) {
+        const attributes = [];
+        Array.from(element.attributes).forEach(attribute => attributes.push(attribute.name));
+        Object.keys(element.dataset).forEach(dataKey => attributes.push(dataKey));
+        return attributes.indexOf(attributeName) > -1;
+    }
+
+    static getAttribute (element, attributeName) {
+        return element.attributes[attributeName] ? element.attributes[attributeName].value : element.dataset[attributeName];
     }
 
     _getColumnTemplate (column) {
