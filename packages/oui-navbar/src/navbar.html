@@ -28,9 +28,9 @@
     ng-href="{{::$ctrl.brand.url}}">
     <img class="navbar-logo"
         ng-if="::!!$ctrl.brand.iconSrc"
-        ng-attr-alt="::!!$ctrl.brand.iconAlt ? $ctrl.brand.iconAlt : null"
+        ng-attr-alt="{{::!!$ctrl.brand.iconAlt ? $ctrl.brand.iconAlt : null}}"
         ng-class="::!!$ctrl.brand.iconClass ? $ctrl.brand.iconClass : null"
-        ng-src="::$ctrl.brand.iconSrc">
+        ng-src="{{::$ctrl.brand.iconSrc}}">
     <span ng-if="::!$ctrl.brand.iconSrc"
         ng-class="::$ctrl.brand.iconClass">
     </span>
@@ -41,8 +41,8 @@
 <ul class="oui-navbar-list oui-navbar-list_main oui-navbar_desktop-only" ng-if="::$ctrl.mainLinks">
     <li class="oui-navbar-list__item"
         ng-repeat="managerLink in ::$ctrl.mainLinks track by $index"
-        ng-class="::!!internalLink.class ? internalLink.class : null">
-        <a class="oui-navbar-link {{::managerLink.name}}"
+        ng-class="::!!managerLink.class ? managerLink.class : null">
+        <a class="oui-navbar-link"
             ng-attr-aria-label="{{::!!managerLink.label ? managerLink.label : null}}"
             ng-class="::{
                 'oui-navbar-link_active': managerLink.name === $ctrl.universe,
@@ -61,54 +61,54 @@
 
     <!-- Internal -->
     <li class="oui-navbar-list__item"
-        ng-repeat="internalLink in $ctrl.asideLinks"
-        ng-class="::!!internalLink.class ? internalLink.class : null"
-        ng-switch="::internalLink.name">
+        ng-repeat="asideLink in $ctrl.asideLinks"
+        ng-class="::!!asideLink.class ? asideLink.class : null"
+        ng-switch="::asideLink.name">
         <button class="oui-navbar-link oui-navbar-link_tertiary" type="button"
-            aria-haspopup="true" aria-expanded="{{!!$ctrl.navigation[internalLink.name]}}"
-            ng-attr-aria-label="{{::!!internalLink.label ? internalLink.label : null}}"
-            ng-class="::!!internalLink.iconClass ? 'oui-navbar-link_icon' : null"
-            ng-click="$ctrl.toggleMenu(internalLink.name)"
-            oui-navbar-group="{{::internalLink.name}}">
+            aria-haspopup="true" aria-expanded="{{!!$ctrl.navigation[asideLink.name]}}"
+            ng-attr-aria-label="{{::!!asideLink.label ? asideLink.label : null}}"
+            ng-class="::!!asideLink.iconClass ? 'oui-navbar-link_icon' : null"
+            ng-click="$ctrl.toggleMenu(asideLink.name)"
+            oui-navbar-group="{{::asideLink.name}}">
             <span class="oui-icon" aria-hidden="true"
-                ng-if="::!!internalLink.iconClass"
-                ng-class="::'navbar-' + internalLink.iconClass">
+                ng-if="::!!asideLink.iconClass"
+                ng-class="::'navbar-' + asideLink.iconClass">
                 <span class="oui-icon__badge"
-                    ng-if="::!!internalLink.subLinks && (internalLink.subLinks | filter: {isUnread: 'true'}).length"
-                    ng-bind="::(internalLink.subLinks | filter: {isUnread: 'true'}).length">
+                    ng-if="::!!asideLink.subLinks && (asideLink.subLinks | filter: {isUnread: 'true'}).length"
+                    ng-bind="::(asideLink.subLinks | filter: {isUnread: 'true'}).length">
                 </span>
             </span>
-            <span ng-bind="::internalLink.title"></span>
+            <span ng-bind="::asideLink.title"></span>
         </button>
 
         <!-- Notifications Menu -->
         <div ng-switch-when="notifications"
             class="oui-navbar-menu oui-navbar-menu_fixed oui-navbar-menu_notifications oui-navbar-menu_right">
             <header class="oui-navbar-menu__header oui-navbar_desktop-only"
-                ng-if="::!!internalLink.headerTemplate"
-                ng-bind-html="::internalLink.headerTemplate">
+                ng-if="::!!asideLink.headerTemplate"
+                ng-bind-html="::asideLink.headerTemplate">
             </header>
             <header class="oui-navbar-menu__header oui-navbar_mobile-only">
-                <h3 class="oui-navbar-menu__title" ng-bind="::internalLink.title"></h3>
+                <h3 class="oui-navbar-menu__title" ng-bind="::asideLink.title"></h3>
             </header>
             <a class="oui-navbar-menu__item"
-                ng-repeat="subLink in ::internalLink.subLinks | limitTo: internalLink.limitTo"
+                ng-repeat="subLink in ::asideLink.subLinks | limitTo: asideLink.limitTo"
                 ng-class="::!!subLink.isUnread ? 'oui-navbar-menu__item_active' : null"
                 ng-href="{{::subLink.url}}"
                 ng-bind-html="::subLink.template"
-                oui-navbar-group="{{::internalLink.name}}">
+                oui-navbar-group="{{::asideLink.name}}">
             </a>
             <footer class="oui-navbar-menu__footer"
-                ng-if="::!internalLink.footerTemplate">
+                ng-if="::!asideLink.footerTemplate">
                 <a class="oui-button oui-button_secondary"
-                    ng-href="{{::internalLink.footerUrl}}"
-                    ng-bind="::internalLink.footerTitle"
-                    oui-navbar-group="{{::internalLink.name}}"
+                    ng-href="{{::asideLink.footerUrl}}"
+                    ng-bind="::asideLink.footerTitle"
+                    oui-navbar-group="{{::asideLink.name}}"
                     oui-navbar-group-last>
                 </a>
             </footer>
             <footer class="oui-navbar-menu__footer"
-                ng-if="::!!internalLink.footerTemplate"
+                ng-if="::!!asideLink.footerTemplate"
                 ng-bind-html="::subLink.footerTemplate">
             </footer>
         </div>
@@ -117,12 +117,12 @@
         <!-- User Menu -->
         <oui-navbar-menu ng-switch-when="user"
             class="oui-navbar-menu_fixed oui-navbar-menu_user oui-navbar-menu_right"
-            header-breadcrumb="{{::internalLink.nichandle}}"
-            header-title="{{::internalLink.fullName}}"
-            name="{{::internalLink.name}}"
-            links="::internalLink.subLinks"
+            header-breadcrumb="{{::asideLink.nichandle}}"
+            header-title="{{::asideLink.fullName}}"
+            name="{{::asideLink.name}}"
+            links="::asideLink.subLinks"
             navigation="$ctrl.navigation"
-            expanded="$ctrl.navigation[internalLink.name]">
+            expanded="$ctrl.navigation[asideLink.name]">
         </oui-navbar-menu>
         <!-- /User Menu -->
 
@@ -130,11 +130,11 @@
         <oui-navbar-menu ng-switch-default
             class="oui-navbar-menu_fixed oui-navbar-menu_right"
             header-class="oui-navbar_mobile-only"
-            header-title="{{::internalLink.title}}"
-            name="{{::internalLink.name}}"
-            links="::internalLink.subLinks"
+            header-title="{{::asideLink.title}}"
+            name="{{::asideLink.name}}"
+            links="::asideLink.subLinks"
             navigation="$ctrl.navigation"
-            expanded="$ctrl.navigation[internalLink.name]">
+            expanded="$ctrl.navigation[asideLink.name]">
         </oui-navbar-menu>
         <!-- Default Menu -->
 

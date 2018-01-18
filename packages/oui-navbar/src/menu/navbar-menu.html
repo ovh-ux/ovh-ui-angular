@@ -43,7 +43,7 @@
             ng-attr-aria-label="{{::!!menuLink.label ? menuLink.label : null}}"
             ng-click="$ctrl.toggleMenu()"
             ng-bind="::menuLink.title"
-            ui-sref="{{::$ctrl.getFullSref(menuLink)}}"
+            ui-sref="{{::$ctrl.constructor.getFullSref(menuLink)}}"
             ng-init="::$last && $ctrl.setFocus()"
             oui-navbar-group="{{::$ctrl.menuName}}"
             oui-navbar-group-last="::$last">

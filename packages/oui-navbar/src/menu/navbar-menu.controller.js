@@ -35,12 +35,10 @@ export default class {
         this.navigation = this.navbarService.toggleMenu();
     }
 
-    /* eslint-disable class-methods-use-this */
     // Return value of "ui-sref"
-    getFullSref (item) {
+    static getFullSref (item) {
         return `${item.state}(${JSON.stringify(item.stateParams)})`;
     }
-    /* eslint-disable class-methods-use-this */
 
     // Build breadcrumb for child menu
     getChildBreadcrumb () {
