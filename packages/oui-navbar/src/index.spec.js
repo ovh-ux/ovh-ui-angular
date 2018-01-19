@@ -51,7 +51,7 @@ describe("ouiNavbar", () => {
             let links;
 
             beforeEach(() => {
-                component = testUtils.compileTemplate(`<oui-navbar universe="{{$ctrl.mainLinks[${activeIndex}].name}}" main-links="$ctrl.mainLinks"></oui-navbar>`, {
+                component = testUtils.compileTemplate(`<oui-navbar active-link="{{$ctrl.mainLinks[${activeIndex}].name}}" main-links="$ctrl.mainLinks"></oui-navbar>`, {
                     mainLinks: data
                 });
 
@@ -64,7 +64,7 @@ describe("ouiNavbar", () => {
                 expect(links.length).toEqual(data.length);
             });
 
-            it("should have an active link from universe value", () => {
+            it("should have an active link from activeLink attribute value", () => {
                 const activeLink = links.eq(activeIndex).children("a");
 
                 expect(activeLink.hasClass("oui-navbar-link_active")).toBe(true);

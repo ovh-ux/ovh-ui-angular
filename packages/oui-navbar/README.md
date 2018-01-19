@@ -7,7 +7,7 @@
 ```html
 <oui-navbar
     brand="..."
-    universe="..."
+    active-link="..."
     main-links="..."
     aside-links="..."
     fixed|fixed="true|false"
@@ -20,7 +20,7 @@
 <div class="oui-doc-preview-only-keep-children" style="margin-bottom: 15px;">
 <oui-navbar
     brand="$ctrl.brand"
-    universe="lorem"
+    active-link="lorem"
     main-links="$ctrl.mainLinks"
     aside-links="$ctrl.asideLinks">
 </oui-navbar>
@@ -34,7 +34,7 @@ Note: All children menus have `.oui-navbar-menu_fixed`. The component is intende
 | Attribute     | Type      | Binding   | One-time Binding    | Values               | Default   | Description                                                                   |
 | ----          | ----      | ----      | ----                | ----                 | ----      | ----                                                                          |
 | brand         | object    | <?        | true                | _see example below_  |           | object for the brand logo of the navbar                                       |
-| universe      | string    | @?        | true                |                      |           | current universe of the navbar                                                |
+| active-link   | string    | @?        | true                |                      |           | current active-link of the navbar                                             |
 | main-links    | array     | <?        | true                | _see example below_  |           | array of objects for the items on the left and the toggler (for responsive)   |
 | aside-links   | array     | <?        | true                | _see example below_  |           | array of objects for the items on the right                                   |
 | fixed         | boolean   | <?        | true                |                      | false     | set the navbar in fixed mode                                                  |

@@ -4,9 +4,7 @@ import template from "./navbar.html";
 export default {
     bindings: {
         brand: "<?",
-        universe: "@?",
-        user: "<?",
-
+        activeLink: "@?",
         mainLinks: "<?",
         asideLinks: "<?",
 

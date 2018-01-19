@@ -1,3 +1,5 @@
+import { addBooleanParameter } from "@oui-angular/common/component-utils";
+
 export default class {
     constructor ($attrs, $document, $element, $timeout, NavbarService, KEYBOARD_KEYS) {
         "ngInject";
@@ -17,9 +19,7 @@ export default class {
 
     $onInit () {
         // Support presence of attribute 'fixed'
-        if (angular.isDefined(this.$attrs.fixed) && angular.isUndefined(this.fixed)) {
-            this.fixed = true;
-        }
+        addBooleanParameter(this, "fixed");
     }
 
     $postLink () {
