@@ -24,19 +24,19 @@ export default class {
     }
 
     $postLink () {
-        this.$timeout(() => {
-            let compiled;
+        let compiled;
 
-            this.$element.removeAttr("aria-label");
+        this.$timeout(() =>
+            this.$element.removeAttr("aria-label")
+        );
 
-            if (this.$attrs.onClick) {
-                compiled = this.$compile(buttomTemplate);
-            } else {
-                compiled = this.$compile(linkTemplate);
-            }
+        if (this.$attrs.onClick) {
+            compiled = this.$compile(buttomTemplate);
+        } else {
+            compiled = this.$compile(linkTemplate);
+        }
 
-            this.$element.empty();
-            this.$element.append(compiled(this.$scope));
-        });
+        this.$element.empty();
+        this.$element.append(compiled(this.$scope));
     }
 }
