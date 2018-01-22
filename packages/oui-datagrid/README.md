@@ -245,7 +245,7 @@ You can use `row-loader`. It take the current row as argument and must return a 
 | Attribute         | Type            | Binding | One-time binding | Values                    | Default             | Description                                       |
 | ----              | ----            | ----    | ----             | ----                      | ----                | ----                                              |
 | `page-size`       | number          | @?      |                  |                           | 25                  | maximum number of rows to show on each pages      |
-| `rows`            | string          | <?      | yes              |                           |                     | rows to show                                      |
+| `rows`            | array<object>   | <?      | yes              |                           |                     | rows to show                                      |
 | `rows-loader`     | function        | &?      | yes              |                           |                     | gets all rows (returns a promise with all rows)   |
 | `row-loader`      | function        | &?      | yes              |                           |                     | gets row details (returns a promise with details) |
 
@@ -257,6 +257,13 @@ You can use `row-loader`. It take the current row as argument and must return a 
 | `title`           | string          | N/A     | yes              |                           |                        | column title put in header                  |
 | `property`        | string          | N/A     | yes              |                           |                        | property path used to get value from value  |
 | `sortable`        | string          | N/A     | yes              | `asc`, `desc`             | `asc` on `sortable=""` | makes a column sortable and gives the order |
+
+### rows-loader promise response
+
+| Attribute         | Type            | Binding | One-time binding | Values                    | Default             | Description                                                                                  |
+| ----              | ----            | ----    | ----             | ----                      | ----                | ----                                                                                         |
+| `data`            | array<object>   | <?      | yes              |                           |                     | rows to show                                                                                 |
+| `meta`            | object          | N/A     | yes              |                           |                     | an object containing pagination information {currentOffset, pageCount, totalCount, pageSize} |
 
 ### oui-action-menu
 
