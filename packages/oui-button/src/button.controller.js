@@ -1,9 +1,10 @@
 export default class {
-    constructor ($attrs, $element) {
+    constructor ($attrs, $element, $timeout) {
         "ngInject";
 
         this.$attrs = $attrs;
         this.$element = $element;
+        this.$timeout = $timeout;
     }
 
     $onInit () {
@@ -24,10 +25,13 @@ export default class {
     }
 
     $postLink () {
-        // Remove ID and Name to avoid duplicate
-        // And accessibility attributes on the root component
-        this.$element.removeAttr("aria-label");
-        this.$element.removeAttr("id");
-        this.$element.removeAttr("name");
+        // Sometimes the digest cycle is done before dom manipulation,
+        // So we use $timeout to force the $apply
+        this.$timeout(() =>
+            this.$element
+                .removeAttr("aria-label")
+                .removeAttr("id")
+                .removeAttr("name")
+        );
     }
 }

@@ -1,13 +1,15 @@
 describe("ouiBackButton", () => {
     let $rootScope;
     let $compile;
+    let $timeout;
     let $window;
 
     beforeEach(angular.mock.module("oui.back-button"));
 
-    beforeEach(inject((_$rootScope_, _$compile_, _$window_) => {
+    beforeEach(inject((_$rootScope_, _$compile_, _$timeout_, _$window_) => {
         $rootScope = _$rootScope_;
         $compile = _$compile_;
+        $timeout = _$timeout_;
         $window = _$window_;
         spyOn($window.history, "back");
     }));
@@ -30,6 +32,9 @@ describe("ouiBackButton", () => {
 
         it("should have and id and name attribute, and remove it from root component", () => {
             const element = compile('<oui-back-button id="foo" name="bar"></oui-back-button>');
+
+            $timeout.flush();
+
             expect(element.find("button").attr("id")).toBe("foo");
             expect(element.find("button").attr("name")).toBe("bar");
             expect(element.attr("id")).toBeUndefined();
@@ -38,6 +43,9 @@ describe("ouiBackButton", () => {
 
         it("should have and aria-label attribute, and remove it from root component", () => {
             const element = compile('<oui-back-button aria-label="foo"></oui-back-button>');
+
+            $timeout.flush();
+
             expect(element.find("button").attr("aria-label")).toBe("foo");
             expect(element.attr("aria-label")).toBeUndefined();
         });

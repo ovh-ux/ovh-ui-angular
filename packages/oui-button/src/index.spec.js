@@ -1,12 +1,14 @@
 describe("ouiButton", () => {
     let $componentController;
+    let $timeout;
     let testUtils;
 
     beforeEach(angular.mock.module("oui.button"));
     beforeEach(angular.mock.module("oui.test-utils"));
 
-    beforeEach(inject((_$componentController_, _TestUtils_) => {
+    beforeEach(inject((_$componentController_, _$timeout_, _TestUtils_) => {
         $componentController = _$componentController_;
+        $timeout = _$timeout_;
         testUtils = _TestUtils_;
     }));
 
@@ -35,6 +37,8 @@ describe("ouiButton", () => {
             const component = testUtils.compileTemplate('<oui-button id="foo" name="bar"></oui-button>');
             const button = component.find("button").eq(0);
 
+            $timeout.flush();
+
             expect(component.attr("id")).toBe(undefined);
             expect(button.attr("id")).toBe("foo");
 
@@ -44,6 +48,8 @@ describe("ouiButton", () => {
 
         it("should have an attribute aria-label on the button, and removed on the root component", () => {
             const component = testUtils.compileTemplate('<oui-button aria-label="foo"></oui-button>');
+
+            $timeout.flush();
 
             expect(component.attr("aria-label")).toBe(undefined);
             expect(component.find("button").eq(0).attr("aria-label")).toBe("foo");
