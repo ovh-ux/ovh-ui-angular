@@ -1,17 +1,21 @@
 export default class {
-    constructor ($element, $window) {
+    constructor ($element, $timeout, $window) {
         "ngInject";
 
         this.$element = $element;
+        this.$timeout = $timeout;
         this.$window = $window;
     }
 
     $postLink () {
-        // Remove ID and Name to avoid duplicate
-        // And accessibility attributes on the root component
-        this.$element.removeAttr("aria-label");
-        this.$element.removeAttr("id");
-        this.$element.removeAttr("name");
+        // Sometimes the digest cycle is done before dom manipulation,
+        // So we use $timeout to force the $apply
+        this.$timeout(() =>
+            this.$element
+                .removeAttr("aria-label")
+                .removeAttr("id")
+                .removeAttr("name")
+        );
     }
 
     onBtnClick () {

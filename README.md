@@ -17,6 +17,7 @@ This library has been tested with AngularJS 1.6.
 You will also need these dependencies in your project:
 
 - [angular-aria](https://www.npmjs.com/package/angular-aria)
+- [angular-sanitize](https://www.npmjs.com/package/angular-sanitize)
 - [ovh-ui-kit](https://github.com/ovh-ux/ovh-ui-kit)
 
 Follow the [guide](https://github.com/ovh-ux/ovh-ui-kit) for _ovh-ui-kit_, because you need to integrate it by _yourself_.

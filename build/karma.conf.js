@@ -23,6 +23,7 @@ export default config => {
             require.resolve("angular"), // eslint-disable-line no-undef
             require.resolve("angular-mocks"), // eslint-disable-line no-undef
             require.resolve("angular-aria"), // eslint-disable-line no-undef
+            require.resolve("angular-sanitize"), // eslint-disable-line no-undef
             "../packages/oui-angular/src/index.spec.js"
         ],
         preprocessors: {
@@ -31,6 +32,7 @@ export default config => {
             // eslint-disable-next-line no-undef
             [require.resolve("angular-mocks")]: ["webpack", "sourcemap"],
             [require.resolve("angular-aria")]: ["webpack", "sourcemap"],
+            [require.resolve("angular-sanitize")]: ["webpack", "sourcemap"],
             "../packages/oui-angular/src/index.spec.js": ["webpack", "sourcemap"]
         },
         webpack: webpackConfig,
