@@ -25,6 +25,7 @@
 <!-- Brand -->
 <a class="oui-navbar__brand" ng-if="::$ctrl.brand"
     ng-attr-aria-label="{{::!!$ctrl.brand.label ? $ctrl.brand.label : null}}"
+    ng-attr-title="{{::!!$ctrl.brand.label ? $ctrl.brand.label : null}}"
     ng-href="{{::$ctrl.brand.url}}">
     <img class="navbar-logo"
         ng-if="::!!$ctrl.brand.iconSrc"
@@ -44,6 +45,7 @@
         ng-class="::!!managerLink.class ? managerLink.class : null">
         <a class="oui-navbar-link"
             ng-attr-aria-label="{{::!!managerLink.label ? managerLink.label : null}}"
+            ng-attr-title="{{::!!managerLink.label ? managerLink.label : null}}"
             ng-class="::{
                 'oui-navbar-link_active': managerLink.name === $ctrl.activeLink,
                 'oui-navbar-link_primary': managerLink.isPrimary,
@@ -67,6 +69,7 @@
         <button class="oui-navbar-link oui-navbar-link_tertiary" type="button"
             aria-haspopup="true" aria-expanded="{{!!$ctrl.navigation[asideLink.name]}}"
             ng-attr-aria-label="{{::!!asideLink.label ? asideLink.label : null}}"
+            ng-attr-title="{{::!!asideLink.label ? asideLink.label : null}}"
             ng-class="::!!asideLink.iconClass ? 'oui-navbar-link_icon' : null"
             ng-click="$ctrl.toggleMenu(asideLink.name)"
             oui-navbar-group="{{::asideLink.name}}">
