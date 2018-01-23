@@ -130,6 +130,23 @@ describe("oui-message: ", () => {
                 expect(getCloseButton(element)).not.toBeDefined();
             });
         });
+
+        describe("when dismissable property is defined", () => {
+            it("should show the close button if no value", () => {
+                const element = TestUtils.compileTemplate('<oui-message type="error" dismissable></oui-message>');
+                expect(getCloseButton(element)).toBeDefined();
+            });
+
+            it("should show the close button if property is true", () => {
+                const element = TestUtils.compileTemplate('<oui-message type="error" dismissable="true"></oui-message>');
+                expect(getCloseButton(element)).toBeDefined();
+            });
+
+            it("should not show the close button if property is false", () => {
+                const element = TestUtils.compileTemplate('<oui-message type="error" dismissable="false"></oui-message>');
+                expect(getCloseButton(element)).not.toBeDefined();
+            });
+        });
     });
 
     function getCloseButton (element) {

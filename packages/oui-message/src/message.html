@@ -4,7 +4,7 @@
     <div class="oui-message__body" ng-class=":: 'oui-message__body_' + $ctrl.type" ng-transclude>
     </div>
 
-    <button ng-if=":: $ctrl.type === 'info' || $ctrl.type === 'success'"
+    <button ng-if=":: $ctrl.type === 'info' || $ctrl.type === 'success' || $ctrl.dismissable"
       class="oui-icon oui-icon-close oui-message__close-button"
       type="button"
       ng-click="$ctrl.dismiss()"
