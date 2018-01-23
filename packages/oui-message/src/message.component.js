@@ -7,6 +7,7 @@ export default {
     bindings: {
         type: "@",
         ariaCloseButtonLabel: "@?",
+        dismissable: "<?",
         onDismissed: "&?"
     },
     transclude: true
