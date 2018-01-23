@@ -1,14 +1,21 @@
 export default class {
-    constructor ($scope, $element, $attrs) {
+    constructor ($scope, $element, $attrs, $timeout) {
         "ngInject";
 
         this.$scope = $scope;
         this.$element = $element;
         this.$attrs = $attrs;
+        this.$timeout = $timeout;
     }
 
     $postLink () {
-        this.$element.removeAttr("id name");
+        // Sometimes the digest cycle is done before dom manipulation,
+        // So we use $timeout to force the $apply
+        this.$timeout(() =>
+            this.$element
+                .removeAttr("id")
+                .removeAttr("name")
+        );
 
         this.checkboxElement = this.$element.find("input");
 

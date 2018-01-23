@@ -5,16 +5,23 @@ const MIN_VALUE = 0;
 const MAX_VALUE = 99999;
 
 export default class {
-    constructor ($attrs, $element, $log) {
+    constructor ($attrs, $element, $log, $timeout) {
         "ngInject";
 
         this.$attrs = $attrs;
         this.$element = $element;
         this.$log = $log;
+        this.$timeout = $timeout;
     }
 
     $postLink () {
-        this.$element.removeAttr("id name");
+        // Sometimes the digest cycle is done before dom manipulation,
+        // So we use $timeout to force the $apply
+        this.$timeout(() =>
+            this.$element
+                .removeAttr("id")
+                .removeAttr("name")
+        );
     }
 
     $onInit () {

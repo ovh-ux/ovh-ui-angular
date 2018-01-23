@@ -3,13 +3,14 @@ import buttomTemplate from "./action-menu-item-button.html";
 import linkTemplate from "./action-menu-item-link.html";
 
 export default class {
-    constructor ($attrs, $compile, $element, $scope) {
+    constructor ($attrs, $compile, $element, $scope, $timeout) {
         "ngInject";
 
         this.$attrs = $attrs;
         this.$compile = $compile;
         this.$element = $element;
         this.$scope = $scope;
+        this.$timeout = $timeout;
     }
 
     $onInit () {
@@ -25,7 +26,11 @@ export default class {
     $postLink () {
         let compiled;
 
-        this.$element.removeAttr("aria-label");
+        // Sometimes the digest cycle is done before dom manipulation,
+        // So we use $timeout to force the $apply
+        this.$timeout(() =>
+            this.$element.removeAttr("aria-label")
+        );
 
         if (this.$attrs.onClick) {
             compiled = this.$compile(buttomTemplate);
