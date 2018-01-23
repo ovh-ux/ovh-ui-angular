@@ -1,0 +1,19 @@
+<div class="oui-field">
+    <label class="oui-field__label oui-label"
+        for="{{$ctrl.for}}"
+        ng-if="$ctrl.label"
+        ng-bind="$ctrl.label"></label>
+    <div class="oui-field__control oui-field-control_2" ng-transclude></div>
+    <div class="oui-field__error"
+        ng-if="$ctrl.form[$ctrl.name].$invalid && $ctrl.form[$ctrl.name].$touched">
+        <div ng-messages="$ctrl.form[$ctrl.name].$error" role="alert">
+            <div ng-message="required">Mandatory.</div>
+            <div ng-message="minlength">Too short.</div>
+            <div ng-message="maxlength">Too long.</div>
+        </div>
+    </div>
+    <div class="oui-field__helper"
+        ng-if="$ctrl.helpText"
+        ng-bind="$ctrl.helpText">
+    </div>
+</div>
