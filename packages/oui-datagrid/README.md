@@ -263,7 +263,7 @@ You can use `row-loader`. It take the current row as argument and must return a 
 | Attribute         | Type            | Binding | One-time binding | Values                    | Default             | Description                                                                                  |
 | ----              | ----            | ----    | ----             | ----                      | ----                | ----                                                                                         |
 | `data`            | array<object>   | <?      | yes              |                           |                     | rows to show                                                                                 |
-| `meta`            | object          | N/A     | yes              |                           |                     | an object containing pagination information {currentOffset, pageCount, totalCount, pageSize} |
+| `meta`            | object          | N/A     | yes              |                           |                     | an object containing pagination information { totalCount: X } |
 
 ### oui-action-menu
 
