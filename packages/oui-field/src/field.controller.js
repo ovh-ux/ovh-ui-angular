@@ -11,11 +11,12 @@ const ERROR_CLASSES = {
 };
 
 export default class FieldController {
-    constructor ($element, $scope) {
+    constructor ($element, $scope, $timeout) {
         "ngInject";
 
         this.$element = $element;
         this.$scope = $scope;
+        this.$timeout = $timeout;
     }
 
     $postLink () {
@@ -30,19 +31,32 @@ export default class FieldController {
         }
 
         this.$control = angular.element(this.control);
-        this.name = this.$control.attr("name");
 
-        if (!this.name) {
-            throw new Error("oui-field component requires a form control with a name.");
-        }
+        // Since digest is already done and DOM is not written,
+        // we need to wait for next digest to get `name` and `id` attribute.
+        this.$timeout(() => {
+            // If name does not exists on component,
+            // it will takes the name of first transcluded form control.
+            // TODO: support multiple components.
+            if (!this.name) {
+                this.name = this.$control.attr("name");
+                if (!this.name) {
+                    throw new Error("oui-field component requires a form control with a name.");
+                }
+            }
 
-        const id = this.$control.attr("id");
-        if (id) {
-            this.for = id;
-        }
+            // The id is taken from the first control found
+            // to create the `for` attribute on the label.
+            // If the control is a checkbox or a radio, we skip this part
+            // because we don't want to link the field label to the first checkbox/radio.
+            const id = this.$control.attr("id");
+            if (id && ["checkbox", "radio"].indexOf(this.$control.attr("type")) < 0) {
+                this.for = id;
+            }
+        });
 
         angular.element(this.control).on("blur", () => {
-            if (this.hasError()) {
+            if (this.form[this.name].$invalid) {
                 angular.element(this.control).addClass(this.getErrorClass());
                 this.$element.addClass("oui-field_error");
             }

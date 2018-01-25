@@ -11,7 +11,11 @@ loadTests(require.context("../../oui-action-menu/src/", true, /.*((\.spec)|(inde
 loadTests(require.context("../../oui-numeric/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-pagination/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-datagrid/src/", true, /.*((\.spec)|(index))$/));
+<<<<<<< HEAD
 loadTests(require.context("../../oui-navbar/src/", true, /.*((\.spec)|(index))$/));
+=======
+loadTests(require.context("../../oui-field/src/", true, /.*((\.spec)|(index))$/));
+>>>>>>> test(field): add tests for ouiField
 
 function loadTests (context) {
     context.keys().forEach(context);
