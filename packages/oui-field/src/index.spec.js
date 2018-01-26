@@ -12,11 +12,36 @@ describe("ouiField", () => {
         TestUtils = _TestUtils_;
     }));
 
+    const getField = elt => elt.find("oui-field");
     const getLabel = elt => elt[0].querySelector("label");
     const getError = elt => elt[0].querySelector(".oui-field__error");
     const getHelper = elt => elt[0].querySelector(".oui-field__helper");
 
     describe("Component", () => {
+        describe("with wrong usage", () => {
+            it("should throw an error if it has no transcluded form control", () => {
+                expect(() => TestUtils.compileTemplate(`
+                    <oui-field label="{{'Lastname'}}">
+                        <span>This is not a form control</span>
+                    </oui-field>
+                `)).toThrow();
+            });
+
+            it("should throw an error if the form control has no 'name' attribute", () => {
+                TestUtils.compileTemplate(`
+                    <oui-field label="{{'Lastname'}}">
+                        <input
+                            class="oui-input"
+                            type="text"
+                            id="lastname">
+                    </oui-field>
+                `);
+
+                // Name attribute validation is done on next tick with a $timeout.
+                expect(() => $timeout.flush()).toThrow();
+            });
+        });
+
         describe("with input", () => {
             it("should decorate the field", () => {
                 const element = TestUtils.compileTemplate(`
@@ -91,6 +116,124 @@ describe("ouiField", () => {
 
                 const controller = element.controller("ouiField");
                 expect(controller.name).toEqual(name);
+            });
+
+            it("should be aware of validation parameters set on form control (HTML attributes)", () => {
+                const validation = {
+                    min: 0,
+                    max: 140,
+                    minlength: 1,
+                    maxlength: 3
+                };
+
+                const element = TestUtils.compileTemplate(`
+                    <oui-field label="{{'Age'}}">
+                        <input
+                            class="oui-input"
+                            type="number"
+                            id="age"
+                            name="age"
+                            ng-model="$ctrl.user.age"
+                            min="{{$ctrl.validation.min}}"
+                            max="{{$ctrl.validation.max}}"
+                            minlength="{{$ctrl.validation.minlength}}"
+                            maxlength="{{$ctrl.validation.maxlength}}">
+                    </oui-field>
+                    `, {
+                        validation
+                    });
+
+                $timeout.flush();
+
+                const controller = element.controller("ouiField");
+                expect(controller.validationParameters.min).toEqual(`${validation.min}`);
+                expect(controller.validationParameters.max).toEqual(`${validation.max}`);
+                expect(controller.validationParameters.minlength).toEqual(`${validation.minlength}`);
+                expect(controller.validationParameters.maxlength).toEqual(`${validation.maxlength}`);
+            });
+
+            it("should be aware of validation parameters set on form control (NG attributes)", () => {
+                const validation = {
+                    min: 0,
+                    max: 140,
+                    minlength: 1,
+                    maxlength: 3
+                };
+
+                const element = TestUtils.compileTemplate(`
+                    <oui-field label="{{'Age'}}">
+                        <input
+                            class="oui-input"
+                            type="number"
+                            id="age"
+                            name="age"
+                            ng-model="$ctrl.user.age"
+                            ng-min="{{$ctrl.validation.min}}"
+                            ng-max="{{$ctrl.validation.max}}"
+                            ng-minlength="{{$ctrl.validation.minlength}}"
+                            ng-maxlength="{{$ctrl.validation.maxlength}}">
+                    </oui-field>
+                    `, {
+                        validation
+                    });
+
+                $timeout.flush();
+
+                const controller = element.controller("ouiField");
+                expect(controller.validationParameters.min).toEqual(`${validation.min}`);
+                expect(controller.validationParameters.max).toEqual(`${validation.max}`);
+                expect(controller.validationParameters.minlength).toEqual(`${validation.minlength}`);
+                expect(controller.validationParameters.maxlength).toEqual(`${validation.maxlength}`);
+            });
+
+            it("should show the error on blur", () => {
+                const element = TestUtils.compileTemplate(`
+                    <form name="form">
+                        <oui-field label="{{'Age'}}">
+                            <input
+                                class="oui-input"
+                                type="number"
+                                id="age"
+                                name="age"
+                                ng-model="age"
+                                required>
+                        </oui-field>
+                    </form>
+                    `);
+
+                $timeout.flush();
+
+                expect(getError(element)).toBeNull();
+
+                const controller = getField(element).controller("ouiField");
+                controller.$control.triggerHandler("blur");
+
+                expect(getError(element)).toBeDefined();
+            });
+
+            it("should hide the error on focus, when the field is already in error", () => {
+                const element = TestUtils.compileTemplate(`
+                    <form name="form">
+                        <oui-field label="{{'Age'}}">
+                            <input
+                                class="oui-input"
+                                type="number"
+                                id="age"
+                                name="age"
+                                ng-model="age"
+                                required>
+                        </oui-field>
+                    </form>
+                    `);
+                const controller = getField(element).controller("ouiField");
+
+                $timeout.flush();
+
+                expect(getError(element)).toBeNull();
+
+                controller.$control.triggerHandler("blur");
+                controller.$control.triggerHandler("focus");
+                expect(getError(element)).toBeNull();
             });
         });
 
@@ -176,6 +319,7 @@ describe("ouiField", () => {
             });
         });
 
+        // TODO: Field with multiple names is not supported for now.
         xdescribe("with checkboxes", () => {
             it("should not set any name of the checkboxes in the controller", () => {
                 const element = TestUtils.compileTemplate(`

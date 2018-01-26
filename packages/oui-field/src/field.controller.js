@@ -1,3 +1,5 @@
+import { getAttribute, hasAttribute } from "@oui-angular/common/component-utils";
+
 const CONTROLS_SELECTORS = [
     "input",
     "select",
@@ -10,13 +12,21 @@ const ERROR_CLASSES = {
     textarea: "oui-textarea_error"
 };
 
+const VALIDATION_PARAMETERS = {
+    min: ["min", "ng-min"],
+    max: ["max", "ng-max"],
+    minlength: ["minlength", "ng-minlength"],
+    maxlength: ["maxlength", "ng-maxlength"]
+};
+
 export default class FieldController {
-    constructor ($element, $scope, $timeout) {
+    constructor ($element, $scope, $timeout, ouiFieldConfiguration) {
         "ngInject";
 
         this.$element = $element;
         this.$scope = $scope;
         this.$timeout = $timeout;
+        this.ouiFieldConfiguration = ouiFieldConfiguration;
     }
 
     $postLink () {
@@ -53,6 +63,9 @@ export default class FieldController {
             if (id && ["checkbox", "radio"].indexOf(this.$control.attr("type")) < 0) {
                 this.for = id;
             }
+
+            // Get validation parameters to customise error messges
+            this.validationParameters = FieldController.getValidationParameters(this.control);
         });
 
         angular.element(this.control).on("blur", () => {
@@ -78,5 +91,23 @@ export default class FieldController {
     getErrorClass () {
         const tagName = this.control.tagName.toLowerCase();
         return ERROR_CLASSES[tagName];
+    }
+
+    getErrorMessage (errorName) {
+        const message = this.ouiFieldConfiguration.translations.errors[errorName];
+        return message.replace(`{{${errorName}}}`, this.validationParameters[errorName]);
+    }
+
+    static getValidationParameters (controlElement) {
+        const validationParameters = {};
+        Object.keys(VALIDATION_PARAMETERS).forEach(validationName => {
+            const attributes = VALIDATION_PARAMETERS[validationName];
+            attributes.forEach(attributeName => {
+                if (hasAttribute(controlElement, attributeName)) {
+                    validationParameters[validationName] = getAttribute(controlElement, attributeName);
+                }
+            });
+        });
+        return validationParameters;
     }
 }

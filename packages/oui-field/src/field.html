@@ -3,14 +3,25 @@
         ng-attr-for="{{ ::$ctrl.for }}"
         ng-if="$ctrl.label"
         ng-bind="$ctrl.label"></label>
-    <div class="oui-field__control oui-field-control_2" ng-transclude></div>
+    <div class="oui-field__control" ng-transclude>
+
+    </div>
     <div class="oui-field__error"
         ng-if="$ctrl.form[$ctrl.name].$invalid && $ctrl.form[$ctrl.name].$touched">
         <span ng-messages="$ctrl.form[$ctrl.name].$error" role="alert">
             <i class="oui-icon oui-icon-error" aria-hidden="true"></i>
-            <span ng-message="required">Mandatory.</span>
-            <span ng-message="minlength">Too short.</span>
-            <span ng-message="maxlength">Too long.</span>
+            <span ng-message="required"
+                ng-bind="$ctrl.getErrorMessage('required')"></span>
+            <span ng-message="email"
+                ng-bind="$ctrl.getErrorMessage('email')"></span>
+            <span ng-message="minlength"
+                ng-bind="$ctrl.getErrorMessage('minlength')"></span>
+            <span ng-message="maxlength"
+                ng-bind="$ctrl.getErrorMessage('maxlength')"></span>
+            <span ng-message="min"
+                ng-bind="$ctrl.getErrorMessage('min')"></span>
+            <span ng-message="max"
+                ng-bind="$ctrl.getErrorMessage('max')"></span>
         </span>
     </div>
     <div class="oui-field__helper"

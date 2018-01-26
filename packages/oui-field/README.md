@@ -18,7 +18,28 @@
         name="lastname"
         ng-model="$ctrl.user.lastname"
         required
-        ng-minlength="3">
+        minlength="3"
+        maxlength="32">
+</oui-field>
+
+<oui-field label="{{'Email'}}">
+    <input
+        class="oui-input"
+        type="email"
+        id="email"
+        name="email"
+        ng-model="$ctrl.user.email">
+</oui-field>
+
+<oui-field label="{{'Age'}}">
+    <input
+        class="oui-input"
+        type="number"
+        id="age"
+        name="age"
+        ng-model="$ctrl.user.age"
+        min="0"
+        max="140">
 </oui-field>
 ```
 
