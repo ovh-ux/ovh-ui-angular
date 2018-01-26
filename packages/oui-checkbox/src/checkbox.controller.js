@@ -11,6 +11,8 @@ export default class {
     }
 
     $postLink () {
+        addBooleanParameter(this, "required");
+
         // Sometimes the digest cycle is done before dom manipulation,
         // So we use $timeout to force the $apply
         this.$timeout(() =>
