@@ -26,6 +26,7 @@
 | name          | string                  | @?      | `true`           |                          |         | name attribute of the checkbox
 | disabled      | boolean                 | <?      |                  |                          | false   | disabled flag
 | model         | nullable&lt;boolean&gt; | =?      |                  | `true`, `false`, `null`  |         | current value of the checkbox and null is considered as `indeterminate`
+| required      | boolean                 | <?      |                  |                          | false   | `true` if the checkbox should be checked
 | on-change     | function                | &?      |                  |                          |         | handler triggered when value has changed
 
 ## Examples
@@ -53,6 +54,17 @@
   <oui-checkbox text="Normal" model="$ctrl.indeterminate"></oui-checkbox>
   <oui-checkbox text="Disabled" model="$ctrl.indeterminate" disabled></oui-checkbox>
 </div>
+```
+
+### Validation
+
+```html:preview
+<form name="form">
+  <div ng-init="$ctrl.agreements = false">
+    <oui-checkbox text="Agreements" model="$ctrl.agreements" name="agreements" required></oui-checkbox>
+  </div>
+  Is this form valid? : {{ form.$valid ? "yes" : "no" }}
+</form>
 ```
 
 ### Description

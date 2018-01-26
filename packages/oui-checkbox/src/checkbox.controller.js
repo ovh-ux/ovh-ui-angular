@@ -1,3 +1,5 @@
+import { addBooleanParameter } from "@oui-angular/common/component-utils";
+
 export default class {
     constructor ($scope, $element, $attrs, $timeout) {
         "ngInject";
@@ -28,9 +30,8 @@ export default class {
     }
 
     $onInit () {
-        if (angular.isDefined(this.$attrs.disabled) && this.$attrs.disabled === "") {
-            this.disabled = true;
-        }
+        addBooleanParameter(this, "disabled");
+        addBooleanParameter(this, "required");
 
         if (!self.id) {
             this.id = `oui-checkbox-${this.$scope.$id}`;

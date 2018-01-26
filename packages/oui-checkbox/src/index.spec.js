@@ -194,5 +194,55 @@ describe("ouiCheckbox", () => {
                 expect(onChangeSpy).toHaveBeenCalledWith(true);
             });
         });
+
+        describe("Validation", () => {
+            it("should apply a required validation with the required attribute without value", () => {
+                const element = TestUtils.compileTemplate("<oui-checkbox required></oui-checkbox>");
+
+                const checkboxElement = getCheckboxInputElement(element);
+                expect(angular.element(checkboxElement).prop("required")).toBe(true);
+            });
+
+            it("should apply a required validation with the required attribute when true", () => {
+                const element = TestUtils.compileTemplate(`
+                        <oui-checkbox required="$ctrl.isRequired"></oui-checkbox>
+                    `, {
+                        isRequired: true
+                    });
+
+                const checkboxElement = getCheckboxInputElement(element);
+                expect(angular.element(checkboxElement).prop("required")).toBe(true);
+            });
+
+            it("should apply a required validation with the required attribute when true", () => {
+                const element = TestUtils.compileTemplate(`
+                        <oui-checkbox required="$ctrl.isRequired"></oui-checkbox>
+                    `, {
+                        isRequired: false
+                    });
+
+                const checkboxElement = getCheckboxInputElement(element);
+                expect(angular.element(checkboxElement).prop("required")).toBe(false);
+            });
+
+            it("should be done if required attribute is defined", () => {
+                const element = TestUtils.compileTemplate(`<form name="form">
+                        <oui-checkbox name="checkbox" required="$ctrl.isRequired"></oui-checkbox>
+                    </form>
+                    `, {
+                        isRequired: true
+                    });
+
+                const form = element.scope().form;
+                const checkboxElement = getCheckboxInputElement(element);
+                const $checkboxElement = angular.element(checkboxElement);
+
+                expect(form.$valid).toBeFalsy();
+
+                $checkboxElement.prop("checked", true);
+                $checkboxElement.triggerHandler("click");
+                expect(form.$valid).toBeTruthy();
+            });
+        });
     });
 });
