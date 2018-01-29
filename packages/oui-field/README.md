@@ -50,7 +50,8 @@
     <oui-checkbox
         name="ssl"
         text="SSL"
-        model="$ctrl.ssl"></oui-checkbox>
+        model="$ctrl.ssl"
+        required></oui-checkbox>
     <oui-checkbox
         name="hsts"
         text="HSTS"
@@ -100,7 +101,7 @@
 ```html:preview
 <oui-field label="{{'OS'}}">
     <label class="oui-select">
-        <select id="os" name="os" class="oui-select__input">
+        <select id="os" name="os" ng-model="os" class="oui-select__input">
             <option>Select the OS</option>
             <option value="freebsd">FreeBSD</option>
             <option value="linux">Linux</option>

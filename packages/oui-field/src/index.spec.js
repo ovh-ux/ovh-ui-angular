@@ -16,17 +16,10 @@ describe("ouiField", () => {
     const getLabel = elt => elt[0].querySelector("label");
     const getError = elt => elt[0].querySelector(".oui-field__error");
     const getHelper = elt => elt[0].querySelector(".oui-field__helper");
+    const getControl = (controller, name) => angular.element(controller.controls[name][0]);
 
     describe("Component", () => {
         describe("with wrong usage", () => {
-            it("should throw an error if it has no transcluded form control", () => {
-                expect(() => TestUtils.compileTemplate(`
-                    <oui-field label="{{'Lastname'}}">
-                        <span>This is not a form control</span>
-                    </oui-field>
-                `)).toThrow();
-            });
-
             it("should throw an error if the form control has no 'name' attribute", () => {
                 TestUtils.compileTemplate(`
                     <oui-field label="{{'Lastname'}}">
@@ -115,7 +108,7 @@ describe("ouiField", () => {
                 $timeout.flush();
 
                 const controller = element.controller("ouiField");
-                expect(controller.name).toEqual(name);
+                expect(Object.keys(controller.controls)).toContain(name);
             });
 
             it("should be aware of validation parameters set on form control (HTML attributes)", () => {
@@ -127,7 +120,7 @@ describe("ouiField", () => {
                 };
 
                 const element = TestUtils.compileTemplate(`
-                    <oui-field label="{{'Age'}}">
+                    <oui-field label="{{'User'}}">
                         <input
                             class="oui-input"
                             type="number"
@@ -135,7 +128,13 @@ describe("ouiField", () => {
                             name="age"
                             ng-model="$ctrl.user.age"
                             min="{{$ctrl.validation.min}}"
-                            max="{{$ctrl.validation.max}}"
+                            max="{{$ctrl.validation.max}}">
+                        <input
+                            class="oui-input"
+                            type="text"
+                            id="name"
+                            name="name"
+                            ng-model="$ctrl.user.name"
                             minlength="{{$ctrl.validation.minlength}}"
                             maxlength="{{$ctrl.validation.maxlength}}">
                     </oui-field>
@@ -146,10 +145,10 @@ describe("ouiField", () => {
                 $timeout.flush();
 
                 const controller = element.controller("ouiField");
-                expect(controller.validationParameters.min).toEqual(`${validation.min}`);
-                expect(controller.validationParameters.max).toEqual(`${validation.max}`);
-                expect(controller.validationParameters.minlength).toEqual(`${validation.minlength}`);
-                expect(controller.validationParameters.maxlength).toEqual(`${validation.maxlength}`);
+                expect(controller.validationParameters.age.min).toEqual(`${validation.min}`);
+                expect(controller.validationParameters.age.max).toEqual(`${validation.max}`);
+                expect(controller.validationParameters.name.minlength).toEqual(`${validation.minlength}`);
+                expect(controller.validationParameters.name.maxlength).toEqual(`${validation.maxlength}`);
             });
 
             it("should be aware of validation parameters set on form control (NG attributes)", () => {
@@ -169,7 +168,13 @@ describe("ouiField", () => {
                             name="age"
                             ng-model="$ctrl.user.age"
                             ng-min="{{$ctrl.validation.min}}"
-                            ng-max="{{$ctrl.validation.max}}"
+                            ng-max="{{$ctrl.validation.max}}">
+                        <input
+                            class="oui-input"
+                            type="number"
+                            id="name"
+                            name="name"
+                            ng-model="$ctrl.user.name"
                             ng-minlength="{{$ctrl.validation.minlength}}"
                             ng-maxlength="{{$ctrl.validation.maxlength}}">
                     </oui-field>
@@ -180,10 +185,10 @@ describe("ouiField", () => {
                 $timeout.flush();
 
                 const controller = element.controller("ouiField");
-                expect(controller.validationParameters.min).toEqual(`${validation.min}`);
-                expect(controller.validationParameters.max).toEqual(`${validation.max}`);
-                expect(controller.validationParameters.minlength).toEqual(`${validation.minlength}`);
-                expect(controller.validationParameters.maxlength).toEqual(`${validation.maxlength}`);
+                expect(controller.validationParameters.age.min).toEqual(`${validation.min}`);
+                expect(controller.validationParameters.age.max).toEqual(`${validation.max}`);
+                expect(controller.validationParameters.name.minlength).toEqual(`${validation.minlength}`);
+                expect(controller.validationParameters.name.maxlength).toEqual(`${validation.maxlength}`);
             });
 
             it("should show the error on blur", () => {
@@ -206,7 +211,7 @@ describe("ouiField", () => {
                 expect(getError(element)).toBeNull();
 
                 const controller = getField(element).controller("ouiField");
-                controller.$control.triggerHandler("blur");
+                getControl(controller, "age").triggerHandler("blur");
 
                 expect(getError(element)).toBeDefined();
             });
@@ -231,8 +236,9 @@ describe("ouiField", () => {
 
                 expect(getError(element)).toBeNull();
 
-                controller.$control.triggerHandler("blur");
-                controller.$control.triggerHandler("focus");
+                const $control = getControl(controller, "age");
+                $control.triggerHandler("blur");
+                $control.triggerHandler("focus");
                 expect(getError(element)).toBeNull();
             });
         });
@@ -240,7 +246,7 @@ describe("ouiField", () => {
         // We assume that if ouiField is able to find the form field,
         // ouiField will also be able to find it's name and id.
         describe("with select", () => {
-            it("should find the select component", () => {
+            it("should detect the select component", () => {
                 const element = TestUtils.compileTemplate(`
                     <oui-field label="{{'OS'}}">
                         <label class="oui-select">
@@ -259,14 +265,14 @@ describe("ouiField", () => {
                 $timeout.flush();
 
                 const controller = element.controller("ouiField");
-                expect(controller.$control).toBeDefined();
+                expect(getControl(controller, "os")).toBeDefined();
             });
         });
 
         // We assume that if ouiField is able to find the form field,
         // ouiField will also be able to find it's name and id.
         describe("with textarea", () => {
-            it("should find the select component", () => {
+            it("should detect the textarea component", () => {
                 const element = TestUtils.compileTemplate(`
                     <oui-field label="{{'OS'}}">
                         <textarea
@@ -281,12 +287,12 @@ describe("ouiField", () => {
                 $timeout.flush();
 
                 const controller = element.controller("ouiField");
-                expect(controller.$control).toBeDefined();
+                expect(getControl(controller, "description")).toBeDefined();
             });
         });
 
         describe("with radio buttons", () => {
-            it("should set the name of the radios in the controller", () => {
+            it("should detect all the radio buttons", () => {
                 const name = "protocol";
 
                 const element = TestUtils.compileTemplate(`
@@ -315,13 +321,14 @@ describe("ouiField", () => {
                 $timeout.flush();
 
                 const controller = element.controller("ouiField");
-                expect(controller.name).toEqual(name);
+
+                // There is 3 HTML elements with the same name
+                expect(controller.controls[name].length).toEqual(3);
             });
         });
 
-        // TODO: Field with multiple names is not supported for now.
-        xdescribe("with checkboxes", () => {
-            it("should not set any name of the checkboxes in the controller", () => {
+        describe("with checkboxes", () => {
+            it("should detect all checkboxes", () => {
                 const element = TestUtils.compileTemplate(`
                     <oui-field>
                         <oui-checkbox
@@ -338,7 +345,8 @@ describe("ouiField", () => {
                 $timeout.flush();
 
                 const controller = element.controller("ouiField");
-                expect(controller.name).toBeUndefined();
+                expect(getControl(controller, "ssl")).toBeDefined();
+                expect(getControl(controller, "hsts")).toBeDefined();
             });
         });
 

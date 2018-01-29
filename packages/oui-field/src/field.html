@@ -7,8 +7,8 @@
 
     </div>
     <div class="oui-field__error"
-        ng-if="$ctrl.form[$ctrl.name].$invalid && $ctrl.form[$ctrl.name].$touched">
-        <span ng-messages="$ctrl.form[$ctrl.name].$error" role="alert">
+        ng-if="$ctrl.isErrorVisible()">
+        <span ng-messages="$ctrl.getFirstError()" role="alert">
             <i class="oui-icon oui-icon-error" aria-hidden="true"></i>
             <span ng-message="required"
                 ng-bind="$ctrl.getErrorMessage('required')"></span>
