@@ -101,8 +101,13 @@
 ```html:preview
 <oui-field label="{{'OS'}}">
     <label class="oui-select">
-        <select id="os" name="os" ng-model="os" class="oui-select__input">
-            <option>Select the OS</option>
+        <select
+            id="os"
+            name="os"
+            ng-model="os"
+            class="oui-select__input"
+            required>
+            <option ng-value="undefined">Select the OS</option>
             <option value="freebsd">FreeBSD</option>
             <option value="linux">Linux</option>
             <option value="osx">OSX</option>
