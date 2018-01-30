@@ -11,6 +11,7 @@ export default {
         name: "@?",
         model: "=?",
         onChange: "&?",
-        disabled: "<?"
+        disabled: "<?",
+        required: "<?"
     }
 };
