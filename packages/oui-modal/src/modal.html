@@ -1,0 +1,27 @@
+<div class="oui-modal oui-modal_shadow">
+  <div class="oui-modal__header">
+    <button
+      class="oui-icon oui-icon-close_thin oui-modal__close-button"
+      type="button"
+      aria-label="Exit"
+      ng-click="$ctrl.onDismiss()"></button>
+  </div>
+  <div class="oui-modal__body oui-modal__body_no-icon">
+    <h2 class="oui-modal__title" ng-bind="::$ctrl.title"></h2>
+    <div ng-transclude></div>
+  </div>
+  <div class="oui-modal__footer">
+    <button ng-if="$ctrl.secondaryLabel"
+      class="oui-button oui-button_secondary"
+      type="button"
+      ng-bind="::$ctrl.secondaryLabel"
+      ng-click="$ctrl.secondaryAction()">
+    </button><button ng-if="$ctrl.primaryLabel"
+      class="oui-button oui-button_primary"
+      type="button"
+      ng-bind="::$ctrl.primaryLabel"
+      ng-click="$ctrl.primaryAction()">
+      Save
+    </button>
+  </div>
+</div>

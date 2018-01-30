@@ -11,6 +11,7 @@ import "@oui-angular/oui-numeric/src";
 import "@oui-angular/oui-pagination/src";
 import "@oui-angular/oui-datagrid/src";
 import "@oui-angular/oui-navbar/src";
+import "@oui-angular/oui-modal/src";
 import "@oui-angular/oui-field/src";
 
 angular.module("oui", [
@@ -27,5 +28,6 @@ angular.module("oui", [
     "oui.pagination",
     "oui.datagrid",
     "oui.navbar",
+    "oui.modal",
     "oui.field"
 ]);
