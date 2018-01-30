@@ -3,7 +3,6 @@ import template from "./field.html";
 
 export default {
     bindings: {
-        "for": "@?",
         label: "@?",
         helpText: "@?"
     },

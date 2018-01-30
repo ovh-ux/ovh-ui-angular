@@ -32,6 +32,7 @@ export default class FieldController {
     $onInit () {
         this.controlElements = [];
         this.controls = {};
+        this.currentErrorField = null;
         this.ids = [];
         this.validationParameters = {};
     }
@@ -59,8 +60,7 @@ export default class FieldController {
                 this.for = this.ids[0];
             }
 
-            // Get validation parameters to customize error messges
-            // this.validationParameters = FieldController.getValidationParameters(this.control);
+            const $ouiFieldElement = angular.element(this.$element[0].querySelector(".oui-field"));
 
             Object.keys(this.controls).forEach(name => {
                 const namedControls = this.controls[name];
@@ -75,7 +75,7 @@ export default class FieldController {
                     angular.element(control).on("blur", () => {
                         if (this.form[name].$invalid) {
                             angular.element(control).addClass(FieldController.getErrorClass(control));
-                            this.$element.addClass("oui-field_error");
+                            $ouiFieldElement.addClass("oui-field_error");
                         }
                     });
 
@@ -83,7 +83,7 @@ export default class FieldController {
                         this.form[name].$touched = false;
                         this.$scope.$apply();
                         angular.element(control).removeClass(FieldController.getErrorClass(control));
-                        this.$element.removeClass("oui-field_error");
+                        $ouiFieldElement.removeClass("oui-field_error");
                     });
                 });
 
@@ -112,6 +112,10 @@ export default class FieldController {
         const names = Object.keys(this.controls);
         for (let i = 0; i < names.length; ++i) {
             if (this.form[names[i]].$invalid && this.form[names[i]].$touched) {
+                // Save the field in error to display the correct parameter in message
+                // so that the displayed error is related to the last touched control.
+                // See FieldController.getErrorMessage.
+                this.currentErrorField = names[i];
                 return true;
             }
         }
@@ -132,7 +136,8 @@ export default class FieldController {
 
     getErrorMessage (errorName) {
         const message = this.ouiFieldConfiguration.translations.errors[errorName];
-        return message.replace(`{{${errorName}}}`, this.validationParameters[errorName]);
+        const parameterValue = this.validationParameters[this.currentErrorField][errorName];
+        return message.replace(`{{${errorName}}}`, parameterValue);
     }
 
     getAllControls () {
