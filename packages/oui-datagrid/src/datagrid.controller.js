@@ -119,7 +119,10 @@ export default class DatagridController {
         if (!angular.equals(this.previousRows, this.rows)) {
             this.previousRows = angular.copy(this.rows);
 
-            if (this.rows && this.paging) {
+            // Prevent recall this if there is no page change.
+            // this.paging.preventLoadingRows is true if there has been no page
+            // or page size change since last call.
+            if (this.rows && this.paging && !this.paging.preventLoadingRows) {
                 this.refreshData(() => this.paging.setRows(this.rows));
             }
         }
