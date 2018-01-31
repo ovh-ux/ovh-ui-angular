@@ -37,8 +37,10 @@
                                 </oui-datagrid-cell>
                             </td>
                         </tr>
-                        <tr ng-show="!$ctrl.displayedRows.length || $ctrl.firstLoading"
-                             class="oui-datagrid__row oui-datagrid__row_loading">
+                    </tbody>
+                     <tbody class="oui-datagrid__body"
+                        ng-show="!$ctrl.displayedRows.length || $ctrl.firstLoading">
+                        <tr class="oui-datagrid__row oui-datagrid__row_loading">
                             <td ng-if="$ctrl.hasCheckboxes"
                                 class="oui-datagrid__cell oui-datagrid__cell-sticky"></td>
                             <td class="oui-datagrid__cell"
