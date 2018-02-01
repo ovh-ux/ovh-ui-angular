@@ -41,6 +41,19 @@ describe("ouiActionMenu", () => {
             expect(clickSpy.calls.count()).toEqual(1);
         });
 
+        it("should display a disabled button item", () => {
+            const element = TestUtils.compileTemplate(
+                `<oui-action-menu>
+                  <oui-action-menu-item text="Action 1"
+                    on-click="$ctrl.clickHandler()"
+                    disabled></oui-action-menu-item>
+                </oui-action-menu>`
+            );
+
+            const $buttonElement = element.find("button");
+            expect($buttonElement.attr("disabled")).toEqual("disabled");
+        });
+
         it("should display a link item", () => {
             const element = TestUtils.compileTemplate(`
                 <oui-action-menu>

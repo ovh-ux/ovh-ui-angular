@@ -19,6 +19,11 @@
     text="Action 2"
     aria-label="Server: action 2"
     on-click="$ctrl.showCurrentValueInPopup('Action 2')"></oui-action-menu-item>
+  <oui-action-menu-item
+    text="Action 3 (disabled)"
+    aria-label="Server: action 3"
+    on-click="$ctrl.showCurrentValueInPopup('Action 3')"
+    disabled></oui-action-menu-item>
   <oui-action-menu-divider></oui-action-menu-divider>
   <oui-action-menu-item
     text="Lien externe"
@@ -43,6 +48,11 @@
       text="Action 2"
       aria-label="Server: action 2"
       on-click="$ctrl.showCurrentValueInPopup('Action 2')"></oui-action-menu-item>
+    <oui-action-menu-item
+      text="Action 3 (disabled)"
+      aria-label="Server: action 3"
+      on-click="$ctrl.showCurrentValueInPopup('Action 3')"
+      disabled></oui-action-menu-item>
     <oui-action-menu-divider></oui-action-menu-divider>
     <oui-action-menu-item
       text="Lien externe"
@@ -70,5 +80,6 @@
 | `text`            | string          | @       | yes              |                           |                     | button label                       |
 | `aria-label`      | string          | @?      | yes              |                           |                     | accessibility label                |
 | `href`            | string          | @?      | yes              |                           |                     | hypertext link (link)              |
+| `disabled`        | boolean         | <?      | yes              |                           | `false`             | disable (button).                  |
 | `external`        | boolean         | @?      | yes              |                           |                     | display external icon (link)       |
 | `on-click`        |                 | &?      |                  |                           |                     | on-click handler (button)          |

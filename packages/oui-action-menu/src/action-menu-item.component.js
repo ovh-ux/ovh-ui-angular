@@ -4,9 +4,9 @@ export default {
     controller,
     bindings: {
         text: "@",
+        disabled: "<?",
         ariaLabel: "@?",
         href: "@?",
-        divider: "<?",
         external: "<?",
         onClick: "&?"
     }

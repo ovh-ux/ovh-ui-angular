@@ -14,8 +14,8 @@ export default class {
     }
 
     $onInit () {
-        addBooleanParameter(this, "divider");
         addBooleanParameter(this, "external");
+        addBooleanParameter(this, "disabled");
 
         if (this.external) {
             this.linkTarget = "_blank";
