@@ -41,19 +41,6 @@ describe("ouiActionMenu", () => {
             expect(clickSpy.calls.count()).toEqual(1);
         });
 
-        it("should display a disabled button item", () => {
-            const element = TestUtils.compileTemplate(
-                `<oui-action-menu>
-                  <oui-action-menu-item text="Action 1"
-                    on-click="$ctrl.clickHandler()"
-                    disabled></oui-action-menu-item>
-                </oui-action-menu>`
-            );
-
-            const $buttonElement = element.find("button");
-            expect($buttonElement.attr("disabled")).toEqual("disabled");
-        });
-
         it("should display a link item", () => {
             const element = TestUtils.compileTemplate(`
                 <oui-action-menu>
@@ -66,6 +53,41 @@ describe("ouiActionMenu", () => {
             const linkElement = element[0].querySelector("a");
             expect(linkElement).toBeTruthy();
             expect(angular.element(linkElement).attr("href")).toBe("http://foo.bar");
+        });
+
+        describe("when disabled", () => {
+            it("should display a disabled button item", () => {
+                const element = TestUtils.compileTemplate(
+                    `<oui-action-menu>
+                      <oui-action-menu-item text="Action 1"
+                        on-click="$ctrl.clickHandler()"
+                        disabled></oui-action-menu-item>
+                    </oui-action-menu>`
+                );
+
+                const $buttonElement = element.find("button");
+                expect($buttonElement.prop("disabled")).toBe(true);
+            });
+
+            fit("should display a disabled button item with dynamic binding", () => {
+                const element = TestUtils.compileTemplate(
+                    `<oui-action-menu>
+                      <oui-action-menu-item text="Action 1"
+                        on-click="$ctrl.clickHandler()"
+                        disabled="$ctrl.isDisabled"></oui-action-menu-item>
+                    </oui-action-menu>`, {
+                        isDisabled: true
+                    }
+                );
+
+                expect(element.find("button").prop("disabled")).toBe(true);
+
+                const scope = element.scope();
+                scope.$ctrl.isDisabled = false;
+                scope.$apply();
+
+                expect(element.find("button").prop("disabled")).toBe(false);
+            });
         });
     });
 });
