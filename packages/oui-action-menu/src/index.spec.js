@@ -69,7 +69,7 @@ describe("ouiActionMenu", () => {
                 expect($buttonElement.prop("disabled")).toBe(true);
             });
 
-            fit("should display a disabled button item with dynamic binding", () => {
+            it("should display a disabled button item with dynamic binding", () => {
                 const element = TestUtils.compileTemplate(
                     `<oui-action-menu>
                       <oui-action-menu-item text="Action 1"

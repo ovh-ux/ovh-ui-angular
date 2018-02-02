@@ -80,6 +80,6 @@
 | `text`            | string          | @       | yes              |                           |                     | button label                       |
 | `aria-label`      | string          | @?      | yes              |                           |                     | accessibility label                |
 | `href`            | string          | @?      | yes              |                           |                     | hypertext link (link)              |
-| `disabled`        | boolean         | <?      | yes              |                           | `false`             | disable (button).                  |
+| `disabled`        | boolean         | <?      |                  |                           | `false`             | disable (button).                  |
 | `external`        | boolean         | @?      | yes              |                           |                     | display external icon (link)       |
 | `on-click`        |                 | &?      |                  |                           |                     | on-click handler (button)          |
