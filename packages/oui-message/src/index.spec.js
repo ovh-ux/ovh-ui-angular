@@ -1,6 +1,6 @@
 import { filter } from "lodash";
 
-describe("ouiMessage: ", () => {
+describe("ouiMessage", () => {
 
     let TestUtils;
     beforeEach(angular.mock.module("oui.message"));
