@@ -13,6 +13,7 @@ import "@oui-angular/oui-datagrid/src";
 import "@oui-angular/oui-navbar/src";
 import "@oui-angular/oui-modal/src";
 import "@oui-angular/oui-field/src";
+import "@oui-angular/oui-select/src";
 
 angular.module("oui", [
     "oui.button",
@@ -29,5 +30,6 @@ angular.module("oui", [
     "oui.datagrid",
     "oui.navbar",
     "oui.modal",
-    "oui.field"
+    "oui.field",
+    "oui.select"
 ]);

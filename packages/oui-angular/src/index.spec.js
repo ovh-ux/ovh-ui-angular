@@ -14,6 +14,7 @@ loadTests(require.context("../../oui-datagrid/src/", true, /.*((\.spec)|(index))
 loadTests(require.context("../../oui-navbar/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-modal/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-field/src/", true, /.*((\.spec)|(index))$/));
+loadTests(require.context("../../oui-select/src/", true, /.*((\.spec)|(index))$/));
 
 function loadTests (context) {
     context.keys().forEach(context);
