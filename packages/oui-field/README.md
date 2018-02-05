@@ -31,18 +31,6 @@
         ng-model="$ctrl.user.email">
 </oui-field>
 
-<oui-field label="{{'Age'}}">
-    <input
-        class="oui-input"
-        type="number"
-        id="age"
-        name="age"
-        ng-model="$ctrl.user.age"
-        min="0"
-        max="140">
-</oui-field>
-```
-
 ### Checkbox
 
 ```html:preview
