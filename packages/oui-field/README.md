@@ -30,6 +30,7 @@
         name="email"
         ng-model="$ctrl.user.email">
 </oui-field>
+```
 
 ### Checkbox
 
