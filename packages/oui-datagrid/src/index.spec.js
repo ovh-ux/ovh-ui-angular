@@ -39,8 +39,8 @@ describe("ouiDatagrid", () => {
                             <oui-column property="lastName"></oui-column>
                         </oui-datagrid>
                     `, {
-                        rows: fakeData.slice(0, 5)
-                    }
+                    rows: fakeData.slice(0, 5)
+                }
                 );
 
                 const $firstRow = getRow(element, 0);
@@ -63,8 +63,8 @@ describe("ouiDatagrid", () => {
                             <oui-column property="lastName"></oui-column>
                         </oui-datagrid>
                     `, {
-                        rows: fakeDataCopy
-                    }
+                    rows: fakeDataCopy
+                }
                 );
 
                 changeCellValue(element, 0, "firstName", newCellValue);
@@ -92,9 +92,9 @@ describe("ouiDatagrid", () => {
                             <oui-column property="more"></oui-column>
                         </oui-datagrid>
                     `, {
-                        rows: fakeData.slice(0, 5),
-                        loadRow: loadRowSpy
-                    }
+                    rows: fakeData.slice(0, 5),
+                    loadRow: loadRowSpy
+                }
                 );
 
                 const $firstRow = getRow(element, 0);
@@ -118,9 +118,9 @@ describe("ouiDatagrid", () => {
                             <oui-column property="more"></oui-column>
                         </oui-datagrid>
                     `, {
-                        rows: fakeData.slice(0, 1),
-                        loadRow: loadRowSpy
-                    }
+                    rows: fakeData.slice(0, 1),
+                    loadRow: loadRowSpy
+                }
                 );
 
                 const $firstRow = getRow(element, 0);
@@ -145,9 +145,9 @@ describe("ouiDatagrid", () => {
                             <oui-column property="more"></oui-column>
                         </oui-datagrid>
                     `, {
-                        rows: fakeData.slice(0, 1),
-                        loadRow: loadRowSpy
-                    }
+                    rows: fakeData.slice(0, 1),
+                    loadRow: loadRowSpy
+                }
                 );
 
                 deferred.resolve({
@@ -169,8 +169,8 @@ describe("ouiDatagrid", () => {
                             <oui-column property="lastName"></oui-column>
                         </oui-datagrid>
                     `, {
-                        rows: fakeData.slice(0, 5)
-                    }
+                    rows: fakeData.slice(0, 5)
+                }
                 );
 
                 const rows = getRows(element);
@@ -185,8 +185,8 @@ describe("ouiDatagrid", () => {
                             <oui-column property="lastName" sortable="asc"></oui-column>
                         </oui-datagrid>
                     `, {
-                        rows: fakeData.slice(0, 5)
-                    }
+                    rows: fakeData.slice(0, 5)
+                }
                 );
 
                 [
@@ -228,8 +228,8 @@ describe("ouiDatagrid", () => {
                             <oui-column property="lastName"></oui-column>
                         </oui-datagrid>
                     `, {
-                        loadRows: rowsLoaderSpy
-                    }
+                    loadRows: rowsLoaderSpy
+                }
                 );
 
                 const $firstRow = getRow(element, 0);
@@ -265,9 +265,9 @@ describe("ouiDatagrid", () => {
                             <oui-column property="more"></oui-column>
                         </oui-datagrid>
                     `, {
-                        loadRows: rowsLoaderSpy,
-                        loadRow: loadRowSpy
-                    }
+                    loadRows: rowsLoaderSpy,
+                    loadRow: loadRowSpy
+                }
                 );
 
                 const $firstRow = getRow(element, 0);
@@ -302,9 +302,9 @@ describe("ouiDatagrid", () => {
                             <oui-column property="more"></oui-column>
                         </oui-datagrid>
                     `, {
-                        loadRows: rowsLoaderSpy,
-                        loadRow: loadRowSpy
-                    }
+                    loadRows: rowsLoaderSpy,
+                    loadRow: loadRowSpy
+                }
                 );
 
                 deferred.resolve({
@@ -336,8 +336,8 @@ describe("ouiDatagrid", () => {
                             <oui-column property="lastName"></oui-column>
                         </oui-datagrid>
                     `, {
-                        loadRows: rowsLoaderSpy
-                    }
+                    loadRows: rowsLoaderSpy
+                }
                 );
 
                 const rows = getRows(element);
@@ -352,8 +352,8 @@ describe("ouiDatagrid", () => {
                             <oui-column property="lastName" sortable="asc"></oui-column>
                         </oui-datagrid>
                     `, {
-                        loadRows: rowsLoaderSpy
-                    }
+                    loadRows: rowsLoaderSpy
+                }
                 );
 
                 expect(rowsLoaderSpy).toHaveBeenCalledWith(jasmine.objectContaining({
@@ -373,8 +373,8 @@ describe("ouiDatagrid", () => {
                         <oui-column property="lastName"></oui-column>
                     </oui-datagrid>
                 `, {
-                    rows: fakeData.slice(0, 5)
-                }
+                rows: fakeData.slice(0, 5)
+            }
             );
 
             const $paginationOffset = getPaginationOffset(element);
@@ -393,8 +393,8 @@ describe("ouiDatagrid", () => {
                         </oui-column>
                     </oui-datagrid>
                 `, {
-                    rows: fakeData.slice(0, 5)
-                }
+                rows: fakeData.slice(0, 5)
+            }
             );
 
             const $firstRow = getRow(element, 0);
@@ -417,8 +417,8 @@ describe("ouiDatagrid", () => {
                         </oui-column>
                     </oui-datagrid>
                 `, {
-                    rows: fakeData.slice(0, 5)
-                }
+                rows: fakeData.slice(0, 5)
+            }
             );
 
             const $firstRow = getRow(element, 0);
@@ -441,9 +441,9 @@ describe("ouiDatagrid", () => {
                         </oui-column>
                     </oui-datagrid>
                 `, {
-                    rows: fakeData.slice(0, 5),
-                    something: "hello world"
-                }
+                rows: fakeData.slice(0, 5),
+                something: "hello world"
+            }
             );
 
             const $firstRow = getRow(element, 0);
@@ -470,8 +470,8 @@ describe("ouiDatagrid", () => {
                         </oui-column>
                     </oui-datagrid>
                 `, {
-                    rows: fakeData.slice(0, 5)
-                }
+                rows: fakeData.slice(0, 5)
+            }
             );
 
             const $firstRow = getRow(element, 0);
@@ -490,8 +490,8 @@ describe("ouiDatagrid", () => {
                         <oui-column property="phone" sortable></oui-column>
                     </oui-datagrid>
                 `, {
-                    rows: fakeData.slice(0, 5)
-                }
+                rows: fakeData.slice(0, 5)
+            }
             );
 
             const $headerRow = getHeaderRow(element);
@@ -509,8 +509,8 @@ describe("ouiDatagrid", () => {
                         <oui-column property="phone" sortable></oui-column>
                     </oui-datagrid>
                 `, {
-                    rows: fakeData.slice(0, 5)
-                }
+                rows: fakeData.slice(0, 5)
+            }
             );
 
             const $headerRow = getHeaderRow(element);
@@ -536,8 +536,8 @@ describe("ouiDatagrid", () => {
                         <oui-column property="phone" sortable></oui-column>
                     </oui-datagrid>
                 `, {
-                    rows: fakeData.slice(0, 5)
-                }
+                rows: fakeData.slice(0, 5)
+            }
             );
 
             const $headerRow = getHeaderRow(element, 0);
@@ -564,8 +564,8 @@ describe("ouiDatagrid", () => {
                         <oui-column property="lastName"></oui-column>
                     </oui-datagrid>
                 `, {
-                    rows: fakeData.slice(0, 5)
-                }
+                rows: fakeData.slice(0, 5)
+            }
             );
 
             getNextPagePaginationButton(element).triggerHandler("click");
@@ -591,8 +591,8 @@ describe("ouiDatagrid", () => {
                         </oui-action-menu>
                     </oui-datagrid>
                 `, {
-                    rows: fakeData.slice(0, 5)
-                }
+                rows: fakeData.slice(0, 5)
+            }
             );
 
             const $firstRow = getRow(element, 0);
@@ -624,8 +624,8 @@ describe("ouiDatagrid", () => {
                         </div>
                     </div>
                 `, {
-                    multiData
-                });
+                multiData
+            });
 
             const datagridElements = element.find("oui-datagrid");
             expect(datagridElements.length).toEqual(multiData.length);
@@ -653,8 +653,8 @@ describe("ouiDatagrid", () => {
                             </oui-action-menu>
                         </oui-datagrid>
                     `, {
-                        rows: fakeData.slice(0, 5)
-                    }
+                    rows: fakeData.slice(0, 5)
+                }
                 );
 
                 // Check data-sortable and data-title
