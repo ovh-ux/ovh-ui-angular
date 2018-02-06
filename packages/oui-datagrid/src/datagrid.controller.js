@@ -161,16 +161,14 @@ export default class DatagridController {
 
     refreshData (callback, skipSort, requireScrollToTop) {
         if (this.loading) {
-            return this.$q.reject(false);
+            return;
         }
 
         this.loading = true;
+        this.displayedRows = DatagridController.createEmptyRows(this.paging.getCurrentPageSize());
 
-        return this.$q.when(callback())
-            .then(() => {
-                this.displayedRows = DatagridController.createEmptyRows(this.paging.getCurrentPageSize());
-                return this.paging.loadData(skipSort);
-            })
+        this.$q.when(callback())
+            .then(() => this.paging.loadData(skipSort))
             .then(result => {
                 this.displayedRows = result.data;
                 if (requireScrollToTop) {
