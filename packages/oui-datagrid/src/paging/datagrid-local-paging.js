@@ -6,7 +6,6 @@ export default class DatagridLocalPaging extends DatagridPagingAbstract {
 
         this.rows = rows;
         this.rowLoader = rowLoader;
-
         this.totalCount = rows ? rows.length : 0;
     }
 
@@ -28,7 +27,15 @@ export default class DatagridLocalPaging extends DatagridPagingAbstract {
             }
         })
             .then(result => {
-                this.loadRowsData(result.data);
+                this.preventLoadingRows = true;
+                this.loadRowsData(result.data)
+                    .finally(() => {
+                        // Delay the change of the value to prevent $doCheck of DatagridController
+                        // calling refreshData for the last update.
+                        this.$timeout(() => {
+                            this.preventLoadingRows = false;
+                        });
+                    });
                 this.totalCount = result.meta.totalCount;
 
                 return result;

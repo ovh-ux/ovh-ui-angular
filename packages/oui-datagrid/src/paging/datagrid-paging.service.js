@@ -2,10 +2,11 @@ import DatagridLocalPaging from "./datagrid-local-paging";
 import DatagridRemotePaging from "./datagrid-remote-paging";
 
 export default class {
-    constructor ($q, orderByFilter) {
+    constructor ($q, $timeout, orderByFilter) {
         "ngInject";
 
         this.$q = $q;
+        this.$timeout = $timeout;
         this.orderByFilter = orderByFilter;
     }
 

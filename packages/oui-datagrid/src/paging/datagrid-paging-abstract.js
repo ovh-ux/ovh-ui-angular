@@ -9,7 +9,10 @@ export default class DatagridPagingAbstract {
         this.rowLoader = rowLoader;
 
         this.$q = pagingService.$q;
+        this.$timeout = pagingService.$timeout;
         this.orderByFilter = pagingService.orderByFilter;
+
+        this.preventLoadingRows = false;
     }
 
     setOffset (offset) {
@@ -69,10 +72,10 @@ export default class DatagridPagingAbstract {
 
     loadRowsData (rows) {
         if (!this.rowLoader) {
-            return;
+            return this.$q.when();
         }
 
-        rows.forEach(row => this.loadRowData(row));
+        return this.$q.all(rows.map(row => this.loadRowData(row)));
     }
 
     loadRowData (row) {
@@ -83,9 +86,13 @@ export default class DatagridPagingAbstract {
                     delete row.$promise;
                 });
 
+            return row.$promise;
+
             // TODO: Find a way to forward those error to datagrid
             /* .catch(this.handleError.bind(this)) */
         }
+
+        return this.$q.when();
     }
 
     /**
