@@ -25,13 +25,13 @@ export default class DatagridColumnBuilder {
 
                 column.name = propertyValue;
                 column.getValue = this.$parse(propertyValue);
-            }
 
-            if (hasAttribute(columnElement, "sortable")) {
-                const sortableValue = getAttribute(columnElement, "sortable");
-
-                column.sortable = sortableValue !== undefined;
-                Object.assign(currentSorting, DatagridColumnBuilder.defineDefaultSorting(column, sortableValue));
+                // A column can be sorted only if it has a "property" attribute.
+                if (hasAttribute(columnElement, "sortable")) {
+                    const sortableValue = getAttribute(columnElement, "sortable");
+                    column.sortable = sortableValue !== undefined;
+                    Object.assign(currentSorting, DatagridColumnBuilder.defineDefaultSorting(column, sortableValue));
+                }
             }
 
             copyValueProperties.forEach(propertyName => {
