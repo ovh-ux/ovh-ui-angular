@@ -1,3 +1,12 @@
+/**
+ * Define a boolean attribute to a component.
+ *
+ * This gives the possibility to to have an attribute without value evaluated to true.
+ * Controller must inject $attrs.
+ *
+ * @param {Object} controller    the controller
+ * @param {string} parameterName the lowerCamelCased attribute name
+ */
 export function addBooleanParameter (controller, parameterName) {
     if (angular.isDefined(controller.$attrs[parameterName]) &&
     controller.$attrs[parameterName] === "") {
@@ -5,6 +14,16 @@ export function addBooleanParameter (controller, parameterName) {
     }
 }
 
+/**
+ * Define a default attribute to a component.
+ *
+ * This gives the possibility to set a default value if an attribute is not defined.
+ * Controller must inject $attrs.
+ *
+ * @param {Object} controller    the controller
+ * @param {string} parameterName the lowerCamelCased attribute name
+ * @param {string} defaultValue  the default value
+ */
 export function addDefaultParameter (controller, parameterName, defaultValue) {
     if (!angular.isDefined(controller.$attrs[parameterName]) ||
     angular.isDefined(controller.$attrs[parameterName] &&
@@ -13,7 +32,46 @@ export function addDefaultParameter (controller, parameterName, defaultValue) {
     }
 }
 
+/**
+ * Check if an attribute is present (even if it has no value) in a HTML element.
+ * @param  {HTMLElement}  element        a HTML element
+ * @param  {string}       attributeName  the attribute name
+ * @return {Boolean}                     true if it exists
+ */
+export function hasAttribute (element, attributeName) {
+    const attributes = [];
+    Array.from(element.attributes).forEach(attribute => attributes.push(attribute.name));
+    Object.keys(element.dataset).forEach(dataKey => attributes.push(dataKey));
+    return attributes.indexOf(attributeName) > -1;
+}
+
+/**
+ * Check if an attribute is present and have a value in an HTML element.
+ * @param  {HTMLElement}  element        a HTML element
+ * @param  {string}       attributeName  the attribute name
+ * @return {Boolean}                     true if it exists and have a value
+ */
+export function hasAttributeValue (element, attributeName) {
+    const attributes = [];
+    Array.from(element.attributes).forEach(attribute => attributes.push(attribute.name));
+    Object.keys(element.dataset).forEach(dataKey => attributes.push(dataKey));
+    return attributes.indexOf(attributeName) > -1 && getAttribute(element, attributeName);
+}
+
+/**
+ * Return the value of an attribute of an HTML Element.
+ * @param  {HTMLElement}  element       a HTML element
+ * @param  {string}       attributeName the attribute name
+ * @return {string}                     the attribute value
+ */
+export function getAttribute (element, attributeName) {
+    return element.attributes[attributeName] ? element.attributes[attributeName].value : element.dataset[attributeName];
+}
+
 export default {
     addBooleanParameter,
-    addDefaultParameter
+    addDefaultParameter,
+    hasAttribute,
+    hasAttributeValue,
+    getAttribute
 };

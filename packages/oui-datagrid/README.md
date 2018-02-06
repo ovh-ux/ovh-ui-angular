@@ -238,6 +238,101 @@ You can use `row-loader`. It take the current row as argument and must return a 
 </oui-datagrid>
 ```
 
+### Pagination
+
+By default the page size is 25.
+
+You can override this value by configuring it:
+
+```javascript
+app.config(ouiDatagridConfigurationProvider => {
+    ouiDatagridConfigurationProvider.setPageSize(10);
+});
+```
+
+Or you can use the `page-size` property. It takes precedence over value configured by provider.
+
+```html
+<oui-datagrid rows="$ctrl.data" page-size="10">
+  <oui-column title="'firstName'" property="firstName"></oui-column>
+  <oui-column title="$ctrl.lastNameText" property="lastName"></oui-column>
+</oui-datagrid>
+```
+
+### Custom cell templates
+
+```html
+<oui-datagrid rows="$ctrl.data">
+  <oui-column title="'Name'">
+    {{$row.firstName}} {{$row.lastName}}
+  </oui-column>
+  <oui-column property="email">
+    <a href="mailto:{{$value}}">{{$value}}</a>
+  </oui-column>
+  <oui-column property="phone"></oui-column>
+  <oui-column property="birth">
+    {{$value | date:shortDate}}
+  </oui-column>
+</oui-datagrid>
+```
+
+### Remote data
+
+```html
+<oui-datagrid rows-loader="$ctrl.loadData($config)">
+  <oui-column property="firstName"></oui-column>
+  <oui-column property="lastName"></oui-column>
+  <oui-column property="email"></oui-column>
+  <oui-column property="phone"></oui-column>
+  <oui-column property="birth"></oui-column>
+</oui-datagrid>
+```
+
+```javascript
+class YourController {
+  loadData ({ offset, pageSize, sort }) {
+    // Make what you want here
+    return fetch("/path/to/you/api", {
+      method: "POST",
+      body: { offset, pageSize, sort }
+    }).then(response => response.json());
+  }
+}
+```
+
+Your method must:
+
+ * return a promise or a compatible object
+ * this promise must resolve a value of this shape:
+
+```javascript
+{
+    data: page, // your data (an array)
+    meta: {
+        totalCount // total number of items
+    }
+}
+```
+
+### Remote partial data
+
+Sometimes you will have to get remote data, but you want to fill other cell from separate API calls or by calculating these new values.
+
+You can use `row-loader`. It take the current row as argument and must return a promise that resolves to the transformed row.
+
+```html
+<oui-datagrid rows-loader="$ctrl.loadPartialData($config)"
+  row-loader="$ctrl.loadRow($row)">
+  <oui-column property="firstName"></oui-column>
+  <oui-column property="lastName"></oui-column>
+  <oui-column property="email"></oui-column>
+  <oui-column property="phone"></oui-column>
+  <oui-column property="birth"></oui-column>
+</oui-datagrid>
+```
+
+[Example](src/ovh-ui-angular/controllers/datagrid.controller.js#L60).
+
 ## API
 
 ### oui-datagrid
