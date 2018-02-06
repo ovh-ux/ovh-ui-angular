@@ -14,7 +14,7 @@
 <oui-navbar-menu
     ng-if="::$ctrl.mainLinks"
     class="oui-navbar-menu_fixed oui-navbar-menu_toggle"
-    children-class="oui-navbar-menu_fixed oui-navbar-menu_right"
+    children-class="oui-navbar-menu_fixed"
     name="toggler"
     links="::$ctrl.mainLinks"
     navigation="$ctrl.navigation"
@@ -97,6 +97,7 @@
             <a class="oui-navbar-menu__item"
                 ng-repeat="subLink in ::asideLink.subLinks | limitTo: asideLink.limitTo"
                 ng-class="::!!subLink.isUnread ? 'oui-navbar-menu__item_active' : null"
+                ng-click="$ctrl.toggleMenu()"
                 ng-href="{{::subLink.url}}"
                 ng-bind-html="::subLink.template"
                 oui-navbar-group="{{::asideLink.name}}">
@@ -104,6 +105,7 @@
             <footer class="oui-navbar-menu__footer"
                 ng-if="::!asideLink.footerTemplate">
                 <a class="oui-button oui-button_secondary"
+                    ng-click="$ctrl.toggleMenu()"
                     ng-href="{{::asideLink.footerUrl}}"
                     ng-bind="::asideLink.footerTitle"
                     oui-navbar-group="{{::asideLink.name}}"
