@@ -9,6 +9,7 @@
     id="..."
     name="..."
     aria-label="..."
+    title="..."
     on-click="...">
 </oui-back-button>
 ```
@@ -20,7 +21,7 @@ If ```on-click``` is not specified, the default action on user click will be ang
 ### Default
 
 ```html:preview
-<oui-back-button>
+<oui-back-button data-title="Title">
 </oui-back-button>
 ```
 
@@ -45,4 +46,5 @@ If ```on-click``` is not specified, the default action on user click will be ang
 | id            | string   | @?      | true             |                     |                        | id attribute of the input           |
 | name          | string   | @?      | true             |                     |                        | name attribute of the input         |
 | aria-label    | string   | @?      | true             |                     |                        | accessibility label                 |
+| title         | string   | @?      | true             |                     |                        | text of the header 
 | on-click      | function | &?      |                  |                     | $window.history.back() | callback on component click         |
