@@ -41,13 +41,23 @@ describe("ouiBackButton", () => {
             expect(element.attr("name")).toBeUndefined();
         });
 
-        it("should have and aria-label attribute, and remove it from root component", () => {
-            const element = compile('<oui-back-button aria-label="foo"></oui-back-button>');
+        it("should have an aria-label attribute, and remove it from root component", () => {
+            const ariaLabel = "foo";
+            const element = compile(`<oui-back-button aria-label="${ariaLabel}"></oui-back-button>`);
 
             $timeout.flush();
 
-            expect(element.find("button").attr("aria-label")).toBe("foo");
+            expect(element.find("button").attr("aria-label")).toBe(ariaLabel);
             expect(element.attr("aria-label")).toBeUndefined();
+        });
+
+        it("should have a title", () => {
+            const title = "foo";
+            const element = compile(`<oui-back-button data-title="${title}"></oui-back-button>`);
+
+            $timeout.flush();
+
+            expect(element.find("h2")[0].innerText).toBe(title);
         });
 
         it("should go back in history when clicking button if on-click is not defined", () => {
