@@ -74,8 +74,24 @@
                     "isExternal": true
                 },
                 {
+                    "name": "libero.sodales",
                     "title": "Sodales",
-                    "url": "#!/oui-angular/navbar"
+                    "url": "#!/oui-angular/navbar",
+                    "subLinks": [{
+                        "title": "Elementum",
+                        "url": "#!/oui-angular/navbar"
+                    }, {
+                        "name": "libero.sodales.venenatis",
+                        "title": "Venenatis",
+                        "url": "#!/oui-angular/navbar",
+                        "subLinks": [{
+                            "title": "Vitae varius metus",
+                            "url": "#!/oui-angular/navbar"
+                        }, {
+                            "title": "Orci varius natoque",
+                            "url": "#!/oui-angular/navbar"
+                        }]
+                    }]
                 },
                 {
                     "title": "Mauris",
@@ -94,16 +110,32 @@
             "iconClass": "oui-icon oui-icon-info_circle",
             "subLinks": [
                 {
+                    "name": "user.adipiscing",
                     "title": "Adipiscing",
-                    "url": "#!/oui-angular/navbar"
+                    "url": "#!/oui-angular/navbar",
+                    "subLinks": [{
+                        "title": "Maecenas",
+                        "url": "#!/oui-angular/navbar"
+                    }, {
+                        "title": "Curabitur",
+                        "url": "#!/oui-angular/navbar"
+                    }]
                 },
                 {
                     "title": "Consectetur",
                     "url": "#!/oui-angular/navbar"
                 },
                 {
+                    "name": "user.quam",
                     "title": "Quam",
-                    "url": "#!/oui-angular/navbar"
+                    "url": "#!/oui-angular/navbar",
+                    "subLinks": [{
+                        "title": "Efficitur",
+                        "url": "#!/oui-angular/navbar"
+                    }, {
+                        "title": "Molestie",
+                        "url": "#!/oui-angular/navbar"
+                    }]
                 }
             ],
             "nichandle": "ab1234-ovh",

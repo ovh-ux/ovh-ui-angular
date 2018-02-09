@@ -23,33 +23,36 @@ export default class {
     }
 
     $postLink () {
-        // Add Classname on root element
-        this.$element.addClass("oui-navbar");
-        if (this.fixed) {
-            this.$element.addClass("oui-navbar_fixed");
-        }
-
-        // Add "role" attribute for accessibility
-        this.$element.attr("role", "navigation");
-
-        // Close navbar menu on document click, only if a menu is open
-        this.$document.on("click", () => {
-            if (this.navigation) {
-                this.$timeout(() => this.toggleMenu());
+        // Avoid $element DOM unsync for jqLite methods
+        this.$timeout(() => {
+            // Add Classname on root element
+            this.$element.addClass("oui-navbar");
+            if (this.fixed) {
+                this.$element.addClass("oui-navbar_fixed");
             }
-        });
 
-        // Avoid click propagation on $element
-        this.$element.on("click", (e) => {
-            e.stopPropagation();
-        });
+            // Add "role" attribute for accessibility
+            this.$element.attr("role", "navigation");
 
-        // Support keyboard
-        this.$document.on("keydown", (e) => {
-            // ESC to close menu
-            if (this.navigation && e.which === this.KEYBOARD_KEYS.ESC) {
-                this.$timeout(() => this.toggleMenu());
-            }
+            // Close navbar menu on document click, only if a menu is open
+            this.$document.on("click", () => {
+                if (this.navigation) {
+                    this.$timeout(() => this.toggleMenu());
+                }
+            });
+
+            // Avoid click propagation on $element
+            this.$element.on("click", (e) => {
+                e.stopPropagation();
+            });
+
+            // Support keyboard
+            this.$document.on("keydown", (e) => {
+                // ESC to close menu
+                if (this.navigation && e.which === this.KEYBOARD_KEYS.ESC) {
+                    this.$timeout(() => this.toggleMenu());
+                }
+            });
         });
     }
 }

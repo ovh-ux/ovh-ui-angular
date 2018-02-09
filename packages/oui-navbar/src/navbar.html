@@ -94,14 +94,16 @@
             <header class="oui-navbar-menu__header oui-navbar_mobile-only">
                 <h3 class="oui-navbar-menu__title" ng-bind="::asideLink.title"></h3>
             </header>
-            <a class="oui-navbar-menu__item"
-                ng-repeat="subLink in ::asideLink.subLinks | limitTo: asideLink.limitTo"
-                ng-class="::!!subLink.isUnread ? 'oui-navbar-menu__item_active' : null"
-                ng-click="$ctrl.toggleMenu()"
-                ng-href="{{::subLink.url}}"
-                ng-bind-html="::subLink.template"
-                oui-navbar-group="{{::asideLink.name}}">
-            </a>
+            <div class="oui-navbar-menu__body oui-navbar-list">
+                <a class="oui-navbar-menu__item"
+                    ng-repeat="subLink in ::asideLink.subLinks | limitTo: asideLink.limitTo"
+                    ng-class="::!!subLink.isUnread ? 'oui-navbar-menu__item_active' : null"
+                    ng-click="$ctrl.toggleMenu()"
+                    ng-href="{{::subLink.url}}"
+                    ng-bind-html="::subLink.template"
+                    oui-navbar-group="{{::asideLink.name}}">
+                </a>
+            </div>
             <footer class="oui-navbar-menu__footer"
                 ng-if="::!asideLink.footerTemplate">
                 <a class="oui-button oui-button_secondary"
@@ -122,6 +124,7 @@
         <!-- User Menu -->
         <oui-navbar-menu ng-switch-when="user"
             class="oui-navbar-menu_fixed oui-navbar-menu_user oui-navbar-menu_right"
+            children-class="oui-navbar-menu_fixed oui-navbar-menu_right"
             header-breadcrumb="{{::asideLink.nichandle}}"
             header-title="{{::asideLink.fullName}}"
             name="{{::asideLink.name}}"
@@ -134,6 +137,7 @@
         <!-- Default Menu -->
         <oui-navbar-menu ng-switch-default
             class="oui-navbar-menu_fixed oui-navbar-menu_right"
+            children-class="oui-navbar-menu_fixed oui-navbar-menu_right"
             header-class="oui-navbar_mobile-only"
             header-title="{{::asideLink.title}}"
             name="{{::asideLink.name}}"

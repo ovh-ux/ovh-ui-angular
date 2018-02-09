@@ -28,25 +28,31 @@ export default class {
 
         const tabbableItems = this.keyboardNav[groupName];
         const lastIndex = tabbableItems.length - 1;
+        const focusElement = (e, groupIndex) => {
+            let index = groupIndex;
+            keys[e.which] = true;
+
+            if (keys[this.KEYBOARD_KEYS.ALT] && !keys[this.KEYBOARD_KEYS.TAB]) {
+                // Move Down
+                index = index >= lastIndex ? 0 : index + 1;
+            } else if (keys[this.KEYBOARD_KEYS.ALT] && keys[this.KEYBOARD_KEYS.TAB]) {
+                // Move Up
+                index = index <= 0 ? lastIndex : index - 1;
+            }
+
+            // Check if element is visible
+            if (tabbableItems[index].clientHeight) {
+                tabbableItems[index].focus();
+            } else {
+                focusElement(e, index);
+            }
+        };
 
         angular.element(tabbableItems)
             .on("keydown", (e) => {
                 if (keysRegex.test(e.which) && this.navbarService.isOpen(groupName)) {
                     e.preventDefault();
-
-                    let index = this.keyboardNav[groupName].indexOf(e.target);
-                    keys[e.which] = true;
-
-                    if (keys[this.KEYBOARD_KEYS.ALT] && !keys[this.KEYBOARD_KEYS.TAB]) {
-                        // Move Down
-                        index = index >= lastIndex ? 0 : index + 1;
-                    } else if (keys[this.KEYBOARD_KEYS.ALT] && keys[this.KEYBOARD_KEYS.TAB]) {
-                        // Move Up
-                        index = index <= 0 ? lastIndex : index - 1;
-                    }
-
-                    // Focus next/prev tabbable item
-                    tabbableItems[index].focus();
+                    focusElement(e, this.keyboardNav[groupName].indexOf(e.target));
                 }
             })
             .on("keyup", (e) => {

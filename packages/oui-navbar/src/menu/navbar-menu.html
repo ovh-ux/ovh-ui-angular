@@ -21,11 +21,15 @@
         ng-class="::!!menuLink.class ? menuLink.class : null">
 
         <!-- Link (href) -->
-        <a class="oui-navbar-link oui-navbar-link_external"
-            ng-if="::(!menuLink.subLinks && !!menuLink.url)"
+        <a class="oui-navbar-link"
+            ng-if="::!!menuLink.url"
             ng-attr-aria-label="{{::!!menuLink.label ? menuLink.label : null}}"
             ng-attr-target="{{::!!menuLink.isExternal ? '_blank' : null}}"
             ng-attr-title="{{::!!menuLink.label ? menuLink.label : null}}"
+            ng-class="::{
+                'oui-navbar_desktop-only': !!menuLink.subLinks,
+                'oui-navbar-link_external': !!menuLink.isExternal
+            }"
             ng-click="$ctrl.toggleMenu()"
             ng-href="{{::menuLink.url}}"
             ng-init="::$last && $ctrl.setFirstFocus()"
@@ -40,9 +44,12 @@
 
         <!-- /Link (ui-sref) -->
         <a class="oui-navbar-link"
-            ng-if="::(!menuLink.subLinks && !!menuLink.state)"
+            ng-if="::!!menuLink.state"
             ng-attr-aria-label="{{::!!menuLink.label ? menuLink.label : null}}"
             ng-attr-title="{{::!!menuLink.label ? menuLink.label : null}}"
+            ng-class="::{
+                'oui-navbar_desktop-only': !!menuLink.subLinks
+            }"
             ng-click="$ctrl.toggleMenu()"
             ng-bind="::menuLink.title"
             ui-sref="{{::$ctrl.constructor.getFullSref(menuLink)}}"
@@ -71,6 +78,9 @@
             ng-if="::!!menuLink.subLinks"
             ng-attr-aria-label="{{::!!menuLink.label ? menuLink.label : null}}"
             ng-attr-title="{{::!!menuLink.label ? menuLink.label : null}}"
+            ng-class="::{
+                'oui-navbar_mobile-only': !!menuLink.url || !!menuLink.state
+            }"
             ng-click="$ctrl.toggleMenu(menuLink.name, true)"
             ng-bind="::menuLink.title"
             ng-init="::$last && $ctrl.setFocus()"
