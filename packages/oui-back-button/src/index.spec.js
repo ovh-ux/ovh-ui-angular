@@ -30,6 +30,12 @@ describe("ouiBackButton", () => {
             expect(element.find("i").hasClass("oui-icon-chevron-left")).toBe(true);
         });
 
+        it("should have a oui-back-button class", () => {
+            const element = compile("<oui-back-button></oui-back-button>");
+
+            expect(element.hasClass("oui-back-button")).toBe(true);
+        });
+
         it("should have and id and name attribute, and remove it from root component", () => {
             const element = compile('<oui-back-button id="foo" name="bar"></oui-back-button>');
 

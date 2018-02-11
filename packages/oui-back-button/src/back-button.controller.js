@@ -8,6 +8,9 @@ export default class {
     }
 
     $postLink () {
+
+        this.$element.addClass("oui-back-button");
+
         // Sometimes the digest cycle is done before dom manipulation,
         // So we use $timeout to force the $apply
         this.$timeout(() =>
@@ -25,4 +28,5 @@ export default class {
             this.$window.history.back();
         }
     }
+
 }
