@@ -17,6 +17,7 @@ loadTests(require.context("../../oui-field/src/", true, /.*((\.spec)|(index))$/)
 loadTests(require.context("../../oui-select/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-radio-group/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-textarea/src/", true, /.*((\.spec)|(index))$/));
+loadTests(require.context("../../oui-radio-toggle-group/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-form-actions/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-search/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-criteria-container/src/", true, /.*((\.spec)|(index))$/));

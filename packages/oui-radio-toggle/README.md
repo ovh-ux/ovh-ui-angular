@@ -1,18 +1,30 @@
-# Radio-group
+# Radio-toggle-group
 
 <component-status cx-design="complete" ux="rc"></component-status>
 
 ## Usage
 
+```html
+<oui-radio-toggle-group
+  model="..."
+  name="...",
+  on-change="...">
+    <oui-radio value="..."/>
+    <oui-radio value="..."/>
+</oui-radio-toggle-group>
+```
+
+## Examples
+
 ### Default
 
 ```html:preview
 <div ng-init="$ctrl.groupValue = 'second'" class="oui-doc-preview-only-keep-children">
-<oui-radio-group model="$ctrl.groupValue">
+<oui-radio-toggle-group model="$ctrl.groupValue">
     <oui-radio text="First"  value="'first'"></oui-radio>
     <oui-radio text="Second" value="'second'"></oui-radio>
     <oui-radio text="Third" value="'third'"></oui-radio>
-</oui-radio-group>
+</oui-radio-toggle-group>
 </div>
 ```
 
@@ -20,25 +32,24 @@
 
 ```html:preview
 <div ng-init="$ctrl.groupValue2 = 'second'" class="oui-doc-preview-only-keep-children">
-<oui-radio-group model="$ctrl.groupValue2">
+<oui-radio-toggle-group model="$ctrl.groupValue2">
     <oui-radio text="First"  value="'first'" disabled></oui-radio>
     <oui-radio text="Second" value="'second'" disabled></oui-radio>
     <oui-radio text="Third" value="'third'" disabled></oui-radio>
-</oui-radio-toggle>
+</oui-radio-toggle-group>
 </div>
 ```
 
 ### On change
 
 ```html:preview
-<div ng-init="$ctrl.groupValue3 = 'second'" class="oui-doc-preview-only-keep-children">
-<oui-radio-group model="$ctrl.groupValue3" on-change="$ctrl.lastOnChangeValue = modelValue">
+<div ng-init="$ctrl.groupValue3 = 'third'" class="oui-doc-preview-only-keep-children">
+<oui-radio-toggle-group model="$ctrl.groupValue3" on-change="$ctrl.lastOnChangeValue = modelValue">
     <oui-radio text="First"  value="'first'"></oui-radio>
     <oui-radio text="Second" value="'second'"></oui-radio>
     <oui-radio text="Third" value="'third'"></oui-radio>
-</oui-radio-group>
+</oui-radio-toggle-group>
 </div>
-
 <span>Last onChange value: {{ $ctrl.lastOnChangeValue }}</span>
 ```
 

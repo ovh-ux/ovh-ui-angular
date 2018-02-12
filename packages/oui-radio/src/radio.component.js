@@ -3,7 +3,8 @@ import template from "./radio.html";
 
 export default {
     require: {
-        group: "?^ouiRadioGroup"
+        radioGroup: "?^ouiRadioGroup",
+        radioToggleGroup: "?^ouiRadioToggleGroup"
     },
     template,
     controller,

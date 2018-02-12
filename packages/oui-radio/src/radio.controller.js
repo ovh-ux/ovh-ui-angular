@@ -1,6 +1,5 @@
 import { addBooleanParameter } from "@oui-angular/common/component-utils";
 
-
 export default class {
     constructor ($scope, $element, $attrs, $timeout) {
         "ngInject";
@@ -22,12 +21,16 @@ export default class {
     }
 
     $onInit () {
+
+        this.$element.addClass(this.radioToggleGroup ? "oui-radio-toggle" : "oui-radio");
+
         addBooleanParameter(this, "disabled");
 
-        if (!self.id) {
+        if (!this.id) {
             this.id = `oui-radio-${this.$scope.$id}`;
         }
 
+        this.group = this.radioGroup || this.radioToggleGroup;
         if (this.group) {
             this.name = this.group.name;
             this.$scope.$watch("$ctrl.group.model", (value) => {
