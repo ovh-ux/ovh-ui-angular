@@ -1,5 +1,6 @@
 import { addBooleanParameter } from "@oui-angular/common/component-utils";
 
+
 export default class {
     constructor ($scope, $element, $attrs, $timeout) {
         "ngInject";
@@ -13,11 +14,11 @@ export default class {
     $postLink () {
         // Sometimes the digest cycle is done before dom manipulation,
         // So we use $timeout to force the $apply
-        this.$timeout(() =>
+        this.$timeout(() => {
             this.$element
                 .removeAttr("id")
-                .removeAttr("name")
-        );
+                .removeAttr("name");
+        });
     }
 
     $onInit () {
@@ -26,5 +27,25 @@ export default class {
         if (!self.id) {
             this.id = `oui-radio-${this.$scope.$id}`;
         }
+
+        if (this.group) {
+            this.name = this.group.name;
+            this.$scope.$watch("$ctrl.group.model", (value) => {
+                this.model = value;
+            });
+        } else {
+            this.name = this.id;
+        }
     }
+
+    onRadioModelChange (event) {
+        if (this.group) {
+            this.group.setModelValue(event.modelValue);
+        }
+
+        if (this.onChange) {
+            this.onChange(event);
+        }
+    }
+
 }
