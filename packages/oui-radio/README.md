@@ -7,20 +7,20 @@
 ### Basic
 
 ```html:preview
-<div ng-init="$ctrl.value1 = 'a'">
-    <oui-radio text="Value A"
-        name="oui-radio-1"
-        model="$ctrl.value1"
-        value="'a'"></oui-radio>
-    <oui-radio text="Value B"
-        name="oui-radio-1"
-        model="$ctrl.value1"
-        value="'b'"></oui-radio>
-    <oui-radio text="Value C"
-        name="oui-radio-1"
-        model="$ctrl.value1"
-        value="'c'"
-        disabled></oui-radio>
+<div ng-init="$ctrl.value1 = 'a'" class="oui-doc-preview-only-keep-children">
+<oui-radio text="Value A"
+    name="oui-radio-1"
+    model="$ctrl.value1"
+    value="'a'"></oui-radio>
+<oui-radio text="Value B"
+    name="oui-radio-1"
+    model="$ctrl.value1"
+    value="'b'"></oui-radio>
+<oui-radio text="Value C"
+    name="oui-radio-1"
+    model="$ctrl.value1"
+    value="'c'"
+    disabled></oui-radio>
 </div>
 ```
 
@@ -37,17 +37,17 @@
 ### On change
 
 ```html:preview
-<div ng-init="$ctrl.value2 = 'a'">
-    <oui-radio text="Value A"
-        name="oui-radio-2"
-        model="$ctrl.value2"
-        value="'a'"
-        on-change="$ctrl.lastOnChangeValue = modelValue"></oui-radio>
-    <oui-radio text="Value B"
-        name="oui-radio-2"
-        model="$ctrl.value2"
-        value="'b'"
-        on-change="$ctrl.lastOnChangeValue = modelValue"></oui-radio>
+<div ng-init="$ctrl.value2 = 'a'" class="oui-doc-preview-only-keep-children">
+<oui-radio text="Value A"
+    name="oui-radio-2"
+    model="$ctrl.value2"
+    value="'a'"
+    on-change="$ctrl.lastOnChangeValue = modelValue"></oui-radio>
+<oui-radio text="Value B"
+    name="oui-radio-2"
+    model="$ctrl.value2"
+    value="'b'"
+    on-change="$ctrl.lastOnChangeValue = modelValue"></oui-radio>
 </div>
 
 <span>Last onChange value: {{ $ctrl.lastOnChangeValue }}</span>

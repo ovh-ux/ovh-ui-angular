@@ -1,10 +1,11 @@
-describe("ouiRadioGroup", () => {
+describe("ouiRadioToggleGroup", () => {
     let TestUtils;
     let $timeout;
     let $rootScope;
 
     beforeEach(angular.mock.module("oui.radio"));
     beforeEach(angular.mock.module("oui.radio-group"));
+    beforeEach(angular.mock.module("oui.radio-toggle-group"));
     beforeEach(angular.mock.module("oui.test-utils"));
 
     beforeEach(inject((_TestUtils_, _$timeout_, _$rootScope_) => {
@@ -30,9 +31,9 @@ describe("ouiRadioGroup", () => {
                 const name = "foo";
 
                 const element = TestUtils.compileTemplate(`
-                    <oui-radio-group name=${name}>
+                    <oui-radio-toggle-group name=${name}>
                         <oui-radio></oui-radio>
-                    </oui-radio-group>
+                    </oui-radio-toggle-group>
             `);
 
                 expect(getRadioInputElement(element).prop("name")).toBe(name);
@@ -40,16 +41,16 @@ describe("ouiRadioGroup", () => {
 
             it("should assign a generated name to child radios when name attribute is undefined ", () => {
                 const element = TestUtils.compileTemplate(`
-                    <oui-radio-group>
+                    <oui-radio-toggle-group>
                         <oui-radio></oui-radio>
-                    </oui-radio-group>
+                    </oui-radio-toggle-group>
                 `);
 
                 expect(getRadioInputElement(element).prop("name")).toMatch(/^oui-radio-group-\d+$/);
             });
 
             it("should add radiogroup role", () => {
-                const element = TestUtils.compileTemplate("<oui-radio-group></oui-radio-group>");
+                const element = TestUtils.compileTemplate("<oui-radio-toggle-group></oui-radio-toggle-group>");
                 $timeout.flush();
 
                 expect(getRadioGroupElement(element).attr("role")).toEqual("radiogroup");
@@ -58,17 +59,17 @@ describe("ouiRadioGroup", () => {
 
         describe("classes", () => {
 
-            it("should set radio classes", () => {
+            it("should set toggle classes", () => {
                 const element = TestUtils.compileTemplate(`
-                    <oui-radio-group>
+                    <oui-radio-toggle-group>
                         <oui-radio></oui-radio>
-                    </oui-radio-group>
+                    </oui-radio-toggle-group>
             `);
 
-                expect(getElementByClass(element, ".oui-radio").length).toEqual(1);
-                expect(getElementByClass(element, ".oui-radio__input").length).toEqual(1);
-                expect(getElementByClass(element, ".oui-radio__label-container").length).toEqual(1);
-                expect(getElementByClass(element, ".oui-radio__label").length).toEqual(1);
+                expect(getElementByClass(element, ".oui-radio-toggle").length).toEqual(1);
+                expect(getElementByClass(element, ".oui-radio-toggle__input").length).toEqual(1);
+                expect(getElementByClass(element, ".oui-radio-toggle__label-container").length).toEqual(1);
+                expect(getElementByClass(element, ".oui-radio-toggle__label").length).toEqual(1);
             });
         });
 
@@ -78,10 +79,10 @@ describe("ouiRadioGroup", () => {
                 const defaultRadioValue = "bValue";
                 const otherRadioValue = "aValue";
                 const element = TestUtils.compileTemplate(`
-                    <oui-radio-group model="$ctrl.defaultValue">
+                    <oui-radio-toggle-group model="$ctrl.defaultValue">
                         <oui-radio value="'${otherRadioValue}'"></oui-radio>
                         <oui-radio value="'${defaultRadioValue}'"></oui-radio>
-                    </oui-radio-group>
+                    </oui-radio-toggle-group>
                     `, {
                     defaultValue: defaultRadioValue
                 });
@@ -94,10 +95,10 @@ describe("ouiRadioGroup", () => {
                 const defaultRadioValue = "bValue";
                 const newRadioValue = "aValue";
                 const element = TestUtils.compileTemplate(`
-                    <oui-radio-group model="$ctrl.defaultValue">
+                    <oui-radio-toggle-group model="$ctrl.defaultValue">
                         <oui-radio value="'${newRadioValue}'"></oui-radio>
                         <oui-radio value="'${defaultRadioValue}'"></oui-radio>
-                    </oui-radio-group>
+                    </oui-radio-toggle-group>
                     `, {
                     defaultValue: defaultRadioValue
                 });
@@ -115,10 +116,10 @@ describe("ouiRadioGroup", () => {
             it("should update radio group model", () => {
                 const clickedRadioValue = "bValue";
                 const element = TestUtils.compileTemplate(`
-                    <oui-radio-group model="$ctrl.model">
+                    <oui-radio-toggle-group model="$ctrl.model">
                         <oui-radio value="'aValue'"></oui-radio>
                         <oui-radio value="'${clickedRadioValue}'"></oui-radio>
-                    </oui-radio-group>
+                    </oui-radio-toggle-group>
                     `);
 
                 clickRadio(getRadioInputElementByValue(element, clickedRadioValue));
@@ -130,10 +131,10 @@ describe("ouiRadioGroup", () => {
                 const clickedRadioValue = "bValue";
                 const onChangeSpy = jasmine.createSpy("onChangeSpy");
                 const element = TestUtils.compileTemplate(`
-                    <oui-radio-group on-change="$ctrl.onChange(modelValue)">
+                    <oui-radio-toggle-group on-change="$ctrl.onChange(modelValue)">
                         <oui-radio value="'aValue'"></oui-radio>
                         <oui-radio value="'${clickedRadioValue}'"></oui-radio>
-                    </oui-radio-group>
+                    </oui-radio-toggle-group>
                     `, {
                     onChange: onChangeSpy
                 });
