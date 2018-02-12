@@ -129,9 +129,9 @@ describe("ouiRadio", () => {
                             on-change="$ctrl.onChange(modelValue)"></oui-radio>
                     </div>
                     `, {
-                        onChange: onChangeSpy,
-                        radioValue: "bValue"
-                    });
+                    onChange: onChangeSpy,
+                    radioValue: "bValue"
+                });
 
                 const radioComponent1 = element.children()[0];
                 const radioComponent2 = element.children()[1];
@@ -157,8 +157,8 @@ describe("ouiRadio", () => {
                             on-change="$ctrl.onChange(modelValue)"></oui-radio>
                     </div>
                     `, {
-                        onChange: onChangeSpy
-                    });
+                    onChange: onChangeSpy
+                });
 
                 const radioComponent1 = element.children()[0];
                 const radioComponent2 = element.children()[1];

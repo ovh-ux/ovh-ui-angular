@@ -138,8 +138,8 @@ describe("ouiPagination", () => {
                         on-change="$ctrl.clickHandler($event)">
                     </oui-pagination>
                     `, {
-                        clickHandler: clickSpy
-                    });
+                    clickHandler: clickSpy
+                });
 
                 angular.element(getNextButton(element)).triggerHandler("click");
                 expect(clickSpy).toHaveBeenCalledWith({
@@ -159,8 +159,8 @@ describe("ouiPagination", () => {
                         on-change="$ctrl.clickHandler($event)">
                     </oui-pagination>
                     `, {
-                        clickHandler: clickSpy
-                    });
+                    clickHandler: clickSpy
+                });
 
                 angular.element(getPreviousButton(element)).triggerHandler("click");
                 expect(clickSpy).toHaveBeenCalledWith({
@@ -182,9 +182,9 @@ describe("ouiPagination", () => {
                         on-change="$ctrl.clickHandler($event)">
                     </oui-pagination>
                 `, {
-                        offset: 1,
-                        clickHandler: clickSpy
-                    });
+                    offset: 1,
+                    clickHandler: clickSpy
+                });
 
                 const buttons = getSelector(element).querySelectorAll(".oui-button-group .oui-button");
                 const contextController = element.scope().$ctrl;
@@ -224,9 +224,9 @@ describe("ouiPagination", () => {
                         on-change="$ctrl.clickHandler($event)">
                     </oui-pagination>
                 `, {
-                        offset: 1,
-                        clickHandler: clickSpy
-                    });
+                    offset: 1,
+                    clickHandler: clickSpy
+                });
 
                 const buttons = getSelector(element).querySelectorAll(".oui-pagination-menu__items-list .oui-pagination-menu__item");
                 const contextController = element.scope().$ctrl;
@@ -274,9 +274,9 @@ describe("ouiPagination", () => {
                         on-change="$ctrl.clickHandler($event)">
                     </oui-pagination>
                 `, {
-                        pageSize: 25,
-                        clickHandler: clickSpy
-                    });
+                    pageSize: 25,
+                    clickHandler: clickSpy
+                });
 
                 const pageSizesButtons = getProgress(element).querySelectorAll(".oui-pagination-menu__items-list .oui-pagination-menu__item");
                 const contextController = element.scope().$ctrl;
@@ -305,8 +305,8 @@ describe("ouiPagination", () => {
                         on-change="$ctrl.clickHandler($event)">
                     </oui-pagination>
                 `, {
-                        clickHandler: clickSpy
-                    });
+                    clickHandler: clickSpy
+                });
 
                 const pageSizesButtons = getProgress(element).querySelectorAll(".oui-pagination-menu__items-list .oui-pagination-menu__item");
                 angular.element(pageSizesButtons[1]).triggerHandler("click");
@@ -343,8 +343,8 @@ describe("ouiPagination", () => {
                             total-items="1000">
                         </oui-pagination>
                     `, {
-                        pageSizeMax: 80
-                    });
+                    pageSizeMax: 80
+                });
 
                 // Page sizes list should not list page size above pageSizeMax (80).
                 // So, instead of displaying 4 values (see customPageSizesList = [25, 50, 100, 200]) the page size list
@@ -364,8 +364,8 @@ describe("ouiPagination", () => {
                             total-items="1000">
                         </oui-pagination>
                     `, {
-                        pageSizeMax: 80
-                    });
+                    pageSizeMax: 80
+                });
 
                 const contextController = element.scope().$ctrl;
                 let pageSizesButtons = getPageSizeButtons(element);
