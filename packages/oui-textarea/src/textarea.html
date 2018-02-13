@@ -1,0 +1,22 @@
+<div class="oui-textarea"
+    ng-class="{
+        'oui-textarea_disabled': $ctrl.disabled,
+        'oui-textarea_readonly': $ctrl.readonly
+    }">
+    <textarea class="oui-textarea__textarea"
+        ng-model="$ctrl.model"
+        ng-attr-id="{{::$ctrl.id}}"
+        ng-attr-name="{{::$ctrl.name}}"
+        ng-attr-placeholder="{{::$ctrl.placeholder}}"
+        ng-attr-minlength="{{$ctrl.minlength}}"
+        ng-attr-maxlength="{{$ctrl.maxlength}}"
+        ng-required="$ctrl.required"
+        ng-disabled="$ctrl.disabled"
+        ng-readonly="$ctrl.readonly"
+        ng-change="$ctrl.onChange({ modelValue: $ctrl.model })"
+        ng-focus="$ctrl.setFocus(true)"
+        ng-blur="$ctrl.setFocus(false)"></textarea>
+    <div class="oui-textarea__footer"
+        ng-if="$ctrl.maxlength"
+        ng-bind="$ctrl.getMaxLengthText()"></div>
+</div>
