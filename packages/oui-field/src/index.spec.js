@@ -80,9 +80,9 @@ describe("ouiField", () => {
                             name="lastname"
                             ng-model="$ctrl.user.lastname">
                     </oui-field>
-                    `, {
-                        id
-                    });
+                `, {
+                    id
+                });
 
                 $timeout.flush();
 
@@ -101,9 +101,9 @@ describe("ouiField", () => {
                             name="{{ $ctrl.name }}"
                             ng-model="$ctrl.user.lastname">
                     </oui-field>
-                    `, {
-                        name
-                    });
+                `, {
+                    name
+                });
 
                 $timeout.flush();
 
@@ -138,9 +138,9 @@ describe("ouiField", () => {
                             minlength="{{$ctrl.validation.minlength}}"
                             maxlength="{{$ctrl.validation.maxlength}}">
                     </oui-field>
-                    `, {
-                        validation
-                    });
+                `, {
+                    validation
+                });
 
                 $timeout.flush();
 
@@ -178,9 +178,9 @@ describe("ouiField", () => {
                             ng-minlength="{{$ctrl.validation.minlength}}"
                             ng-maxlength="{{$ctrl.validation.maxlength}}">
                     </oui-field>
-                    `, {
-                        validation
-                    });
+                `, {
+                    validation
+                });
 
                 $timeout.flush();
 
@@ -314,9 +314,9 @@ describe("ouiField", () => {
                             value="'udp'"
                             disabled></oui-radio>
                     </oui-field>
-                    `, {
-                        name
-                    });
+                `, {
+                    name
+                });
 
                 $timeout.flush();
 
