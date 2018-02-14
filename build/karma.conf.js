@@ -51,11 +51,11 @@ export default config => {
             ],
             check: {
                 global: {
-                    statements: 80,
-                    lines: 80,
-                    functions: 80
+                    statements: 70,
+                    lines: 70,
+                    functions: 70
                 }
             }
         }
-    })
-}
+    });
+};
