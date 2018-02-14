@@ -22,7 +22,8 @@
     brand="$ctrl.brand"
     active-link="lorem"
     main-links="$ctrl.mainLinks"
-    aside-links="$ctrl.asideLinks">
+    aside-links="$ctrl.asideLinks"
+    toggler-links="$ctrl.togglerLinks">
 </oui-navbar>
 </div>
 ```
@@ -37,6 +38,7 @@ Note: All children menus have `.oui-navbar-menu_fixed`. The component is intende
 | active-link   | string    | @?        | true                |                      |           | current active-link of the navbar                                             |
 | main-links    | array     | <?        | true                | _see example below_  |           | array of objects for the items on the left and the toggler (for responsive)   |
 | aside-links   | array     | <?        | true                | _see example below_  |           | array of objects for the items on the right                                   |
+| toggler-links | array     | <?        | true                | _see example below_  |           | array of objects for the responsive menu                                      |
 | fixed         | boolean   | <?        | true                |                      | false     | set the navbar in fixed mode                                                  |
 
 ### Properties of attribute `brand`
@@ -161,6 +163,8 @@ The menu item will be set as a `<button>`.
 }
 ```
 
+Note: Root links can have `url` and `subLinks`. `subLinks` will only be used for the responsive menu.
+
 ### Properties of attribute `main-links`
 
 This property is only available for root links of `main-links`.
@@ -183,8 +187,6 @@ This property is only available for root links of `main-links`.
     }]
 }]
 ```
-
-Note: Root links can have `url` and `subLinks`. `subLinks` will only be used for the responsive menu.
 
 ### Properties of attribute `aside-links`
 
