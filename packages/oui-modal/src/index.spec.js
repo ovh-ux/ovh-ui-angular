@@ -27,8 +27,7 @@ describe("ouiModal", () => {
                 <oui-modal
                     title="Modal title">
                 </oui-modal>
-                `
-            );
+            `);
 
             expect(getModal(element)).toBeDefined();
         });
@@ -38,10 +37,9 @@ describe("ouiModal", () => {
                 <oui-modal
                     title="{{$ctrl.title}}">
                 </oui-modal>
-                `, {
-                    title
-                }
-            );
+            `, {
+                title
+            });
 
             const $title = getTitle(element);
 
@@ -55,10 +53,9 @@ describe("ouiModal", () => {
                     title="Title">
                     {{::$ctrl.body}}
                 </oui-modal>
-                `, {
-                    body
-                }
-            );
+            `, {
+                body
+            });
 
             const $body = getBody(element);
 
@@ -71,7 +68,7 @@ describe("ouiModal", () => {
                 <oui-modal
                     title="Title">
                 </oui-modal>
-                `);
+            `);
 
             const $footer = getFooter(element);
 
@@ -84,10 +81,9 @@ describe("ouiModal", () => {
                     title="Title"
                     primary-label="{{::$ctrl.primaryLabel}}">
                 </oui-modal>
-                `, {
-                    primaryLabel
-                }
-            );
+            `, {
+                primaryLabel
+            });
 
             const $footer = getFooter(element);
             const $primaryButton = getPrimaryButton($footer);
@@ -104,10 +100,9 @@ describe("ouiModal", () => {
                     primary-label="Save"
                     primary-action="$ctrl.primarySpy()">
                 </oui-modal>
-                `, {
-                    primarySpy
-                }
-            );
+            `, {
+                primarySpy
+            });
 
             getPrimaryButton(element).triggerHandler("click");
             expect(primarySpy).toHaveBeenCalled();
@@ -119,10 +114,9 @@ describe("ouiModal", () => {
                     title="Title"
                     secondary-label="{{::$ctrl.secondaryLabel}}">
                 </oui-modal>
-                `, {
-                    secondaryLabel
-                }
-            );
+            `, {
+                secondaryLabel
+            });
 
             const $footer = getFooter(element);
             const $secondaryButton = getSecondaryButton($footer);
@@ -139,10 +133,9 @@ describe("ouiModal", () => {
                     secondary-label="Save"
                     secondary-action="$ctrl.secondarySpy()">
                 </oui-modal>
-                `, {
-                    secondarySpy
-                }
-            );
+            `, {
+                secondarySpy
+            });
 
             getSecondaryButton(element).triggerHandler("click");
             expect(secondarySpy).toHaveBeenCalled();
@@ -155,10 +148,9 @@ describe("ouiModal", () => {
                     title="Title"
                     on-dismiss="$ctrl.dismissSpy()">
                 </oui-modal>
-                `, {
-                    dismissSpy
-                }
-            );
+            `, {
+                dismissSpy
+            });
 
             getDismissButton(element).triggerHandler("click");
             expect(dismissSpy).toHaveBeenCalled();
