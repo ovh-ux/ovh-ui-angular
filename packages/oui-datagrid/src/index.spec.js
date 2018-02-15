@@ -654,8 +654,7 @@ describe("ouiDatagrid", () => {
                         </oui-datagrid>
                     `, {
                     rows: fakeData.slice(0, 5)
-                }
-                );
+                });
 
                 // Check data-sortable and data-title
                 const $headerRow = getHeaderRow(element);
@@ -668,6 +667,22 @@ describe("ouiDatagrid", () => {
                 const firstRow = getRow(element, 0);
                 expect(getCell(firstRow, 0).text().trim()).toEqual("Ann");
                 expect(getCell(firstRow, 1).text().trim()).toEqual("Cole");
+            });
+
+            it("should not accept white spaces as template", () => {
+                const element = TestUtils.compileTemplate(`
+                    <oui-datagrid data-rows="$ctrl.rows">
+                        <oui-column data-property="firstName"
+                            data-title="'First name'">
+                        </oui-column>
+                    </oui-datagrid>
+                `, {
+                    rows: fakeData.slice(0, 5)
+                });
+
+                // Check that property is still rendered in the cell.
+                const firstRow = getRow(element, 0);
+                expect(getCell(firstRow, 0).text().trim()).toEqual("Raymond");
             });
         });
     });

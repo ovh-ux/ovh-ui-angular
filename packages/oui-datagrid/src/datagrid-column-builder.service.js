@@ -51,8 +51,9 @@ export default class DatagridColumnBuilder {
                 column.sortProperty = column.name;
             }
 
-            if (!column.template && columnElement.innerHTML) {
-                column.template = columnElement.innerHTML;
+            const htmlTemplate = columnElement.innerHTML.trim();
+            if (!column.template && htmlTemplate.length) {
+                column.template = htmlTemplate;
             }
 
             if (column.template) {
