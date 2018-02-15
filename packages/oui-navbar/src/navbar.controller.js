@@ -17,9 +17,28 @@ export default class {
         this.navigation = this.navbarService.toggleMenu(state, isInternalNav);
     }
 
+    updateLinks () {
+        // If no togglerLinks attribute, we use the value of mainLinks
+        if (!angular.isDefined(this.$attrs.togglerLinks) && angular.isDefined(this.$attrs.mainLinks)) {
+            this.togglerLinks = this.mainLinks;
+            this.togglerLoaded = true;
+        }
+    }
+
     $onInit () {
+        this.updateLinks();
+
         // Support presence of attribute 'fixed'
         addBooleanParameter(this, "fixed");
+    }
+
+    $onChanges (changes) {
+        this.updateLinks();
+
+        // Get togglerLinks changes for the loader
+        if (changes.togglerLinks) {
+            this.togglerLoaded = !!changes.togglerLinks.currentValue;
+        }
     }
 
     $postLink () {

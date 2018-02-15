@@ -7,6 +7,7 @@ export default {
         activeLink: "@?",
         mainLinks: "<?",
         asideLinks: "<?",
+        togglerLinks: "<?",
 
         fixed: "<?"
     },

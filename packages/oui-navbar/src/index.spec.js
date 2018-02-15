@@ -150,8 +150,8 @@ describe("ouiNavbar", () => {
             let responsiveMenu;
 
             beforeEach(() => {
-                component = testUtils.compileTemplate('<oui-navbar main-links="$ctrl.mainLinks"></oui-navbar>', {
-                    mainLinks: data
+                component = testUtils.compileTemplate('<oui-navbar toggler-links="$ctrl.togglerLinks"></oui-navbar>', {
+                    togglerLinks: data
                 });
 
                 toggler = angular.element(component[0].querySelector(".oui-navbar-toggler"));
