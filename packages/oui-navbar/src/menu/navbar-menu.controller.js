@@ -1,8 +1,9 @@
 export default class {
-    constructor ($element, NavbarService, NavbarGroupService, KEYBOARD_KEYS) {
+    constructor ($element, $timeout, NavbarService, NavbarGroupService, KEYBOARD_KEYS) {
         "ngInject";
 
         this.$element = $element;
+        this.$timeout = $timeout;
         this.navbarService = NavbarService;
         this.navbarGroupService = NavbarGroupService;
         this.KEYBOARD_KEYS = KEYBOARD_KEYS;
@@ -59,10 +60,13 @@ export default class {
     }
 
     $postLink () {
-        // Add classnames on root $element
-        this.$element.addClass("oui-navbar-menu");
+        // Avoid $element DOM unsync for jqLite methods
+        this.$timeout(() => {
+            // Add classnames on root $element
+            this.$element.addClass("oui-navbar-menu");
 
-        // Add "role" attribute for accessibility
-        this.$element.attr("role", "menu");
+            // Add "role" attribute for accessibility
+            this.$element.attr("role", "menu");
+        });
     }
 }
