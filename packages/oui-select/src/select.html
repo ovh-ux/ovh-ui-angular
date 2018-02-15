@@ -1,0 +1,9 @@
+<ui-select name="{{::$ctrl.name}}"
+        ng-model="$ctrl.model"
+        search-enabled="false"
+        ng-attr-title="{{::$ctrl.title}}"
+        ng-required="$ctrl.required"
+        ng-disabled="$ctrl.disabled">
+    <ui-select-match placeholder="{{::$ctrl.placeholder}}"></ui-select-match>
+    <ui-select-choices repeat="$item in $ctrl.items track by $index"></ui-select-choices>
+</ui-select>

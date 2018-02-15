@@ -1,0 +1,13 @@
+<button type="button"
+    ng-hide="$select.open && $select.searchEnabled"
+    ng-attr-aria-label="{{$select.baseTitle}} activate"
+    ng-disabled="$select.disabled"
+    ng-click="$select.activate()"
+    class="oui-button oui-button_dropdown oui-dropdown__trigger">
+    <span ng-show="$select.isEmpty()">{{$select.placeholder}}</span>
+    <span ng-hide="$select.isEmpty()" ng-transclude></span>
+    <i class="oui-icon oui-icon-chevron-down" aria-hidden="true"></i>
+    <a ng-show="$select.allowClear && !$select.isEmpty() && ($select.disabled !== true)" aria-label="{{ $select.baseTitle }} clear" style="margin-right: 10px" ng-click="$select.clear($event)" class="btn btn-xs btn-link pull-right">
+        <i class="glyphicon glyphicon-remove" aria-hidden="true"></i>
+    </a>
+</button>
