@@ -4,6 +4,7 @@ const rootClass = "oui-textarea";
 const disabledClass = "oui-textarea_disabled";
 const focusClass = "oui-textarea_active";
 const readonlyClass = "oui-textarea_readonly";
+const errorClass = "oui-textarea_error";
 const footerClass = "oui-textarea__footer";
 
 export default class {
@@ -38,6 +39,8 @@ export default class {
             this.$footer.on("click", () => {
                 this.textarea.focus();
             });
+
+            this.updateErrorState();
         });
     }
 
@@ -53,6 +56,21 @@ export default class {
 
     $destroy () {
         this.$footer.off("click");
+    }
+
+    onTextareaChange () {
+        if (this.onChange) {
+            this.onChange({ modelValue: this.model });
+        }
+        this.updateErrorState();
+    }
+
+    updateErrorState () {
+        if (!this.textarea || angular.isUndefined(this.maxlength)) {
+            return;
+        }
+        const length = angular.element(this.textarea).val().length;
+        this.$element.toggleClass(errorClass, length > this.maxlength);
     }
 
     getMaxLengthText () {

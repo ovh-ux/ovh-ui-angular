@@ -3,12 +3,14 @@ describe("ouiTextarea", () => {
     let $timeout;
     let TestUtils;
 
+    const getController = elm => elm.controller("ouiTextarea");
     const getTextarea = elm => elm[0].querySelector("textarea");
     const getFooter = elm => elm[0].querySelector(".oui-textarea__footer");
 
     const disabledClass = "oui-textarea_disabled";
     const readonlyClass = "oui-textarea_readonly";
     const focusClass = "oui-textarea_active";
+    const errorClass = "oui-textarea_error";
 
     beforeEach(angular.mock.module("oui.textarea"));
     beforeEach(angular.mock.module("oui.test-utils"));
@@ -251,6 +253,26 @@ describe("ouiTextarea", () => {
                 $scope.$apply();
                 expect(parseInt(textarea.getAttribute("ng-maxlength"), 10)).toBe(maxlength2);
             });
+
+            it("should add error class when length > maxlength", () => {
+                const validValue = "aaa";
+                const invalidValue = "aaaa";
+                const maxlength = 3;
+                const element = TestUtils.compileTemplate(`
+                    <oui-textarea maxlength="${maxlength}"></oui-textarea>
+                `);
+                const $textarea = angular.element(getTextarea(element));
+
+                $timeout.flush();
+
+                $textarea.val(validValue);
+                $textarea.triggerHandler($sniffer.hasEvent("input") ? "input" : "change");
+                expect(element.hasClass(errorClass)).toBeFalsy();
+
+                $textarea.val(invalidValue);
+                $textarea.triggerHandler($sniffer.hasEvent("input") ? "input" : "change");
+                expect(element.hasClass(errorClass)).toBeTruthy();
+            });
         });
 
         describe("Footer", () => {
@@ -283,7 +305,7 @@ describe("ouiTextarea", () => {
                 `);
 
                 const footer = getFooter(element);
-                const controller = element.controller("ouiTextarea");
+                const controller = getController(element);
 
                 $timeout.flush();
 
