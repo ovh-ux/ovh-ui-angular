@@ -3,7 +3,6 @@ describe("ouiTextarea", () => {
     let $timeout;
     let TestUtils;
 
-    const getRoot = elm => elm[0].querySelector(".oui-textarea");
     const getTextarea = elm => elm[0].querySelector("textarea");
     const getFooter = elm => elm[0].querySelector(".oui-textarea__footer");
 
@@ -81,18 +80,17 @@ describe("ouiTextarea", () => {
             `);
 
             const $textarea = angular.element(getTextarea(element));
-            const $root = angular.element(getRoot(element));
-            expect($root.hasClass(focusClass)).toBeFalsy();
+            expect(element.hasClass(focusClass)).toBeFalsy();
 
             $textarea.triggerHandler("focus");
-            expect($root.hasClass(focusClass)).toBeTruthy();
+            expect(element.hasClass(focusClass)).toBeTruthy();
 
             $textarea.triggerHandler("blur");
-            expect($root.hasClass(focusClass)).toBeFalsy();
+            expect(element.hasClass(focusClass)).toBeFalsy();
         });
 
         describe("Disabled state", () => {
-            it("should be disabled without provider value", () => {
+            it("should be disabled without provided value", () => {
                 const element = TestUtils.compileTemplate(`
                     <oui-textarea disabled></oui-textarea>
                 `);
@@ -101,7 +99,17 @@ describe("ouiTextarea", () => {
                 expect($textarea.prop("disabled")).toBeTruthy();
             });
 
-            it("should show be disabled with the binding set to true", () => {
+            it("should show a disabled looking component", () => {
+                const element = TestUtils.compileTemplate(`
+                    <oui-textarea disabled></oui-textarea>
+                `);
+
+                $timeout.flush();
+
+                expect(element.hasClass(disabledClass)).toBeTruthy();
+            });
+
+            it("should be disabled with the binding set to true", () => {
                 const element = TestUtils.compileTemplate(`
                     <oui-textarea disabled="true"></oui-textarea>
                 `);
@@ -110,7 +118,7 @@ describe("ouiTextarea", () => {
                 expect($textarea.prop("disabled")).toBeTruthy();
             });
 
-            it("should show not be disabled with the binding set to false", () => {
+            it("should not be disabled with the binding set to false", () => {
                 const element = TestUtils.compileTemplate(`
                     <oui-textarea disabled="false"></oui-textarea>
                 `);
@@ -119,13 +127,27 @@ describe("ouiTextarea", () => {
                 expect($textarea.prop("disabled")).toBeFalsy();
             });
 
-            it("should show a disabled looking component", () => {
+            it("should switch the disabled state on the component", () => {
                 const element = TestUtils.compileTemplate(`
-                    <oui-textarea disabled></oui-textarea>
-                `);
+                    <oui-textarea disabled="$ctrl.disabled"></oui-textarea>
+                `, {
+                    disabled: false
+                });
+                const $scope = element.scope();
+                const $textarea = angular.element(getTextarea(element));
 
-                const $root = angular.element(getRoot(element));
-                expect($root.hasClass(disabledClass)).toBeTruthy();
+                $timeout.flush();
+
+                expect($textarea.prop("disabled")).toBeFalsy();
+                expect(element.hasClass(disabledClass)).toBeFalsy();
+
+                $scope.$ctrl.disabled = true;
+
+                // Trigger $onChanges
+                $scope.$apply();
+
+                expect($textarea.prop("disabled")).toBeTruthy();
+                expect(element.hasClass(disabledClass)).toBeTruthy();
             });
         });
 
@@ -137,6 +159,16 @@ describe("ouiTextarea", () => {
 
                 const $textarea = angular.element(getTextarea(element));
                 expect($textarea.prop("readonly")).toBeTruthy();
+            });
+
+            it("should show a readonly looking component", () => {
+                const element = TestUtils.compileTemplate(`
+                    <oui-textarea readonly></oui-textarea>
+                `);
+
+                $timeout.flush();
+
+                expect(element.hasClass(readonlyClass)).toBeTruthy();
             });
 
             it("should be readonly with the binding set to true", () => {
@@ -157,13 +189,27 @@ describe("ouiTextarea", () => {
                 expect($textarea.prop("readonly")).toBeFalsy();
             });
 
-            it("should show a readonly looking component", () => {
+            it("should switch the readonly state on the component", () => {
                 const element = TestUtils.compileTemplate(`
-                    <oui-textarea readonly></oui-textarea>
-                `);
+                    <oui-textarea readonly="$ctrl.readonly"></oui-textarea>
+                `, {
+                    readonly: false
+                });
+                const $scope = element.scope();
+                const $textarea = angular.element(getTextarea(element));
 
-                const $root = angular.element(getRoot(element));
-                expect($root.hasClass(readonlyClass)).toBeTruthy();
+                $timeout.flush();
+
+                expect($textarea.prop("readonly")).toBeFalsy();
+                expect(element.hasClass(readonlyClass)).toBeFalsy();
+
+                $scope.$ctrl.readonly = true;
+
+                // Trigger $onChanges
+                $scope.$apply();
+
+                expect($textarea.prop("readonly")).toBeTruthy();
+                expect(element.hasClass(readonlyClass)).toBeTruthy();
             });
         });
 
@@ -178,13 +224,13 @@ describe("ouiTextarea", () => {
                 });
 
                 const textarea = getTextarea(element);
-                expect(parseInt(textarea.getAttribute("minlength"), 10)).toBe(minlength);
+                expect(parseInt(textarea.getAttribute("ng-minlength"), 10)).toBe(minlength);
 
                 // Change minlength
                 const $scope = element.scope();
                 $scope.$ctrl.minlength = minlength2;
                 $scope.$apply();
-                expect(parseInt(textarea.getAttribute("minlength"), 10)).toBe(minlength2);
+                expect(parseInt(textarea.getAttribute("ng-minlength"), 10)).toBe(minlength2);
             });
 
             it("should set maxlength on textarea", () => {
@@ -197,13 +243,54 @@ describe("ouiTextarea", () => {
                 });
 
                 const textarea = getTextarea(element);
-                expect(parseInt(textarea.getAttribute("maxlength"), 10)).toBe(maxlength);
+                expect(parseInt(textarea.getAttribute("ng-maxlength"), 10)).toBe(maxlength);
 
                 // Change maxlength
                 const $scope = element.scope();
                 $scope.$ctrl.maxlength = maxlength2;
                 $scope.$apply();
-                expect(parseInt(textarea.getAttribute("maxlength"), 10)).toBe(maxlength2);
+                expect(parseInt(textarea.getAttribute("ng-maxlength"), 10)).toBe(maxlength2);
+            });
+        });
+
+        describe("Footer", () => {
+            it("should show the number of characters in the textarea", () => {
+                const maxlength = 12;
+                const value = "theValue";
+                const element = TestUtils.compileTemplate(`
+                    <oui-textarea maxlength="${maxlength}"></oui-textarea>
+                `);
+
+                const $textarea = angular.element(getTextarea(element));
+                const footer = getFooter(element);
+
+                // $postLink must entierly executed to make the controller get the textarea reference.
+                $timeout.flush();
+
+                expect(footer.innerHTML.trim()).toContain(`0/${maxlength}`);
+
+                // Type some chars in textrea...
+                $textarea.val(value);
+                $textarea.triggerHandler($sniffer.hasEvent("input") ? "input" : "change");
+
+                expect(footer.innerHTML.trim()).toContain(`${value.length}/${maxlength}`);
+            });
+
+            it("should give the focus to textarea if clicked", () => {
+                const maxlength = 12;
+                const element = TestUtils.compileTemplate(`
+                    <oui-textarea maxlength="${maxlength}"></oui-textarea>
+                `);
+
+                const footer = getFooter(element);
+                const controller = element.controller("ouiTextarea");
+
+                $timeout.flush();
+
+                // Mock textarea
+                controller.textarea.focus = jasmine.createSpy("focus");
+                angular.element(footer).triggerHandler("click");
+                expect(controller.textarea.focus).toHaveBeenCalled();
             });
         });
 
