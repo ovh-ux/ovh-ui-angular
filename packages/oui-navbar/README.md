@@ -88,6 +88,12 @@ The brand icon will be set as a `<img>`.
 - `class` _(optional)_: define `class` of the menu item (only used for root links).
 - `label` _(optional)_: define `aria-label` of the menu item.
 - `title`: define the menu item text.
+- `headerTitle` _(optional)_: define the title of the menu header (default text is `title`).
+- `headerBreadcrumb` _(optional)_: define the breadcrumb of the menu header.
+- `headerTemplate` _(optional)_: define the HTML template of the menu header.
+- `isActive` _(optional)_: define if the menu item has active variant `.oui-navbar-menu__item_active`.
+
+If `headerTemplate` is defined, `headerBreadcrumb` and `headerTitle` are not used.
 
 #### Set a menu item as a link
 
@@ -159,6 +165,8 @@ The menu item will be set as a `<button>`.
     "class": String,
     "label": String,
     "title": String,
+    "headerTitle": String,
+    "headerBreadcrumb": String,
     "subLinks": Array[]
 }
 ```
@@ -216,9 +224,7 @@ This property is only available for root links of `aside-links`.
 The property `name` **must be** `"notifications"`.
 
 - `template`: define the HTML template in the menu item.
-- `isUnread` _(optional)_: define if the menu item has active variant `.oui-navbar-menu__item_active`.
 - `limitTo` _(optional)_: define the maximum of menu links displayed.
-- `headerTemplate`: define the HTML template of the menu header (not displayed in responsive).
 - `footerTitle`: define the text of the link in the menu footer.
 - `footerUrl`: define `href` of the link in the menu footer.
 - `footerTemplate` _(optional)_: define the HTML template of the menu footer.
@@ -243,7 +249,7 @@ If `footerTemplate` is defined, `footerTitle` and `footerUrl` are not used.
         "title": String,
         "url": String<Url>,
         "template": String<Html>,
-        "isUnread": Boolean
+        "isActive": Boolean
     }]
 }
 ```

@@ -16,9 +16,11 @@
     <h3 class="oui-navbar-menu__title" ng-bind="::$ctrl.headerTitle"></h3>
 </header>
 <ul class="oui-navbar-list" ng-if="::$ctrl.expanded">
-    <li class="oui-navbar-list__item"
+    <li class="oui-navbar-list__item {{::!!menuLink.class ? menuLink.class : null}}"
         ng-repeat="menuLink in ::$ctrl.menuLinks track by $index"
-        ng-class="::!!menuLink.class ? menuLink.class : null">
+        ng-class="::{
+            'oui-navbar-menu__item_active': !!menuLink.isActive
+        }">
 
         <!-- Link (href) -->
         <a class="oui-navbar-link"
@@ -95,8 +97,8 @@
             ng-class="::!!$ctrl.childrenClass ? $ctrl.childrenClass : null"
             children-class="{{::$ctrl.childrenClass}}"
             back-button="true"
-            header-breadcrumb="{{::$ctrl.getChildBreadcrumb()}}"
-            header-title="{{::menuLink.title}}"
+            header-breadcrumb="{{::menuLink.headerBreadcrumb || $ctrl.getChildBreadcrumb()}}"
+            header-title="{{::menuLink.headerTitle || menuLink.title}}"
             name="{{::menuLink.name}}"
             links="::menuLink.subLinks"
             navigation="$ctrl.navigation"
