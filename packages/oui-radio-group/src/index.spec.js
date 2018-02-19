@@ -74,22 +74,22 @@ describe("ouiRadioGroup", () => {
             });
 
             it("should update child radio models after initialization too", () => {
-                const initialRadioValue = "bValue";
+                const defaultRadioValue = "bValue";
                 const newRadioValue = "aValue";
                 const element = TestUtils.compileTemplate(`
                     <oui-radio-group model="$ctrl.defaultValue">
                         <oui-radio value="'${newRadioValue}'"></oui-radio>
-                        <oui-radio value="'${initialRadioValue}'"></oui-radio>
+                        <oui-radio value="'${defaultRadioValue}'"></oui-radio>
                     </oui-radio-group>
                     `, {
-                    defaultValue: initialRadioValue
+                    defaultValue: defaultRadioValue
                 });
 
                 TestUtils.getElementController(element).defaultValue = newRadioValue;
                 $rootScope.$digest();
 
                 expect(getRadioInputElementWithValue(element, newRadioValue).prop("checked")).toEqual(true);
-                expect(getRadioInputElementWithValue(element, initialRadioValue).prop("checked")).toEqual(false);
+                expect(getRadioInputElementWithValue(element, defaultRadioValue).prop("checked")).toEqual(false);
             });
         });
 
