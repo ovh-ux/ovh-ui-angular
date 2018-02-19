@@ -22,6 +22,7 @@ describe("ouiRadioGroup", () => {
     };
 
     describe("Component", () => {
+
         describe("attributes", () => {
 
             it("should assign defined name to child radios when name attribute is defined", () => {
@@ -55,8 +56,8 @@ describe("ouiRadioGroup", () => {
         });
 
         describe("on radio group model change", () => {
-            it("should update child radio models at initialization", () => {
 
+            it("should update child radio models at initialization", () => {
                 const defaultRadioValue = "bValue";
                 const otherRadioValue = "aValue";
                 const element = TestUtils.compileTemplate(`
@@ -72,8 +73,7 @@ describe("ouiRadioGroup", () => {
                 expect(getRadioInputElementWithValue(element, otherRadioValue).prop("checked")).toEqual(false);
             });
 
-            fit("should update child radio models after initialization too", () => {
-
+            it("should update child radio models after initialization too", () => {
                 const initialRadioValue = "bValue";
                 const newRadioValue = "aValue";
                 const element = TestUtils.compileTemplate(`
@@ -94,6 +94,7 @@ describe("ouiRadioGroup", () => {
         });
 
         describe("on child radio click", () => {
+
             it("should update radio group model", () => {
                 const clickedRadioValue = "bValue";
                 const element = TestUtils.compileTemplate(`
@@ -106,6 +107,23 @@ describe("ouiRadioGroup", () => {
                 clickRadio(getRadioInputElementWithValue(element, clickedRadioValue));
 
                 expect(TestUtils.getElementController(element).model).toEqual(clickedRadioValue);
+            });
+
+            it("should trigger on change callback", () => {
+                const clickedRadioValue = "bValue";
+                const onChangeSpy = jasmine.createSpy("onChangeSpy");
+                const element = TestUtils.compileTemplate(`
+                    <oui-radio-group on-change="$ctrl.onChange(modelValue)">
+                        <oui-radio value="'aValue'"></oui-radio>
+                        <oui-radio value="'${clickedRadioValue}'"></oui-radio>
+                    </oui-radio-group>
+                    `, {
+                    onChange: onChangeSpy
+                });
+
+                clickRadio(getRadioInputElementWithValue(element, clickedRadioValue));
+
+                expect(onChangeSpy).toHaveBeenCalledWith(clickedRadioValue);
             });
         });
     });

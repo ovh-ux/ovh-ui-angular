@@ -24,5 +24,6 @@ export default class {
 
     setModelValue (value) {
         this.model = value;
+        this.onChange({ modelValue: value });
     }
 }

@@ -5,7 +5,8 @@ export default {
     controller,
     bindings: {
         name: "@?",
-        model: "=?"
+        model: "=?",
+        onChange: "&"
     },
     transclude: true
 };
