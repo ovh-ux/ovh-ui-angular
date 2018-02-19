@@ -15,10 +15,6 @@
 
 ## Examples
 
-
-
-### Default
-
 ```html:preview
 <div ng-init="$ctrl.groupValue = 'second'">
     <oui-radio-group model="$ctrl.groupValue">
