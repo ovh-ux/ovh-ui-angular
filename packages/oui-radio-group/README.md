@@ -31,11 +31,13 @@
 ### On change
 
 ```html:preview
-<oui-radio-group on-change="ctrl.lastOnChangeValue = modelValue">
-    <oui-radio text="First"  value="'first'"></oui-radio>
-    <oui-radio text="Second" value="'second'"></oui-radio>
-    <oui-radio text="Third" value="'third'"></oui-radio>
-</oui-radio-group>
+<div ng-init="$ctrl.groupValue2 = 'second'">
+    <oui-radio-group model="$ctrl.groupValue2" on-change="$ctrl.lastOnChangeValue = modelValue">
+        <oui-radio text="First"  value="'first'"></oui-radio>
+        <oui-radio text="Second" value="'second'"></oui-radio>
+        <oui-radio text="Third" value="'third'"></oui-radio>
+    </oui-radio-group>
+</div>
 
 <span>Last onChange value: {{ $ctrl.lastOnChangeValue }}</span>
 ```
