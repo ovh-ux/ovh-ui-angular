@@ -466,7 +466,7 @@ uis.controller('uiSelectCtrl',
         });
       }
 
-      ctrl.referenceElement = $element[0].querySelector('.oui-button');
+      ctrl.referenceElement = $element[0].querySelector('.oui-button_dropdown');
       ctrl.popperElement = $element[0].querySelector('.ui-select-choices-content');
 
       createPopper();
@@ -951,6 +951,10 @@ uis.controller('uiSelectCtrl',
       e.stopPropagation();
     }
 
+    if (KEY.TAB === key) {
+      return;
+    }
+
     $scope.$apply(function() {
 
       var tagged = false;
@@ -1164,10 +1168,10 @@ uis.directive('uiSelect',
         $select.onBlurCallback = $parse(attrs.onBlur);
         $select.onFocusCallback = $parse(attrs.onFocus);
         $select.onBlur = function() {
-            $select.onBlurCallback(scope);
+          $select.onBlurCallback(scope);
         };
         $select.onFocus = function() {
-            $select.onFocusCallback(scope);
+          $select.onFocusCallback(scope);
         };
 
         //Set reference to ngModel from uiSelectCtrl
