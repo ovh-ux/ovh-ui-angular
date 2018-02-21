@@ -20,7 +20,16 @@ export default class {
     }
 
     $postLink () {
-        this.$compile(this.htmlContent)(this.$scope, (clone) => {
+        const $htmlContent = angular.element(this.htmlContent);
+        const matchElement = $htmlContent.find("ui-select-match");
+
+        if (this.match) {
+            matchElement.html(`{{$select.selected.${this.match}}}`);
+        } else {
+            matchElement.html("{{$select.selected}}");
+        }
+
+        this.$compile($htmlContent)(this.$scope, (clone) => {
             this.$element.append(clone);
         });
 
