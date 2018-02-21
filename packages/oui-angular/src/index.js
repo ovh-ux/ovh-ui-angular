@@ -14,6 +14,7 @@ import "@oui-angular/oui-navbar/src";
 import "@oui-angular/oui-modal/src";
 import "@oui-angular/oui-field/src";
 import "@oui-angular/oui-radio-group/src";
+import "@oui-angular/oui-radio-toggle/src";
 import "@oui-angular/oui-select/src";
 
 angular.module("oui", [
@@ -33,5 +34,6 @@ angular.module("oui", [
     "oui.modal",
     "oui.field",
     "oui.radio-group",
+    "oui.radio-toggle",
     "oui.select"
 ]);

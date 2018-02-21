@@ -28,6 +28,7 @@ export default class {
             this.id = `oui-radio-${this.$scope.$id}`;
         }
 
+        this.group = this.radioGroup || this.radioToggle;
         if (this.group) {
             this.name = this.group.name;
             this.$scope.$watch("$ctrl.group.model", (value) => {
