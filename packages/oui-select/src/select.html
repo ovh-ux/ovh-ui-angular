@@ -1,9 +1,12 @@
 <ui-select name="{{::$ctrl.name}}"
+        class="oui-field__component"
         ng-model="$ctrl.model"
         search-enabled="false"
         ng-attr-title="{{::$ctrl.title}}"
         ng-required="$ctrl.required"
-        ng-disabled="$ctrl.disabled">
+        ng-disabled="$ctrl.disabled"
+        on-blur="$ctrl.onUiSelectBlur()"
+        on-focus="$ctrl.onUiSelectFocus()">
     <ui-select-match placeholder="{{::$ctrl.placeholder}}"></ui-select-match>
     <ui-select-choices repeat="$item in $ctrl.items track by $index"></ui-select-choices>
 </ui-select>

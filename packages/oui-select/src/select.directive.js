@@ -2,6 +2,10 @@ import controller from "./select.controller";
 import template from "./select.html";
 
 export default () => ({
+    require: {
+        fieldCtrl: "?^^ouiField",
+        selectCtrl: "ouiSelect"
+    },
     controller,
     controllerAs: "$ctrl",
     bindToController: true,
@@ -15,7 +19,9 @@ export default () => ({
         items: "<",
         match: "@",
         groupBy: "<?",
-        align: "@?"
+        align: "@?",
+        onBlur: "&?",
+        onFocus: "&?"
     },
     compile: ($element, $attrs) => {
         const itemTemplate = $element.html();
@@ -33,7 +39,7 @@ export default () => ({
         const htmlContent = $template[0].outerHTML;
         $element.empty();
 
-        return (scope, elem, attrs, selectCtrl) => {
+        return (scope, elem, attrs, { selectCtrl }) => {
             selectCtrl.htmlContent = htmlContent;
         };
     }

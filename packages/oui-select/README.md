@@ -68,4 +68,6 @@
 | `group-by`        | function                | <?      |                  |                           |                     | function taking an item as parameter and returning the group name as as string                   |
 | `match`           | string                  | @       |                  |                           |                     | property of item to show as selected item         |
 | `data-align`      | string                  | @?      |                  | `start`, `end`            | `start`             | dropdown alignment                                |
+| `on-blur`         | string                  | &?      |                  |                           |                     | called focus is lost                              |
+| `on-focus`        | string                  | &?      |                  |                           |                     | called on focus                                   |
 
