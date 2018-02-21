@@ -1,5 +1,6 @@
 import { getAttribute, hasAttributeValue } from "@oui-angular/common/component-utils";
 
+const LABEL_SELECTOR = ".oui-field__label";
 const CUSTOM_ELEMENT_CLASS = "oui-field__component";
 
 const CONTROLS_SELECTORS = [
@@ -88,7 +89,27 @@ export default class FieldController {
                 // Retrieve all validation parameters by field name.
                 this.validationParameters[name] = FieldController.getValidationParameters(this.controls[name][0]);
             });
+
+            // Handle click on label to set focus on form element.
+            this.label = angular.element(this.$element[0].querySelector(LABEL_SELECTOR));
+            this.label.on("click", () => {
+                this.$scope.$broadcast("oui:focus");
+            });
         });
+    }
+
+    $destroy () {
+        Object.keys(this.controls).forEach(name => {
+            const namedControls = this.controls[name];
+            namedControls.forEach(control => {
+                angular.element(control).off("blur");
+                angular.element(control).off("focus");
+            });
+        });
+
+        if (this.label) {
+            this.label.off("click");
+        }
     }
 
     bindDOMEvents (controlElement, name) {
@@ -122,16 +143,6 @@ export default class FieldController {
             this.isErrorVisible = false;
             angular.element(controlElement).removeClass(FieldController.getErrorClass(controlElement));
             this.$ouiFieldElement.removeClass("oui-field_error");
-        });
-    }
-
-    $destroy () {
-        Object.keys(this.controls).forEach(name => {
-            const namedControls = this.controls[name];
-            namedControls.forEach(control => {
-                angular.element(control).off("blur");
-                angular.element(control).off("focus");
-            });
         });
     }
 
