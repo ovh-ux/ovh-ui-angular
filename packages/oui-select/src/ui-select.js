@@ -1161,6 +1161,14 @@ uis.directive('uiSelect',
 
         $select.onSelectCallback = $parse(attrs.onSelect);
         $select.onRemoveCallback = $parse(attrs.onRemove);
+        $select.onBlurCallback = $parse(attrs.onBlur);
+        $select.onFocusCallback = $parse(attrs.onFocus);
+        $select.onBlur = function() {
+            $select.onBlurCallback(scope);
+        };
+        $select.onFocus = function() {
+            $select.onFocusCallback(scope);
+        };
 
         //Set reference to ngModel from uiSelectCtrl
         $select.ngModel = ngModel;
@@ -2120,6 +2128,7 @@ uis.directive('uiSelectSingle', ['$timeout','$compile', function($timeout, $comp
         locals[$select.parserResult.itemName] = item;
 
         $timeout(function() {
+          console.log("SELECT", scope.$ctrl);
           $select.onSelectCallback(scope, {
             $item: item,
             $model: isNil(item) ? item : $select.parserResult.modelMapper(scope, locals)
