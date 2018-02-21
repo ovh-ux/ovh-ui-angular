@@ -105,6 +105,20 @@
         <i class="oui-icon oui-icon-chevron-down" aria-hidden="true"></i>
     </label>
 </oui-field>
+
+<oui-field label="{{'Recovery OS'}}">
+    <oui-select name="recovery_os"
+        model="$ctrl.recoveryOs"
+        data-title="Select the recovery OS"
+        placeholder="Select the recovery OS..."
+        items="$ctrl.osList"
+        required
+        match="label"
+        data-align="start">
+        <span ng-bind="$item.label"></span>
+    </oui-select>
+</oui-field>
+</form>
 ```
 
 ### Input numeric
