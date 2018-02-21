@@ -2132,7 +2132,6 @@ uis.directive('uiSelectSingle', ['$timeout','$compile', function($timeout, $comp
         locals[$select.parserResult.itemName] = item;
 
         $timeout(function() {
-          console.log("SELECT", scope.$ctrl);
           $select.onSelectCallback(scope, {
             $item: item,
             $model: isNil(item) ? item : $select.parserResult.modelMapper(scope, locals)
