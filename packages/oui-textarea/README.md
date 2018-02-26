@@ -11,7 +11,8 @@
     model="$ctrl.text1"
     id="text-1"
     name="text-1"
-    placeholder="Please insert your text..."></oui-textarea>
+    placeholder="Please insert your text..."
+    rows="7"></oui-textarea>
 ```
 
 ### Validations
@@ -70,6 +71,7 @@ Has model changed? {{$ctrl.changed}}
 | `id`                | string   | @?      | yes              |                        |                     | id attribute of the radio                        |
 | `name`              | string   | @?      | yes              |                        |                     | name attribute of the textarea                   |
 | `placeholder`       | string   | @?      | yes              |                        |                     | placeholder attribute of the textarea            |
+| `rows`              | string   | @?      | yes              |                        |                     | number of displayed rows without scrolling       |
 | `disabled`          | boolean  | <?      |                  | `true`, `false`        | `false`             | disabled flag                                    |
 | `readonly`          | boolean  | <?      |                  | `true`, `false`        | `false`             | readonly flag                                    |
 | `minlength`         | number   | <?      |                  |                        |                     | min length of the model value                    |

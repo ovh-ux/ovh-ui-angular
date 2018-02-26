@@ -9,6 +9,7 @@ export default {
         id: "@?",
         name: "@?",
         placeholder: "@?",
+        rows: "@?",
         disabled: "<?",
         readonly: "<?",
         minlength: "<?",
