@@ -80,8 +80,8 @@
                 ng-if="::!!asideLink.iconClass"
                 ng-class="::'navbar-' + asideLink.iconClass">
                 <span class="oui-icon__badge"
-                    ng-if="::!!asideLink.subLinks && (asideLink.subLinks | filter: {isUnread: 'true'}).length"
-                    ng-bind="::(asideLink.subLinks | filter: {isUnread: 'true'}).length">
+                    ng-if="::!!asideLink.subLinks && (asideLink.subLinks | filter: {isActive: 'true'}).length"
+                    ng-bind="::(asideLink.subLinks | filter: {isActive: 'true'}).length">
                 </span>
             </span>
             <span ng-bind="::asideLink.title"></span>
@@ -90,17 +90,18 @@
         <!-- Notifications Menu -->
         <div ng-switch-when="notifications"
             class="oui-navbar-menu oui-navbar-menu_fixed oui-navbar-menu_notifications oui-navbar-menu_right">
-            <header class="oui-navbar-menu__header oui-navbar_desktop-only"
+            <header class="oui-navbar-menu__header oui-navbar_mobile-only"
+                ng-if="::!asideLink.headerTemplate">
+                <h3 class="oui-navbar-menu__title" ng-bind="::asideLink.headerTitle || asideLink.title"></h3>
+            </header>
+            <header class="oui-navbar-menu__header oui-navbar_mobile-only"
                 ng-if="::!!asideLink.headerTemplate"
                 ng-bind-html="::asideLink.headerTemplate">
-            </header>
-            <header class="oui-navbar-menu__header oui-navbar_mobile-only">
-                <h3 class="oui-navbar-menu__title" ng-bind="::asideLink.title"></h3>
             </header>
             <div class="oui-navbar-menu__body oui-navbar-list">
                 <a class="oui-navbar-menu__item"
                     ng-repeat="subLink in ::asideLink.subLinks | limitTo: asideLink.limitTo"
-                    ng-class="::!!subLink.isUnread ? 'oui-navbar-menu__item_active' : null"
+                    ng-class="::!!subLink.isActive ? 'oui-navbar-menu__item_active' : null"
                     ng-click="$ctrl.toggleMenu()"
                     ng-href="{{::subLink.url}}"
                     ng-bind-html="::subLink.template"
@@ -108,7 +109,7 @@
                 </a>
             </div>
             <footer class="oui-navbar-menu__footer"
-                ng-if="::!asideLink.footerTemplate">
+                ng-if="::!asideLink.footerTemplate && !!asideLink.footerTitle">
                 <a class="oui-button oui-button_secondary"
                     ng-click="$ctrl.toggleMenu()"
                     ng-href="{{::asideLink.footerUrl}}"
@@ -142,7 +143,8 @@
             class="oui-navbar-menu_fixed oui-navbar-menu_right"
             children-class="oui-navbar-menu_fixed oui-navbar-menu_right"
             header-class="oui-navbar_mobile-only"
-            header-title="{{::asideLink.title}}"
+            header-breadcrumb="{{::!!asideLink.headerBreadcrumb ? asideLink.headerBreadcrumb : null}}"
+            header-title="{{::asideLink.headerTitle || asideLink.title}}"
             name="{{::asideLink.name}}"
             links="::asideLink.subLinks"
             navigation="$ctrl.navigation"
