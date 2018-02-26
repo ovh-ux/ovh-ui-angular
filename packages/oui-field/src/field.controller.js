@@ -1,9 +1,15 @@
 import { getAttribute, hasAttributeValue } from "@oui-angular/common/component-utils";
 
+const LABEL_SELECTOR = ".oui-field__label";
+const CUSTOM_ELEMENT_CLASS = "oui-field__component";
+
 const CONTROLS_SELECTORS = [
     "input",
     "select",
-    "textarea"
+    "textarea",
+
+    // Class set on custom components only.
+    `.${CUSTOM_ELEMENT_CLASS}`
 ];
 
 const ERROR_CLASSES = {
@@ -35,6 +41,7 @@ export default class FieldController {
         this.currentErrorField = null;
         this.ids = [];
         this.validationParameters = {};
+        this.isErrorVisible = false;
     }
 
     $postLink () {
@@ -60,7 +67,7 @@ export default class FieldController {
                 this.for = this.ids[0];
             }
 
-            const $ouiFieldElement = angular.element(this.$element[0].querySelector(".oui-field"));
+            this.$ouiFieldElement = angular.element(this.$element[0].querySelector(".oui-field"));
 
             Object.keys(this.controls).forEach(name => {
                 const namedControls = this.controls[name];
@@ -72,23 +79,21 @@ export default class FieldController {
 
                 // Manage the way the error are shown on the field.
                 namedControls.forEach(control => {
-                    angular.element(control).on("blur", () => {
-                        if (this.form[name].$invalid) {
-                            angular.element(control).addClass(FieldController.getErrorClass(control));
-                            $ouiFieldElement.addClass("oui-field_error");
-                        }
-                    });
-
-                    angular.element(control).on("focus", () => {
-                        this.form[name].$touched = false;
-                        this.$scope.$apply();
-                        angular.element(control).removeClass(FieldController.getErrorClass(control));
-                        $ouiFieldElement.removeClass("oui-field_error");
-                    });
+                    // Avoid binding DOM events
+                    if (angular.element(control).hasClass(CUSTOM_ELEMENT_CLASS)) {
+                        return;
+                    }
+                    this.bindDOMEvents(control, name);
                 });
 
                 // Retrieve all validation parameters by field name.
                 this.validationParameters[name] = FieldController.getValidationParameters(this.controls[name][0]);
+            });
+
+            // Handle click on label to set focus on form element.
+            this.label = angular.element(this.$element[0].querySelector(LABEL_SELECTOR));
+            this.label.on("click", () => {
+                this.$scope.$broadcast("oui:focus");
             });
         });
     }
@@ -101,26 +106,44 @@ export default class FieldController {
                 angular.element(control).off("focus");
             });
         });
+
+        if (this.label) {
+            this.label.off("click");
+        }
     }
 
-    isErrorVisible () {
-        // this.form can be null during form initialization.
-        if (!this.form) {
-            return false;
-        }
+    bindDOMEvents (controlElement, name) {
+        angular.element(controlElement).on("blur", () => {
+            this.showErrors(controlElement, name);
+        });
 
-        const names = Object.keys(this.controls);
-        for (let i = 0; i < names.length; ++i) {
-            if (this.form[names[i]].$invalid && this.form[names[i]].$touched) {
-                // Save the field in error to display the correct parameter in message
-                // so that the displayed error is related to the last touched control.
-                // See FieldController.getErrorMessage.
-                this.currentErrorField = names[i];
-                return true;
+        angular.element(controlElement).on("focus", () => {
+            this.hideErrors(controlElement, name);
+        });
+    }
+
+    showErrors (controlElement, name) {
+        this.$timeout(() => {
+            if (this.form[name].$invalid) {
+                angular.element(controlElement).addClass(FieldController.getErrorClass(controlElement));
+                this.$ouiFieldElement.addClass("oui-field_error");
+                this.isErrorVisible = true;
+                this.currentErrorField = name;
+            } else {
+                angular.element(controlElement).removeClass(FieldController.getErrorClass(controlElement));
+                this.$ouiFieldElement.removeClass("oui-field_error");
+                this.isErrorVisible = false;
             }
-        }
+        });
+    }
 
-        return false;
+    hideErrors (controlElement, name) {
+        this.$timeout(() => {
+            this.form[name].$touched = false;
+            this.isErrorVisible = false;
+            angular.element(controlElement).removeClass(FieldController.getErrorClass(controlElement));
+            this.$ouiFieldElement.removeClass("oui-field_error");
+        });
     }
 
     getFirstError () {

@@ -83,6 +83,16 @@
         required>
     </textarea>
 </oui-field>
+
+<oui-field label="{{'Cluster description'}}">
+    <oui-textarea
+        model="$ctrl.text2"
+        id="description-2"
+        name="description-2"
+        placeholder="Please insert your text..."
+        maxlength="10"
+        required></oui-textarea>
+</oui-field>
 ```
 
 ### Select
@@ -105,6 +115,19 @@
         <i class="oui-icon oui-icon-chevron-down" aria-hidden="true"></i>
     </label>
 </oui-field>
+
+<oui-field label="{{'Recovery OS'}}">
+    <oui-select name="recovery_os"
+        model="$ctrl.recoveryOs"
+        data-title="Select the recovery OS"
+        placeholder="Select the recovery OS..."
+        items="$ctrl.osList"
+        required
+        match="label"
+        data-align="start">
+        <span ng-bind="$item.label"></span>
+    </oui-select>
+</oui-field>
 ```
 
 ### Input numeric
@@ -119,6 +142,7 @@
         min="1">
     </oui-numeric>
 </oui-field>
+</form>
 ```
 
 ## API

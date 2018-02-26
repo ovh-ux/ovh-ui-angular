@@ -195,5 +195,47 @@ describe("ouiSelect", () => {
                 expect(getItemsGroups(element).length).toEqual(groups.length);
             });
         });
+
+        describe("Blur on dropdown trigger", () => {
+            it("should call onBlur callback", () => {
+                const onBlur = jasmine.createSpy();
+                const element = TestUtils.compileTemplate(`
+                    <oui-select name="country"
+                        model="$ctrl.country"
+                        data-title="Select a country"
+                        placeholder="Select a country..."
+                        items="$ctrl.countries"
+                        match="name"
+                        on-blur="$ctrl.onBlur()">
+                        <span ng-bind="$item.name"></span>
+                    </oui-select>`, {
+                    onBlur
+                });
+
+                angular.element(getDropdownButton(element)).triggerHandler("blur");
+                expect(onBlur).toHaveBeenCalled();
+            });
+        });
+
+        describe("Blur on dropdown trigger", () => {
+            it("should call onFocus callback", () => {
+                const onFocus = jasmine.createSpy();
+                const element = TestUtils.compileTemplate(`
+                    <oui-select name="country"
+                        model="$ctrl.country"
+                        data-title="Select a country"
+                        placeholder="Select a country..."
+                        items="$ctrl.countries"
+                        match="name"
+                        on-focus="$ctrl.onFocus()">
+                        <span ng-bind="$item.name"></span>
+                    </oui-select>`, {
+                    onFocus
+                });
+
+                angular.element(getDropdownButton(element)).triggerHandler("focus");
+                expect(onFocus).toHaveBeenCalled();
+            });
+        });
     });
 });
