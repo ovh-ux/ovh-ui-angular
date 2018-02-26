@@ -8,30 +8,33 @@
         {
             "name": "lang",
             "title": "en-US",
+            "class": "oui-navbar-menu_language",
+            "headerTitle": "Language",
             "subLinks": [
                 {
                     "title": "de-DE",
-                    "url": "#!/oui-angular/navbar"
+                    "click": "callback()"
                 },
                 {
                     "title": "en-CA",
-                    "url": "#!/oui-angular/navbar"
+                    "click": "callback()"
                 },
                 {
                     "title": "en-EN",
-                    "url": "#!/oui-angular/navbar"
+                    "click": "callback()"
                 },
                 {
                     "title": "en-US",
-                    "url": "#!/oui-angular/navbar"
+                    "click": "callback()",
+                    "isActive": true
                 },
                 {
                     "title": "fr-CA",
-                    "url": "#!/oui-angular/navbar"
+                    "click": "callback()"
                 },
                 {
                     "title": "fr-FR",
-                    "url": "#!/oui-angular/navbar"
+                    "click": "callback()"
                 }
             ]
         },
@@ -45,7 +48,7 @@
                 "title": "Maecenas id ipsum suscipit",
                 "url": "#/",
                 "template": "Maecenas id ipsum suscipit, efficitur lectus non, <strong>tempor ante</strong>.",
-                "isUnread": true
+                "isActive": true
               },
               {
                 "title": "Vestibulum malesuada justo ac lectus tincidunt",
@@ -59,8 +62,7 @@
               }
             ],
             "limitTo": 10,
-            "headerTemplate": "<strong>Header template</strong>",
-            "footerTitle": "Footer title",
+            "footerTitle": "Maecenas facilisis",
             "footerUrl": "#/"
         },
         {

@@ -5,6 +5,7 @@ describe("ouiField", () => {
     beforeEach(angular.mock.module("oui.field"));
     beforeEach(angular.mock.module("oui.checkbox"));
     beforeEach(angular.mock.module("oui.radio"));
+    beforeEach(angular.mock.module("oui.select"));
     beforeEach(angular.mock.module("oui.test-utils"));
 
     beforeEach(inject((_$timeout_, _TestUtils_) => {
@@ -241,6 +242,9 @@ describe("ouiField", () => {
                 $control.triggerHandler("focus");
                 expect(getError(element)).toBeNull();
             });
+
+            // TODO
+            it("should show the right error message");
         });
 
         // We assume that if ouiField is able to find the form field,
@@ -290,6 +294,8 @@ describe("ouiField", () => {
                 expect(getControl(controller, "description")).toBeDefined();
             });
         });
+
+        // Custom components
 
         describe("with radio buttons", () => {
             it("should detect all the radio buttons", () => {
@@ -347,6 +353,116 @@ describe("ouiField", () => {
                 const controller = element.controller("ouiField");
                 expect(getControl(controller, "ssl")).toBeDefined();
                 expect(getControl(controller, "hsts")).toBeDefined();
+            });
+        });
+
+        describe("with oui-select", () => {
+            const getDropdownButton = element => element[0].querySelector(".oui-button_dropdown");
+            const getSelectController = element => element.find("oui-select").controller("ouiSelect");
+
+            it("should give focus to oui-select after on label click", () => {
+                const element = TestUtils.compileTemplate(`
+                    <oui-field label="{{'Recovery OS'}}">
+                        <oui-select name="recovery_os"
+                            model="$ctrl.model"
+                            data-title="Select the recovery OS"
+                            placeholder="Select the recovery OS..."
+                            items="$ctrl.list"
+                            match="label"
+                            data-align="start">
+                            <span ng-bind="$item.label"></span>
+                        </oui-select>
+                    </oui-field>
+                `, {
+                    list: [
+                        { name: "foo" },
+                        { name: "bar" }
+                    ]
+                });
+
+                const selectController = getSelectController(element);
+                const $label = angular.element(getLabel(element));
+
+                $timeout.flush();
+                selectController.uiSelectDropdownTrigger.focus = jasmine.createSpy();
+
+                $label.triggerHandler("click");
+                expect(selectController.uiSelectDropdownTrigger.focus).toHaveBeenCalled();
+            });
+
+            it("should show errors when blur is triggered on select", () => {
+                const element = TestUtils.compileTemplate(`
+                    <form>
+                        <oui-field label="{{'Recovery OS'}}">
+                            <oui-select name="recovery_os"
+                                model="$ctrl.model"
+                                data-title="Select the recovery OS"
+                                placeholder="Select the recovery OS..."
+                                items="$ctrl.list"
+                                match="label"
+                                data-align="start">
+                                <span ng-bind="$item.label"></span>
+                            </oui-select>
+                        </oui-field>
+                    </form>
+                `, {
+                    list: [
+                        { name: "foo" },
+                        { name: "bar" }
+                    ]
+                });
+
+                const $dropdownButton = angular.element(getDropdownButton(element));
+
+                expect(element[0].querySelector(".oui-field__error")).toBeNull();
+
+                // Pass the $postLink $timeout (ouiSelect).
+                $timeout.flush();
+                $dropdownButton.triggerHandler("blur");
+
+                // Pass the showErrors $timeout (ouiField).
+                $timeout.flush();
+
+                expect(element[0].querySelector(".oui-field__error")).toBeDefined();
+            });
+
+            it("should hide errors when focus is triggered on select", () => {
+                const element = TestUtils.compileTemplate(`
+                    <form>
+                        <oui-field label="{{'Recovery OS'}}">
+                            <oui-select name="recovery_os"
+                                model="$ctrl.model"
+                                data-title="Select the recovery OS"
+                                placeholder="Select the recovery OS..."
+                                items="$ctrl.list"
+                                match="label"
+                                data-align="start">
+                                <span ng-bind="$item.label"></span>
+                            </oui-select>
+                        </oui-field>
+                    </form>
+                `, {
+                    list: [
+                        { name: "foo" },
+                        { name: "bar" }
+                    ]
+                });
+
+                const $dropdownButton = angular.element(getDropdownButton(element));
+
+                $timeout.flush();
+
+                // Set errors visible
+                $dropdownButton.triggerHandler("blur");
+                $timeout.flush();
+                expect(element[0].querySelector(".oui-field__error")).toBeDefined();
+
+                $dropdownButton.triggerHandler("focus");
+
+                // Pass the showErrors $timeout (ouiField).
+                $timeout.flush();
+
+                expect(element[0].querySelector(".oui-field__error")).toBeNull();
             });
         });
 

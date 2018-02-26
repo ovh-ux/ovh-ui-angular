@@ -3,6 +3,8 @@
     ng-attr-aria-label="{{$select.baseTitle}} activate"
     ng-disabled="$select.disabled"
     ng-click="$select.activate()"
+    ng-blur="$select.onBlur()"
+    ng-focus="$select.onFocus()"
     class="oui-button oui-button_dropdown oui-dropdown__trigger">
     <span ng-show="$select.isEmpty()">{{$select.placeholder}}</span>
     <span ng-hide="$select.isEmpty()" ng-transclude></span>
