@@ -76,6 +76,17 @@ describe("ouiTextarea", () => {
             expect(textarea.getAttribute("placeholder")).toEqual(placeholder);
         });
 
+        it("should set the rows value on textarea", () => {
+            const rows = "7";
+            const element = TestUtils.compileTemplate(`
+                <oui-textarea
+                    rows="${rows}"></oui-textarea>
+            `);
+
+            const textarea = getTextarea(element);
+            expect(textarea.getAttribute("rows")).toEqual(rows);
+        });
+
         it("should react to focus and blur", () => {
             const element = TestUtils.compileTemplate(`
                 <oui-textarea></oui-textarea>
