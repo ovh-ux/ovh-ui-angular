@@ -19,6 +19,7 @@ loadTests(require.context("../../oui-radio-group/src/", true, /.*((\.spec)|(inde
 loadTests(require.context("../../oui-textarea/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-form-actions/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-search/src/", true, /.*((\.spec)|(index))$/));
+loadTests(require.context("../../oui-criteria-container/src/", true, /.*((\.spec)|(index))$/));
 
 function loadTests (context) {
     context.keys().forEach(context);
