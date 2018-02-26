@@ -13,6 +13,7 @@ import "@oui-angular/oui-datagrid/src";
 import "@oui-angular/oui-navbar/src";
 import "@oui-angular/oui-modal/src";
 import "@oui-angular/oui-field/src";
+import "@oui-angular/oui-radio-group/src";
 import "@oui-angular/oui-select/src";
 import "@oui-angular/oui-textarea/src";
 
@@ -32,6 +33,7 @@ angular.module("oui", [
     "oui.navbar",
     "oui.modal",
     "oui.field",
+    "oui.radio-group",
     "oui.select",
     "oui.textarea"
 ]);
