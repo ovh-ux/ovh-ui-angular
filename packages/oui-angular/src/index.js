@@ -18,6 +18,7 @@ import "@oui-angular/oui-select/src";
 import "@oui-angular/oui-textarea/src";
 import "@oui-angular/oui-form-actions/src";
 import "@oui-angular/oui-search/src";
+import "@oui-angular/oui-criteria-container/src";
 
 angular.module("oui", [
     "oui.button",
@@ -39,5 +40,6 @@ angular.module("oui", [
     "oui.select",
     "oui.textarea",
     "oui.form-actions",
-    "oui.search"
+    "oui.search",
+    "oui.criteria-container"
 ]);
