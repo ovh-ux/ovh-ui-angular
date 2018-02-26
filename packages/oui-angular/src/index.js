@@ -15,6 +15,7 @@ import "@oui-angular/oui-modal/src";
 import "@oui-angular/oui-field/src";
 import "@oui-angular/oui-select/src";
 import "@oui-angular/oui-textarea/src";
+import "@oui-angular/oui-form-actions/src";
 
 angular.module("oui", [
     "oui.button",
@@ -33,5 +34,6 @@ angular.module("oui", [
     "oui.modal",
     "oui.field",
     "oui.select",
-    "oui.textarea"
+    "oui.textarea",
+    "oui.form-actions"
 ]);
