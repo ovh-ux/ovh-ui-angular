@@ -24,3 +24,7 @@ contributed to ovh-ui-angular must be released under this license.
 
 When introducing a new file into the project, please make sure it has a
 copyright header making clear under which license it's being released.
+
+# Commits
+
+All commits in this project must follow this specific message convention: <https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit>
