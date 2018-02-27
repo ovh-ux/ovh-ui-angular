@@ -4,7 +4,8 @@ import template from "./field.html";
 export default {
     bindings: {
         label: "@?",
-        helpText: "@?"
+        helpText: "@?",
+        errorMessages: "<?"
     },
     controller,
     require: {

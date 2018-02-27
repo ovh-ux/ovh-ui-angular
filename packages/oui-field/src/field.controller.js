@@ -22,7 +22,8 @@ const VALIDATION_PARAMETERS = {
     min: ["min", "ng-min"],
     max: ["max", "ng-max"],
     minlength: ["minlength", "ng-minlength"],
-    maxlength: ["maxlength", "ng-maxlength"]
+    maxlength: ["maxlength", "ng-maxlength"],
+    custumValidation: ["pattern", "ng-pattern"]
 };
 
 export default class FieldController {
@@ -124,7 +125,7 @@ export default class FieldController {
 
     showErrors (controlElement, name) {
         this.$timeout(() => {
-            if (this.form[name].$invalid) {
+            if (this.form[name] && this.form[name].$invalid) {
                 angular.element(controlElement).addClass(FieldController.getErrorClass(controlElement));
                 this.$ouiFieldElement.addClass("oui-field_error");
                 this.isErrorVisible = true;
@@ -149,7 +150,7 @@ export default class FieldController {
     getFirstError () {
         const names = Object.keys(this.controls);
         for (let i = 0; i < names.length; ++i) {
-            if (this.form[names[i]].$invalid) {
+            if (this.form[names[i]] && this.form[names[i]].$invalid) {
                 return this.form[names[i]].$error;
             }
         }
@@ -157,8 +158,12 @@ export default class FieldController {
         return null;
     }
 
+    getMessageString (errorName) {
+        return (this.errorMessages && this.errorMessages[errorName]) || this.ouiFieldConfiguration.translations.errors[errorName];
+    }
+
     getErrorMessage (errorName) {
-        const message = this.ouiFieldConfiguration.translations.errors[errorName];
+        const message = this.getMessageString(errorName);
         const parameterValue = this.validationParameters[this.currentErrorField][errorName];
         return message.replace(`{{${errorName}}}`, parameterValue);
     }
