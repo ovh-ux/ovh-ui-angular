@@ -21,6 +21,28 @@ describe("ouiFormActions", () => {
         });
     });
 
+    describe("Provider", () => {
+        let ouiFormActions;
+
+        angular.module("test.formActionsConfig", [
+            "oui.form-actions"
+        ]).config(ouiFormActionsProvider => {
+            ouiFormActionsProvider.setTranslations({
+                submit: "Submit",
+                cancel: "Cancel"
+            });
+        });
+
+        beforeEach(inject(_ouiFormActions_ => {
+            ouiFormActions = _ouiFormActions_;
+        }));
+
+        it("should have custom values", () => {
+            expect(ouiFormActions.translations.submit).toEqual("Submit");
+            expect(ouiFormActions.translations.cancel).toEqual("Cancel");
+        });
+    });
+
     describe("Component", () => {
         it("should have right button classes", () => {
             const component = testUtils.compileTemplate(`
