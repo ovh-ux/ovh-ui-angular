@@ -1,3 +1,5 @@
+import { addBooleanParameter } from "@oui-angular/common/component-utils";
+
 export default class {
     constructor ($attrs, ouiFormActions) {
         "ngInject";
@@ -7,11 +9,7 @@ export default class {
     }
 
     $onInit () {
-        // Support presence of attribute 'disabled'
-        if (angular.isDefined(this.$attrs.disabled) && angular.isUndefined(this.disabled)) {
-            this.disabled = true;
-        }
-
+        addBooleanParameter(this, "disabled");
         this.processTranslations();
     }
 

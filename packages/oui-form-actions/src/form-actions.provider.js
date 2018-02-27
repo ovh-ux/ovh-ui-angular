@@ -6,10 +6,6 @@ export default class {
         };
     }
 
-    /**
-     * Set the translations for the pagination component
-     * @param {Object} translations a map of translations
-     */
     setTranslations (translations) {
         this.translations = translations;
         return this;

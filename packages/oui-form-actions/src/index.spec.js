@@ -1,25 +1,13 @@
 describe("ouiFormActions", () => {
-    let $componentController;
     let testUtils;
 
     beforeEach(angular.mock.module("oui.form-actions"));
     beforeEach(angular.mock.module("oui.test-utils"));
+    beforeEach(angular.mock.module("test.formActionsConfig"));
 
-    beforeEach(inject((_$componentController_, _TestUtils_) => {
-        $componentController = _$componentController_;
+    beforeEach(inject((_TestUtils_) => {
         testUtils = _TestUtils_;
     }));
-
-    describe("Controller", () => {
-        it("should exist", () => {
-            const ctrl = $componentController("ouiFormActions", {
-                $attrs: {},
-                $log: {}
-            });
-
-            expect(ctrl).toBeDefined();
-        });
-    });
 
     describe("Provider", () => {
         let ouiFormActions;
@@ -28,8 +16,8 @@ describe("ouiFormActions", () => {
             "oui.form-actions"
         ]).config(ouiFormActionsProvider => {
             ouiFormActionsProvider.setTranslations({
-                submit: "Submit",
-                cancel: "Cancel"
+                submit: "SubmitTest",
+                cancel: "CancelTest"
             });
         });
 
@@ -38,8 +26,11 @@ describe("ouiFormActions", () => {
         }));
 
         it("should have custom values", () => {
-            expect(ouiFormActions.translations.submit).toEqual("Submit");
-            expect(ouiFormActions.translations.cancel).toEqual("Cancel");
+            const submitTranslation = ouiFormActions.translations.submit;
+            const cancelTranslation = ouiFormActions.translations.cancel;
+
+            expect(submitTranslation).toEqual("SubmitTest");
+            expect(cancelTranslation).toEqual("CancelTest");
         });
     });
 
@@ -66,8 +57,8 @@ describe("ouiFormActions", () => {
             const submitButton = component.find("button").eq(0);
             const cancelButton = component.find("button").eq(1);
 
-            expect(submitButton.text().trim()).toBe("Submit");
-            expect(cancelButton.text().trim()).toBe("Cancel");
+            expect(submitButton.text().trim()).toBe("SubmitTest");
+            expect(cancelButton.text().trim()).toBe("CancelTest");
         });
 
         it("should display buttons with custom text values", () => {
@@ -99,19 +90,29 @@ describe("ouiFormActions", () => {
             expect(cancelButton.attr("disabled")).not.toBe("disabled");
         });
 
-        it("should trigger click on submit and cancel button", () => {
+        it("should trigger click on submit button", () => {
             const component = testUtils.compileTemplate(`
                 <oui-form-actions
                     on-submit="$ctrl.onSubmitTest()"
                     on-cancel="$ctrl.onCancelTest()">
                 </oui-form-actions>`, {
-                onSubmitTest: jasmine.createSpy("onSubmit"),
-                onCancelTest: jasmine.createSpy("onCancel")
+                onSubmitTest: jasmine.createSpy("onSubmit")
             });
             component.find("button").eq(0).triggerHandler("click");
-            component.find("button").eq(1).triggerHandler("click");
 
             expect(component.scope().$ctrl.onSubmitTest).toHaveBeenCalled();
+        });
+
+        it("should trigger click on cancel button", () => {
+            const component = testUtils.compileTemplate(`
+                <oui-form-actions
+                    on-submit="$ctrl.onSubmitTest()"
+                    on-cancel="$ctrl.onCancelTest()">
+                </oui-form-actions>`, {
+                onCancelTest: jasmine.createSpy("onCancel")
+            });
+            component.find("button").eq(1).triggerHandler("click");
+
             expect(component.scope().$ctrl.onCancelTest).toHaveBeenCalled();
         });
     });
