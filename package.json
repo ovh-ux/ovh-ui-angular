@@ -12,8 +12,12 @@
   "browser": "./dist/oui-angular.min.js",
   "module": "packages/oui-angular/src/index.js",
   "scripts": {
+    "commit": "npm-scripts-config commit",
+    "commitmsg": "npm-scripts-config commitmsg",
     "preversion": "npm build && git add dist",
+    "version": "npm-scripts-config version",
     "postversion": "git push && git push --tags",
+    "preview-changelog": "npm-scripts-config preview-changelog",
     "build": "npm run build:clean && npm run build:webpack",
     "build:clean": "rimraf dist",
     "build:webpack": "webpack --progress --colors --config build/webpack.dist.babel.js",
@@ -22,6 +26,11 @@
     "unit": "cross-env NODE_ENV=test babel-node node_modules/karma/bin/karma start build/karma.conf.js --reporters nyan,coverage --single-run",
     "unit:ci": "cross-env NODE_ENV=test babel-node node_modules/karma/bin/karma start build/karma.conf.js --reporters spec,coverage --single-run",
     "unit:watch": "cross-env NODE_ENV=test BABEL_ENV=test node -r babel-register node_modules/karma/bin/karma start build/karma.conf.js --watch"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   },
   "dependencies": {
     "popper.js": "^1.12.9"
@@ -74,6 +83,8 @@
     "minimist": "^1.2.0",
     "ng-annotate": "^1.2.2",
     "ng-annotate-loader": "^0.6.1",
+    "npm-scripts-config": "^0.0.1",
+    "npm-scripts-conventional-changelog": "^0.0.1",
     "opn": "^5.1.0",
     "portscanner": "^2.1.1",
     "postcss-loader": "^2.0.8",
