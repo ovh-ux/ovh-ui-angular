@@ -12,7 +12,8 @@ export default class DatagridRemotePaging extends DatagridPagingAbstract {
             $config: Object.assign({
                 offset: this.offset,
                 pageSize: this.pageSize,
-                sort: this.getSortingConfiguration()
+                sort: this.getSortingConfiguration(),
+                criteria: this.criteria
             }, {
                 skipSort
             })

@@ -1,3 +1,4 @@
+import "./filter.spec.js";
 import originalFakeData from "./index.spec.data.json";
 
 describe("ouiDatagrid", () => {
@@ -202,6 +203,58 @@ describe("ouiDatagrid", () => {
                         expect(getCell($row, 1).children().html()).toBe(lastName);
                     });
             });
+
+            describe("Filtering", () => {
+                describe("Text", () => {
+                    it("should filter text on a simple column", () => {
+                        const criteria = [{
+                            property: null, // any property
+                            operator: "contains",
+                            value: "aaron"
+                        }];
+                        const expectedResults = 2;
+
+                        const element = TestUtils.compileTemplate(`
+                                <oui-datagrid rows="$ctrl.rows">
+                                    <oui-column property="firstName" type="text"></oui-column>
+                                    <oui-column property="lastName"></oui-column>
+                                </oui-datagrid>
+                            `, {
+                            rows: fakeData
+                        });
+
+                        const tableController = element.controller("ouiDatagrid");
+                        tableController.onCriteriaChange(criteria);
+                        element.scope().$apply();
+
+                        expect(getRows(element).length).toEqual(expectedResults);
+                    });
+
+                    it("should filter text on a multiple columns", () => {
+                        const criteria = [{
+                            property: null, // any property
+                            operator: "contains",
+                            value: "ron"
+                        }];
+                        const expectedResults = 15;
+
+                        const element = TestUtils.compileTemplate(`
+                                <oui-datagrid rows="$ctrl.rows">
+                                    <oui-column property="firstName" type="text"></oui-column>
+                                    <oui-column property="lastName" type="text"></oui-column>
+                                </oui-datagrid>
+                            `, {
+                            rows: fakeData
+                        });
+
+                        const tableController = element.controller("ouiDatagrid");
+                        tableController.onCriteriaChange(criteria);
+                        element.scope().$apply();
+
+                        expect(getRows(element).length).toEqual(expectedResults);
+                    });
+                });
+            });
         });
 
         describe("Remote rows", () => {
@@ -363,6 +416,35 @@ describe("ouiDatagrid", () => {
                         dir: 1
                     }
                 }));
+            });
+
+            describe("Filtering", () => {
+                describe("Text", () => {
+                    it("should send criteria in rows-loader params", () => {
+                        const criteria = [{
+                            property: null, // any property
+                            operator: "contains",
+                            value: "aaron"
+                        }];
+
+                        const element = TestUtils.compileTemplate(`
+                                <oui-datagrid rows-loader="$ctrl.loadRows($config)">
+                                    <oui-column property="firstName" type="text"></oui-column>
+                                    <oui-column property="lastName"></oui-column>
+                                </oui-datagrid>
+                            `, {
+                            loadRows: rowsLoaderSpy
+                        });
+
+                        const tableController = element.controller("ouiDatagrid");
+                        tableController.onCriteriaChange(criteria);
+                        element.scope().$apply();
+
+                        expect(rowsLoaderSpy).toHaveBeenCalledWith(jasmine.objectContaining({
+                            criteria
+                        }));
+                    });
+                });
             });
         });
 
@@ -559,7 +641,7 @@ describe("ouiDatagrid", () => {
 
         it("should refresh when pagination has changed", () => {
             const element = TestUtils.compileTemplate(`
-                    <oui-datagrid rows="$ctrl.rows", page-size="2">
+                    <oui-datagrid rows="$ctrl.rows" page-size="2">
                         <oui-column property="firstName"></oui-column>
                         <oui-column property="lastName"></oui-column>
                     </oui-datagrid>

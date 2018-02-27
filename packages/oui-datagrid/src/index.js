@@ -8,6 +8,8 @@ angular
     .module("oui.datagrid", [
         "oui.pagination",
         "oui.dropdown",
+        "oui.criteria-container",
+        "oui.search",
         "ngAria"
     ])
     .service("ouiDatagridColumnBuilder", DatagridColumnBuilder)

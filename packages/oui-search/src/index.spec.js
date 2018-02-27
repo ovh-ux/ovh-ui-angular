@@ -2,7 +2,11 @@ describe("ouiSearch", () => {
     let $timeout;
     let testUtils;
 
+    const goodSearchText = "aa";
+    const tooShortSearchText = "a";
+
     beforeEach(angular.mock.module("oui.search"));
+    beforeEach(angular.mock.module("oui.criteria-container"));
     beforeEach(angular.mock.module("oui.test-utils"));
 
     beforeEach(inject((_$timeout_, _TestUtils_) => {
@@ -91,6 +95,141 @@ describe("ouiSearch", () => {
 
             component.find("form").triggerHandler("submit");
             expect(onSubmitSpy).toHaveBeenCalledWith("foo");
+        });
+    });
+
+    describe("With criteria container", () => {
+        describe("on submit", () => {
+            it("should add criterion in criteria container", () => {
+                const searchText = goodSearchText;
+                const onChangeSpy = jasmine.createSpy();
+                const element = testUtils.compileTemplate(`
+                    <oui-criteria-container on-change="$ctrl.onChangeSpy(modelValue)">
+                        <oui-search model="$ctrl.searchText"></oui-search>
+                    </oui-criteria-container>
+                `, {
+                    searchText,
+                    onChangeSpy
+                });
+
+                element.find("form").triggerHandler("submit");
+                expect(onChangeSpy).toHaveBeenCalledWith([{
+                    property: null,
+                    operator: "contains",
+                    value: searchText
+                }]);
+            });
+
+            it("should not add criterion in criteria container if the text is too short", () => {
+                const searchText = tooShortSearchText;
+                const onChangeSpy = jasmine.createSpy();
+                const element = testUtils.compileTemplate(`
+                    <oui-criteria-container on-change="$ctrl.onChangeSpy(modelValue)">
+                        <oui-search model="$ctrl.searchText"></oui-search>
+                    </oui-criteria-container>
+                `, {
+                    searchText,
+                    onChangeSpy
+                });
+
+                element.find("form").triggerHandler("submit");
+                expect(onChangeSpy).not.toHaveBeenCalled();
+            });
+        });
+
+        describe("on change", () => {
+            it("should add criterion in criteria container", () => {
+                const onChangeSpy = jasmine.createSpy();
+                const element = testUtils.compileTemplate(`
+                    <oui-criteria-container on-change="$ctrl.onChangeSpy(modelValue)">
+                        <oui-search model="$ctrl.searchText"></oui-search>
+                    </oui-criteria-container>
+                `, {
+                    onChangeSpy
+                });
+
+                const input = element.find("input");
+                input.val(goodSearchText);
+                input.triggerHandler("input");
+                expect(onChangeSpy).toHaveBeenCalledWith([{
+                    property: null,
+                    operator: "contains",
+                    value: goodSearchText,
+                    preview: true
+                }]);
+            });
+
+            it("should not add criterion in criteria container if text is too short", () => {
+                const onChangeSpy = jasmine.createSpy();
+                const element = testUtils.compileTemplate(`
+                    <oui-criteria-container on-change="$ctrl.onChangeSpy(modelValue)">
+                        <oui-search model="$ctrl.searchText"></oui-search>
+                    </oui-criteria-container>
+                `, {
+                    onChangeSpy
+                });
+
+                const input = element.find("input");
+                input.val(tooShortSearchText);
+                input.triggerHandler("input");
+                expect(onChangeSpy).not.toHaveBeenCalled();
+            });
+
+            it("should delete preview criterion if search becomes too short", () => {
+                const onChangeSpy = jasmine.createSpy();
+                const element = testUtils.compileTemplate(`
+                    <oui-criteria-container on-change="$ctrl.onChangeSpy(modelValue)">
+                        <oui-search model="$ctrl.searchText"></oui-search>
+                    </oui-criteria-container>
+                `, {
+                    onChangeSpy
+                });
+
+                const input = element.find("input");
+
+                // Add preview criterion.
+                input.val(goodSearchText);
+                input.triggerHandler("input");
+                expect(onChangeSpy).toHaveBeenCalledWith([{
+                    property: null,
+                    operator: "contains",
+                    value: goodSearchText,
+                    preview: true
+                }]);
+
+                input.val(tooShortSearchText);
+                input.triggerHandler("input");
+                expect(onChangeSpy).toHaveBeenCalledWith([]);
+            });
+        });
+
+        describe("on reset", () => {
+            it("should delete preview criterion", () => {
+                const onChangeSpy = jasmine.createSpy();
+                const element = testUtils.compileTemplate(`
+                    <oui-criteria-container on-change="$ctrl.onChangeSpy(modelValue)">
+                        <oui-search model="$ctrl.searchText"></oui-search>
+                    </oui-criteria-container>
+                `, {
+                    onChangeSpy
+                });
+
+                const input = element.find("input");
+                const resetButton = element.find("button").eq(0);
+
+                // Add preview criterion.
+                input.val(goodSearchText);
+                input.triggerHandler("input");
+                expect(onChangeSpy).toHaveBeenCalledWith([{
+                    property: null,
+                    operator: "contains",
+                    value: goodSearchText,
+                    preview: true
+                }]);
+
+                resetButton.triggerHandler("click");
+                expect(onChangeSpy).toHaveBeenCalledWith([]);
+            });
         });
     });
 });
