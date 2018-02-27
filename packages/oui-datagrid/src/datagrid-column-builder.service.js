@@ -1,6 +1,6 @@
 import { getAttribute, hasAttribute } from "@oui-angular/common/component-utils";
 
-const copyValueProperties = ["title"];
+const copyValueProperties = ["title", "type"];
 
 export default class DatagridColumnBuilder {
     constructor ($parse, $compile) {
@@ -39,6 +39,10 @@ export default class DatagridColumnBuilder {
                     column[propertyName] = getAttribute(columnElement, propertyName);
                 }
             });
+
+            if (column.type === "text") {
+                column.searchable = true;
+            }
 
             if (hasAttribute(columnElement, "title")) {
                 const titleValue = getAttribute(columnElement, "title");

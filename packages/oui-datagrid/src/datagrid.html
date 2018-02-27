@@ -1,4 +1,7 @@
 <div>
+    <oui-criteria-container on-change="$ctrl.onCriteriaChange(modelValue)">
+        <oui-search ng-if="$ctrl.isSearchTextVisible" model="$ctrl.searchText"></oui-search>
+    </oui-criteria-container>
     <div class="oui-datagrid-responsive-container"
         ng-class="::{
             'oui-datagrid-responsive-container_sticky-actions': $ctrl.hasActionMenu

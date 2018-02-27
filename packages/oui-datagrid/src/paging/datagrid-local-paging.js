@@ -1,4 +1,5 @@
 import DatagridPagingAbstract from "./datagrid-paging-abstract";
+import Filter from "../filter";
 
 export default class DatagridLocalPaging extends DatagridPagingAbstract {
     constructor (columns, currentSorting, pageSize, rowLoader, pagingService, rows) {
@@ -15,8 +16,12 @@ export default class DatagridLocalPaging extends DatagridPagingAbstract {
     }
 
     loadData (skipSort) {
+        this._filter();
+
         if (!skipSort) {
             this._sort();
+        } else {
+            this.sortedRows = this.filteredRows;
         }
 
         return this.$q.when({
@@ -42,8 +47,13 @@ export default class DatagridLocalPaging extends DatagridPagingAbstract {
             });
     }
 
+    _filter () {
+        const filter = new Filter(this.criteria, this.columns);
+        this.filteredRows = filter.applyFilter(this.rows);
+    }
+
     _sort () {
         const sortConfiguration = this.getSortingConfiguration();
-        this.sortedRows = this.orderByFilter(this.rows, sortConfiguration.property, sortConfiguration.dir < 0);
+        this.sortedRows = this.orderByFilter(this.filteredRows, sortConfiguration.property, sortConfiguration.dir < 0);
     }
 }

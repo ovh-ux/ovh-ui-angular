@@ -6,7 +6,7 @@
         ng-attr-name="{{::$ctrl.name}}"
         ng-attr-placeholder="{{::$ctrl.placeholder}}"
         ng-model="$ctrl.model"
-        ng-change="$ctrl.onChange({ modelValue: $ctrl.model })"
+        ng-change="$ctrl.onSearchChange()"
         ng-disabled="$ctrl.disabled" />
     <button class="oui-button" type="reset"
         ng-click="$ctrl.onSearchReset()"

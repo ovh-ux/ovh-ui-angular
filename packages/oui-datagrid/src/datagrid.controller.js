@@ -113,6 +113,11 @@ export default class DatagridController {
                 angular.element(this.scrollablePanel).on("scroll", this.checkScroll);
             }
         }
+
+        // Manage filter configuration
+        this.isSearchTextVisible = this.columns
+            .filter(column => column.searchable)
+            .length > 0;
     }
 
     $doCheck () {
@@ -145,6 +150,12 @@ export default class DatagridController {
         }
 
         return hasProperty(obj, prop);
+    }
+
+    onCriteriaChange (criteria) {
+        this.refreshData(() => {
+            this.paging.setCriteria(criteria);
+        }, false, false);
     }
 
     onPaginationChange ($event) {

@@ -14,7 +14,9 @@ export default merge(baseConfig, {
         new webpack.DefinePlugin({
             "process.env": process.env.NODE_ENV
         }),
-        new LodashModuleReplacementPlugin(), // Save bytes on Lodash
+        new LodashModuleReplacementPlugin({
+            paths: true
+        }), // Save bytes on Lodash
         new webpack.optimize.ModuleConcatenationPlugin(), // Enable scope hoisting
         new webpack.optimize.UglifyJsPlugin({
             sourceMap: true,

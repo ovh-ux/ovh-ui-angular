@@ -4,14 +4,31 @@
 
 ## Usage
 
-### Local data
+```html
+<oui-datagrid
+  page-size="..."
+  rows="..."
+  rows-loader="..."
+  row-loader="...">
+  <oui-column
+    title="..."
+    property="..."
+    sortable="..."
+    type="...">
+  </oui-column>
+</oui-datagrid>
+```
+
+## Examples
+
+### Local data, searchable
 
 ```html:preview
 <oui-datagrid
   rows="$ctrl.data"
   page-size="5">
-  <oui-column title="'First name'" property="firstName" sortable="asc"></oui-column>
-  <oui-column title="'Last name'" property="lastName" sortable></oui-column>
+  <oui-column title="'First name'" property="firstName" sortable="asc" type="text"></oui-column>
+  <oui-column title="'Last name'" property="lastName" sortable type="text"></oui-column>
   <oui-column title="'Mother'" property="parents.mother.lastName" sortable>
     {{$row.parents.mother.lastName}}, {{$row.parents.mother.firstName}}
   </oui-column>
@@ -35,8 +52,8 @@
   rows-loader="$ctrl.loadPartialData($config)"
   row-loader="$ctrl.loadRow($row)"
   page-size="5">
-  <oui-column title="'First name'" property="firstName" sortable="asc"></oui-column>
-  <oui-column title="'Last name'" property="lastName" sortable></oui-column>
+  <oui-column title="'First name'" property="firstName" sortable="asc" type="text"></oui-column>
+  <oui-column title="'Last name'" property="lastName" sortable type="text"></oui-column>
   <oui-column title="'Mother'" property="parents.mother.lastName" sortable>
     {{$row.parents.mother.lastName}}, {{$row.parents.mother.firstName}}
   </oui-column>
@@ -324,7 +341,7 @@ You can use `row-loader`. It take the current row as argument and must return a 
 | Attribute         | Type            | Binding | One-time binding | Values                    | Default             | Description                                       |
 | ----              | ----            | ----    | ----             | ----                      | ----                | ----                                              |
 | `page-size`       | number          | @?      |                  |                           | 25                  | maximum number of rows to show on each pages      |
-| `rows`            | array<object>   | <?      | yes              |                           |                     | rows to show                                      |
+| `rows`            | array           | <?      | yes              |                           |                     | rows to show                                      |
 | `rows-loader`     | function        | &?      | yes              |                           |                     | gets all rows (returns a promise with all rows)   |
 | `row-loader`      | function        | &?      | yes              |                           |                     | gets row details (returns a promise with details) |
 
@@ -336,12 +353,15 @@ You can use `row-loader`. It take the current row as argument and must return a 
 | `title`           | string          | N/A     | yes              |                           |                        | column title put in header                  |
 | `property`        | string          | N/A     | yes              |                           |                        | property path used to get value from value  |
 | `sortable`        | string          | N/A     | yes              | `asc`, `desc`             | `asc` on `sortable=""` | makes a column sortable and gives the order |
+| `type`            | string          | N/A     |                  | `text`                    | null                   | define a column type                        |
+
+If a column type is `text`, it will be searchable.
 
 ### rows-loader promise response
 
 | Attribute         | Type            | Binding | One-time binding | Values                    | Default             | Description                                                                                  |
 | ----              | ----            | ----    | ----             | ----                      | ----                | ----                                                                                         |
-| `data`            | array<object>   | <?      | yes              |                           |                     | rows to show                                                                                 |
+| `data`            | array           | <?      | yes              |                           |                     | rows to show                                                                                 |
 | `meta`            | object          | N/A     | yes              |                           |                     | an object containing pagination information { totalCount: X } |
 
 ### oui-action-menu

@@ -1,10 +1,14 @@
+import { findIndex } from "lodash";
+
 export default class CriteriaController {
     $onInit () {
         this.criteria = [];
     }
 
     triggerChange () {
-        this.onChange({ modelValue: this.criteria });
+        if (this.onChange) {
+            this.onChange({ modelValue: this.criteria });
+        }
     }
 
     indexOfCriterion (criterion) {
@@ -13,6 +17,25 @@ export default class CriteriaController {
             --criterionIndex;
         }
         return criterionIndex;
+    }
+
+    setPreviewCriterion (previewCriterion) {
+        const criterionIndex = findIndex(this.criteria, ["preview", true]);
+        previewCriterion.preview = true;
+        if (criterionIndex > -1) {
+            this.criteria[criterionIndex] = previewCriterion;
+        } else {
+            this.criteria.push(previewCriterion);
+        }
+        this.triggerChange();
+    }
+
+    deletePreviewCriterion () {
+        const previewCriterionIndex = findIndex(this.criteria, ["preview", true]);
+        if (previewCriterionIndex > -1) {
+            this.criteria.splice(previewCriterionIndex, 1);
+            this.triggerChange();
+        }
     }
 
     add (criterion) {

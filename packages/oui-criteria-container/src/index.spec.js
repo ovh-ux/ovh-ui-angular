@@ -1,8 +1,6 @@
 import CriteriaContainerController from "./criteria-container.controller";
 
-fdescribe("ouiCriteriaContainer", () => {
-    let TestUtils;
-
+describe("ouiCriteriaContainer", () => {
     const criterion = {
         property: "column1",
         operator: "equal",
@@ -15,12 +13,22 @@ fdescribe("ouiCriteriaContainer", () => {
         value: "test"
     };
 
+    const previewCriterion = {
+        property: "column3",
+        operator: "equal",
+        value: "test",
+        preview: true
+    };
+
+    const previewCriterion2 = {
+        property: "column3",
+        operator: "equal",
+        value: "anotherTest",
+        preview: true
+    };
+
     beforeEach(angular.mock.module("oui.criteria-container"));
     beforeEach(angular.mock.module("oui.test-utils"));
-
-    beforeEach(inject((_TestUtils_) => {
-        TestUtils = _TestUtils_;
-    }));
 
     describe("Controller", () => {
         let controller;
@@ -89,6 +97,31 @@ fdescribe("ouiCriteriaContainer", () => {
 
             controller.clear();
             expect(controller.criteria.length).toEqual(0);
+        });
+
+        describe("Preview criterion", () => {
+            it("should be added if nonexistent", () => {
+                expect(controller.criteria.length).toEqual(0);
+
+                controller.setPreviewCriterion(previewCriterion);
+                expect(controller.criteria.length).toEqual(1);
+            });
+
+            it("should be removed", () => {
+                controller.criteria.push(previewCriterion);
+                expect(controller.criteria.length).toEqual(1);
+
+                controller.deletePreviewCriterion();
+                expect(controller.criteria.length).toEqual(0);
+            });
+
+            it("should replace previous preview criterion", () => {
+                controller.criteria.push(previewCriterion);
+
+                controller.setPreviewCriterion(previewCriterion2);
+                expect(controller.criteria.length).toEqual(1);
+                expect(controller.criteria[0]).toEqual(previewCriterion2);
+            });
         });
     });
 });
