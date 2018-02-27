@@ -146,7 +146,7 @@ describe("ouiSelect", () => {
         });
 
         describe("Not grouped", () => {
-            it("should display all the choices", () => {
+            it("should display all the choices (objectArray)", () => {
                 const element = TestUtils.compileTemplate(`
                     <oui-select name="country"
                         model="$ctrl.country"
@@ -163,6 +163,25 @@ describe("ouiSelect", () => {
                 expect(getDropdownItems(element).length).toEqual(data.length);
                 expect(angular.element(getDropdownItem(element, 0)).text()).toContain(data[0].name);
                 expect(angular.element(getDropdownItem(element, data.length - 1)).text()).toContain(data[data.length - 1].name);
+                expect(getItemsGroups(element).length).toEqual(1);
+            });
+
+            it("should display all the choices (stringArray)", () => {
+                const stringArray = ["a", "b", "c"];
+                const element = TestUtils.compileTemplate(`
+                    <oui-select name="country"
+                        data-title="Select a country"
+                        model="$ctrl.country"
+                        items="$ctrl.array"
+                        data-align="start">
+                        <span ng-bind="$item"></span>
+                    </oui-select>`, {
+                    array: stringArray
+                });
+
+                expect(getDropdownItems(element).length).toEqual(stringArray.length);
+                expect(angular.element(getDropdownItem(element, 0)).text()).toContain(stringArray[0]);
+                expect(angular.element(getDropdownItem(element, stringArray.length - 1)).text()).toContain(stringArray[stringArray.length - 1]);
                 expect(getItemsGroups(element).length).toEqual(1);
             });
         });
