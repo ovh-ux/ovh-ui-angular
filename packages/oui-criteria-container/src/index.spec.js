@@ -1,6 +1,6 @@
 import CriteriaContainerController from "./criteria-container.controller";
 
-describe("ouiCriteriaContainer", () => {
+fdescribe("ouiCriteriaContainer", () => {
     let TestUtils;
 
     const criterion = {
@@ -21,20 +21,6 @@ describe("ouiCriteriaContainer", () => {
     beforeEach(inject((_TestUtils_) => {
         TestUtils = _TestUtils_;
     }));
-
-    describe("Component", () => {
-        it("should bind model to criteria in controller", () => {
-            const criteria = [criterion];
-            const element = TestUtils.compileTemplate(`
-                <oui-criteria-container model="$ctrl.criteria"></oui-criteria-container>
-            `, {
-                criteria
-            });
-
-            const controller = element.controller("ouiCriteriaContainer");
-            expect(controller.criteria[0]).toEqual(criterion);
-        });
-    });
 
     describe("Controller", () => {
         let controller;

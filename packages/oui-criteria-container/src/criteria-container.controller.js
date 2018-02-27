@@ -1,8 +1,6 @@
 export default class CriteriaController {
     $onInit () {
-        if (!this.criteria) {
-            this.criteria = [];
-        }
+        this.criteria = [];
     }
 
     triggerChange () {

@@ -5,7 +5,6 @@ export default {
     transclude: true,
     controller,
     bindings: {
-        criteria: "=model",
-        onChange: "&?"
+        onChange: "&"
     }
 };
