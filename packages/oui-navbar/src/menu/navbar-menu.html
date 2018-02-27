@@ -77,7 +77,7 @@
         <!-- Button for Next Level -->
         <button class="oui-navbar-link" type="button"
             aria-haspopup="true" aria-expanded="{{!!$ctrl.navigation[menuLink.name]}}"
-            ng-if="::!!menuLink.subLinks"
+            ng-if="::!!menuLink.subLinks && !!menuLink.subLinks.length"
             ng-attr-aria-label="{{::!!menuLink.label ? menuLink.label : null}}"
             ng-attr-title="{{::!!menuLink.label ? menuLink.label : null}}"
             ng-class="::{
@@ -92,8 +92,8 @@
         <!-- Button for Next Level -->
 
         <!-- Menu for Next Level -->
-        <oui-navbar-menu
-            ng-if="::!!menuLink.subLinks"
+        <oui-navbar-menu class="oui-navbar_mobile-only"
+            ng-if="::!!menuLink.subLinks && !!menuLink.subLinks.length"
             ng-class="::!!$ctrl.childrenClass ? $ctrl.childrenClass : null"
             children-class="{{::$ctrl.childrenClass}}"
             back-button="true"
