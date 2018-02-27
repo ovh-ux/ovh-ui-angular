@@ -47,4 +47,4 @@
 | `primary-label`     | string   | @?      | yes              |                        |                     | confirmation label                               |
 | `secondary-action`  | function | &?      |                  |                        |                     | cancellation callback                            |
 | `secondary-label`   | string   | @?      | yes              |                        |                     | cancellation label                               |
-| `on-close`          | function | &?      |                  |                        |                     | close callback                                   |
+| `on-dismiss`        | function | &?      |                  |                        |                     | dismiss callback                                   |
