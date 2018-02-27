@@ -354,6 +354,12 @@
                             "url": "#!/oui-angular/navbar"
                         }
                     ]
+                },
+                {
+                    "name": "empty",
+                    "label": "Not visible",
+                    "title": "Empty",
+                    "subLinks": []
                 }
             ]
         },
