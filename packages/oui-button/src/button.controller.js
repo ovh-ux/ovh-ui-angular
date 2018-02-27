@@ -1,3 +1,5 @@
+import { addBooleanParameter } from "@oui-angular/common/component-utils";
+
 export default class {
     constructor ($attrs, $element, $timeout) {
         "ngInject";
@@ -18,10 +20,7 @@ export default class {
             this.variant = "secondary";
         }
 
-        // Support presence of attribute 'disabled'
-        if (angular.isDefined(this.$attrs.disabled) && angular.isUndefined(this.disabled)) {
-            this.disabled = true;
-        }
+        addBooleanParameter(this, "disabled");
     }
 
     $postLink () {
