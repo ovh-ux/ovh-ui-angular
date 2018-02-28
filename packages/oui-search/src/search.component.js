@@ -11,9 +11,9 @@ export default {
 
         disabled: "<?",
 
-        onChange: "&?",
-        onReset: "&?",
-        onSubmit: "&?"
+        onChange: "&",
+        onReset: "&",
+        onSubmit: "&"
     },
     controller,
     template

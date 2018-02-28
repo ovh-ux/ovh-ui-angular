@@ -18,20 +18,6 @@
 </oui-search>
 ```
 
-## API
-
-| Attribute     | Type     | Binding | One-time Binding | Values    | Default   | Description                   |
-| ----          | ----     | ----    | ----             | ----      | ----      | ----                          |
-| model         | object   | =       |                  |           |           | model bound to component      |
-| id            | string   | @?      | true             |           |           | id attribute of the button    |
-| name          | string   | @?      | true             |           |           | name attribute of the button  |
-| placeholder   | string   | @?      | true             |           |           | placeholder text              |
-| aria-label    | string   | @?      | true             |           |           | accessibility label           |
-| disabled      | boolean  | <?      |                  |           | false     | disabled flag                 |
-| on-change     | function | &?      |                  |           |           | click handler                 |
-| on-reset      | function | &?      |                  |           |           | click handler                 |
-| on-submit     | function | &?      |                  |           |           | click handler                 |
-
 ## Examples
 
 ### Basic
@@ -89,3 +75,17 @@
     <p><strong>onReset count:</strong> {{$ctrl.resetCount}}</p>
 </div>
 ```
+
+## API
+
+| Attribute     | Type     | Binding | One-time Binding | Values    | Default   | Description                               |
+| ----          | ----     | ----    | ----             | ----      | ----      | ----                                      |
+| model         | object   | =       |                  |           |           | model bound to component                  |
+| id            | string   | @?      | true             |           |           | id attribute of the button                |
+| name          | string   | @?      | true             |           |           | name attribute of the button              |
+| placeholder   | string   | @?      | true             |           |           | placeholder text                          |
+| aria-label    | string   | @?      | true             |           |           | accessibility label                       |
+| disabled      | boolean  | <?      |                  |           | false     | disabled flag                             |
+| on-change     | function | &       |                  |           |           | handler triggered when model has changed  |
+| on-reset      | function | &       |                  |           |           | handler triggered when form is reseted    |
+| on-submit     | function | &       |                  |           |           | handler triggered when form is submitted  |

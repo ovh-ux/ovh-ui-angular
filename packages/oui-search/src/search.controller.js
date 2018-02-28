@@ -27,18 +27,12 @@ export default class {
 
     onSearchSubmit (modelValue) {
         this.model = undefined;
-
-        if (angular.isFunction(this.onSubmit)) {
-            this.onSubmit({ modelValue });
-        }
+        this.onSubmit({ modelValue });
     }
 
     onSearchReset () {
         // Since type="reset" doesn't reset the model
         this.model = undefined;
-
-        if (angular.isFunction(this.onReset)) {
-            this.onReset();
-        }
+        this.onReset();
     }
 }
