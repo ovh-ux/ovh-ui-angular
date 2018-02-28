@@ -74,7 +74,7 @@ fdescribe("ouiCriteriaContainer", () => {
             expect(controller.onChange).not.toHaveBeenCalled();
         });
 
-        it("should set all criterias", () => {
+        it("should set all criteria", () => {
             const criteria = [criterion, criterion2];
             expect(controller.criteria.length).toEqual(0);
 
@@ -82,7 +82,7 @@ fdescribe("ouiCriteriaContainer", () => {
             expect(controller.criteria.length).toEqual(2);
         });
 
-        it("should delete all criterias", () => {
+        it("should delete all criteria", () => {
             controller.criteria.push(criterion);
             controller.criteria.push(criterion2);
             expect(controller.criteria.length).toEqual(2);
