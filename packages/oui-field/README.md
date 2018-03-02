@@ -151,5 +151,5 @@
 
 | Attribute         | Type            | Binding | One-time binding | Values                    | Default             | Description                                       |
 | ----              | ----            | ----    | ----             | ----                      | ----                | ----                                              |
-| `helper-text`     | string          | @?      | yes              |                           |                     | the field label                                   |
+| `help-text`       | string          | @?      | yes              |                           |                     | the field label                                   |
 | `label`           | function        | @?      | yes              |                           |                     | a text to help fill the form field                |
