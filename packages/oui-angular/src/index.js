@@ -18,7 +18,6 @@ import "@oui-angular/oui-select/src";
 import "@oui-angular/oui-textarea/src";
 import "@oui-angular/oui-form-actions/src";
 import "@oui-angular/oui-search/src";
->>>>>>> :sparkles: feat(oui-search): add oui-search component
 
 angular.module("oui", [
     "oui.button",
