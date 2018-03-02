@@ -1,8 +1,6 @@
 import CriteriaContainerController from "./criteria-container.controller";
 
-fdescribe("ouiCriteriaContainer", () => {
-    let TestUtils;
-
+describe("ouiCriteriaContainer", () => {
     const criterion = {
         property: "column1",
         operator: "equal",
@@ -17,10 +15,6 @@ fdescribe("ouiCriteriaContainer", () => {
 
     beforeEach(angular.mock.module("oui.criteria-container"));
     beforeEach(angular.mock.module("oui.test-utils"));
-
-    beforeEach(inject((_TestUtils_) => {
-        TestUtils = _TestUtils_;
-    }));
 
     describe("Controller", () => {
         let controller;
