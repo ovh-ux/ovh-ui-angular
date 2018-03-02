@@ -20,6 +20,7 @@ import "@oui-angular/oui-textarea/src";
 import "@oui-angular/oui-form-actions/src";
 import "@oui-angular/oui-search/src";
 import "@oui-angular/oui-criteria-container/src";
+import "@oui-angular/oui-criteria-adder/src";
 
 angular.module("oui", [
     "oui.button",
@@ -43,5 +44,6 @@ angular.module("oui", [
     "oui.form-actions",
     "oui.search",
     "oui.criteria-container",
-    "oui.radio-toggle-group"
+    "oui.radio-toggle-group",
+    "oui.criteria-adder"
 ]);

@@ -3,6 +3,7 @@ export default class {
         this.translations = {
             errors: {
                 required: "Mandatory.",
+                number: "Invalid number.",
                 email: "Invalid email.",
                 min: "Too low ({{min}} min).",
                 max: "Too high ({{max}} max).",

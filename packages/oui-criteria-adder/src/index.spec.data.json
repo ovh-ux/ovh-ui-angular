@@ -1,0 +1,11 @@
+{
+    "properties": [{
+        "name": "example.string",
+        "title": "Example String",
+        "type": "string"
+    }, {
+        "name": "example.number",
+        "title": "Example Number",
+        "type": "number"
+    }]
+}
