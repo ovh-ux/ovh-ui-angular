@@ -17,6 +17,7 @@ import "@oui-angular/oui-radio-group/src";
 import "@oui-angular/oui-select/src";
 import "@oui-angular/oui-textarea/src";
 import "@oui-angular/oui-form-actions/src";
+import "@oui-angular/oui-search/src";
 
 angular.module("oui", [
     "oui.button",
@@ -37,5 +38,6 @@ angular.module("oui", [
     "oui.radio-group",
     "oui.select",
     "oui.textarea",
-    "oui.form-actions"
+    "oui.form-actions",
+    "oui.search"
 ]);
