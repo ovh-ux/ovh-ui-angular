@@ -1,0 +1,74 @@
+<oui-dropdown align="{{::$ctrl.align}}" class="oui-dropdown_criteria-adder" arrow>
+    <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width"
+        oui-dropdown-trigger>
+        <span class="oui-icon oui-icon-filter" aria-hidden="true"></span>
+    </button>
+    <oui-dropdown-content>
+        <form name="{{::$ctrl.name}}" novalidate
+            ng-attr-id="{{::$ctrl.id}}"
+            ng-submit="$ctrl.onFormSubmit(this[$ctrl.name])">
+
+            <!-- Column field -->
+            <oui-field label="{{::$ctrl.translations.column_label}}">
+                <label class="oui-select">
+                    <select class="oui-select__input" name="{{::$ctrl.name}}Column" required
+                        ng-attr-id="{{::$ctrl.id}}Column"
+                        ng-options="property as property.title
+                            for property in $ctrl.properties
+                            track by property.name"
+                        ng-change="$ctrl.onColumnChange()"
+                        ng-model="$ctrl.columnModel">
+                    </select>
+                    <i class="oui-icon oui-icon-chevron-down" aria-hidden="true"></i>
+                </label>
+            </oui-field>
+            <!-- /Column field -->
+
+            <!-- Condition field -->
+            <oui-field label="{{::$ctrl.translations.condition_label}}">
+                <label class="oui-select">
+                    <select class="oui-select__input" name="{{::$ctrl.name}}Condition" required
+                        ng-attr-id="{{::$ctrl.id}}Condition"
+                        ng-options="condition as condition.title
+                            for condition in $ctrl.getConditionsByType($ctrl.columnModel.type)
+                            track by condition.name"
+                        ng-model="$ctrl.conditionModel">
+                    </select>
+                    <i class="oui-icon oui-icon-chevron-down" aria-hidden="true"></i>
+                </label>
+            </oui-field>
+            <!-- /Condition field -->
+
+
+            <!-- Value field -->
+            <div ng-switch="$ctrl.columnModel.type">
+
+                <!-- String (Default) -->
+                <div ng-switch-default>
+                    <oui-field label="{{::$ctrl.translations.value_label}}">
+                        <input class="oui-input" type="text" name="{{::$ctrl.name}}Value"
+                            ng-attr-id="{{::$ctrl.id}}Value"
+                            ng-model="$ctrl.valueModel" required>
+                    </oui-field>
+                </div>
+                <!-- /String (Default) -->
+
+                <!-- Number -->
+                <div ng-switch-when="number">
+                    <oui-field label="{{::$ctrl.translations.value_label}}">
+                        <input class="oui-input" type="number" name="{{::$ctrl.name}}Value"
+                            ng-attr-id="{{::$ctrl.id}}Value"
+                            ng-model="$ctrl.valueModel" required>
+                    </oui-field>
+                </div>
+                <!-- /Number -->
+
+            </div>
+            <!-- /Value field -->
+
+            <button class="oui-button oui-button_primary oui-button_full-width" type="submit"
+                ng-bind="::$ctrl.translations.submit_label">
+            </button>
+        </form>
+    </oui-dropdown-content>
+</oui-dropdown>
