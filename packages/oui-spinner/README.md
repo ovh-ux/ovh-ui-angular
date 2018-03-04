@@ -4,12 +4,6 @@
 
 ## Usage
 
-```html
-<oui-spinner size="s|m|l"></oui-spinner>
-```
-
-## Examples
-
 ### Small
 ```html:preview
 <oui-spinner size="s"></oui-spinner>

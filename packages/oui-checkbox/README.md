@@ -4,33 +4,6 @@
 
 ## Usage
 
-```html
-<oui-checkbox
-  text="..."
-  description="..."
-  id="..."
-  name="..."
-  disabled="..."
-  model="..."
-  on-change="..."
-></oui-checkbox>
-```
-
-## API
-
-| Attribute     | Type                    | Binding | One-time Binding | Values                   | Default | Description
-| ----          | ----                    | ----    | ----             | ----                     | ----    | ----
-| text          | string                  | @       |                  |                          |         | checkbox text
-| description   | string                  | @?      |                  |                          |         | description text
-| id            | string                  | @?      | `true`           |                          |         | id attribute of the checkbox
-| name          | string                  | @?      | `true`           |                          |         | name attribute of the checkbox
-| disabled      | boolean                 | <?      |                  |                          | false   | disabled flag
-| model         | nullable&lt;boolean&gt; | =?      |                  | `true`, `false`, `null`  |         | current value of the checkbox and null is considered as `indeterminate`
-| required      | boolean                 | <?      |                  |                          | false   | `true` if the checkbox should be checked
-| on-change     | function                | &?      |                  |                          |         | handler triggered when value has changed
-
-## Examples
-
 ### Unchecked
 
 ```html:preview
@@ -94,3 +67,15 @@
 
 Needs to be done.
 
+## API
+
+| Attribute     | Type                    | Binding | One-time Binding | Values                   | Default | Description
+| ----          | ----                    | ----    | ----             | ----                     | ----    | ----
+| text          | string                  | @       |                  |                          |         | checkbox text
+| description   | string                  | @?      |                  |                          |         | description text
+| id            | string                  | @?      | `true`           |                          |         | id attribute of the checkbox
+| name          | string                  | @?      | `true`           |                          |         | name attribute of the checkbox
+| disabled      | boolean                 | <?      |                  |                          | false   | disabled flag
+| model         | nullable&lt;boolean&gt; | =?      |                  | `true`, `false`, `null`  |         | current value of the checkbox and null is considered as `indeterminate`
+| required      | boolean                 | <?      |                  |                          | false   | `true` if the checkbox should be checked
+| on-change     | function                | &?      |                  |                          |         | handler triggered when value has changed

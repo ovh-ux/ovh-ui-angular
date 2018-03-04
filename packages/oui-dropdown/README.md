@@ -2,7 +2,9 @@
 
 <component-status cx-design="complete" ux="rc"></component-status>
 
-## Centered by default with default trigger
+## Usage
+
+### Centered by default with default trigger
 
 ```html:preview
 <div style="text-align: center" class="oui-doc-preview-only-keep-children">
@@ -15,7 +17,7 @@
 </div>
 ```
 
-## Alignment
+### Alignment
 
 ```html:preview
 <div class="oui-doc-preview-only-keep-children">
@@ -40,7 +42,7 @@
 </div>
 ```
 
-## With arrow
+### With arrow
 
 ```html:preview
 <div class="oui-doc-preview-only-keep-children">

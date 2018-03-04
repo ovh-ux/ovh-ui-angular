@@ -2,8 +2,6 @@
 
 <component-status cx-design="complete" ux="rc"></component-status>
 
-
-
 ## Usage
 
 ### A few pages

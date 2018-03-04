@@ -4,18 +4,6 @@
 
 ## Usage
 
-```html
-<oui-radio-group
-  model="..."
-  name="...",
-  on-change="...">
-    <oui-radio/>
-    <oui-radio/>
-</oui-radio-group>
-```
-
-## Examples
-
 ### Default
 
 ```html:preview

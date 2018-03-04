@@ -4,21 +4,6 @@
 
 ## Usage
 
-```html
-<oui-radio
-  text="..."
-  description="..."
-  id="..."
-  name="..."
-  disabled="..."
-  model="..."
-  value="..."
-  on-change="..."
-></oui-radio>
-```
-
-## Examples
-
 ### Basic
 
 ```html:preview
