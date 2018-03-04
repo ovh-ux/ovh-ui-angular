@@ -4,15 +4,6 @@
 
 ## Usage
 
-```html
-<oui-form-actions
-  on-submit="$ctrl.submit()"
-  on-cancel="$ctrl.cancel()">
-</oui-form-actions>
-```
-
-## Examples
-
 ### Default
 
 ```html:preview

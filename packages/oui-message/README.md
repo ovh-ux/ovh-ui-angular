@@ -4,16 +4,6 @@
 
 ## Usage
 
-```html
-<oui-message
-    type="info|success|warning|error"
-    on-dismissed="..."
-    aria-close-button-label="...">
-</oui-message>
-```
-
-## Examples
-
 ### Information
 
 ```html:preview

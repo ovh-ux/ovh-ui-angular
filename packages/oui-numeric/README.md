@@ -4,20 +4,6 @@
 
 ## Usage
 
-```html
-<oui-numeric
-  id="..."
-  name="..."
-  model="..."
-  min="..."
-  max="..."
-  disabled|disabled="true|false"
-  on-change="...">
-</oui-numeric>
-```
-
-## Examples
-
 ### Default
 
 ```html:preview

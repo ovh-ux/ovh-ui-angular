@@ -4,26 +4,6 @@
 
 ## Usage
 
-```html
-<span
-  oui-tooltip="..."
-  oui-tooltip-placement="top|top-start|top-end|bottom|bottom-start|bottom-end"
->...</span>
-```
-
-## API
-
-| Attribute             | Type   | Binding | One-time Binding | Values                                               | Default   | Description       |
-| ----                  | ----   | ----    | ----             | ----                                                 | ----      | ----              |
-| oui-tooltip           | string | @       | true             |                                                      |           | tooltip text      |
-| oui-tooltip-placement | string | @?      | true             | top,top-start,top-end,bottom,bottom-start,bottom-end | top       | tooltip placement |
-
-## Accessibility
-
-If there is no `aria-label` attribute, the directive create one based on `oui-tooltip` on the trigger.
-
-## Examples
-
 ### On link
 
 ```html:preview
@@ -57,3 +37,16 @@ If there is no `aria-label` attribute, the directive create one based on `oui-to
 <input type="text" class="oui-input oui-input_inline" placeholder="Bottom Right" oui-tooltip="Tooltip on bottom right" oui-tooltip-placement="bottom-end">
 </div>
 ```
+
+## Accessibility
+
+If there is no `aria-label` attribute, the directive create one based on `oui-tooltip` on the trigger.
+
+## API
+
+| Attribute             | Type   | Binding | One-time Binding | Values                                               | Default   | Description       |
+| ----                  | ----   | ----    | ----             | ----                                                 | ----      | ----              |
+| oui-tooltip           | string | @       | true             |                                                      |           | tooltip text      |
+| oui-tooltip-placement | string | @?      | true             | top,top-start,top-end,bottom,bottom-start,bottom-end | top       | tooltip placement |
+
+

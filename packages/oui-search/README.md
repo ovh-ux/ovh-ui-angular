@@ -4,22 +4,6 @@
 
 ## Usage
 
-```html
-<oui-search
-    model="..."
-    id="..."
-    name="..."
-    placeholder="..."
-    aria-label="..."
-    disabled|disabled="true|false"
-    on-change="..."
-    on-reset="..."
-    on-submit="...">
-</oui-search>
-```
-
-## Examples
-
 ### Basic
 
 ```html:preview

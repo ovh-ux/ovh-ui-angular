@@ -4,22 +4,6 @@
 
 ## Usage
 
-```html
-<oui-datagrid
-  page-size="..."
-  rows="..."
-  rows-loader="..."
-  row-loader="...">
-  <oui-column
-    title="..."
-    property="..."
-    sortable="...">
-  </oui-column>
-</oui-datagrid>
-```
-
-## Examples
-
 ### Local data
 
 ```html:preview

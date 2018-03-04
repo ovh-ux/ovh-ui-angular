@@ -4,18 +4,6 @@
 
 ## Usage
 
-```html
-<oui-navbar
-    brand="..."
-    active-link="..."
-    main-links="..."
-    aside-links="..."
-    fixed|fixed="true|false"
-></oui-navbar>
-```
-
-### Example
-
 ```html:preview
 <div class="oui-doc-preview-only-keep-children" style="margin-bottom: 15px;">
 <oui-navbar

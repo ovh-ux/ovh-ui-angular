@@ -4,20 +4,6 @@
 
 ## Usage
 
-```html
-<oui-back-button
-    id="..."
-    name="..."
-    aria-label="..."
-    title="..."
-    on-click="...">
-</oui-back-button>
-```
-
-If ```on-click``` is not specified, the default action on user click will be angular's ```$window.history.back()```.
-
-## Examples
-
 ### Default
 
 ```html:preview
