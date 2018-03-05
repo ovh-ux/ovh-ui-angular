@@ -23,7 +23,7 @@ const VALIDATION_PARAMETERS = {
     max: ["max", "ng-max"],
     minlength: ["minlength", "ng-minlength"],
     maxlength: ["maxlength", "ng-maxlength"],
-    custumValidation: ["pattern", "ng-pattern"]
+    pattern: ["pattern", "ng-pattern"]
 };
 
 export default class FieldController {

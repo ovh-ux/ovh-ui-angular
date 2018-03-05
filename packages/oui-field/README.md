@@ -39,7 +39,7 @@
         id="username"
         name="username"
         ng-model="$ctrl.user.username"
-        ng-pattern="/^[a-z]{3,8}$/">
+        ng-pattern="/^[a-zA-Z]{3,8}$/">
 </oui-field>
 ```
 
@@ -158,22 +158,20 @@
 
 ## API
 
-### oui-datagrid
-
 | Attribute         | Type            | Binding | One-time binding | Values      | Default             | Description                                       |
 | ----              | ----            | ----    | ----             | ----        | ----                | ----                                              |
 | `error-messages`  | object          | <?      | no               |             |                     | a dictionary to override default messages         |
 | `help-text`       | string          | @?      | yes              |             |                     | the field label                                   |
 | `label`           | function        | @?      | yes              |             |                     | a text to help fill the form field                |
 
-### error-messages
+`error-messages` object can override error messages for validation.
 
-| Attribute         | Type            | Binding | One-time binding | Values      | Default                                   | Description                 |
-| ----              | ----            | ----    | ----             | ----        | ----                                      | ----                        |
-| `required`        | string          | <?      | no               |             | Mandatory.                                |                             |
-| `email`           | string          | <?      | no               |             | Invalid email.                            |                             |
-| `min`             | string          | <?      | no               |             | Too low (1 min).                          |                             |
-| `max`             | string          | <?      | no               |             | Too high (100 max).                       |                             |
-| `minlength`       | string          | <?      | no               |             | Too short (6 characters min).             |                             |
-| `maxlength`       | string          | <?      | no               |             | Too high (12 characters max).             |                             |
-| `pattern`         | string          | <?      | no               |             | Invalid format.                           |                             |
+| Attribute         | Type            | Default                                   |
+| ----              | ----            | ----                                      |
+| `required`        | string          | Mandatory.                                |
+| `email`           | string          | Invalid email.                            |
+| `min`             | string          | Too low (1 min).                          |
+| `max`             | string          | Too high (100 max).                       |
+| `minlength`       | string          | Too short (6 characters min).             |
+| `maxlength`       | string          | Too high (12 characters max).             |
+| `pattern`         | string          | Invalid format.                           |

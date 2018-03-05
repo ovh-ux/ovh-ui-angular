@@ -101,7 +101,7 @@ describe("ouiField", () => {
                                 id="username"
                                 name="username"
                                 ng-model="$ctrl.username"
-                                ng-pattern="/^[a-z]{3,8}$/">
+                                ng-pattern="/^[a-zA-Z]{3,8}$/">
                         </oui-field>
                     </form>
                     `);
@@ -552,6 +552,38 @@ describe("ouiField", () => {
 
                 expect(controller.getFirstError().minlength).toBeTruthy();
                 expect(controller.getErrorMessage("minlength")).toBe(message);
+            });
+
+            it("should give a message containing parameters", () => {
+                const messageMinlength = 5;
+
+                const element = TestUtils.compileTemplate(`
+                    <form name="form">
+                        <oui-field label="{{'username'}}">
+                            <input type="text"
+                                class="oui-input"
+                                type="text"
+                                id="username"
+                                name="username"
+                                ng-minlength="${messageMinlength}"
+                                ng-model="$ctrl.username">
+                        </oui-field>
+                    </form>
+                    `);
+
+                const controller = getField(element).controller("ouiField");
+
+                $timeout.flush();
+
+                const $control = getControl(controller, "username");
+                $control.val("abc");
+                $control.triggerHandler("input");
+                $control.triggerHandler("blur");
+
+                $timeout.flush();
+
+                expect(controller.getFirstError().minlength).toBeTruthy();
+                expect(controller.getErrorMessage("minlength")).toContain(messageMinlength);
             });
         });
     });
