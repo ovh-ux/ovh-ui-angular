@@ -18,16 +18,17 @@ export default class {
         this.isDropdownOpen = false;
         this.hasFocus = false;
         this.currentFocusedElement = null;
+        this.persistent = this.$attrs.persistent;
 
         addBooleanParameter(this, "arrow");
+        addBooleanParameter(this, "persistent");
         addDefaultParameter(this, "align", "center");
 
         // Use internal id to map trigger and content with aria-label and aria-labelledby.
         this.id = `oui-dropdown-${this.$scope.$id}`;
 
         this.documentClickHandler = evt => {
-            if (evt &&
-                evt.type === "click" &&
+            if ((evt && evt.type === "click") &&
                 this.referenceElement.contains(evt.target)) {
                 return;
             }
@@ -70,10 +71,6 @@ export default class {
         this.$scope.$on("$destroy", () => this.closeDropdown());
     }
 
-    isOpen () {
-        return this.isDropdownOpen;
-    }
-
     // Handle click, space key press and enter key press
     onTriggerClick () {
         this.toggle();
@@ -93,6 +90,7 @@ export default class {
         angular.element(this.$element.children()[0]).addClass("oui-dropdown_active");
         this.updatePopper();
         this.$document.on("click", this.documentClickHandler);
+        this.$scope.$broadcast("open", this.id);
     }
 
     closeDropdown () {
@@ -101,6 +99,7 @@ export default class {
         angular.element(this.$element.children()[0]).removeClass("oui-dropdown_active");
         this.destroyPopper();
         this.$document.off("click", this.documentClickHandler);
+        this.$scope.$broadcast("close", this.id);
     }
 
     createPopper () {
