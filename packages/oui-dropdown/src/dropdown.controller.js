@@ -18,7 +18,6 @@ export default class {
         this.isDropdownOpen = false;
         this.hasFocus = false;
         this.currentFocusedElement = null;
-        this.persistent = this.$attrs.persistent;
 
         addBooleanParameter(this, "arrow");
         addBooleanParameter(this, "persistent");
@@ -29,7 +28,8 @@ export default class {
 
         this.documentClickHandler = evt => {
             if ((evt && evt.type === "click") &&
-                this.referenceElement.contains(evt.target)) {
+                (this.referenceElement.contains(evt.target) ||
+                (this.persistent && this.popperElement.contains(evt.target)))) {
                 return;
             }
             this.referenceElement.focus();
@@ -48,13 +48,19 @@ export default class {
         };
 
         this.triggerBlurHandler = evt => {
+            // Disable blur management if dropdown is persitent.
+            if (this.persistent) {
+                return;
+            }
+
             if (!this.$element[0].contains(evt.relatedTarget)) {
                 // Sometime Angular is already in a digest loop here.
                 // Let's delay dropdown closing after that instead of $applying again.
                 this.$timeout(() => this.closeDropdown());
             }
 
-            // else blur is listen on another contained element
+            // This part allows to press tab and keeps dropdown open
+            // as long as focused element is in the dropdown.
             if (this.currentFocusedElement) {
                 angular.element(this.currentFocusedElement).off("blur", this.triggerBlurHandler);
             }
@@ -67,8 +73,10 @@ export default class {
         this.referenceElement = this.$element[0].querySelector(".oui-dropdown__trigger");
         this.popperElement = this.$element[0].querySelector(".oui-dropdown__content");
         this.arrowElement = this.$element[0].querySelector(".oui-dropdown__arrow");
+    }
 
-        this.$scope.$on("$destroy", () => this.closeDropdown());
+    $destroy () {
+        this.closeDropdown();
     }
 
     // Handle click, space key press and enter key press
@@ -89,15 +97,19 @@ export default class {
         this.isDropdownOpen = true;
         angular.element(this.$element.children()[0]).addClass("oui-dropdown_active");
         this.updatePopper();
+
         this.$document.on("click", this.documentClickHandler);
         this.$scope.$broadcast("open", this.id);
     }
 
     closeDropdown () {
+        debugger;
+
         // Don't use ng-class here, it could cause issue on positionning.
         this.isDropdownOpen = false;
         angular.element(this.$element.children()[0]).removeClass("oui-dropdown_active");
         this.destroyPopper();
+
         this.$document.off("click", this.documentClickHandler);
         this.$scope.$broadcast("close", this.id);
     }

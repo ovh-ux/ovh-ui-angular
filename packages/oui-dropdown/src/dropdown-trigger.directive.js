@@ -14,6 +14,7 @@ export default ($compile) => {
             ariaLabel: "@?",
             text: "@?"
         },
+        scope: {},
         link: (scope, element, attrs, ctrl) => {
             let triggerElement = element;
 
