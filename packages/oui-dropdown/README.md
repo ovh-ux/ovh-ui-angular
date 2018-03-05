@@ -102,8 +102,9 @@ Availability:
 
 | Attribute         | Type            | Binding | Values              | Default             | Description                        |
 | ----              | ----            | ----    | ----                | ----                | ----                               |
-| align             | string          | @?      | start,center,end    | center              | modifier for alignment             |
-| arrow             |                 | <?      |                     |                     | display the dropdown arrow         |
+| `align`           | string          | @?      | start,center,end    | center              | modifier for alignment             |
+| `arrow`           | boolean         | <?      | `true`, `false`     | `false`             | display the dropdown arrow         |
+| `persistent`      | boolean         | <?      | `true`, `false`     | `false`             | prevent dropdown to close on click |
 
 ### oui-dropdown-trigger
 
@@ -116,8 +117,8 @@ Availability:
 
 | Attribute         | Type            | Binding | Values              | Default             | Description                                         |
 | ----              | ----            | ----    | ----                | ----                | ----                                                |
-| text              | string          | @?      |                     | null                | display the default dropdown with this text         |
-| aria-label        | string          | @?      |                     | null                | accessibility label                                 |
+| `text`            | string          | @?      |                     | `null`              | display the default dropdown with this text         |
+| `aria-label`      | string          | @?      |                     | `null`              | accessibility label                                 |
 
 ### oui-dropdown-content
 
