@@ -47,7 +47,7 @@ export default class {
         }
 
         if (this.onChange) {
-            this.onChange(event);
+            this.$timeout(() => this.onChange(event));
         }
     }
 
