@@ -2,7 +2,7 @@ import defaultTriggerTemplate from "./dropdown-trigger-default.html";
 
 const dropdownTriggerClass = "oui-dropdown__trigger";
 
-export default ($compile, $document) => {
+export default ($compile) => {
     "ngInject";
 
     return {
@@ -14,7 +14,6 @@ export default ($compile, $document) => {
             ariaLabel: "@?",
             text: "@?"
         },
-        scope: {},
         link: (scope, element, attrs, ctrl) => {
             let triggerElement = element;
 
@@ -31,27 +30,36 @@ export default ($compile, $document) => {
             triggerElement.addClass(dropdownTriggerClass);
 
             triggerElement.attr("id", ctrl.id);
+            triggerElement.attr({ "aria-haspopup": true, "aria-expanded": false });
 
             triggerElement.on("click", () => ctrl.onTriggerClick());
             triggerElement.on("blur", evt => ctrl.triggerBlurHandler(evt));
 
-            triggerElement.attr({ "aria-haspopup": true, "aria-expanded": false });
-            scope.$watch(() => ctrl.isOpen(), open => {
-                triggerElement.attr("aria-expanded", !!open);
-
-                if (open) {
-                    // Force focus on Firefox
-                    triggerElement[0].focus();
-                    $document.on("keydown", evt => ctrl.triggerKeyHandler(evt));
-                } else {
-                    $document.off("keydown");
+            scope.$on("open", (e, id) => {
+                if (id !== ctrl.id) {
+                    return;
                 }
+
+                triggerElement.attr("aria-expanded", true);
+
+                // Force focus on Firefox
+                triggerElement[0].focus();
+                triggerElement.on("keydown", evt => ctrl.triggerKeyHandler(evt));
+            });
+
+            scope.$on("close", (e, id) => {
+                if (id !== ctrl.id) {
+                    return;
+                }
+
+                triggerElement.attr("aria-expanded", false);
+                triggerElement.off("keydown");
             });
 
             scope.$on("$destroy", () => {
                 triggerElement.off("click");
                 triggerElement.off("blur");
-                $document.off("keydown");
+                triggerElement.off("keydown");
             });
         }
     };
