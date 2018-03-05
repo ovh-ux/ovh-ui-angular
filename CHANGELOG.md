@@ -1,3 +1,21 @@
+<a name="2.5.0"></a>
+# [2.5.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.4.0...v2.5.0) (2018-03-05)
+
+
+### Bug Fixes
+
+* **oui-modal:** README error on-dismiss doc ([85d72ed](https://github.com/ovh-ux/ovh-ui-angular/commit/85d72ed))
+* **ouiButton:** use addBooleanParameter ([d2f0e0a](https://github.com/ovh-ux/ovh-ui-angular/commit/d2f0e0a))
+
+
+### Features
+
+* **field:** add custom error message and ng-pattern support ([#109](https://github.com/ovh-ux/ovh-ui-angular/issues/109)) ([f26267c](https://github.com/ovh-ux/ovh-ui-angular/commit/f26267c))
+* **oui-search:** add oui-search component ([97e9697](https://github.com/ovh-ux/ovh-ui-angular/commit/97e9697))
+* **oui-select:** support string array for items attribute ([b9fc139](https://github.com/ovh-ux/ovh-ui-angular/commit/b9fc139))
+
+
+
 <a name="2.4.0"></a>
 # [2.4.0]
 
