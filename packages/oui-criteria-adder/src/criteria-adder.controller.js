@@ -7,7 +7,7 @@ export default class {
         this.$attrs = $attrs; // For 'addDefaultParameter'
         this.$element = $element;
         this.$timeout = $timeout;
-        this.conditions = ouiCriteriaAdderConfiguration.conditionsByType;
+        this.operators = ouiCriteriaAdderConfiguration.operatorsByType;
         this.translations = ouiCriteriaAdderConfiguration.translations;
     }
 
@@ -32,11 +32,11 @@ export default class {
         });
     }
 
-    getConditionsByType (type) {
-        const conditions = this.conditions[type] || [];
-        return conditions.map((condition) => ({
-            name: condition,
-            title: this.translations[`condition_${type}_${condition}`]
+    getOperatorsByType (type) {
+        const operators = this.operators[type] || [];
+        return operators.map((operator) => ({
+            name: operator,
+            title: this.translations[`operator_${type}_${operator}`]
         }));
     }
 
@@ -48,9 +48,9 @@ export default class {
     onFormSubmit (form) {
         if (form.$valid) {
             const modelValue = {
-                title: `${this.columnModel.title} ${this.conditionModel.title} ${this.valueModel}`,
+                title: `${this.columnModel.title} ${this.operatorModel.title} ${this.valueModel}`,
                 property: this.columnModel.name,
-                condition: this.conditionModel.name,
+                operator: this.operatorModel.name,
                 value: this.valueModel
             };
 
