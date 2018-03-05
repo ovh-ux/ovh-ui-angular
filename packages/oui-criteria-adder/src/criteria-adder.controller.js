@@ -24,11 +24,12 @@ export default class {
     $postLink () {
         // Sometimes the digest cycle is done before dom manipulation,
         // So we use $timeout to force the $apply
-        this.$timeout(() =>
+        this.$timeout(() => {
             this.$element
+                .addClass("oui-criteria-adder")
                 .removeAttr("id")
-                .removeAttr("name")
-        );
+                .removeAttr("name");
+        });
     }
 
     getConditionsByType (type) {
