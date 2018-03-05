@@ -21,9 +21,9 @@ describe("ouiCriteriaAdder", () => {
         angular.module("test.configuration", [
             "oui.criteria-adder"
         ]).config(ouiCriteriaAdderConfigurationProvider => {
-            const conditionsByType = ouiCriteriaAdderConfigurationProvider.conditionsByType;
-            conditionsByType.foo = ["bar"];
-            ouiCriteriaAdderConfigurationProvider.setConditionsByType(conditionsByType);
+            const operatorsByType = ouiCriteriaAdderConfigurationProvider.operatorsByType;
+            operatorsByType.foo = ["bar"];
+            ouiCriteriaAdderConfigurationProvider.setOperatorsByType(operatorsByType);
 
             const translations = ouiCriteriaAdderConfigurationProvider.translations;
             translations.foo = "bar";
@@ -35,7 +35,7 @@ describe("ouiCriteriaAdder", () => {
         }));
 
         it("should have custom values", () => {
-            expect(configuration.conditionsByType.foo[0]).toEqual("bar");
+            expect(configuration.operatorsByType.foo[0]).toEqual("bar");
             expect(configuration.translations.foo).toEqual("bar");
         });
     });
@@ -102,37 +102,37 @@ describe("ouiCriteriaAdder", () => {
         it("should reset value of second field when first is changed", () => {
             const column = angular.element(component[0].querySelector("#fooColumn"));
             const columnOptions = column.children();
-            const condition = angular.element(component[0].querySelector("#fooCondition"));
-            const conditionOptions = condition.children();
+            const operator = angular.element(component[0].querySelector("#fooOperator"));
+            const operatorOptions = operator.children();
 
             // Apply changes of the form
-            condition.val(conditionOptions.eq(1).val());
-            condition.triggerHandler("change");
-            expect(condition.val()).toBe(conditionOptions.eq(1).val());
+            operator.val(operatorOptions.eq(1).val());
+            operator.triggerHandler("change");
+            expect(operator.val()).toBe(operatorOptions.eq(1).val());
             column.val(columnOptions.eq(1).val());
             column.triggerHandler("change");
-            expect(condition.val()).toBe("?");
+            expect(operator.val()).toBe("?");
         });
 
         it("should call function of onSubmit attribute, when form is submitted, with the model value", () => {
             const data = mockData.properties[0];
             const column = angular.element(component[0].querySelector("#fooColumn"));
-            const condition = angular.element(component[0].querySelector("#fooCondition"));
-            const conditionOptions = condition.children();
+            const operator = angular.element(component[0].querySelector("#fooOperator"));
+            const operatorOptions = operator.children();
             const value = angular.element(component[0].querySelector("#fooValue"));
 
             // Apply change on the form
-            condition.val(conditionOptions.eq(1).val());
-            condition.triggerHandler("change");
+            operator.val(operatorOptions.eq(1).val());
+            operator.triggerHandler("change");
             value.val("bar");
             value.triggerHandler("input");
 
             // Then submit
             component.find("form").triggerHandler("submit");
             expect(onSubmitSpy).toHaveBeenCalledWith({
-                title: `${data.title} ${condition.val()} ${value.val()}`,
+                title: `${data.title} ${operator.val()} ${value.val()}`,
                 property: column.val(),
-                condition: condition.val(),
+                operator: operator.val(),
                 value: value.val()
             });
         });

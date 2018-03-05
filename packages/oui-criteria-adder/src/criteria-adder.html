@@ -24,20 +24,20 @@
             </oui-field>
             <!-- /Column field -->
 
-            <!-- Condition field -->
-            <oui-field label="{{::$ctrl.translations.condition_label}}">
+            <!-- Operator field -->
+            <oui-field label="{{::$ctrl.translations.operator_label}}">
                 <label class="oui-select">
-                    <select class="oui-select__input" name="{{::$ctrl.name}}Condition" required
-                        ng-attr-id="{{::$ctrl.id}}Condition"
-                        ng-options="condition as condition.title
-                            for condition in $ctrl.getConditionsByType($ctrl.columnModel.type)
-                            track by condition.name"
-                        ng-model="$ctrl.conditionModel">
+                    <select class="oui-select__input" name="{{::$ctrl.name}}Operator" required
+                        ng-attr-id="{{::$ctrl.id}}Operator"
+                        ng-options="operator as operator.title
+                            for operator in $ctrl.getOperatorsByType($ctrl.columnModel.type)
+                            track by operator.name"
+                        ng-model="$ctrl.operatorModel">
                     </select>
                     <i class="oui-icon oui-icon-chevron-down" aria-hidden="true"></i>
                 </label>
             </oui-field>
-            <!-- /Condition field -->
+            <!-- /Operator field -->
 
 
             <!-- Value field -->
