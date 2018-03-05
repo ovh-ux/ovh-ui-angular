@@ -7,7 +7,8 @@ export default class {
                 min: "Too low ({{min}} min).",
                 max: "Too high ({{max}} max).",
                 minlength: "Too short ({{minlength}} characters min).",
-                maxlength: "Too high ({{maxlength}} characters max)."
+                maxlength: "Too high ({{maxlength}} characters max).",
+                pattern: "Invalid format."
             }
         };
     }

@@ -69,7 +69,7 @@ describe("ouiField", () => {
                 expect(getLabel(element)).toBeNull();
             });
 
-            it("should set the for attribute on label", () => {
+            it("should set the 'for' attribute on label", () => {
                 const id = "lastname";
 
                 const element = TestUtils.compileTemplate(`
@@ -88,6 +88,60 @@ describe("ouiField", () => {
                 $timeout.flush();
 
                 expect(getLabel(element).getAttribute("for")).toEqual(id);
+            });
+
+            it("should trigger error when invalid format", () => {
+
+                const element = TestUtils.compileTemplate(`
+                    <form name="form">
+                        <oui-field label="{{'username'}}">
+                            <input type="text"
+                                class="oui-input"
+                                type="text"
+                                id="username"
+                                name="username"
+                                ng-model="$ctrl.username"
+                                ng-pattern="/^[a-zA-Z]{3,8}$/">
+                        </oui-field>
+                    </form>
+                    `);
+                const controller = getField(element).controller("ouiField");
+
+                $timeout.flush();
+
+                const $control = getControl(controller, "username");
+                $control.val("ch@t12");
+                $control.triggerHandler("input");
+                $control.triggerHandler("blur");
+
+                expect(controller.getFirstError().pattern).toBeTruthy();
+            });
+
+            it("should trigger error when length too short", () => {
+
+                const element = TestUtils.compileTemplate(`
+                    <form name="form">
+                        <oui-field label="{{'username'}}">
+                            <input type="text"
+                                class="oui-input"
+                                type="text"
+                                id="username"
+                                name="username"
+                                minlength="6"
+                                ng-model="$ctrl.username">
+                        </oui-field>
+                    </form>
+                    `);
+                const controller = getField(element).controller("ouiField");
+
+                $timeout.flush();
+
+                const $control = getControl(controller, "username");
+                $control.val("abc");
+                $control.triggerHandler("input");
+                $control.triggerHandler("blur");
+
+                expect(controller.getFirstError().minlength).toBeTruthy();
             });
 
             it("should set the name of the form field in the controller", () => {
@@ -128,16 +182,16 @@ describe("ouiField", () => {
                             id="age"
                             name="age"
                             ng-model="$ctrl.user.age"
-                            min="{{$ctrl.validation.min}}"
-                            max="{{$ctrl.validation.max}}">
+                            ng-min="{{$ctrl.validation.min}}"
+                            ng-max="{{$ctrl.validation.max}}">
                         <input
                             class="oui-input"
                             type="text"
                             id="name"
                             name="name"
                             ng-model="$ctrl.user.name"
-                            minlength="{{$ctrl.validation.minlength}}"
-                            maxlength="{{$ctrl.validation.maxlength}}">
+                            ng-minlength="{{$ctrl.validation.minlength}}"
+                            ng-maxlength="{{$ctrl.validation.maxlength}}">
                     </oui-field>
                 `, {
                     validation
@@ -466,6 +520,72 @@ describe("ouiField", () => {
             });
         });
 
+        describe("with validation", () => {
+            it("should retrieve custom error messages", () => {
+                const message = "Username must be a least 6 characters.";
+
+                const element = TestUtils.compileTemplate(`
+                    <form name="form">
+                        <oui-field label="{{'username'}}"
+                            error-messages="{minlength: '${message}'}">
+                            <input type="text"
+                                class="oui-input"
+                                type="text"
+                                id="username"
+                                name="username"
+                                ng-minlength="6"
+                                ng-model="$ctrl.username">
+                        </oui-field>
+                    </form>
+                    `);
+
+                const controller = getField(element).controller("ouiField");
+
+                $timeout.flush();
+
+                const $control = getControl(controller, "username");
+                $control.val("abc");
+                $control.triggerHandler("input");
+                $control.triggerHandler("blur");
+
+                $timeout.flush();
+
+                expect(controller.getFirstError().minlength).toBeTruthy();
+                expect(controller.getErrorMessage("minlength")).toBe(message);
+            });
+
+            it("should give a message containing parameters", () => {
+                const messageMinlength = 5;
+
+                const element = TestUtils.compileTemplate(`
+                    <form name="form">
+                        <oui-field label="{{'username'}}">
+                            <input type="text"
+                                class="oui-input"
+                                type="text"
+                                id="username"
+                                name="username"
+                                ng-minlength="${messageMinlength}"
+                                ng-model="$ctrl.username">
+                        </oui-field>
+                    </form>
+                    `);
+
+                const controller = getField(element).controller("ouiField");
+
+                $timeout.flush();
+
+                const $control = getControl(controller, "username");
+                $control.val("abc");
+                $control.triggerHandler("input");
+                $control.triggerHandler("blur");
+
+                $timeout.flush();
+
+                expect(controller.getFirstError().minlength).toBeTruthy();
+                expect(controller.getErrorMessage("minlength")).toContain(messageMinlength);
+            });
+        });
     });
 
 });

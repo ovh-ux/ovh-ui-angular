@@ -30,6 +30,17 @@
         name="email"
         ng-model="$ctrl.user.email">
 </oui-field>
+
+<oui-field label="{{'Username'}}"
+    error-messages="{pattern: 'Username must be alphabetic with a length between 3 and 8.'}">
+    <input
+        class="oui-input"
+        type="text"
+        id="username"
+        name="username"
+        ng-model="$ctrl.user.username"
+        ng-pattern="/^[a-zA-Z]{3,8}$/">
+</oui-field>
 ```
 
 ### Checkbox
@@ -147,9 +158,20 @@
 
 ## API
 
-### oui-datagrid
+| Attribute         | Type            | Binding | One-time binding | Values      | Default             | Description                                       |
+| ----              | ----            | ----    | ----             | ----        | ----                | ----                                              |
+| `error-messages`  | object          | <?      | no               |             |                     | a dictionary to override default messages         |
+| `help-text`       | string          | @?      | yes              |             |                     | the field label                                   |
+| `label`           | function        | @?      | yes              |             |                     | a text to help fill the form field                |
 
-| Attribute         | Type            | Binding | One-time binding | Values                    | Default             | Description                                       |
-| ----              | ----            | ----    | ----             | ----                      | ----                | ----                                              |
-| `help-text`       | string          | @?      | yes              |                           |                     | the field label                                   |
-| `label`           | function        | @?      | yes              |                           |                     | a text to help fill the form field                |
+`error-messages` object can override error messages for validation.
+
+| Attribute         | Type            | Default                                   |
+| ----              | ----            | ----                                      |
+| `required`        | string          | Mandatory.                                |
+| `email`           | string          | Invalid email.                            |
+| `min`             | string          | Too low (1 min).                          |
+| `max`             | string          | Too high (100 max).                       |
+| `minlength`       | string          | Too short (6 characters min).             |
+| `maxlength`       | string          | Too high (12 characters max).             |
+| `pattern`         | string          | Invalid format.                           |
