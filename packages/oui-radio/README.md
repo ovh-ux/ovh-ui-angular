@@ -34,6 +34,17 @@
     disabled></oui-radio>
 ```
 
+### Thumbnail
+
+```html:preview
+<oui-radio text="Checked"
+    thumbnail="true"></oui-radio>
+<oui-radio text="Disabled"
+    description="Disabled radio"
+    disabled
+    thumbnail="true"></oui-radio>
+```
+
 ### On change
 
 ```html:preview
@@ -65,3 +76,4 @@
 | model         | Object                  | =?      |                  |                          |         | current value of the radio
 | value         | Object                  | <       |                  |                          |         | value of the radio
 | on-change     | function                | &?      |                  |                          |         | handler triggered when value has changed
+| thumbnail     | boolean                 | <?      |                  |                          | false   | thumbnail style of the radio

@@ -8,6 +8,7 @@ describe("ouiRadio", () => {
         TestUtils = _TestUtils_;
     }));
 
+    const getMainBlockElement = (element) => element[0].querySelector(":first-child");
     const getRadioInputElement = (element) => element[0].querySelector("input[type=radio]");
     const getRadioLabelElement = (element) => element[0].querySelector("label");
     const getRadioTextContainerElement = (element) => element[0].querySelector(".oui-radio__label span:first-child");
@@ -110,6 +111,40 @@ describe("ouiRadio", () => {
 
                 const radioElement = getRadioInputElement(element);
                 expect(angular.element(radioElement).prop("disabled")).toBe(false);
+            });
+        });
+
+        describe("thumbnail attribute", () => {
+            it("should display a classic radio when no attribute", () => {
+                const element = TestUtils.compileTemplate("<oui-radio></oui-radio>");
+
+                const mainBlockElement = getMainBlockElement(element);
+                expect(angular.element(mainBlockElement).hasClass("oui-radio_thumbnail")).toBe(false);
+            });
+
+            it("should display a classic radio when defined but no value", () => {
+                const element = TestUtils.compileTemplate("<oui-radio thumbnail></oui-radio>");
+
+                const mainBlockElement = getMainBlockElement(element);
+                expect(angular.element(mainBlockElement).hasClass("oui-radio_thumbnail")).toBe(false);
+            });
+
+            it("should display a classic radio when false", () => {
+                const element = TestUtils.compileTemplate("<oui-radio thumbnail=\"$ctrl.thumbnail\"></oui-radio>", {
+                    thumbnail: false
+                });
+
+                const mainBlockElement = getMainBlockElement(element);
+                expect(angular.element(mainBlockElement).hasClass("oui-radio_thumbnail")).toBe(false);
+            });
+
+            it("should display a thumbnail radio when true", () => {
+                const element = TestUtils.compileTemplate("<oui-radio thumbnail=\"$ctrl.thumbnail\"></oui-radio>", {
+                    thumbnail: true
+                });
+
+                const mainBlockElement = getMainBlockElement(element);
+                expect(angular.element(mainBlockElement).hasClass("oui-radio_thumbnail")).toBe(true);
             });
         });
 
