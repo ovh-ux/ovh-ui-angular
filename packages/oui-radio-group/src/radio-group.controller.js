@@ -1,10 +1,10 @@
 export default class {
-    constructor ($scope, $timeout, $element) {
+    constructor ($scope, $element, $timeout) {
         "ngInject";
 
         this.$scope = $scope;
-        this.$timeout = $timeout;
         this.$element = $element;
+        this.$timeout = $timeout;
     }
 
     $postLink () {
@@ -24,6 +24,6 @@ export default class {
 
     setModelValue (value) {
         this.model = value;
-        this.onChange({ modelValue: value });
+        this.$timeout(() => this.onChange({ modelValue: value }));
     }
 }
