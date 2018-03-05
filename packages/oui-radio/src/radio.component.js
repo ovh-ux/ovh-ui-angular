@@ -16,6 +16,8 @@ export default {
         name: "@?",
         model: "=?",
         onChange: "&?",
-        disabled: "<?"
-    }
+        disabled: "<?",
+        thumbnail: "<?"
+    },
+    transclude: true
 };

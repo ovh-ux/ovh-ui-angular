@@ -1,26 +1,30 @@
-<input
-     ng-class=":: $ctrl.radioToggleGroup ? 'oui-radio-toggle__input' : 'oui-radio__input'"
-     type="radio"
-     id="{{:: $ctrl.id }}"
-     name="{{:: $ctrl.name }}"
-     ng-attr-aria-labelledby="{{:: $ctrl.id }}-text"
-     ng-attr-aria-describedby="{{:: $ctrl.description && $ctrl.id + '-description' || undefined }}"
-     ng-model="$ctrl.model"
-     ng-value="$ctrl.value"
-     ng-change="$ctrl.onRadioModelChange({ modelValue: $ctrl.model })"
-     ng-disabled="$ctrl.disabled">
-<label
-    for="{{:: $ctrl.id }}"
-    ng-class=":: $ctrl.radioToggleGroup ? 'oui-radio-toggle__label-container' : 'oui-radio__label-container'"
-    ng-attr-aria-labelledby="{{:: $ctrl.id }}-text"
-    ng-attr-aria-describedby="{{:: $ctrl.description && $ctrl.id + '-description' || undefined }}">
-    <span ng-class=":: $ctrl.radioToggleGroup ? 'oui-radio-toggle__label' : 'oui-radio__label'">
-        <span id="{{:: $ctrl.id }}-text" ng-bind="$ctrl.text"></span>
-    </span>
-    <span
-        id="{{:: $ctrl.id }}-description"
-        class="oui-radio__description"
-        ng-bind="$ctrl.description"
-        ng-if="$ctrl.description"/>
-</label>
+<div class="oui-radio"
+     ng-class="{'oui-radio_thumbnail': $ctrl.thumbnail}">
+    <input
+         ng-class=":: $ctrl.radioToggleGroup ? 'oui-radio-toggle__input' : 'oui-radio__input'"
+         type="radio"
+         id="{{:: $ctrl.id }}"
+         name="{{:: $ctrl.name }}"
+         ng-attr-aria-labelledby="{{:: $ctrl.id }}-text"
+         ng-attr-aria-describedby="{{:: $ctrl.description && $ctrl.id + '-description' || undefined }}"
+         ng-model="$ctrl.model"
+         ng-value="$ctrl.value"
+         ng-change="$ctrl.onRadioModelChange({ modelValue: $ctrl.model })"
+         ng-disabled="$ctrl.disabled">
+    <label
+        for="{{:: $ctrl.id }}"
+        ng-class=":: $ctrl.radioToggleGroup ? 'oui-radio-toggle__label-container' : 'oui-radio__label-container'"
+        ng-attr-aria-labelledby="{{:: $ctrl.id }}-text"
+        ng-attr-aria-describedby="{{:: $ctrl.description && $ctrl.id + '-description' || undefined }}">
+        <span ng-class=":: $ctrl.radioToggleGroup ? 'oui-radio-toggle__label' : 'oui-radio__label'">
+            <span id="{{:: $ctrl.id }}-text" ng-bind="$ctrl.text"></span>
+        </span>
+        <span
+            id="{{:: $ctrl.id }}-description"
+            class="oui-radio__description"
+            ng-bind="$ctrl.description"
+            ng-if="$ctrl.description"></span>
+        <ng-transclude></ng-transclude>
+    </label>
+</div>
 
