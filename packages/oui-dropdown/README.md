@@ -9,7 +9,20 @@
   <oui-dropdown>
     <oui-dropdown-trigger text="Actions..."></oui-dropdown-trigger>
     <oui-dropdown-content>
-      XXX
+      xxx
+    </oui-dropdown-content>
+  </oui-dropdown>
+</div>
+```
+
+```html:preview
+<div style="text-align: center" class="oui-doc-preview-only-keep-children">
+  <oui-dropdown is-open="true">
+    <oui-dropdown-trigger text="Actions..."></oui-dropdown-trigger>
+    <oui-dropdown-content>
+      <button>AAA</button>
+      <button>BBB</button>
+      <button disabled="disabled">CCC</button>
     </oui-dropdown-content>
   </oui-dropdown>
 </div>
