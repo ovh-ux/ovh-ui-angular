@@ -1,11 +1,13 @@
 describe("ouiRadio", () => {
     let TestUtils;
+    let $timeout;
 
     beforeEach(angular.mock.module("oui.radio"));
     beforeEach(angular.mock.module("oui.test-utils"));
 
-    beforeEach(inject((_TestUtils_) => {
+    beforeEach(inject((_TestUtils_, _$timeout_) => {
         TestUtils = _TestUtils_;
+        $timeout = _$timeout_;
     }));
 
     const getMainBlockElement = (element) => element[0].querySelector(":first-child");
@@ -202,11 +204,13 @@ describe("ouiRadio", () => {
 
                 $radioElement1.prop("checked", true);
                 $radioElement1.triggerHandler("click");
+                $timeout.flush();
                 expect(onChangeSpy).toHaveBeenCalledWith("aValue");
 
                 $radioElement1.prop("checked", false);
                 $radioElement2.prop("checked", true);
                 $radioElement2.triggerHandler("click");
+                $timeout.flush();
                 expect(onChangeSpy).toHaveBeenCalledWith("bValue");
             });
         });
