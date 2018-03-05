@@ -139,7 +139,7 @@ describe("ouiRadioGroup", () => {
                 });
 
                 clickRadio(getRadioInputElementByValue(element, clickedRadioValue));
-
+                $timeout.flush();
                 expect(onChangeSpy).toHaveBeenCalledWith(clickedRadioValue);
             });
         });
