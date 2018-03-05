@@ -17,7 +17,7 @@ export default () => ({
         title: "@?",
         placeholder: "@?",
         items: "<",
-        match: "@",
+        match: "@?",
         groupBy: "<?",
         align: "@?",
         onBlur: "&?",
@@ -34,7 +34,12 @@ export default () => ({
             choicesElement.attr("group-by", "$ctrl.groupBy");
         }
 
-        matchElement.html(`{{$select.selected.${$attrs.match}}}`);
+        if ($attrs.match) {
+            matchElement.html(`{{$select.selected.${$attrs.match}}}`);
+        } else {
+            matchElement.html("{{$select.selected}}");
+        }
+
 
         const htmlContent = $template[0].outerHTML;
         $element.empty();

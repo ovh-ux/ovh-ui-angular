@@ -4,7 +4,7 @@
 
 ## Usage
 
-### Basic
+### Basic (Object array)
 
 ```html:preview
 <oui-select name="country"
@@ -16,6 +16,18 @@
     match="name"
     data-align="start">
     <span ng-bind="$item.name"></span>
+</oui-select>
+```
+
+### Basic (String array)
+
+```html:preview
+<oui-select name="country"
+    model="$ctrl.country"
+    items="['a', 'b', 'c']"
+    required
+    data-align="start">
+    <span ng-bind="$item"></span>
 </oui-select>
 ```
 
@@ -66,7 +78,7 @@
 | `required`        | boolean                 | <?      |                  | `true`, `false`           | `false`             | define if the field is required                   |
 | `disabled`        | boolean                 | <?      |                  | `true`, `false`           | `false`             | define if the field is disabled                   |
 | `group-by`        | function                | <?      |                  |                           |                     | function taking an item as parameter and returning the group name as as string                   |
-| `match`           | string                  | @       |                  |                           |                     | property of item to show as selected item         |
+| `match`           | string                  | @?      |                  |                           |                     | property of item to show as selected item         |
 | `data-align`      | string                  | @?      |                  | `start`, `end`            | `start`             | dropdown alignment                                |
 | `on-blur`         | string                  | &?      |                  |                           |                     | called focus is lost                              |
 | `on-focus`        | string                  | &?      |                  |                           |                     | called on focus                                   |
