@@ -64,7 +64,7 @@ export default class {
             operator_options_isNot: "is not",
 
             value_label: "Value",
-            submit_label: "Apply"
+            submit_label: "Add"
         };
     }
 
