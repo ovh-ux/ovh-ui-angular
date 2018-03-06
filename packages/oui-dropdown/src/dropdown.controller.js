@@ -73,10 +73,6 @@ export default class {
         this.referenceElement = this.$element[0].querySelector(".oui-dropdown__trigger");
         this.popperElement = this.$element[0].querySelector(".oui-dropdown__content");
         this.arrowElement = this.$element[0].querySelector(".oui-dropdown__arrow");
-
-        this.$scope.$on("oui:dropdown:close", () => {
-            this.closeDropdown();
-        });
     }
 
     $destroy () {
