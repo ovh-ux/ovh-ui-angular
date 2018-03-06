@@ -19,7 +19,7 @@
 
 ```html:preview
 <div style="text-align: center" class="oui-doc-preview-only-keep-children">
-  <oui-dropdown is-open="true">
+  <oui-dropdown>
     <oui-dropdown-trigger text="Actions..."></oui-dropdown-trigger>
     <oui-dropdown-content>
       <button>AAA</button>
