@@ -14,7 +14,7 @@
   "scripts": {
     "commit": "npm-scripts-config commit",
     "commitmsg": "npm-scripts-config commitmsg",
-    "preversion": "npm build && git add dist",
+    "preversion": "npm run build && git add dist",
     "version": "npm-scripts-config version",
     "postversion": "git push && git push --tags",
     "preview-changelog": "npm-scripts-config preview-changelog",
