@@ -36,7 +36,7 @@ export default ($compile) => {
             triggerElement.on("click", () => ctrl.onTriggerClick());
             triggerElement.on("blur", evt => ctrl.triggerBlurHandler(evt));
 
-            scope.$on("open", (e, id) => {
+            scope.$on("oui:dropdown:afterOpen", (e, id) => {
                 if (id !== ctrl.id) {
                     return;
                 }
@@ -48,7 +48,7 @@ export default ($compile) => {
                 triggerElement.on("keydown", evt => ctrl.triggerKeyHandler(evt));
             });
 
-            scope.$on("close", (e, id) => {
+            scope.$on("oui:dropdown:afterClose", (e, id) => {
                 if (id !== ctrl.id) {
                     return;
                 }

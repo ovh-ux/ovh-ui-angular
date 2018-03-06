@@ -73,6 +73,10 @@ export default class {
         this.referenceElement = this.$element[0].querySelector(".oui-dropdown__trigger");
         this.popperElement = this.$element[0].querySelector(".oui-dropdown__content");
         this.arrowElement = this.$element[0].querySelector(".oui-dropdown__arrow");
+
+        this.$scope.$on("oui:dropdown:close", () => {
+            this.closeDropdown();
+        });
     }
 
     $destroy () {
@@ -99,7 +103,7 @@ export default class {
         this.updatePopper();
 
         this.$document.on("click", this.documentClickHandler);
-        this.$scope.$broadcast("open", this.id);
+        this.$scope.$broadcast("oui:dropdown:afterOpen", this.id);
     }
 
     closeDropdown () {
@@ -111,7 +115,7 @@ export default class {
         this.destroyPopper();
 
         this.$document.off("click", this.documentClickHandler);
-        this.$scope.$broadcast("close", this.id);
+        this.$scope.$broadcast("oui:dropdown:afterClose", this.id);
     }
 
     createPopper () {
