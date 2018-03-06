@@ -22,8 +22,10 @@
 ### Basic (String array)
 
 ```html:preview
-<oui-select name="country"
-    model="$ctrl.country"
+<oui-select name="alphabet"
+    data-title="Select a letter"
+    placeholder="Select a letter..."
+    model="$ctrl.alphabet"
     items="['a', 'b', 'c']"
     required
     data-align="start">
