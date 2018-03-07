@@ -6,7 +6,8 @@
         ng-required="$ctrl.required"
         ng-disabled="$ctrl.disabled"
         on-blur="$ctrl.onUiSelectBlur()"
-        on-focus="$ctrl.onUiSelectFocus()">
+        on-focus="$ctrl.onUiSelectFocus()"
+        on-select="$ctrl.onChange({ modelValue: $model })">
     <ui-select-match placeholder="{{::$ctrl.placeholder}}"></ui-select-match>
     <ui-select-choices repeat="$item in $ctrl.items track by $index"></ui-select-choices>
 </ui-select>

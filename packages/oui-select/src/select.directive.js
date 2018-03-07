@@ -20,8 +20,9 @@ export default () => ({
         match: "@?",
         groupBy: "<?",
         align: "@?",
-        onBlur: "&?",
-        onFocus: "&?"
+        onBlur: "&",
+        onFocus: "&",
+        onChange: "&"
     },
     compile: ($element, $attrs) => {
         const itemTemplate = $element.html();
