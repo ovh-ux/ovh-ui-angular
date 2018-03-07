@@ -1,3 +1,16 @@
+<a name="2.5.3"></a>
+## [2.5.3](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.5.2...v2.5.3) (2018-03-07)
+
+
+### Bug Fixes
+
+* **oui-back-button:** fix button type ([4c70cd3](https://github.com/ovh-ux/ovh-ui-angular/commit/4c70cd3))
+* **oui-form-actions:** fix buttons types ([3a16414](https://github.com/ovh-ux/ovh-ui-angular/commit/3a16414))
+* **oui-modal:** fix button type ([7bf8f75](https://github.com/ovh-ux/ovh-ui-angular/commit/7bf8f75))
+* **oui-select:** fix buttons types ([c656dbf](https://github.com/ovh-ux/ovh-ui-angular/commit/c656dbf))
+
+
+
 <a name="2.5.2"></a>
 ## [2.5.2](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.5.1...v2.5.2) (2018-03-06)
 
