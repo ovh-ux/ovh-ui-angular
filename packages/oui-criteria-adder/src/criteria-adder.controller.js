@@ -1,14 +1,16 @@
 import { addDefaultParameter } from "@oui-angular/common/component-utils";
 
 export default class {
-    constructor ($attrs, $element, $timeout, ouiCriteriaAdderConfiguration) {
+    constructor ($attrs, $element, $scope, $timeout, ouiCriteriaAdderConfiguration) {
         "ngInject";
 
         this.$attrs = $attrs; // For 'addDefaultParameter'
         this.$element = $element;
+        this.$scope = $scope;
         this.$timeout = $timeout;
         this.operators = ouiCriteriaAdderConfiguration.operatorsByType;
         this.translations = ouiCriteriaAdderConfiguration.translations;
+        this.valueModel = [];
     }
 
     $onInit () {
@@ -19,6 +21,13 @@ export default class {
         if (this.properties) {
             this.columnModel = this.properties[0];
         }
+
+        if (!this.id) {
+            this.id = `oui-criteria-adder-${this.$scope.$id}`;
+        }
+
+        this.selectableOperators = this.filterSelectableOperators();
+        this.operatorModel = this.selectableOperators[0];
     }
 
     $postLink () {
@@ -41,20 +50,36 @@ export default class {
     }
 
     onColumnChange () {
-        // Reset value model
-        this.valueModel = undefined;
+        this.resetValueModel();
+        this.selectableOperators = this.filterSelectableOperators();
+        this.operatorModel = this.selectableOperators[0];
     }
 
     onFormSubmit (form) {
         if (form.$valid) {
             const modelValue = {
-                title: `${this.columnModel.title} ${this.operatorModel.title} ${this.valueModel}`,
+                title: `${this.columnModel.title} ${this.operatorModel.title} ${this.valueModel[this.columnModel.type]}`,
                 property: this.columnModel.name,
                 operator: this.operatorModel.name,
-                value: this.valueModel
+                value: this.valueModel[this.columnModel.type]
             };
 
             this.onSubmit({ modelValue });
         }
+    }
+
+    resetValueModel () {
+        Object.keys(this.valueModel).forEach(key => {
+            this.valueModel[key] = undefined;
+        });
+    }
+
+    filterSelectableOperators () {
+        const type = this.columnModel.type;
+        const operators = this.operators[type] || [];
+        return operators.map((operator) => ({
+            name: operator,
+            title: this.translations[`operator_${type}_${operator}`]
+        }));
     }
 }
