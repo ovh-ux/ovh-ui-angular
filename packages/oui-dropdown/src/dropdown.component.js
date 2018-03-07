@@ -5,8 +5,9 @@ export default {
     template,
     controller,
     bindings: {
+        align: "@?",
         arrow: "<?",
-        align: "@?"
+        persistent: "<?"
     },
     transclude: true
 };
