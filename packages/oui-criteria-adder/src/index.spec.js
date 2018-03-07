@@ -7,6 +7,7 @@ describe("ouiCriteriaAdder", () => {
     beforeEach(angular.mock.module("oui.criteria-adder"));
     beforeEach(angular.mock.module("oui.dropdown"));
     beforeEach(angular.mock.module("oui.field"));
+    beforeEach(angular.mock.module("oui.select"));
     beforeEach(angular.mock.module("oui.test-utils"));
     beforeEach(angular.mock.module("test.configuration"));
 
@@ -42,9 +43,11 @@ describe("ouiCriteriaAdder", () => {
 
     describe("Component", () => {
         let component;
-        const onSubmitSpy = jasmine.createSpy("onSubmitSpy");
+        let controller;
+        let onSubmitSpy;
 
         beforeEach(() => {
+            onSubmitSpy = jasmine.createSpy("onSubmitSpy");
             component = testUtils.compileTemplate(`
                 <oui-criteria-adder
                     id="foo"
@@ -56,29 +59,29 @@ describe("ouiCriteriaAdder", () => {
                 properties: mockData.properties,
                 onSubmitSpy
             });
+
+            controller = component.controller("ouiCriteriaAdder");
         });
 
         it("should display a dropdown of a form with multiple fields and a submit button", () => {
             const form = component.find("form");
-            const buttons = component.find("button");
-            const trigger = buttons.eq(0);
-            const submit = buttons.eq(1);
+            const triggerButton = component[0].querySelectorAll(".oui-button_small-width");
+            const submitButton = component[0].querySelectorAll("[type=submit]");
             const dropdown = component.find("oui-dropdown");
             const fields = component.find("oui-field");
 
-            expect(dropdown.length).toBe(1);
             expect(form.length).toBe(1);
+            expect(triggerButton.length).toBe(1);
+            expect(submitButton.length).toBe(1);
+            expect(angular.element(triggerButton).attr("oui-dropdown-trigger")).toBeDefined();
+            expect(dropdown.length).toBe(1);
             expect(fields.length).toBe(3);
-            expect(buttons.length).toBe(2);
-            expect(buttons.length).toBe(2);
-            expect(trigger.attr("oui-dropdown-trigger")).toBeDefined();
-            expect(submit.attr("type")).toBe("submit");
         });
 
         it("should have an attribute id and name on the form and every inputs/selectors, and removed on the root component", () => {
             const form = component.find("form");
-            const selectors = component.find("select");
-            const inputs = component.find("input");
+            const selectors = component.find("oui-select");
+            const inputs = angular.element(component[0].querySelectorAll(".oui-input"));
 
             $timeout.flush();
 
@@ -90,7 +93,6 @@ describe("ouiCriteriaAdder", () => {
 
             angular.forEach(selectors, (selector) => {
                 expect(angular.element(selector).attr("id")).toContain("foo");
-                expect(angular.element(selector).attr("name")).toContain("bar");
             });
 
             angular.forEach(inputs, (input) => {
@@ -100,40 +102,66 @@ describe("ouiCriteriaAdder", () => {
         });
 
         it("should reset value of second field when first is changed", () => {
-            const column = angular.element(component[0].querySelector("#fooColumn"));
-            const columnOptions = column.children();
-            const operator = angular.element(component[0].querySelector("#fooOperator"));
-            const operatorOptions = operator.children();
+            expect(controller.columnModel).toEqual(mockData.properties[0]);
+            expect(controller.operatorModel.name).toEqual("contains");
 
-            // Apply changes of the form
-            operator.val(operatorOptions.eq(1).val());
-            operator.triggerHandler("change");
-            expect(operator.val()).toBe(operatorOptions.eq(1).val());
-            column.val(columnOptions.eq(1).val());
-            column.triggerHandler("change");
-            expect(operator.val()).toBe("?");
+            // Change model
+            // Select a column of type "number"
+            controller.columnModel = mockData.properties[1];
+            controller.onColumnChange();
+
+            expect(controller.operatorModel.name).toEqual("is");
         });
 
-        it("should call function of onSubmit attribute, when form is submitted, with the model value", () => {
-            const data = mockData.properties[0];
-            const column = angular.element(component[0].querySelector("#fooColumn"));
-            const operator = angular.element(component[0].querySelector("#fooOperator"));
-            const operatorOptions = operator.children();
-            const value = angular.element(component[0].querySelector("#fooValue"));
+        describe("Column type = string", () => {
+            it("should call function of onSubmit attribute, when form is submitted, with the model value", () => {
+                const propertyMeta = mockData.properties[0];
+                const value = angular.element(component[0].querySelector("#fooValue"));
 
-            // Apply change on the form
-            operator.val(operatorOptions.eq(1).val());
-            operator.triggerHandler("change");
-            value.val("bar");
-            value.triggerHandler("input");
+                // Initial condition
+                expect(propertyMeta.type).toEqual("string");
 
-            // Then submit
-            component.find("form").triggerHandler("submit");
-            expect(onSubmitSpy).toHaveBeenCalledWith({
-                title: `${data.title} ${operator.val()} ${value.val()}`,
-                property: column.val(),
-                operator: operator.val(),
-                value: value.val()
+                controller.valueModel.string = "bar";
+
+                // Trigger validation
+                value.triggerHandler("input");
+
+                // Then submit
+                component.find("form").triggerHandler("submit");
+                expect(onSubmitSpy).toHaveBeenCalledWith({
+                    title: `${propertyMeta.title} contains ${controller.valueModel.string}`,
+                    property: propertyMeta.name,
+                    operator: "contains",
+                    value: controller.valueModel.string
+                });
+            });
+        });
+
+        describe("Column type = number", () => {
+            it("should call function of onSubmit attribute, when form is submitted, with the model value", () => {
+                const propertyMeta = mockData.properties[1];
+                const value = angular.element(component[0].querySelector("#fooValue"));
+
+                // Initial condition
+                expect(propertyMeta.type).toEqual("number");
+
+                // Change column
+                controller.columnModel = propertyMeta;
+                controller.onColumnChange();
+
+                controller.valueModel.number = 12;
+
+                // Trigger validation
+                value.triggerHandler("input");
+
+                // Then submit
+                component.find("form").triggerHandler("submit");
+                expect(onSubmitSpy).toHaveBeenCalledWith({
+                    title: `${propertyMeta.title} is ${controller.valueModel.number}`,
+                    property: propertyMeta.name,
+                    operator: "is",
+                    value: controller.valueModel.number
+                });
             });
         });
     });

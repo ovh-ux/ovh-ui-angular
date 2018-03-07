@@ -1,4 +1,5 @@
-<oui-dropdown align="{{::$ctrl.align}}" arrow>
+<oui-dropdown align="{{::$ctrl.align}}" arrow persistent>
+    <pre style="text-align: left; width: 1000px"><code>{{criteriaAdder|json}}</code></pre>
     <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width"
         oui-dropdown-trigger>
         <span class="oui-icon oui-icon-filter" aria-hidden="true"></span>
@@ -11,35 +12,32 @@
 
             <!-- Column field -->
             <oui-field label="{{::$ctrl.translations.column_label}}">
-                <label class="oui-select">
-                    <select class="oui-select__input" name="{{::$ctrl.name}}Column" required
-                        ng-attr-id="{{::$ctrl.id}}Column"
-                        ng-options="property as property.title
-                            for property in $ctrl.properties
-                            track by property.name"
-                        ng-change="$ctrl.onColumnChange()"
-                        ng-model="$ctrl.columnModel">
-                    </select>
-                    <i class="oui-icon oui-icon-chevron-down" aria-hidden="true"></i>
-                </label>
+                <oui-select
+                    ng-attr-id="{{::$ctrl.id}}Column"
+                    name="{{::$ctrl.name}}Column"
+                    model="$ctrl.columnModel"
+                    items="$ctrl.properties"
+                    required
+                    match="title"
+                    on-change="$ctrl.onColumnChange()">
+                    <span ng-bind="$item.title"></span>
+                </oui-select>
             </oui-field>
             <!-- /Column field -->
 
             <!-- Operator field -->
             <oui-field label="{{::$ctrl.translations.operator_label}}">
-                <label class="oui-select">
-                    <select class="oui-select__input" name="{{::$ctrl.name}}Operator" required
-                        ng-attr-id="{{::$ctrl.id}}Operator"
-                        ng-options="operator as operator.title
-                            for operator in $ctrl.getOperatorsByType($ctrl.columnModel.type)
-                            track by operator.name"
-                        ng-model="$ctrl.operatorModel">
-                    </select>
-                    <i class="oui-icon oui-icon-chevron-down" aria-hidden="true"></i>
-                </label>
+                <oui-select
+                    ng-attr-id="{{::$ctrl.id}}Operator"
+                    name="{{::$ctrl.name}}Operator"
+                    model="$ctrl.operatorModel"
+                    items="$ctrl.selectableOperators"
+                    required
+                    match="title">
+                    <span ng-bind="$item.title"></span>
+                </oui-select>
             </oui-field>
             <!-- /Operator field -->
-
 
             <!-- Value field -->
             <div ng-switch="$ctrl.columnModel.type">
@@ -49,7 +47,7 @@
                     <oui-field label="{{::$ctrl.translations.value_label}}">
                         <input class="oui-input" type="text" name="{{::$ctrl.name}}Value"
                             ng-attr-id="{{::$ctrl.id}}Value"
-                            ng-model="$ctrl.valueModel" required>
+                            ng-model="$ctrl.valueModel['string']" required>
                     </oui-field>
                 </div>
                 <!-- /String (Default) -->
@@ -59,7 +57,7 @@
                     <oui-field label="{{::$ctrl.translations.value_label}}">
                         <input class="oui-input" type="number" name="{{::$ctrl.name}}Value"
                             ng-attr-id="{{::$ctrl.id}}Value"
-                            ng-model="$ctrl.valueModel" required>
+                            ng-model="$ctrl.valueModel['number']" required>
                     </oui-field>
                 </div>
                 <!-- /Number -->
