@@ -21,6 +21,7 @@ import "@oui-angular/oui-form-actions/src";
 import "@oui-angular/oui-search/src";
 import "@oui-angular/oui-criteria-container/src";
 import "@oui-angular/oui-criteria-adder/src";
+import "@oui-angular/oui-chips/src";
 
 angular.module("oui", [
     "oui.button",
@@ -45,5 +46,6 @@ angular.module("oui", [
     "oui.search",
     "oui.criteria-container",
     "oui.radio-toggle-group",
-    "oui.criteria-adder"
+    "oui.criteria-adder",
+    "oui.chips"
 ]);
