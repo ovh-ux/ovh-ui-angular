@@ -2,10 +2,12 @@
   class="oui-button oui-button_primary"
   ng-click="$ctrl.onSubmit()"
   ng-bind="::$ctrl.submitText"
-  ng-disabled="$ctrl.disabled">
+  ng-disabled="$ctrl.disabled"
+  type="submit">
 </button>
 <button
   class="oui-button oui-button_link"
   ng-bind="::$ctrl.cancelText"
-  ng-click="$ctrl.onCancel()">
+  ng-click="$ctrl.onCancel()"
+  type="button">
 </button>
