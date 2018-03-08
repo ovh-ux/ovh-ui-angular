@@ -116,23 +116,22 @@ describe("ouiCriteriaAdder", () => {
         describe("Column type = string", () => {
             it("should call function of onSubmit attribute, when form is submitted, with the model value", () => {
                 const propertyMeta = mockData.properties[0];
-                const value = angular.element(component[0].querySelector("#fooValue"));
+
+                // const valueComponent = angular.element(component[0].querySelector("#fooValue"));
+                const value = "bar";
 
                 // Initial condition
                 expect(propertyMeta.type).toEqual("string");
 
-                controller.valueModel.string = "bar";
-
-                // Trigger validation
-                value.triggerHandler("input");
+                controller.valueModel.string = value;
 
                 // Then submit
                 component.find("form").triggerHandler("submit");
                 expect(onSubmitSpy).toHaveBeenCalledWith({
-                    title: `${propertyMeta.title} contains ${controller.valueModel.string}`,
+                    title: `${propertyMeta.title} contains ${value}`,
                     property: propertyMeta.name,
                     operator: "contains",
-                    value: controller.valueModel.string
+                    value
                 });
             });
         });
@@ -140,7 +139,9 @@ describe("ouiCriteriaAdder", () => {
         describe("Column type = number", () => {
             it("should call function of onSubmit attribute, when form is submitted, with the model value", () => {
                 const propertyMeta = mockData.properties[1];
-                const value = angular.element(component[0].querySelector("#fooValue"));
+
+                // const valueComponent = angular.element(component[0].querySelector("#fooValue"));
+                const value = 12;
 
                 // Initial condition
                 expect(propertyMeta.type).toEqual("number");
@@ -149,18 +150,15 @@ describe("ouiCriteriaAdder", () => {
                 controller.columnModel = propertyMeta;
                 controller.onColumnChange();
 
-                controller.valueModel.number = 12;
-
-                // Trigger validation
-                value.triggerHandler("input");
+                controller.valueModel.number = value;
 
                 // Then submit
                 component.find("form").triggerHandler("submit");
                 expect(onSubmitSpy).toHaveBeenCalledWith({
-                    title: `${propertyMeta.title} is ${controller.valueModel.number}`,
+                    title: `${propertyMeta.title} is ${value}`,
                     property: propertyMeta.name,
                     operator: "is",
-                    value: controller.valueModel.number
+                    value
                 });
             });
         });

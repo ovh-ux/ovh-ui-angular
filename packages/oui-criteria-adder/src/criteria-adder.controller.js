@@ -10,7 +10,7 @@ export default class {
         this.$timeout = $timeout;
         this.operators = ouiCriteriaAdderConfiguration.operatorsByType;
         this.translations = ouiCriteriaAdderConfiguration.translations;
-        this.valueModel = [];
+        this.valueModel = {};
     }
 
     $onInit () {
