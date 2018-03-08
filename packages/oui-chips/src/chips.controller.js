@@ -22,7 +22,9 @@ export default class {
     }
 
     removeItem (index) {
-        this.items.splice(index, 1);
-        this.onRemove({ items: this.items });
+        // angular.copy to remove the $$hashKey
+        const removed = angular.copy(this.items.splice(index, 1));
+        const items = angular.copy(this.items);
+        this.onRemove({ items, removed });
     }
 }
