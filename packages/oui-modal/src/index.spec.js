@@ -125,6 +125,46 @@ describe("ouiModal", () => {
             expect($secondaryButton.html()).toContain(secondaryLabel);
         });
 
+        it("should display an overlay when loading", () => {
+            const element = TestUtils.compileTemplate(`
+                <oui-modal
+                    title="Title"
+                    loading="true">
+                </oui-modal>
+            `);
+
+            const $body = getBody(element);
+
+            expect($body.html()).toContain("oui-modal__loader");
+            expect($body.html()).toContain("oui-spinner");
+        });
+
+        it("should disable buttons", () => {
+            const element = TestUtils.compileTemplate(`
+                <oui-modal
+                    title="Title"
+                    primary-label="{{::$ctrl.primaryLabel}}"
+                    secondary-label="{{::$ctrl.secondaryLabel}}"
+                    loading="true">
+                </oui-modal>
+            `, {
+                primaryLabel,
+                secondaryLabel
+            });
+
+            const $footer = getFooter(element);
+            const $primaryButton = getPrimaryButton($footer);
+            const $secondaryButton = getSecondaryButton($footer);
+            const $dismissButton = getDismissButton(element);
+
+            expect($primaryButton).toBeDefined();
+            expect($primaryButton.attr("disabled")).toBe("disabled");
+            expect($secondaryButton).toBeDefined();
+            expect($secondaryButton.attr("disabled")).toBe("disabled");
+            expect($dismissButton).toBeDefined();
+            expect($dismissButton.attr("disabled")).toBe("disabled");
+        });
+
         it("should trigger secondary action action", () => {
             const secondarySpy = jasmine.createSpy("secondaryClick");
             const element = TestUtils.compileTemplate(`

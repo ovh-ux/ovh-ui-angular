@@ -1,14 +1,17 @@
+import controller from "./modal.controller";
 import template from "./modal.html";
 
 export default {
     template,
+    controller,
     bindings: {
-        title: "@",
+        title: "@?",
         primaryAction: "&?",
         primaryLabel: "@?",
         secondaryAction: "&?",
         secondaryLabel: "@?",
-        onDismiss: "&?"
+        onDismiss: "&?",
+        loading: "<?"
     },
     transclude: true
 };
