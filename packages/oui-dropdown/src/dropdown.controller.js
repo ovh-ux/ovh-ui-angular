@@ -28,7 +28,7 @@ export default class {
 
         this.documentClickHandler = evt => {
             if ((evt && evt.type === "click") &&
-                (!evt.target || !evt.target.getAttribute || !evt.target.getAttribute("type") !== "submit") &&
+                (!evt.target || !evt.target.getAttribute || evt.target.getAttribute("type") !== "submit") &&
                 (this.referenceElement.contains(evt.target) ||
                 (this.persistent && this.popperElement.contains(evt.target)))) {
                 return;
