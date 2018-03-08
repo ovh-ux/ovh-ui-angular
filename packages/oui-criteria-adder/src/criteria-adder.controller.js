@@ -55,8 +55,8 @@ export default class {
         this.operatorModel = this.selectableOperators[0];
     }
 
-    onFormSubmit (form) {
-        if (form.$valid) {
+    onFormSubmit () {
+        if (this.valueModel[this.columnModel.type] !== undefined) {
             const modelValue = {
                 title: `${this.columnModel.title} ${this.operatorModel.title} ${this.valueModel[this.columnModel.type]}`,
                 property: this.columnModel.name,
