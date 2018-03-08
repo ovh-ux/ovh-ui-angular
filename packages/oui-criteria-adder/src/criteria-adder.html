@@ -16,7 +16,6 @@
                     name="{{::$ctrl.name}}Column"
                     model="$ctrl.columnModel"
                     items="$ctrl.properties"
-                    required
                     match="title"
                     on-change="$ctrl.onColumnChange()">
                     <span ng-bind="$item.title"></span>
@@ -31,7 +30,6 @@
                     name="{{::$ctrl.name}}Operator"
                     model="$ctrl.operatorModel"
                     items="$ctrl.selectableOperators"
-                    required
                     match="title">
                     <span ng-bind="$item.title"></span>
                 </oui-select>
@@ -46,7 +44,7 @@
                     <oui-field label="{{::$ctrl.translations.value_label}}">
                         <input class="oui-input" type="text" name="{{::$ctrl.name}}Value"
                             ng-attr-id="{{::$ctrl.id}}Value"
-                            ng-model="$ctrl.valueModel['string']" required>
+                            ng-model="$ctrl.valueModel['string']">
                     </oui-field>
                 </div>
                 <!-- /String (Default) -->
@@ -56,7 +54,7 @@
                     <oui-field label="{{::$ctrl.translations.value_label}}">
                         <input class="oui-input" type="number" name="{{::$ctrl.name}}Value"
                             ng-attr-id="{{::$ctrl.id}}Value"
-                            ng-model="$ctrl.valueModel['number']" required>
+                            ng-model="$ctrl.valueModel['number']">
                     </oui-field>
                 </div>
                 <!-- /Number -->
