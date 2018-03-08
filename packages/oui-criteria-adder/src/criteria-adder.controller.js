@@ -65,6 +65,7 @@ export default class {
             };
 
             this.onSubmit({ modelValue });
+            this.resetValueModel();
         }
     }
 
