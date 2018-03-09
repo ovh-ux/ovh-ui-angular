@@ -40,7 +40,7 @@ export default class DatagridColumnBuilder {
                 }
             });
 
-            if (column.type === "text") {
+            if (column.type === "string") {
                 column.searchable = true;
             }
 
