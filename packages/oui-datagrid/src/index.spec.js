@@ -471,6 +471,33 @@ describe("ouiDatagrid", () => {
                         }));
                     });
                 });
+
+                describe("Text", () => {
+                    it("should filter with contains operator", () => {
+                        const criteria = [{
+                            property: "firstName",
+                            operator: "contains",
+                            value: "aaron"
+                        }];
+
+                        const element = TestUtils.compileTemplate(`
+                                <oui-datagrid rows-loader="$ctrl.loadRows($config)">
+                                    <oui-column property="firstName" type="text"></oui-column>
+                                    <oui-column property="lastName"></oui-column>
+                                </oui-datagrid>
+                            `, {
+                            loadRows: rowsLoaderSpy
+                        });
+
+                        const tableController = element.controller("ouiDatagrid");
+                        tableController.onCriteriaChange(criteria);
+                        element.scope().$apply();
+
+                        expect(rowsLoaderSpy).toHaveBeenCalledWith(jasmine.objectContaining({
+                            criteria
+                        }));
+                    });
+                });
             });
         });
 
