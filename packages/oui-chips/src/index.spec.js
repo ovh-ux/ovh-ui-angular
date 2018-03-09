@@ -22,7 +22,7 @@ describe("ouiChips", () => {
             component = testUtils.compileTemplate(`
                 <oui-chips closable stacked
                     items="$ctrl.items"
-                    on-remove="$ctrl.onRemoveSpy(items)">
+                    on-remove="$ctrl.onRemoveSpy(items, removed)">
                 </oui-chips>
             `, {
                 items: mockData.items,
@@ -57,8 +57,11 @@ describe("ouiChips", () => {
         });
 
         it("should call function of onRemove attribute, when a chip is removed, with the items value as callback", () => {
+            const firstChip = mockData.items[0];
             component.find("button").eq(0).triggerHandler("click");
-            expect(onRemoveSpy).toHaveBeenCalledWith(controller.items);
+
+            const controllerItems = angular.copy(controller.items);
+            expect(onRemoveSpy).toHaveBeenCalledWith(controllerItems, [firstChip]);
         });
     });
 });
