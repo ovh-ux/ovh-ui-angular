@@ -1,6 +1,7 @@
 <div>
     <oui-criteria-container on-change="$ctrl.onCriteriaChange(modelValue)">
         <oui-search ng-if="$ctrl.isSearchTextVisible" model="$ctrl.searchText"></oui-search>
+        <oui-criteria-adder ng-if="$ctrl.filterableColumns.length" properties="$ctrl.filterableColumns"></oui-criteria-adder>
     </oui-criteria-container>
     <div class="oui-datagrid-responsive-container"
         ng-class="::{

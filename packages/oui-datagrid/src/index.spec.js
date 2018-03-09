@@ -205,7 +205,7 @@ describe("ouiDatagrid", () => {
             });
 
             describe("Filtering", () => {
-                describe("Text", () => {
+                describe("Search text", () => {
                     it("should filter text on a simple column", () => {
                         const criteria = [{
                             property: null, // any property
@@ -216,7 +216,7 @@ describe("ouiDatagrid", () => {
 
                         const element = TestUtils.compileTemplate(`
                                 <oui-datagrid rows="$ctrl.rows">
-                                    <oui-column property="firstName" type="text"></oui-column>
+                                    <oui-column property="firstName" type="string"></oui-column>
                                     <oui-column property="lastName"></oui-column>
                                 </oui-datagrid>
                             `, {
@@ -240,8 +240,34 @@ describe("ouiDatagrid", () => {
 
                         const element = TestUtils.compileTemplate(`
                                 <oui-datagrid rows="$ctrl.rows">
+                                    <oui-column property="firstName" type="string"></oui-column>
+                                    <oui-column property="lastName" type="string"></oui-column>
+                                </oui-datagrid>
+                            `, {
+                            rows: fakeData
+                        });
+
+                        const tableController = element.controller("ouiDatagrid");
+                        tableController.onCriteriaChange(criteria);
+                        element.scope().$apply();
+
+                        expect(getRows(element).length).toEqual(expectedResults);
+                    });
+                });
+
+                describe("Text", () => {
+                    it("should filter with contains operator", () => {
+                        const criteria = [{
+                            property: "firstName",
+                            operator: "contains",
+                            value: "aaron"
+                        }];
+                        const expectedResults = 2;
+
+                        const element = TestUtils.compileTemplate(`
+                                <oui-datagrid rows="$ctrl.rows">
                                     <oui-column property="firstName" type="text"></oui-column>
-                                    <oui-column property="lastName" type="text"></oui-column>
+                                    <oui-column property="lastName"></oui-column>
                                 </oui-datagrid>
                             `, {
                             rows: fakeData
@@ -419,7 +445,7 @@ describe("ouiDatagrid", () => {
             });
 
             describe("Filtering", () => {
-                describe("Text", () => {
+                describe("Search text", () => {
                     it("should send criteria in rows-loader params", () => {
                         const criteria = [{
                             property: null, // any property

@@ -1,5 +1,5 @@
+import { find, get } from "lodash";
 import escapeStringRegexp from "escape-string-regexp";
-import { get } from "lodash";
 
 export default class Filter {
     constructor (criteria, columns) {
@@ -35,15 +35,30 @@ export default class Filter {
             return collection.filter(item => this.itemContainsText(item, criterion.value));
         }
 
-        // Ignore other criteria type.
-        return collection;
+        const propertyMeta = find(this.columns, ["name", criterion.property]);
+
+        // Criterion property can't be null if operator is not "contains".
+        if (!criterion.property || !propertyMeta || criterion.value === undefined) {
+            return collection;
+        }
+
+        switch (criterion.operator) {
+        case "contains":
+            return collection.filter(item => {
+                const value = get(item, criterion.property);
+                return Filter.contains(value, criterion.value);
+            });
+
+        default:
+            return collection;
+        }
     }
 
     /**
      * Find a text in a string.
      *
-     * @param  {Object} item [description]
-     * @param  {String} text [description]
+     * @param  {Object} item subject of search
+     * @param  {String} text text to search
      * @return {Boolean}     true if text has been found in item
      */
     itemContainsText (item, text) {
@@ -60,6 +75,7 @@ export default class Filter {
             .map(column => column.name);
     }
 
+    /** String - contains */
     static contains (haystack, needle) {
         const escapedNeedle = escapeStringRegexp(needle);
         const pattern = new RegExp(escapedNeedle, "i");

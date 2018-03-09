@@ -27,8 +27,8 @@
 <oui-datagrid
   rows="$ctrl.data"
   page-size="5">
-  <oui-column title="'First name'" property="firstName" sortable="asc" type="text"></oui-column>
-  <oui-column title="'Last name'" property="lastName" sortable type="text"></oui-column>
+  <oui-column title="'First name'" property="firstName" sortable="asc" type="string"></oui-column>
+  <oui-column title="'Last name'" property="lastName" sortable type="string"></oui-column>
   <oui-column title="'Mother'" property="parents.mother.lastName" sortable>
     {{$row.parents.mother.lastName}}, {{$row.parents.mother.firstName}}
   </oui-column>
@@ -52,8 +52,8 @@
   rows-loader="$ctrl.loadPartialData($config)"
   row-loader="$ctrl.loadRow($row)"
   page-size="5">
-  <oui-column title="'First name'" property="firstName" sortable="asc" type="text"></oui-column>
-  <oui-column title="'Last name'" property="lastName" sortable type="text"></oui-column>
+  <oui-column title="'First name'" property="firstName" sortable="asc" type="string"></oui-column>
+  <oui-column title="'Last name'" property="lastName" sortable type="string"></oui-column>
   <oui-column title="'Mother'" property="parents.mother.lastName" sortable>
     {{$row.parents.mother.lastName}}, {{$row.parents.mother.firstName}}
   </oui-column>
