@@ -8,6 +8,7 @@ describe("ouiCriteriaAdder", () => {
     beforeEach(angular.mock.module("oui.dropdown"));
     beforeEach(angular.mock.module("oui.field"));
     beforeEach(angular.mock.module("oui.select"));
+    beforeEach(angular.mock.module("oui.criteria-container"));
     beforeEach(angular.mock.module("oui.test-utils"));
     beforeEach(angular.mock.module("test.configuration"));
 
@@ -116,8 +117,6 @@ describe("ouiCriteriaAdder", () => {
         describe("Column type = string", () => {
             it("should call function of onSubmit attribute, when form is submitted, with the model value", () => {
                 const propertyMeta = mockData.properties[0];
-
-                // const valueComponent = angular.element(component[0].querySelector("#fooValue"));
                 const value = "bar";
 
                 // Initial condition
@@ -139,8 +138,6 @@ describe("ouiCriteriaAdder", () => {
         describe("Column type = number", () => {
             it("should call function of onSubmit attribute, when form is submitted, with the model value", () => {
                 const propertyMeta = mockData.properties[1];
-
-                // const valueComponent = angular.element(component[0].querySelector("#fooValue"));
                 const value = 12;
 
                 // Initial condition
@@ -160,6 +157,43 @@ describe("ouiCriteriaAdder", () => {
                     operator: "is",
                     value
                 });
+            });
+        });
+
+        describe("With criteria container", () => {
+            it("should add criterion in criteria container", () => {
+                const onChangeSpy = jasmine.createSpy();
+                component = testUtils.compileTemplate(`
+                    <oui-criteria-container on-change="$ctrl.onChangeSpy(modelValue)">
+                        <oui-criteria-adder
+                            id="foo"
+                            name="bar"
+                            properties="$ctrl.properties">
+                        </oui-criteria-adder>
+                    </oui-criteria-container>
+                `, {
+                    properties: mockData.properties,
+                    onChangeSpy
+                });
+                const criteriaAdderController = component.find("oui-criteria-adder")
+                    .controller("ouiCriteriaAdder");
+
+                const propertyMeta = mockData.properties[0];
+                const value = "bar";
+
+                // Initial condition
+                expect(propertyMeta.type).toEqual("string");
+
+                criteriaAdderController.valueModel.string = value;
+
+                // Then submit
+                component.find("form").triggerHandler("submit");
+                expect(onChangeSpy).toHaveBeenCalledWith([{
+                    title: `${propertyMeta.title} contains ${value}`,
+                    property: propertyMeta.name,
+                    operator: "contains",
+                    value
+                }]);
             });
         });
     });

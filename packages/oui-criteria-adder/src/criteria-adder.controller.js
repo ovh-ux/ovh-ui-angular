@@ -66,6 +66,10 @@ export default class {
 
             this.onSubmit({ modelValue });
             this.resetValueModel();
+
+            if (this.criteriaContainer) {
+                this.criteriaContainer.add(modelValue);
+            }
         }
     }
 
