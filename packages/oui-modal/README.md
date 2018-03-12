@@ -8,7 +8,7 @@
 <div ng-init="$ctrl.cancel = false; $ctrl.confirm = false"
     class="oui-doc-preview-only-keep-children">
 <oui-modal
-    title="Modal title"
+    data-title="Modal title"
     primary-action="$ctrl.confirm = true"
     primary-label="Ok"
     secondary-action="$ctrl.cancel = true"
@@ -27,7 +27,7 @@
 <div ng-init="$ctrl.cancel2 = false; $ctrl.confirm2 = false"
     class="oui-doc-preview-only-keep-children">
 <oui-modal
-    title="Modal title"
+    data-title="Modal title"
     primary-action="$ctrl.confirm2 = true"
     primary-label="Save"
     on-dismiss="$ctrl.cancel2 = true">
