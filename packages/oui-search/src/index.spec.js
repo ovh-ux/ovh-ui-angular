@@ -114,6 +114,7 @@ describe("ouiSearch", () => {
 
                 element.find("form").triggerHandler("submit");
                 expect(onChangeSpy).toHaveBeenCalledWith([{
+                    title: searchText,
                     property: null,
                     operator: "contains",
                     value: searchText
@@ -152,6 +153,7 @@ describe("ouiSearch", () => {
                 input.val(goodSearchText);
                 input.triggerHandler("input");
                 expect(onChangeSpy).toHaveBeenCalledWith([{
+                    title: goodSearchText,
                     property: null,
                     operator: "contains",
                     value: goodSearchText,
@@ -191,6 +193,7 @@ describe("ouiSearch", () => {
                 input.val(goodSearchText);
                 input.triggerHandler("input");
                 expect(onChangeSpy).toHaveBeenCalledWith([{
+                    title: goodSearchText,
                     property: null,
                     operator: "contains",
                     value: goodSearchText,
@@ -221,6 +224,7 @@ describe("ouiSearch", () => {
                 input.val(goodSearchText);
                 input.triggerHandler("input");
                 expect(onChangeSpy).toHaveBeenCalledWith([{
+                    title: goodSearchText,
                     property: null,
                     operator: "contains",
                     value: goodSearchText,
