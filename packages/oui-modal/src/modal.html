@@ -4,8 +4,7 @@
       class="oui-icon oui-icon-close_thin oui-modal__close-button"
       type="button"
       aria-label="Exit"
-      ng-click="$ctrl.onDismiss()"
-      ng-disabled="$ctrl.loading">
+      ng-click="$ctrl.onDismiss()">
     </button>
   </div>
   <div class="oui-modal__body oui-modal__body_no-icon">
@@ -14,7 +13,7 @@
     </div>
     <h2 class="oui-modal__title"
         ng-bind="::$ctrl.title"
-        ng-if="$ctrl.title">
+        ng-if="::!!$ctrl.title">
     </h2>
     <div ng-transclude></div>
   </div>

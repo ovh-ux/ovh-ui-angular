@@ -41,31 +41,20 @@
 ### Loading modal
 
 ```html:preview
-<div ng-init="$ctrl.loading = true"
-    class="oui-doc-preview-only-keep-children">
-    <oui-modal
-        title="Loading modal title"
-        primary-action="$ctrl.confirm = true"
-        primary-label="Ok"
-        secondary-action="$ctrl.cancel = true"
-        secondary-label="Cancel"
-        on-dismiss="$ctrl.cancel = true"
-        loading="$ctrl.loading">
-    <oui-field label="Label for Input text">
-        <input type="text" id="text" name="text" class="oui-input">
-    </oui-field>
-    <oui-field label="{{'Cluster description'}}">
-        <oui-textarea
-            model="$ctrl.text2"
-            id="description-2"
-            name="description-2"
-            placeholder="Please insert your text..."
-            maxlength="10"
-            required></oui-textarea>
-    </oui-field>
-    </oui-modal>
-    <button class="oui-button oui-button_secondary oui-doc-preview-only"
-            ng-click="$ctrl.loading = !$ctrl.loading">Activate/Deactivate Loader</div>
+<div ng-init="$ctrl.loading = true" class="oui-doc-preview-only-keep-children">
+<oui-modal
+    data-title="Loading modal title"
+    primary-action="$ctrl.confirm = true"
+    primary-label="Ok"
+    secondary-action="$ctrl.cancel = true"
+    secondary-label="Cancel"
+    on-dismiss="$ctrl.cancel = true"
+    loading="$ctrl.loading">
+<oui-field label="Label for Input text">
+    <input type="text" id="text" name="text" class="oui-input">
+</oui-field>
+</oui-modal>
+<button class="oui-button oui-button_secondary oui-doc-preview-only" ng-click="$ctrl.loading = !$ctrl.loading">Activate/Deactivate Loader</div>
 </div>
 ```
 

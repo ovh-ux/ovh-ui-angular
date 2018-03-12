@@ -139,7 +139,7 @@ describe("ouiModal", () => {
             expect($body.html()).toContain("oui-spinner");
         });
 
-        it("should disable buttons", () => {
+        it("should disable buttons when loading", () => {
             const element = TestUtils.compileTemplate(`
                 <oui-modal
                     title="Title"
@@ -155,17 +155,14 @@ describe("ouiModal", () => {
             const $footer = getFooter(element);
             const $primaryButton = getPrimaryButton($footer);
             const $secondaryButton = getSecondaryButton($footer);
-            const $dismissButton = getDismissButton(element);
 
             expect($primaryButton).toBeDefined();
             expect($primaryButton.attr("disabled")).toBe("disabled");
             expect($secondaryButton).toBeDefined();
             expect($secondaryButton.attr("disabled")).toBe("disabled");
-            expect($dismissButton).toBeDefined();
-            expect($dismissButton.attr("disabled")).toBe("disabled");
         });
 
-        it("should trigger secondary action action", () => {
+        it("should trigger secondary action", () => {
             const secondarySpy = jasmine.createSpy("secondaryClick");
             const element = TestUtils.compileTemplate(`
                 <oui-modal
