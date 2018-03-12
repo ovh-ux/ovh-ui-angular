@@ -68,6 +68,7 @@ export default class SearchController {
 
     static getCriterion (modelValue) {
         return {
+            title: modelValue,
             property: null, // any property
             operator: "contains",
             value: modelValue
