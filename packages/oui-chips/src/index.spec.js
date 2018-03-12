@@ -1,3 +1,4 @@
+import { cloneDeep } from "lodash";
 import mockData from "./index.spec.data.json";
 
 describe("ouiChips", () => {
@@ -5,6 +6,7 @@ describe("ouiChips", () => {
     let testUtils;
 
     beforeEach(angular.mock.module("oui.chips"));
+    beforeEach(angular.mock.module("oui.criteria-container"));
     beforeEach(angular.mock.module("oui.test-utils"));
 
     beforeEach(inject((_$timeout_, _TestUtils_) => {
@@ -61,7 +63,29 @@ describe("ouiChips", () => {
             component.find("button").eq(0).triggerHandler("click");
 
             const controllerItems = angular.copy(controller.items);
-            expect(onRemoveSpy).toHaveBeenCalledWith(controllerItems, [firstChip]);
+            expect(onRemoveSpy).toHaveBeenCalledWith(controllerItems, firstChip);
+        });
+
+        describe("With criteria container", () => {
+            it("should remove criterion in criteria container", () => {
+                const onChangeSpy = jasmine.createSpy("onChangeSpy");
+                component = testUtils.compileTemplate(`
+                    <oui-criteria-container on-change="$ctrl.onChangeSpy(modelValue)">
+                        <oui-chips closable
+                            items="$ctrl.items">
+                        </oui-chips>
+                    </oui-criteria-container>
+                `, {
+                    items: mockData.criteria,
+                    onChangeSpy
+                });
+
+                const criteriaContainerController = component.controller("ouiCriteriaContainer");
+                criteriaContainerController.criteria = cloneDeep(mockData.criteria);
+
+                component.find("button").eq(0).triggerHandler("click");
+                expect(onChangeSpy).toHaveBeenCalledWith(mockData.criteria.slice(1));
+            });
         });
     });
 });
