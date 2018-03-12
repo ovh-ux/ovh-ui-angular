@@ -59,6 +59,7 @@ export default class DatagridController {
         this.firstLoading = true;
         this.pageSize = parseInt(this.pageSize, 10) || this.config.pageSize;
         this.filterableColumns = [];
+        this.criteria = [];
     }
 
     $postLink () {
@@ -155,6 +156,9 @@ export default class DatagridController {
     }
 
     onCriteriaChange (criteria) {
+        this.criteria = criteria; // with preview criteria
+        this.appliedCriteria = this.criteria
+            .filter(criterion => !criterion.preview);
         this.refreshData(() => {
             this.paging.setCriteria(criteria);
         }, false, false);
