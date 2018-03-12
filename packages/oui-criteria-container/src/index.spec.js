@@ -122,6 +122,19 @@ describe("ouiCriteriaContainer", () => {
                 expect(controller.criteria.length).toEqual(1);
                 expect(controller.criteria[0]).toEqual(previewCriterion2);
             });
+
+            it("should be deleted if an equivalent non-preview criterion is added", () => {
+                const nonPreviewCriterion = Object.assign({}, previewCriterion);
+                nonPreviewCriterion.preview = false;
+
+                // Initial state
+                controller.criteria.push(previewCriterion);
+
+                controller.add(nonPreviewCriterion);
+
+                expect(controller.criteria.length).toEqual(1);
+                expect(controller.criteria[0]).toEqual(nonPreviewCriterion);
+            });
         });
     });
 });
