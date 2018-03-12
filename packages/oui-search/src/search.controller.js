@@ -1,5 +1,7 @@
 import { addBooleanParameter } from "@oui-angular/common/component-utils";
 
+const componentClass = "oui-search";
+
 // Min length needed to create a new criterion.
 const minLengthTrigger = 2;
 
@@ -25,6 +27,7 @@ export default class SearchController {
                 .removeAttr("aria-label")
                 .removeAttr("id")
                 .removeAttr("name")
+                .addClass(componentClass)
         );
     }
 
