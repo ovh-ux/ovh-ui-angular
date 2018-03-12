@@ -1,0 +1,15 @@
+<div><!-- Mandatory for 'alt-format' -->
+    <input class="oui-calendar__control oui-input" type="text"
+        ng-attr-id="{{::$ctrl.id}}"
+        ng-attr-name="{{::$ctrl.name}}"
+        ng-attr-placeholder="{{::$ctrl.placeholder}}"
+        ng-model="$ctrl.model"
+        ng-disabled="$ctrl.disabled"
+        ng-required="$ctrl.required" />
+</div>
+<button type="button" ng-click="$ctrl.setModelValue('today')">Today</button>
+<button type="button"
+    ng-show="$ctrl.model.length"
+    ng-click="$ctrl.setModelValue()">
+    Reset
+</button>
