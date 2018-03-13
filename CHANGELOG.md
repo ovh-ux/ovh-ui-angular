@@ -1,3 +1,34 @@
+<a name="2.6.0"></a>
+# [2.6.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.5.3...v2.6.0) (2018-03-13)
+
+
+### Bug Fixes
+
+* **oui-criteria-adder:** remove errors ([212f064](https://github.com/ovh-ux/ovh-ui-angular/commit/212f064))
+* **oui-criteria-adder:** remove form validation ([d78a894](https://github.com/ovh-ux/ovh-ui-angular/commit/d78a894))
+* **oui-criteria-adder:** remove value on submit ([7302c4f](https://github.com/ovh-ux/ovh-ui-angular/commit/7302c4f))
+* **oui-criteria-adder:** rename condition for operator ([d4d57ac](https://github.com/ovh-ux/ovh-ui-angular/commit/d4d57ac))
+* **oui-dropdown:** allow to close dropdown from outside ([1f42886](https://github.com/ovh-ux/ovh-ui-angular/commit/1f42886))
+* **oui-dropdown:** allow to close with click on a submit ([af17cab](https://github.com/ovh-ux/ovh-ui-angular/commit/af17cab))
+* **oui-dropdown:** fix aria-expanded attribute and close with escape ([fa57081](https://github.com/ovh-ux/ovh-ui-angular/commit/fa57081))
+* **oui-dropdown:** make closing rules intelligent ([3884a86](https://github.com/ovh-ux/ovh-ui-angular/commit/3884a86))
+* **oui-dropdown:** remove close by event ([d50529b](https://github.com/ovh-ux/ovh-ui-angular/commit/d50529b))
+
+
+### Features
+
+* add 'removed' callback parameter ([a25784f](https://github.com/ovh-ux/ovh-ui-angular/commit/a25784f))
+* **oui-chips:** add oui-chips component ([02999dc](https://github.com/ovh-ux/ovh-ui-angular/commit/02999dc))
+* **oui-criteria-adder:** add oui-criteria-adder component ([1aa3c8b](https://github.com/ovh-ux/ovh-ui-angular/commit/1aa3c8b))
+* **oui-criteria-container:** add new component ([7beac6f](https://github.com/ovh-ux/ovh-ui-angular/commit/7beac6f))
+* **oui-dropdown:** add persistent attribute ([bc1c4f4](https://github.com/ovh-ux/ovh-ui-angular/commit/bc1c4f4))
+* **oui-modal:** implement loading attribute ([9d33bd6](https://github.com/ovh-ux/ovh-ui-angular/commit/9d33bd6))
+* **oui-radio-toggle-group:** create component ([16f180e](https://github.com/ovh-ux/ovh-ui-angular/commit/16f180e))
+* **oui-search:** connect search to criteria container ([5448964](https://github.com/ovh-ux/ovh-ui-angular/commit/5448964))
+* **oui-select:** add on-change to oui-select ([853509d](https://github.com/ovh-ux/ovh-ui-angular/commit/853509d))
+
+
+
 <a name="2.5.3"></a>
 ## [2.5.3](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.5.2...v2.5.3) (2018-03-07)
 
