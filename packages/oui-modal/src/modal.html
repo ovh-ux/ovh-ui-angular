@@ -4,10 +4,17 @@
       class="oui-icon oui-icon-close_thin oui-modal__close-button"
       type="button"
       aria-label="Exit"
-      ng-click="$ctrl.onDismiss()"></button>
+      ng-click="$ctrl.onDismiss()">
+    </button>
   </div>
   <div class="oui-modal__body oui-modal__body_no-icon">
-    <h2 class="oui-modal__title" ng-bind="::$ctrl.title"></h2>
+    <div class="oui-modal__loader" ng-if="$ctrl.loading">
+      <oui-spinner></oui-spinner>
+    </div>
+    <h2 class="oui-modal__title"
+        ng-bind="::$ctrl.title"
+        ng-if="::!!$ctrl.title">
+    </h2>
     <div ng-transclude></div>
   </div>
   <div class="oui-modal__footer">
@@ -15,13 +22,15 @@
       class="oui-button oui-button_secondary"
       type="button"
       ng-bind="::$ctrl.secondaryLabel"
-      ng-click="$ctrl.secondaryAction()">
+      ng-click="$ctrl.secondaryAction()"
+      ng-disabled="$ctrl.loading">
     </button>
     <button ng-if="$ctrl.primaryLabel"
       class="oui-button oui-button_primary"
       type="submit"
       ng-bind="::$ctrl.primaryLabel"
-      ng-click="$ctrl.primaryAction()">
+      ng-click="$ctrl.primaryAction()"
+      ng-disabled="$ctrl.loading">
     </button>
   </div>
 </div>
