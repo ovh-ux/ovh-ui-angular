@@ -208,7 +208,7 @@ describe("ouiDatagrid", () => {
                 it("should set page to 1 on filtering", () => {
                     const element = TestUtils.compileTemplate(`
                             <oui-datagrid rows="$ctrl.rows">
-                                <oui-column property="firstName" type="string"></oui-column>
+                                <oui-column property="firstName" type="string" searchable></oui-column>
                                 <oui-column property="lastName"></oui-column>
                             </oui-datagrid>
                         `, {
@@ -228,6 +228,74 @@ describe("ouiDatagrid", () => {
                     expect(tableController.paging.setOffset).toHaveBeenCalledWith(1);
                 });
 
+                it("should not display search input nor criteria adder", () => {
+                    const element = TestUtils.compileTemplate(`
+                            <oui-datagrid rows="$ctrl.rows">
+                                <oui-column property="firstName" type="string"></oui-column>
+                                <oui-column property="lastName"></oui-column>
+                            </oui-datagrid>
+                        `, {
+                        rows: fakeData
+                    });
+
+                    const searchInput = element.find("oui-search");
+                    const criteriaAdder = element.find("oui-criteria-adder");
+
+                    expect(searchInput.length).toEqual(0);
+                    expect(criteriaAdder.length).toEqual(0);
+                });
+
+                it("should display search input but not criteria adder", () => {
+                    const element = TestUtils.compileTemplate(`
+                            <oui-datagrid rows="$ctrl.rows">
+                                <oui-column property="firstName" type="string" searchable></oui-column>
+                                <oui-column property="lastName"></oui-column>
+                            </oui-datagrid>
+                        `, {
+                        rows: fakeData
+                    });
+
+                    const searchInput = element.find("oui-search");
+                    const criteriaAdder = element.find("oui-criteria-adder");
+
+                    expect(searchInput.length).toEqual(1);
+                    expect(criteriaAdder.length).toEqual(0);
+                });
+
+                it("should display criteria adder input but not search", () => {
+                    const element = TestUtils.compileTemplate(`
+                            <oui-datagrid rows="$ctrl.rows">
+                                <oui-column property="firstName" type="string" filterable></oui-column>
+                                <oui-column property="lastName"></oui-column>
+                            </oui-datagrid>
+                        `, {
+                        rows: fakeData
+                    });
+
+                    const searchInput = element.find("oui-search");
+                    const criteriaAdder = element.find("oui-criteria-adder");
+
+                    expect(searchInput.length).toEqual(0);
+                    expect(criteriaAdder.length).toEqual(1);
+                });
+
+                it("should display search and criteria adder", () => {
+                    const element = TestUtils.compileTemplate(`
+                            <oui-datagrid rows="$ctrl.rows">
+                                <oui-column property="firstName" type="string" filterable></oui-column>
+                                <oui-column property="lastName" type="string" searchable></oui-column>
+                            </oui-datagrid>
+                        `, {
+                        rows: fakeData
+                    });
+
+                    const searchInput = element.find("oui-search");
+                    const criteriaAdder = element.find("oui-criteria-adder");
+
+                    expect(searchInput.length).toEqual(1);
+                    expect(criteriaAdder.length).toEqual(1);
+                });
+
                 describe("Search text", () => {
                     it("should filter text on a simple column", () => {
                         const criteria = [{
@@ -239,7 +307,7 @@ describe("ouiDatagrid", () => {
 
                         const element = TestUtils.compileTemplate(`
                                 <oui-datagrid rows="$ctrl.rows">
-                                    <oui-column property="firstName" type="string"></oui-column>
+                                    <oui-column property="firstName" type="string" searchable></oui-column>
                                     <oui-column property="lastName"></oui-column>
                                 </oui-datagrid>
                             `, {
@@ -263,8 +331,8 @@ describe("ouiDatagrid", () => {
 
                         const element = TestUtils.compileTemplate(`
                                 <oui-datagrid rows="$ctrl.rows">
-                                    <oui-column property="firstName" type="string"></oui-column>
-                                    <oui-column property="lastName" type="string"></oui-column>
+                                    <oui-column property="firstName" type="string" searchable></oui-column>
+                                    <oui-column property="lastName" type="string" searchable></oui-column>
                                 </oui-datagrid>
                             `, {
                             rows: fakeData

@@ -1,6 +1,11 @@
 import { getAttribute, hasAttribute } from "@oui-angular/common/component-utils";
 
 const copyValueProperties = ["title", "type"];
+const searchableTypes = ["string"];
+const filterableTypes = [
+    "string",
+    "number"
+];
 
 export default class DatagridColumnBuilder {
     constructor ($parse, $compile) {
@@ -40,9 +45,10 @@ export default class DatagridColumnBuilder {
                 }
             });
 
-            if (column.type === "string") {
-                column.searchable = true;
-            }
+            column.filterable = DatagridColumnBuilder.isFilterable(column) &&
+                hasAttribute(columnElement, "filterable");
+            column.searchable = DatagridColumnBuilder.isSearchable(column) &&
+                hasAttribute(columnElement, "searchable");
 
             if (hasAttribute(columnElement, "title")) {
                 const titleValue = getAttribute(columnElement, "title");
@@ -97,6 +103,14 @@ export default class DatagridColumnBuilder {
         }
 
         return {};
+    }
+
+    static isSearchable (column) {
+        return searchableTypes.indexOf(column.type) > -1;
+    }
+
+    static isFilterable (column) {
+        return filterableTypes.indexOf(column.type) > -1;
     }
 
     _getColumnTemplate (column) {

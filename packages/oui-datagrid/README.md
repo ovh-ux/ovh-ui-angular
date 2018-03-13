@@ -10,18 +10,18 @@
 <oui-datagrid
   rows="$ctrl.data"
   page-size="5">
-  <oui-column title="'First name'" property="firstName" sortable="asc" type="string"></oui-column>
-  <oui-column title="'Last name'" property="lastName" sortable type="string"></oui-column>
+  <oui-column title="'First name'" property="firstName" sortable="asc" type="string" searchable filterable></oui-column>
+  <oui-column title="'Last name'" property="lastName" sortable type="string" searchable filterable></oui-column>
   <oui-column title="'Mother'" property="parents.mother.lastName" sortable>
     {{$row.parents.mother.lastName}}, {{$row.parents.mother.firstName}}
   </oui-column>
   <oui-column title="'Father'" property="parents.father.lastName" sortable>
     {{$row.parents.father.lastName}}, {{$row.parents.father.firstName}}
   </oui-column>
-  <oui-column title="'Email'" property="email" sortable>
+  <oui-column title="'Email'" property="email" sortable type="string" searchable>
     <a href="mailto:{{$value}}">{{$ctrl.label}}: {{$value}}</a>
   </oui-column>
-  <oui-column title="'Phone'" property="phone"></oui-column>
+  <oui-column title="'Phone'" property="phone" sortable type="string" searchable></oui-column>
   <oui-column title="'Birth'" property="birth" sortable>
     {{$value|date:short}}
   </oui-column>
@@ -35,8 +35,8 @@
   rows-loader="$ctrl.loadPartialData($config)"
   row-loader="$ctrl.loadRow($row)"
   page-size="5">
-  <oui-column title="'First name'" property="firstName" sortable="asc" type="string"></oui-column>
-  <oui-column title="'Last name'" property="lastName" sortable type="string"></oui-column>
+  <oui-column title="'First name'" property="firstName" sortable="asc" type="string" searchable filterable></oui-column>
+  <oui-column title="'Last name'" property="lastName" sortable type="string" searchable filterable></oui-column>
   <oui-column title="'Mother'" property="parents.mother.lastName" sortable>
     {{$row.parents.mother.lastName}}, {{$row.parents.mother.firstName}}
   </oui-column>
@@ -334,9 +334,11 @@ You can use `row-loader`. It take the current row as argument and must return a 
 | Attribute         | Type            | Binding | One-time binding | Values                    | Default                | Description                                 |
 | ----              | ----            | ----    | ----             | ----                      | ----                   | ----                                        |
 | `title`           | string          | N/A     | yes              |                           |                        | column title put in header                  |
-| `property`        | string          | N/A     | yes              |                           |                        | property path used to get value from value  |
+| `property`        | string          | N/A     | yes              |                           | null                   | property path used to get value from value  |
 | `sortable`        | string          | N/A     | yes              | `asc`, `desc`             | `asc` on `sortable=""` | makes a column sortable and gives the order |
-| `type`            | string          | N/A     |                  | `text`                    | null                   | define a column type                        |
+| `type`            | string          | N/A     |                  | `string`,`number`         | null                   | define a column type                        |
+| `filterable`      | N/A             | N/A     |                  |                           |                        | define a filterable column                  |
+| `searchable`      | N/A             | N/A     |                  |                           |                        | define a searchable column                  |
 
 If a column type is `text`, it will be searchable.
 
