@@ -160,6 +160,7 @@ export default class DatagridController {
         this.appliedCriteria = this.criteria
             .filter(criterion => !criterion.preview);
         this.refreshData(() => {
+            this.paging.setOffset(1);
             this.paging.setCriteria(criteria);
         }, false, false);
     }

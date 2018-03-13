@@ -205,6 +205,29 @@ describe("ouiDatagrid", () => {
             });
 
             describe("Filtering", () => {
+                it("should set page to 1 on filtering", () => {
+                    const element = TestUtils.compileTemplate(`
+                            <oui-datagrid rows="$ctrl.rows">
+                                <oui-column property="firstName" type="string"></oui-column>
+                                <oui-column property="lastName"></oui-column>
+                            </oui-datagrid>
+                        `, {
+                        rows: fakeData
+                    });
+
+                    const tableController = element.controller("ouiDatagrid");
+                    tableController.paging.setOffset = jasmine.createSpy("setOffsetSpy")
+                        .and.callThrough();
+                    tableController.onCriteriaChange([{
+                        property: null, // any property
+                        operator: "contains",
+                        value: "aaron"
+                    }]);
+                    element.scope().$apply();
+
+                    expect(tableController.paging.setOffset).toHaveBeenCalledWith(1);
+                });
+
                 describe("Search text", () => {
                     it("should filter text on a simple column", () => {
                         const criteria = [{
