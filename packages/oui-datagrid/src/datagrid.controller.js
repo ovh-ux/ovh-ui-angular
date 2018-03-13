@@ -120,7 +120,7 @@ export default class DatagridController {
         this.isSearchTextVisible = this.columns
             .filter(column => column.searchable)
             .length > 0;
-        this.filterableColumns = this.columns.filter(column => column.type);
+        this.filterableColumns = this.columns.filter(column => column.filterable);
     }
 
     $doCheck () {
