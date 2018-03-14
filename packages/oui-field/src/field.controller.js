@@ -38,6 +38,7 @@ export default class FieldController {
         this.validationParameters = {};
         this.invalid = false;
         this.invalidOnBlur = false;
+        this.hasFocus = false;
     }
 
     $postLink () {
@@ -110,24 +111,33 @@ export default class FieldController {
 
     bindDOMEvents (controlElement, name) {
         angular.element(controlElement).on("blur", () => {
-            this.showErrors(controlElement, name);
+            this.$timeout(() => {
+                this.showErrors(controlElement, name);
+                this.hasFocus = false;
+            });
         });
 
         angular.element(controlElement).on("focus", () => {
-            this.hideErrors(controlElement, name);
+            this.$timeout(() => {
+                this.hideErrors(controlElement, name);
+                this.hasFocus = true;
+            });
         });
     }
 
     showErrors (controlElement, name) {
-        this.$timeout(() => {
-            if (this.form[name] && this.form[name].$invalid) {
-                this.invalidOnBlur = true;
-                this.currentErrorField = name;
-            } else {
-                this.invalidOnBlur = false;
-                this.currentErrorField = null;
-            }
-        });
+        if (this.form[name] && this.form[name].$invalid) {
+            this.invalidOnBlur = true;
+            this.currentErrorField = name;
+        } else {
+            this.invalidOnBlur = false;
+            this.currentErrorField = null;
+        }
+    }
+
+    hideErrors (controlElement, name) {
+        this.form[name].$touched = false;
+        this.invalidOnBlur = false;
     }
 
     isErrorVisible () {
@@ -137,7 +147,7 @@ export default class FieldController {
 
         this.checkErrors();
         return this.invalidOnBlur || // true if invalid after blur event
-            (this.form.$submitted && this.invalid); // true if invalid after submit event
+            (this.form.$submitted && this.invalid && !this.hasFocus); // true if invalid after submit event
     }
 
     checkErrors () {
@@ -152,14 +162,6 @@ export default class FieldController {
                 (fieldInvalid, controlInvalid) => fieldInvalid || controlInvalid,
                 false
             );
-
-    }
-
-    hideErrors (controlElement, name) {
-        this.$timeout(() => {
-            this.form[name].$touched = false;
-            this.invalid = false;
-        });
     }
 
     getFirstError () {
