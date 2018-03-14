@@ -112,7 +112,7 @@ export default class FieldController {
     bindDOMEvents (controlElement, name) {
         angular.element(controlElement).on("blur", () => {
             this.$timeout(() => {
-                this.showErrors(controlElement, name);
+                this.checkControlErrors(controlElement, name);
                 this.hasFocus = false;
             });
         });
@@ -125,7 +125,7 @@ export default class FieldController {
         });
     }
 
-    showErrors (controlElement, name) {
+    checkControlErrors (controlElement, name) {
         if (this.form[name] && this.form[name].$invalid) {
             this.invalidOnBlur = true;
             this.currentErrorField = name;
@@ -145,12 +145,12 @@ export default class FieldController {
             return false;
         }
 
-        this.checkErrors();
+        this.checkAllErrors();
         return this.invalidOnBlur || // true if invalid after blur event
             (this.form.$submitted && this.invalid && !this.hasFocus); // true if invalid after submit event
     }
 
-    checkErrors () {
+    checkAllErrors () {
         this.invalid = Object.keys(this.controls)
             .map(name => {
                 if (this.form[name].$invalid && !this.currentErrorField) {

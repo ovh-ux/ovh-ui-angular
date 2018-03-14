@@ -44,7 +44,8 @@ export default class {
 
     onUiSelectBlur () {
         if (this.fieldCtrl) {
-            this.fieldCtrl.showErrors(this.uiSelectElement, this.name);
+            this.fieldCtrl.hasFocus = false;
+            this.fieldCtrl.checkControlErrors(this.uiSelectElement, this.name);
         }
 
         this.onBlur();
@@ -52,6 +53,7 @@ export default class {
 
     onUiSelectFocus () {
         if (this.fieldCtrl) {
+            this.fieldCtrl.hasFocus = true;
             this.fieldCtrl.hideErrors(this.uiSelectElement, this.name);
         }
 
