@@ -1,3 +1,5 @@
+import { noop } from "lodash";
+
 describe("ouiField", () => {
     let $timeout;
     let TestUtils;
@@ -267,8 +269,9 @@ describe("ouiField", () => {
 
                 const controller = getField(element).controller("ouiField");
                 getControl(controller, "age").triggerHandler("blur");
+                $timeout.flush();
 
-                expect(getError(element)).toBeDefined();
+                expect(getError(element)).not.toBeNull();
             });
 
             it("should hide the error on focus, when the field is already in error", () => {
@@ -289,11 +292,14 @@ describe("ouiField", () => {
 
                 $timeout.flush();
 
-                expect(getError(element)).toBeNull();
-
+                // Set initial state
                 const $control = getControl(controller, "age");
                 $control.triggerHandler("blur");
+                $timeout.flush();
+                expect(getError(element)).not.toBeNull();
+
                 $control.triggerHandler("focus");
+                $timeout.flush();
                 expect(getError(element)).toBeNull();
             });
 
@@ -474,9 +480,6 @@ describe("ouiField", () => {
                 $timeout.flush();
                 $dropdownButton.triggerHandler("blur");
 
-                // Pass the showErrors $timeout (ouiField).
-                $timeout.flush();
-
                 expect(element[0].querySelector(".oui-field__error")).toBeDefined();
             });
 
@@ -508,13 +511,9 @@ describe("ouiField", () => {
 
                 // Set errors visible
                 $dropdownButton.triggerHandler("blur");
-                $timeout.flush();
                 expect(element[0].querySelector(".oui-field__error")).toBeDefined();
 
                 $dropdownButton.triggerHandler("focus");
-
-                // Pass the showErrors $timeout (ouiField).
-                $timeout.flush();
 
                 expect(element[0].querySelector(".oui-field__error")).toBeNull();
             });
@@ -588,23 +587,61 @@ describe("ouiField", () => {
 
             it("should show error on submit", () => {
                 const element = TestUtils.compileTemplate(`
-                    <form name="form">
+                    <form name="form" ng-submit="$ctrl.noop()">
                         <oui-field label="{{'username'}}">
                             <input type="text"
                                 class="oui-input"
                                 type="text"
                                 id="username"
                                 name="username"
-                                minlength="0"
+                                required
                                 ng-model="$ctrl.username">
                         </oui-field>
                     </form>
-                    `);
+                    `, {
+                        noop
+                    });
+                const controller = getField(element).controller("ouiField");
+                $timeout.flush();
 
                 expect(element[0].querySelector(".oui-field__error")).toBeNull();
 
+                controller.form.$submitted = true;
                 element.triggerHandler("submit");
-                expect(element[0].querySelector(".oui-field__error")).toBeDefined();
+
+                expect(element[0].querySelector(".oui-field__error")).not.toBeNull();
+            });
+
+            it("should hide error on focus after on submit", () => {
+                const element = TestUtils.compileTemplate(`
+                    <form name="form" ng-submit="$ctrl.noop()">
+                        <oui-field label="{{'username'}}">
+                            <input type="text"
+                                class="oui-input"
+                                type="text"
+                                id="username"
+                                name="username"
+                                required
+                                ng-model="$ctrl.username">
+                        </oui-field>
+                        <button type="submit">Ok</button>
+                    </form>
+                    `, {
+                        noop
+                    });
+                const controller = getField(element).controller("ouiField");
+                $timeout.flush();
+
+                const $control = getControl(controller, "username");
+
+                // Initial state
+                controller.form.$submitted = true;
+                element.triggerHandler("submit");
+                expect(element[0].querySelector(".oui-field__error")).not.toBeNull();
+
+                $control.triggerHandler("focus");
+                $timeout.flush();
+                expect(element[0].querySelector(".oui-field__error")).toBeNull();
             });
         });
     });
