@@ -1,13 +1,12 @@
-<div class="oui-field">
+<div class="oui-field"
+    ng-class="{ 'oui-field_error': $ctrl.isErrorVisible() }">
     <label class="oui-field__label oui-label"
         ng-attr-for="{{ ::$ctrl.for }}"
         ng-if="::!!$ctrl.label"
         ng-bind="::$ctrl.label"></label>
-    <div class="oui-field__control" ng-transclude>
-
-    </div>
+    <div class="oui-field__control" ng-transclude></div>
     <div class="oui-field__error"
-        ng-if="$ctrl.isErrorVisible">
+        ng-if="$ctrl.isErrorVisible()">
         <span ng-messages="$ctrl.getFirstError()" role="alert">
             <i class="oui-icon oui-icon-error" aria-hidden="true"></i>
             <span ng-message="required"

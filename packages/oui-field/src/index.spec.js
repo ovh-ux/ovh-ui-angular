@@ -585,6 +585,27 @@ describe("ouiField", () => {
                 expect(controller.getFirstError().minlength).toBeTruthy();
                 expect(controller.getErrorMessage("minlength")).toContain(messageMinlength);
             });
+
+            it("should show error on submit", () => {
+                const element = TestUtils.compileTemplate(`
+                    <form name="form">
+                        <oui-field label="{{'username'}}">
+                            <input type="text"
+                                class="oui-input"
+                                type="text"
+                                id="username"
+                                name="username"
+                                minlength="0"
+                                ng-model="$ctrl.username">
+                        </oui-field>
+                    </form>
+                    `);
+
+                expect(element[0].querySelector(".oui-field__error")).toBeNull();
+
+                element.triggerHandler("submit");
+                expect(element[0].querySelector(".oui-field__error")).toBeDefined();
+            });
         });
     });
 

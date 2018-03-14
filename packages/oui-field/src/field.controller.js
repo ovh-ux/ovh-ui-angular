@@ -12,12 +12,6 @@ const CONTROLS_SELECTORS = [
     `.${CUSTOM_ELEMENT_CLASS}`
 ];
 
-const ERROR_CLASSES = {
-    input: "oui-input_error",
-    select: "oui-select_error",
-    textarea: "oui-textarea_error"
-};
-
 const VALIDATION_PARAMETERS = {
     min: ["min", "ng-min"],
     max: ["max", "ng-max"],
@@ -42,7 +36,8 @@ export default class FieldController {
         this.currentErrorField = null;
         this.ids = [];
         this.validationParameters = {};
-        this.isErrorVisible = false;
+        this.invalid = false;
+        this.invalidOnBlur = false;
     }
 
     $postLink () {
@@ -60,7 +55,7 @@ export default class FieldController {
                 throw new Error("oui-field component requires a form control with a name.");
             }
 
-            // The id is taken from the first control found
+            // The id is taken from the first control occurrence
             // to create the `for` attribute on the label.
             // If the control is a checkbox or a radio, we skip this part
             // because we don't want to link the field label to the first checkbox/radio.
@@ -126,24 +121,44 @@ export default class FieldController {
     showErrors (controlElement, name) {
         this.$timeout(() => {
             if (this.form[name] && this.form[name].$invalid) {
-                angular.element(controlElement).addClass(FieldController.getErrorClass(controlElement));
-                this.$ouiFieldElement.addClass("oui-field_error");
-                this.isErrorVisible = true;
+                this.invalidOnBlur = true;
                 this.currentErrorField = name;
             } else {
-                angular.element(controlElement).removeClass(FieldController.getErrorClass(controlElement));
-                this.$ouiFieldElement.removeClass("oui-field_error");
-                this.isErrorVisible = false;
+                this.invalidOnBlur = false;
+                this.currentErrorField = null;
             }
         });
+    }
+
+    isErrorVisible () {
+        if (!this.form) {
+            return false;
+        }
+
+        this.checkErrors();
+        return this.invalidOnBlur || // true if invalid after blur event
+            (this.form.$submitted && this.invalid); // true if invalid after submit event
+    }
+
+    checkErrors () {
+        this.invalid = Object.keys(this.controls)
+            .map(name => {
+                if (this.form[name].$invalid && !this.currentErrorField) {
+                    this.currentErrorField = name;
+                }
+                return this.form[name].$invalid;
+            })
+            .reduce(
+                (fieldInvalid, controlInvalid) => fieldInvalid || controlInvalid,
+                false
+            );
+
     }
 
     hideErrors (controlElement, name) {
         this.$timeout(() => {
             this.form[name].$touched = false;
-            this.isErrorVisible = false;
-            angular.element(controlElement).removeClass(FieldController.getErrorClass(controlElement));
-            this.$ouiFieldElement.removeClass("oui-field_error");
+            this.invalid = false;
         });
     }
 
@@ -187,11 +202,6 @@ export default class FieldController {
                 controls[name] = Array.from(this.$element[0].querySelectorAll(`[name="${name}"]`));
                 return controls;
             }, {});
-    }
-
-    static getErrorClass (controlElement) {
-        const tagName = controlElement.tagName.toLowerCase();
-        return ERROR_CLASSES[tagName];
     }
 
     static getValidationParameters (controlElement) {

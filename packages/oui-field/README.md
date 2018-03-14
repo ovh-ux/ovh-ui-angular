@@ -4,9 +4,9 @@
 
 ## Usage
 
-<form novalidate name="$ctrl.form1">
-
 ### Input
+
+<form novalidate name="$ctrl.form1">
 
 ```html:preview
 <oui-field label="{{'Lastname'}}"
@@ -155,6 +155,27 @@
 </oui-field>
 </form>
 ```
+
+### Submit button
+
+```html:preview
+<form novalidate name="simpleForm">
+    <oui-field label="{{'Lastname'}}"
+        help-text="At least 3 chars">
+        <input
+            class="oui-input"
+            type="text"
+            id="lastname"
+            name="lastname"
+            ng-model="$ctrl.user.lastname"
+            required
+            minlength="3"
+            maxlength="32">
+    </oui-field>
+    <button type="submit" class="oui-button oui-button_primary">Submit</button>
+</form>
+```
+
 
 ## API
 
