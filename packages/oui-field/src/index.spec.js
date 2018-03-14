@@ -585,7 +585,7 @@ describe("ouiField", () => {
                 expect(controller.getErrorMessage("minlength")).toContain(messageMinlength);
             });
 
-            it("should show error on submit", () => {
+            it("should show error on submit", () => {
                 const element = TestUtils.compileTemplate(`
                     <form name="form" ng-submit="$ctrl.noop()">
                         <oui-field label="{{'username'}}">
@@ -598,9 +598,9 @@ describe("ouiField", () => {
                                 ng-model="$ctrl.username">
                         </oui-field>
                     </form>
-                    `, {
-                        noop
-                    });
+                `, {
+                    noop
+                });
                 const controller = getField(element).controller("ouiField");
                 $timeout.flush();
 
@@ -612,7 +612,7 @@ describe("ouiField", () => {
                 expect(element[0].querySelector(".oui-field__error")).not.toBeNull();
             });
 
-            it("should hide error on focus after on submit", () => {
+            it("should hide error on focus after on submit", () => {
                 const element = TestUtils.compileTemplate(`
                     <form name="form" ng-submit="$ctrl.noop()">
                         <oui-field label="{{'username'}}">
@@ -626,9 +626,9 @@ describe("ouiField", () => {
                         </oui-field>
                         <button type="submit">Ok</button>
                     </form>
-                    `, {
-                        noop
-                    });
+                `, {
+                    noop
+                });
                 const controller = getField(element).controller("ouiField");
                 $timeout.flush();
 
