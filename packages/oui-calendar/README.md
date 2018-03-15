@@ -20,6 +20,20 @@
 </oui-calendar>
 ```
 
+### Disabled
+
+```html:preview
+<oui-calendar id="foo" name="bar" model="$ctrl.defaultModel" disabled>
+</oui-calendar>
+```
+
+### Week numbers
+
+```html:preview
+<oui-calendar model="$ctrl.defaultModel" week-numbers>
+</oui-calendar>
+```
+
 ### Min & Max
 
 ```html:preview
@@ -136,6 +150,7 @@ Use `mode` to set a different selection mode for the calendar
 | `enable-date`     | array     | <?        | true              | See [Supplying Dates](https://flatpickr.js.org/examples/#supplying-dates-for-flatpickr)   |           | make certain dates only available for selection                                           |
 | `disabled`        | boolean   | <?        |                   | `true`, `false`                                                                           | `false`   | disabled flag                                                                             |
 | `required`        | boolean   | <?        |                   | `true`, `false`                                                                           | `false`   | required flag                                                                             |
+| `week-numbers`    | boolean   | <?        |                   | `true`, `false`                                                                           | `false`   | week numbers flag                                                                         |
 | `on-change`       | function  | &         |                   |                                                                                           |           | handler triggered when the user selects a date, or changes the time on a selected date    |
 | `on-close`        | function  | &         |                   |                                                                                           |           | handler triggered when the calendar is opened                                             |
 | `on-open`         | function  | &         |                   |                                                                                           |           | handler triggered when the calendar is closed                                             |
@@ -156,8 +171,7 @@ angular.module("myModule", [
         dateFormat: "Y-m-d",
         maxDate: null,
         minDate: null,
-        mode: "single",
-        weekNumbers: true
+        mode: "single"
     });
 });
 ```
