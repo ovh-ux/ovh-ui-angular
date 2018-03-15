@@ -15,13 +15,10 @@ export default class DatagridLocalPaging extends DatagridPagingAbstract {
         this.totalCount = rows ? rows.length : 0;
     }
 
-    loadData (skipSort) {
-        this._filter();
-
-        if (!skipSort) {
+    loadData (skipSortAndFilter) {
+        if (!skipSortAndFilter) {
+            this._filter();
             this._sort();
-        } else {
-            this.sortedRows = this.filteredRows;
         }
 
         return this.$q.when({

@@ -173,7 +173,7 @@ export default class DatagridController {
         });
     }
 
-    refreshData (callback, skipSort, requireScrollToTop) {
+    refreshData (callback, skipSortAndFilter, requireScrollToTop) {
         if (this.loading) {
             return;
         }
@@ -182,7 +182,7 @@ export default class DatagridController {
         this.displayedRows = DatagridController.createEmptyRows(this.paging.getCurrentPageSize());
 
         this.$q.when(callback())
-            .then(() => this.paging.loadData(skipSort))
+            .then(() => this.paging.loadData(skipSortAndFilter))
             .then(result => {
                 this.displayedRows = result.data;
                 if (requireScrollToTop) {
