@@ -328,7 +328,7 @@ You can use `row-loader`. It take the current row as argument and must return a 
     sortable="asc"></oui-column>
   <oui-column title="'Memory'"
     property="memory"
-    type-"number"
+    type="number"
     filterable
     sortable></oui-column>
   <oui-column title="'CPUs'"
@@ -349,6 +349,7 @@ You can use `row-loader`. It take the current row as argument and must return a 
   <oui-column title="'IP'"
     property="ip"
     type="string"
+    searchable
     filterable
     sortable></oui-column>
 </oui-datagrid>

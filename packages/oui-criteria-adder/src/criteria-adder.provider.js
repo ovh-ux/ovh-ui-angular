@@ -1,8 +1,19 @@
 export default class {
     constructor () {
         this.operatorsByType = {
-            number: ["is"],
-            string: ["contains"]
+            number: [
+                "is",
+                "smaller",
+                "bigger"
+            ],
+            string: [
+                "contains",
+                "containsNot",
+                "startsWith",
+                "endsWith",
+                "is",
+                "isNot"
+            ]
         };
 
         // TODO: List of operators for all types (Not supported yet)
@@ -38,8 +49,8 @@ export default class {
 
             operator_string_contains: "contains",
             operator_string_containsNot: "does not contain",
-            operator_string_start: "starts with",
-            operator_string_end: "ends with",
+            operator_string_startsWith: "starts with",
+            operator_string_endsWith: "ends with",
             operator_string_is: "is",
             operator_string_isNot: "is not",
 
