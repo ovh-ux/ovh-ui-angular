@@ -1,3 +1,15 @@
+<a name="2.6.1"></a>
+## [2.6.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.6.0...v2.6.1) (2018-03-15)
+
+
+### Bug Fixes
+
+* **oui-field:** fix blur and focus behavior ([8fae495](https://github.com/ovh-ux/ovh-ui-angular/commit/8fae495))
+* **oui-field:** show errors on submit ([76e8078](https://github.com/ovh-ux/ovh-ui-angular/commit/76e8078))
+* **oui-select:** add focus propagation to oui-field ([c7c6407](https://github.com/ovh-ux/ovh-ui-angular/commit/c7c6407))
+
+
+
 <a name="2.6.0"></a>
 # [2.6.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.5.3...v2.6.0) (2018-03-13)
 
