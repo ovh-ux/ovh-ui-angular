@@ -13,11 +13,11 @@ const CONTROLS_SELECTORS = [
 ];
 
 const VALIDATION_PARAMETERS = {
-    min: ["min", "ng-min"],
-    max: ["max", "ng-max"],
-    minlength: ["minlength", "ng-minlength"],
-    maxlength: ["maxlength", "ng-maxlength"],
-    pattern: ["pattern", "ng-pattern"]
+    min: ["min", "ng-min", "ngMin"],
+    max: ["max", "ng-max", "ngMax"],
+    minlength: ["minlength", "ng-minlength", "ngMinlength"],
+    maxlength: ["maxlength", "ng-maxlength", "ngMaxlength"],
+    pattern: ["pattern", "ng-pattern", "ngPattern"]
 };
 
 export default class FieldController {
