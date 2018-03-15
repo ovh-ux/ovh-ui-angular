@@ -1,5 +1,6 @@
 import { find, get } from "lodash";
-import escapeStringRegexp from "escape-string-regexp";
+import ComparatorResolver from "./comparator-resolver";
+import StringComparators from "./string";
 
 export default class Filter {
     constructor (criteria, columns) {
@@ -36,22 +37,20 @@ export default class Filter {
         }
 
         const propertyMeta = find(this.columns, ["name", criterion.property]);
+        const comparatorFn = ComparatorResolver.resolveComparator(criterion, propertyMeta.type);
 
-        // Criterion property can't be null if operator is not "contains".
-        if (!criterion.property || !propertyMeta || criterion.value === undefined) {
+        if (!criterion.property ||
+            !criterion.operator ||
+            criterion.value === undefined ||
+            !propertyMeta.type ||
+            !comparatorFn) {
             return collection;
         }
 
-        switch (criterion.operator) {
-        case "contains":
-            return collection.filter(item => {
-                const value = get(item, criterion.property);
-                return Filter.contains(value, criterion.value);
-            });
-
-        default:
-            return collection;
-        }
+        return collection.filter(item => {
+            const subject = get(item, criterion.property);
+            return comparatorFn(subject, criterion.value);
+        });
     }
 
     /**
@@ -65,7 +64,7 @@ export default class Filter {
         return this.searchableColumns
             .reduce((aggregator, name) => {
                 const value = get(item, name);
-                return aggregator || Filter.contains(value, text);
+                return aggregator || StringComparators.contains(value, text);
             }, false);
     }
 
@@ -73,12 +72,5 @@ export default class Filter {
         return this.columns
             .filter(column => column.searchable)
             .map(column => column.name);
-    }
-
-    /** String - contains */
-    static contains (haystack, needle) {
-        const escapedNeedle = escapeStringRegexp(needle);
-        const pattern = new RegExp(escapedNeedle, "i");
-        return pattern.test(haystack);
     }
 }

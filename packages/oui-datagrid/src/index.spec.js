@@ -1,4 +1,4 @@
-import "./filter.spec.js";
+import "./filter/filter.spec.js";
 import originalFakeData from "./index.spec.data.json";
 
 describe("ouiDatagrid", () => {
@@ -357,7 +357,7 @@ describe("ouiDatagrid", () => {
 
                         const element = TestUtils.compileTemplate(`
                                 <oui-datagrid rows="$ctrl.rows">
-                                    <oui-column property="firstName" type="text"></oui-column>
+                                    <oui-column property="firstName" type="string" filterable></oui-column>
                                     <oui-column property="lastName"></oui-column>
                                 </oui-datagrid>
                             `, {
