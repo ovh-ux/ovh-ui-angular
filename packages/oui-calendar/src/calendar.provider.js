@@ -20,8 +20,7 @@ export default class {
             dateFormat: "Y-m-d",
             maxDate: null,
             minDate: null,
-            mode: "single",
-            weekNumbers: true
+            mode: "single"
         };
     }
 

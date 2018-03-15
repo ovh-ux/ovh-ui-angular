@@ -39,6 +39,7 @@ export default class {
         this.setOptionsProperty("maxDate", this.maxDate);
         this.setOptionsProperty("minDate", this.minDate);
         this.setOptionsProperty("mode", this.mode);
+        this.setOptionsProperty("weekNumbers", this.weekNumbers);
 
         // Set formatting options
         this.setOptionsProperty("dateFormat", this.format);
@@ -70,6 +71,7 @@ export default class {
     $onInit () {
         addBooleanParameter(this, "disabled");
         addBooleanParameter(this, "required");
+        addBooleanParameter(this, "weekNumbers");
 
         this.initCalendarInstance();
     }

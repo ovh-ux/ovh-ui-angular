@@ -19,6 +19,7 @@ export default {
 
         disabled: "<?",
         required: "<?",
+        weekNumbers: "<?",
 
         onChange: "&",
         onClose: "&",
