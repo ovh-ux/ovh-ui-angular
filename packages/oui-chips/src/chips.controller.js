@@ -1,5 +1,4 @@
 import { addBooleanParameter } from "@oui-angular/common/component-utils";
-import { cloneDeep } from "lodash";
 
 export default class {
     constructor ($attrs, $element, $timeout) {
@@ -14,7 +13,7 @@ export default class {
         addBooleanParameter(this, "closable");
         addBooleanParameter(this, "stacked");
 
-        this.items = this.items ? cloneDeep(this.items) : [];
+        this.items = this.items ? angular.copy(this.items) : [];
     }
 
     $postLink () {

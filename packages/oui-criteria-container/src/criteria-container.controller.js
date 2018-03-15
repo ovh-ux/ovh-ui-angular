@@ -1,4 +1,4 @@
-import { cloneDeep, findIndex } from "lodash";
+import { findIndex } from "lodash";
 
 export default class CriteriaController {
     $onInit () {
@@ -40,7 +40,7 @@ export default class CriteriaController {
 
     add (criterion) {
         // Delete same preview criterion if it exists.
-        const previewCriterion = cloneDeep(criterion);
+        const previewCriterion = angular.copy(criterion);
         previewCriterion.preview = true;
 
         const previewCriterionIndex = this.indexOfCriterion(previewCriterion);
