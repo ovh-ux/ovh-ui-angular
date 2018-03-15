@@ -315,7 +315,44 @@ You can use `row-loader`. It take the current row as argument and must return a 
 </oui-datagrid>
 ```
 
-[Example](src/ovh-ui-angular/controllers/datagrid.controller.js#L60).
+### Search and filtering
+
+```html:preview
+<oui-datagrid rows="$ctrl.servers"
+  page-size="5">
+  <oui-column title="'Name'"
+    property="name"
+    type="string"
+    searchable
+    filterable
+    sortable="asc"></oui-column>
+  <oui-column title="'Memory'"
+    property="memory"
+    type-"number"
+    filterable
+    sortable></oui-column>
+  <oui-column title="'CPUs'"
+    property="cpu"
+    type="number"
+    filterable
+    sortable></oui-column>
+  <oui-column title="'Running'"
+    property="up"
+    type="boolean"
+    filterable
+    sortable></oui-column>
+  <oui-column title="'Purpose'"
+    property="purpose"
+    type="option"
+    filterable
+    sortable></oui-column>
+  <oui-column title="'IP'"
+    property="ip"
+    type="string"
+    filterable
+    sortable></oui-column>
+</oui-datagrid>
+```
 
 ## API
 
