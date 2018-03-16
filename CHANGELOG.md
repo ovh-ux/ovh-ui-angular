@@ -1,3 +1,18 @@
+<a name="2.7.0"></a>
+# [2.7.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.6.1...v2.7.0) (2018-03-16)
+
+
+### Bug Fixes
+
+* **oui-field:** support validations prefixed with data-ng ([f669f35](https://github.com/ovh-ux/ovh-ui-angular/commit/f669f35))
+
+
+### Features
+
+* **oui-field:** add size attribute ([189f08e](https://github.com/ovh-ux/ovh-ui-angular/commit/189f08e))
+
+
+
 <a name="2.6.1"></a>
 ## [2.6.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.6.0...v2.6.1) (2018-03-15)
 
