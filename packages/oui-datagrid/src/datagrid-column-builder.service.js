@@ -3,8 +3,9 @@ import { getAttribute, hasAttribute } from "@oui-angular/common/component-utils"
 const copyValueProperties = ["title", "type"];
 const searchableTypes = ["string"];
 const filterableTypes = [
-    "string",
-    "number"
+    "boolean",
+    "number",
+    "string"
 ];
 
 export default class DatagridColumnBuilder {

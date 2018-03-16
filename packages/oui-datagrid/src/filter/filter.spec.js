@@ -26,6 +26,10 @@ const serverColumns = [{
     name: "cpu",
     filterable: true,
     type: "number"
+}, {
+    name: "up",
+    filterable: true,
+    type: "boolean"
 }];
 
 const fakeData = angular.copy(originalFakeData);
@@ -290,6 +294,34 @@ describe("Filter", () => {
                         property: "cpu",
                         operator: "biggerNot",
                         value: 8
+                    });
+                    expect(filtered.length).toBe(serversFakeData.length - expectedResults);
+                });
+            });
+        });
+
+        describe("with boolean type", () => {
+            describe("and 'is' operator", () => {
+                const expectedResults = 238;
+
+                it("should filter", () => {
+                    filter = new Filter([], serverColumns);
+
+                    const filtered = filter.applyCriteria(serversFakeData, {
+                        property: "up",
+                        operator: "is",
+                        value: true
+                    });
+                    expect(filtered.length).toBe(expectedResults);
+                });
+
+                it("should filter (negated)", () => {
+                    filter = new Filter([], serverColumns);
+
+                    const filtered = filter.applyCriteria(serversFakeData, {
+                        property: "up",
+                        operator: "isNot",
+                        value: true
                     });
                     expect(filtered.length).toBe(serversFakeData.length - expectedResults);
                 });

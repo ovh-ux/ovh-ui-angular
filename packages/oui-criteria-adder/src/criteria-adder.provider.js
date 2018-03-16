@@ -13,6 +13,10 @@ export default class {
                 "endsWith",
                 "is",
                 "isNot"
+            ],
+            "boolean": [
+                "is",
+                "isNot"
             ]
         };
 
@@ -47,6 +51,9 @@ export default class {
             column_label: "Column",
             operator_label: "Operator",
 
+            operator_boolean_is: "is",
+            operator_boolean_isNot: "is not",
+
             operator_string_contains: "contains",
             operator_string_containsNot: "does not contain",
             operator_string_startsWith: "starts with",
@@ -73,6 +80,9 @@ export default class {
 
             operator_options_is: "is",
             operator_options_isNot: "is not",
+
+            true_label: "Yes",
+            false_label: "No",
 
             value_label: "Value",
             submit_label: "Add"
