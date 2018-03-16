@@ -1,10 +1,10 @@
 # Calendar
 
-<component-status cx-design="complete" ux="rc"></component-status>
+<component-status cx-design="none" ux="prototype"></component-status>
 
 ## Usage
 
-**This component need [flatpickr](https://github.com/flatpickr/flatpickr) to work.**
+**This component needs [flatpickr](https://github.com/flatpickr/flatpickr) to work.**
 
 ### Default
 
@@ -23,7 +23,14 @@
 ### Disabled
 
 ```html:preview
-<oui-calendar id="foo" name="bar" model="$ctrl.defaultModel" disabled>
+<oui-calendar model="$ctrl.defaultModel" disabled>
+</oui-calendar>
+```
+
+### Required
+
+```html:preview
+<oui-calendar model="$ctrl.defaultModel" required>
 </oui-calendar>
 ```
 
@@ -57,7 +64,7 @@ Use `disable-date` to make certain dates unavailable for selection.
 </div>
 ```
 
-**Note**: See [Flatpickr documentation](https://flatpickr.js.org/examples/#disabling-dates) for more informations.
+**Note**: See [Flatpickr documentation](https://flatpickr.js.org/examples/#disabling-dates) for more information.
 
 ### Disabling all dates except select few
 
@@ -71,7 +78,7 @@ Use `enable-date` to make certain dates only available for selection.
 </div>
 ```
 
-**Note**: See [Flatpickr documentation](https://flatpickr.js.org/examples/#disabling-all-dates-except-select-few) for more informations.
+**Note**: See [Flatpickr documentation](https://flatpickr.js.org/examples/#disabling-all-dates-except-select-few) for more information.
 
 ### Date Formatting
 
@@ -83,7 +90,7 @@ Use `enable-date` to make certain dates only available for selection.
 </div>
 ```
 
-**Note**: See [Formatting Tokens](https://flatpickr.js.org/formatting/) for more informations.
+**Note**: See [Formatting Tokens](https://flatpickr.js.org/formatting/) for more information.
 
 ### Calendar modes
 
@@ -130,8 +137,8 @@ Use `mode` to set a different selection mode for the calendar
 
 **Note**: If you want to access the parameters inside events callback, you need to use `selectedDates` or `dateStr` variables as below.
 
-* `selectedDates` return an array of Date objects selected by the user. When there are no dates selected, the array is empty.
-* `dateStr` return a string representation of the latest selected Date object by the user. The string is formatted as per the `dateFormat` option.
+* `selectedDates` returns an array of Date objects selected by the user. When there are no dates selected, the array is empty.
+* `dateStr` returns a string representation of the latest selected Date object by the user. The string is formatted as per the `dateFormat` option.
 
 ## API
 
@@ -176,4 +183,4 @@ angular.module("myModule", [
 });
 ```
 
-**Note**: See [Flatpickr Options](https://flatpickr.js.org/options/) for more informations about the configuration.
+**Note**: See [Flatpickr Options](https://flatpickr.js.org/options/) for more information about the configuration.
