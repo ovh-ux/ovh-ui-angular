@@ -4,7 +4,7 @@
         ng-attr-for="{{ ::$ctrl.for }}"
         ng-if="::!!$ctrl.label"
         ng-bind="::$ctrl.label"></label>
-    <div class="oui-field__control" ng-transclude></div>
+    <div ng-class=":: 'oui-field__control oui-field__control_' + $ctrl.size" ng-transclude></div>
     <div class="oui-field__error"
         ng-if="$ctrl.isErrorVisible()">
         <span ng-messages="$ctrl.getFirstError()" role="alert">
