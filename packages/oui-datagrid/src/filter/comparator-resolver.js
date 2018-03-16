@@ -1,8 +1,10 @@
 import { endsWith, negate } from "lodash";
+import BooleanComparators from "./boolean";
 import NumberComparators from "./number";
 import StringComparators from "./string";
 
 const comparators = {
+    "boolean": BooleanComparators,
     number: NumberComparators,
     string: StringComparators
 };

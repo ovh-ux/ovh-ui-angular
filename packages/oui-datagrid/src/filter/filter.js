@@ -37,6 +37,11 @@ export default class Filter {
         }
 
         const propertyMeta = find(this.columns, ["name", criterion.property]);
+
+        if (!propertyMeta) {
+            return collection;
+        }
+
         const comparatorFn = ComparatorResolver.resolveComparator(criterion, propertyMeta.type);
 
         if (!criterion.property ||

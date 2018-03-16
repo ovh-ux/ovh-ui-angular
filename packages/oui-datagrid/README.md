@@ -340,7 +340,7 @@ You can use `row-loader`. It take the current row as argument and must return a 
     property="up"
     type="boolean"
     filterable
-    sortable></oui-column>
+    sortable>{{ $value ? 'Yes' : 'No' }}</oui-column>
   <oui-column title="'Purpose'"
     property="purpose"
     type="option"

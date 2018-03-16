@@ -59,6 +59,19 @@
                 </div>
                 <!-- /Number -->
 
+                <!-- Boolean -->
+                <div ng-switch-when="boolean">
+                    <oui-select
+                        name="country"
+                        model="$ctrl.valueModel['boolean']"
+                        items="$ctrl.booleanChoices"
+                        match="name"
+                        data-align="start">
+                        <span ng-bind="$item.name"></span>
+                    </oui-select>
+                </div>
+                <!-- /Boolean -->
+
             </div>
             <!-- /Value field -->
 
