@@ -39,7 +39,7 @@ describe("ouiField", () => {
             });
         });
 
-        fdescribe("default behavior", () => {
+        describe("default behavior", () => {
             it("should decorate the field", () => {
                 const element = TestUtils.compileTemplate(`
                     <oui-field label="{{'Lastname'}}">
