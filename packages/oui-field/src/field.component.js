@@ -5,6 +5,7 @@ export default {
     bindings: {
         label: "@?",
         helpText: "@?",
+        size: "@?",
         errorMessages: "<?"
     },
     controller,

@@ -10,7 +10,8 @@
 
 ```html:preview
 <oui-field label="{{'Lastname'}}"
-    help-text="At least 3 chars">
+    help-text="At least 3 chars"
+    size="xl">
     <input
         class="oui-input"
         type="text"
@@ -22,7 +23,7 @@
         maxlength="32">
 </oui-field>
 
-<oui-field label="{{'Email'}}">
+<oui-field label="{{'Email'}}" size="xl">
     <input
         class="oui-input"
         type="email"
@@ -32,7 +33,8 @@
 </oui-field>
 
 <oui-field label="{{'Username'}}"
-    error-messages="{pattern: 'Username must be alphabetic with a length between 3 and 8.'}">
+    error-messages="{pattern: 'Username must be alphabetic with a length between 3 and 8.'}"
+    size="xl">
     <input
         class="oui-input"
         type="text"
@@ -85,7 +87,7 @@
 ### Textarea
 
 ```html:preview
-<oui-field label="{{'Server description'}}">
+<oui-field label="{{'Server description'}}" size="xl">
     <textarea
         class="oui-textarea"
         id="description"
@@ -95,7 +97,7 @@
     </textarea>
 </oui-field>
 
-<oui-field label="{{'Cluster description'}}">
+<oui-field label="{{'Cluster description'}}" size="xl">
     <oui-textarea
         model="$ctrl.text2"
         id="description-2"
@@ -109,7 +111,7 @@
 ### Select
 
 ```html:preview
-<oui-field label="{{'OS'}}">
+<oui-field label="{{'OS'}}" size="m">
     <label class="oui-select">
         <select
             id="os"
@@ -127,7 +129,7 @@
     </label>
 </oui-field>
 
-<oui-field label="{{'Recovery OS'}}">
+<oui-field label="{{'Recovery OS'}}" size="m">
     <oui-select name="recovery_os"
         model="$ctrl.recoveryOs"
         data-title="Select the recovery OS"
@@ -161,7 +163,8 @@
 ```html:preview
 <form novalidate name="simpleForm">
     <oui-field label="{{'Lastname'}}"
-        help-text="At least 3 chars">
+        help-text="At least 3 chars"
+        size="xl">
         <input
             class="oui-input"
             type="text"
@@ -179,11 +182,12 @@
 
 ## API
 
-| Attribute         | Type            | Binding | One-time binding | Values      | Default             | Description                                       |
-| ----              | ----            | ----    | ----             | ----        | ----                | ----                                              |
-| `error-messages`  | object          | <?      | no               |             |                     | a dictionary to override default messages         |
-| `help-text`       | string          | @?      | yes              |             |                     | the field label                                   |
-| `label`           | function        | @?      | yes              |             |                     | a text to help fill the form field                |
+| Attribute         | Type            | Binding | One-time binding | Values                     | Default             | Description                                       |
+| ----              | ----            | ----    | ----             | ----                       | ----                | ----                                              |
+| `error-messages`  | object          | <?      | no               |                            |                     | a dictionary to override default messages         |
+| `help-text`       | string          | @?      | yes              |                            |                     | the field label                                   |
+| `size`            | string          | @?      | yes              | `xs`, `s`, `m`, `l`, `xl`  |   `l`               | the field size                                   |
+| `label`           | function        | @?      | yes              |                            |                     | a text to help fill the form field                |
 
 `error-messages` object can override error messages for validation.
 

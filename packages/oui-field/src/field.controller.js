@@ -23,7 +23,6 @@ const VALIDATION_PARAMETERS = {
 export default class FieldController {
     constructor ($element, $scope, $timeout, ouiFieldConfiguration) {
         "ngInject";
-
         this.$element = $element;
         this.$scope = $scope;
         this.$timeout = $timeout;
@@ -39,6 +38,8 @@ export default class FieldController {
         this.invalid = false;
         this.invalidOnBlur = false;
         this.hasFocus = false;
+        this.size = this.size || "l";
+
     }
 
     $postLink () {

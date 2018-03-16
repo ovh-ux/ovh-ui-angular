@@ -19,6 +19,7 @@ describe("ouiField", () => {
     const getLabel = elt => elt[0].querySelector("label");
     const getError = elt => elt[0].querySelector(".oui-field__error");
     const getHelper = elt => elt[0].querySelector(".oui-field__helper");
+    const getElementByClass = (element, value) => angular.element(element[0].querySelector(value));
     const getControl = (controller, name) => angular.element(controller.controls[name][0]);
 
     describe("Component", () => {
@@ -38,18 +39,14 @@ describe("ouiField", () => {
             });
         });
 
-        describe("with input", () => {
+        fdescribe("default behavior", () => {
             it("should decorate the field", () => {
                 const element = TestUtils.compileTemplate(`
                     <oui-field label="{{'Lastname'}}">
-                        <input
-                            class="oui-input"
-                            type="text"
-                            id="lastname"
-                            name="lastname"
-                            ng-model="$ctrl.user.lastname">
+                        <input name="lastname"/>
                     </oui-field>
                 `);
+                $timeout.flush();
 
                 expect(getLabel(element)).toBeDefined();
                 expect(getError(element)).toBeDefined();
@@ -59,17 +56,39 @@ describe("ouiField", () => {
             it("should not show the label tag if no label defined", () => {
                 const element = TestUtils.compileTemplate(`
                     <oui-field>
-                        <input
-                            class="oui-input"
-                            type="text"
-                            id="lastname"
-                            name="lastname"
-                            ng-model="$ctrl.user.lastname">
+                        <input name="lastname"/>
                     </oui-field>
-                    `);
+                `);
+                $timeout.flush();
 
                 expect(getLabel(element)).toBeNull();
             });
+
+            it("should set large as default field size", () => {
+                const element = TestUtils.compileTemplate(`
+                    <oui-field>
+                        <input name="lastname"/>
+                    </oui-field>
+                `);
+                $timeout.flush();
+
+                expect(getElementByClass(element, ".oui-field__control_l").length).toEqual(1);
+            });
+
+            it("should set defined size as field size", () => {
+                const size = "xs";
+                const element = TestUtils.compileTemplate(`
+                    <oui-field size="${size}">
+                        <input name="lastname"/>
+                    </oui-field>
+                `);
+                $timeout.flush();
+
+                expect(getElementByClass(element, `.oui-field__control_${size}`).length).toEqual(1);
+            });
+        });
+
+        describe("with input", () => {
 
             it("should set the 'for' attribute on label", () => {
                 const id = "lastname";
