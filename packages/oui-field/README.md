@@ -185,14 +185,26 @@
 | `help-text`       | string          | @?      | yes              |             |                     | the field label                                   |
 | `label`           | function        | @?      | yes              |             |                     | a text to help fill the form field                |
 
-`error-messages` object can override error messages for validation.
 
-| Attribute         | Type            | Default                                   |
-| ----              | ----            | ----                                      |
-| `required`        | string          | Mandatory.                                |
-| `email`           | string          | Invalid email.                            |
-| `min`             | string          | Too low (1 min).                          |
-| `max`             | string          | Too high (100 max).                       |
-| `minlength`       | string          | Too short (6 characters min).             |
-| `maxlength`       | string          | Too high (12 characters max).             |
-| `pattern`         | string          | Invalid format.                           |
+## Configuration
+
+The validation messages can be globally configured with a provider.
+
+```js
+angular.module("myModule", [
+    "oui.field"
+]).config(ouiFieldConfiguration => {
+    ouiFieldConfiguration.translations = {
+        errors: {
+            required: "Mandatory.",
+            number: "Invalid number.",
+            email: "Invalid email.",
+            min: "Too low ({{min}} min).",
+            max: "Too high ({{max}} max).",
+            minlength: "Too short ({{minlength}} characters min).",
+            maxlength: "Too high ({{maxlength}} characters max).",
+            pattern: "Invalid format."
+        }
+    };
+});
+```
