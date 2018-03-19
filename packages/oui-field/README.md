@@ -182,12 +182,12 @@
 
 ## API
 
-| Attribute         | Type            | Binding | One-time binding | Values                     | Default             | Description                                       |
-| ----              | ----            | ----    | ----             | ----                       | ----                | ----                                              |
-| `error-messages`  | object          | <?      | no               |                            |                     | a dictionary to override default messages         |
-| `help-text`       | string          | @?      | yes              |                            |                     | the field label                                   |
-| `size`            | string          | @?      | yes              | `xs`, `s`, `m`, `l`, `xl`  |   `l`               | the field size                                   |
-| `label`           | function        | @?      | yes              |                            |                     | a text to help fill the form field                |
+| Attribute         | Type            | Binding | One-time binding | Values                             | Default             | Description                                       |
+| ----              | ----            | ----    | ----             | ----                               | ----                | ----                                              |
+| `error-messages`  | object          | <?      | no               |                                    |                     | a dictionary to override default messages         |
+| `help-text`       | string          | @?      | yes              |                                    |                     | the field label                                   |
+| `size`            | string          | @?      | yes              | `xs`, `s`, `m`, `l`, `xl`, `auto`  | `l`                 | the field size                                    |
+| `label`           | function        | @?      | yes              |                                    |                     | a text to help fill the form field                |
 
 
 ## Configuration
