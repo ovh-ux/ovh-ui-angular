@@ -1,3 +1,18 @@
+<a name="2.7.1"></a>
+## [2.7.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.7.0...v2.7.1) (2018-03-19)
+
+
+### Bug Fixes
+
+* **oui-dropdown:** fix blur action for Safari and Firefox ([7115a7c](https://github.com/ovh-ux/ovh-ui-angular/commit/7115a7c))
+
+
+### Features
+
+* **oui-field:** add auto size  ([a8f6d1d](https://github.com/ovh-ux/ovh-ui-angular/commit/a8f6d1d))
+
+
+
 <a name="2.7.0"></a>
 # [2.7.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.6.1...v2.7.0) (2018-03-16)
 
