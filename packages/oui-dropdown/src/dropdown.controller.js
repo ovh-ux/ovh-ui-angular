@@ -54,7 +54,7 @@ export default class {
                 return;
             }
 
-            if (!this.$element[0].contains(evt.relatedTarget)) {
+            if (evt.relatedTarget && !this.$element[0].contains(evt.relatedTarget)) {
                 // Sometime Angular is already in a digest loop here.
                 // Let's delay dropdown closing after that instead of $applying again.
                 this.$timeout(() => this.closeDropdown());
