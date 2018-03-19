@@ -38,7 +38,7 @@ export default class FieldController {
         this.invalid = false;
         this.invalidOnBlur = false;
         this.hasFocus = false;
-        this.size = this.size || "l";
+        this.size = this.size || "auto";
 
     }
 
