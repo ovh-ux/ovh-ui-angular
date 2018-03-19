@@ -64,7 +64,7 @@ describe("ouiField", () => {
                 expect(getLabel(element)).toBeNull();
             });
 
-            it("should set large as default field size", () => {
+            it("should set auto as default field size", () => {
                 const element = TestUtils.compileTemplate(`
                     <oui-field>
                         <input name="lastname"/>
@@ -72,7 +72,7 @@ describe("ouiField", () => {
                 `);
                 $timeout.flush();
 
-                expect(getElementByClass(element, ".oui-field__control_l").length).toEqual(1);
+                expect(getElementByClass(element, ".oui-field__control_auto").length).toEqual(1);
             });
 
             it("should set defined size as field size", () => {
