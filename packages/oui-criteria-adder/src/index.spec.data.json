@@ -7,5 +7,26 @@
         "name": "example.number",
         "title": "Example Number",
         "type": "number"
+    }, {
+        "name": "example.boolean",
+        "title": "Example Boolean",
+        "type": "boolean"
+    }, {
+        "name": "example.booleanCustom",
+        "title": "Example Boolean Custom",
+        "type": "boolean",
+        "typeOptions": {
+            "trueValue": "The True Label"
+        }
+    }, {
+        "name": "example.options",
+        "title": "Example Options",
+        "type": "options",
+        "typeOptions": {
+            "values": {
+                "foo": "Foo",
+                "bar": "Bar"
+            }
+        }
     }]
 }

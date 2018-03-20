@@ -30,6 +30,10 @@ const serverColumns = [{
     name: "up",
     filterable: true,
     type: "boolean"
+}, {
+    name: "purpose",
+    filterable: true,
+    type: "options"
 }];
 
 const fakeData = angular.copy(originalFakeData);
@@ -322,6 +326,34 @@ describe("Filter", () => {
                         property: "up",
                         operator: "isNot",
                         value: true
+                    });
+                    expect(filtered.length).toBe(serversFakeData.length - expectedResults);
+                });
+            });
+        });
+
+        describe("with options type", () => {
+            describe("and 'is' operator", () => {
+                const expectedResults = 61;
+
+                it("should filter", () => {
+                    filter = new Filter([], serverColumns);
+
+                    const filtered = filter.applyCriteria(serversFakeData, {
+                        property: "purpose",
+                        operator: "is",
+                        value: "database"
+                    });
+                    expect(filtered.length).toBe(expectedResults);
+                });
+
+                it("should filter (negated)", () => {
+                    filter = new Filter([], serverColumns);
+
+                    const filtered = filter.applyCriteria(serversFakeData, {
+                        property: "purpose",
+                        operator: "isNot",
+                        value: "database"
                     });
                     expect(filtered.length).toBe(serversFakeData.length - expectedResults);
                 });

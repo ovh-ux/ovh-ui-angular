@@ -160,6 +160,94 @@ describe("ouiCriteriaAdder", () => {
             });
         });
 
+        describe("Column type = boolean", () => {
+            let configuration;
+
+            beforeEach(inject(_ouiCriteriaAdderConfiguration_ => {
+                configuration = _ouiCriteriaAdderConfiguration_;
+            }));
+
+            it("should call function of onSubmit attribute, when form is submitted, with the model value", () => {
+                const propertyMeta = mockData.properties[2];
+                const value = {
+                    name: configuration.translations.true_label,
+                    value: true
+                };
+
+                // Initial condition
+                expect(propertyMeta.type).toEqual("boolean");
+
+                // Change column
+                controller.columnModel = propertyMeta;
+                controller.onColumnChange();
+
+                controller.valueModel.boolean = value;
+
+                // Then submit
+                component.find("form").triggerHandler("submit");
+                expect(onSubmitSpy).toHaveBeenCalledWith({
+                    title: `${propertyMeta.title} is ${configuration.translations.true_label}`,
+                    property: propertyMeta.name,
+                    operator: "is",
+                    value: value.value
+                });
+            });
+
+            it("should use a custom label", () => {
+                const propertyMeta = mockData.properties[3];
+                const value = {
+                    name: propertyMeta.typeOptions.trueValue,
+                    value: true
+                };
+
+                // Initial condition
+                expect(propertyMeta.type).toEqual("boolean");
+
+                // Change column
+                controller.columnModel = propertyMeta;
+                controller.onColumnChange();
+
+                controller.valueModel.boolean = value;
+
+                // Then submit
+                component.find("form").triggerHandler("submit");
+                expect(onSubmitSpy).toHaveBeenCalledWith({
+                    title: `${propertyMeta.title} is ${propertyMeta.typeOptions.trueValue}`,
+                    property: propertyMeta.name,
+                    operator: "is",
+                    value: value.value
+                });
+            });
+        });
+
+        describe("Column type = options", () => {
+            it("should call function of onSubmit attribute, when form is submitted, with the model value", () => {
+                const propertyMeta = mockData.properties[4];
+                const value = {
+                    name: propertyMeta.typeOptions.values.bar,
+                    value: "bar"
+                };
+
+                // Initial condition
+                expect(propertyMeta.type).toEqual("options");
+
+                // Change column
+                controller.columnModel = propertyMeta;
+                controller.onColumnChange();
+
+                controller.valueModel.options = value;
+
+                // Then submit
+                component.find("form").triggerHandler("submit");
+                expect(onSubmitSpy).toHaveBeenCalledWith({
+                    title: `${propertyMeta.title} is ${value.name}`,
+                    property: propertyMeta.name,
+                    operator: "is",
+                    value: value.value
+                });
+            });
+        });
+
         describe("With criteria container", () => {
             it("should add criterion in criteria container", () => {
                 const onChangeSpy = jasmine.createSpy();

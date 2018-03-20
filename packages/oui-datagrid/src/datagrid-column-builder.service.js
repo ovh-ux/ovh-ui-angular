@@ -1,10 +1,11 @@
 import { getAttribute, hasAttribute } from "@oui-angular/common/component-utils";
 
-const copyValueProperties = ["title", "type"];
+const copyValueProperties = ["title", "type", "type-options"];
 const searchableTypes = ["string"];
 const filterableTypes = [
     "boolean",
     "number",
+    "options",
     "string"
 ];
 
@@ -50,6 +51,10 @@ export default class DatagridColumnBuilder {
                 hasAttribute(columnElement, "filterable");
             column.searchable = DatagridColumnBuilder.isSearchable(column) &&
                 hasAttribute(columnElement, "searchable");
+
+            if (column["type-options"]) {
+                column.typeOptions = this.$parse(column["type-options"])($scope);
+            }
 
             if (hasAttribute(columnElement, "title")) {
                 const titleValue = getAttribute(columnElement, "title");

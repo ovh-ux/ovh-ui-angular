@@ -343,7 +343,18 @@ You can use `row-loader`. It take the current row as argument and must return a 
     sortable>{{ $value ? 'Yes' : 'No' }}</oui-column>
   <oui-column title="'Purpose'"
     property="purpose"
-    type="option"
+    type="options"
+    type-options="{
+        values: {
+            network: 'Network',
+            database: 'Database',
+            static: 'Static content',
+            frontend: 'Frontend',
+            backend: 'Backend',
+            broker: 'Broker',
+            others: 'Others'
+        }
+    }"
     filterable
     sortable></oui-column>
   <oui-column title="'IP'"
