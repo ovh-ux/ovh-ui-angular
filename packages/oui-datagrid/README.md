@@ -380,16 +380,29 @@ You can use `row-loader`. It take the current row as argument and must return a 
 
 ### oui-column
 
-| Attribute         | Type            | Binding | One-time binding | Values                    | Default                | Description                                 |
-| ----              | ----            | ----    | ----             | ----                      | ----                   | ----                                        |
-| `title`           | string          | N/A     | yes              |                           |                        | column title put in header                  |
-| `property`        | string          | N/A     | yes              |                           | null                   | property path used to get value from value  |
-| `sortable`        | string          | N/A     | yes              | `asc`, `desc`             | `asc` on `sortable=""` | makes a column sortable and gives the order |
-| `type`            | string          | N/A     |                  | `string`,`number`         | null                   | define a column type                        |
-| `filterable`      | N/A             | N/A     |                  |                           |                        | define a filterable column                  |
-| `searchable`      | N/A             | N/A     |                  |                           |                        | define a searchable column                  |
+| Attribute         | Type            | Binding | One-time binding | Values                    | Default                | Description                                       |
+| ----              | ----            | ----    | ----             | ----                      | ----                   | ----                                              |
+| `title`           | string          | N/A     | yes              |                           |                        | column title put in header                        |
+| `property`        | string          | N/A     | yes              |                           | null                   | property path used to get value from value        |
+| `sortable`        | string          | N/A     | yes              | `asc`, `desc`             | `asc` on `sortable=""` | makes a column sortable and gives the order       |
+| `type`            | string          | N/A     |                  | `string`,`number`         | null                   | define a column type                              |
+| `filterable`      | N/A             | N/A     |                  |                           |                        | define a filterable column                        |
+| `searchable`      | N/A             | N/A     |                  |                           |                        | define a searchable column                        |
+| `typeOptions`     | object          | N/A     |                  |                           | {}                     | define options related to column type (see below) |
 
-If a column type is `text`, it will be searchable.
+`typeOptions` is used to give options to feed criteria values. Example:
+
+```javascript
+const typeOptions = {
+    trueValue: "Running", // displayed value for true value when type = boolean
+    falseValue: "Down", // displayed value for false value when type = boolean
+    values: { // displayed values when type = options)
+        nw: "Network",
+        db: "Database",
+        other: "Other"
+    }
+};
+```
 
 ### rows-loader promise response
 
