@@ -24,7 +24,7 @@ export default class {
     onBtnClick () {
         if (angular.isFunction(this.onClick)) {
             this.onClick();
-        } else {
+        } else if (!this.href) {
             this.$window.history.back();
         }
     }

@@ -9,6 +9,7 @@ export default {
         name: "@?",
         ariaLabel: "@?",
         title: "@?",
-        onClick: "&?"
+        onClick: "&?",
+        href: "@?"
     }
 };

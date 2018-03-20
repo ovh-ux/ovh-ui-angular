@@ -25,6 +25,13 @@
 </oui-back-button>
 ```
 
+### Link
+
+```html:preview
+<oui-back-button href="#" data-title="Link">
+</oui-back-button>
+```
+
 ## API
 
 | Attribute     | Type     | Binding | One-time binding | Values              | Default                | Description                         |
@@ -32,5 +39,6 @@
 | id            | string   | @?      | true             |                     |                        | id attribute of the input           |
 | name          | string   | @?      | true             |                     |                        | name attribute of the input         |
 | aria-label    | string   | @?      | true             |                     |                        | accessibility label                 |
-| title         | string   | @?      | true             |                     |                        | text of the header 
-| on-click      | function | &?      |                  |                     | $window.history.back() | callback on component click         |
+| title         | string   | @?      | true             |                     |                        | text of the header                  |
+| on-click      | function | &?      |                  |                     |                        | callback on component click         |
+| href          | string   | @?      | true             |                     |                        | link url                            |
