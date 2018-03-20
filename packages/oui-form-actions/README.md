@@ -9,19 +9,32 @@
 ```html:preview
 <oui-form-actions
   on-submit="$ctrl.submit()"
-  on-cancel="$ctrl.cancel()"
-></oui-form-actions>
+  href="#">
+</oui-form-actions>
 ```
+
 
 ### Custom naming
 
 ```html:preview
 <div ng-init="$ctrl.disabled = false" class="oui-doc-preview-only-keep-children">
     <oui-form-actions
+      on-submit="$ctrl.submit()"
+      href="#"
+      submit-text="Disable"
+      cancel-text="Reset">
+    </oui-form-actions>
+</div>
+```
+
+
+### on-submit and on-cancel events
+
+```html:preview
+<div ng-init="$ctrl.disabled = false" class="oui-doc-preview-only-keep-children">
+    <oui-form-actions
       on-submit="$ctrl.disabled = true"
       on-cancel="$ctrl.disabled = false"
-      submit-text="Disable"
-      cancel-text="Reset"
       disabled="$ctrl.disabled">
     </oui-form-actions>
 </div>
@@ -35,5 +48,6 @@
 | on-cancel     | function | &       |                  |                        |           | cancel handler                   |
 | submit-text   | string   | @?      | true             |                        | "Submit"  | submit button text               |
 | cancel-text   | string   | @?      | true             |                        | "Cancel"  | cancel button text               |
+| href          | string   | @?      | true             |                        |           | link url on cancel       |
 | disabled      | boolean  | <?      |                  |                        | false     | disabled flag                    |
 
