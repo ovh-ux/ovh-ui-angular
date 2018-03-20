@@ -115,5 +115,17 @@ describe("ouiFormActions", () => {
 
             expect(component.scope().$ctrl.onCancelTest).toHaveBeenCalled();
         });
+
+        it("should handle link on cancel button", () => {
+            const link = "#";
+            const component = testUtils.compileTemplate(`
+                <oui-form-actions
+                    on-submit="$ctrl.onSubmitTest()"
+                    href="${link}">
+                </oui-form-actions>`);
+            const a = component.find("a").eq(0);
+
+            expect(a.attr("href")).toBe(link);
+        });
     });
 });

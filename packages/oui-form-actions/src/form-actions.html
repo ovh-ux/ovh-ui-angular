@@ -6,8 +6,15 @@
   type="submit">
 </button>
 <button
+  ng-if="::!$ctrl.href"
   class="oui-button oui-button_link"
   ng-bind="::$ctrl.cancelText"
   ng-click="$ctrl.onCancel()"
   type="button">
 </button>
+<a
+  ng-if="::!!$ctrl.href"
+  class="oui-button oui-button_link"
+  ng-bind="::$ctrl.cancelText"
+  ng-href="{{:: $ctrl.href }}">
+</a>

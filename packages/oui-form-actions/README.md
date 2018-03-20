@@ -9,9 +9,17 @@
 ```html:preview
 <oui-form-actions
   on-submit="$ctrl.submit()"
-  on-cancel="$ctrl.cancel()"
-></oui-form-actions>
+  on-cancel="$ctrl.cancel()">
+</oui-form-actions>
 ```
+
+```html:preview
+<oui-form-actions
+  on-submit="$ctrl.submit()"
+  href="#">
+</oui-form-actions>
+```
+
 
 ### Custom naming
 
@@ -35,5 +43,6 @@
 | on-cancel     | function | &       |                  |                        |           | cancel handler                   |
 | submit-text   | string   | @?      | true             |                        | "Submit"  | submit button text               |
 | cancel-text   | string   | @?      | true             |                        | "Cancel"  | cancel button text               |
+| href          | string   | @?      | true             |                        |           | link url on cancel button        |
 | disabled      | boolean  | <?      |                  |                        | false     | disabled flag                    |
 
