@@ -17,6 +17,10 @@ export default class {
             "boolean": [
                 "is",
                 "isNot"
+            ],
+            options: [
+                "is",
+                "isNot"
             ]
         };
 

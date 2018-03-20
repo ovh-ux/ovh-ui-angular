@@ -1,5 +1,5 @@
+import { get, map } from "lodash";
 import { addDefaultParameter } from "@oui-angular/common/component-utils";
-import { get } from "lodash";
 
 export default class {
     constructor ($attrs, $element, $scope, $timeout, ouiCriteriaAdderConfiguration) {
@@ -54,7 +54,6 @@ export default class {
         this.resetValueModel();
         this.selectableOperators = this.filterSelectableOperators();
         this.operatorModel = this.selectableOperators[0];
-        this.resetValueModel();
     }
 
     onFormSubmit () {
@@ -76,7 +75,7 @@ export default class {
     }
 
     getCriterionValue () {
-        if (this.columnModel.type !== "boolean") {
+        if (["boolean", "options"].indexOf(this.columnModel.type) < 0) {
             return this.valueModel[this.columnModel.type];
         }
 
@@ -84,11 +83,16 @@ export default class {
     }
 
     getCriterionValueLabel () {
-        if (this.columnModel.type !== "boolean") {
+        switch (this.columnModel.type) {
+        case "boolean":
+            return this.getBooleanLabel(this.valueModel[this.columnModel.type].value);
+
+        case "options":
+            return this.getOptionsLabel(this.valueModel[this.columnModel.type].value);
+
+        default:
             return this.valueModel[this.columnModel.type];
         }
-
-        return this.getBooleanLabel(this.valueModel[this.columnModel.type].value);
     }
 
     getBooleanLabel (value) {
@@ -107,6 +111,24 @@ export default class {
         this.valueModel[this.columnModel.type] = this.booleanChoices[0];
     }
 
+    getOptionsLabel (value) {
+        const options = get(this.columnModel, "typeOptions.values");
+        return options && options[value] ? options[value] : value;
+    }
+
+    initOptionsCriterion () {
+        const options = get(this.columnModel, "typeOptions.values");
+        if (!options) {
+            return;
+        }
+
+        this.optionsChoices = map(options, (value, key) => ({
+            name: value,
+            value: key
+        }));
+        this.valueModel[this.columnModel.type] = this.optionsChoices[0];
+    }
+
     resetValueModel () {
         Object.keys(this.valueModel).forEach(key => {
             this.valueModel[key] = undefined;
@@ -114,6 +136,8 @@ export default class {
 
         if (this.columnModel.type === "boolean") {
             this.initBooleanCriterion();
+        } else if (this.columnModel.type === "options") {
+            this.initOptionsCriterion();
         }
     }
 

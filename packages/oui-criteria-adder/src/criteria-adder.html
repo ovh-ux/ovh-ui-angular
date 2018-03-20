@@ -62,7 +62,7 @@
                 <!-- Boolean -->
                 <div ng-switch-when="boolean">
                     <oui-select
-                        name="country"
+                        name="{{::$ctrl.name}}Value"
                         model="$ctrl.valueModel['boolean']"
                         items="$ctrl.booleanChoices"
                         match="name"
@@ -71,6 +71,19 @@
                     </oui-select>
                 </div>
                 <!-- /Boolean -->
+
+                <!-- Options -->
+                <div ng-switch-when="options">
+                    <oui-select
+                        name="{{::$ctrl.name}}Value"
+                        model="$ctrl.valueModel['options']"
+                        items="$ctrl.optionsChoices"
+                        match="name"
+                        data-align="start">
+                        <span ng-bind="$item.name"></span>
+                    </oui-select>
+                </div>
+                <!-- /Options -->
 
             </div>
             <!-- /Value field -->
