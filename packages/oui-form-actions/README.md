@@ -35,8 +35,6 @@
     <oui-form-actions
       on-submit="$ctrl.disabled = true"
       on-cancel="$ctrl.disabled = false"
-      submit-text="Disable"
-      cancel-text="Reset"
       disabled="$ctrl.disabled">
     </oui-form-actions>
 </div>
