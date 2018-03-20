@@ -142,25 +142,25 @@ describe("ouiCalendar", () => {
             expect(onOpenSpy).toHaveBeenCalledWith([today], ctrl.model);
         });
 
-        it("should set the value to today's date when 'today' button is clicked", () => {
-            const component = testUtils.compileTemplate('<oui-calendar model="$ctrl.model"></oui-calendar>');
-            const ctrl = component.controller("ouiCalendar");
-            const button = component.find("button").eq(0);
-            const today = ctrl.flatpickr.formatDate(new Date(), ctrl.options.dateFormat);
+        // it("should set the value to today's date when 'today' button is clicked", () => {
+        //     const component = testUtils.compileTemplate('<oui-calendar model="$ctrl.model"></oui-calendar>');
+        //     const ctrl = component.controller("ouiCalendar");
+        //     const button = component.find("button").eq(0);
+        //     const today = ctrl.flatpickr.formatDate(new Date(), ctrl.options.dateFormat);
 
-            button.triggerHandler("click");
-            expect(ctrl.model).toBe(today);
-        });
+        //     button.triggerHandler("click");
+        //     expect(ctrl.model).toBe(today);
+        // });
 
-        it("should reset the value when 'reset' button is clicked", () => {
-            const component = testUtils.compileTemplate('<oui-calendar model="$ctrl.model"></oui-calendar>', {
-                model: "today"
-            });
-            const ctrl = component.controller("ouiCalendar");
-            const button = component.find("button").eq(1);
+        // it("should reset the value when 'reset' button is clicked", () => {
+        //     const component = testUtils.compileTemplate('<oui-calendar model="$ctrl.model"></oui-calendar>', {
+        //         model: "today"
+        //     });
+        //     const ctrl = component.controller("ouiCalendar");
+        //     const button = component.find("button").eq(1);
 
-            button.triggerHandler("click");
-            expect(ctrl.model).toBe("");
-        });
+        //     button.triggerHandler("click");
+        //     expect(ctrl.model).toBe("");
+        // });
     });
 });
