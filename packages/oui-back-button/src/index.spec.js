@@ -66,7 +66,7 @@ describe("ouiBackButton", () => {
             expect(element.find("h2")[0].innerText).toBe(title);
         });
 
-        it("should go back in history when clicking button if on-click is not defined", () => {
+        it("should go back in history when clicking button if on-click and href are not defined", () => {
             const element = compile("<oui-back-button></oui-back-button>");
             expect($window.history.back).not.toHaveBeenCalled();
             element.find("button").triggerHandler("click");
@@ -82,6 +82,14 @@ describe("ouiBackButton", () => {
             element.find("button").triggerHandler("click");
             expect($window.history.back).not.toHaveBeenCalled();
             expect(scope.foo).toHaveBeenCalled();
+        });
+
+        it("should generate href attribute and not go back in history", () => {
+            const link = "#";
+            const element = compile(`<oui-back-button href="${link}"></oui-back-button>`);
+            const a = element.find("a").eq(0);
+            expect(a.attr("href")).toBe(link);
+            expect($window.history.back).not.toHaveBeenCalled();
         });
     });
 });
