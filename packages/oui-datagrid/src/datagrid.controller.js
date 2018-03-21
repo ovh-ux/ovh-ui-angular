@@ -58,6 +58,7 @@ export default class DatagridController {
         this.scrollEnd = false;
         this.firstLoading = true;
         this.pageSize = parseInt(this.pageSize, 10) || this.config.pageSize;
+        this.filterableColumns = [];
     }
 
     $postLink () {
@@ -118,6 +119,7 @@ export default class DatagridController {
         this.isSearchTextVisible = this.columns
             .filter(column => column.searchable)
             .length > 0;
+        this.filterableColumns = this.columns.filter(column => column.type);
     }
 
     $doCheck () {
