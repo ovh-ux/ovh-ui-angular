@@ -7,7 +7,7 @@
 ### Default
 
 ```html:preview
-<oui-back-button data-title="Title">
+<oui-back-button href="#" data-title="Title">
 </oui-back-button>
 ```
 
@@ -22,13 +22,6 @@
 
 ```html:preview
 <oui-back-button on-click="$ctrl.myFunction()">
-</oui-back-button>
-```
-
-### Link
-
-```html:preview
-<oui-back-button href="#" data-title="Link">
 </oui-back-button>
 ```
 
