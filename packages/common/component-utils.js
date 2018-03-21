@@ -39,10 +39,8 @@ export function addDefaultParameter (controller, parameterName, defaultValue) {
  * @return {Boolean}                     true if it exists
  */
 export function hasAttribute (element, attributeName) {
-    const attributes = [];
-    Array.from(element.attributes).forEach(attribute => attributes.push(attribute.name));
-    Object.keys(element.dataset).forEach(dataKey => attributes.push(dataKey));
-    return attributes.indexOf(attributeName) > -1;
+    return element.getAttribute(attributeName) !== null ||
+        element.getAttribute(`data-${attributeName}`) !== null;
 }
 
 /**
@@ -52,10 +50,8 @@ export function hasAttribute (element, attributeName) {
  * @return {Boolean}                     true if it exists and have a value
  */
 export function hasAttributeValue (element, attributeName) {
-    const attributes = [];
-    Array.from(element.attributes).forEach(attribute => attributes.push(attribute.name));
-    Object.keys(element.dataset).forEach(dataKey => attributes.push(dataKey));
-    return attributes.indexOf(attributeName) > -1 && getAttribute(element, attributeName);
+    const attribute = element.getAttribute(attributeName) || element.getAttribute(`data-${attributeName}`);
+    return attribute && attribute !== "";
 }
 
 /**
@@ -65,7 +61,7 @@ export function hasAttributeValue (element, attributeName) {
  * @return {string}                     the attribute value
  */
 export function getAttribute (element, attributeName) {
-    return element.attributes[attributeName] ? element.attributes[attributeName].value : element.dataset[attributeName];
+    return element.getAttribute(attributeName) || element.getAttribute(`data-${attributeName}`);
 }
 
 export default {

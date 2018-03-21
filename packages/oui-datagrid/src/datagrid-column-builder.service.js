@@ -34,7 +34,7 @@ export default class DatagridColumnBuilder {
                 // A column can be sorted only if it has a "property" attribute.
                 if (hasAttribute(columnElement, "sortable")) {
                     const sortableValue = getAttribute(columnElement, "sortable");
-                    column.sortable = sortableValue !== undefined;
+                    column.sortable = !!sortableValue;
                     Object.assign(currentSorting, DatagridColumnBuilder.defineDefaultSorting(column, sortableValue));
                 }
             }
@@ -91,11 +91,11 @@ export default class DatagridColumnBuilder {
         return column;
     }
 
-    static defineDefaultSorting (column, attrValue) {
-        column.sortable = attrValue !== undefined;
+    static defineDefaultSorting (column, sortableValue) {
+        column.sortable = sortableValue !== undefined;
 
-        if (attrValue.length) {
-            column.defaultSortDir = attrValue === "asc" ? 1 : -1;
+        if (sortableValue && sortableValue.length) {
+            column.defaultSortDir = sortableValue === "asc" ? 1 : -1;
             return {
                 columnName: column.name,
                 dir: column.defaultSortDir
