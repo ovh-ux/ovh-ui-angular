@@ -1,13 +1,9 @@
-<span class="oui-list__header"
-    ng-bind="::$ctrl.header">
-</span>
+<span class="oui-list__header" ng-bind="::$ctrl.header"></span>
+
 <form class="oui-list__description" novalidate
+    ng-if="$ctrl.state === 'valid'"
     ng-attr-name="{{::$ctrl.name}}"
     ng-attr-id="{{::$ctrl.id}}"
-    ng-class="{
-        'oui-list__item_disabled': $ctrl.isDisabled,
-        'oui-list__item_checked': $ctrl.isComplete
-    }"
     ng-submit="$ctrl.onFormSubmit(this[$ctrl.name])">
     <div class="text-center" ng-if="$ctrl.loading">
         <oui-spinner></oui-spinner>

@@ -22,6 +22,7 @@
 
 ```html:preview
 <oui-stepper>
+    <oui-step-form header="Completed step" state="complete"></oui-step-form>
     <oui-step-form name="form"
         header="Lorem ipsum"
         on-submit="$ctrl.stepSubmit(form)">
@@ -55,6 +56,19 @@
                 required>
         </oui-field>
     </oui-step-form>
+    <oui-step-form name="form2"
+        header="Consectetur adipiscing elit"
+        on-submit="$ctrl.stepSubmit2(form)"
+        state="disabled">
+        <oui-field label="Test" size="xl">
+            <input class="oui-input"
+                type="text"
+                id="test"
+                name="test"
+                ng-model="$ctrl.test"
+                required>
+        </oui-field>
+    </oui-step-form>
 </oui-stepper>
 ```
 
@@ -75,10 +89,10 @@
 | ----              | ----            | ----    | ----             | ----                   | ----                | ----                                        |
 | `name`            | string          | @?      | yes              |                        |                     | step form name, same as normal form         |
 | `id`              | string          | @?      | yes              |                        |                     | step form id, same as normal form           |
-| `step-title`      | string          | @?      | yes              |                        |                     | step title to put in step header            |
-| `on-enter`        | function        | &       |                  |                        |                     | action to do when opening step              |
 | `on-submit`       | function        | &       |                  |                        |                     | submit step function                        |
-| `autovalidate`    | boolean         | <?      | yes              | false                  |                     | enable auto validation of the step          |
+| `header`          | string          | @?      | yes              |                        |                     | title to put in step header                 |
 | `loading`         | function        | &?      |                  |                        |                     | display loader on step                      |
+| `autovalidate`    | boolean         | <?      | yes              | false                  |                     | enable auto validation of the step          |
+| `on-enter`        | function        | &       |                  |                        |                     | action to do when opening step              |
 
 

@@ -6,7 +6,8 @@ export default {
         name: "@",
         header: "@",
         loading: "<?",
-        onSubmit: "&"
+        onSubmit: "&",
+        state: "@"
     },
     controller,
     template,
