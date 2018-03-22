@@ -248,6 +248,31 @@ describe("ouiCriteriaAdder", () => {
             });
         });
 
+        describe("Column type = date", () => {
+            it("should call function of onSubmit attribute, when form is submitted, with the model value", () => {
+                const propertyMeta = mockData.properties[5];
+                const value = "1987-11-19";
+
+                // Initial condition
+                expect(propertyMeta.type).toEqual("date");
+
+                // Change column
+                controller.columnModel = propertyMeta;
+                controller.onColumnChange();
+
+                controller.valueModel.date = value;
+
+                // Then submit
+                component.find("form").triggerHandler("submit");
+                expect(onSubmitSpy).toHaveBeenCalledWith({
+                    title: `${propertyMeta.title} is ${value}`,
+                    property: propertyMeta.name,
+                    operator: "is",
+                    value
+                });
+            });
+        });
+
         describe("With criteria container", () => {
             it("should add criterion in criteria container", () => {
                 const onChangeSpy = jasmine.createSpy();
