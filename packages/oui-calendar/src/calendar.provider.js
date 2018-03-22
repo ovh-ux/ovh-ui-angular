@@ -18,6 +18,7 @@ export default class {
             altInput: false,
             allowInput: true,
             dateFormat: "Y-m-d",
+            disableMobile: true,
             maxDate: null,
             minDate: null,
             mode: "single"
