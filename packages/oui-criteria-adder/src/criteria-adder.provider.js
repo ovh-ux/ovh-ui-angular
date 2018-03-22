@@ -1,24 +1,29 @@
 export default class {
     constructor () {
         this.operatorsByType = {
+            "boolean": [
+                "is",
+                "isNot"
+            ],
+            date: [
+                "is",
+                "isAfter",
+                "isBefore"
+            ],
             number: [
                 "is",
                 "smaller",
                 "bigger"
+            ],
+            options: [
+                "is",
+                "isNot"
             ],
             string: [
                 "contains",
                 "containsNot",
                 "startsWith",
                 "endsWith",
-                "is",
-                "isNot"
-            ],
-            "boolean": [
-                "is",
-                "isNot"
-            ],
-            options: [
                 "is",
                 "isNot"
             ]
@@ -70,17 +75,8 @@ export default class {
             operator_number_bigger: "is bigger than",
 
             operator_date_is: "is",
-            operator_date_before: "is before",
-            operator_date_after: "is after",
-            operator_date_options: "is in the last",
-
-            operator_date_option_1h: "1 hour",
-            operator_date_option_1d: "1 day",
-            operator_date_option_1w: "1 week",
-            operator_date_option_1M: "1 month",
-            operator_date_option_3M: "3 months",
-            operator_date_option_6M: "6 months",
-            operator_date_option_12M: "12 months",
+            operator_date_isBefore: "is before",
+            operator_date_isAfter: "is after",
 
             operator_options_is: "is",
             operator_options_isNot: "is not",

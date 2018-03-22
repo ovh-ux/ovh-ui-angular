@@ -28,5 +28,9 @@
                 "bar": "Bar"
             }
         }
+    }, {
+        "name": "example.date",
+        "title": "Example Date",
+        "type": "date"
     }]
 }

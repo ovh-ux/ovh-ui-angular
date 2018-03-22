@@ -18,6 +18,10 @@ export default class {
         // Set align to "end" if undefined
         addDefaultParameter(this, "align", "center");
 
+        this.$timeout(() => {
+            this.dropdownContent = this.$element[0];
+        });
+
         // Auto select first column
         if (this.properties) {
             this.columnModel = this.properties[0];
