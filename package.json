@@ -34,7 +34,6 @@
   },
   "dependencies": {
     "escape-string-regexp": "^1.0.5",
-    "flatpickr": "^4.3.2",
     "popper.js": "^1.12.9"
   },
   "devDependencies": {
@@ -62,6 +61,7 @@
     "eslint-loader": "^1.9.0",
     "eventsource-polyfill": "^0.9.6",
     "express": "^4.15.3",
+    "flatpickr": "^4.3.2",
     "html-loader": "^0.5.1",
     "html-webpack-plugin": "^2.26.0",
     "istanbul-instrumenter-loader": "^3.0.0",

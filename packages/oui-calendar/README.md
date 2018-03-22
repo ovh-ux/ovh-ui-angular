@@ -4,7 +4,7 @@
 
 ## Usage
 
-**This component needs [flatpickr](https://github.com/flatpickr/flatpickr) to work.**
+**This component needs the CSS file of [flatpickr](https://github.com/flatpickr/flatpickr) to work in your project.**
 
 ### Default
 
@@ -16,28 +16,28 @@
 ### Placeholder
 
 ```html:preview
-<oui-calendar model="$ctrl.defaultModel" placeholder="YYYY-MM-DD">
+<oui-calendar model="$ctrl.placeholderModel" placeholder="YYYY-MM-DD">
 </oui-calendar>
 ```
 
 ### Disabled
 
 ```html:preview
-<oui-calendar model="$ctrl.defaultModel" disabled>
+<oui-calendar model="$ctrl.disabledModel" disabled>
 </oui-calendar>
 ```
 
 ### Required
 
 ```html:preview
-<oui-calendar model="$ctrl.defaultModel" required>
+<oui-calendar model="$ctrl.requiredModel" required>
 </oui-calendar>
 ```
 
 ### Week numbers
 
 ```html:preview
-<oui-calendar model="$ctrl.defaultModel" week-numbers>
+<oui-calendar model="$ctrl.weekModel" week-numbers>
 </oui-calendar>
 ```
 
