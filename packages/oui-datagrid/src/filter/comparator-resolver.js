@@ -1,10 +1,12 @@
 import { endsWith, negate } from "lodash";
 import BasicComparators from "./basic";
+import DateComparators from "./date";
 import NumberComparators from "./number";
 import StringComparators from "./string";
 
 const comparators = {
     "boolean": BasicComparators,
+    date: DateComparators,
     number: NumberComparators,
     options: BasicComparators,
     string: StringComparators
