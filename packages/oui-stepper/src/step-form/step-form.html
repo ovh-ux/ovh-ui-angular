@@ -1,20 +1,18 @@
-<span class="oui-list__header" ng-bind="::$ctrl.header"></span>
+<form novalidate
+      ng-attr-name="{{::$ctrl.name}}"
+      ng-attr-id="{{::$ctrl.id}}"
+      ng-submit="$ctrl.onFormSubmit(this[$ctrl.name])">
+    <span class="oui-list__header"
+          ng-bind="::$ctrl.header"
+          ng-click="$ctrl.setPristine(this[$ctrl.name])"></span>
 
-<form class="oui-list__description" novalidate
-    ng-if="$ctrl.state === 'valid'"
-    ng-attr-name="{{::$ctrl.name}}"
-    ng-attr-id="{{::$ctrl.id}}"
-    ng-submit="$ctrl.onFormSubmit(this[$ctrl.name])">
-    <div class="text-center" ng-if="$ctrl.loading">
-        <oui-spinner></oui-spinner>
-    </div>
-    <div ng-if="!$ctrl.loading">
-        <div ng-transclude></div>
-        <oui-button
-            ng-if="::!$ctrl.autovalidate"
-            variant="primary"
-            type="submit"
-            text="Submit">
-        </oui-button>
+    <div class="oui-list__description"
+         ng-if="!$ctrl.complete && !$ctrl.disabled">
+        <div class="text-center" ng-if="$ctrl.loading">
+            <oui-spinner></oui-spinner>
+        </div>
+        <div ng-if="!$ctrl.loading">
+            <div ng-transclude></div>
+        </div>
     </div>
 </form>

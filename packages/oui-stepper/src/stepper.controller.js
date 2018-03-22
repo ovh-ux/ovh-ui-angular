@@ -1,4 +1,6 @@
-export default class StepperController {
+const rootClass = "oui-list_steps oui-list_separated";
+
+export default class {
     constructor ($element, $timeout) {
         "ngInject";
 
@@ -6,9 +8,16 @@ export default class StepperController {
         this.$timeout = $timeout;
     }
 
+    $onInit () {
+        this.onInit();
+    }
+
     $postLink () {
         this.$timeout(() =>
-            this.$element.addClass("oui-list_steps oui-list_separated")
+            this.$element
+                .removeAttr("id")
+                .removeAttr("name")
+                .addClass(rootClass)
         );
     }
 }
