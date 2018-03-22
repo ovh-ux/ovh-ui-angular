@@ -1,3 +1,32 @@
+<a name="2.8.0"></a>
+# [2.8.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.7.1...v2.8.0) (2018-03-22)
+
+
+### Bug Fixes
+
+* **oui-criteria-container:** prevent duplicated criteria ([3771d94](https://github.com/ovh-ux/ovh-ui-angular/commit/3771d94))
+* **oui-criteria-container:** use angular.copy instead of _.cloneDeep ([8db5b4a](https://github.com/ovh-ux/ovh-ui-angular/commit/8db5b4a))
+* **oui-datagrid:** fix datagrid for IE10 ([6226b61](https://github.com/ovh-ux/ovh-ui-angular/commit/6226b61))
+* **oui-datagrid:** fix sorting ([c4c5d88](https://github.com/ovh-ux/ovh-ui-angular/commit/c4c5d88))
+* **oui-datagrid:** reset page offset on filtering ([e4ecd7d](https://github.com/ovh-ux/ovh-ui-angular/commit/e4ecd7d))
+
+
+### Features
+
+* **oui-back-button:** add  href attribute ([badb52e](https://github.com/ovh-ux/ovh-ui-angular/commit/badb52e))
+* **oui-calendar:** add oui-calendar component ([fb97a6d](https://github.com/ovh-ux/ovh-ui-angular/commit/fb97a6d))
+* **oui-calendar:** add week numbers attribute ([84a8fcd](https://github.com/ovh-ux/ovh-ui-angular/commit/84a8fcd))
+* **oui-chips:** link chips component to criteria-container ([eec6402](https://github.com/ovh-ux/ovh-ui-angular/commit/eec6402))
+* **oui-criteria-adder:** add criteria-container context ([9e33793](https://github.com/ovh-ux/ovh-ui-angular/commit/9e33793))
+* **oui-datagrid:** add chips container ([dc8b501](https://github.com/ovh-ux/ovh-ui-angular/commit/dc8b501))
+* **oui-datagrid:** add sortable and filterable attributes for columns ([351f463](https://github.com/ovh-ux/ovh-ui-angular/commit/351f463))
+* **oui-datagrid:** connect criteria-adder to datagrid ([00674a6](https://github.com/ovh-ux/ovh-ui-angular/commit/00674a6))
+* **oui-form-actions:** handle href for cancel button ([9a834a7](https://github.com/ovh-ux/ovh-ui-angular/commit/9a834a7))
+* **oui-search:** add root class for search component ([0f87e56](https://github.com/ovh-ux/ovh-ui-angular/commit/0f87e56))
+* **oui-search:** add title property to search criterion ([bc8bc73](https://github.com/ovh-ux/ovh-ui-angular/commit/bc8bc73))
+
+
+
 <a name="2.7.1"></a>
 ## [2.7.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.7.0...v2.7.1) (2018-03-19)
 
