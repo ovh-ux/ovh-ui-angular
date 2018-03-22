@@ -59,6 +59,20 @@ describe("ouiCalendar", () => {
             expect(input.attr("name")).toBe("bar");
         });
 
+        it("should set the picker static", () => {
+            const component = testUtils.compileTemplate('<oui-calendar model="$ctrl.model" static></oui-calendar>');
+            const controller = component.controller("ouiCalendar");
+
+            expect(controller.options.static).toBe(true);
+        });
+
+        it("should set the picker inline", () => {
+            const component = testUtils.compileTemplate('<oui-calendar model="$ctrl.model" inline></oui-calendar>');
+            const controller = component.controller("ouiCalendar");
+
+            expect(controller.options.inline).toBe(true);
+        });
+
         it("should have disabled the input", () => {
             const component = testUtils.compileTemplate('<oui-calendar model="$ctrl.model" disabled></oui-calendar>');
             const input = component.find("input");

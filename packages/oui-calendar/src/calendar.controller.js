@@ -32,13 +32,16 @@ export default class {
 
     initCalendarInstance () {
         // Set options from attributes
+        this.setOptionsProperty("appendTo", this.appendTo);
         this.setOptionsProperty("defaultDate", this.model);
         this.setOptionsProperty("disable", this.disableDate);
         this.setOptionsProperty("enable", this.enableDate);
+        this.setOptionsProperty("inline", this.inline);
         this.setOptionsProperty("locale", this.locale);
         this.setOptionsProperty("maxDate", this.maxDate);
         this.setOptionsProperty("minDate", this.minDate);
         this.setOptionsProperty("mode", this.mode);
+        this.setOptionsProperty("static", this.static);
         this.setOptionsProperty("weekNumbers", this.weekNumbers);
 
         // Set formatting options
@@ -70,7 +73,9 @@ export default class {
 
     $onInit () {
         addBooleanParameter(this, "disabled");
+        addBooleanParameter(this, "inline");
         addBooleanParameter(this, "required");
+        addBooleanParameter(this, "static");
         addBooleanParameter(this, "weekNumbers");
 
         this.initCalendarInstance();
