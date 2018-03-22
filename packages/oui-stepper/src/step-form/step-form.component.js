@@ -3,11 +3,12 @@ import template from "./step-form.html";
 
 export default {
     bindings: {
+        id: "@",
         name: "@",
         header: "@",
         loading: "<?",
         onSubmit: "&",
-        state: "@"
+        disabled: "<?"
     },
     controller,
     template,

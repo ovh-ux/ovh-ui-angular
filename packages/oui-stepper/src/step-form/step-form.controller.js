@@ -1,11 +1,10 @@
 import { addBooleanParameter } from "@oui-angular/common/component-utils";
 
-const baseClass = "oui-list__item";
-const validClass = "oui-list__group";
+const baseClass = "oui-list__item oui-list__group";
 const disabledClass = "oui-list__item_disabled";
-const completeClass = "oui-list__item_checked";
+const completeClass = "oui-list__item_complete";
 
-export default class {
+export default class StepFormController {
     constructor ($attrs, $element, $timeout) {
         "ngInject";
 
@@ -15,15 +14,14 @@ export default class {
     }
 
     $onInit () {
-        addBooleanParameter(this, "autovalidate");
+        addBooleanParameter(this, "disabled");
+    }
 
-        if (!angular.isDefined(this.state)) {
-            this.state = "valid";
-        }
+    $onChanges () {
+        this.onStateChanges();
     }
 
     $postLink () {
-        this.$element.addClass(baseClass);
         this.onStateChanges();
 
         // Sometimes the digest cycle is done before dom manipulation,
@@ -32,17 +30,30 @@ export default class {
             this.$element
                 .removeAttr("id")
                 .removeAttr("name")
+                .addClass(baseClass)
         );
     }
 
     onFormSubmit (form) {
-        this.onSubmit({ form });
+        if (form.$valid) {
+            this.complete = true;
+            this.onStateChanges();
+            this.onSubmit({ form });
+        }
     }
 
     onStateChanges () {
-        this.$element.toggleClass(validClass, this.state === "valid");
-        this.$element.toggleClass(disabledClass, this.state === "disabled");
-        this.$element.toggleClass(completeClass, this.state === "complete");
+        this.$timeout(() =>
+            this.$element
+                .toggleClass(disabledClass, !!this.disabled)
+                .toggleClass(completeClass, !!this.complete)
+        );
+    }
+
+    setPristine (form) {
+        this.complete = false;
+        this.onStateChanges();
+        form.$setPristine();
+        form.$setUntouched();
     }
 }
-
