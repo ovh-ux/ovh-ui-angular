@@ -20,6 +20,10 @@ const columns = [{
     type: "string"
 }, {
     name: "email"
+}, {
+    name: "birth",
+    filterable: true,
+    type: "date"
 }];
 
 const serverColumns = [{
@@ -356,6 +360,38 @@ describe("Filter", () => {
                         value: "database"
                     });
                     expect(filtered.length).toBe(serversFakeData.length - expectedResults);
+                });
+            });
+        });
+
+        describe("with date type", () => {
+            describe("and 'is' operator", () => {
+                const expectedResults = 1;
+
+                it("should filter", () => {
+                    filter = new Filter([], columns);
+
+                    const filtered = filter.applyCriteria(fakeData, {
+                        property: "birth",
+                        operator: "is",
+                        value: "1987-11-19"
+                    });
+                    expect(filtered.length).toBe(expectedResults);
+                });
+            });
+
+            describe("and 'isAfter' operator", () => {
+                const expectedResults = 582;
+
+                it("should filter", () => {
+                    filter = new Filter([], columns);
+
+                    const filtered = filter.applyCriteria(fakeData, {
+                        property: "birth",
+                        operator: "isAfter",
+                        value: "1987-11-19"
+                    });
+                    expect(filtered.length).toBe(expectedResults);
                 });
             });
         });

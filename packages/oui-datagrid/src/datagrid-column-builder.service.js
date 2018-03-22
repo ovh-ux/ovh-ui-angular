@@ -4,6 +4,7 @@ const copyValueProperties = ["title", "type", "type-options"];
 const searchableTypes = ["string"];
 const filterableTypes = [
     "boolean",
+    "date",
     "number",
     "options",
     "string"

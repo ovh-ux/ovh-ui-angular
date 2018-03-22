@@ -18,11 +18,11 @@
   <oui-column title="'Father'" property="parents.father.lastName" sortable>
     {{$row.parents.father.lastName}}, {{$row.parents.father.firstName}}
   </oui-column>
-  <oui-column title="'Email'" property="email" sortable type="string" searchable>
-    <a href="mailto:{{$value}}">{{$ctrl.label}}: {{$value}}</a>
+  <oui-column title="'Email'" property="email" sortable type="string" searchable filterable>
+    <a href="mailto:{{$value}}">{{$value}}</a>
   </oui-column>
-  <oui-column title="'Phone'" property="phone" sortable type="string" searchable></oui-column>
-  <oui-column title="'Birth'" property="birth" sortable>
+  <oui-column title="'Phone'" property="phone" sortable type="string" searchable filterable></oui-column>
+  <oui-column title="'Birth'" property="birth" sortable type="date" filterable>
     {{$value|date:short}}
   </oui-column>
 </oui-datagrid>
@@ -44,7 +44,7 @@
     {{$row.parents.father.lastName}}, {{$row.parents.father.firstName}}
   </oui-column>
   <oui-column title="'Email'" property="email" sortable>
-    <a href="mailto:{{$value}}">{{$ctrl.label}}: {{$value}}</a>
+    <a href="mailto:{{$value}}">{{$value}}</a>
   </oui-column>
   <oui-column title="'Phone'" property="phone"></oui-column>
   <oui-column title="'Birth'" property="birth" sortable>
