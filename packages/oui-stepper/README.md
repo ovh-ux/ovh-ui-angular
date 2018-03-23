@@ -4,20 +4,6 @@
 
 ## Usage
 
-```html
-<oui-stepper
-  name="..."
-  onFinish="...">
-  <oui-step-form
-    step-title="..."
-    onEnter="..."
-    onSubmit="...">
-  </oui-step-form>
-</oui-stepper>
-```
-
-## Examples
-
 ### Simple stepper
 
 ```html:preview
@@ -100,10 +86,10 @@
         <oui-form-actions></oui-form-actions>
     </oui-step-form>
 
-    <oui-step-form name="form2"
+    <oui-step-form name="formStep2"
         header="Step 2"
         disabled="formStep1.$invalid && formStep1.$submitted"
-        on-submit="$ctrl.submitStep2(form2)">
+        on-submit="$ctrl.submitStep2(formStep2)">
         <oui-field label="Test" size="xl">
             <input class="oui-input"
                 type="text"
@@ -115,18 +101,18 @@
         <oui-form-actions></oui-form-actions>
     </oui-step-form>
 
-    <oui-step-form name="disabled"
-        header="Step 3 : Disabled"
-        on-submit="$ctrl.submitStep2(disabled)"
-        disabled>
+    <oui-step-form name="formStep2"
+        header="Step 3"
+        on-submit="$ctrl.submitStep2(formStep2)">
         <oui-field label="Test" size="xl">
             <input class="oui-input"
                 type="text"
                 id="test"
                 name="test"
-                ng-model="$ctrl.test"
+                ng-model="$ctrl.test2"
                 required>
         </oui-field>
+        <oui-form-actions></oui-form-actions>
     </oui-step-form>
 </oui-stepper>
 ```

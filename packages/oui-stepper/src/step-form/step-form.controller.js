@@ -5,16 +5,25 @@ const disabledClass = "oui-list__item_disabled";
 const completeClass = "oui-list__item_complete";
 
 export default class StepFormController {
-    constructor ($attrs, $element, $timeout) {
+    constructor ($attrs, $element, $scope, $timeout) {
         "ngInject";
 
         this.$attrs = $attrs;
         this.$element = $element;
+        this.$scope = $scope;
         this.$timeout = $timeout;
     }
 
     $onInit () {
         addBooleanParameter(this, "disabled");
+        if (!this.id) {
+            this.id = `oui-step-form-${this.$scope.$id}`;
+        }
+
+        if (this.stepper) {
+            this.stepper.add(this);
+            console.log(this.stepper);
+        }
     }
 
     $onChanges () {
@@ -38,6 +47,8 @@ export default class StepFormController {
         if (form.$valid) {
             this.complete = true;
             this.onStateChanges();
+            this.stepper.update(this);
+            console.log(this.stepper);
             this.onSubmit({ form });
         }
     }
