@@ -1,6 +1,18 @@
 import { isDate, isNaN } from "lodash";
 
 export default class DateComparators {
+    static is (subject, value) {
+        return DateComparators.transformDate(subject) === value;
+    }
+
+    static isBefore (subject, value) {
+        return DateComparators.transformDate(subject) < value;
+    }
+
+    static isAfter (subject, value) {
+        return DateComparators.transformDate(subject) > value;
+    }
+
     static normalizeDate (date) {
         let daydate = date.getDate();
         let month = date.getMonth() + 1;
@@ -27,17 +39,5 @@ export default class DateComparators {
         }
 
         return DateComparators.normalizeDate(date);
-    }
-
-    static is (subject, value) {
-        return DateComparators.transformDate(subject) === value;
-    }
-
-    static isBefore (subject, value) {
-        return DateComparators.transformDate(subject) < value;
-    }
-
-    static isAfter (subject, value) {
-        return DateComparators.transformDate(subject) > value;
     }
 }

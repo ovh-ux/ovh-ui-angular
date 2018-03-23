@@ -29,33 +29,6 @@ export default class {
             ]
         };
 
-        // TODO: List of operators for all types (Not supported yet)
-        /* this.operatorsByType = {
-            number: [
-                "is",
-                "smaller",
-                "bigger"
-            ],
-            date: [
-                "is",
-                "before",
-                "after",
-                "options"
-            ],
-            options: [
-                "is",
-                "isNot"
-            ],
-            string: [
-                "contains",
-                "containsNot",
-                "start",
-                "end",
-                "is",
-                "isNot"
-            ]
-        }; */
-
         this.translations = {
             column_label: "Column",
             operator_label: "Operator",
