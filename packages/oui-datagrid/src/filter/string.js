@@ -1,11 +1,6 @@
 import escapeStringRegexp from "escape-string-regexp";
 
 export default class StringComparators {
-    static testString (haystack, regexp) {
-        const pattern = new RegExp(regexp, "i");
-        return pattern.test(haystack);
-    }
-
     static contains (haystack, needle) {
         return StringComparators.testString(haystack, escapeStringRegexp(needle));
     }
@@ -23,5 +18,10 @@ export default class StringComparators {
     static is (haystack, needle) {
         const escapedNeedle = escapeStringRegexp(needle);
         return StringComparators.testString(haystack, `^${escapedNeedle}$`);
+    }
+
+    static testString (haystack, regexp) {
+        const pattern = new RegExp(regexp, "i");
+        return pattern.test(haystack);
     }
 }

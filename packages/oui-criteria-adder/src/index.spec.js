@@ -1,4 +1,7 @@
+import { find } from "lodash";
 import mockData from "./index.spec.data.json";
+
+const getValueComponent = $element => $element[0].querySelector("[name=barValue]");
 
 describe("ouiCriteriaAdder", () => {
     let $timeout;
@@ -115,12 +118,17 @@ describe("ouiCriteriaAdder", () => {
         });
 
         describe("Column type = string", () => {
-            it("should call function of onSubmit attribute, when form is submitted, with the model value", () => {
-                const propertyMeta = mockData.properties[0];
-                const value = "bar";
+            it("should display an input as value component", () => {
+                const propertyMeta = find(mockData.properties, { name: "example.string" });
+                controller.columnModel = propertyMeta;
+                controller.onColumnChange();
+                component.scope().$apply();
+                expect(getValueComponent(component).getAttribute("type")).toEqual("text");
+            });
 
-                // Initial condition
-                expect(propertyMeta.type).toEqual("string");
+            it("should call function of onSubmit attribute, when form is submitted, with the model value", () => {
+                const propertyMeta = find(mockData.properties, { name: "example.string" });
+                const value = "bar";
 
                 controller.valueModel.string = value;
 
@@ -136,12 +144,17 @@ describe("ouiCriteriaAdder", () => {
         });
 
         describe("Column type = number", () => {
-            it("should call function of onSubmit attribute, when form is submitted, with the model value", () => {
-                const propertyMeta = mockData.properties[1];
-                const value = 12;
+            it("should display a number input as value component", () => {
+                const propertyMeta = find(mockData.properties, { name: "example.number" });
+                controller.columnModel = propertyMeta;
+                controller.onColumnChange();
+                component.scope().$apply();
+                expect(getValueComponent(component).getAttribute("type")).toEqual("number");
+            });
 
-                // Initial condition
-                expect(propertyMeta.type).toEqual("number");
+            it("should call function of onSubmit attribute, when form is submitted, with the model value", () => {
+                const propertyMeta = find(mockData.properties, { name: "example.number" });
+                const value = 12;
 
                 // Change column
                 controller.columnModel = propertyMeta;
@@ -167,15 +180,21 @@ describe("ouiCriteriaAdder", () => {
                 configuration = _ouiCriteriaAdderConfiguration_;
             }));
 
+            it("should display a select input as value component", () => {
+                const propertyMeta = find(mockData.properties, { name: "example.boolean" });
+                controller.columnModel = propertyMeta;
+                controller.onColumnChange();
+                component.scope().$apply();
+
+                expect(getValueComponent(component).tagName).toEqual("OUI-SELECT");
+            });
+
             it("should call function of onSubmit attribute, when form is submitted, with the model value", () => {
-                const propertyMeta = mockData.properties[2];
+                const propertyMeta = find(mockData.properties, { name: "example.boolean" });
                 const value = {
                     name: configuration.translations.true_label,
                     value: true
                 };
-
-                // Initial condition
-                expect(propertyMeta.type).toEqual("boolean");
 
                 // Change column
                 controller.columnModel = propertyMeta;
@@ -194,14 +213,11 @@ describe("ouiCriteriaAdder", () => {
             });
 
             it("should use a custom label", () => {
-                const propertyMeta = mockData.properties[3];
+                const propertyMeta = find(mockData.properties, { name: "example.booleanCustom" });
                 const value = {
                     name: propertyMeta.typeOptions.trueValue,
                     value: true
                 };
-
-                // Initial condition
-                expect(propertyMeta.type).toEqual("boolean");
 
                 // Change column
                 controller.columnModel = propertyMeta;
@@ -221,15 +237,21 @@ describe("ouiCriteriaAdder", () => {
         });
 
         describe("Column type = options", () => {
+            it("should display a select as value component", () => {
+                const propertyMeta = find(mockData.properties, { name: "example.options" });
+                controller.columnModel = propertyMeta;
+                controller.onColumnChange();
+                component.scope().$apply();
+
+                expect(getValueComponent(component).tagName).toEqual("OUI-SELECT");
+            });
+
             it("should call function of onSubmit attribute, when form is submitted, with the model value", () => {
-                const propertyMeta = mockData.properties[4];
+                const propertyMeta = find(mockData.properties, { name: "example.options" });
                 const value = {
                     name: propertyMeta.typeOptions.values.bar,
                     value: "bar"
                 };
-
-                // Initial condition
-                expect(propertyMeta.type).toEqual("options");
 
                 // Change column
                 controller.columnModel = propertyMeta;
@@ -249,12 +271,18 @@ describe("ouiCriteriaAdder", () => {
         });
 
         describe("Column type = date", () => {
-            it("should call function of onSubmit attribute, when form is submitted, with the model value", () => {
-                const propertyMeta = mockData.properties[5];
-                const value = "1987-11-19";
+            it("should display a calendar as value component", () => {
+                const propertyMeta = find(mockData.properties, { name: "example.date" });
+                controller.columnModel = propertyMeta;
+                controller.onColumnChange();
+                component.scope().$apply();
 
-                // Initial condition
-                expect(propertyMeta.type).toEqual("date");
+                expect(getValueComponent(component).tagName).toEqual("OUI-CALENDAR");
+            });
+
+            it("should call function of onSubmit attribute, when form is submitted, with the model value", () => {
+                const propertyMeta = find(mockData.properties, { name: "example.date" });
+                const value = "1987-11-19";
 
                 // Change column
                 controller.columnModel = propertyMeta;
@@ -291,11 +319,8 @@ describe("ouiCriteriaAdder", () => {
                 const criteriaAdderController = component.find("oui-criteria-adder")
                     .controller("ouiCriteriaAdder");
 
-                const propertyMeta = mockData.properties[0];
+                const propertyMeta = find(mockData.properties, { name: "example.string" });
                 const value = "bar";
-
-                // Initial condition
-                expect(propertyMeta.type).toEqual("string");
 
                 criteriaAdderController.valueModel.string = value;
 
