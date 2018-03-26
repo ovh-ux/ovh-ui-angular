@@ -1,5 +1,4 @@
-<div class="oui-radio"
-     ng-class="{'oui-radio_thumbnail': $ctrl.thumbnail}">
+<div ng-class="{'oui-radio': !$ctrl.radioToggleGroup, 'oui-radio-toggle': $ctrl.radioToggleGroup, 'oui-radio_thumbnail': $ctrl.thumbnail && !$ctrl.radioToggleGroup}">
     <input
          ng-class=":: $ctrl.radioToggleGroup ? 'oui-radio-toggle__input' : 'oui-radio__input'"
          type="radio"

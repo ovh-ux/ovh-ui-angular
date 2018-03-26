@@ -22,8 +22,6 @@ export default class {
 
     $onInit () {
 
-        this.$element.addClass(this.radioToggleGroup ? "oui-radio-toggle" : "oui-radio");
-
         addBooleanParameter(this, "disabled");
 
         if (!this.id) {
