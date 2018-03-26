@@ -18,10 +18,11 @@ export default {
     plugins: [
         new webpack.DefinePlugin({
             "process.env": process.env.NODE_ENV
-        })
-        // new LodashModuleReplacementPlugin({
-        //     paths: true
-        // }), // Save bytes on Lodash
+        }),
+        new LodashModuleReplacementPlugin({
+            shorthands: true,
+            paths: true
+        }), // Save bytes on Lodash
     ],
     module: {
         rules: [
