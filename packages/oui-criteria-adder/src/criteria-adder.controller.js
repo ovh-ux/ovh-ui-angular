@@ -1,5 +1,5 @@
-import { get, map } from "lodash";
 import { addDefaultParameter } from "@oui-angular/common/component-utils";
+import { get } from "lodash";
 
 export default class {
     constructor ($attrs, $element, $scope, $timeout, ouiCriteriaAdderConfiguration) {
@@ -126,10 +126,12 @@ export default class {
             return;
         }
 
-        this.optionsChoices = map(options, (value, key) => ({
-            name: value,
-            value: key
-        }));
+        this.optionsChoices = Object.keys(options)
+            .map(key => ({
+                name: options[key],
+                value: key
+            }));
+
         this.valueModel[this.columnModel.type] = this.optionsChoices[0];
     }
 

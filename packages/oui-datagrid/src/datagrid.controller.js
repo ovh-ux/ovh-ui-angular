@@ -71,7 +71,7 @@ export default class DatagridController {
         const columnElements = DatagridController.filterElements(originalContent, "oui-column");
         const actionColumnElements = DatagridController.filterElements(originalContent, "oui-action-menu");
 
-        const builtColumns = this.ouiDatagridColumnBuilder.build(columnElements, this.$scope);
+        const builtColumns = this.ouiDatagridColumnBuilder.build(columnElements, this.getParentScope());
 
         if (actionColumnElements.length) {
             builtColumns.columns.push(this.ouiDatagridColumnBuilder.buildActionColumn(actionColumnElements[0]));
