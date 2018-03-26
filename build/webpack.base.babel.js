@@ -1,6 +1,7 @@
 import formatter from "eslint-friendly-formatter";
 import path from "path";
 import webpack from "webpack";
+import LodashModuleReplacementPlugin from "lodash-webpack-plugin";
 
 const exclude = [/node_modules/, /dist/];
 
@@ -18,6 +19,9 @@ export default {
         new webpack.DefinePlugin({
             "process.env": process.env.NODE_ENV
         })
+        // new LodashModuleReplacementPlugin({
+        //     paths: true
+        // }), // Save bytes on Lodash
     ],
     module: {
         rules: [
