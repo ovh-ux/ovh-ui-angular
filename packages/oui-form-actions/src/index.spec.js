@@ -76,7 +76,8 @@ describe("ouiFormActions", () => {
             expect(cancelButton.text().trim()).toBe("testCancel");
         });
 
-        it("should disable only submit button", () => {
+        it("should not have submit button disabled at any time", () => {
+            // Submit should always be active according to guidelines
             const component = testUtils.compileTemplate(`
                 <oui-form-actions
                     on-submit="$ctrl.submit()"
@@ -84,10 +85,29 @@ describe("ouiFormActions", () => {
                     disabled>
                 </oui-form-actions>`);
             const submitButton = component.find("button").eq(0);
+
+            expect(submitButton.attr("disabled")).not.toBe("disabled");
+        });
+
+        it("cancel button should be visible if action provided", () => {
+            const component = testUtils.compileTemplate(`
+                <oui-form-actions
+                    on-submit="$ctrl.submit()"
+                    on-cancel="$ctrl.cancel()">
+                </oui-form-actions>`);
             const cancelButton = component.find("button").eq(1);
 
-            expect(submitButton.attr("disabled")).toBe("disabled");
-            expect(cancelButton.attr("disabled")).not.toBe("disabled");
+            expect(cancelButton.hasClass("ng-hide")).toBe(false);
+        });
+
+        it("cancel button should be hidden if no action provided", () => {
+            const component = testUtils.compileTemplate(`
+                <oui-form-actions
+                    on-submit="$ctrl.submit()">
+                </oui-form-actions>`);
+            const cancelButton = component.find("button").eq(1);
+
+            expect(cancelButton.hasClass("ng-hide")).toBe(true);
         });
 
         it("should trigger click on submit button", () => {
