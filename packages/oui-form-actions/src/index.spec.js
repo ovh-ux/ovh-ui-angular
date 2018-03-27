@@ -1,5 +1,7 @@
 describe("ouiFormActions", () => {
     let testUtils;
+    const CANCEL_TEXT = "CancelTest";
+    const SUBMIT_TEXT = "SubmitTest";
 
     beforeEach(angular.mock.module("oui.form-actions"));
     beforeEach(angular.mock.module("oui.test-utils"));
@@ -9,28 +11,25 @@ describe("ouiFormActions", () => {
         testUtils = _TestUtils_;
     }));
 
+    angular.module("test.formActionsConfig", [
+        "oui.form-actions"
+    ]).config(ouiFormActionsProvider => {
+        ouiFormActionsProvider.setTranslations({
+            submit: SUBMIT_TEXT,
+            cancel: CANCEL_TEXT
+        });
+    });
+
     describe("Provider", () => {
         let ouiFormActions;
-
-        angular.module("test.formActionsConfig", [
-            "oui.form-actions"
-        ]).config(ouiFormActionsProvider => {
-            ouiFormActionsProvider.setTranslations({
-                submit: "SubmitTest",
-                cancel: "CancelTest"
-            });
-        });
 
         beforeEach(inject(_ouiFormActions_ => {
             ouiFormActions = _ouiFormActions_;
         }));
 
-        it("should have custom values", () => {
-            const submitTranslation = ouiFormActions.translations.submit;
-            const cancelTranslation = ouiFormActions.translations.cancel;
-
-            expect(submitTranslation).toEqual("SubmitTest");
-            expect(cancelTranslation).toEqual("CancelTest");
+        it("should have custom translation from provider", () => {
+            expect(ouiFormActions.translations.submit).toEqual(SUBMIT_TEXT);
+            expect(ouiFormActions.translations.cancel).toEqual(CANCEL_TEXT);
         });
     });
 
@@ -57,8 +56,8 @@ describe("ouiFormActions", () => {
             const submitButton = component.find("button").eq(0);
             const cancelButton = component.find("button").eq(1);
 
-            expect(submitButton.text().trim()).toBe("SubmitTest");
-            expect(cancelButton.text().trim()).toBe("CancelTest");
+            expect(submitButton.text().trim()).toBe(SUBMIT_TEXT);
+            expect(cancelButton.text().trim()).toBe(CANCEL_TEXT);
         });
 
         it("should display buttons with custom text values", () => {
@@ -89,7 +88,7 @@ describe("ouiFormActions", () => {
             expect(submitButton.attr("disabled")).not.toBe("disabled");
         });
 
-        it("cancel button should be visible if action provided", () => {
+        it("should have visible cancel button when action provided", () => {
             const component = testUtils.compileTemplate(`
                 <oui-form-actions
                     on-submit="$ctrl.submit()"
@@ -100,7 +99,7 @@ describe("ouiFormActions", () => {
             expect(cancelButton.hasClass("ng-hide")).toBe(false);
         });
 
-        it("cancel button should be hidden if no action provided", () => {
+        it("should have an hidden cancel button when no action provided", () => {
             const component = testUtils.compileTemplate(`
                 <oui-form-actions
                     on-submit="$ctrl.submit()">
