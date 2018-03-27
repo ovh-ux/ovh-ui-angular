@@ -117,21 +117,22 @@
     <oui-step-form name="formStep2"
         header="Step 2"
         disabled="formStep1.$invalid && formStep1.$submitted"
-        on-submit="$ctrl.submitStep2(formStep2)">
+        on-submit="$ctrl.submitStep2(formStep2)"
+        skippable>
         <oui-field label="Test" size="xl">
             <input class="oui-input"
                 autocomplete="off"
                 type="text"
                 id="test"
                 name="test"
-                ng-model="$ctrl.test"
-                required>
+                ng-model="$ctrl.test">
         </oui-field>
         <oui-form-actions></oui-form-actions>
     </oui-step-form>
 
-    <oui-step-form name="formStep3"
+    <oui-step-form
         header="Step 3"
+        on-focus="$ctrl.stepSubmit()"
         on-submit="$ctrl.submitStep2(formStep2)">
         <oui-field label="Test" size="xl">
             <input class="oui-input"
