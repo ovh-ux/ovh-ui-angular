@@ -4,7 +4,7 @@
 
 ## Usage
 
-### Simple stepper
+### Simple step
 
 ```html:preview
 <oui-stepper>
@@ -29,25 +29,23 @@
         </oui-field>
         <oui-form-actions></oui-form-actions>
     </oui-step-form>
+</oui-stepper>
+```
 
-    <oui-step-form name="form2"
-        header="Loading step"
-        loading="true"
-        on-submit="$ctrl.stepSubmit2(form)">
-        <oui-field label="Test" size="xl">
-            <input class="oui-input"
-                type="text"
-                id="test"
-                name="test"
-                ng-model="$ctrl.test"
-                required>
-        </oui-field>
-    </oui-step-form>
+### Disabled step
 
+```html:preview
+<div class="oui-doc-preview-only">
+    <p>
+        <oui-button text="Toggle state" variant="primary"
+            ng-click="$ctrl.stepEnabled = !$ctrl.stepEnabled">
+        </oui-button>
+    </p>
+</div>
+<oui-stepper>
     <oui-step-form name="disabledForm"
-        header="Disabled step"
-        on-submit="$ctrl.stepSubmit2(form)"
-        disabled>
+        header="Lorem ipsum"
+        disabled="!$ctrl.stepEnabled">
         <oui-field label="Test" size="xl">
             <input class="oui-input"
                 type="text"
@@ -56,19 +54,48 @@
                 ng-model="$ctrl.test"
                 required>
         </oui-field>
+        <oui-form-actions></oui-form-actions>
     </oui-step-form>
 </oui-stepper>
 ```
 
-### Multi stepper
+### Loading step
 
 ```html:preview
+<div class="oui-doc-preview-only">
+    <p>
+        <oui-button text="Toggle state" variant="primary"
+            ng-click="$ctrl.stepLoaded = !$ctrl.stepLoaded">
+        </oui-button>
+    </p>
+</div>
 <oui-stepper>
-    <oui-step-form name="formStep1" id="formStep1"
+    <oui-step-form name="form2"
+        header="Lorem ipsum"
+        loading="!$ctrl.stepLoaded">
+        <oui-field label="Test" size="xl">
+            <input class="oui-input"
+                type="text"
+                id="test"
+                name="test"
+                ng-model="$ctrl.test"
+                required>
+        </oui-field>
+        <oui-form-actions></oui-form-actions>
+    </oui-step-form>
+</oui-stepper>
+```
+
+### Linear stepper
+
+```html:preview
+<oui-stepper linear on-finish="$ctrl.onFinish(forms)">
+    <oui-step-form name="formStep1"
         header="Step 1"
         on-submit="$ctrl.submitStep1(formStep1)">
         <oui-field label="Firstname" size="xl">
             <input class="oui-input"
+                autocomplete="off"
                 type="text"
                 id="firstname"
                 name="firstname"
@@ -77,6 +104,7 @@
         </oui-field>
         <oui-field label="Lastname" size="xl">
             <input class="oui-input"
+                autocomplete="off"
                 type="text"
                 id="lastname"
                 name="lastname"
@@ -92,6 +120,7 @@
         on-submit="$ctrl.submitStep2(formStep2)">
         <oui-field label="Test" size="xl">
             <input class="oui-input"
+                autocomplete="off"
                 type="text"
                 id="test"
                 name="test"
@@ -101,11 +130,12 @@
         <oui-form-actions></oui-form-actions>
     </oui-step-form>
 
-    <oui-step-form name="formStep2"
+    <oui-step-form name="formStep3"
         header="Step 3"
         on-submit="$ctrl.submitStep2(formStep2)">
         <oui-field label="Test" size="xl">
             <input class="oui-input"
+                autocomplete="off"
                 type="text"
                 id="test"
                 name="test"
@@ -135,10 +165,10 @@
 | ----              | ----            | ----    | ----             | ----                   | ----                | ----                                        |
 | `name`            | string          | @?      | yes              |                        |                     | step form name, same as normal form         |
 | `id`              | string          | @?      | yes              |                        |                     | step form id, same as normal form           |
-| `on-submit`       | function        | &       |                  |                        |                     | submit step function                        |
 | `header`          | string          | @?      | yes              |                        |                     | title to put in step header                 |
-| `loading`         | function        | &?      |                  |                        |                     | display loader on step                      |
+| `loading`         | function        | <?      |                  |                        |                     | display loader on step                      |
 | `disabled`        | boolean         | <?      |                  |                        | false               | disable the step and shrink it              |
-| `on-enter`        | function        | &       |                  |                        |                     | action to do when opening step              |
+| `on-submit`       | function        | &       |                  |                        |                     | submit step function                        |
+| `on-focus`        | function        | &       |                  |                        |                     | action to do when opening step              |
 
 
