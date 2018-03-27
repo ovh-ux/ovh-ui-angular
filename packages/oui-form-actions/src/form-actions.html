@@ -2,7 +2,6 @@
   class="oui-button oui-button_primary"
   ng-click="$ctrl.onSubmit()"
   ng-bind="::$ctrl.submitText"
-  ng-disabled="$ctrl.disabled"
   type="submit">
 </button>
 <button
@@ -10,7 +9,8 @@
   class="oui-button oui-button_link"
   ng-bind="::$ctrl.cancelText"
   ng-click="$ctrl.onCancel()"
-  type="button">
+  type="button"
+  ng-hide="!$ctrl.$attrs.onCancel">
 </button>
 <a
   ng-if="::!!$ctrl.href"

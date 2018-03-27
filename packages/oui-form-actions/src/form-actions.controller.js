@@ -1,5 +1,3 @@
-import { addBooleanParameter } from "@oui-angular/common/component-utils";
-
 export default class {
     constructor ($attrs, ouiFormActions) {
         "ngInject";
@@ -9,7 +7,6 @@ export default class {
     }
 
     $onInit () {
-        addBooleanParameter(this, "disabled");
         this.processTranslations();
     }
 

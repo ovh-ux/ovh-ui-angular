@@ -17,12 +17,12 @@
 ### Custom naming
 
 ```html:preview
-<div ng-init="$ctrl.disabled = false" class="oui-doc-preview-only-keep-children">
+<div class="oui-doc-preview-only-keep-children">
     <oui-form-actions
       on-submit="$ctrl.submit()"
       href="#"
-      submit-text="Disable"
-      cancel-text="Reset">
+      submit-text="Apply"
+      cancel-text="Close">
     </oui-form-actions>
 </div>
 ```
@@ -33,12 +33,20 @@
 ```html:preview
 <div ng-init="$ctrl.disabled = false" class="oui-doc-preview-only-keep-children">
     <oui-form-actions
-      on-submit="$ctrl.disabled = true"
-      on-cancel="$ctrl.disabled = false"
-      disabled="$ctrl.disabled">
+      on-submit="$ctrl.lastAction = 'submit'"
+      on-cancel="$ctrl.lastAction = 'cancel'">
     </oui-form-actions>
+    <div>Last action: {{ $ctrl.lastAction }}</div>
 </div>
 ```
+
+### on-submit only
+```html:preview
+<oui-form-actions
+  on-submit="$ctrl.submit()">
+</oui-form-actions>
+```
+In accordance to guidelines, submit button must be always enabled.
 
 ## API
 
@@ -48,6 +56,4 @@
 | on-cancel     | function | &       |                  |                        |           | cancel handler                   |
 | submit-text   | string   | @?      | true             |                        | "Submit"  | submit button text               |
 | cancel-text   | string   | @?      | true             |                        | "Cancel"  | cancel button text               |
-| href          | string   | @?      | true             |                        |           | link url on cancel       |
-| disabled      | boolean  | <?      |                  |                        | false     | disabled flag                    |
-
+| href          | string   | @?      | true             |                        |           | link url on cancel               |

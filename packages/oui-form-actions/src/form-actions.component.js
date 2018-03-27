@@ -9,8 +9,7 @@ export default {
         cancelText: "@?",
         onSubmit: "&",
         onCancel: "&?",
-        href: "@?",
-        disabled: "<?"
+        href: "@?"
     },
     transclude: true
 };
