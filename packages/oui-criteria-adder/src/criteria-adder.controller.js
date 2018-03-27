@@ -130,7 +130,8 @@ export default class {
             .map(key => ({
                 name: options[key],
                 value: key
-            }));
+            }))
+            .sort((a, b) => String(a.name).localeCompare(String(b.name)));
 
         this.valueModel[this.columnModel.type] = this.optionsChoices[0];
     }
