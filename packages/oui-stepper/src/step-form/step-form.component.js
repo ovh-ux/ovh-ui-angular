@@ -12,7 +12,8 @@ export default {
         disabled: "<?",
         loading: "<?",
         onFocus: "&",
-        onSubmit: "&"
+        onSubmit: "&",
+        skippable: "<?"
     },
     controller,
     template,

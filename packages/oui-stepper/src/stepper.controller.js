@@ -32,6 +32,7 @@ export default class {
 
     addStep (step) {
         this.steps.push(step);
+
         this.focusStep(this.currentIndex);
     }
 

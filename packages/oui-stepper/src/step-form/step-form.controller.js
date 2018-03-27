@@ -1,4 +1,4 @@
-import { addBooleanParameter } from "@oui-angular/common/component-utils";
+import { addBooleanParameter, addDefaultParameter } from "@oui-angular/common/component-utils";
 
 export default class StepFormController {
     constructor ($attrs, $element, $scope, $timeout) {
@@ -12,11 +12,8 @@ export default class StepFormController {
 
     $onInit () {
         addBooleanParameter(this, "disabled");
-
-        // Add automatically name if undefined
-        if (angular.isUndefined(this.name)) {
-            this.$timeout(() => (this.name = `oui-step-form-${this.$scope.$id}`));
-        }
+        addBooleanParameter(this, "skippable");
+        addDefaultParameter(this, "name", `oui-step-form-${this.$scope.$id}`);
 
         // Check if Stepper parent
         if (this.stepperCtrl) {
@@ -37,7 +34,7 @@ export default class StepFormController {
         );
     }
 
-    onFormSubmit (form) {
+    onFormSubmit (form = { $valid: true }) {
         if (form.$valid) {
             this.onSubmit({ form });
 

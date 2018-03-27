@@ -24,31 +24,39 @@ describe("ouiStepper", () => {
         });
 
         it("should display an active step", () => {
-            const element = TestUtils.compileTemplate("<oui-step-form></oui-step-form>");
+            const element = TestUtils.compileTemplate("<oui-stepper><oui-step-form></oui-step-form></oui-stepper>");
+            const form = element.find("form").eq(0);
             $timeout.flush();
 
-            expect(element.hasClass(activeClass)).toBe(true);
-            expect(element.hasClass(disabledClass)).toBe(false);
-            expect(element.hasClass(completeClass)).toBe(false);
+            expect(form.hasClass(activeClass)).toBe(true);
+            expect(form.hasClass(disabledClass)).toBe(false);
+            expect(form.hasClass(completeClass)).toBe(false);
         });
 
         it("should display a disabled step", () => {
-            const element = TestUtils.compileTemplate("<oui-step-form disabled></oui-step-form>");
+            const element = TestUtils.compileTemplate("<oui-stepper><oui-step-form disabled></oui-step-form></oui-stepper>");
+            const form = element.find("form").eq(0);
             $timeout.flush();
 
-            expect(element.hasClass(activeClass)).toBe(true);
-            expect(element.hasClass(disabledClass)).toBe(true);
-            expect(element.hasClass(completeClass)).toBe(false);
+            expect(form.hasClass(activeClass)).toBe(true);
+            expect(form.hasClass(disabledClass)).toBe(true);
+            expect(form.hasClass(completeClass)).toBe(false);
         });
 
         xit("should turn to complete a step", () => {
-            const element = TestUtils.compileTemplate(`<oui-step-form name="form"><button></button></oui-step-form>`);
+            const element = TestUtils.compileTemplate(`
+                <oui-stepper>
+                    <oui-step-form name='form'>
+                        <button></button>
+                    </oui-step-form>
+                </oui-stepper>`);
+            const form = element.find("form").eq(0);
             const button = element.find("button").eq(0);
             $timeout.flush();
 
+            expect(form.hasClass(completeClass)).toBe(false);
             button.triggerHandler("click");
-            expect(element.scope().$ctrl.complete).toBe(true);
-            expect(element.hasClass(completeClass)).toBe(true);
+            expect(form.hasClass(completeClass)).toBe(true);
         });
     });
 });
