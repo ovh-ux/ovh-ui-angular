@@ -366,6 +366,43 @@ You can use `row-loader`. It take the current row as argument and must return a 
 </oui-datagrid>
 ```
 
+### Extra top content
+
+```html:preview
+<oui-datagrid
+  rows="$ctrl.data"
+  page-size="5">
+  <oui-column title="'First name'" property="firstName" sortable="asc" type="string" searchable filterable></oui-column>
+  <oui-column title="'Last name'" property="lastName" sortable type="string" searchable filterable></oui-column>
+  <oui-column title="'Mother'" property="parents.mother.lastName" sortable>
+    {{$row.parents.mother.lastName}}, {{$row.parents.mother.firstName}}
+  </oui-column>
+  <oui-column title="'Father'" property="parents.father.lastName" sortable>
+    {{$row.parents.father.lastName}}, {{$row.parents.father.firstName}}
+  </oui-column>
+  <oui-column title="'Email'" property="email" sortable type="string" searchable filterable>
+    <a href="mailto:{{$value}}">{{$value}}</a>
+  </oui-column>
+  <oui-column title="'Phone'" property="phone" sortable type="string" searchable filterable></oui-column>
+  <oui-column title="'Birth'" property="birth" sortable type="date" filterable>
+    {{$value|date:short}}
+  </oui-column>
+  <extra-top>
+    <oui-action-menu
+      text="Actions"
+      aria-label="Server: actions"
+      align="start">
+      <oui-action-menu-item
+        text="Add person"
+        aria-label="Persons: add item"></oui-action-menu-item>
+      <oui-action-menu-item
+        text="Other action"
+        aria-label="Persons: other action"></oui-action-menu-item>
+    </oui-action-menu>
+  </extra-top>
+</oui-datagrid>
+```
+
 ## API
 
 ### oui-datagrid

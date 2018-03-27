@@ -70,12 +70,18 @@ export default class DatagridController {
         const originalContent = angular.element(this.htmlContent);
         const columnElements = DatagridController.filterElements(originalContent, "oui-column");
         const actionColumnElements = DatagridController.filterElements(originalContent, "oui-action-menu");
+        const extraTopElements = DatagridController.filterElements(originalContent, "extra-top");
 
         const builtColumns = this.ouiDatagridColumnBuilder.build(columnElements, this.getParentScope());
 
         if (actionColumnElements.length) {
             builtColumns.columns.push(this.ouiDatagridColumnBuilder.buildActionColumn(actionColumnElements[0]));
             this.hasActionMenu = true;
+        }
+
+        if (extraTopElements.length) {
+            this.hasExtraTopContent = true;
+            this.extraTopCompiledTemplate = this.$compile(`<div>${extraTopElements[0].innerHTML}</div>`);
         }
 
         this.columns = builtColumns.columns;
