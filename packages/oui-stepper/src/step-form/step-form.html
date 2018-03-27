@@ -1,13 +1,20 @@
-<form novalidate
-      ng-attr-name="{{::$ctrl.name}}"
-      ng-attr-id="{{::$ctrl.id}}"
-      ng-submit="$ctrl.onFormSubmit(this[$ctrl.name])">
+<form class="oui-list__item oui-list__group" novalidate
+    ng-attr-name="{{::$ctrl.name}}"
+    ng-attr-id="{{::$ctrl.id}}"
+    ng-class="{
+        'oui-list__item_disabled': $ctrl.disabled || ($ctrl.linear && !$ctrl.stepper.focused),
+        'oui-list__item_complete': (this[$ctrl.name].$submitted && this[$ctrl.name].$valid)
+    }"
+    ng-submit="$ctrl.onFormSubmit(this[$ctrl.name])">
     <span class="oui-list__header"
-          ng-bind="::$ctrl.header"
-          ng-click="$ctrl.setPristine(this[$ctrl.name])"></span>
+        ng-bind="::$ctrl.header"
+        ng-click="$ctrl.setFocus()"></span>
 
     <div class="oui-list__description"
-         ng-if="!$ctrl.complete && !$ctrl.disabled">
+        ng-if="
+            ($ctrl.linear && $ctrl.stepper.focused) ||
+            (!$ctrl.linear && !$ctrl.disabled)
+        ">
         <div class="text-center" ng-if="$ctrl.loading">
             <oui-spinner></oui-spinner>
         </div>

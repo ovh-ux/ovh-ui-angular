@@ -3,15 +3,16 @@ import template from "./step-form.html";
 
 export default {
     require: {
-        stepper: "^ouiStepper"
+        stepperCtrl: "^ouiStepper"
     },
     bindings: {
         id: "@",
         name: "@",
         header: "@",
+        disabled: "<?",
         loading: "<?",
-        onSubmit: "&",
-        disabled: "<?"
+        onFocus: "&",
+        onSubmit: "&"
     },
     controller,
     template,

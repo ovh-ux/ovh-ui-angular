@@ -1,15 +1,23 @@
+import { addBooleanParameter } from "@oui-angular/common/component-utils";
+
 const rootClass = "oui-list_steps oui-list_separated";
 
 export default class {
-    constructor ($element, $timeout) {
+    constructor ($attrs, $element, $timeout) {
         "ngInject";
 
+        this.$attrs = $attrs;
         this.$element = $element;
         this.$timeout = $timeout;
     }
 
     $onInit () {
+        addBooleanParameter(this, "linear");
+
+        this.forms = [];
         this.steps = [];
+        this.currentIndex = 0;
+
         this.onInit();
     }
 
@@ -22,38 +30,47 @@ export default class {
         );
     }
 
-    add (step) {
-        // Delete same preview step if it exists.
-        const previewStep = step;
-        previewStep.preview = true;
+    addStep (step) {
+        this.steps.push(step);
+        this.focusStep(this.currentIndex);
+    }
 
-        const previewStepIndex = this.indexOfStep(previewStep);
-        if (previewStepIndex > -1) {
-            this.steps.splice(previewStepIndex, 1);
-        }
+    addForm (form, index) {
+        this.forms.push(form);
 
-        // Add the step if it does not exist.
-        if (this.indexOfStep(step) < 0) {
-            this.steps.push(step);
-            this.triggerChange();
+        // Check index for next step or onFinish event
+        if (index === this.steps.length - 1) {
+            this.onFinish({ forms: this.forms });
+        } else {
+            this.nextStep();
         }
     }
 
-    update (step) {
-        const stepIndex = this.indexOfStep(step);
-        this.steps[stepIndex] = step;
+    nextStep () {
+        const indexToFocus = Math.min(this.currentIndex + 1, this.steps.length - 1);
+        this.focusStep(indexToFocus);
     }
 
-    indexOfStep (step) {
-        let stepIndex = this.steps.length - 1;
-        while (stepIndex >= 0 && !angular.equals(this.steps[stepIndex].id, step.id)) {
-            --stepIndex;
-        }
-        return stepIndex;
+    prevStep () {
+        const indexToFocus = Math.max(this.currentIndex - 1, 0);
+        this.focusStep(indexToFocus);
     }
 
-    triggerChange () {
-        // Disable step
-        return this;
+    focusStep (indexToFocus) {
+        this.currentIndex = indexToFocus;
+        this.steps.forEach((step, index) => {
+            const focused = index === indexToFocus;
+
+            // Disable steps not focused
+            if (angular.isDefined(step.stepper)) {
+                step.stepper.index = index;
+                step.stepper.focused = focused;
+            }
+
+            // Call onFocus step event
+            if (focused) {
+                step.onFocus();
+            }
+        });
     }
 }
