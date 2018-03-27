@@ -863,6 +863,22 @@ describe("ouiDatagrid", () => {
             expect(secondDatagridRows.length).toEqual(secondDatagridSize);
         });
 
+        it("should display an extra top content", () => {
+            const element = TestUtils.compileTemplate(`
+                    <oui-datagrid rows="$ctrl.rows">
+                        <oui-column property="firstName"></oui-column>
+                        <oui-column property="lastName"></oui-column>
+                        <extra-top>PLACEHOLDER</extra-top>
+                    </oui-datagrid>
+                `, {
+                rows: fakeData.slice(0, 5)
+            });
+
+            console.log(element);
+
+            expect(element.text()).toContain("PLACEHOLDER");
+        });
+
         describe("Columns", () => {
             it("should support dataset notation", () => {
                 const element = TestUtils.compileTemplate(`
