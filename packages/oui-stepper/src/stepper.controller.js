@@ -37,7 +37,7 @@ export default class {
     }
 
     addForm (form, index) {
-        this.forms.push(form);
+        this.forms[index] = form;
 
         // Check index for next step or onFinish event
         if (index === this.steps.length - 1) {
