@@ -24,6 +24,9 @@ export default class {
 
     setModelValue (value) {
         this.model = value;
-        this.$timeout(() => this.onChange({ modelValue: value }));
+
+        if (this.onChange) {
+            this.$timeout(() => this.onChange({ modelValue: value }));
+        }
     }
 }
