@@ -1,6 +1,6 @@
 # Calendar
 
-<component-status cx-design="none" ux="prototype"></component-status>
+<component-status cx-design="partial" ux="prototype"></component-status>
 
 ## Usage
 
