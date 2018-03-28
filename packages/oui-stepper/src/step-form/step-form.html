@@ -19,7 +19,9 @@
             <oui-spinner></oui-spinner>
         </div>
         <div ng-show="!$ctrl.loading">
-            <button ng-if="$ctrl.skippable" class="oui-button oui-button_link">Skip this step</button>
+            <button ng-if="$ctrl.skippable"
+                    class="oui-button oui-button_link"
+                    ng-bind="::$ctrl.skippableText"></button>
             <div ng-transclude></div>
         </div>
 </form>

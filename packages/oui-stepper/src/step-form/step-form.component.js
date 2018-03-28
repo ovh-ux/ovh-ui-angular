@@ -13,7 +13,8 @@ export default {
         loading: "<?",
         onFocus: "&",
         onSubmit: "&",
-        skippable: "<?"
+        skippable: "<?",
+        skippableText: "@?"
     },
     controller,
     template,
