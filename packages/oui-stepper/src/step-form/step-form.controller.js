@@ -13,7 +13,7 @@ export default class StepFormController {
     $onInit () {
         addBooleanParameter(this, "disabled");
         addBooleanParameter(this, "skippable");
-        addDefaultParameter(this, "name", `oui-step-form-${this.$scope.$id}`);
+        addDefaultParameter(this, "name", `ouiStepForm${this.$scope.$id}`);
 
         // Check if Stepper parent
         if (this.stepperCtrl) {
@@ -34,7 +34,7 @@ export default class StepFormController {
         );
     }
 
-    onFormSubmit (form = { $valid: true }) {
+    onFormSubmit (form) {
         if (form.$valid) {
             this.onSubmit({ form });
 

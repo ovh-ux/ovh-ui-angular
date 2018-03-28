@@ -86,11 +86,31 @@
 </oui-stepper>
 ```
 
+### Skippable step
+
+```html:preview
+<oui-stepper>
+    <oui-step-form
+        header="Lorem ipsum"
+        skippable>
+        <oui-field label="Test" size="xl">
+            <input class="oui-input"
+                autocomplete="off"
+                type="text"
+                id="test"
+                name="test"
+                ng-model="$ctrl.test">
+        </oui-field>
+        <oui-form-actions></oui-form-actions>
+    </oui-step-form>
+</oui-stepper>
+```
+
 ### Linear stepper
 
 ```html:preview
 <oui-stepper linear on-finish="$ctrl.onFinish(forms)">
-    <oui-step-form name="formStep1"
+    <oui-step-form
         header="Step 1"
         on-submit="$ctrl.submitStep1(formStep1)">
         <oui-field label="Firstname" size="xl">
@@ -114,9 +134,8 @@
         <oui-form-actions></oui-form-actions>
     </oui-step-form>
 
-    <oui-step-form name="formStep2"
+    <oui-step-form
         header="Step 2"
-        disabled="formStep1.$invalid && formStep1.$submitted"
         on-submit="$ctrl.submitStep2(formStep2)"
         skippable>
         <oui-field label="Test" size="xl">
@@ -159,7 +178,6 @@
 | `on-init`       | function        | &       |                  |                        |                     | initialization function                       |
 | `on-finish`     | function        | &       |                  |                        |                     | submit all steps function                     |
 
-
 ### oui-step-form
 
 | Attribute         | Type            | Binding | One-time binding | Values                 | Default             | Description                                 |
@@ -171,5 +189,3 @@
 | `disabled`        | boolean         | <?      |                  |                        | false               | disable the step and shrink it              |
 | `on-submit`       | function        | &       |                  |                        |                     | submit step function                        |
 | `on-focus`        | function        | &       |                  |                        |                     | action to do when opening step              |
-
-
