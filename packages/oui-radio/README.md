@@ -1,6 +1,6 @@
 # Radio
 
-<component-status cx-design="complete" ux="rc"></component-status>
+<component-status cx-design="complete" ux="complete"></component-status>
 
 ## Usage
 
