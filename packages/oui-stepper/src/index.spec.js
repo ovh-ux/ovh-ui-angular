@@ -43,20 +43,58 @@ describe("ouiStepper", () => {
             expect(form.hasClass(completeClass)).toBe(false);
         });
 
-        xit("should turn to complete a step", () => {
-            const element = TestUtils.compileTemplate(`
-                <oui-stepper>
-                    <oui-step-form name='form'>
-                        <button></button>
-                    </oui-step-form>
-                </oui-stepper>`);
-            const form = element.find("form").eq(0);
-            const button = element.find("button").eq(0);
+        it("should display a loader", () => {
+            const element = TestUtils.compileTemplate("<oui-stepper><oui-step-form loading></oui-step-form></oui-stepper>");
             $timeout.flush();
 
-            expect(form.hasClass(completeClass)).toBe(false);
-            button.triggerHandler("click");
-            expect(form.hasClass(completeClass)).toBe(true);
+            expect(element.html()).toContain("oui-spinner");
+        });
+
+        fit("should display a skippable step", () => {
+            const element = TestUtils.compileTemplate("<oui-stepper><oui-step-form skippable></oui-step-form></oui-stepper>");
+            const defaultText = "Skip this step";
+            $timeout.flush();
+
+            expect(element.html()).toContain("button");
+            const button = element.find("button").eq(0);
+            expect(button.html()).toContain(defaultText);
+        });
+
+        it("should submit a step", () => {
+            const onSubmitSpy = jasmine.createSpy();
+            const element = TestUtils.compileTemplate(`
+                <oui-stepper>
+                    <oui-step-form name='form' on-submit="$ctrl.onSubmitSpy(form)"></oui-step-form>
+                </oui-stepper>`, { onSubmitSpy });
+            const form = element.find("form").eq(0);
+            $timeout.flush();
+
+            form.triggerHandler("submit");
+            expect(onSubmitSpy).toHaveBeenCalled();
+        });
+
+        it("should have a linear behavior", () => {
+            const onSubmitSpy = jasmine.createSpy();
+            const element = TestUtils.compileTemplate(`
+                <oui-stepper linear>
+                    <oui-step-form name='form1' on-submit="$ctrl.onSubmitSpy(form1)"></oui-step-form>
+                    <oui-step-form name='form2' on-submit="$ctrl.onSubmitSpy(form2)"></oui-step-form>
+                </oui-stepper>`, { onSubmitSpy });
+            const form1 = element.find("form").eq(0);
+            const form2 = element.find("form").eq(1);
+            $timeout.flush();
+
+            // Initial condition
+            expect(form1.hasClass(activeClass)).toBe(true);
+            expect(form1.hasClass(disabledClass)).toBe(false);
+            expect(form2.hasClass(disabledClass)).toBe(true);
+
+            form1.triggerHandler("submit");
+
+            // Final condition
+            expect(form1.hasClass(disabledClass)).toBe(true);
+            expect(form2.hasClass(activeClass)).toBe(true);
+            expect(form2.hasClass(disabledClass)).toBe(false);
         });
     });
 });

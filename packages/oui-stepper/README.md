@@ -27,7 +27,7 @@
                 ng-model="$ctrl.lastname"
                 required>
         </oui-field>
-        <oui-form-actions></oui-form-actions>
+        <oui-form-actions submit-text="Next"></oui-form-actions>
     </oui-step-form>
 </oui-stepper>
 ```
@@ -54,7 +54,7 @@
                 ng-model="$ctrl.test"
                 required>
         </oui-field>
-        <oui-form-actions></oui-form-actions>
+        <oui-form-actions submit-text="Next"></oui-form-actions>
     </oui-step-form>
 </oui-stepper>
 ```
@@ -81,7 +81,7 @@
                 ng-model="$ctrl.test"
                 required>
         </oui-field>
-        <oui-form-actions></oui-form-actions>
+        <oui-form-actions submit-text="Next"></oui-form-actions>
     </oui-step-form>
 </oui-stepper>
 ```
@@ -92,7 +92,8 @@
 <oui-stepper>
     <oui-step-form
         header="Lorem ipsum"
-        skippable>
+        skippable
+        skippable-text="Skip Lorem ipsum step">
         <oui-field label="Test" size="xl">
             <input class="oui-input"
                 autocomplete="off"
@@ -101,7 +102,7 @@
                 name="test"
                 ng-model="$ctrl.test">
         </oui-field>
-        <oui-form-actions></oui-form-actions>
+        <oui-form-actions submit-text="Next"></oui-form-actions>
     </oui-step-form>
 </oui-stepper>
 ```
@@ -131,7 +132,7 @@
                 ng-model="$ctrl.lastname"
                 required>
         </oui-field>
-        <oui-form-actions></oui-form-actions>
+        <oui-form-actions submit-text="Next"></oui-form-actions>
     </oui-step-form>
 
     <oui-step-form
@@ -146,7 +147,7 @@
                 name="test"
                 ng-model="$ctrl.test">
         </oui-field>
-        <oui-form-actions></oui-form-actions>
+        <oui-form-actions submit-text="Next"></oui-form-actions>
     </oui-step-form>
 
     <oui-step-form
@@ -162,7 +163,7 @@
                 ng-model="$ctrl.test2"
                 required>
         </oui-field>
-        <oui-form-actions></oui-form-actions>
+        <oui-form-actions submit-text="Finish"></oui-form-actions>
     </oui-step-form>
 </oui-stepper>
 ```
@@ -177,6 +178,7 @@
 | `id`            | string          | @?      | yes              |                        |                     | stepper id used to identify step              |
 | `on-init`       | function        | &       |                  |                        |                     | initialization function                       |
 | `on-finish`     | function        | &       |                  |                        |                     | submit all steps function                     |
+| `linear`        | boolean         | <?      |                  |                        | false               | enable stepper to handle steps                |
 
 ### oui-step-form
 
@@ -189,3 +191,4 @@
 | `disabled`        | boolean         | <?      |                  |                        | false               | disable the step and shrink it              |
 | `on-submit`       | function        | &       |                  |                        |                     | submit step function                        |
 | `on-focus`        | function        | &       |                  |                        |                     | action to do when opening step              |
+| `skippable`       | boolean         | <?      | yes              |                        |                     | add button to skip facultative step         |

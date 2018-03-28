@@ -17,7 +17,6 @@ export default class {
         this.forms = [];
         this.steps = [];
         this.currentIndex = 0;
-
         this.onInit();
     }
 
@@ -32,7 +31,6 @@ export default class {
 
     addStep (step) {
         this.steps.push(step);
-
         this.focusStep(this.currentIndex);
     }
 

@@ -14,6 +14,7 @@ export default class StepFormController {
         addBooleanParameter(this, "disabled");
         addBooleanParameter(this, "skippable");
         addDefaultParameter(this, "name", `ouiStepForm${this.$scope.$id}`);
+        addDefaultParameter(this, "skippableText", "Skip this step");
 
         // Check if Stepper parent
         if (this.stepperCtrl) {
