@@ -1,6 +1,6 @@
 # Button
 
-<component-status cx-design="complete" ux="rc"></component-status>
+<component-status cx-design="complete" ux="complete"></component-status>
 
 ## Usage
 
@@ -60,4 +60,4 @@
 | variant-nav   | string   | @?      | true             | next,previous          |           | nav modifier for button          |
 | aria-label    | string   | @?      | true             |                        |           | accessibility label              |
 | disabled      | boolean  | <?      |                  |                        | false     | disabled flag                    |
-| on-click      | function | &?      |                  |                        |           | click handler   
+| on-click      | function | &?      |                  |                        |           | click handler
