@@ -1,3 +1,13 @@
+<a name="2.9.0"></a>
+# [2.9.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.8.0...v2.9.0) (2018-03-28)
+
+
+### Features
+
+* **oui-form-actions:** add possibility to hide cancel button and remove possibility to disable submit ([b701942](https://github.com/ovh-ux/ovh-ui-angular/commit/b701942))
+
+
+
 <a name="2.8.0"></a>
 # [2.8.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.7.1...v2.8.0) (2018-03-22)
 
