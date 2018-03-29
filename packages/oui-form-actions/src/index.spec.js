@@ -13,8 +13,8 @@ describe("ouiFormActions", () => {
 
     angular.module("test.formActionsConfig", [
         "oui.form-actions"
-    ]).config(ouiFormActionsProvider => {
-        ouiFormActionsProvider.setTranslations({
+    ]).config(ouiFormActionsConfigurationProvider => {
+        ouiFormActionsConfigurationProvider.setTranslations({
             submit: SUBMIT_TEXT,
             cancel: CANCEL_TEXT
         });
@@ -23,8 +23,8 @@ describe("ouiFormActions", () => {
     describe("Provider", () => {
         let ouiFormActions;
 
-        beforeEach(inject(_ouiFormActions_ => {
-            ouiFormActions = _ouiFormActions_;
+        beforeEach(inject(_ouiFormActionsConfiguration_ => {
+            ouiFormActions = _ouiFormActionsConfiguration_;
         }));
 
         it("should have custom translation from provider", () => {
