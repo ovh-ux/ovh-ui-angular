@@ -4,6 +4,7 @@ import template from "./stepper.html";
 export default {
     bindings: {
         name: "@",
+        id: "@",
         linear: "<?",
         onInit: "&",
         onFinish: "&"
