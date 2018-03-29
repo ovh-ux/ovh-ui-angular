@@ -1,9 +1,9 @@
 export default class {
-    constructor ($attrs, ouiFormActions) {
+    constructor ($attrs, ouiFormActionsConfiguration) {
         "ngInject";
 
         this.$attrs = $attrs;
-        this.config = ouiFormActions;
+        this.config = ouiFormActionsConfiguration;
     }
 
     $onInit () {
