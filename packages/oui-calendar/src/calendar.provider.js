@@ -9,6 +9,7 @@ import "flatpickr/dist/l10n/nl.js";
 import "flatpickr/dist/l10n/pl.js";
 import "flatpickr/dist/l10n/pt.js";
 import "flatpickr/dist/l10n/sk.js";
+import { merge } from "lodash";
 
 export default class {
     constructor () {
@@ -16,12 +17,16 @@ export default class {
         this.options = {
             altFormat: "Y-m-d",
             altInput: false,
-            allowInput: true,
+            altInputClass: "oui-calendar__control_alt",
+            allowInput: false,
             dateFormat: "Y-m-d",
             disableMobile: true,
             maxDate: null,
             minDate: null,
-            mode: "single"
+            mode: "single",
+            nextArrow: '<span class="oui-icon oui-icon-chevron-right"></span>',
+            prevArrow: '<span class="oui-icon oui-icon-chevron-left"></span>',
+            showMonths: 1
         };
     }
 
@@ -39,7 +44,7 @@ export default class {
      * @param {Object} options the configuration of the calendar
      */
     setOptions (options) {
-        this.options = options;
+        this.options = merge(this.options, options);
         return this;
     }
 

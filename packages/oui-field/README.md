@@ -6,156 +6,181 @@
 
 ### Input
 
-<form novalidate name="$ctrl.form1">
-
 ```html:preview
-<oui-field label="{{'Lastname'}}"
-    help-text="At least 3 chars"
-    size="xl">
-    <input
-        class="oui-input"
-        type="text"
-        id="lastname"
-        name="lastname"
-        ng-model="$ctrl.user.lastname"
-        required
-        minlength="3"
-        maxlength="32">
-</oui-field>
+<form novalidate name="inputForm">
+    <oui-field label="Lastname"
+        help-text="At least 3 chars"
+        size="xl">
+        <input
+            class="oui-input"
+            type="text"
+            id="lastname"
+            name="lastname"
+            ng-model="$ctrl.user.lastname"
+            required
+            minlength="3"
+            maxlength="32">
+    </oui-field>
 
-<oui-field label="{{'Email'}}" size="xl">
-    <input
-        class="oui-input"
-        type="email"
-        id="email"
-        name="email"
-        ng-model="$ctrl.user.email">
-</oui-field>
+    <oui-field label="Email" size="xl">
+        <input
+            class="oui-input"
+            type="email"
+            id="email"
+            name="email"
+            ng-model="$ctrl.user.email">
+    </oui-field>
 
-<oui-field label="{{'Username'}}"
-    error-messages="{pattern: 'Username must be alphabetic with a length between 3 and 8.'}"
-    size="xl">
-    <input
-        class="oui-input"
-        type="text"
-        id="username"
-        name="username"
-        ng-model="$ctrl.user.username"
-        ng-pattern="/^[a-zA-Z]{3,8}$/">
-</oui-field>
+    <oui-field label="Username"
+        error-messages="{pattern: 'Username must be alphabetic with a length between 3 and 8.'}"
+        size="xl">
+        <input
+            class="oui-input"
+            type="text"
+            id="username"
+            name="username"
+            ng-model="$ctrl.user.username"
+            ng-pattern="/^[a-zA-Z]{3,8}$/">
+    </oui-field>
+</form>
 ```
 
 ### Checkbox
 
 ```html:preview
-<oui-field label="{{'Server options'}}">
-    <oui-checkbox
-        name="ssl"
-        text="SSL"
-        model="$ctrl.ssl"
-        required></oui-checkbox>
-    <oui-checkbox
-        name="hsts"
-        text="HSTS"
-        model="$ctrl.hsts"></oui-checkbox>
-</oui-field>
+<form novalidate name="checkboxForm">
+    <oui-field label="Server options">
+        <oui-checkbox
+            name="ssl"
+            text="SSL"
+            model="$ctrl.ssl"
+            required></oui-checkbox>
+        <oui-checkbox
+            name="hsts"
+            text="HSTS"
+            model="$ctrl.hsts"></oui-checkbox>
+    </oui-field>
+</form>
 ```
 
 ### Radio
 
 ```html:preview
-<oui-field label="{{'Protocol'}}">
-    <oui-radio
-        name="protocol"
-        text="HTTP"
-        model="$ctrl.protocol"
-        value="'http'"></oui-radio>
-    <oui-radio
-        name="protocol"
-        text="TCP"
-        model="$ctrl.protocol"
-        value="'tcp'"></oui-radio>
-    <oui-radio
-        name="protocol"
-        text="UDP"
-        model="$ctrl.protocol"
-        value="'udp'"
-        disabled></oui-radio>
-</oui-field>
+<form novalidate name="radioForm">
+    <oui-field label="Protocol">
+        <oui-radio
+            name="protocol"
+            text="HTTP"
+            model="$ctrl.protocol"
+            value="'http'"></oui-radio>
+        <oui-radio
+            name="protocol"
+            text="TCP"
+            model="$ctrl.protocol"
+            value="'tcp'"></oui-radio>
+        <oui-radio
+            name="protocol"
+            text="UDP"
+            model="$ctrl.protocol"
+            value="'udp'"
+            disabled></oui-radio>
+    </oui-field>
+</form>
 ```
 
 ### Textarea
 
 ```html:preview
-<oui-field label="{{'Server description'}}" size="xl">
-    <textarea
-        class="oui-textarea"
-        id="description"
-        name="description"
-        ng-model="$ctrl.server.description"
-        required>
-    </textarea>
-</oui-field>
+<form novalidate name="textareaForm">
+    <oui-field label="Server description" size="xl">
+        <textarea
+            class="oui-textarea"
+            id="description"
+            name="description"
+            ng-model="$ctrl.server.description"
+            required>
+        </textarea>
+    </oui-field>
 
-<oui-field label="{{'Cluster description'}}" size="xl">
-    <oui-textarea
-        model="$ctrl.text2"
-        id="description-2"
-        name="description-2"
-        placeholder="Please insert your text..."
-        maxlength="10"
-        required></oui-textarea>
-</oui-field>
+    <oui-field label="{{'Cluster description'}}" size="xl">
+        <oui-textarea
+            model="$ctrl.text2"
+            id="description-2"
+            name="description-2"
+            placeholder="Please insert your text..."
+            maxlength="10"
+            required></oui-textarea>
+    </oui-field>
+</form>
 ```
 
 ### Select
 
 ```html:preview
-<oui-field label="{{'OS'}}" size="m">
-    <label class="oui-select">
-        <select
-            id="os"
-            name="os"
-            ng-model="os"
-            class="oui-select__input"
-            required>
-            <option ng-value="undefined">Select the OS</option>
-            <option value="freebsd">FreeBSD</option>
-            <option value="linux">Linux</option>
-            <option value="osx">OSX</option>
-            <option value="windows">Windows</option>
-        </select>
-        <i class="oui-icon oui-icon-chevron-down" aria-hidden="true"></i>
-    </label>
-</oui-field>
+<form novalidate name="selectForm">
+    <oui-field label="OS" size="m">
+        <label class="oui-select">
+            <select
+                id="os"
+                name="os"
+                ng-model="os"
+                class="oui-select__input"
+                required>
+                <option ng-value="undefined">Select the OS</option>
+                <option value="freebsd">FreeBSD</option>
+                <option value="linux">Linux</option>
+                <option value="osx">OSX</option>
+                <option value="windows">Windows</option>
+            </select>
+            <i class="oui-icon oui-icon-chevron-down" aria-hidden="true"></i>
+        </label>
+    </oui-field>
 
-<oui-field label="{{'Recovery OS'}}" size="m">
-    <oui-select name="recovery_os"
-        model="$ctrl.recoveryOs"
-        data-title="Select the recovery OS"
-        placeholder="Select the recovery OS..."
-        items="$ctrl.osList"
-        required
-        match="label"
-        data-align="start">
-        <span ng-bind="$item.label"></span>
-    </oui-select>
-</oui-field>
+    <oui-field label="Recovery OS" size="m">
+        <oui-select name="recovery_os"
+            model="$ctrl.recoveryOs"
+            data-title="Select the recovery OS"
+            placeholder="Select the recovery OS..."
+            items="$ctrl.osList"
+            required
+            match="label"
+            data-align="start">
+            <span ng-bind="$item.label"></span>
+        </oui-select>
+    </oui-field>
+</form>
 ```
 
 ### Input numeric
 
 ```html:preview
-<oui-field label="{{'Number of servers'}}"
-    help-text="Select the number of servers in your cluster">
-    <oui-numeric
-        id="serversCount"
-        name="serversCount"
-        model="$ctrl.serversCount"
-        min="1">
-    </oui-numeric>
-</oui-field>
+<form novalidate name="numericForm">
+    <oui-field label="Number of servers"
+        help-text="Select the number of servers in your cluster">
+        <oui-numeric
+            id="serversCount"
+            name="serversCount"
+            model="$ctrl.serversCount"
+            min="1">
+        </oui-numeric>
+    </oui-field>
 </form>
+```
+
+### Input calendar
+
+```html:preview
+<form novalidate name="calendarForm">
+    <oui-field label="Automatic renewal"
+        size="xl">
+        <oui-calendar
+            id="date"
+            name="date"
+            model="$ctrl.dateModel"
+            required>
+        </oui-calendar>
+    </oui-field>
+<form>
 ```
 
 ### Submit button
