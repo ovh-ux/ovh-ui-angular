@@ -1,6 +1,6 @@
 # Calendar
 
-<component-status cx-design="partial" ux="prototype"></component-status>
+<component-status cx-design="partial" ux="beta"></component-status>
 
 ## Usage
 
@@ -28,6 +28,8 @@
 ```
 
 ### Required
+
+**Note**: See [Field example](#!/oui-angular/field) for error handling.
 
 ```html:preview
 <oui-calendar model="$ctrl.requiredModel" required>
@@ -176,7 +178,7 @@ angular.module("myModule", [
     ouiCalendarConfigurationProvider.setOptions({ // default options
         altFormat: "Y-m-d",
         altInput: false,
-        allowInput: true,
+        allowInput: false,
         dateFormat: "Y-m-d",
         maxDate: null,
         minDate: null,
