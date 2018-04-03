@@ -52,6 +52,10 @@ export default class {
             this.setOptionsProperty("altFormat", this.altFormat);
         }
 
+        // Append calendar to control wrapper
+        const wrapper = this.$element[0].querySelector(".oui-calendar__control-wrapper");
+        this.setOptionsProperty("appendTo", wrapper);
+
         // Set events with array of supported hooks/attributes
         this.setEventHooks([
             "onChange",
