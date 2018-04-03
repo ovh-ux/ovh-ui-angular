@@ -15,9 +15,7 @@
             ($ctrl.linear && $ctrl.stepper.focused) ||
             (!$ctrl.linear && !$ctrl.disabled)
         ">
-        <div class="text-center" ng-show="$ctrl.loading">
-            <oui-spinner></oui-spinner>
-        </div>
+        <oui-spinner ng-show="$ctrl.loading" size="s"></oui-spinner>
         <div ng-show="!$ctrl.loading">
             <button ng-if="$ctrl.skippable"
                     class="oui-button oui-button_link"
