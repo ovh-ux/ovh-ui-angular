@@ -13,14 +13,16 @@ export default class {
     }
 
     setModelValue (value) {
-        this.model = value;
         this.flatpickr.setDate(value, true);
     }
 
     setEventHooks (hooks) {
         // Add a callback for each events
         hooks.forEach((hook) => {
-            this.options[hook] = (selectedDates, dateStr) => this.$timeout(this[hook]({ selectedDates, dateStr }));
+            this.options[hook] = (selectedDates, dateStr) => {
+                this.model = dateStr;
+                this.$timeout(this[hook]({ selectedDates, dateStr }));
+            };
         });
     }
 
@@ -41,7 +43,6 @@ export default class {
         this.setOptionsProperty("maxDate", this.maxDate);
         this.setOptionsProperty("minDate", this.minDate);
         this.setOptionsProperty("mode", this.mode);
-        this.setOptionsProperty("static", this.static);
         this.setOptionsProperty("weekNumbers", this.weekNumbers);
 
         // Set formatting options
@@ -53,8 +54,10 @@ export default class {
         }
 
         // Append calendar to control wrapper
-        const wrapper = this.$element[0].querySelector(".oui-calendar__control-wrapper");
-        this.setOptionsProperty("appendTo", wrapper);
+        if (!this.appendToBody) {
+            const wrapper = this.$element[0].querySelector(".oui-calendar__control-wrapper");
+            this.setOptionsProperty("appendTo", wrapper);
+        }
 
         // Set events with array of supported hooks/attributes
         this.setEventHooks([
@@ -76,10 +79,10 @@ export default class {
     }
 
     $onInit () {
+        addBooleanParameter(this, "appendToBody");
         addBooleanParameter(this, "disabled");
         addBooleanParameter(this, "inline");
         addBooleanParameter(this, "required");
-        addBooleanParameter(this, "static");
         addBooleanParameter(this, "weekNumbers");
 
         this.initCalendarInstance();
@@ -91,11 +94,16 @@ export default class {
 
     $postLink () {
         // Avoid $element DOM unsync for jqLite methods
-        this.$timeout(() =>
+        this.$timeout(() => {
             this.$element
                 .addClass("oui-calendar")
                 .removeAttr("id")
-                .removeAttr("name")
-        );
+                .removeAttr("name");
+
+            // Add class for `inline`
+            if (this.inline) {
+                this.$element.addClass("oui-calendar_inline");
+            }
+        });
     }
 }

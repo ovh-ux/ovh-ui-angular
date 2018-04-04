@@ -15,10 +15,8 @@ export default class {
     constructor () {
         this.locale = "en";
         this.options = {
-            altFormat: "Y-m-d",
-            altInput: false,
             altInputClass: "oui-calendar__control_alt",
-            allowInput: false,
+            allowInput: true,
             dateFormat: "Y-m-d",
             disableMobile: true,
             maxDate: null,

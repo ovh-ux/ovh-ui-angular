@@ -12,10 +12,8 @@ export default {
         format: "@?",
         altFormat: "@?",
 
-        appendTo: "<?",
+        appendToBody: "<?",
         inline: "<?",
-        "static": "<?",
-
         maxDate: "<?",
         minDate: "<?",
         disableDate: "<?",

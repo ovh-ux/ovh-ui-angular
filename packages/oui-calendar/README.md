@@ -43,6 +43,13 @@
 </oui-calendar>
 ```
 
+### Inline
+
+```html:preview
+<oui-calendar model="$ctrl.inlineModel" inline>
+</oui-calendar>
+```
+
 ### Min & Max
 
 ```html:preview
@@ -155,6 +162,8 @@ Use `mode` to set a different selection mode for the calendar
 | `mode`            | string    | @?        | true              | `single`, `multiple`, `range`                                                             | `single`  | selection mode                                                                            |
 | `format`          | string    | @?        | true              | See [Formatting Tokens](https://flatpickr.js.org/formatting/)                             | `Y-m-d`   | format the date of the model                                                              |
 | `alt-format`      | string    | @?        | true              | See [Formatting Tokens](https://flatpickr.js.org/formatting/)                             | `Y-m-d`   | format the date of the field. `format` is used if undefined                               |
+| `append-to-body`  | boolean   | <?        | true              | `true`, `false`                                                                           | `false`   | append the calendar to the body of the page                                               |
+| `inline`          | boolean   | <?        | true              | `true`, `false`                                                                           | `false`   | show the calendar below the input in `inline-block`                                       |
 | `max-date`        | object    | <?        | true              | See [Supplying Dates](https://flatpickr.js.org/examples/#supplying-dates-for-flatpickr)   |           | specifies the maximum/latest date (inclusively) allowed for selection                     |
 | `min-date`        | object    | <?        | true              | See [Supplying Dates](https://flatpickr.js.org/examples/#supplying-dates-for-flatpickr)   |           | specifies the minimum/earliest date (inclusively) allowed for selection                   |
 | `disable-date`    | array     | <?        | true              | See [Supplying Dates](https://flatpickr.js.org/examples/#supplying-dates-for-flatpickr)   |           | make certain dates unavailable for selection                                              |
@@ -163,8 +172,8 @@ Use `mode` to set a different selection mode for the calendar
 | `required`        | boolean   | <?        |                   | `true`, `false`                                                                           | `false`   | required flag                                                                             |
 | `week-numbers`    | boolean   | <?        |                   | `true`, `false`                                                                           | `false`   | week numbers flag                                                                         |
 | `on-change`       | function  | &         |                   |                                                                                           |           | handler triggered when the user selects a date, or changes the time on a selected date    |
-| `on-close`        | function  | &         |                   |                                                                                           |           | handler triggered when the calendar is opened                                             |
-| `on-open`         | function  | &         |                   |                                                                                           |           | handler triggered when the calendar is closed                                             |
+| `on-close`        | function  | &         |                   |                                                                                           |           | handler triggered when the calendar is closed                                             |
+| `on-open`         | function  | &         |                   |                                                                                           |           | handler triggered when the calendar is opened                                             |
 
 ## Configuration
 
@@ -176,13 +185,16 @@ angular.module("myModule", [
 ]).config(ouiCalendarConfigurationProvider => {
     ouiCalendarConfigurationProvider.setLocale("en"); // default locale
     ouiCalendarConfigurationProvider.setOptions({ // default options
-        altFormat: "Y-m-d",
-        altInput: false,
-        allowInput: false,
+        altInputClass: "oui-calendar__control_alt",
+        allowInput: true,
         dateFormat: "Y-m-d",
+        disableMobile: true,
         maxDate: null,
         minDate: null,
-        mode: "single"
+        mode: "single",
+        nextArrow: '<span class="oui-icon oui-icon-chevron-right"></span>',
+        prevArrow: '<span class="oui-icon oui-icon-chevron-left"></span>',
+        showMonths: 1
     });
 });
 ```
