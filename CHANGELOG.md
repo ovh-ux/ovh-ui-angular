@@ -1,3 +1,13 @@
+<a name="2.10.1"></a>
+## [2.10.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.10.0...v2.10.1) (2018-04-04)
+
+
+### Bug Fixes
+
+* **oui-select-picker:** fix select-picker component ([6015c36](https://github.com/ovh-ux/ovh-ui-angular/commit/6015c36))
+
+
+
 <a name="2.10.0"></a>
 # [2.10.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.9.0...v2.10.0) (2018-04-04)
 
