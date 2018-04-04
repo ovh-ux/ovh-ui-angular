@@ -1,7 +1,7 @@
 import { addBooleanParameter } from "@oui-angular/common/component-utils";
 import { get } from "lodash";
 
-export default class {
+export default class SelectPickerController {
     constructor ($scope, $element, $attrs, $timeout, $transclude) {
         "ngInject";
 
@@ -47,12 +47,11 @@ export default class {
     }
 
     openSelectMenu (event) {
-        if (this.values.length > 1 && !this.selectedValue) {
-            const $target = angular.element(event.target);
-            const $button = this.$element.find(".ui-select-match");
-            const isButtonClicked = $target[0].nodeName === "BUTTON" || $target.parents("button").length > 0;
+        if (this.values && this.values.length > 1 && !this.selectedValue) {
+            const $button = angular.element(this.$element[0].querySelectorAll(".ui-select-match"));
+            const isButtonClicked = SelectPickerController.hasParentButton(event.target);
             if (!isButtonClicked && $button.length > 0) {
-                $button.trigger("click");
+                $button.triggerHandler("click");
                 event.stopPropagation();
             }
         }
@@ -62,5 +61,16 @@ export default class {
         if (this.onChange) {
             this.$timeout(() => this.onChange(event));
         }
+    }
+
+    static hasParentButton (element) {
+        let currentNode = element;
+        do {
+            if (currentNode.nodeName === "BUTTON") {
+                return true;
+            }
+            currentNode = currentNode.parentNode;
+        } while (currentNode.nodeName !== "OUI-SELECT-PICKER");
+        return false;
     }
 }

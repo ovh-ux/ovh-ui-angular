@@ -41,7 +41,7 @@
         model="$ctrl.value1"
         placeholder="Select"
         text="Value C or D"
-        values="[{id:'c', name: 'Value C'}, '{id:'d', name: 'Value D'}}]"></oui-select-picker>
+        values="[{id:'c', name: 'Value C'}, {id:'d', name: 'Value D'}]"></oui-select-picker>
 </div>
 ```
 
@@ -87,8 +87,9 @@
         on-change="$ctrl.lastOnChangeValue = modelValue"></oui-select-picker>
     <oui-select-picker text="Value B"
         name="oui-select-picker-2"
+        match="name"
         model="$ctrl.value2"
-        value="[{id:'b', name: 'Value B'}]"
+        values="[{id:'b', name: 'Value B'}]"
         on-change="$ctrl.lastOnChangeValue = modelValue"></oui-select-picker>
 </div>
 
