@@ -10,7 +10,7 @@
            ng-value="$ctrl.values.length > 1 ? $ctrl.selectedValue : $ctrl.values[0]">
     <label class="oui-select-picker__label-container" for="{{:: $ctrl.id }}">
         <span class="oui-select-picker__picture-container"
-              data-ng-if="$ctrl.picture">
+              ng-if="$ctrl.picture">
             <img class="oui-select-picker__picture" alt="" aria-hidden="true"
                  ng-if="$ctrl.isImgPath"
                  ng-src="{{ :: $ctrl.picture }}">
@@ -27,10 +27,11 @@
               id="{{:: $ctrl.id }}-description"
               ng-bind=":: $ctrl.description"
               ng-if="$ctrl.description"></span>
-        <span class="oui-select-picker__value-container oui-select-picker__section">
+        <span class="oui-select-picker__value-container oui-select-picker__section"
+            ng-if="$ctrl.values.length">
             <span class="oui-select-picker__value"
                   ng-bind=":: $ctrl.getFirstValueMatch($ctrl.match)"
-                  data-ng-if="$ctrl.values.length === 1"></span>
+                  ng-if="$ctrl.values.length === 1"></span>
             <oui-select name="{{:: $ctrl.name }}" required
                         disabled="$ctrl.disabled"
                         items="$ctrl.values"
@@ -39,7 +40,7 @@
                         on-change="$ctrl.model = $ctrl.selectedValue"
                         placeholder="{{:: $ctrl.placeholder || ' - ' }}"
                         data-align="end"
-                        data-ng-if="$ctrl.values.length > 1">
+                        ng-if="$ctrl.values.length > 1">
                 <span ng-bind="$item.name"></span>
             </oui-select>
         </span>
