@@ -59,18 +59,25 @@ describe("ouiCalendar", () => {
             expect(input.attr("name")).toBe("bar");
         });
 
-        it("should set the picker static", () => {
-            const component = testUtils.compileTemplate('<oui-calendar model="$ctrl.model" static></oui-calendar>');
-            const controller = component.controller("ouiCalendar");
-
-            expect(controller.options.static).toBe(true);
-        });
-
         it("should set the picker inline", () => {
             const component = testUtils.compileTemplate('<oui-calendar model="$ctrl.model" inline></oui-calendar>');
             const controller = component.controller("ouiCalendar");
 
+            $timeout.flush();
+
             expect(controller.options.inline).toBe(true);
+            expect(component.hasClass("oui-calendar_inline")).toBe(true);
+        });
+
+        it("should append the picker to the body", () => {
+            const component = testUtils.compileTemplate('<oui-calendar model="$ctrl.model" append-to-body></oui-calendar>');
+            const controller = component.controller("ouiCalendar");
+            const calendar = component[0].querySelector(".flatpickr-calendar");
+
+            $timeout.flush();
+
+            expect(controller.options.appendTo).toBeUndefined();
+            expect(calendar).toBeNull();
         });
 
         it("should have disabled the input", () => {
@@ -114,14 +121,14 @@ describe("ouiCalendar", () => {
             const ctrl = component.controller("ouiCalendar");
             const formatDate = ctrl.flatpickr.formatDate(new Date(), format);
             const altFormatDate = ctrl.flatpickr.formatDate(new Date(), altFormat);
-            const inputs = component.find("input");
+            const input = component[0].querySelector(".oui-calendar__control");
+            const altInput = component[0].querySelector(".oui-calendar__control_alt");
 
             expect(ctrl.options.dateFormat).toBe(format);
             expect(ctrl.options.altInput).toBe(true);
             expect(ctrl.options.altFormat).toBe(altFormat);
-            expect(inputs.length).toBe(2);
-            expect(inputs.eq(0).val()).toBe(formatDate);
-            expect(inputs.eq(1).val()).toBe(altFormatDate);
+            expect(input.value).toBe(formatDate);
+            expect(altInput.value).toBe(altFormatDate);
         });
 
         it("should update event hooks with the method 'setEventHooks'", () => {
@@ -153,7 +160,7 @@ describe("ouiCalendar", () => {
             ctrl.flatpickr.open();
             expect(onOpenSpy).toHaveBeenCalledWith([today], ctrl.model);
             ctrl.flatpickr.close();
-            expect(onOpenSpy).toHaveBeenCalledWith([today], ctrl.model);
+            expect(onCloseSpy).toHaveBeenCalledWith([today], ctrl.model);
         });
 
         // it("should set the value to today's date when 'today' button is clicked", () => {
