@@ -1,3 +1,29 @@
+<a name="2.10.0"></a>
+# [2.10.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.9.0...v2.10.0) (2018-04-04)
+
+
+### Bug Fixes
+
+* **oui-datagrid:** fix criteria options ([4c74068](https://github.com/ovh-ux/ovh-ui-angular/commit/4c74068))
+* **oui-form-actions:** rename form-actions-provider ([7bea75f](https://github.com/ovh-ux/ovh-ui-angular/commit/7bea75f))
+
+
+### Features
+
+* **oui-calendar:** add static and inline options to calendar ([d30aaff](https://github.com/ovh-ux/ovh-ui-angular/commit/d30aaff))
+* **oui-criteria-adder:** add date type to criteria-adder ([7a7c997](https://github.com/ovh-ux/ovh-ui-angular/commit/7a7c997))
+* **oui-criteria-adder:** sort options ([f80b93d](https://github.com/ovh-ux/ovh-ui-angular/commit/f80b93d))
+* **oui-datagrid:** add all column types and operators ([c308f6a](https://github.com/ovh-ux/ovh-ui-angular/commit/c308f6a))
+* **oui-datagrid:** add boolean type ([dd6fc98](https://github.com/ovh-ux/ovh-ui-angular/commit/dd6fc98))
+* **oui-datagrid:** add date type to datagrid ([d2d045e](https://github.com/ovh-ux/ovh-ui-angular/commit/d2d045e))
+* **oui-datagrid:** add extra top slot ([e9ae3c0](https://github.com/ovh-ux/ovh-ui-angular/commit/e9ae3c0))
+* **oui-datagrid:** add operators for strings and numbers ([0697094](https://github.com/ovh-ux/ovh-ui-angular/commit/0697094))
+* **oui-datagrid:** add options type ([dfd54a6](https://github.com/ovh-ux/ovh-ui-angular/commit/dfd54a6))
+* **oui-radio:** add transclude and thumbnail style options ([e27e50a](https://github.com/ovh-ux/ovh-ui-angular/commit/e27e50a))
+* **oui-select-picker:** add new select-picker component ([2b9d75d](https://github.com/ovh-ux/ovh-ui-angular/commit/2b9d75d))
+
+
+
 <a name="2.9.0"></a>
 # [2.9.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.8.0...v2.9.0) (2018-03-28)
 
