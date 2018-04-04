@@ -874,8 +874,6 @@ describe("ouiDatagrid", () => {
                 rows: fakeData.slice(0, 5)
             });
 
-            console.log(element);
-
             expect(element.text()).toContain("PLACEHOLDER");
         });
 
