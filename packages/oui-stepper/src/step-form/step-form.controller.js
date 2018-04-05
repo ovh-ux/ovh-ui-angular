@@ -44,7 +44,8 @@ export default class StepFormController {
         }
     }
 
-    setFocus () {
+    setFocus (form) {
         this.stepperCtrl.focusStep(this.stepper.index);
+        form.$setPristine();
     }
 }
