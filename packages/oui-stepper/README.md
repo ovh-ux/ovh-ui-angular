@@ -112,9 +112,46 @@
 ```html:preview
 <oui-stepper linear on-finish="$ctrl.onFinish(forms)">
     <oui-step-form
-        header="Step 1"
-        on-submit="$ctrl.submitStep1(formStep1)">
+        header="Step 0"
+        name="step1"
+        on-focus="$ctrl.completed0 = false"
+        on-submit="$ctrl.completed0 = true">
+        <p>This is a description</p>
         <oui-field label="Firstname" size="xl">
+            <input class="oui-input"
+                autocomplete="off"
+                type="text"
+                id="step0"
+                name="step0"
+                ng-model="$ctrl.step0"
+                required>
+        </oui-field>
+        <oui-form-actions submit-text="Next" ng-if="!$ctrl.completed0"></oui-form-actions>
+    </oui-step-form>
+    <oui-step-form
+        header="Step 1"
+        name="step1"
+        on-focus="$ctrl.completed = false"
+        on-submit="$ctrl.completed = true">
+        <oui-field label="Firstname" size="xl" ng-if="$ctrl.completed">
+            <input class="oui-input"
+                autocomplete="off"
+                type="text"
+                id="firstname"
+                name="firstname"
+                ng-model="$ctrl.firstname"
+                disabled>
+        </oui-field>
+        <oui-field label="Lastname" size="xl" ng-if="$ctrl.completed">
+            <input class="oui-input"
+                autocomplete="off"
+                type="text"
+                id="lastname"
+                name="lastname"
+                ng-model="$ctrl.lastname"
+                readonly>
+        </oui-field>
+        <oui-field label="Firstname" size="xl" ng-if="!$ctrl.completed">
             <input class="oui-input"
                 autocomplete="off"
                 type="text"
@@ -123,7 +160,7 @@
                 ng-model="$ctrl.firstname"
                 required>
         </oui-field>
-        <oui-field label="Lastname" size="xl">
+        <oui-field label="Lastname" size="xl" ng-if="!$ctrl.completed">
             <input class="oui-input"
                 autocomplete="off"
                 type="text"
@@ -132,14 +169,17 @@
                 ng-model="$ctrl.lastname"
                 required>
         </oui-field>
-        <oui-form-actions submit-text="Next"></oui-form-actions>
+        <oui-form-actions submit-text="Next" ng-if="!$ctrl.completed"></oui-form-actions>
     </oui-step-form>
 
     <oui-step-form
         header="Step 2"
-        on-submit="$ctrl.submitStep2(formStep2)"
-        skippable>
-        <oui-field label="Test" size="xl">
+        on-submit="$ctrl.completed2 = true"
+        on-focus="$ctrl.completed2 = false">
+        <div ng-if="$ctrl.completed2">
+            <span>Test {{ $ctrl.test }}</span>
+        </div>
+        <oui-field label="Test" size="xl" ng-if="!$ctrl.completed2">
             <input class="oui-input"
                 autocomplete="off"
                 type="text"
@@ -147,7 +187,7 @@
                 name="test"
                 ng-model="$ctrl.test">
         </oui-field>
-        <oui-form-actions submit-text="Next"></oui-form-actions>
+        <oui-form-actions submit-text="Next" ng-if="!$ctrl.completed2"></oui-form-actions>
     </oui-step-form>
 
     <oui-step-form

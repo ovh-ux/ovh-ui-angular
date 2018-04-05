@@ -64,6 +64,7 @@ export default class {
             if (angular.isDefined(step.stepper)) {
                 step.stepper.index = index;
                 step.stepper.focused = focused;
+                step.stepper.disabled = index > this.currentIndex;
             }
 
             // Call onFocus step event

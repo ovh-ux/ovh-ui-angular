@@ -2,17 +2,21 @@
     ng-attr-name="{{::$ctrl.name}}"
     ng-attr-id="{{::$ctrl.id}}"
     ng-class="{
-        'oui-list__item_disabled': $ctrl.disabled || ($ctrl.linear && !$ctrl.stepper.focused),
+        'oui-list__item_disabled': $ctrl.disabled || ($ctrl.linear && $ctrl.stepper.disabled),
         'oui-list__item_complete': (this[$ctrl.name].$submitted && this[$ctrl.name].$valid)
     }"
     ng-submit="$ctrl.onFormSubmit(this[$ctrl.name])">
-    <span class="oui-list__header"
-        ng-bind="::$ctrl.header"
-        ng-click="$ctrl.setFocus()"></span>
+    <span class="oui-list__header">
+        <span ng-bind="::$ctrl.header"></span>
+        <button class="oui-button oui-button_link"
+            type="button"
+            ng-if="this[$ctrl.name].$submitted && this[$ctrl.name].$valid"
+            ng-click="$ctrl.setFocus(this[$ctrl.name])">Modify</button>
+    </span>
 
     <div class="oui-list__description"
         ng-if="
-            ($ctrl.linear && $ctrl.stepper.focused) ||
+            ($ctrl.linear && !$ctrl.stepper.disabled) ||
             (!$ctrl.linear && !$ctrl.disabled)
         ">
         <oui-spinner ng-show="$ctrl.loading" size="s"></oui-spinner>
@@ -22,4 +26,5 @@
                     ng-bind="::$ctrl.skippableText"></button>
             <div ng-transclude></div>
         </div>
+    </div>
 </form>
