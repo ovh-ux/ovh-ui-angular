@@ -1,7 +1,5 @@
 import { addBooleanParameter } from "@oui-angular/common/component-utils";
 
-const rootClass = "oui-list_steps oui-list_separated";
-
 export default class {
     constructor ($attrs, $element, $timeout) {
         "ngInject";
@@ -25,7 +23,7 @@ export default class {
             this.$element
                 .removeAttr("id")
                 .removeAttr("name")
-                .addClass(rootClass)
+                .addClass("oui-stepper")
         );
     }
 
@@ -65,6 +63,7 @@ export default class {
                 step.stepper.index = index;
                 step.stepper.focused = focused;
                 step.stepper.disabled = index > this.currentIndex;
+                step.stepper.last = index === this.steps.length - 1;
             }
 
             // Call onFocus step event

@@ -1,20 +1,22 @@
 import { addBooleanParameter, addDefaultParameter } from "@oui-angular/common/component-utils";
 
 export default class StepFormController {
-    constructor ($attrs, $element, $scope, $timeout) {
+    constructor ($attrs, $element, $scope, $timeout, ouiStepperConfiguration) {
         "ngInject";
 
         this.$attrs = $attrs;
         this.$element = $element;
         this.$scope = $scope;
         this.$timeout = $timeout;
+        this.translations = angular.copy(ouiStepperConfiguration.translations);
     }
 
     $onInit () {
         addBooleanParameter(this, "disabled");
         addBooleanParameter(this, "skippable");
+
+        // Add default name
         addDefaultParameter(this, "name", `ouiStepForm${this.$scope.$id}`);
-        addDefaultParameter(this, "skippableText", "Skip this step");
 
         // Check if Stepper parent
         if (this.stepperCtrl) {
@@ -30,6 +32,7 @@ export default class StepFormController {
         // So we use $timeout to force the $apply
         this.$timeout(() =>
             this.$element
+                .addClass("oui-stepper__step oui-stepper__step_form")
                 .removeAttr("id")
                 .removeAttr("name")
         );

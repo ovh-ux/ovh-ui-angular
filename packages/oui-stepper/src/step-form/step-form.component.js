@@ -9,12 +9,15 @@ export default {
         id: "@",
         name: "@",
         header: "@",
+        description: "@?",
+
         disabled: "<?",
         loading: "<?",
-        onFocus: "&",
-        onSubmit: "&",
+        loadingText: "@?",
         skippable: "<?",
-        skippableText: "@?"
+
+        onFocus: "&",
+        onSubmit: "&"
     },
     controller,
     template,
