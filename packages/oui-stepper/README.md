@@ -27,25 +27,40 @@
                 ng-model="$ctrl.lastname"
                 required>
         </oui-field>
-        <oui-form-actions submit-text="Next"></oui-form-actions>
     </oui-step-form>
 </oui-stepper>
 ```
 
-### Disabled step
+### Loading & Disabled state
 
 ```html:preview
 <div class="oui-doc-preview-only">
     <p>
-        <oui-button text="Toggle state" variant="primary"
+        <button class="oui-button" type="text"
+            ng-class="{
+                'oui-button_primary': !$ctrl.stepEnabled,
+                'oui-button_secondary': $ctrl.stepEnabled
+            }"
             ng-click="$ctrl.stepEnabled = !$ctrl.stepEnabled">
-        </oui-button>
+            Toggle disabled
+        </button>
+
+        <button class="oui-button" type="text"
+            ng-class="{
+                'oui-button_primary': !$ctrl.stepLoaded,
+                'oui-button_secondary': $ctrl.stepLoaded
+            }"
+            ng-click="$ctrl.stepLoaded = !$ctrl.stepLoaded">
+            Toggle loading
+        </button>
     </p>
 </div>
 <oui-stepper>
     <oui-step-form name="disabledForm"
         header="Lorem ipsum"
-        disabled="!$ctrl.stepEnabled">
+        disabled="!$ctrl.stepEnabled"
+        loading="!$ctrl.stepLoaded"
+        loading-text="Dolor sit amet">
         <oui-field label="Test" size="xl">
             <input class="oui-input"
                 type="text"
@@ -54,34 +69,6 @@
                 ng-model="$ctrl.test"
                 required>
         </oui-field>
-        <oui-form-actions submit-text="Next"></oui-form-actions>
-    </oui-step-form>
-</oui-stepper>
-```
-
-### Loading step
-
-```html:preview
-<div class="oui-doc-preview-only">
-    <p>
-        <oui-button text="Toggle state" variant="primary"
-            ng-click="$ctrl.stepLoaded = !$ctrl.stepLoaded">
-        </oui-button>
-    </p>
-</div>
-<oui-stepper>
-    <oui-step-form name="form2"
-        header="Lorem ipsum"
-        loading="!$ctrl.stepLoaded">
-        <oui-field label="Test" size="xl">
-            <input class="oui-input"
-                type="text"
-                id="test"
-                name="test"
-                ng-model="$ctrl.test"
-                required>
-        </oui-field>
-        <oui-form-actions submit-text="Next"></oui-form-actions>
     </oui-step-form>
 </oui-stepper>
 ```
@@ -92,17 +79,12 @@
 <oui-stepper>
     <oui-step-form
         header="Lorem ipsum"
-        skippable
-        skippable-text="Skip Lorem ipsum step">
+        skippable>
         <oui-field label="Test" size="xl">
-            <input class="oui-input"
-                autocomplete="off"
-                type="text"
-                id="test"
-                name="test"
+            <input class="oui-input" id="test" name="test"
+                type="text" autocomplete="off"
                 ng-model="$ctrl.test">
         </oui-field>
-        <oui-form-actions submit-text="Next"></oui-form-actions>
     </oui-step-form>
 </oui-stepper>
 ```
@@ -113,97 +95,44 @@
 <oui-stepper linear on-finish="$ctrl.onFinish(forms)">
     <oui-step-form
         header="Step 0"
+        description="This is a description"
         name="step1"
         on-focus="$ctrl.completed0 = false"
         on-submit="$ctrl.completed0 = true">
-        <p>This is a description</p>
         <oui-field label="Firstname" size="xl">
-            <input class="oui-input"
-                autocomplete="off"
-                type="text"
-                id="step0"
-                name="step0"
-                ng-model="$ctrl.step0"
-                required>
+            <input class="oui-input" id="step0" name="step0"
+                type="text" autocomplete="off" required
+                ng-model="$ctrl.step0">
         </oui-field>
-        <oui-form-actions submit-text="Next" ng-if="!$ctrl.completed0"></oui-form-actions>
     </oui-step-form>
-    <oui-step-form
+    <oui-step-form skippable
         header="Step 1"
+        description="This is a description"
         name="step1"
         on-focus="$ctrl.completed = false"
         on-submit="$ctrl.completed = true">
-        <oui-field label="Firstname" size="xl" ng-if="$ctrl.completed">
-            <input class="oui-input"
-                autocomplete="off"
-                type="text"
-                id="firstname"
-                name="firstname"
-                ng-model="$ctrl.firstname"
-                disabled>
+        <oui-field label="Firstname" size="xl">
+            <input class="oui-input" id="firstname" name="firstname"
+                type="text" autocomplete="off"
+                ng-model="$ctrl.firstname">
         </oui-field>
-        <oui-field label="Lastname" size="xl" ng-if="$ctrl.completed">
-            <input class="oui-input"
-                autocomplete="off"
-                type="text"
-                id="lastname"
-                name="lastname"
-                ng-model="$ctrl.lastname"
-                readonly>
+        <oui-field label="Lastname" size="xl">
+            <input class="oui-input" id="lastname" name="lastname"
+                type="text" autocomplete="off"
+                ng-model="$ctrl.lastname">
         </oui-field>
-        <oui-field label="Firstname" size="xl" ng-if="!$ctrl.completed">
-            <input class="oui-input"
-                autocomplete="off"
-                type="text"
-                id="firstname"
-                name="firstname"
-                ng-model="$ctrl.firstname"
-                required>
-        </oui-field>
-        <oui-field label="Lastname" size="xl" ng-if="!$ctrl.completed">
-            <input class="oui-input"
-                autocomplete="off"
-                type="text"
-                id="lastname"
-                name="lastname"
-                ng-model="$ctrl.lastname"
-                required>
-        </oui-field>
-        <oui-form-actions submit-text="Next" ng-if="!$ctrl.completed"></oui-form-actions>
     </oui-step-form>
 
     <oui-step-form
         header="Step 2"
-        on-submit="$ctrl.completed2 = true"
-        on-focus="$ctrl.completed2 = false">
-        <div ng-if="$ctrl.completed2">
-            <span>Test {{ $ctrl.test }}</span>
-        </div>
-        <oui-field label="Test" size="xl" ng-if="!$ctrl.completed2">
-            <input class="oui-input"
-                autocomplete="off"
-                type="text"
-                id="test"
-                name="test"
-                ng-model="$ctrl.test">
-        </oui-field>
-        <oui-form-actions submit-text="Next" ng-if="!$ctrl.completed2"></oui-form-actions>
-    </oui-step-form>
-
-    <oui-step-form
-        header="Step 3"
+        description="This is a description"
         on-focus="$ctrl.stepSubmit()"
         on-submit="$ctrl.submitStep2(formStep2)">
         <oui-field label="Test" size="xl">
-            <input class="oui-input"
-                autocomplete="off"
-                type="text"
-                id="test"
-                name="test"
-                ng-model="$ctrl.test2"
-                required>
+            <input class="oui-input" id="test" name="test"
+                type="text" autocomplete="off" required
+                ng-model="$ctrl.test2">
         </oui-field>
-        <oui-form-actions submit-text="Finish"></oui-form-actions>
     </oui-step-form>
 </oui-stepper>
 ```
@@ -216,9 +145,9 @@
 | ----            | ----            | ----    | ----             | ----                   | ----                | ----                                          |
 | `name`          | string          | @?      | yes              |                        |                     | stepper name used to identify step            |
 | `id`            | string          | @?      | yes              |                        |                     | stepper id used to identify step              |
+| `linear`        | boolean         | <?      |                  |                        | false               | enable stepper to handle steps                |
 | `on-init`       | function        | &       |                  |                        |                     | initialization function                       |
 | `on-finish`     | function        | &       |                  |                        |                     | submit all steps function                     |
-| `linear`        | boolean         | <?      |                  |                        | false               | enable stepper to handle steps                |
 
 ### oui-step-form
 
@@ -226,9 +155,11 @@
 | ----              | ----            | ----    | ----             | ----                   | ----                | ----                                        |
 | `name`            | string          | @?      | yes              |                        |                     | step form name, same as normal form         |
 | `id`              | string          | @?      | yes              |                        |                     | step form id, same as normal form           |
-| `header`          | string          | @?      | yes              |                        |                     | title to put in step header                 |
-| `loading`         | function        | <?      |                  |                        |                     | display loader on step                      |
+| `header`          | string          | @?      | yes              |                        |                     | title of the step                           |
+| `description`     | string          | @?      | yes              |                        |                     | description of the step                     |
+| `loading`         | boolean         | <?      |                  |                        | false               | display the loading state                   |
+| `loading-text`    | string          | <?      |                  |                        |                     | text for the loading state                  |
 | `disabled`        | boolean         | <?      |                  |                        | false               | disable the step and shrink it              |
+| `skippable`       | boolean         | <?      | yes              |                        | false               | add button to skip facultative step         |
 | `on-submit`       | function        | &       |                  |                        |                     | submit step function                        |
 | `on-focus`        | function        | &       |                  |                        |                     | action to do when opening step              |
-| `skippable`       | boolean         | <?      | yes              |                        |                     | add button to skip facultative step         |

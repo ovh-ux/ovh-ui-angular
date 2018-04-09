@@ -1,30 +1,62 @@
-<form class="oui-list__item oui-list__group" novalidate
+<form class="oui-stepper__container oui-stepper__container_form" novalidate
     ng-attr-name="{{::$ctrl.name}}"
     ng-attr-id="{{::$ctrl.id}}"
     ng-class="{
-        'oui-list__item_disabled': $ctrl.disabled || ($ctrl.linear && $ctrl.stepper.disabled),
-        'oui-list__item_complete': (this[$ctrl.name].$submitted && this[$ctrl.name].$valid)
+        'oui-stepper__container_disabled': $ctrl.disabled || ($ctrl.linear && $ctrl.stepper.disabled),
+        'oui-stepper__container_complete': (this[$ctrl.name].$submitted && this[$ctrl.name].$valid)
     }"
     ng-submit="$ctrl.onFormSubmit(this[$ctrl.name])">
-    <span class="oui-list__header">
-        <span ng-bind="::$ctrl.header"></span>
-        <button class="oui-button oui-button_link"
-            type="button"
-            ng-if="this[$ctrl.name].$submitted && this[$ctrl.name].$valid"
-            ng-click="$ctrl.setFocus(this[$ctrl.name])">Modify</button>
-    </span>
 
-    <div class="oui-list__description"
+    <!-- Step Header -->
+    <header class="oui-stepper__header">
+        <span class="oui-stepper__title" ng-bind="::$ctrl.header"></span>
+        <span class="oui-stepper__label-optional"
+            ng-if="::$ctrl.skippable"
+            ng-bind="::$ctrl.translations.optional">
+        </span>
+        <button class="oui-button oui-button_link" type="button"
+            ng-if="($ctrl.linear && !$ctrl.stepper.focused && !$ctrl.stepper.disabled) && (this[$ctrl.name].$submitted && this[$ctrl.name].$valid)"
+            ng-click="$ctrl.setFocus(this[$ctrl.name])"
+            ng-bind="::$ctrl.translations.modify"></button>
+    </header>
+    <!-- /Step Header -->
+
+    <!-- Step Content -->
+    <fieldset class="oui-stepper__content"
+        ng-disabled="$ctrl.linear && !$ctrl.stepper.focused"
         ng-if="
             ($ctrl.linear && !$ctrl.stepper.disabled) ||
             (!$ctrl.linear && !$ctrl.disabled)
         ">
-        <oui-spinner ng-show="$ctrl.loading" size="s"></oui-spinner>
-        <div ng-show="!$ctrl.loading">
-            <button ng-if="$ctrl.skippable"
-                    class="oui-button oui-button_link"
-                    ng-bind="::$ctrl.skippableText"></button>
+        <legend class="oui-stepper__description" ng-bind="::$ctrl.description"></legend>
+
+        <!-- Step Loader -->
+        <section class="oui-stepper__loader" ng-show="$ctrl.loading">
+            <oui-spinner size="s"></oui-spinner>
+            <span class="oui-stepper__label-loader"
+                ng-bind="$ctrl.loadingText">
+            </span>
+        </section>
+        <!-- /Step Loader -->
+
+        <section ng-show="!$ctrl.loading">
             <div ng-transclude></div>
-        </div>
-    </div>
+        </section>
+
+        <!-- Step Footer -->
+        <footer class="oui-stepper__footer"
+            ng-show="!$ctrl.loading && $ctrl.stepper.focused">
+            <oui-form-actions
+                submit-text="{{::$ctrl.stepper.last ? $ctrl.translations.submit : $ctrl.translations.next}}">
+            </oui-form-actions>
+            <oui-button class="oui-stepper__skippable-link" type="submit"
+                variant="link" text="{{::$ctrl.translations.skip}}"
+                ng-if="::$ctrl.skippable">
+            </oui-button>
+        </footer>
+        <!-- /Step Footer -->
+
+    </fieldset>
+    <!-- /Step Content -->
+
 </form>
