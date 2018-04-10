@@ -1,6 +1,6 @@
 # Tooltip
 
-<component-status cx-design="complete" ux="rc"></component-status>
+<component-status cx-design="complete" ux="complete"></component-status>
 
 ## Usage
 
@@ -40,7 +40,7 @@
 
 ## Accessibility
 
-If there is no `aria-label` attribute, the directive create one based on `oui-tooltip` on the trigger.
+If there is no `aria-label` attribute, the directive create one based on `oui-tooltip` value on the trigger element.
 
 ## API
 

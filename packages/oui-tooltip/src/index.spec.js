@@ -1,10 +1,12 @@
 describe("ouiTooltip", () => {
+    let $timeout;
     let testUtils;
 
     beforeEach(angular.mock.module("oui.tooltip"));
     beforeEach(angular.mock.module("oui.test-utils"));
 
-    beforeEach(inject((_TestUtils_) => {
+    beforeEach(inject((_$timeout_, _TestUtils_) => {
+        $timeout = _$timeout_;
         testUtils = _TestUtils_;
     }));
 
@@ -12,6 +14,8 @@ describe("ouiTooltip", () => {
         it("should create a tooltip, next to the trigger, with the attribute value as text", () => {
             const component = testUtils.compileTemplate('<div><button class="trigger" oui-tooltip="foo"></button></div>');
             const tooltip = angular.element(component[0].querySelector(".trigger")).next();
+
+            $timeout.flush();
 
             expect(tooltip.length).toBe(1);
             expect(tooltip.hasClass("oui-tooltip")).toBe(true);
@@ -22,12 +26,16 @@ describe("ouiTooltip", () => {
             const component = testUtils.compileTemplate('<div><button class="trigger" oui-tooltip="foo"></button></div>');
             const trigger = angular.element(component[0].querySelector(".trigger"));
 
+            $timeout.flush();
+
             expect(trigger.attr("aria-label")).toBe("foo");
         });
 
         it("should keep the value of the attribute aria-label, if there is one on the trigger", () => {
             const component = testUtils.compileTemplate('<div><button class="trigger" oui-tooltip="foo" aria-label="bar"></button></div>');
             const trigger = angular.element(component[0].querySelector(".trigger"));
+
+            $timeout.flush();
 
             expect(trigger.attr("aria-label")).toBe("bar");
         });
