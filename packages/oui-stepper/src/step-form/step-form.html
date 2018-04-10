@@ -3,7 +3,7 @@
     ng-attr-id="{{::$ctrl.id}}"
     ng-class="{
         'oui-stepper__container_disabled': $ctrl.disabled || ($ctrl.linear && $ctrl.stepper.disabled),
-        'oui-stepper__container_complete': (this[$ctrl.name].$submitted && this[$ctrl.name].$valid)
+        'oui-stepper__container_complete': ($ctrl.valid && this[$ctrl.name].$submitted && this[$ctrl.name].$valid)
     }"
     ng-submit="$ctrl.onFormSubmit(this[$ctrl.name])">
 
@@ -12,12 +12,12 @@
         <span class="oui-stepper__title" ng-bind="::$ctrl.header"></span>
         <span class="oui-stepper__label-optional"
             ng-if="::$ctrl.skippable"
-            ng-bind="::$ctrl.translations.optional">
+            ng-bind="::$ctrl.translations.optionalLabel">
         </span>
         <button class="oui-button oui-button_link" type="button"
             ng-if="($ctrl.linear && !$ctrl.stepper.focused && !$ctrl.stepper.disabled) && (this[$ctrl.name].$submitted && this[$ctrl.name].$valid)"
             ng-click="$ctrl.setFocus(this[$ctrl.name])"
-            ng-bind="::$ctrl.translations.modify"></button>
+            ng-bind="::$ctrl.translations.modifyThisStep"></button>
     </header>
     <!-- /Step Header -->
 
@@ -47,10 +47,10 @@
         <footer class="oui-stepper__footer"
             ng-show="!$ctrl.loading && $ctrl.stepper.focused">
             <oui-form-actions
-                submit-text="{{::$ctrl.stepper.last ? $ctrl.translations.submit : $ctrl.translations.next}}">
+                submit-text="{{::$ctrl.stepper.last ? $ctrl.translations.submitButtonLabel : $ctrl.translations.nextButtonLabel}}">
             </oui-form-actions>
             <oui-button class="oui-stepper__skippable-link" type="submit"
-                variant="link" text="{{::$ctrl.translations.skip}}"
+                variant="link" text="{{::$ctrl.translations.skipThisStep}}"
                 ng-if="::$ctrl.skippable">
             </oui-button>
         </footer>
