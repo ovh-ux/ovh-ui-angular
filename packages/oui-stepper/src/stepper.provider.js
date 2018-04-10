@@ -3,11 +3,11 @@ import { merge } from "lodash";
 export default class {
     constructor () {
         this.translations = {
-            optional: "(optional)",
-            modify: "Modify this step",
-            next: "Next",
-            skip: "Skip this step",
-            submit: "Submit"
+            optionalLabel: "(optional)",
+            modifyThisStep: "Modify this step",
+            skipThisStep: "Skip this step",
+            nextButtonLabel: "Next",
+            submitButtonLabel: "Submit"
         };
     }
 

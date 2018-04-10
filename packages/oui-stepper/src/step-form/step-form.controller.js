@@ -18,6 +18,11 @@ export default class StepFormController {
         // Add default name
         addDefaultParameter(this, "name", `ouiStepForm${this.$scope.$id}`);
 
+        // Force custom validation if no attribute 'valid'
+        if (angular.isUndefined(this.$attrs.valid)) {
+            this.valid = true;
+        }
+
         // Check if Stepper parent
         if (this.stepperCtrl) {
             this.stepper = {};
@@ -39,7 +44,7 @@ export default class StepFormController {
     }
 
     onFormSubmit (form) {
-        if (form.$valid) {
+        if (form.$valid && this.valid) {
             this.onSubmit({ form });
 
             // Focus next step

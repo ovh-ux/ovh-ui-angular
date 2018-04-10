@@ -132,6 +132,40 @@
 </div>
 ```
 
+### Custom validation
+
+**Note**: The value of the custom validation attribute doesn't override the angular form validation `form.$valid`. Both are needed to be `true` to enable the submission.
+
+```html:preview
+<div class="oui-doc-preview-only">
+    <p>
+        <button class="oui-button" type="text"
+            ng-class="{
+                'oui-button_primary': $ctrl.isValid,
+                'oui-button_secondary': !$ctrl.isValid
+            }"
+            ng-click="$ctrl.isValid = !$ctrl.isValid">
+            Toggle validation
+        </button>
+    </p>
+</div>
+<oui-stepper>
+    <oui-step-form
+        header="Custom validation"
+        valid="$ctrl.isValid"
+        on-submit="$ctrl.onCustomSubmit()">
+        <oui-field label="Lorem ipsum" size="xl">
+            <input class="oui-input" name="customValidationInput"
+                type="text" autocomplete="off" required
+                ng-model="$ctrl.skippableInput">
+        </oui-field>
+    </oui-step-form>
+</oui-stepper>
+<div class="oui-doc-preview-only">
+    <p><strong>onSubmit count:</strong> {{$ctrl.customSubmitCount}}</p>
+</div>
+```
+
 ### Linear stepper
 
 ```html:preview
@@ -155,11 +189,11 @@
         description="This is a description">
         <oui-field label="Firstname" help-text="At least 3 chars" size="xl">
             <input class="oui-input" type="text" name="firstname"
-                ng-model="$ctrl.user.firstname" minlength="3" maxlength="32" required>
+                ng-model="$ctrl.user.firstname" maxlength="32">
         </oui-field>
         <oui-field label="Lastname" help-text="At least 3 chars" size="xl">
             <input class="oui-input" type="text" name="lastname"
-                ng-model="$ctrl.user.lastname" minlength="3" maxlength="32" required>
+                ng-model="$ctrl.user.lastname" maxlength="32">
         </oui-field>
         <oui-field label="Description" size="xl">
             <oui-textarea model="$ctrl.user.description" name="description" placeholder="Please insert your text..." maxlength="10"></oui-textarea>
@@ -212,5 +246,6 @@
 | `loading-text`    | string          | <?      |                  |                        |                     | text for the loading state                  |
 | `disabled`        | boolean         | <?      |                  |                        | false               | disable the step and shrink it              |
 | `skippable`       | boolean         | <?      | yes              |                        | false               | add button to skip facultative step         |
+| `valid`           | boolean         | <?      |                  |                        | true                | custom validation for the form              |
 | `on-focus`        | function        | &       |                  |                        |                     | focused step function                       |
 | `on-submit`       | function        | &       |                  |                        |                     | submit step function                        |

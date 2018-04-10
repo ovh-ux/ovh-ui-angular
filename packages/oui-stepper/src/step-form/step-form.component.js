@@ -15,6 +15,7 @@ export default {
         loading: "<?",
         loadingText: "@?",
         skippable: "<?",
+        valid: "<?",
 
         onFocus: "&",
         onSubmit: "&"
