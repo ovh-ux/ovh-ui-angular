@@ -25,6 +25,7 @@ loadTests(require.context("../../oui-search/src/", true, /.*((\.spec)|(index))$/
 loadTests(require.context("../../oui-criteria-container/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-criteria-adder/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-chips/src/", true, /.*((\.spec)|(index))$/));
+loadTests(require.context("../../oui-popover/src/", true, /.*((\.spec)|(index))$/));
 
 function loadTests (context) {
     context.keys().forEach(context);
