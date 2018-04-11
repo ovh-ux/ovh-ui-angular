@@ -99,8 +99,11 @@ describe("ouiSearch", () => {
     });
 
     describe("With criteria container", () => {
+        // Unfortunately, lodash prevent setTimeout to be mocked
+        const debounceDelay = 800;
+
         describe("on submit", () => {
-            it("should add criterion in criteria container", () => {
+            it("should add criterion in criteria container", done => {
                 const searchText = goodSearchText;
                 const onChangeSpy = jasmine.createSpy();
                 const element = testUtils.compileTemplate(`
@@ -113,15 +116,19 @@ describe("ouiSearch", () => {
                 });
 
                 element.find("form").triggerHandler("submit");
-                expect(onChangeSpy).toHaveBeenCalledWith([{
-                    title: searchText,
-                    property: null,
-                    operator: "contains",
-                    value: searchText
-                }]);
+
+                setTimeout(() => {
+                    expect(onChangeSpy).toHaveBeenCalledWith([{
+                        title: searchText,
+                        property: null,
+                        operator: "contains",
+                        value: searchText
+                    }]);
+                    done();
+                }, debounceDelay);
             });
 
-            it("should not add criterion in criteria container if the text is too short", () => {
+            it("should not add criterion in criteria container if the text is too short", done => {
                 const searchText = tooShortSearchText;
                 const onChangeSpy = jasmine.createSpy();
                 const element = testUtils.compileTemplate(`
@@ -134,12 +141,16 @@ describe("ouiSearch", () => {
                 });
 
                 element.find("form").triggerHandler("submit");
-                expect(onChangeSpy).not.toHaveBeenCalled();
+
+                setTimeout(() => {
+                    expect(onChangeSpy).not.toHaveBeenCalled();
+                    done();
+                }, debounceDelay);
             });
         });
 
         describe("on change", () => {
-            it("should add criterion in criteria container", () => {
+            it("should add criterion in criteria container", done => {
                 const onChangeSpy = jasmine.createSpy();
                 const element = testUtils.compileTemplate(`
                     <oui-criteria-container on-change="$ctrl.onChangeSpy(modelValue)">
@@ -152,16 +163,20 @@ describe("ouiSearch", () => {
                 const input = element.find("input");
                 input.val(goodSearchText);
                 input.triggerHandler("input");
-                expect(onChangeSpy).toHaveBeenCalledWith([{
-                    title: goodSearchText,
-                    property: null,
-                    operator: "contains",
-                    value: goodSearchText,
-                    preview: true
-                }]);
+
+                setTimeout(() => {
+                    expect(onChangeSpy).toHaveBeenCalledWith([{
+                        title: goodSearchText,
+                        property: null,
+                        operator: "contains",
+                        value: goodSearchText,
+                        preview: true
+                    }]);
+                    done();
+                }, debounceDelay);
             });
 
-            it("should not add criterion in criteria container if text is too short", () => {
+            it("should not add criterion in criteria container if text is too short", done => {
                 const onChangeSpy = jasmine.createSpy();
                 const element = testUtils.compileTemplate(`
                     <oui-criteria-container on-change="$ctrl.onChangeSpy(modelValue)">
@@ -171,13 +186,16 @@ describe("ouiSearch", () => {
                     onChangeSpy
                 });
 
-                const input = element.find("input");
-                input.val(tooShortSearchText);
-                input.triggerHandler("input");
-                expect(onChangeSpy).not.toHaveBeenCalled();
+                setTimeout(() => {
+                    const input = element.find("input");
+                    input.val(tooShortSearchText);
+                    input.triggerHandler("input");
+                    expect(onChangeSpy).not.toHaveBeenCalled();
+                    done();
+                }, 850);
             });
 
-            it("should delete preview criterion if search becomes too short", () => {
+            it("should delete preview criterion if search becomes too short", done => {
                 const onChangeSpy = jasmine.createSpy();
                 const element = testUtils.compileTemplate(`
                     <oui-criteria-container on-change="$ctrl.onChangeSpy(modelValue)">
@@ -192,22 +210,29 @@ describe("ouiSearch", () => {
                 // Add preview criterion.
                 input.val(goodSearchText);
                 input.triggerHandler("input");
-                expect(onChangeSpy).toHaveBeenCalledWith([{
-                    title: goodSearchText,
-                    property: null,
-                    operator: "contains",
-                    value: goodSearchText,
-                    preview: true
-                }]);
 
-                input.val(tooShortSearchText);
-                input.triggerHandler("input");
-                expect(onChangeSpy).toHaveBeenCalledWith([]);
+                setTimeout(() => {
+                    expect(onChangeSpy).toHaveBeenCalledWith([{
+                        title: goodSearchText,
+                        property: null,
+                        operator: "contains",
+                        value: goodSearchText,
+                        preview: true
+                    }]);
+
+                    input.val(tooShortSearchText);
+                    input.triggerHandler("input");
+
+                    setTimeout(() => {
+                        expect(onChangeSpy).toHaveBeenCalledWith([]);
+                        done();
+                    }, debounceDelay);
+                }, debounceDelay);
             });
         });
 
         describe("on reset", () => {
-            it("should delete preview criterion", () => {
+            it("should delete preview criterion", done => {
                 const onChangeSpy = jasmine.createSpy();
                 const element = testUtils.compileTemplate(`
                     <oui-criteria-container on-change="$ctrl.onChangeSpy(modelValue)">
@@ -223,16 +248,23 @@ describe("ouiSearch", () => {
                 // Add preview criterion.
                 input.val(goodSearchText);
                 input.triggerHandler("input");
-                expect(onChangeSpy).toHaveBeenCalledWith([{
-                    title: goodSearchText,
-                    property: null,
-                    operator: "contains",
-                    value: goodSearchText,
-                    preview: true
-                }]);
 
-                resetButton.triggerHandler("click");
-                expect(onChangeSpy).toHaveBeenCalledWith([]);
+                setTimeout(() => {
+                    expect(onChangeSpy).toHaveBeenCalledWith([{
+                        title: goodSearchText,
+                        property: null,
+                        operator: "contains",
+                        value: goodSearchText,
+                        preview: true
+                    }]);
+
+                    resetButton.triggerHandler("click");
+
+                    setTimeout(() => {
+                        expect(onChangeSpy).toHaveBeenCalledWith([]);
+                        done();
+                    }, debounceDelay);
+                }, debounceDelay);
             });
         });
     });
