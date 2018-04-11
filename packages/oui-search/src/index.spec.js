@@ -267,5 +267,49 @@ describe("ouiSearch", () => {
                 }, debounceDelay);
             });
         });
+
+        describe("on escape", () => {
+            const escKeyCode = 27;
+
+            it("should reset component on escape", () => {
+                const element = testUtils.compileTemplate(`
+                    <oui-criteria-container on-change="$ctrl.onChangeSpy(modelValue)">
+                        <oui-search model="$ctrl.searchText"></oui-search>
+                    </oui-criteria-container>
+                `);
+
+                const controller = element.find("oui-search").controller("ouiSearch");
+                const $input = element.find("input");
+
+                controller.onSearchReset = jasmine.createSpy("onSearchReset");
+
+                $input.triggerHandler({
+                    type: "keydown",
+                    keyCode: escKeyCode
+                });
+
+                expect(controller.onSearchReset).toHaveBeenCalled();
+            });
+
+            it("should not reset component if pressed is not escape", () => {
+                const element = testUtils.compileTemplate(`
+                    <oui-criteria-container on-change="$ctrl.onChangeSpy(modelValue)">
+                        <oui-search model="$ctrl.searchText"></oui-search>
+                    </oui-criteria-container>
+                `);
+
+                const controller = element.find("oui-search").controller("ouiSearch");
+                const $input = element.find("input");
+
+                controller.onSearchReset = jasmine.createSpy("onSearchReset");
+
+                $input.triggerHandler({
+                    type: "keydown",
+                    keyCode: 42
+                });
+
+                expect(controller.onSearchReset).not.toHaveBeenCalled();
+            });
+        });
     });
 });

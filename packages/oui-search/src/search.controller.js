@@ -9,6 +9,8 @@ const minLengthTrigger = 2;
 // Minimum delay before each criterion change.
 const criterionDebounceDelay = 800;
 
+const escKeyCode = 27;
+
 export default class SearchController {
     constructor ($attrs, $element, $timeout) {
         "ngInject";
@@ -37,6 +39,16 @@ export default class SearchController {
                 .removeAttr("name")
                 .addClass(componentClass)
         );
+    }
+
+    onKeyDown (event) {
+        if (event.keyCode === escKeyCode) {
+            this.onSearchReset();
+        }
+    }
+
+    $destroy () {
+        this.$input.off("keypress");
     }
 
     onSearchChange () {
