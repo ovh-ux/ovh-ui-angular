@@ -24,6 +24,7 @@ import "@oui-angular/oui-search/src";
 import "@oui-angular/oui-criteria-container/src";
 import "@oui-angular/oui-criteria-adder/src";
 import "@oui-angular/oui-chips/src";
+import "@oui-angular/oui-popover/src";
 
 angular.module("oui", [
     "oui.button",
@@ -51,5 +52,6 @@ angular.module("oui", [
     "oui.criteria-container",
     "oui.radio-toggle-group",
     "oui.criteria-adder",
-    "oui.chips"
+    "oui.chips",
+    "oui.popover"
 ]);
