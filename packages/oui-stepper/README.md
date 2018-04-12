@@ -166,6 +166,37 @@
 </div>
 ```
 
+### Hide navigation buttons
+
+**Note**: Can be combined with `valid` to avoid default form submission.
+
+```html:preview
+<div class="oui-doc-preview-only">
+    <p>
+        <button class="oui-button" type="text"
+            ng-class="{
+                'oui-button_primary': $ctrl.hasNav,
+                'oui-button_secondary': !$ctrl.hasNav
+            }"
+            ng-click="$ctrl.hasNav = !$ctrl.hasNav">
+            Toggle navigation &amp; validation
+        </button>
+    </p>
+</div>
+<oui-stepper>
+    <oui-step-form
+        header="Navigation buttons"
+        navigation="$ctrl.hasNav"
+        valid="$ctrl.hasNav">
+        <oui-field label="Lorem ipsum" size="xl">
+            <input class="oui-input" name="navigationsInput"
+                type="text" autocomplete="off"
+                ng-model="$ctrl.navigationsInput">
+        </oui-field>
+    </oui-step-form>
+</oui-stepper>
+```
+
 ### Linear stepper
 
 ```html:preview
@@ -242,10 +273,12 @@
 | `id`              | string          | @?      | yes              |                        |                     | step form id, same as normal form           |
 | `header`          | string          | @?      | yes              |                        |                     | title of the step                           |
 | `description`     | string          | @?      | yes              |                        |                     | description of the step                     |
+| `loading-text`    | string          | @?      |                  |                        |                     | text for the loading state                  |
+| `submit-text`     | string          | @?      | yes              |                        |                     | text for the submit button                  |
 | `loading`         | boolean         | <?      |                  |                        | false               | display the loading state                   |
-| `loading-text`    | string          | <?      |                  |                        |                     | text for the loading state                  |
 | `disabled`        | boolean         | <?      |                  |                        | false               | disable the step and shrink it              |
-| `skippable`       | boolean         | <?      | yes              |                        | false               | add button to skip facultative step         |
+| `navigation`      | boolean         | <?      |                  |                        | true                | show the navigation buttons                 |
+| `skippable`       | boolean         | <?      |                  |                        | false               | add button to skip facultative step         |
 | `valid`           | boolean         | <?      |                  |                        | true                | custom validation for the form              |
 | `on-focus`        | function        | &       |                  |                        |                     | focused step function                       |
 | `on-submit`       | function        | &       |                  |                        |                     | submit step function                        |
