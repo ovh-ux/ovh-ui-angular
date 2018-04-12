@@ -16,7 +16,7 @@ export default class {
         this.locale = "en";
         this.options = {
             altInputClass: "oui-calendar__control_alt",
-            allowInput: true,
+            allowInput: false,
             dateFormat: "Y-m-d",
             disableMobile: true,
             maxDate: null,
@@ -47,9 +47,9 @@ export default class {
     }
 
     $get () {
-        return {
+        return angular.copy({
             locale: this.locale,
             options: this.options
-        };
+        });
     }
 }
