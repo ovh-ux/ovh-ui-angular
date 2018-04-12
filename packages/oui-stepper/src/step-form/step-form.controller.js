@@ -18,6 +18,11 @@ export default class StepFormController {
         // Add default name
         addDefaultParameter(this, "name", `ouiStepForm${this.$scope.$id}`);
 
+        // Show validation if no attribute 'navigation'
+        if (angular.isUndefined(this.$attrs.navigation)) {
+            this.navigation = true;
+        }
+
         // Force custom validation if no attribute 'valid'
         if (angular.isUndefined(this.$attrs.valid)) {
             this.valid = true;

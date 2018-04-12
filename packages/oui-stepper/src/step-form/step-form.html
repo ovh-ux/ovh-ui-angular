@@ -11,7 +11,7 @@
     <header class="oui-stepper__header">
         <span class="oui-stepper__title" ng-bind="::$ctrl.header"></span>
         <span class="oui-stepper__label-optional"
-            ng-if="::$ctrl.skippable"
+            ng-if="$ctrl.skippable"
             ng-bind="::$ctrl.translations.optionalLabel">
         </span>
         <button class="oui-button oui-button_link" type="button"
@@ -47,11 +47,15 @@
         <footer class="oui-stepper__footer"
             ng-show="!$ctrl.loading && $ctrl.stepper.focused">
             <oui-form-actions
-                submit-text="{{::$ctrl.stepper.last ? $ctrl.translations.submitButtonLabel : $ctrl.translations.nextButtonLabel}}">
+                ng-if="$ctrl.navigation"
+                submit-text="{{::
+                    $ctrl.submitText ||
+                    ($ctrl.stepper.last ? $ctrl.translations.submitButtonLabel : $ctrl.translations.nextButtonLabel)
+                }}">
             </oui-form-actions>
             <oui-button class="oui-stepper__skippable-link" type="submit"
                 variant="link" text="{{::$ctrl.translations.skipThisStep}}"
-                ng-if="::$ctrl.skippable">
+                ng-if="$ctrl.skippable">
             </oui-button>
         </footer>
         <!-- /Step Footer -->

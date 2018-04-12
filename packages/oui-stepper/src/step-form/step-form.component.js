@@ -11,9 +11,12 @@ export default {
         header: "@",
         description: "@?",
 
+        loadingText: "@?",
+        submitText: "@?",
+
         disabled: "<?",
         loading: "<?",
-        loadingText: "@?",
+        navigation: "<?",
         skippable: "<?",
         valid: "<?",
 
