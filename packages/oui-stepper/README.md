@@ -4,21 +4,57 @@
 
 ## Usage
 
-### Simple step
+### Linear stepper
+
+**Note**: The value of the custom validation attribute doesn't override the angular form validation `form.$valid`. Both are needed to be `true` to enable the submission.
 
 ```html:preview
-<oui-stepper>
-    <oui-step-form
-        header="Simple step">
-        <oui-field label="Lorem ipsum" size="xl">
-            <input class="oui-input" name="simpleInput1"
-                type="text" required
-                ng-model="$ctrl.simpleInput1">
+<oui-stepper linear>
+    <oui-step-form header="Simple step"
+        description="This is a description">
+        <oui-field label="Email" size="xl">
+            <input class="oui-input" type="email" name="email"
+                ng-model="$ctrl.user.email" required>
         </oui-field>
-        <oui-field label="Dolor sit amet" size="xl">
-            <input class="oui-input" name="simpleInput2"
-                type="text" required
-                ng-model="$ctrl.simpleInput2">
+
+        <oui-field label="Username" error-messages="{
+                pattern: 'Username must be alphabetic with a length between 3 and 8.'
+            }" size="xl">
+            <input class="oui-input" type="text" name="username"
+                ng-model="$ctrl.user.username" ng-pattern="/^[a-zA-Z]{3,8}$/" required>
+        </oui-field>
+    </oui-step-form>
+
+    <oui-step-form header="Skippable step" skippable
+        description="This is another description">
+        <oui-field label="Firstname" size="xl">
+            <input class="oui-input" type="text" name="firstname"
+                ng-model="$ctrl.user.firstname" maxlength="32">
+        </oui-field>
+        <oui-field label="Lastname" size="xl">
+            <input class="oui-input" type="text" name="lastname"
+                ng-model="$ctrl.user.lastname" maxlength="32">
+        </oui-field>
+        <oui-field label="Description" size="xl">
+            <oui-textarea model="$ctrl.user.description" name="description" placeholder="Please insert your text..." maxlength="10"></oui-textarea>
+        </oui-field>
+    </oui-step-form>
+
+    <oui-step-form header="Custom validation and navigation"
+        navigation="$ctrl.isValid"
+        valid="$ctrl.isValid">
+        <button class="oui-button" type="button"
+            ng-class="{
+                'oui-button_primary': $ctrl.isValid,
+                'oui-button_secondary': !$ctrl.isValid
+            }"
+            ng-click="$ctrl.isValid = !$ctrl.isValid">
+            Toggle navigation &amp; validation
+        </button>
+        <oui-field label="Lorem ipsum" size="xl">
+            <input class="oui-input" name="customValidationInput"
+                type="text" autocomplete="off" required
+                ng-model="$ctrl.skippableInput">
         </oui-field>
     </oui-step-form>
 </oui-stepper>
@@ -29,7 +65,7 @@
 ```html:preview
 <div class="oui-doc-preview-only">
     <p>
-        <button class="oui-button" type="text"
+        <button class="oui-button" type="button"
             ng-class="{
                 'oui-button_primary': $ctrl.stepDisabled,
                 'oui-button_secondary': !$ctrl.stepDisabled
@@ -57,28 +93,6 @@
             <input class="oui-input" name="statesInput"
                 type="text" required
                 ng-model="$ctrl.statesInput">
-        </oui-field>
-    </oui-step-form>
-</oui-stepper>
-```
-
-### Skippable step
-
-**Note**: This step has no input with attributes that trigger an error
-
-```html:preview
-<oui-stepper>
-    <oui-step-form skippable
-        header="Skippable step">
-        <oui-field label="Lorem ipsum" size="xl">
-            <input class="oui-input" name="skippableInput"
-                type="text" autocomplete="off"
-                ng-model="$ctrl.skippableInput">
-        </oui-field>
-        <oui-field label="Dolor sit amet" size="xl">
-            <oui-textarea name="skippableTextarea" rows="7"
-                model="$ctrl.skippableTextarea">
-            </oui-textarea>
         </oui-field>
     </oui-step-form>
 </oui-stepper>
@@ -132,127 +146,6 @@
 </div>
 ```
 
-### Custom validation
-
-**Note**: The value of the custom validation attribute doesn't override the angular form validation `form.$valid`. Both are needed to be `true` to enable the submission.
-
-```html:preview
-<div class="oui-doc-preview-only">
-    <p>
-        <button class="oui-button" type="text"
-            ng-class="{
-                'oui-button_primary': $ctrl.isValid,
-                'oui-button_secondary': !$ctrl.isValid
-            }"
-            ng-click="$ctrl.isValid = !$ctrl.isValid">
-            Toggle validation
-        </button>
-    </p>
-</div>
-<oui-stepper>
-    <oui-step-form
-        header="Custom validation"
-        valid="$ctrl.isValid"
-        on-submit="$ctrl.onCustomSubmit()">
-        <oui-field label="Lorem ipsum" size="xl">
-            <input class="oui-input" name="customValidationInput"
-                type="text" autocomplete="off" required
-                ng-model="$ctrl.skippableInput">
-        </oui-field>
-    </oui-step-form>
-</oui-stepper>
-<div class="oui-doc-preview-only">
-    <p><strong>onSubmit count:</strong> {{$ctrl.customSubmitCount}}</p>
-</div>
-```
-
-### Hide navigation buttons
-
-**Note**: Can be combined with `valid` to avoid default form submission.
-
-```html:preview
-<div class="oui-doc-preview-only">
-    <p>
-        <button class="oui-button" type="text"
-            ng-class="{
-                'oui-button_primary': $ctrl.hasNav,
-                'oui-button_secondary': !$ctrl.hasNav
-            }"
-            ng-click="$ctrl.hasNav = !$ctrl.hasNav">
-            Toggle navigation &amp; validation
-        </button>
-    </p>
-</div>
-<oui-stepper>
-    <oui-step-form
-        header="Navigation buttons"
-        navigation="$ctrl.hasNav"
-        valid="$ctrl.hasNav">
-        <oui-field label="Lorem ipsum" size="xl">
-            <input class="oui-input" name="navigationsInput"
-                type="text" autocomplete="off"
-                ng-model="$ctrl.navigationsInput">
-        </oui-field>
-    </oui-step-form>
-</oui-stepper>
-```
-
-### Linear stepper
-
-```html:preview
-<oui-stepper linear>
-    <oui-step-form header="Step 1"
-        description="This is a description">
-        <oui-field label="Email" size="xl">
-            <input class="oui-input" type="email" name="email"
-                ng-model="$ctrl.user.email" required>
-        </oui-field>
-
-        <oui-field label="Username" error-messages="{
-                pattern: 'Username must be alphabetic with a length between 3 and 8.'
-            }" size="xl">
-            <input class="oui-input" type="text" name="username"
-                ng-model="$ctrl.user.username" ng-pattern="/^[a-zA-Z]{3,8}$/" required>
-        </oui-field>
-    </oui-step-form>
-
-    <oui-step-form header="Step 2" skippable
-        description="This is a description">
-        <oui-field label="Firstname" help-text="At least 3 chars" size="xl">
-            <input class="oui-input" type="text" name="firstname"
-                ng-model="$ctrl.user.firstname" maxlength="32">
-        </oui-field>
-        <oui-field label="Lastname" help-text="At least 3 chars" size="xl">
-            <input class="oui-input" type="text" name="lastname"
-                ng-model="$ctrl.user.lastname" maxlength="32">
-        </oui-field>
-        <oui-field label="Description" size="xl">
-            <oui-textarea model="$ctrl.user.description" name="description" placeholder="Please insert your text..." maxlength="10"></oui-textarea>
-        </oui-field>
-    </oui-step-form>
-
-    <oui-step-form header="Step 3"
-        description="This is a description">
-        <oui-field label="OS" size="m">
-            <label class="oui-select">
-                <select name="os" ng-model="os" class="oui-select__input" required>
-                    <option ng-value="undefined">Select the OS</option>
-                    <option value="freebsd">FreeBSD</option>
-                    <option value="linux">Linux</option>
-                    <option value="osx">OSX</option>
-                    <option value="windows">Windows</option>
-                </select>
-                <i class="oui-icon oui-icon-chevron-down" aria-hidden="true"></i>
-            </label>
-        </oui-field>
-        <oui-field label="Server options">
-            <oui-checkbox name="ssl" text="SSL" model="$ctrl.ssl" required></oui-checkbox>
-            <oui-checkbox name="hsts" text="HSTS" model="$ctrl.hsts"></oui-checkbox>
-        </oui-field>
-    </oui-step-form>
-</oui-stepper>
-```
-
 ## API
 
 ### oui-stepper
@@ -282,3 +175,21 @@
 | `valid`           | boolean         | <?      |                  |                        | true                | custom validation for the form              |
 | `on-focus`        | function        | &       |                  |                        |                     | focused step function                       |
 | `on-submit`       | function        | &       |                  |                        |                     | submit step function                        |
+
+## Configuration
+
+The stepper translations can be globally configured with a provider.
+
+```js
+angular.module("myModule", [
+    "oui.stepper"
+]).config(ouiStepperConfigurationProvider => {
+    ouiStepperConfigurationProvider.setTranslations({
+        optionalLabel: "(optional)",
+        modifyThisStep: "Modify this step",
+        skipThisStep: "Skip this step",
+        nextButtonLabel: "Next",
+        submitButtonLabel: "Submit"
+    });
+});
+```
