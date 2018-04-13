@@ -27,6 +27,8 @@ export default class SelectPickerController {
 
     $onInit () {
         addBooleanParameter(this, "disabled");
+        addBooleanParameter(this, "required");
+
         if (!self.id) {
             this.id = `oui-select-picker-${this.$scope.$id}`;
         }
@@ -55,6 +57,11 @@ export default class SelectPickerController {
                 event.stopPropagation();
             }
         }
+    }
+
+    onSelectModelChange (event) {
+        this.model = event.modelValue;
+        this.onRadioModelChange(event);
     }
 
     onRadioModelChange (event) {
