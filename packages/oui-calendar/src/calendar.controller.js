@@ -9,7 +9,7 @@ export default class {
         this.$element = $element;
         this.$timeout = $timeout;
         this.locale = ouiCalendarConfiguration.locale;
-        this.options = ouiCalendarConfiguration.options;
+        this.options = angular.copy(ouiCalendarConfiguration.options);
     }
 
     setModelValue (value) {
