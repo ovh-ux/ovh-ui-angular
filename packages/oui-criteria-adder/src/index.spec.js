@@ -117,6 +117,18 @@ describe("ouiCriteriaAdder", () => {
             expect(controller.operatorModel.name).toEqual("is");
         });
 
+        describe("Custom operators list", () => {
+            it("should display an input as value component", () => {
+                const propertyMeta = find(mockData.properties, { name: "example.string.containsOnly" });
+                controller.columnModel = propertyMeta;
+                controller.onColumnChange();
+                expect(controller.selectableOperators).toEqual([{
+                    name: "contains",
+                    title: "contains"
+                }]);
+            });
+        });
+
         describe("Column type = string", () => {
             it("should display an input as value component", () => {
                 const propertyMeta = find(mockData.properties, { name: "example.string" });

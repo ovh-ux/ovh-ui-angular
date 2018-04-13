@@ -150,7 +150,8 @@ export default class {
 
     filterSelectableOperators () {
         const type = this.columnModel.type;
-        const operators = this.operators[type] || [];
+        const customOperatorsList = get(this.columnModel, "typeOptions.operators");
+        const operators = customOperatorsList || this.operators[type] || [];
         return operators.map((operator) => ({
             name: operator,
             title: this.translations[`operator_${type}_${operator}`]

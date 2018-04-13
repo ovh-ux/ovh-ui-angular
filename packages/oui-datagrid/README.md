@@ -325,7 +325,12 @@ You can use `row-loader`. It take the current row as argument and must return a 
     type="string"
     searchable
     filterable
-    sortable="asc"></oui-column>
+    sortable="asc"
+    type-options="{
+        operators: [
+            'contains'
+        ]
+    }"></oui-column>
   <oui-column title="'Memory'"
     property="memory"
     type="number"
@@ -417,15 +422,15 @@ You can use `row-loader`. It take the current row as argument and must return a 
 
 ### oui-column
 
-| Attribute         | Type            | Binding | One-time binding | Values                    | Default                | Description                                       |
-| ----              | ----            | ----    | ----             | ----                      | ----                   | ----                                              |
-| `title`           | string          | N/A     | yes              |                           |                        | column title put in header                        |
-| `property`        | string          | N/A     | yes              |                           | null                   | property path used to get value from value        |
-| `sortable`        | string          | N/A     | yes              | `asc`, `desc`             | `asc` on `sortable=""` | makes a column sortable and gives the order       |
-| `type`            | string          | N/A     |                  | `string`,`number`         | null                   | define a column type                              |
-| `filterable`      | N/A             | N/A     |                  |                           |                        | define a filterable column                        |
-| `searchable`      | N/A             | N/A     |                  |                           |                        | define a searchable column                        |
-| `typeOptions`     | object          | N/A     |                  |                           | {}                     | define options related to column type (see below) |
+| Attribute         | Type            | Binding | One-time binding | Values                      | Default                | Description                                       |
+| ----              | ----            | ----    | ----             | ----                        | ----                   | ----                                              |
+| `title`           | string          | N/A     | yes              |                             |                        | column title put in header                        |
+| `property`        | string          | N/A     | yes              |                             | null                   | property path used to get value from value        |
+| `sortable`        | string          | N/A     | yes              | `asc`, `desc`               | `asc` on `sortable=""` | makes a column sortable and gives the order       |
+| `type`            | string          | N/A     |                  | See below                   | null                   | define a column type                              |
+| `filterable`      | N/A             | N/A     |                  |                             |                        | define a filterable column                        |
+| `searchable`      | N/A             | N/A     |                  |                             |                        | define a searchable column                        |
+| `typeOptions`     | object          | N/A     |                  | See below                   | {}                     | define options related to column type (see below) |
 
 `typeOptions` is used to give options to feed criteria values. Example:
 
@@ -437,7 +442,10 @@ const typeOptions = {
         nw: "Network",
         db: "Database",
         other: "Other"
-    }
+    },
+    operators: [ // constraint operators list for this field
+        "is"
+    ]
 };
 ```
 
@@ -467,4 +475,29 @@ angular.module("myModule", [
 });
 ```
 
+### Types
+
+Types are associated to operators. Here's the list of all availables types and operators:
+
+- `boolean`
+  - `is`
+  - `isNot`
+- `date`
+  - `is`
+  - `isAfter`
+  - `isBefore`
+- `number`
+  - `is`
+  - `smaller`
+  - `bigger`
+- `options`
+  - `is`
+  - `isNot`
+- `string`
+  - `contains`
+  - `containsNot`
+  - `startsWith`
+  - `endsWith`
+  - `is`
+  - `isNot`
 
