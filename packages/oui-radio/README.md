@@ -38,7 +38,7 @@
 
 ```html:preview
 <oui-radio text="Checked"
-    thumbnail="true"></oui-radio>
+    thumbnail></oui-radio>
 <oui-radio text="Disabled"
     description="Disabled radio"
     disabled
