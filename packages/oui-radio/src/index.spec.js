@@ -124,11 +124,11 @@ describe("ouiRadio", () => {
                 expect(angular.element(mainBlockElement).hasClass("oui-radio_thumbnail")).toBe(false);
             });
 
-            it("should display a classic radio when defined but no value", () => {
+            it("should display a thumbnail radio when defined but no value", () => {
                 const element = TestUtils.compileTemplate("<oui-radio thumbnail></oui-radio>");
 
                 const mainBlockElement = getMainBlockElement(element);
-                expect(angular.element(mainBlockElement).hasClass("oui-radio_thumbnail")).toBe(false);
+                expect(angular.element(mainBlockElement).hasClass("oui-radio_thumbnail")).toBe(true);
             });
 
             it("should display a classic radio when false", () => {
