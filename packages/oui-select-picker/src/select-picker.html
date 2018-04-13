@@ -7,6 +7,7 @@
            ng-change="$ctrl.onRadioModelChange({ modelValue: $ctrl.model })"
            ng-disabled="$ctrl.disabled"
            ng-model="$ctrl.model"
+           ng-required="$ctrl.required"
            ng-value="$ctrl.values.length > 1 ? $ctrl.selectedValue : $ctrl.values[0]">
     <label class="oui-select-picker__label-container" for="{{:: $ctrl.id }}">
         <span class="oui-select-picker__picture-container"
@@ -32,12 +33,12 @@
             <span class="oui-select-picker__value"
                   ng-bind=":: $ctrl.getFirstValueMatch($ctrl.match)"
                   ng-if="$ctrl.values.length === 1"></span>
-            <oui-select name="{{:: $ctrl.name }}" required
+            <oui-select name="{{:: $ctrl.name }}"
                         disabled="$ctrl.disabled"
                         items="$ctrl.values"
                         match="{{ $ctrl.match }}"
                         model="$ctrl.selectedValue"
-                        on-change="$ctrl.model = $ctrl.selectedValue"
+                        on-change="$ctrl.onSelectModelChange({ modelValue: $ctrl.selectedValue })"
                         placeholder="{{:: $ctrl.placeholder || ' - ' }}"
                         data-align="end"
                         ng-if="$ctrl.values.length > 1">

@@ -15,6 +15,7 @@
     on-change="..."
     picture="..."
     placeholder="..."
+    required="..."
     text="..."
     values="..."
 ></oui-select-picker>
@@ -29,19 +30,19 @@
     <oui-select-picker name="oui-select-picker-1"
         match="name"
         model="$ctrl.value1"
-        text="Value A"
-        values="[{id:'a', name: 'Value A'}]"></oui-select-picker>
+        text="Value A or B"
+        values="[{id:'a', name: 'Value A'}, {id:'b', name: 'Value B'}]"></oui-select-picker>
     <oui-select-picker name="oui-select-picker-1"
         match="name"
         model="$ctrl.value1"
-        text="Value B"
-        values="[{id:'b', name: 'Value B'}]"></oui-select-picker>
+        text="Value C"
+        values="[{id:'c', name: 'Value C'}]"></oui-select-picker>
     <oui-select-picker name="oui-select-picker-1"
         match="name"
         model="$ctrl.value1"
         placeholder="Select"
-        text="Value C or D"
-        values="[{id:'c', name: 'Value C'}, {id:'d', name: 'Value D'}]"></oui-select-picker>
+        text="Value D, E or F"
+        values="[{id:'d', name: 'Value D'}, {id:'e', name: 'Value E'}, {id:'f', name: 'Value F'}]"></oui-select-picker>
 </div>
 ```
 
@@ -79,17 +80,17 @@
 
 ```html:preview
 <div ng-init="$ctrl.value2 = {id:'a', name: 'Value A'}">
-    <oui-select-picker text="Value A"
+    <oui-select-picker text="Value A or B"
         name="oui-select-picker-2"
         match="name"
         model="$ctrl.value2"
-        values="[{id:'a', name: 'Value A'}]"
+        values="[{id:'a', name: 'Value A'}, {id:'b', name: 'Value B'}]"
         on-change="$ctrl.lastOnChangeValue = modelValue"></oui-select-picker>
-    <oui-select-picker text="Value B"
+    <oui-select-picker text="Value C"
         name="oui-select-picker-2"
         match="name"
         model="$ctrl.value2"
-        values="[{id:'b', name: 'Value B'}]"
+        values="[{id:'c', name: 'Value C'}]"
         on-change="$ctrl.lastOnChangeValue = modelValue"></oui-select-picker>
 </div>
 
@@ -105,9 +106,10 @@
 | id            | string                  | @?      | `true`           |                          |         | id attribute of the radio
 | name          | string                  | @?      | `true`           |                          |         | name attribute of the radio
 | picture       | string                  | @?      |                  |                          |         | picture path or icon class
-| disabled      | boolean                 | <?      |                  |                          | false   | disabled flag
+| disabled      | boolean                 | <?      |                  | true, false              | false   | disabled flag
 | match         | string                  | @       |                  |                          |         | object property matched to label
 | model         | Object                  | =?      |                  |                          |         | current value of the radio
+| required      | boolean                 | <?      |                  | true, false              | false   | define if the field is required                   |
 | values        | array                   | <       |                  |                          |         | value of the radio or values of the select
 | placeholder   | string                  | @?      |                  |                          |         | initial label text of the select
 | on-change     | function                | &?      |                  |                          |         | handler triggered when value has changed

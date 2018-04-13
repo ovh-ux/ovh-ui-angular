@@ -2,6 +2,7 @@ describe("ouiSelectPicker", () => {
     let TestUtils;
     let $timeout;
 
+    beforeEach(angular.mock.module("oui.select"));
     beforeEach(angular.mock.module("oui.select-picker"));
     beforeEach(angular.mock.module("oui.test-utils"));
 
@@ -191,6 +192,49 @@ describe("ouiSelectPicker", () => {
                 $radioElement2.triggerHandler("click");
                 $timeout.flush();
                 expect(onChangeSpy).toHaveBeenCalledWith("bValue");
+            });
+
+            it("should trigger callback when the select is clicked", () => {
+                const onChangeSpy = jasmine.createSpy("onChangeSpy");
+
+                const element = TestUtils.compileTemplate(`
+                    <div>
+                        <oui-select-picker name="oui-select-picker-2"
+                            values="['aValue', 'bValue']"
+                            model="$ctrl.selectValue"
+                            on-change="$ctrl.onChange(modelValue)"></oui-select-picker>
+                        <oui-select-picker name="oui-select-picker-2"
+                            values="['cValue', 'dValue']"
+                            model="$ctrl.selectValue"
+                            on-change="$ctrl.onChange(modelValue)"></oui-select-picker>
+                    </div>
+                    `, {
+                    onChange: onChangeSpy
+                });
+
+                const selectPickerComponent1 = element.children()[0];
+                const selectPickerComponent2 = element.children()[1];
+                const $radioElement1 = angular.element(selectPickerComponent1).find("input");
+                const $radioElement2 = angular.element(selectPickerComponent2).find("input");
+                const $triggerElement1 = angular.element(selectPickerComponent1.querySelector("button.oui-dropdown__trigger"));
+                const $triggerElement2 = angular.element(selectPickerComponent2.querySelector("button.oui-dropdown__trigger"));
+
+                $radioElement1.prop("checked", true);
+                $triggerElement1.triggerHandler("click");
+                expect(angular.element(selectPickerComponent1.querySelector(".oui-ui-select-container")).hasClass("oui-ui-select-container_open")).toBe(true);
+                const $choiceElement1 = angular.element(selectPickerComponent1.querySelector(".ui-select-choices li button"));
+                $choiceElement1.triggerHandler("click");
+                expect(angular.element(selectPickerComponent1.querySelector(".oui-ui-select-container")).hasClass("oui-ui-select-container_open")).toBe(false);
+                $timeout.flush();
+                expect(onChangeSpy).toHaveBeenCalledWith("aValue");
+
+                $radioElement1.prop("checked", false);
+                $radioElement2.prop("checked", true);
+                $triggerElement2.triggerHandler("click");
+                const $choicesElement2 = angular.element(selectPickerComponent2.querySelector(".ui-select-choices li button"));
+                $choicesElement2.triggerHandler("click");
+                $timeout.flush();
+                expect(onChangeSpy).toHaveBeenCalledWith("cValue");
             });
         });
     });

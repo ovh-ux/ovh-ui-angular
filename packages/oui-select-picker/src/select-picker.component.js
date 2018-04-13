@@ -18,6 +18,7 @@ export default {
         match: "@",
         model: "=?",
         onChange: "&?",
-        disabled: "<?"
+        disabled: "<?",
+        required: "<?"
     }
 };
