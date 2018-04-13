@@ -32,5 +32,14 @@
         "name": "example.date",
         "title": "Example Date",
         "type": "date"
+    }, {
+        "name": "example.string.containsOnly",
+        "title": "Example String With Contains Only",
+        "type": "string",
+        "typeOptions": {
+            "operators": [
+                "contains"
+            ]
+        }
     }]
 }
