@@ -4,13 +4,15 @@ import { uniq } from "lodash";
 describe("ouiSelect", () => {
     let TestUtils;
     let $document;
+    let $timeout;
 
     beforeEach(angular.mock.module("oui.select"));
     beforeEach(angular.mock.module("oui.test-utils"));
 
-    beforeEach(inject((_TestUtils_, _$document_) => {
+    beforeEach(inject((_TestUtils_, _$document_, _$timeout_) => {
         TestUtils = _TestUtils_;
         $document = _$document_;
+        $timeout = _$timeout_;
     }));
 
     const openClass = "oui-ui-select-container_open";
@@ -236,7 +238,7 @@ describe("ouiSelect", () => {
             });
         });
 
-        describe("Blur on dropdown trigger", () => {
+        describe("Focus on dropdown trigger", () => {
             it("should call onFocus callback", () => {
                 const onFocus = jasmine.createSpy();
                 const element = TestUtils.compileTemplate(`
@@ -254,6 +256,35 @@ describe("ouiSelect", () => {
 
                 angular.element(getDropdownButton(element)).triggerHandler("focus");
                 expect(onFocus).toHaveBeenCalled();
+            });
+        });
+
+        describe("Change on dropdown trigger", () => {
+            it("should call onChange callback", () => {
+                const onChange = jasmine.createSpy();
+                const element = TestUtils.compileTemplate(`
+                    <oui-select name="country"
+                        model="$ctrl.country"
+                        data-title="Select a country"
+                        placeholder="Select a country..."
+                        items="$ctrl.countries"
+                        match="name"
+                        on-change="$ctrl.onChange(modelValue)">
+                        <span ng-bind="$item.name"></span>
+                    </oui-select>`, {
+                    countries: data,
+                    onChange
+                });
+
+                let $itemButton = angular.element(getDropdownItem(element, 4));
+                $itemButton.triggerHandler("click");
+                $timeout.flush();
+                expect(onChange).toHaveBeenCalledWith(data[4]);
+
+                $itemButton = angular.element(getDropdownItem(element, 10));
+                $itemButton.triggerHandler("click");
+                $timeout.flush();
+                expect(onChange).toHaveBeenCalledWith(data[10]);
             });
         });
     });
