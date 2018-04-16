@@ -9,7 +9,8 @@
          ng-model="$ctrl.model"
          ng-value="$ctrl.value"
          ng-change="$ctrl.onRadioModelChange({ modelValue: $ctrl.model })"
-         ng-disabled="$ctrl.disabled">
+         ng-disabled="$ctrl.disabled"
+         ng-required="$ctrl.required">
     <label
         for="{{:: $ctrl.id }}"
         ng-class=":: $ctrl.radioToggleGroup ? 'oui-radio-toggle__label-container' : 'oui-radio__label-container'"

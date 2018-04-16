@@ -17,7 +17,8 @@ export default {
         model: "=?",
         onChange: "&?",
         disabled: "<?",
-        thumbnail: "<?"
+        thumbnail: "<?",
+        required: "<?"
     },
     transclude: true
 };

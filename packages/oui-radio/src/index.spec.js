@@ -116,6 +116,41 @@ describe("ouiRadio", () => {
             });
         });
 
+        describe("required attribute", () => {
+            it("should display an active radio when no attribute", () => {
+                const element = TestUtils.compileTemplate("<oui-radio></oui-radio>");
+
+                const radioElement = getRadioInputElement(element);
+                expect(angular.element(radioElement).prop("required")).toBe(false);
+            });
+
+            it("should display a required radio when defined but no value", () => {
+                const element = TestUtils.compileTemplate("<oui-radio required></oui-radio>");
+
+                const radioElement = getRadioInputElement(element);
+                expect(angular.element(radioElement).prop("required")).toBe(true);
+            });
+
+            it("should display a required radio when true", () => {
+                const element = TestUtils.compileTemplate("<oui-radio required=\"$ctrl.required\"></oui-radio>", {
+                    required: true
+                });
+
+                const radioElement = getRadioInputElement(element);
+                expect(angular.element(radioElement).prop("required")).toBe(true);
+            });
+
+            it("should display an active radio when false", () => {
+                const element = TestUtils.compileTemplate("<oui-radio required=\"$ctrl.notRequired\"></oui-radio>", {
+                    notRequired: false
+                });
+
+                const radioElement = getRadioInputElement(element);
+                expect(angular.element(radioElement).prop("required")).toBe(false);
+            });
+        });
+
+
         describe("thumbnail attribute", () => {
             it("should display a classic radio when no attribute", () => {
                 const element = TestUtils.compileTemplate("<oui-radio></oui-radio>");

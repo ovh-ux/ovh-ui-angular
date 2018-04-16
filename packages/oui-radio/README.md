@@ -73,6 +73,7 @@
 | id            | string                  | @?      | `true`           |                          |         | id attribute of the radio
 | name          | string                  | @?      | `true`           |                          |         | name attribute of the radio
 | disabled      | boolean                 | <?      |                  |                          | false   | disabled flag
+| required      | boolean                 | <?      |                  |                          | false   | required flag
 | model         | Object                  | =?      |                  |                          |         | current value of the radio
 | value         | Object                  | <       |                  |                          |         | value of the radio
 | on-change     | function                | &?      |                  |                          |         | handler triggered when value has changed

@@ -21,9 +21,9 @@ export default class {
     }
 
     $onInit () {
-
         addBooleanParameter(this, "disabled");
         addBooleanParameter(this, "thumbnail");
+        addBooleanParameter(this, "required");
 
         if (!this.id) {
             this.id = `oui-radio-${this.$scope.$id}`;
