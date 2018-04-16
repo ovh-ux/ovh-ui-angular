@@ -1,13 +1,14 @@
 import { addBooleanParameter } from "@oui-angular/common/component-utils";
 
 export default class {
-    constructor ($attrs, $document, $element, $timeout, NavbarService, KEYBOARD_KEYS) {
+    constructor ($attrs, $document, $element, $timeout, ouiNavbarConfiguration, NavbarService, KEYBOARD_KEYS) {
         "ngInject";
 
         this.$attrs = $attrs;
         this.$document = $document;
         this.$element = $element;
         this.$timeout = $timeout;
+        this.config = ouiNavbarConfiguration;
         this.navbarService = NavbarService;
         this.KEYBOARD_KEYS = KEYBOARD_KEYS;
     }

@@ -1,9 +1,10 @@
 export default class {
-    constructor ($element, $timeout, NavbarService, NavbarGroupService, KEYBOARD_KEYS) {
+    constructor ($element, $timeout, ouiNavbarConfiguration, NavbarService, NavbarGroupService, KEYBOARD_KEYS) {
         "ngInject";
 
         this.$element = $element;
         this.$timeout = $timeout;
+        this.config = ouiNavbarConfiguration;
         this.navbarService = NavbarService;
         this.navbarGroupService = NavbarGroupService;
         this.KEYBOARD_KEYS = KEYBOARD_KEYS;

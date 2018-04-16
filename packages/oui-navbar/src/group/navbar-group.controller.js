@@ -1,9 +1,10 @@
 export default class {
-    constructor ($attrs, $element, NavbarGroupService) {
+    constructor ($attrs, $element, ouiNavbarConfiguration, NavbarGroupService) {
         "ngInject";
 
         this.$attrs = $attrs;
         this.$element = $element;
+        this.config = ouiNavbarConfiguration;
         this.navbarGroupService = NavbarGroupService;
     }
 

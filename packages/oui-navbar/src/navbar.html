@@ -74,14 +74,14 @@
             ng-attr-aria-label="{{::!!asideLink.label ? asideLink.label : null}}"
             ng-attr-title="{{::!!asideLink.label ? asideLink.label : null}}"
             ng-class="::!!asideLink.iconClass ? 'oui-navbar-link_icon' : null"
-            ng-click="$ctrl.toggleMenu(asideLink.name)"
+            ng-click="$ctrl.toggleMenu(asideLink.name); asideLink.onClick();"
             oui-navbar-group="{{::asideLink.name}}">
             <span class="oui-icon" aria-hidden="true"
                 ng-if="::!!asideLink.iconClass"
                 ng-class="::'navbar-' + asideLink.iconClass">
                 <span class="oui-icon__badge"
-                    ng-if="::!!asideLink.subLinks && (asideLink.subLinks | filter: {isActive: 'true'}).length"
-                    ng-bind="::(asideLink.subLinks | filter: {isActive: 'true'}).length">
+                    ng-if="!!asideLink.subLinks && (asideLink.subLinks | filter: {isActive: 'true', acknowledged: '!true'}).length"
+                    ng-bind="(asideLink.subLinks | filter: {isActive: 'true', acknowledged: '!true'}).length">
                 </span>
             </span>
             <span ng-bind="::asideLink.title"></span>
@@ -98,16 +98,39 @@
                 ng-if="::!!asideLink.headerTemplate"
                 ng-bind-html="::asideLink.headerTemplate">
             </header>
-            <div class="oui-navbar-menu__body oui-navbar-list">
-                <a class="oui-navbar-menu__item"
+            <ul class="oui-navbar-menu__body oui-navbar-list">
+                <li class="oui-navbar-menu__item oui-navbar-notification"
                     ng-repeat="subLink in ::asideLink.subLinks | limitTo: asideLink.limitTo"
-                    ng-class="::!!subLink.isActive ? 'oui-navbar-menu__item_active' : null"
-                    ng-click="$ctrl.toggleMenu()"
-                    ng-href="{{::subLink.url}}"
-                    ng-bind-html="::subLink.template"
+                    ng-class="!!subLink.isActive ? 'oui-navbar-menu__item_active' : null"
                     oui-navbar-group="{{::asideLink.name}}">
-                </a>
-            </div>
+                    <i class="oui-icon oui-icon_bicolor oui-navbar-notification__icon"
+                       ng-class=":: 'oui-icon-' + subLink.level + '_circle'"
+                       aria-hidden="true">
+                    </i>
+                    <a class="oui-navbar-notification__content"
+                       ng-click="subLink.linkClicked(subLink);$ctrl.toggleMenu()"
+                       ng-href="{{::subLink.url}}">
+                        <div class="oui-navbar-notification__header">
+                            <span class="oui-navbar-notification__title" ng-bind=":: subLink.subject"></span>
+                            <span class="oui-navbar-notification__time" ng-bind="subLink.time"></span>
+                        </div>
+                        <div class="oui_navbar-notification__body">
+                            <div class="oui-navbar-notification__description" ng-bind-html=":: subLink.description"></div>
+                        </div>
+                    </a>
+                    <button class="oui-navbar-notification__action"
+                            type="button"
+                            ng-click="subLink.actionClicked(subLink)"
+                            oui-tooltip="{{::subLink.isActive ? $ctrl.config.translations.notification.markRead : $ctrl.config.translations.notification.markUnread }}">
+                        <i class="oui-icon oui-icon-shape-dot"
+                           ng-if="subLink.isActive"
+                           aria-hidden="true"></i>
+                        <i class="oui-icon oui-icon-shape-circle"
+                           ng-if="!subLink.isActive"
+                           aria-hidden="true"></i>
+                    </button>
+                </li>
+            </ul>
             <footer class="oui-navbar-menu__footer"
                 ng-if="::!asideLink.footerTemplate && !!asideLink.footerTitle">
                 <a class="oui-button oui-button_secondary"
