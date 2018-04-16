@@ -1,3 +1,39 @@
+<a name="2.11.0"></a>
+# [2.11.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.10.1...v2.11.0) (2018-04-16)
+
+
+### Bug Fixes
+
+* **oui-calendar:** append calendar to control wrapper ([5bfd05c](https://github.com/ovh-ux/ovh-ui-angular/commit/5bfd05c))
+* **oui-calendar:** fix options ([422bca3](https://github.com/ovh-ux/ovh-ui-angular/commit/422bca3))
+* **oui-radio:** boolean parameter missing on thumbnail attr ([ee33f14](https://github.com/ovh-ux/ovh-ui-angular/commit/ee33f14))
+* **oui-search:** fix search reset ([6da44a5](https://github.com/ovh-ux/ovh-ui-angular/commit/6da44a5))
+* **oui-select-picker:** fix onChange execution ([d5f6a04](https://github.com/ovh-ux/ovh-ui-angular/commit/d5f6a04))
+* **oui-stepper:** fix default form name ([2c75040](https://github.com/ovh-ux/ovh-ui-angular/commit/2c75040))
+* **oui-tooltip:** fix tooltip postLink with timeout ([a3d4b77](https://github.com/ovh-ux/ovh-ui-angular/commit/a3d4b77))
+
+
+### Features
+
+* **oui-calendar:** add inline and appendToBody attributes ([737db7c](https://github.com/ovh-ux/ovh-ui-angular/commit/737db7c))
+* **oui-criteria-adder:** add custom operators support to criteria adder ([5e76d83](https://github.com/ovh-ux/ovh-ui-angular/commit/5e76d83))
+* **oui-popover:** add new Popover component ([29bc371](https://github.com/ovh-ux/ovh-ui-angular/commit/29bc371))
+* **oui-search:** add debouncer on search component ([f259789](https://github.com/ovh-ux/ovh-ui-angular/commit/f259789))
+* **oui-search:** add reset on escape ([3514703](https://github.com/ovh-ux/ovh-ui-angular/commit/3514703))
+* **oui-stepper:** add custom validation attribute ([e2b23dd](https://github.com/ovh-ux/ovh-ui-angular/commit/e2b23dd))
+* **oui-stepper:** add linear progression ([13f5777](https://github.com/ovh-ux/ovh-ui-angular/commit/13f5777))
+* **oui-stepper:** add navigation and submit-text  attributes ([31ea3a0](https://github.com/ovh-ux/ovh-ui-angular/commit/31ea3a0))
+* **oui-stepper:** create component ([bf0eb0d](https://github.com/ovh-ux/ovh-ui-angular/commit/bf0eb0d))
+* **oui-stepper:** handle communication between stepper and step-form ([53367c3](https://github.com/ovh-ux/ovh-ui-angular/commit/53367c3))
+* **oui-stepper:** handle complete and disabled attribute ([e677025](https://github.com/ovh-ux/ovh-ui-angular/commit/e677025))
+* **oui-stepper:** handle state in step-form ([b71932f](https://github.com/ovh-ux/ovh-ui-angular/commit/b71932f))
+* **oui-stepper:** loader size ([5f048a1](https://github.com/ovh-ux/ovh-ui-angular/commit/5f048a1))
+* **oui-stepper:** rethinking complete step ([d153c60](https://github.com/ovh-ux/ovh-ui-angular/commit/d153c60))
+* **oui-stepper:** skippable feature ([967cb2f](https://github.com/ovh-ux/ovh-ui-angular/commit/967cb2f))
+* **oui-stepper:** tests and doc update ([4200703](https://github.com/ovh-ux/ovh-ui-angular/commit/4200703))
+
+
+
 <a name="2.10.1"></a>
 ## [2.10.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.10.0...v2.10.1) (2018-04-04)
 
