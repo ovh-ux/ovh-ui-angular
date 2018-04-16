@@ -63,7 +63,7 @@ export default class SearchController {
         const modelValue = this.model;
 
         if (this.criteriaContainer) {
-            if (modelValue.length >= minLengthTrigger) {
+            if (modelValue && modelValue.length >= minLengthTrigger) {
                 this.criteriaContainer.setPreviewCriterion(SearchController.getCriterion(modelValue), true);
             } else {
                 this.criteriaContainer.deletePreviewCriterion();
@@ -80,7 +80,7 @@ export default class SearchController {
     }
 
     onCriterionSubmit (modelValue) {
-        if (this.criteriaContainer && modelValue.length >= minLengthTrigger) {
+        if (this.criteriaContainer && modelValue && modelValue.length >= minLengthTrigger) {
             this.criteriaContainer.add(SearchController.getCriterion(modelValue));
         }
     }
