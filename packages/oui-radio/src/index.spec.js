@@ -22,10 +22,10 @@ describe("ouiRadio", () => {
                 const element = TestUtils.compileTemplate("<oui-radio></oui-radio>");
 
                 const radioElement = getRadioInputElement(element);
-                expect(angular.element(radioElement).prop("id")).toMatch(/^oui-radio-\d+$/);
+                expect(angular.element(radioElement).prop("id")).toMatch(/^ouiRadio\d+$/);
 
                 const radioLabelElement = getRadioLabelElement(element);
-                expect(angular.element(radioLabelElement).attr("for")).toMatch(/^oui-radio-\d+$/);
+                expect(angular.element(radioLabelElement).attr("for")).toMatch(/^ouiRadio\d+$/);
             });
 
             it("should set the id for the input and label when defined", () => {
