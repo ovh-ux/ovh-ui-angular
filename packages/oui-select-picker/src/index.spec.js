@@ -23,10 +23,10 @@ describe("ouiSelectPicker", () => {
                 const element = TestUtils.compileTemplate('<oui-select-picker values="[\'test\']"></oui-select-picker>');
 
                 const radioElement = getRadioInputElement(element);
-                expect(angular.element(radioElement).prop("id")).toMatch(/^oui-select-picker-\d+$/);
+                expect(angular.element(radioElement).prop("id")).toMatch(/^ouiSelectPicker\d+$/);
 
                 const radioLabelElement = getRadioLabelElement(element);
-                expect(angular.element(radioLabelElement).attr("for")).toMatch(/^oui-select-picker-\d+$/);
+                expect(angular.element(radioLabelElement).attr("for")).toMatch(/^ouiSelectPicker\d+$/);
             });
 
             it("should set the id for the input and label when defined", () => {

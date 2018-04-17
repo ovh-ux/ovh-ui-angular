@@ -1,4 +1,4 @@
-import { addBooleanParameter } from "@oui-angular/common/component-utils";
+import { addBooleanParameter, addDefaultParameter } from "@oui-angular/common/component-utils";
 import { get } from "lodash";
 
 export default class SelectPickerController {
@@ -28,10 +28,7 @@ export default class SelectPickerController {
     $onInit () {
         addBooleanParameter(this, "disabled");
         addBooleanParameter(this, "required");
-
-        if (!self.id) {
-            this.id = `oui-select-picker-${this.$scope.$id}`;
-        }
+        addDefaultParameter(this, "id", `ouiSelectPicker${this.$scope.$id}`);
 
         if (this.picture) {
             this.isImgPath = /\.(gif|png|jpg)$/.test(this.picture);
