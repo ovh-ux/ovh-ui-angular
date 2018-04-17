@@ -30,10 +30,10 @@ describe("ouiCheckbox", () => {
                 const element = TestUtils.compileTemplate("<oui-checkbox></oui-checkbox>");
 
                 const checkboxElement = getCheckboxInputElement(element);
-                expect(angular.element(checkboxElement).prop("id")).toMatch(/^oui-checkbox-\d+$/);
+                expect(angular.element(checkboxElement).prop("id")).toMatch(/^ouiCheckbox\d+$/);
 
                 const checkboxLabelElement = getCheckboxLabelElement(element);
-                expect(angular.element(checkboxLabelElement).attr("for")).toMatch(/^oui-checkbox-\d+$/);
+                expect(angular.element(checkboxLabelElement).attr("for")).toMatch(/^ouiCheckbox\d+$/);
             });
 
             it("should set the id for the input and label when defined", () => {
