@@ -1,4 +1,4 @@
-import { addBooleanParameter } from "@oui-angular/common/component-utils";
+import { addBooleanParameter, addDefaultParameter } from "@oui-angular/common/component-utils";
 
 export default class {
     constructor ($scope, $element, $attrs, $timeout) {
@@ -34,10 +34,7 @@ export default class {
     $onInit () {
         addBooleanParameter(this, "disabled");
         addBooleanParameter(this, "required");
-
-        if (!self.id) {
-            this.id = `oui-checkbox-${this.$scope.$id}`;
-        }
+        addDefaultParameter(this, "id", `ouiCheckbox${this.$scope.$id}`);
     }
 
     _updateIndeterminateState (model) {
