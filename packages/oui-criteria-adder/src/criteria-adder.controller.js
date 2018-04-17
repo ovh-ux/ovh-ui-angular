@@ -18,6 +18,8 @@ export default class {
         // Set align to "end" if undefined
         addDefaultParameter(this, "align", "center");
 
+        addDefaultParameter(this, "id", `ouiCriteriaAdder${this.$scope.$id}`);
+
         this.$timeout(() => {
             this.dropdownContent = this.$element[0];
         });
@@ -25,10 +27,6 @@ export default class {
         // Auto select first column
         if (this.properties) {
             this.columnModel = this.properties[0];
-        }
-
-        if (!this.id) {
-            this.id = `oui-criteria-adder-${this.$scope.$id}`;
         }
 
         this.selectableOperators = this.filterSelectableOperators();
