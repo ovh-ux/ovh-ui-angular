@@ -50,6 +50,7 @@
 ```html:preview
 <div ng-init="$ctrl.value2 = 'a'" class="oui-doc-preview-only-keep-children">
 <oui-radio text="Value A"
+    id="radio2"
     name="oui-radio-2"
     model="$ctrl.value2"
     value="'a'"

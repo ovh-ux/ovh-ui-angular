@@ -32,9 +32,8 @@ export default class {
             this.$scope.$watch("$ctrl.group.model", (value) => {
                 this.model = value;
             });
-        } else {
-            this.name = this.id;
-        }
+        } else { addDefaultParameter(this, "name", this.id); }
+
     }
 
     onRadioModelChange (event) {
