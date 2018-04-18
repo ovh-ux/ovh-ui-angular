@@ -46,6 +46,21 @@ describe("ouiRadio", () => {
                 const radioElement = getRadioInputElement(element);
                 expect(angular.element(radioElement).prop("name")).toBe("test");
             });
+
+            it("should set the name attribute on input when defined with id", () => {
+                const element = TestUtils.compileTemplate('<oui-radio name="test" id="testid"></oui-radio>');
+
+                const radioElement = getRadioInputElement(element);
+                expect(angular.element(radioElement).prop("name")).toBe("test");
+            });
+
+            it("should set the name attribute to id when only id is defined", () => {
+                const element = TestUtils.compileTemplate('<oui-radio id="test"></oui-radio>');
+
+                const radioElement = getRadioInputElement(element);
+                console.log(radioElement);
+                expect(angular.element(radioElement).prop("name")).toBe("test");
+            });
         });
 
         describe("text attribute", () => {
