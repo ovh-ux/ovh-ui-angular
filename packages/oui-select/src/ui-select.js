@@ -492,6 +492,8 @@ uis.controller('uiSelectCtrl',
             }
         }
     });
+
+    ctrl.popperElement.style.minWidth = `${ctrl.referenceElement.offsetWidth}px`;
   }
 
   ctrl.focusSearchInput = function (initSearchValue) {
