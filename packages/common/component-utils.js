@@ -26,8 +26,7 @@ export function addBooleanParameter (controller, parameterName) {
  */
 export function addDefaultParameter (controller, parameterName, defaultValue) {
     if (!angular.isDefined(controller.$attrs[parameterName]) ||
-    angular.isDefined(controller.$attrs[parameterName] &&
-      controller.$attrs[parameterName].trim() === "")) {
+    (angular.isDefined(controller.$attrs[parameterName]) && controller.$attrs[parameterName].trim() === "")) {
         controller[parameterName] = defaultValue;
     }
 }
