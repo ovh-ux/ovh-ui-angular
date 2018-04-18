@@ -24,7 +24,7 @@ export default class {
         addDefaultParameter(this, "align", "center");
 
         // Use internal id to map trigger and content with aria-label and aria-labelledby.
-        this.id = `oui-dropdown-${this.$scope.$id}`;
+        this.id = `ouiDropdown${this.$scope.$id}`;
 
         this.documentClickHandler = evt => {
             if ((evt && evt.type === "click") &&

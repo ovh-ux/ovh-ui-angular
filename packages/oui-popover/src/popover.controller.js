@@ -17,7 +17,7 @@ export default class PopoverController {
         this.isPopoverOpen = false;
 
         // Use internal id to map trigger
-        this.id = `oui-popover-${this.$scope.$id}`;
+        this.id = `ouiPopover${this.$scope.$id}`;
 
         if (angular.isUndefined(this.placement)) {
             this.placement = "right";
