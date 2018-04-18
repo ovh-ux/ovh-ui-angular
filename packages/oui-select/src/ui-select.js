@@ -467,7 +467,7 @@ uis.controller('uiSelectCtrl',
       }
 
       ctrl.referenceElement = $element[0].querySelector('.oui-button_dropdown');
-      ctrl.popperElement = $element[0].querySelector('.ui-select-choices-content');
+      ctrl.popperElement = $element[0].querySelector('.ui-select-choices-container');
 
       createPopper();
     }
