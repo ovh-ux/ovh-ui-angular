@@ -10,6 +10,7 @@ import CriteriaAdder from "@ovh-ui/oui-criteria-adder";
 import CriteriaContainer from "@ovh-ui/oui-criteria-container";
 import Datagrid from "@ovh-ui/oui-datagrid";
 import Dropdown from "@ovh-ui/oui-dropdown";
+import DualList from "@ovh-ui/oui-dual-list";
 import Field from "@ovh-ui/oui-field";
 import FormActions from "@ovh-ui/oui-form-actions";
 import GuideMenu from "@ovh-ui/oui-guide-menu";
@@ -50,6 +51,7 @@ export default angular
         CriteriaContainer,
         Datagrid,
         Dropdown,
+        DualList,
         Field,
         FormActions,
         GuideMenu,
