@@ -45,6 +45,27 @@
 </form>
 ```
 
+### Label Popover
+
+```html:preview
+<form novalidate name="inputForm">
+    <oui-field label="Lastname"
+        help-text="At least 3 chars"
+        label-popover="In the LastName field, enter your family name as the family name appears on your passport. The last name is required to complete the application."
+        size="xl">
+        <input
+            class="oui-input"
+            type="text"
+            id="lastname"
+            name="lastname"
+            ng-model="$ctrl.user.lastname"
+            required
+            minlength="3"
+            maxlength="32">
+    </oui-field>
+</form>
+```
+
 ### Checkbox
 
 ```html:preview
@@ -207,12 +228,13 @@
 
 ## API
 
-| Attribute         | Type            | Binding | One-time binding | Values                             | Default             | Description                                       |
-| ----              | ----            | ----    | ----             | ----                               | ----                | ----                                              |
-| `error-messages`  | object          | <?      | no               |                                    |                     | a dictionary to override default messages         |
-| `help-text`       | string          | @?      | yes              |                                    |                     | the field label                                   |
-| `size`            | string          | @?      | yes              | `xs`, `s`, `m`, `l`, `xl`, `auto`  | `auto`                 | the field size                                    |
-| `label`           | function        | @?      | yes              |                                    |                     | a text to help fill the form field                |
+| Attribute         | Type            | Binding | One-time binding | Values                             | Default        | Description                                            |
+| ----              | ----            | ----    | ----             | ----                               | ----           | ----                                                   |
+| `error-messages`  | object          | <?      | no               |                                    |                | a dictionary to override default messages              |
+| `help-text`       | string          | @?      | yes              |                                    |                | a text to help fill the form field                     |
+| `size`            | string          | @?      | yes              | `xs`, `s`, `m`, `l`, `xl`, `auto`  | `auto`         | the field size                                         |
+| `label`           | function        | @?      | yes              |                                    |                | the field label                                        |
+| `label-popover`   | string          | @?      | yes              |                                    |                | a text to describe the field or give more information  |
 
 
 ## Configuration

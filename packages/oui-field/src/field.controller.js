@@ -93,6 +93,15 @@ export default class FieldController {
             this.label.on("click", () => {
                 this.$scope.$broadcast("oui:focus");
             });
+
+            // Handle Popover aria
+            if (this.labelPopover) {
+                this.popoverId = `oui-field-popover-${this.$scope.$id}`;
+                if (this.for) {
+                    const $ouiFieldInput = angular.element(this.$element[0].querySelector(`#${this.for}`));
+                    $ouiFieldInput.attr("aria-describedby", this.popoverId);
+                }
+            }
         });
     }
 

@@ -8,6 +8,7 @@ describe("ouiField", () => {
     beforeEach(angular.mock.module("oui.checkbox"));
     beforeEach(angular.mock.module("oui.radio"));
     beforeEach(angular.mock.module("oui.select"));
+    beforeEach(angular.mock.module("oui.popover"));
     beforeEach(angular.mock.module("oui.test-utils"));
 
     beforeEach(inject((_$timeout_, _TestUtils_) => {
@@ -17,6 +18,7 @@ describe("ouiField", () => {
 
     const getField = elt => elt.find("oui-field");
     const getLabel = elt => elt[0].querySelector("label");
+    const getPopover = elt => elt[0].querySelector(".oui-popover");
     const getError = elt => elt[0].querySelector(".oui-field__error");
     const getHelper = elt => elt[0].querySelector(".oui-field__helper");
     const getElementByClass = (element, value) => angular.element(element[0].querySelector(value));
@@ -85,6 +87,53 @@ describe("ouiField", () => {
                 $timeout.flush();
 
                 expect(getElementByClass(element, `.oui-field__control_${size}`).length).toEqual(1);
+            });
+
+            it("should not add popover if label is not defined", () => {
+                const element = TestUtils.compileTemplate(`
+                    <oui-field label-popover="{{'test'}}">
+                        <input name="lastname"/>
+                    </oui-field>
+                `);
+                $timeout.flush();
+
+                expect(getLabel(element)).toBeNull();
+                expect(getPopover(element)).toBeNull();
+            });
+
+            it("should add popover if label and label-popover is defined", () => {
+                const element = TestUtils.compileTemplate(`
+                    <oui-field label="{{'Lastname'}}" label-popover="{{'test'}}">
+                        <input name="lastname"/>
+                    </oui-field>
+                `);
+                $timeout.flush();
+
+                expect(getLabel(element)).toBeDefined();
+                expect(getPopover(element)).toBeDefined();
+            });
+
+            it("should add aria-describedby to the input if label has popover", () => {
+                const element = TestUtils.compileTemplate(`
+                    <form name="form">
+                        <oui-field label="{{'username'}}" label-popover="{{'test'}}">
+                            <input type="text"
+                                class="oui-input"
+                                type="text"
+                                id="username"
+                                name="username"
+                                minlength="6"
+                                ng-model="$ctrl.username">
+                        </oui-field>
+                    </form>
+                `);
+                const controller = getField(element).controller("ouiField");
+
+                $timeout.flush();
+
+                const $control = getControl(controller, "username");
+                const $popoverContent = getElementByClass(element, ".oui-field__label-popover");
+                expect($control[0].getAttribute("aria-describedby")).toEqual($popoverContent[0].getAttribute("id"));
             });
         });
 
