@@ -34,6 +34,10 @@ export default class SelectPickerController {
             this.isImgPath = /\.(gif|png|jpg)$/.test(this.picture);
         }
 
+        if (this.values && this.values.length === 1) {
+            this.selectedValue = this.values[0];
+        }
+
         this.transcludeSection = this.$transclude.isSlotFilled("sectionSlot");
     }
 

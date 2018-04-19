@@ -3,12 +3,12 @@
            name="{{:: $ctrl.name }}"
            ng-attr-aria-labelledby="{{:: $ctrl.id }}-text"
            ng-attr-aria-describedby="{{:: $ctrl.description && $ctrl.id + '-description' || undefined }}"
-           ng-attr-id="{{:: $ctrl.values.length === 1 || $ctrl.selectedValue ? $ctrl.id : undefined }}"
+           ng-attr-id="{{:: $ctrl.selectedValue ? $ctrl.id : undefined }}"
            ng-change="$ctrl.onRadioModelChange({ modelValue: $ctrl.model })"
            ng-disabled="$ctrl.disabled"
            ng-model="$ctrl.model"
            ng-required="$ctrl.required"
-           ng-value="$ctrl.values.length > 1 ? $ctrl.selectedValue : $ctrl.values[0]">
+           ng-value="$ctrl.selectedValue">
     <label class="oui-select-picker__label-container" for="{{:: $ctrl.id }}">
         <span class="oui-select-picker__picture-container"
               ng-if="$ctrl.picture">
