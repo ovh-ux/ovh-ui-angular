@@ -26,14 +26,20 @@ export default class {
         addBooleanParameter(this, "required");
         addDefaultParameter(this, "id", `ouiRadio${this.$scope.$id}`);
 
+        this.$element.addClass(this.radioToggleGroup ? "oui-radio-toggle" : "oui-radio");
+        if (this.thumbnail && !this.radioToggleGroup) {
+            this.$element.addClass("oui-radio_thumbnail");
+        }
+
         this.group = this.radioGroup || this.radioToggleGroup;
         if (this.group) {
             this.name = this.group.name;
             this.$scope.$watch("$ctrl.group.model", (value) => {
                 this.model = value;
             });
-        } else { addDefaultParameter(this, "name", this.id); }
-
+        } else {
+            addDefaultParameter(this, "name", this.id);
+        }
     }
 
     onRadioModelChange (event) {
