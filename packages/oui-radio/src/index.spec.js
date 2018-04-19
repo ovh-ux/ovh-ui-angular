@@ -10,7 +10,6 @@ describe("ouiRadio", () => {
         $timeout = _$timeout_;
     }));
 
-    const getMainBlockElement = (element) => element[0].querySelector(":first-child");
     const getRadioInputElement = (element) => element[0].querySelector("input[type=radio]");
     const getRadioLabelElement = (element) => element[0].querySelector("label");
     const getRadioTextContainerElement = (element) => element[0].querySelector(".oui-radio__label span:first-child");
@@ -168,16 +167,12 @@ describe("ouiRadio", () => {
         describe("thumbnail attribute", () => {
             it("should display a classic radio when no attribute", () => {
                 const element = TestUtils.compileTemplate("<oui-radio></oui-radio>");
-
-                const mainBlockElement = getMainBlockElement(element);
-                expect(angular.element(mainBlockElement).hasClass("oui-radio_thumbnail")).toBe(false);
+                expect(angular.element(element).hasClass("oui-radio_thumbnail")).toBe(false);
             });
 
             it("should display a thumbnail radio when defined but no value", () => {
                 const element = TestUtils.compileTemplate("<oui-radio thumbnail></oui-radio>");
-
-                const mainBlockElement = getMainBlockElement(element);
-                expect(angular.element(mainBlockElement).hasClass("oui-radio_thumbnail")).toBe(true);
+                expect(angular.element(element).hasClass("oui-radio_thumbnail")).toBe(true);
             });
 
             it("should display a classic radio when false", () => {
@@ -185,8 +180,7 @@ describe("ouiRadio", () => {
                     thumbnail: false
                 });
 
-                const mainBlockElement = getMainBlockElement(element);
-                expect(angular.element(mainBlockElement).hasClass("oui-radio_thumbnail")).toBe(false);
+                expect(angular.element(element).hasClass("oui-radio_thumbnail")).toBe(false);
             });
 
             it("should display a thumbnail radio when true", () => {
@@ -194,8 +188,7 @@ describe("ouiRadio", () => {
                     thumbnail: true
                 });
 
-                const mainBlockElement = getMainBlockElement(element);
-                expect(angular.element(mainBlockElement).hasClass("oui-radio_thumbnail")).toBe(true);
+                expect(angular.element(element).hasClass("oui-radio_thumbnail")).toBe(true);
             });
         });
 
