@@ -1,6 +1,6 @@
 import { getAttribute, hasAttribute } from "@oui-angular/common/component-utils";
 
-const copyValueProperties = ["title", "type", "type-options"];
+const copyValueProperties = ["hidden", "title", "type", "type-options"];
 const searchableTypes = ["string"];
 const filterableTypes = [
     "boolean",
@@ -74,6 +74,64 @@ export default class DatagridColumnBuilder {
             }
 
             if (column.template) {
+                column.compiledTemplate = this._getColumnTemplate(column);
+            }
+
+            columns.push(column);
+        });
+
+        return {
+            columns,
+            currentSorting
+        };
+    }
+
+    buildFromJs (columnsDescription, $scope) {
+        const columns = [];
+        const currentSorting = {
+            columnName: undefined,
+            dir: 0
+        };
+
+        angular.forEach(columnsDescription, columnDescription => {
+            const column = {};
+
+            const propertyValue = columnDescription.property;
+            if (propertyValue) {
+                column.name = propertyValue;
+                column.getValue = this.$parse(propertyValue);
+
+                // A column can be sorted only if it has a "property" attribute.
+                const sortableValue = columnDescription.sortable;
+                if (columnDescription.sortable) {
+                    column.sortable = !!sortableValue;
+                    Object.assign(currentSorting, DatagridColumnBuilder.defineDefaultSorting(column, sortableValue));
+                }
+            }
+
+            copyValueProperties.forEach(propertyName => {
+                column[propertyName] = columnDescription[propertyName];
+            });
+
+            column.filterable = DatagridColumnBuilder.isFilterable(column) &&
+                columnDescription.filterable;
+            column.searchable = DatagridColumnBuilder.isSearchable(column) &&
+                columnDescription.searchable;
+
+            if (column.typeOptions) {
+                column.typeOptions = this.$parse(column.typeOptions)($scope);
+            }
+
+            column.title = columnDescription.title;
+
+            if (!column.sortProperty) {
+                column.sortProperty = column.name;
+            }
+
+            const htmlTemplate = columnDescription.template ? columnDescription.template.trim() : "";
+            column.template = htmlTemplate;
+
+            if (column.template && column.template !== "") {
                 column.compiledTemplate = this._getColumnTemplate(column);
             }
 

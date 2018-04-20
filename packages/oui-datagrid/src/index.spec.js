@@ -1,4 +1,5 @@
 import "./filter/filter.spec.js";
+import columnsData from "./columns.spec.data.json";
 import originalFakeData from "./index.spec.data.json";
 
 describe("ouiDatagrid", () => {
@@ -589,6 +590,60 @@ describe("ouiDatagrid", () => {
                         }));
                     });
                 });
+            });
+        });
+
+        describe("Dynamic columns", () => {
+            it("should update columns list", () => {
+                const element = TestUtils.compileTemplate(`
+                    <oui-datagrid rows="$ctrl.rows"
+                        columns="$ctrl.columns">
+                    </oui-datagrid>
+                `, {
+                    columns: columnsData.columns1,
+                    rows: fakeData.slice(0, 5)
+                });
+
+                const scope = element.scope();
+                const controller = element.controller("ouiDatagrid");
+                expect(controller.columns.length).toEqual(columnsData.columns1.length);
+
+                scope.$ctrl.columns = columnsData.columns2;
+                scope.$digest();
+                expect(controller.columns.length).toEqual(columnsData.columns2.length);
+            });
+
+            it("should only show non hidden columns", () => {
+                const element = TestUtils.compileTemplate(`
+                    <oui-datagrid rows="$ctrl.rows"
+                        columns="[{
+                            title: 'First name',
+                            property: 'firstName',
+                            sortable: 'asc',
+                            searchable: true,
+                            filterable: true,
+                            hidden: $ctrl.hidden
+                          },
+                          {
+                            title: 'Last name',
+                            property: 'lastName',
+                            sortable: true,
+                            searchable: true,
+                            filterable: true
+                        }]">
+                    </oui-datagrid>
+                `, {
+                    hidden: false,
+                    rows: fakeData.slice(0, 5)
+                });
+
+                const scope = element.scope();
+                const controller = element.controller("ouiDatagrid");
+                expect(controller.columns.length).toEqual(2);
+
+                scope.$ctrl.hidden = true;
+                scope.$digest();
+                expect(controller.columns.length).toEqual(1);
             });
         });
 
