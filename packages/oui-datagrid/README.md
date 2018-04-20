@@ -129,6 +129,63 @@ Clicked row action 1: <span ng-if="$ctrl.action1Row">{{$ctrl.action1Row.lastName
 </oui-datagrid>
 ```
 
+### Dynamic columns
+
+Columns can be dynamically rendered using the `columns` attribute of datagrid.
+Using this attribute, a new column property `hidden` is available.
+
+```html:preview
+<div ng-init="showParents = true">
+<oui-datagrid
+  rows="$ctrl.data"
+  page-size="5"
+  columns="[{
+    title: 'First name',
+    property: 'firstName',
+    sortable: 'asc',
+    searchable: true,
+    filterable: true
+  },
+  {
+    title: 'Last name',
+    property: 'lastName',
+    sortable: true,
+    searchable: true,
+    filterable: true
+  },
+  {
+    title: 'Mother',
+    property: 'parents.mother.lastName',
+    template: '{{$row.parents.mother.lastName}}, {{$row.parents.mother.firstName}}',
+    sortable: true,
+    hidden: !showParents
+  },
+  {
+    title: 'Father',
+    property: 'parents.father.lastName',
+    template: '{{$row.parents.father.lastName}}, {{$row.parents.father.firstName}}',
+    sortable: true,
+    hidden: !showParents
+  }]"></oui-datagrid>
+<oui-checkbox text="Show parents" model="showParents"></oui-checkbox>
+</div>
+```
+
+```html:preview
+<div ng-init="columns = $ctrl.metaData.columns1">
+<oui-datagrid
+  rows="$ctrl.data"
+  page-size="5"
+  columns="columns"></oui-datagrid>
+<oui-radio-toggle-group model="columns">
+  <oui-radio text="Arrangement 1" value="$ctrl.metaData.columns1"></oui-radio>
+  <oui-radio text="Arrangement 2" value="$ctrl.metaData.columns2"></oui-radio>
+</oui-radio-group>
+</div>
+```
+
+All the properties of a column also become dynamic.
+
 ### Pagination
 
 By default the page size is 25.
@@ -420,17 +477,17 @@ You can use `row-loader`. It take the current row as argument and must return a 
 | `row-loader`      | function        | &?      | yes              |                           |                     | gets row details (returns a promise with details) |
 
 
-### oui-column
+### oui-column / `columns` attribute
 
-| Attribute         | Type            | Binding | One-time binding | Values                      | Default                | Description                                       |
-| ----              | ----            | ----    | ----             | ----                        | ----                   | ----                                              |
-| `title`           | string          | N/A     | yes              |                             |                        | column title put in header                        |
-| `property`        | string          | N/A     | yes              |                             | null                   | property path used to get value from value        |
-| `sortable`        | string          | N/A     | yes              | `asc`, `desc`               | `asc` on `sortable=""` | makes a column sortable and gives the order       |
-| `type`            | string          | N/A     |                  | See below                   | null                   | define a column type                              |
-| `filterable`      | N/A             | N/A     |                  |                             |                        | define a filterable column                        |
-| `searchable`      | N/A             | N/A     |                  |                             |                        | define a searchable column                        |
-| `typeOptions`     | object          | N/A     |                  | See below                   | {}                     | define options related to column type (see below) |
+| Attribute                      | Type            | Binding | One-time binding | Values                      | Default                | Description                                       |
+| ----                           | ----            | ----    | ----             | ----                        | ----                   | ----                                              |
+| `title`                        | string          | N/A     | yes              |                             |                        | column title put in header                        |
+| `property`                     | string          | N/A     | yes              |                             | null                   | property path used to get value from value        |
+| `sortable`                     | string          | N/A     | yes              | `asc`, `desc`               | `asc` on `sortable=""` | makes a column sortable and gives the order       |
+| `type`                         | string          | N/A     |                  | See below                   | null                   | define a column type                              |
+| `filterable`                   | N/A             | N/A     |                  |                             |                        | define a filterable column                        |
+| `searchable`                   | N/A             | N/A     |                  |                             |                        | define a searchable column                        |
+| `type-options` / `typeOptions` | object          | N/A     |                  | See below                   | {}                     | define options related to column type (see below) |
 
 `typeOptions` is used to give options to feed criteria values. Example:
 

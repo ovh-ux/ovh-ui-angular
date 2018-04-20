@@ -27,6 +27,9 @@ export default class DatagridController {
         this.$timeout = $timeout;
         this.ouiDatagridPaging = ouiDatagridPaging;
         this.ouiDatagridColumnBuilder = ouiDatagridColumnBuilder;
+        this.columnElements = [];
+        this.actionColumnElements = [];
+        this.extraTopElements = [];
 
         this.config = ouiDatagridConfiguration;
 
@@ -67,40 +70,15 @@ export default class DatagridController {
             this.$element.append(clone);
         });
 
-        const originalContent = angular.element(this.htmlContent);
-        const columnElements = DatagridController.filterElements(originalContent, "oui-column");
-        const actionColumnElements = DatagridController.filterElements(originalContent, "oui-action-menu");
-        const extraTopElements = DatagridController.filterElements(originalContent, "extra-top");
-
-        const builtColumns = this.ouiDatagridColumnBuilder.build(columnElements, this.getParentScope());
-
-        if (actionColumnElements.length) {
-            builtColumns.columns.push(this.ouiDatagridColumnBuilder.buildActionColumn(actionColumnElements[0]));
-            this.hasActionMenu = true;
+        if (this.htmlContent.trim().length) {
+            const originalContent = angular.element(this.htmlContent);
+            this.columnElements = DatagridController.filterElements(originalContent, "oui-column");
+            this.actionColumnElements = DatagridController.filterElements(originalContent, "oui-action-menu");
+            this.extraTopElements = DatagridController.filterElements(originalContent, "extra-top");
         }
 
-        if (extraTopElements.length) {
-            this.hasExtraTopContent = true;
-            this.extraTopCompiledTemplate = this.$compile(`<div>${extraTopElements[0].innerHTML}</div>`);
-        }
-
-        this.columns = builtColumns.columns;
-
-        this.columns.forEach(column => {
-            if (column.title) {
-                return;
-            }
-
-            column.disableWatcher = this.$scope.$watch(
-                () => this.ouiDatagridColumnBuilder.buildTitle(column.rawTitle, this.getParentScope()),
-                newTitle => {
-                    if (newTitle) {
-                        column.title = newTitle;
-                        column.disableWatcher();
-                    }
-                }
-            );
-        });
+        const builtColumns = this.buildColumns();
+        this.previousRows = this.columns;
 
         if (this.rowsLoader) {
             this.paging = this.ouiDatagridPaging.createRemote(this.columns, builtColumns.currentSorting, this.pageSize, this.rowLoader, this.rowsLoader);
@@ -129,6 +107,12 @@ export default class DatagridController {
         this.filterableColumns = this.columns.filter(column => column.filterable);
     }
 
+    $onChanges (changes) { // eslint-disable-line
+        if (changes.columnsDescription && !changes.columnsDescription.isFirstChange()) {
+            this.buildColumns();
+        }
+    }
+
     $doCheck () {
         if (!angular.equals(this.previousRows, this.rows)) {
             this.previousRows = angular.copy(this.rows);
@@ -147,6 +131,42 @@ export default class DatagridController {
             angular.element(this.$window).off("resize", this.checkScroll);
             angular.element(this.scrollablePanel).off("scroll");
         }
+    }
+
+    buildColumns () {
+        const builtColumns = this.columnsDescription && this.columnsDescription.length ?
+            this.ouiDatagridColumnBuilder.buildFromJs(this.columnsDescription, this.getParentScope()) :
+            this.ouiDatagridColumnBuilder.build(this.columnElements, this.getParentScope());
+
+        if (this.actionColumnElements.length) {
+            builtColumns.columns.push(this.ouiDatagridColumnBuilder.buildActionColumn(this.actionColumnElements[0]));
+            this.hasActionMenu = true;
+        }
+
+        if (this.extraTopElements.length) {
+            this.hasExtraTopContent = true;
+            this.extraTopCompiledTemplate = this.$compile(`<div>${this.extraTopElements[0].innerHTML}</div>`);
+        }
+
+        this.columns = builtColumns.columns.filter(column => !column.hidden);
+
+        this.columns.forEach(column => {
+            if (column.title) {
+                return;
+            }
+
+            column.disableWatcher = this.$scope.$watch(
+                () => this.ouiDatagridColumnBuilder.buildTitle(column.rawTitle, this.getParentScope()),
+                newTitle => {
+                    if (newTitle) {
+                        column.title = newTitle;
+                        column.disableWatcher();
+                    }
+                }
+            );
+        });
+
+        return builtColumns;
     }
 
     getParentScope () {
