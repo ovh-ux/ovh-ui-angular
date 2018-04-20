@@ -19,10 +19,6 @@
                 <oui-spinner size="m"></oui-spinner>
             </div>
             <div class="oui-dual-list__content_body" data-ng-if="!$ctrl.sourceListLoading && $ctrl.sourceList.length">
-                <!-- <div class="oui-dual-list__content_filter">
-                    <input type="text" data-ng-model="$ctrl.sourceFilterKey" ng-model-options="{debounce: 500}"/>
-                    <i class="oui-icon oui-icon-search" aria-hidden="true"></i>
-                </div> -->
                 <oui-search class="oui-dual-list__content_filter" model="$ctrl.sourceFilterKey" ng-model-options="{debounce: 500}" aria-label="search items">
                 </oui-search>
                 <div class="oui-dual-list__content_add-all" data-ng-if="$ctrl.bulkActionEnabled">
@@ -31,7 +27,8 @@
                 <ul class="oui-dual-list__content_list">
                     <li data-ng-repeat="source in $ctrl.sourceList | ouiDualListFilter:$ctrl.sourceFilterKey:$ctrl.property"
                         data-ng-click="$ctrl.add($index, source)"
-                        class="oui-dual-list__content_list_item">
+                        class="oui-dual-list__content_list_item"
+                        title="{{$ctrl.addLabel}} {{$ctrl.getProperty(source)}}">
                         <span data-ng-if="!$ctrl.isLoading(source)" class="oui-dual-list__content_list_item_icon">
                             <i class="oui-icon oui-icon-add" aria-hidden="true"></i>
                         </span>
@@ -69,7 +66,8 @@
                 <ul class="oui-dual-list__content_list">
                     <li data-ng-repeat="target in $ctrl.targetList"
                         data-ng-click="$ctrl.remove($index, target)"
-                        class="oui-dual-list__content_list_item oui-dual-list__content_list_item_target">
+                        class="oui-dual-list__content_list_item oui-dual-list__content_list_item_target"
+                        title="Remove {{$ctrl.getProperty(target)}}">
                         <span data-ng-if="!$ctrl.isLoading(target)" class="oui-dual-list__content_list_item_icon">
                             <i class="oui-icon oui-icon-close_thin" aria-hidden="true"></i>
                         </span>
