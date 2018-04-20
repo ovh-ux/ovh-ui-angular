@@ -58,7 +58,6 @@ describe("ouiRadio", () => {
                 const element = TestUtils.compileTemplate('<oui-radio id="test"></oui-radio>');
 
                 const radioElement = getRadioInputElement(element);
-                console.log(radioElement);
                 expect(angular.element(radioElement).prop("name")).toBe("test");
             });
         });
