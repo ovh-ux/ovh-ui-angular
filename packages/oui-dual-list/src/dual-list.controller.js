@@ -1,81 +1,88 @@
+import { addBooleanParameter, addDefaultParameter } from "@oui-angular/common/component-utils";
 export default class {
-    constructor ($q, $element, ouiDualListProvider) {
+    constructor ($q, $element, $attrs, ouiDualListProvider) {
         "ngInject";
 
         this.$q = $q;
         this.$element = $element;
+        this.$attrs = $attrs;
         this.dualListProvider = ouiDualListProvider;
     }
 
     $onInit () {
-        this.sourceListLabel = this.sourceListLabel || this.dualListProvider.translations.sourceListLabel;
-        this.targetListLabel = this.targetListLabel || this.dualListProvider.translations.targetListLabel;
-        this.moveAllLabel = this.moveAllLabel || this.dualListProvider.translations.moveAllLabel;
-        this.removeAllLabel = this.removeAllLabel || this.dualListProvider.translations.removeAllLabel;
-        this.sourceListEmptyLabel = this.sourceListEmptyLabel || this.dualListProvider.translations.sourceListEmptyLabel;
-        this.targetListEmptyLabel = this.targetListEmptyLabel || this.dualListProvider.translations.targetListEmptyLabel;
-        this.addLabel = this.addLabel || this.dualListProvider.translations.addLabel;
-        this.bulkActionEnabled = this.bulkActionEnabled || this.dualListProvider.bulkActionEnabled;
+        addDefaultParameter(this, "sourceListLabel", this.dualListProvider.translations.sourceListLabel);
+        addDefaultParameter(this, "targetListLabel", this.dualListProvider.translations.targetListLabel);
+        addDefaultParameter(this, "moveAllLabel", this.dualListProvider.translations.moveAllLabel);
+        addDefaultParameter(this, "removeAllLabel", this.dualListProvider.translations.removeAllLabel);
+        addDefaultParameter(this, "addLabel", this.dualListProvider.translations.addLabel);
+        addDefaultParameter(this, "sourceListEmptyLabel", this.dualListProvider.translations.sourceListEmptyLabel);
+        addDefaultParameter(this, "targetListEmptyLabel", this.dualListProvider.translations.targetListEmptyLabel);
+        addDefaultParameter(this, "property", null);
+        addBooleanParameter(this, "bulkActionEnabled");
+
         this.sourceList = this.sourceList || [];
         this.targetList = this.targetList || [];
         this.onAdd = this.onAdd || null;
         this.onRemove = this.onRemove || null;
-        this.property = this.property || null;
 
         this.loadingMap = {};
-        this.targetCloseIconStyle = {};
-        this.targetOpenIconStyle = {};
-        this.targetContentStyle = {};
-        this.sourceCloseIconStyle = {};
-        this.sourceOpenIconStyle = {};
-        this.sourceContentStyle = {};
         this.sourceListLoading = false;
         this.targetListLoading = false;
-        this.displayNoneStyle = { display: "none" };
-        this.displayBlockStyle = { display: "inline-block" };
-        this.displayFlexStyle = { display: "flex" };
-        this.sourceListHeight = this.getSourceContentHeight();
-        this.targetListHeight = this.getTargetContentHeight();
         this.loadSourceList();
-        this.loadtargetList();
+        this.loadTargetList();
     }
 
-    getSourceContentHeight () {
-        if (this.bulkActionEnabled) {
-            return { height: "calc(100% - 90px)" };
-        }
-        return { height: "calc(100% - 60px)" };
-    }
+    $postLink () {
+        this.$element.addClass("oui-dual-list");
+        this.sourceCloseIcon = this.$element[0].querySelector(".oui-dual-list__source > .oui-dual-list__header > .oui-dual-list__header_toggle > .oui-dual-list__header_toggle_up");
+        this.sourceOpenIcon = this.$element[0].querySelector(".oui-dual-list__source > .oui-dual-list__header > .oui-dual-list__header_toggle > .oui-dual-list__header_toggle_down");
+        this.sourceContent = this.$element[0].querySelector(".oui-dual-list__source > .oui-dual-list__content");
+        this.targetCloseIcon = this.$element[0].querySelector(".oui-dual-list__target > .oui-dual-list__header > .oui-dual-list__header_toggle > .oui-dual-list__header_toggle_up");
+        this.targetOpenIcon = this.$element[0].querySelector(".oui-dual-list__target > .oui-dual-list__header > .oui-dual-list__header_toggle > .oui-dual-list__header_toggle_down");
+        this.targetContent = this.$element[0].querySelector(".oui-dual-list__target > .oui-dual-list__content");
 
-    getTargetContentHeight () {
-        if (this.bulkActionEnabled) {
-            return { height: "calc(100% - 30px)" };
-        }
-        return { height: "100%" };
+        angular.element(this.sourceCloseIcon).addClass("oui-dual-list__display-inline-block");
+        angular.element(this.sourceOpenIcon).addClass("oui-dual-list__display-none");
+        angular.element(this.sourceContent).addClass("oui-dual-list__display-flex");
+        angular.element(this.targetCloseIcon).addClass("oui-dual-list__display-none");
+        angular.element(this.targetOpenIcon).addClass("oui-dual-list__display-inline-block");
+        angular.element(this.targetContent).addClass("oui-dual-list__display-none");
     }
 
     onTargetContentClose () {
-        this.targetCloseIconStyle = this.displayNoneStyle;
-        this.targetOpenIconStyle = this.displayBlockStyle;
-        this.targetContentStyle = this.displayFlexStyle;
+        angular.element(this.targetCloseIcon).removeClass("oui-dual-list__display-inline-block");
+        angular.element(this.targetCloseIcon).addClass("oui-dual-list__display-none");
+        angular.element(this.targetOpenIcon).removeClass("oui-dual-list__display-none");
+        angular.element(this.targetOpenIcon).addClass("oui-dual-list__display-inline-block");
+        angular.element(this.targetContent).removeClass("oui-dual-list__display-flex");
+        angular.element(this.targetContent).addClass("oui-dual-list__display-none");
     }
 
     onTargetContentOpen () {
-        this.targetCloseIconStyle = this.displayBlockStyle;
-        this.targetOpenIconStyle = this.displayNoneStyle;
-        this.targetContentStyle = this.displayNoneStyle;
+        angular.element(this.targetCloseIcon).removeClass("oui-dual-list__display-none");
+        angular.element(this.targetCloseIcon).addClass("oui-dual-list__display-inline-block");
+        angular.element(this.targetOpenIcon).removeClass("oui-dual-list__display-inline-block");
+        angular.element(this.targetOpenIcon).addClass("oui-dual-list__display-none");
+        angular.element(this.targetContent).removeClass("oui-dual-list__display-none");
+        angular.element(this.targetContent).addClass("oui-dual-list__display-flex");
     }
 
     onSourceContentClose () {
-        this.sourceCloseIconStyle = this.displayNoneStyle;
-        this.sourceOpenIconStyle = this.displayBlockStyle;
-        this.sourceContentStyle = this.displayFlexStyle;
+        angular.element(this.sourceCloseIcon).removeClass("oui-dual-list__display-inline-block");
+        angular.element(this.sourceCloseIcon).addClass("oui-dual-list__display-none");
+        angular.element(this.sourceOpenIcon).removeClass("oui-dual-list__display-none");
+        angular.element(this.sourceOpenIcon).addClass("oui-dual-list__display-inline-block");
+        angular.element(this.sourceContent).removeClass("oui-dual-list__display-flex");
+        angular.element(this.sourceContent).addClass("oui-dual-list__display-none");
     }
 
     onSourceContentOpen () {
-        this.sourceCloseIconStyle = this.displayBlockStyle;
-        this.sourceOpenIconStyle = this.displayNoneStyle;
-        this.sourceContentStyle = this.displayNoneStyle;
+        angular.element(this.sourceCloseIcon).removeClass("oui-dual-list__display-none");
+        angular.element(this.sourceCloseIcon).addClass("oui-dual-list__display-inline-block");
+        angular.element(this.sourceOpenIcon).removeClass("oui-dual-list__display-inline-block");
+        angular.element(this.sourceOpenIcon).addClass("oui-dual-list__display-none");
+        angular.element(this.sourceContent).removeClass("oui-dual-list__display-none");
+        angular.element(this.sourceContent).addClass("oui-dual-list__display-flex");
     }
 
     getProperty (item) {
@@ -87,10 +94,7 @@ export default class {
 
     isLoading (item) {
         const uniqueName = this.getProperty(item);
-        if (this.loadingMap[uniqueName]) {
-            return true;
-        }
-        return false;
+        return this.loadingMap[uniqueName];
     }
 
     setLoading (item, state) {
@@ -112,7 +116,7 @@ export default class {
             });
     }
 
-    loadtargetList () {
+    loadTargetList () {
         if (this.targetListLoading) {
             return this.$q.reject(false);
         }
@@ -181,7 +185,7 @@ export default class {
                 .then(() => {
                     // all items successfully moved, remove loading
                     list.forEach(item => this.setLoading(item, false));
-                }, failedItems => {
+                }).catch(failedItems => {
                     // some or all items failed to move
                     failedItems.forEach(item => {
                         // move back to source list and remove loading
@@ -222,7 +226,7 @@ export default class {
                 .then(() => {
                     // all items successfully moved, remove loading
                     list.forEach(item => this.setLoading(item, false));
-                }, failedItems => {
+                }).catch(failedItems => {
                     // some or all items failed to move
                     failedItems.forEach(item => {
                         // move back to target list and remove loading

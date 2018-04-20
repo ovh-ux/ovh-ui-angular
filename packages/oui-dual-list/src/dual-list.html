@@ -1,35 +1,34 @@
-<div class="oui-dual-list oui-dual-list___full_height">
+
     <div class="oui-dual-list__source">
         <div class="oui-dual-list__header">
-            <span>{{$ctrl.sourceListLabel}}</span>
-            <span data-ng-if="!$ctrl.sourceListLoading">({{$ctrl.sourceList.length}})</span>
+            <span>{{$ctrl.sourceListLabel}} <span data-ng-if="!$ctrl.sourceListLoading">({{$ctrl.sourceList.length}})</span></span>
             <span class="oui-dual-list__header_toggle">
                 <i class="oui-icon oui-icon-chevron-up oui-dual-list__header_toggle_up"
-                    data-ng-style="$ctrl.sourceOpenIconStyle"
-                    data-ng-click="$ctrl.onSourceContentOpen()"
+                    data-ng-click="$ctrl.onSourceContentClose()"
                     aria-hidden="true"></i>
                 <i class="oui-icon oui-icon-chevron-down oui-dual-list__header_toggle_down"
-                    data-ng-style="$ctrl.sourceCloseIconStyle"
-                    data-ng-click="$ctrl.onSourceContentClose()"
+                    data-ng-click="$ctrl.onSourceContentOpen()"
                     aria-hidden="true"></i>
             </span>
         </div>
-        <div class="oui-dual-list__content oui-dual-list___full_height" data-ng-style="$ctrl.sourceContentStyle">
-            <div class="oui-dual-list__empty_label" data-ng-if="!$ctrl.sourceListLoading && !$ctrl.sourceList.length">
+        <div class="oui-dual-list__content">
+            <div class="oui-dual-list__empty-label" data-ng-if="!$ctrl.sourceListLoading && !$ctrl.sourceList.length">
                 <p>{{$ctrl.sourceListEmptyLabel}}</p>
             </div>
-            <div class="oui-dual-list__empty_label" data-ng-if="$ctrl.sourceListLoading">
+            <div class="oui-dual-list__empty-label" data-ng-if="$ctrl.sourceListLoading">
                 <oui-spinner size="m"></oui-spinner>
             </div>
-            <div class="oui-dual-list___full_height" data-ng-if="!$ctrl.sourceListLoading && $ctrl.sourceList.length">
-                <div class="oui-dual-list__content_filter">
+            <div class="oui-dual-list__content_body" data-ng-if="!$ctrl.sourceListLoading && $ctrl.sourceList.length">
+                <!-- <div class="oui-dual-list__content_filter">
                     <input type="text" data-ng-model="$ctrl.sourceFilterKey" ng-model-options="{debounce: 500}"/>
                     <i class="oui-icon oui-icon-search" aria-hidden="true"></i>
+                </div> -->
+                <oui-search class="oui-dual-list__content_filter" model="$ctrl.sourceFilterKey" ng-model-options="{debounce: 500}" aria-label="search items">
+                </oui-search>
+                <div class="oui-dual-list__content_add-all" data-ng-if="$ctrl.bulkActionEnabled">
+                    <oui-button variant="link" text="{{$ctrl.moveAllLabel}}" on-click="$ctrl.addAll()"></oui-button>
                 </div>
-                <div class="oui-dual-list__content_add_all" data-ng-if="$ctrl.bulkActionEnabled">
-                    <a data-ng-click="$ctrl.addAll()">{{$ctrl.moveAllLabel}}</a>
-                </div>
-                <ul class="oui-dual-list__content_list" data-ng-style="$ctrl.sourceListHeight">
+                <ul class="oui-dual-list__content_list">
                     <li data-ng-repeat="source in $ctrl.sourceList | ouiDualListFilter:$ctrl.sourceFilterKey:$ctrl.property"
                         data-ng-click="$ctrl.add($index, source)"
                         class="oui-dual-list__content_list_item">
@@ -46,33 +45,28 @@
     </div>
     <div class="oui-dual-list__target">
         <div class="oui-dual-list__header">
-            <span>{{$ctrl.targetListLabel}}</span>
-            <span data-ng-if="!$ctrl.targetListLoading">({{$ctrl.targetList.length}})</span>
+            <span>{{$ctrl.targetListLabel}} <span data-ng-if="!$ctrl.targetListLoading">({{$ctrl.targetList.length}})</span></span>
             <span class="oui-dual-list__header_toggle">
                 <i class="oui-icon oui-icon-chevron-up oui-dual-list__header_toggle_up"
                     aria-hidden="true"
-                    data-ng-style="$ctrl.targetOpenIconStyle"
-                    data-ng-click="$ctrl.onTargetContentOpen()"></i>
+                    data-ng-click="$ctrl.onTargetContentClose()"></i>
                 <i class="oui-icon oui-icon-chevron-down oui-dual-list__header_toggle_down"
                     aria-hidden="true"
-                    data-ng-style="$ctrl.targetCloseIconStyle"
-                    data-ng-click="$ctrl.onTargetContentClose()"></i>
+                    data-ng-click="$ctrl.onTargetContentOpen()"></i>
             </span>
         </div>
-        <div class="oui-dual-list__content oui-dual-list___full_height" data-ng-style="$ctrl.targetContentStyle">
-            <div class="oui-dual-list__empty_label" data-ng-if="!$ctrl.targetListLoading && !$ctrl.targetList.length">
+        <div class="oui-dual-list__content">
+            <div class="oui-dual-list__empty-label" data-ng-if="!$ctrl.targetListLoading && !$ctrl.targetList.length">
                 <p>{{$ctrl.targetListEmptyLabel}}</p>
             </div>
-            <div class="oui-dual-list__empty_label" data-ng-if="$ctrl.targetListLoading">
+            <div class="oui-dual-list__empty-label" data-ng-if="$ctrl.targetListLoading">
                 <oui-spinner size="m"></oui-spinner>
             </div>
-            <div class="oui-dual-list___full_height" data-ng-if="!$ctrl.targetListLoading && $ctrl.targetList.length">
-                <div class="oui-dual-list__content_remove_all" data-ng-if="$ctrl.bulkActionEnabled">
-                    <a id="dual-list-remove-all"
-                        name="dual-list-remove-all"
-                        data-ng-click="$ctrl.removeAll()">{{$ctrl.removeAllLabel}}</a>
+            <div class="oui-dual-list__content_body" data-ng-if="!$ctrl.targetListLoading && $ctrl.targetList.length">
+                <div class="oui-dual-list__content_remove-all" data-ng-if="$ctrl.bulkActionEnabled">
+                    <oui-button variant="link" text="{{$ctrl.removeAllLabel}}" on-click="$ctrl.removeAll()"></oui-button>
                 </div>
-                <ul class="oui-dual-list__content_list" data-ng-style="$ctrl.targetListHeight">
+                <ul class="oui-dual-list__content_list">
                     <li data-ng-repeat="target in $ctrl.targetList"
                         data-ng-click="$ctrl.remove($index, target)"
                         class="oui-dual-list__content_list_item oui-dual-list__content_list_item_target">
@@ -86,4 +80,3 @@
             </div>
         </div>
     </div>
-</div>

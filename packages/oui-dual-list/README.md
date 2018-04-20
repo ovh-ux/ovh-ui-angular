@@ -8,7 +8,7 @@
 
 ```html:preview
 <oui-dual-list></oui-dual-list>
-<div style="margin-bottom: 20px;"></div>
+<div class="oui-doc-preview-only" style="margin-bottom: 20px;"></div>
 ```
 
 ### Basic (Empty source and destination list)
@@ -22,7 +22,7 @@
     source-list="$ctrl.emptySource"
     target-list="$ctrl.emptyDestination">
 </oui-dual-list>
-<div style="margin-bottom: 20px;"></div>
+<div class="oui-doc-preview-only" style="margin-bottom: 20px;"></div>
 ```
 
 ### Basic (array of strings)
@@ -36,7 +36,7 @@
     source-list="$ctrl.data.users"
     target-list="$ctrl.data.selectedUsers">
 </oui-dual-list>
-<div style="margin-bottom: 20px;"></div>
+<div class="oui-doc-preview-only" style="margin-bottom: 20px;"></div>
 ```
 
 ### Basic (fixed height)
@@ -52,7 +52,7 @@
     target-list="$ctrl.data.selectedUsers">
 </oui-dual-list>
 </div>
-<div style="margin-bottom: 20px;"></div>
+<div class="oui-doc-preview-only" style="margin-bottom: 20px;"></div>
 ```
 
 ### Basic (with bulk action enabled)
@@ -69,7 +69,7 @@
     bulk-action-enabled="true">
 </oui-dual-list>
 </div>
-<div style="margin-bottom: 20px;"></div>
+<div class="oui-doc-preview-only" style="margin-bottom: 20px;"></div>
 ```
 
 ### Array of objects
@@ -84,7 +84,7 @@
     target-list="$ctrl.data.objects.selectedUsers"
     property="name">
 </oui-dual-list>
-<div style="margin-bottom: 20px;"></div>
+<div class="oui-doc-preview-only" style="margin-bottom: 20px;"></div>
 ```
 
 ### Array of objects (deep nested property)
@@ -99,7 +99,7 @@
     target-list="$ctrl.data.deepNestedObjects.selectedUsers"
     property="name.firstName">
 </oui-dual-list>
-<div style="margin-bottom: 20px;"></div>
+<div class="oui-doc-preview-only" style="margin-bottom: 20px;"></div>
 ```
 
 ### AJAX source and target list
@@ -116,7 +116,7 @@
     on-remove="$ctrl.remove(items)"
     property="name">
 </oui-dual-list>
-<div style="margin-bottom: 20px;"></div>
+<div class="oui-doc-preview-only" style="margin-bottom: 20px;"></div>
 ```
 
 ### Dual list with all options
@@ -138,7 +138,7 @@
     bulk-action-enabled="true"
     height="250px">
 </oui-dual-list>
-<div style="margin-bottom: 20px;"></div>
+<div class="oui-doc-preview-only" style="margin-bottom: 20px;"></div>
 ```
 
 
@@ -148,16 +148,16 @@
 
 | Attribute           | Type     | Binding | One-time Binding | Values   | Default           | Description         |
 | ----                | ----     | ----    | ----             | ----     | ----              | ----                |
-| `source-list-label` | string   | @?      | yes              |          | Unselected items  | source list title   |
-| `target-list-label` | string   | @?      | yes              |          | Selected items    | target list title   |
-| `source-list-empty-label` | string   | @?      | yes              |          | No items to select    | message to show when source list is empty  |
-| `target-list-empty-label` | string   | @?      | yes              |          | No items are selected    | message to show when target list is empty  |
-| `source-list` | expression   | <?      | yes             |          | []  | source list (array of strings or objects)   |
-| `target-list` | expression   | <?      | yes             |          | []  | target list (array of strings or objects)  |
-| `on-add`    | method   | &?      | yes             |          |   | callback method called on moving item from source to target   |
-| `on-remove` | method   | &?      | yes             |          |   | callback method called on moving item from target to source   |
-| `property` | string   | @?       | yes             |          |   |  object property name who's value is shown on dula list. required only if array of objects are given to dual list |
+| `source-list-label` | string   | @?      | yes              |          | Unselected items  | Source list title   |
+| `target-list-label` | string   | @?      | yes              |          | Selected items    | Target list title   |
+| `source-list-empty-label` | string   | @?      | yes              |          | No items to select    | Message to show when source list is empty  |
+| `target-list-empty-label` | string   | @?      | yes              |          | No items are selected    | Message to show when target list is empty  |
+| `source-list` | expression   | <?      | yes             |          | []  | Array of strings, array of objects or promise resolved to array of strings/objects  |
+| `target-list` | expression   | <?      | yes             |          | []  | Array of strings, array of objects or promise resolved to array of strings/objects  |
+| `on-add`    | method   | &?      | yes             |          |   | Callback method called on moving item from source to target   |
+| `on-remove` | method   | &?      | yes             |          |   | Callback method called on moving item from target to source   |
+| `property` | string   | @?       | yes             |          |   |  Object property name who's value is to be shown on dula list. Required only if array of objects are used. The value of this property must be unique. |
 | `move-all-label`   | string   | @?      | yes              |          | Add all       | Add all link title   |
 | `remove-all-label` | string   | @?      | yes              |          | Remove all    | Remove all link title   |
 | `add-label` | string   | @?      | yes              |          | Add    | Add title   |
-| `bulk-action-enabled` | boolean   | <?      | yes              |          | false    | shows Add all and Remove all links if set to true   |
+| `bulk-action-enabled` | boolean   | <?      | yes              |          | false    | Shows Add all and Remove all links if set to true   |

@@ -1,7 +1,6 @@
 export default class {
     constructor () {
 
-        this.bulkActionEnabled = false;
         this.translations = {
             sourceListLabel: "Unselected items",
             targetListLabel: "Selected items",
@@ -11,11 +10,6 @@ export default class {
             targetListEmptyLabel: "No items are selected",
             addLabel: "Add"
         };
-    }
-
-    setBulkActionEnabled (bulkActionEnabled) {
-        this.bulkActionEnabled = bulkActionEnabled;
-        return this;
     }
 
     /**
@@ -29,7 +23,6 @@ export default class {
 
     $get () {
         return {
-            bulkActionEnabled: this.bulkActionEnabled,
             translations: this.translations
         };
     }
