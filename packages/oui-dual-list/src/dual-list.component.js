@@ -1,12 +1,11 @@
 import controller from "./dual-list.controller";
 import template from "./dual-list.html";
 
-export default () => ({
+export default {
     template,
     controller,
     controllerAs: "$ctrl",
-    bindToController: true,
-    scope: {
+    bindings: {
         sourceListLabel: "@?",
         targetListLabel: "@?",
         moveAllLabel: "@?",
@@ -21,4 +20,4 @@ export default () => ({
         onRemove: "&?",
         bulkActionEnabled: "<?"
     }
-});
+};

@@ -1,12 +1,16 @@
 import { addBooleanParameter, addDefaultParameter } from "@oui-angular/common/component-utils";
+import { get } from "lodash";
 export default class {
-    constructor ($q, $element, $attrs, ouiDualListProvider) {
+    constructor ($q, $element, $attrs, $window, $timeout, ouiDualListProvider) {
         "ngInject";
 
         this.$q = $q;
         this.$element = $element;
         this.$attrs = $attrs;
+        this.$window = $window;
+        this.$timeout = $timeout;
         this.dualListProvider = ouiDualListProvider;
+        this.MAX_MOBILE_WIDTH = 768;
     }
 
     $onInit () {
@@ -28,68 +32,33 @@ export default class {
         this.loadingMap = {};
         this.sourceListLoading = false;
         this.targetListLoading = false;
+        this.isSourceOpen = true;
+        this.isTargetOpen = false;
         this.loadSourceList();
         this.loadTargetList();
     }
 
     $postLink () {
-        this.$element.addClass("oui-dual-list");
-        this.sourceCloseIcon = this.$element[0].querySelector(".oui-dual-list__source > .oui-dual-list__header > .oui-dual-list__header_toggle > .oui-dual-list__header_toggle_up");
-        this.sourceOpenIcon = this.$element[0].querySelector(".oui-dual-list__source > .oui-dual-list__header > .oui-dual-list__header_toggle > .oui-dual-list__header_toggle_down");
-        this.sourceContent = this.$element[0].querySelector(".oui-dual-list__source > .oui-dual-list__content");
-        this.targetCloseIcon = this.$element[0].querySelector(".oui-dual-list__target > .oui-dual-list__header > .oui-dual-list__header_toggle > .oui-dual-list__header_toggle_up");
-        this.targetOpenIcon = this.$element[0].querySelector(".oui-dual-list__target > .oui-dual-list__header > .oui-dual-list__header_toggle > .oui-dual-list__header_toggle_down");
-        this.targetContent = this.$element[0].querySelector(".oui-dual-list__target > .oui-dual-list__content");
-
-        angular.element(this.sourceCloseIcon).addClass("oui-dual-list__display-inline-block");
-        angular.element(this.sourceOpenIcon).addClass("oui-dual-list__display-none");
-        angular.element(this.sourceContent).addClass("oui-dual-list__display-flex");
-        angular.element(this.targetCloseIcon).addClass("oui-dual-list__display-none");
-        angular.element(this.targetOpenIcon).addClass("oui-dual-list__display-inline-block");
-        angular.element(this.targetContent).addClass("oui-dual-list__display-none");
+        this.isTargetOpen = !this.isMobile();
+        this.$timeout(() => {
+            this.$element.addClass("oui-dual-list");
+        });
     }
 
-    onTargetContentClose () {
-        angular.element(this.targetCloseIcon).removeClass("oui-dual-list__display-inline-block");
-        angular.element(this.targetCloseIcon).addClass("oui-dual-list__display-none");
-        angular.element(this.targetOpenIcon).removeClass("oui-dual-list__display-none");
-        angular.element(this.targetOpenIcon).addClass("oui-dual-list__display-inline-block");
-        angular.element(this.targetContent).removeClass("oui-dual-list__display-flex");
-        angular.element(this.targetContent).addClass("oui-dual-list__display-none");
+    isMobile () {
+        return this.$window.innerWidth <= this.MAX_MOBILE_WIDTH;
     }
 
-    onTargetContentOpen () {
-        angular.element(this.targetCloseIcon).removeClass("oui-dual-list__display-none");
-        angular.element(this.targetCloseIcon).addClass("oui-dual-list__display-inline-block");
-        angular.element(this.targetOpenIcon).removeClass("oui-dual-list__display-inline-block");
-        angular.element(this.targetOpenIcon).addClass("oui-dual-list__display-none");
-        angular.element(this.targetContent).removeClass("oui-dual-list__display-none");
-        angular.element(this.targetContent).addClass("oui-dual-list__display-flex");
+    toggleSource () {
+        this.isSourceOpen = !this.isSourceOpen;
     }
 
-    onSourceContentClose () {
-        angular.element(this.sourceCloseIcon).removeClass("oui-dual-list__display-inline-block");
-        angular.element(this.sourceCloseIcon).addClass("oui-dual-list__display-none");
-        angular.element(this.sourceOpenIcon).removeClass("oui-dual-list__display-none");
-        angular.element(this.sourceOpenIcon).addClass("oui-dual-list__display-inline-block");
-        angular.element(this.sourceContent).removeClass("oui-dual-list__display-flex");
-        angular.element(this.sourceContent).addClass("oui-dual-list__display-none");
-    }
-
-    onSourceContentOpen () {
-        angular.element(this.sourceCloseIcon).removeClass("oui-dual-list__display-none");
-        angular.element(this.sourceCloseIcon).addClass("oui-dual-list__display-inline-block");
-        angular.element(this.sourceOpenIcon).removeClass("oui-dual-list__display-inline-block");
-        angular.element(this.sourceOpenIcon).addClass("oui-dual-list__display-none");
-        angular.element(this.sourceContent).removeClass("oui-dual-list__display-none");
-        angular.element(this.sourceContent).addClass("oui-dual-list__display-flex");
+    toggleTarget () {
+        this.isTargetOpen = !this.isTargetOpen;
     }
 
     getProperty (item) {
-        if (!this.property) {
-            return item;
-        }
-        return this.property.split(".").reduce((prev, curr) => prev ? prev[curr] : undefined, item);
+        return get(item, this.property, item);
     }
 
     isLoading (item) {
