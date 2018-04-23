@@ -1,5 +1,3 @@
-import { addBooleanParameter } from "@oui-angular/common/component-utils";
-
 export default class {
     constructor ($attrs, $element, $timeout) {
         "ngInject";
@@ -10,8 +8,6 @@ export default class {
     }
 
     $onInit () {
-        addBooleanParameter(this, "linear");
-
         this.forms = [];
         this.steps = [];
         this.currentIndex = 0;
@@ -34,17 +30,16 @@ export default class {
 
     addForm (form, index) {
         this.forms[index] = form;
+        this.nextStep();
 
-        // Check index for next step or onFinish event
+        // Check index for onFinish event
         if (index === this.steps.length - 1) {
             this.onFinish({ forms: this.forms });
-        } else {
-            this.nextStep();
         }
     }
 
     nextStep () {
-        const indexToFocus = Math.min(this.currentIndex + 1, this.steps.length - 1);
+        const indexToFocus = Math.min(this.currentIndex + 1, this.steps.length);
         this.focusStep(indexToFocus);
     }
 

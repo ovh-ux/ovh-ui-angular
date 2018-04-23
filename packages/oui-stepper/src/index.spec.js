@@ -134,7 +134,7 @@ describe("ouiStepper", () => {
             it("should have a linear behavior", () => {
                 const onSubmitSpy = jasmine.createSpy();
                 const element = TestUtils.compileTemplate(`
-                    <oui-stepper linear>
+                    <oui-stepper>
                         <oui-step-form name="form1" on-submit="$ctrl.onSubmitSpy(form1)"></oui-step-form>
                         <oui-step-form name="form2" on-submit="$ctrl.onSubmitSpy(form2)"></oui-step-form>
                     </oui-stepper>`, { onSubmitSpy });

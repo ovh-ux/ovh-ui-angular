@@ -7,7 +7,8 @@ export default class {
             modifyThisStep: "Modify this step",
             skipThisStep: "Skip this step",
             nextButtonLabel: "Next",
-            submitButtonLabel: "Submit"
+            submitButtonLabel: "Submit",
+            cancelButtonLabel: "Cancel"
         };
     }
 
