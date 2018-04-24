@@ -1,0 +1,13 @@
+<div class="oui-collapsible" data-ng-class="{'oui-collapsible_open':$ctrl.expanded}">
+    <div class="oui-collapsible__header" data-ng-click="$ctrl.toggle()">
+        <div class="oui-collapsible__header-label" data-ng-bind="::$ctrl.title"></div>
+        <button
+            type="button"
+            aria-label="{{::$ctrl.ariaLabel}}"
+            aria-pressed="{{$ctrl.expanded}}"
+            class="oui-collapsible__header-button">
+            <i class="oui-icon oui-icon-chevron-down oui-collapsible__header-button-icon" aria-hidden="true"></i>
+        </button>
+    </div>
+    <div class="oui-collapsible__body" data-ng-transclude></div>
+</div>
