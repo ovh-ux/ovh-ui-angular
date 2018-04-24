@@ -174,7 +174,7 @@
 | `navigation`      | boolean         | <?      |                  |                        | true                | show the navigation buttons                 |
 | `skippable`       | boolean         | <?      |                  |                        | false               | add button to skip facultative step         |
 | `valid`           | boolean         | <?      |                  |                        | true                | custom validation for the form              |
-| `on-cancel`       | function        | &       |                  |                        |                     | cancel step function                        |
+| `on-cancel`       | function        | &?      |                  |                        |                     | cancel step function                        |
 | `on-focus`        | function        | &       |                  |                        |                     | focused step function                       |
 | `on-submit`       | function        | &       |                  |                        |                     | submit step function                        |
 

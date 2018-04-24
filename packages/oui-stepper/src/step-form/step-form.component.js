@@ -22,7 +22,7 @@ export default {
         skippable: "<?",
         valid: "<?",
 
-        onCancel: "&",
+        onCancel: "&?",
         onFocus: "&",
         onSubmit: "&"
     },
