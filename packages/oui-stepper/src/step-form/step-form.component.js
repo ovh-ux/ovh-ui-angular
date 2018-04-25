@@ -6,11 +6,13 @@ export default {
         stepperCtrl: "^ouiStepper"
     },
     bindings: {
-        id: "@",
-        name: "@",
+        id: "@?",
+        name: "@?",
         header: "@",
         description: "@?",
 
+        cancelHref: "@?",
+        cancelText: "@?",
         loadingText: "@?",
         submitText: "@?",
 
@@ -20,6 +22,7 @@ export default {
         skippable: "<?",
         valid: "<?",
 
+        onCancel: "&?",
         onFocus: "&",
         onSubmit: "&"
     },

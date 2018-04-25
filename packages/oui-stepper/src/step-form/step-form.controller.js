@@ -18,6 +18,11 @@ export default class StepFormController {
         // Add default name
         addDefaultParameter(this, "name", `ouiStepForm${this.$scope.$id}`);
 
+        // Add 'cancelText' default value
+        if (angular.isDefined(this.$attrs.cancelHref) || angular.isDefined(this.$attrs.onCancel)) {
+            addDefaultParameter(this, "cancelText", this.translations.cancelButtonLabel);
+        }
+
         // Show validation if no attribute 'navigation'
         if (angular.isUndefined(this.$attrs.navigation)) {
             this.navigation = true;
@@ -32,8 +37,6 @@ export default class StepFormController {
         if (this.stepperCtrl) {
             this.stepper = {};
             this.stepperCtrl.addStep(this);
-
-            this.linear = this.stepperCtrl.linear;
         }
     }
 

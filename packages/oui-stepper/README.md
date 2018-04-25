@@ -9,7 +9,7 @@
 **Note**: The value of the custom validation attribute doesn't override the angular form validation `form.$valid`. Both are needed to be `true` to enable the submission.
 
 ```html:preview
-<oui-stepper linear>
+<oui-stepper>
     <oui-step-form header="Simple step"
         description="This is a description">
         <oui-field label="Email" size="xl">
@@ -154,7 +154,6 @@
 | ----            | ----            | ----    | ----             | ----                   | ----                | ----                                          |
 | `name`          | string          | @?      | yes              |                        |                     | stepper name used to identify step            |
 | `id`            | string          | @?      | yes              |                        |                     | stepper id used to identify step              |
-| `linear`        | boolean         | <?      | yes              |                        | false               | enable stepper to handle steps                |
 | `on-init`       | function        | &       |                  |                        |                     | initialization function                       |
 | `on-finish`     | function        | &       |                  |                        |                     | submit all steps function                     |
 
@@ -166,13 +165,16 @@
 | `id`              | string          | @?      | yes              |                        |                     | step form id, same as normal form           |
 | `header`          | string          | @?      | yes              |                        |                     | title of the step                           |
 | `description`     | string          | @?      | yes              |                        |                     | description of the step                     |
-| `loading-text`    | string          | @?      |                  |                        |                     | text for the loading state                  |
+| `cancel-href`     | string          | @?      | yes              |                        |                     | link url on cancel                          |
+| `cancel-text`     | string          | @?      | yes              |                        |                     | text for the cancel button                  |
 | `submit-text`     | string          | @?      | yes              |                        |                     | text for the submit button                  |
+| `loading-text`    | string          | @?      |                  |                        |                     | text for the loading state                  |
 | `loading`         | boolean         | <?      |                  |                        | false               | display the loading state                   |
 | `disabled`        | boolean         | <?      |                  |                        | false               | disable the step and shrink it              |
 | `navigation`      | boolean         | <?      |                  |                        | true                | show the navigation buttons                 |
 | `skippable`       | boolean         | <?      |                  |                        | false               | add button to skip facultative step         |
 | `valid`           | boolean         | <?      |                  |                        | true                | custom validation for the form              |
+| `on-cancel`       | function        | &?      |                  |                        |                     | cancel step function                        |
 | `on-focus`        | function        | &       |                  |                        |                     | focused step function                       |
 | `on-submit`       | function        | &       |                  |                        |                     | submit step function                        |
 
