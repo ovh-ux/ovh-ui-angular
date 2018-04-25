@@ -8,7 +8,7 @@
 
 ```html:preview
 <oui-collapsible title="Title" aria-label="Action">
-    <div>Collapsible body</div>
+    Collapsible body
 </oui-collapsible>
 ```
 
@@ -16,7 +16,7 @@
 
 ```html:preview
 <oui-collapsible title="Title" aria-label="Action" expanded="true">
-    <div>Collapsible body</div>
+    Collapsible body
 </oui-collapsible>
 ```
 
