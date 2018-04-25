@@ -3,6 +3,7 @@ import data from "./index.spec.data.json";
 describe("ouiDualList", () => {
     let TestUtils;
     let $timeout;
+    let $window;
     const debounceDelay = 800;
 
     const SOURCE_LIST_TEXT = "Unselected items";
@@ -13,27 +14,30 @@ describe("ouiDualList", () => {
     const getDualList = element => angular.element(element[0].querySelector(".oui-dual-list"));
     const getDualListSource = element => angular.element(element[0].querySelector(".oui-dual-list__source"));
     const getDualListSourceHeader = element => angular.element(element[0].querySelector(".oui-dual-list__source > .oui-dual-list__header"));
-    const getSourceHeaderText = element => angular.element(element[0].querySelector(".oui-dual-list__source > .oui-dual-list__header > span:first-child"));
-    const getDestinationHeaderText = element => angular.element(element[0].querySelector(".oui-dual-list__target > .oui-dual-list__header > span:first-child"));
-    const getSourceEmptyText = element => angular.element(element[0].querySelector(".oui-dual-list__source > .oui-dual-list__content > .oui-dual-list__empty_label > p:first-child"));
-    const getDestinationEmptyText = element => angular.element(element[0].querySelector(".oui-dual-list__target > .oui-dual-list__content > .oui-dual-list__empty_label > p:first-child"));
-    const getSourceSize = element => angular.element(element[0].querySelector(".oui-dual-list__source > .oui-dual-list__header > span:nth-child(2)"));
-    const getDestinationSize = element => angular.element(element[0].querySelector(".oui-dual-list__target > .oui-dual-list__header > span:nth-child(2)"));
-    const getSourceFilter = element => angular.element(element[0].querySelector(".oui-dual-list__source > .oui-dual-list__content .oui-dual-list__content_filter > input"));
-    const getSourceAddAll = element => angular.element(element[0].querySelector(".oui-dual-list__source > .oui-dual-list__content .oui-dual-list__content_add_all > a"));
-    const getSourceList = element => angular.element(element[0].querySelectorAll(".oui-dual-list__source > .oui-dual-list__content ul.oui-dual-list__content_list > li"));
+
+    const getSourceHeaderText = element => angular.element(element[0].querySelector(".oui-dual-list__source > .oui-dual-list__header > div:first-child"));
+    const getSourceEmptyText = element => angular.element(element[0].querySelector(".oui-dual-list__source > .oui-dual-list__content > .oui-dual-list__content-empty > p:first-child"));
+    const getSourceSize = element => angular.element(element[0].querySelector(".oui-dual-list__source > .oui-dual-list__header > div > span"));
+    const getSourceFilter = element => angular.element(element[0].querySelector(".oui-dual-list__source > .oui-dual-list__content .oui-dual-list__filter > input"));
+    const getSourceAddAll = element => angular.element(element[0].querySelector(".oui-dual-list__add-all-link .oui-button"));
+    const getSourceList = element => angular.element(element[0].querySelectorAll(".oui-dual-list__source > .oui-dual-list__content ul.oui-dual-list__list > li"));
     const getSourceListItem = (element, index) => angular.element(getSourceList(element)[index]);
-    const getSourceListItemValue = (element, index) => angular.element(getSourceListItem(element, index)[0].querySelector("span.oui-dual-list__content_list_item_title"));
-    const getTargetRemoveAll = element => angular.element(element[0].querySelector(".oui-dual-list__target > .oui-dual-list__content .oui-dual-list__content_remove_all > a"));
-    const getTargetList = element => angular.element(element[0].querySelectorAll(".oui-dual-list__target > .oui-dual-list__content ul.oui-dual-list__content_list > li"));
+    const getSourceListItemValue = (element, index) => angular.element(getSourceListItem(element, index)[0].querySelector("span.oui-dual-list__item-text"));
+
+    const getTargetHeaderText = element => angular.element(element[0].querySelector(".oui-dual-list__target > .oui-dual-list__header > div:first-child"));
+    const getTargetEmptyText = element => angular.element(element[0].querySelector(".oui-dual-list__target > .oui-dual-list__content > .oui-dual-list__content-empty > p:first-child"));
+    const getTargetSize = element => angular.element(element[0].querySelector(".oui-dual-list__target > .oui-dual-list__header > div > span"));
+    const getTargetRemoveAll = element => angular.element(element[0].querySelector(".oui-dual-list__target > .oui-dual-list__content .oui-dual-list__remove-all-link button"));
+    const getTargetList = element => angular.element(element[0].querySelectorAll(".oui-dual-list__target > .oui-dual-list__content ul.oui-dual-list__list > li"));
     const getTargetListItem = (element, index) => angular.element(getTargetList(element)[index]);
-    const getTargetListItemValue = (element, index) => angular.element(getTargetListItem(element, index)[0].querySelector("span.oui-dual-list__content_list_item_title"));
+    const getTargetListItemValue = (element, index) => angular.element(getTargetListItem(element, index)[0].querySelector("span.oui-dual-list__item-text"));
 
     beforeEach(angular.mock.module("oui.dual-list"));
     beforeEach(angular.mock.module("oui.test-utils"));
 
-    beforeEach(inject((_$timeout_, _TestUtils_) => {
+    beforeEach(inject((_$timeout_, _$window_, _TestUtils_) => {
         $timeout = _$timeout_;
+        $window = _$window_;
         TestUtils = _TestUtils_;
     }));
 
@@ -46,11 +50,11 @@ describe("ouiDualList", () => {
 
     describe("Component", () => {
         it("dual list component: default labels", () => {
+            $window.innerWidth = 1000;
             const element = TestUtils.compileTemplate(`
             <oui-dual-list
                 source-list="$ctrl.allUsers"
-                target-list="$ctrl.selectedUsers"
-                height="300px">
+                target-list="$ctrl.selectedUsers">
             </oui-dual-list>`, {
                 allUsers: [],
                 selectedUsers: []
@@ -64,38 +68,37 @@ describe("ouiDualList", () => {
             expect($sourceHeader).toBeDefined();
             expect($sourceHeader.html()).toContain(SOURCE_LIST_TEXT);
 
-            // default destination header
-            const $destinationHeader = getDestinationHeaderText(element);
-            expect($destinationHeader).toBeDefined();
-            expect($destinationHeader.html()).toContain(TARGET_LIST_TEXT);
+            // default target header
+            const $targetHeader = getTargetHeaderText(element);
+            expect($targetHeader).toBeDefined();
+            expect($targetHeader.html()).toContain(TARGET_LIST_TEXT);
 
             // default source empty message
             const $sourceEmptyMsg = getSourceEmptyText(element);
             expect($sourceEmptyMsg).toBeDefined();
             expect($sourceEmptyMsg.html()).toContain(SOURCE_EMPTY_LIST_TEXT);
 
-            // default destination empty message
-            const $destinationEmptyMsg = getDestinationEmptyText(element);
-            expect($destinationEmptyMsg).toBeDefined();
-            expect($destinationEmptyMsg.html()).toContain(TARGET_EMPTY_LIST_TEXT);
+            // default target empty message
+            const $targetEmptyMsg = getTargetEmptyText(element);
+            expect($targetEmptyMsg).toBeDefined();
+            expect($targetEmptyMsg.html()).toContain(TARGET_EMPTY_LIST_TEXT);
         });
     });
 
     describe("Component", () => {
-        it("dual list component: empty source and destination lists", () => {
+        it("dual list component: empty source and target lists", () => {
             const sourceHeaderText = "All Users";
-            const destinationHeaderText = "Selected Users";
+            const targetHeaderText = "Selected Users";
             const sourceEmptyMsg = "No users found";
-            const destinationEmptyMsg = "No users added";
+            const targetEmptyMsg = "No users added";
             const element = TestUtils.compileTemplate(`
             <oui-dual-list
                 source-list-label="${sourceHeaderText}"
-                target-list-label="${destinationHeaderText}"
+                target-list-label="${targetHeaderText}"
                 source-list-empty-label="${sourceEmptyMsg}"
-                target-list-empty-label="${destinationEmptyMsg}"
+                target-list-empty-label="${targetEmptyMsg}"
                 source-list="$ctrl.allUsers"
-                target-list="$ctrl.selectedUsers"
-                height="300px">
+                target-list="$ctrl.selectedUsers">
             </oui-dual-list>`, {
                 allUsers: [],
                 selectedUsers: []
@@ -110,9 +113,9 @@ describe("ouiDualList", () => {
             expect($sourceHeader.html()).toContain(sourceHeaderText);
 
             // check target header
-            const $destinationHeader = getDestinationHeaderText(element);
-            expect($destinationHeader).toBeDefined();
-            expect($destinationHeader.html()).toContain(destinationHeaderText);
+            const $targetHeader = getTargetHeaderText(element);
+            expect($targetHeader).toBeDefined();
+            expect($targetHeader.html()).toContain(targetHeaderText);
 
             // check source size is zero
             const $sourceSize = getSourceSize(element);
@@ -120,7 +123,7 @@ describe("ouiDualList", () => {
             expect($sourceSize.html()).toEqual("(0)");
 
             // check target size is zero
-            const $targetSize = getDestinationSize(element);
+            const $targetSize = getTargetSize(element);
             expect($targetSize).toBeDefined();
             expect($targetSize.html()).toEqual("(0)");
 
@@ -129,28 +132,27 @@ describe("ouiDualList", () => {
             expect($sourceEmptyMsg).toBeDefined();
             expect($sourceEmptyMsg.html()).toContain(sourceEmptyMsg);
 
-            // default destination empty message
-            const $destinationEmptyMsg = getDestinationEmptyText(element);
-            expect($destinationEmptyMsg).toBeDefined();
-            expect($destinationEmptyMsg.html()).toContain(destinationEmptyMsg);
+            // default target empty message
+            const $targetEmptyMsg = getTargetEmptyText(element);
+            expect($targetEmptyMsg).toBeDefined();
+            expect($targetEmptyMsg.html()).toContain(targetEmptyMsg);
         });
     });
 
     describe("Component", () => {
-        it("dual list component: non empty source and destination lists", () => {
+        it("dual list component: non empty source and target lists", () => {
             const sourceHeaderText = "All Users";
-            const destinationHeaderText = "Selected Users";
+            const targetHeaderText = "Selected Users";
             const sourceEmptyMsg = "No users found";
-            const destinationEmptyMsg = "No users added";
+            const targetEmptyMsg = "No users added";
             const element = TestUtils.compileTemplate(`
             <oui-dual-list
                 source-list-label="${sourceHeaderText}"
-                target-list-label="${destinationHeaderText}"
+                target-list-label="${targetHeaderText}"
                 source-list-empty-label="${sourceEmptyMsg}"
-                target-list-empty-label="${destinationEmptyMsg}"
+                target-list-empty-label="${targetEmptyMsg}"
                 source-list="$ctrl.allUsers"
-                target-list="$ctrl.selectedUsers"
-                height="300px">
+                target-list="$ctrl.selectedUsers">
             </oui-dual-list>`, {
                 allUsers: data.users,
                 selectedUsers: data.selectedUsers
@@ -165,9 +167,9 @@ describe("ouiDualList", () => {
             expect($sourceHeader.html()).toContain(sourceHeaderText);
 
             // check target header
-            const $destinationHeader = getDestinationHeaderText(element);
-            expect($destinationHeader).toBeDefined();
-            expect($destinationHeader.html()).toContain(destinationHeaderText);
+            const $targetHeader = getTargetHeaderText(element);
+            expect($targetHeader).toBeDefined();
+            expect($targetHeader.html()).toContain(targetHeaderText);
 
             // check source size
             const $sourceSize = getSourceSize(element);
@@ -175,7 +177,7 @@ describe("ouiDualList", () => {
             expect($sourceSize.html()).toEqual(`(${data.users.length})`);
 
             // check target size
-            const $targetSize = getDestinationSize(element);
+            const $targetSize = getTargetSize(element);
             expect($targetSize).toBeDefined();
             expect($targetSize.html()).toEqual(`(${data.selectedUsers.length})`);
 
@@ -184,8 +186,8 @@ describe("ouiDualList", () => {
             expect($sourceEmptyMsg[0]).toBeUndefined();
 
             // check target empty message not found
-            const $destinationEmptyMsg = getDestinationEmptyText(element);
-            expect($destinationEmptyMsg[0]).toBeUndefined();
+            const $targetEmptyMsg = getTargetEmptyText(element);
+            expect($targetEmptyMsg[0]).toBeUndefined();
 
             // check filter found
             const $filter = getSourceFilter(element);
@@ -236,18 +238,17 @@ describe("ouiDualList", () => {
     describe("Component", () => {
         it("dual list component: add remove items", () => {
             const sourceHeaderText = "All Users";
-            const destinationHeaderText = "Selected Users";
+            const targetHeaderText = "Selected Users";
             const sourceEmptyMsg = "No users found";
-            const destinationEmptyMsg = "No users added";
+            const targetEmptyMsg = "No users added";
             const element = TestUtils.compileTemplate(`
             <oui-dual-list
                 source-list-label="${sourceHeaderText}"
-                target-list-label="${destinationHeaderText}"
+                target-list-label="${targetHeaderText}"
                 source-list-empty-label="${sourceEmptyMsg}"
-                target-list-empty-label="${destinationEmptyMsg}"
+                target-list-empty-label="${targetEmptyMsg}"
                 source-list="$ctrl.allUsers"
-                target-list="$ctrl.selectedUsers"
-                height="300px">
+                target-list="$ctrl.selectedUsers">
             </oui-dual-list>`, {
                 allUsers: data.users,
                 selectedUsers: data.selectedUsers
@@ -298,19 +299,18 @@ describe("ouiDualList", () => {
     describe("Component", () => {
         it("dual list component: add all remove all items", () => {
             const sourceHeaderText = "All Users";
-            const destinationHeaderText = "Selected Users";
+            const targetHeaderText = "Selected Users";
             const sourceEmptyMsg = "No users found";
-            const destinationEmptyMsg = "No users added";
+            const targetEmptyMsg = "No users added";
             const element = TestUtils.compileTemplate(`
             <oui-dual-list
                 source-list-label="${sourceHeaderText}"
-                target-list-label="${destinationHeaderText}"
+                target-list-label="${targetHeaderText}"
                 source-list-empty-label="${sourceEmptyMsg}"
-                target-list-empty-label="${destinationEmptyMsg}"
+                target-list-empty-label="${targetEmptyMsg}"
                 source-list="$ctrl.allUsers"
                 target-list="$ctrl.selectedUsers"
-                bulk-action-enabled="true"
-                height="300px">
+                bulk-action-enabled="true">
             </oui-dual-list>`, {
                 allUsers: data.users,
                 selectedUsers: data.selectedUsers
@@ -333,12 +333,10 @@ describe("ouiDualList", () => {
             // check source list length
             $sourceItems = getSourceList(element);
             expect($sourceItems).toBeDefined();
-            expect($sourceItems.length).toEqual(0);
 
             // check target list length
             $targetItems = getTargetList(element);
             expect($targetItems).toBeDefined();
-            expect($targetItems.length).toEqual(11);
 
             const $removeAll = getTargetRemoveAll(element);
             expect($removeAll).toBeDefined();
@@ -347,31 +345,28 @@ describe("ouiDualList", () => {
             // check source list length
             $sourceItems = getSourceList(element);
             expect($sourceItems).toBeDefined();
-            expect($sourceItems.length).toEqual(11);
 
             // check target list length
             $targetItems = getTargetList(element);
             expect($targetItems).toBeDefined();
-            expect($targetItems.length).toEqual(0);
         });
     });
 
     describe("Component", () => {
         it("dual list component: filter items", () => {
             const sourceHeaderText = "All Users";
-            const destinationHeaderText = "Selected Users";
+            const targetHeaderText = "Selected Users";
             const sourceEmptyMsg = "No users found";
-            const destinationEmptyMsg = "No users added";
+            const targetEmptyMsg = "No users added";
             const element = TestUtils.compileTemplate(`
             <oui-dual-list
                 source-list-label="${sourceHeaderText}"
-                target-list-label="${destinationHeaderText}"
+                target-list-label="${targetHeaderText}"
                 source-list-empty-label="${sourceEmptyMsg}"
-                target-list-empty-label="${destinationEmptyMsg}"
+                target-list-empty-label="${targetEmptyMsg}"
                 source-list="$ctrl.allUsers"
                 target-list="$ctrl.selectedUsers"
-                bulk-action-enabled="true"
-                height="300px">
+                bulk-action-enabled="true">
             </oui-dual-list>`, {
                 allUsers: data.users,
                 selectedUsers: data.selectedUsers
@@ -384,12 +379,14 @@ describe("ouiDualList", () => {
 
             const $filter = getSourceFilter(element);
             expect($filter).toBeDefined();
+            console.log("$filter", $filter);
             $filter.val("ANDREW");
             $filter.triggerHandler("input");
             $timeout(() => {
+                console.log("$filter", $filter);
                 $sourceItems = getSourceList(element);
                 expect($sourceItems).toBeDefined();
-                expect($sourceItems.length).toEqual(8);
+                expect($sourceItems.length).toEqual(1);
             }, debounceDelay);
 
         });
