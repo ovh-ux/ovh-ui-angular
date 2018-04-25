@@ -39,7 +39,7 @@ describe("ouiCollapsible", () => {
                 </oui-collapsible>`
             );
 
-            const titleEl = element[0].querySelector(".oui-collapsible__header-label");
+            const titleEl = element[0].querySelector(".oui-collapsible__header-text");
             expect(titleEl).toBeTruthy();
             expect(titleEl.innerText).toBe(titleText);
         });
@@ -51,9 +51,9 @@ describe("ouiCollapsible", () => {
                 </oui-collapsible>`
             );
 
-            const buttonEl = element[0].querySelector(".oui-collapsible__header-button");
+            const buttonEl = element[0].querySelector(".oui-collapsible__toggle-button");
             expect(buttonEl).toBeTruthy();
-            const iconEl = buttonEl.querySelector(".oui-collapsible__header-button-icon");
+            const iconEl = buttonEl.querySelector(".oui-collapsible__toggle-icon");
             expect(iconEl).toBeTruthy();
         });
 
@@ -65,7 +65,7 @@ describe("ouiCollapsible", () => {
                 </oui-collapsible>`
             );
 
-            const buttonEl = element[0].querySelector(".oui-collapsible__header-button");
+            const buttonEl = element[0].querySelector(".oui-collapsible__toggle-button");
             expect(buttonEl).toBeTruthy();
             expect(buttonEl.getAttribute("aria-label")).toBe(ariaLabel);
         });

@@ -1,7 +1,5 @@
 import { addBooleanParameter } from "@oui-angular/common/component-utils";
 
-const baseClass = "oui-collapsible";
-
 export default class {
     constructor ($attrs, $element, $timeout) {
         "ngInject";
@@ -12,7 +10,6 @@ export default class {
     }
 
     $onInit () {
-        this.baseClass = baseClass;
         addBooleanParameter(this, "expanded");
     }
 
