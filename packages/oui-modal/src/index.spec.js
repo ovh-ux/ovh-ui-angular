@@ -139,6 +139,21 @@ describe("ouiModal", () => {
             expect($body.html()).toContain("oui-spinner");
         });
 
+        it("should display a warning modal", () => {
+            const element = TestUtils.compileTemplate(`
+                <oui-modal
+                    title="Title"
+                    loading="true"
+                    type="warning">
+                </oui-modal>
+            `);
+
+            const $body = getBody(element);
+
+            expect($body.html()).not.toContain("oui-modal__body_no-icon");
+            expect($body.html()).toContain("oui-icon-warning_circle");
+        });
+
         it("should disable buttons when loading", () => {
             const element = TestUtils.compileTemplate(`
                 <oui-modal
