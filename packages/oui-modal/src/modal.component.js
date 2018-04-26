@@ -11,7 +11,8 @@ export default {
         secondaryAction: "&?",
         secondaryLabel: "@?",
         onDismiss: "&?",
-        loading: "<?"
+        loading: "<?",
+        type: "@?"
     },
     transclude: true
 };

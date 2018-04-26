@@ -58,14 +58,31 @@
 </div>
 ```
 
+### Warning modal
+
+```html:preview
+<div ng-init="$ctrl.dismiss = false"
+    class="oui-doc-preview-only-keep-children">
+<oui-modal
+    data-title="Warning modal"
+    primary-action="$ctrl.dismiss = true"
+    primary-label="Ok"
+    on-dismiss="$ctrl.dismiss = true"
+    type="warning">
+  Modal content
+</oui-modal>
+</div>
+```
+
 ## API
 
-| Attribute           | Type     | Binding | One-time Binding | Values            | Default           | Description                                  |
-| ----                | ----     | ----    | ----             | ----              | ----              | ----                                         |
-| `data-title`        | string   | @       | yes              |                   |                   | modal title                                  |
-| `primary-action`    | function | &?      |                  |                   |                   | confirmation callback                        |
-| `primary-label`     | string   | @?      | yes              |                   |                   | confirmation label                           |
-| `secondary-action`  | function | &?      |                  |                   |                   | cancellation callback                        |
-| `secondary-label`   | string   | @?      | yes              |                   |                   | cancellation label                           |
-| `on-dismiss`        | function | &?      |                  |                   |                   | dismiss callback                             |
-| `loading`           | boolean  | <?      |                  |                   | false             | display loader flag                          |
+| Attribute           | Type     | Binding | One-time Binding | Values                 | Default           | Description                               |
+| ----                | ----     | ----    | ----             | ----                   | ----              | ----                                      |
+| `data-title`        | string   | @       | yes              |                        |                   | modal title                               |
+| `primary-action`    | function | &?      |                  |                        |                   | confirmation callback                     |
+| `primary-label`     | string   | @?      | yes              |                        |                   | confirmation label                        |
+| `secondary-action`  | function | &?      |                  |                        |                   | cancellation callback                     |
+| `secondary-label`   | string   | @?      | yes              |                        |                   | cancellation label                        |
+| `on-dismiss`        | function | &?      |                  |                        |                   | dismiss callback                          |
+| `loading`           | boolean  | <?      |                  |                        | false             | display loader flag                       |
+| `type`              | string   | @?      | yes              | warning, success, info |                   | display loader flag                       |

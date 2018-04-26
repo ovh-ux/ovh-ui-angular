@@ -7,7 +7,12 @@
       ng-click="$ctrl.onDismiss()">
     </button>
   </div>
-  <div class="oui-modal__body oui-modal__body_no-icon">
+  <div class="oui-modal__body"
+       ng-class="::{'oui-modal__body_no-icon': !$ctrl.type}">
+    <i  ng-if="::!!$ctrl.type"
+        class="oui-icon oui-icon_bicolor"
+        ng-class=":: 'oui-icon-' + $ctrl.type + '_circle'"
+        aria-hidden="true"></i>
     <div class="oui-modal__loader" ng-if="$ctrl.loading">
       <oui-spinner></oui-spinner>
     </div>
