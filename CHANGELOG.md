@@ -1,3 +1,31 @@
+<a name="2.12.0"></a>
+# [2.12.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.11.0...v2.12.0) (2018-04-26)
+
+
+### Bug Fixes
+
+* **oui-checkbox:** put id in camelCase ([0e6d19d](https://github.com/ovh-ux/ovh-ui-angular/commit/0e6d19d))
+* **oui-criteria-adder:** put id in camelCase ([9dfa95d](https://github.com/ovh-ux/ovh-ui-angular/commit/9dfa95d))
+* **oui-datagrid:** fix reload based on cached rows ([#167](https://github.com/ovh-ux/ovh-ui-angular/issues/167)) ([3bd8570](https://github.com/ovh-ux/ovh-ui-angular/commit/3bd8570))
+* **oui-datagrid:** fix util/hasProperty exception ([29ed417](https://github.com/ovh-ux/ovh-ui-angular/commit/29ed417))
+* **oui-radio:** fix name = id and test it ([bfb87dc](https://github.com/ovh-ux/ovh-ui-angular/commit/bfb87dc))
+* **oui-radio:** fix radio toggle / thumbnail conflict ([b72824f](https://github.com/ovh-ux/ovh-ui-angular/commit/b72824f))
+* **oui-radio:** put id in camelCase ([a4f7b2b](https://github.com/ovh-ux/ovh-ui-angular/commit/a4f7b2b))
+* **oui-select:** fix dropdown min-width ([abc67d5](https://github.com/ovh-ux/ovh-ui-angular/commit/abc67d5))
+* **oui-select:** fix dropdown min-width ([76fed32](https://github.com/ovh-ux/ovh-ui-angular/commit/76fed32))
+* **oui-select-picker:** fix value selection with one option only ([196d9df](https://github.com/ovh-ux/ovh-ui-angular/commit/196d9df))
+* **oui-select-picker:** put id in camelCase ([94c03f9](https://github.com/ovh-ux/ovh-ui-angular/commit/94c03f9))
+
+
+### Features
+
+* **oui-datagrid:** add dynamic column configuration ([ba686c9](https://github.com/ovh-ux/ovh-ui-angular/commit/ba686c9))
+* **oui-field:** add the label popover option ([0cb4395](https://github.com/ovh-ux/ovh-ui-angular/commit/0cb4395))
+* **oui-radio:** add required attribute ([994cc86](https://github.com/ovh-ux/ovh-ui-angular/commit/994cc86))
+* **oui-stepper:** remove linear and add cancel button ([#172](https://github.com/ovh-ux/ovh-ui-angular/issues/172)) ([38df5db](https://github.com/ovh-ux/ovh-ui-angular/commit/38df5db))
+
+
+
 <a name="2.11.0"></a>
 # [2.11.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.10.1...v2.11.0) (2018-04-16)
 
