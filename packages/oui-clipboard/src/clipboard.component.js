@@ -6,8 +6,6 @@ export default {
     controller,
     controllerAs: "$clipctrl",
     bindings: {
-        label: "<?",
-        id: "@?",
         text: "@?"
     }
 };

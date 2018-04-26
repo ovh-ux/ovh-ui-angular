@@ -1,18 +1,19 @@
+import { addDefaultParameter } from "@oui-angular/common/component-utils";
 const switchBackDelay = 2000;
 export default class {
-    constructor ($scope, $element, $timeout, ouiClipboardConfiguration) {
+    constructor ($attrs, $scope, $element, $timeout, ouiClipboardConfiguration) {
         "ngInject";
+        this.$attrs = $attrs;
         this.$element = $element;
         this.$timeout = $timeout;
         this.$scope = $scope;
         this.ouiClipboardConfiguration = ouiClipboardConfiguration;
-        this.translations = ouiClipboardConfiguration.translations;
-        this.status = ouiClipboardConfiguration.status.initial;
     }
 
     $postLink () {
-        this.$element.addClass("oui-clipboard");
-        this.tooltipText = this.translations.copy_to_clipboard_label;
+        addDefaultParameter(this, "translations", this.ouiClipboardConfiguration.translations);
+        addDefaultParameter(this, "status", this.ouiClipboardConfiguration.status.initial);
+        addDefaultParameter(this, "tooltipText", this.ouiClipboardConfiguration.translations.copy_to_clipboard_label);
     }
 
     onTextFocus ($event) {
@@ -26,6 +27,7 @@ export default class {
         try {
             document.execCommand(this.ouiClipboardConfiguration.action.copy);
         } catch (err) {
+            console.log(err);
             this.error = err;
             succeeded = false;
         }

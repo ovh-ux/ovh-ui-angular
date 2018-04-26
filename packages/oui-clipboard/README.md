@@ -7,5 +7,15 @@
 ### Default
 
 ```html:preview
-<oui-clipboard data-text="copy this text"></oui-clipboard>
+<oui-clipboard data-text="copy this text">
+</oui-clipboard>
+```
+
+### Clipboard contained in width of the parent
+
+```html:preview
+<div style="width:300px;">
+    <oui-clipboard data-text="copy this text">
+    </oui-clipboard>
+</div>
 ```
