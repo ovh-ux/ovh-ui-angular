@@ -42,7 +42,7 @@
                         placeholder="{{:: $ctrl.placeholder || ' - ' }}"
                         data-align="end"
                         ng-if="$ctrl.values.length > 1">
-                <span ng-bind="$item.name"></span>
+                <span ng-bind=":: $ctrl.$scope.$parent.getItemValue($item, $ctrl.match)"></span>
             </oui-select>
         </span>
         <span ng-if="$ctrl.transcludeSection"
