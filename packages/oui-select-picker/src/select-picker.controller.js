@@ -10,6 +10,8 @@ export default class SelectPickerController {
         this.$attrs = $attrs;
         this.$timeout = $timeout;
         this.$transclude = $transclude;
+
+        this.$scope.getItemValue = (item, path) => get(item, path, "");
     }
 
     $postLink () {
