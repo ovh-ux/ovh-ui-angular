@@ -7,7 +7,7 @@
 ### Normal
 
 ```html:preview
-<oui-collapsible title="Title" aria-label="Action">
+<oui-collapsible id="collapsible-1" title="Title" aria-label="Action">
     Collapsible body
 </oui-collapsible>
 ```
@@ -15,7 +15,7 @@
 ### Expanded
 
 ```html:preview
-<oui-collapsible title="Title" aria-label="Action" expanded="true">
+<oui-collapsible id="collapsible-2" title="Title" aria-label="Action" expanded="true">
     Collapsible body
 </oui-collapsible>
 ```
