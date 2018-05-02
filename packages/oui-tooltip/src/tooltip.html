@@ -1,1 +1,4 @@
-<div class="oui-tooltip" role="tooltip" ng-bind="::$ctrl.text"></div>
+<div class="oui-tooltip" role="tooltip">
+    <span ng-if="::!$ctrl.isHtml" ng-bind="::$ctrl.text"></span>
+    <span ng-if="::$ctrl.isHtml === true" ng-bind-html="::$ctrl.text"></span>
+</div>
