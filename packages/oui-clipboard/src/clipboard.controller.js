@@ -1,4 +1,5 @@
 import { addDefaultParameter } from "@oui-angular/common/component-utils";
+
 const switchBackDelay = 2000;
 export default class {
     constructor ($attrs, $scope, $element, $timeout, ouiClipboardConfiguration) {
@@ -10,14 +11,14 @@ export default class {
         this.ouiClipboardConfiguration = ouiClipboardConfiguration;
     }
 
-    $postLink () {
+    $onInit () {
         addDefaultParameter(this, "translations", this.ouiClipboardConfiguration.translations);
         addDefaultParameter(this, "status", this.ouiClipboardConfiguration.status.initial);
-        addDefaultParameter(this, "tooltipText", this.ouiClipboardConfiguration.translations.copy_to_clipboard_label);
+        addDefaultParameter(this, "tooltipText", this.ouiClipboardConfiguration.translations.copyToClipboardLabel);
     }
 
-    onTextFocus ($event) {
-        $event.target.select();
+    onClick () {
+        this.$element.find("input")[0].select();
         this.copyText();
     }
 
@@ -27,9 +28,9 @@ export default class {
         try {
             document.execCommand(this.ouiClipboardConfiguration.action.copy);
         } catch (err) {
-            console.log(err);
             this.error = err;
             succeeded = false;
+            throw new Error("Could not copy text to clipboard.");
         }
 
         this.handleResult(succeeded);
@@ -39,14 +40,14 @@ export default class {
     handleResult (succeeded) {
         if (succeeded) {
             this.status = this.ouiClipboardConfiguration.status.success;
-            this.tooltipText = this.translations.copied_label;
+            this.tooltipText = this.translations.copiedLabel;
         } else {
             this.reset();
         }
     }
 
     reset () {
-        this.tooltipText = this.translations.copy_to_clipboard_label;
+        this.tooltipText = this.translations.copyToClipboardLabel;
         this.status = this.ouiClipboardConfiguration.status.initial;
     }
 }

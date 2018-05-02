@@ -4,7 +4,7 @@ import template from "./clipboard.html";
 export default {
     template,
     controller,
-    controllerAs: "$clipctrl",
+    controllerAs: "$ctrl",
     bindings: {
         text: "@?"
     }

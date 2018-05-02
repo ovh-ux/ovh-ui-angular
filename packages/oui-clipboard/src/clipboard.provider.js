@@ -1,8 +1,8 @@
 export default class {
     constructor () {
         this.translations = {
-            copy_to_clipboard_label: "Copy to Clipboard",
-            copied_label: "Copied"
+            copyToClipboardLabel: "Copy to Clipboard",
+            copiedLabel: "Copied"
         };
         this.action = {
             copy: "copy"

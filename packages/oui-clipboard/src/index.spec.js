@@ -1,7 +1,7 @@
 describe("ouiClipboard", () => {
     let TestUtils;
-    const copy_to_clipboard_label = "Copy to Clipboard";
-    const copied_label = "Copied";
+    const copyToClipboardLabel = "Copy to Clipboard";
+    const copiedLabel = "Copied";
     const copy = "copy";
     const initial = "initial";
     const success = "success";
@@ -14,8 +14,8 @@ describe("ouiClipboard", () => {
         "oui.clipboard"
     ]).config(ouiClipboardConfigurationProvider => {
         ouiClipboardConfigurationProvider.setTranslations({
-            copy_to_clipboard_label,
-            copied_label
+            copyToClipboardLabel,
+            copiedLabel
         });
         ouiClipboardConfigurationProvider.setStatus({
             initial,
@@ -42,8 +42,8 @@ describe("ouiClipboard", () => {
         }));
 
         it("should have custom values", () => {
-            expect(configuration.translations.copy_to_clipboard_label).toEqual(copy_to_clipboard_label);
-            expect(configuration.translations.copied_label).toEqual(copied_label);
+            expect(configuration.translations.copyToClipboardLabel).toEqual(copyToClipboardLabel);
+            expect(configuration.translations.copiedLabel).toEqual(copiedLabel);
         });
     });
 
@@ -82,7 +82,7 @@ describe("ouiClipboard", () => {
                 const $ctrl = element.controller("ouiClipboard");
                 $ctrl.reset();
                 $ctrl.handleResult(false);
-                expect($ctrl.tooltipText).toEqual(copy_to_clipboard_label);
+                expect($ctrl.tooltipText).toEqual(copyToClipboardLabel);
                 expect($ctrl.status).toEqual(initial);
             });
 
