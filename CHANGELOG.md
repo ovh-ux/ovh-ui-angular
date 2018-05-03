@@ -1,3 +1,18 @@
+<a name="2.13.0"></a>
+# [2.13.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.12.0...v2.13.0) (2018-05-03)
+
+
+### Bug Fixes
+
+* **oui-select-picker:** fix matched value display ([78d662c](https://github.com/ovh-ux/ovh-ui-angular/commit/78d662c))
+
+
+### Features
+
+* **oui-modal:** add type attribute to handle icon modal ([fc06f5d](https://github.com/ovh-ux/ovh-ui-angular/commit/fc06f5d))
+
+
+
 <a name="2.12.0"></a>
 # [2.12.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.11.0...v2.12.0) (2018-04-26)
 
