@@ -142,7 +142,6 @@ export default class {
     }
 
     addAll () {
-        console.log("add all");
         const list = this.sourceList.filter(item => !this.isLoading(item));
         if (list.length === 0) {
             return;
