@@ -8,7 +8,12 @@ export default class {
             removeAllLabel: "Remove all",
             sourceListEmptyLabel: "No items to select",
             targetListEmptyLabel: "No items are selected",
-            addLabel: "Add"
+            addLabel: "Add",
+            ariaSourceHideContent: "hide source content",
+            ariaSourceShowContent: "open source content",
+            ariaTargetHideContent: "hide target content",
+            ariaTargetShowContent: "open target content",
+            ariaSourceSearchText: "search in source content"
         };
     }
 

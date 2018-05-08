@@ -3,7 +3,8 @@
     <div class="oui-dual-list__header">
         <div role="heading">{{$ctrl.sourceListLabel}} <span data-ng-if="!$ctrl.sourceListLoading">({{$ctrl.sourceList.length}})</span></div>
         <button class="oui-dual-list__toggle-buttons"
-            ng-click="$ctrl.toggleSource()">
+            ng-click="$ctrl.toggleSource()"
+            aria-label="{{$ctrl.isSourceOpen ? $ctrl.ariaSourceHideContent : $ctrl.ariaSourceShowContent}}">
             <span class="oui-icon" ng-class="{
                     'oui-icon-chevron-up': $ctrl.isSourceOpen,
                     'oui-icon-chevron-down': !$ctrl.isSourceOpen
@@ -19,7 +20,7 @@
             <oui-spinner size="m"></oui-spinner>
         </div>
         <div class="oui-dual-list__content-body" data-ng-if="!$ctrl.sourceListLoading && $ctrl.sourceList.length">
-            <oui-search class="oui-dual-list__filter" model="$ctrl.sourceFilterKey" ng-model-options="{debounce: 500}" aria-label="search items">
+            <oui-search class="oui-dual-list__filter" model="$ctrl.sourceFilterKey" ng-model-options="{debounce: 500}" aria-label="{{$ctrl.ariaSourceSearchText}}">
             </oui-search>
             <div class="oui-dual-list__add-all-link" data-ng-if="$ctrl.bulkActionEnabled">
                 <oui-button class="oui-dual-list__add-all-button" variant="link" text="{{$ctrl.moveAllLabel}}" on-click="$ctrl.addAll()"></oui-button>
@@ -44,7 +45,8 @@
     <div class="oui-dual-list__header">
         <div role="heading">{{$ctrl.targetListLabel}} <span data-ng-if="!$ctrl.targetListLoading">({{$ctrl.targetList.length}})</span></div>
         <button class="oui-dual-list__toggle-buttons"
-            ng-click="$ctrl.toggleTarget()">
+            ng-click="$ctrl.toggleTarget()"
+            aria-label="{{$ctrl.isTargetOpen ? $ctrl.ariaTargetHideContent : $ctrl.ariaTargetShowContent}}">
             <span class="oui-icon" ng-class="{
                     'oui-icon-chevron-up': $ctrl.isTargetOpen,
                     'oui-icon-chevron-down': !$ctrl.isTargetOpen

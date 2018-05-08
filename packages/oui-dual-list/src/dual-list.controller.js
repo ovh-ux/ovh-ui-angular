@@ -21,6 +21,11 @@ export default class {
         addDefaultParameter(this, "addLabel", this.dualListProvider.translations.addLabel);
         addDefaultParameter(this, "sourceListEmptyLabel", this.dualListProvider.translations.sourceListEmptyLabel);
         addDefaultParameter(this, "targetListEmptyLabel", this.dualListProvider.translations.targetListEmptyLabel);
+        addDefaultParameter(this, "ariaSourceHideContent", this.dualListProvider.translations.ariaSourceHideContent);
+        addDefaultParameter(this, "ariaSourceShowContent", this.dualListProvider.translations.ariaSourceShowContent);
+        addDefaultParameter(this, "ariaTargetHideContent", this.dualListProvider.translations.ariaTargetHideContent);
+        addDefaultParameter(this, "ariaTargetShowContent", this.dualListProvider.translations.ariaTargetShowContent);
+        addDefaultParameter(this, "ariaSourceSearchText", this.dualListProvider.translations.ariaSourceSearchText);
         addDefaultParameter(this, "property", null);
         addBooleanParameter(this, "bulkActionEnabled");
 
