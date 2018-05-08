@@ -13,7 +13,8 @@ export default class {
             ariaSourceShowContent: "open source content",
             ariaTargetHideContent: "hide target content",
             ariaTargetShowContent: "open target content",
-            ariaSourceSearchText: "search in source content"
+            ariaSourceSearchText: "search in source content",
+            ariaRemoveText: "remove"
         };
     }
 

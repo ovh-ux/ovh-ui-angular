@@ -26,6 +26,7 @@ export default class {
         addDefaultParameter(this, "ariaTargetHideContent", this.dualListProvider.translations.ariaTargetHideContent);
         addDefaultParameter(this, "ariaTargetShowContent", this.dualListProvider.translations.ariaTargetShowContent);
         addDefaultParameter(this, "ariaSourceSearchText", this.dualListProvider.translations.ariaSourceSearchText);
+        addDefaultParameter(this, "ariaRemoveText", this.dualListProvider.translations.ariaRemoveText);
         addDefaultParameter(this, "property", null);
         addBooleanParameter(this, "bulkActionEnabled");
 

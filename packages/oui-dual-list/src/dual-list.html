@@ -29,7 +29,8 @@
                 <li data-ng-repeat="source in $ctrl.sourceList | ouiDualListFilter:$ctrl.sourceFilterKey:$ctrl.property"
                     data-ng-click="$ctrl.add($index, source)"
                     class="oui-dual-list__item"
-                    title="{{$ctrl.addLabel}} {{$ctrl.getProperty(source)}}">
+                    role="link"
+                    aria-label="{{$ctrl.addLabel}} {{$ctrl.getProperty(source)}}">
                     <span data-ng-if="!$ctrl.isLoading(source)" class="oui-dual-list__item_add-icon">
                         <i class="oui-icon oui-icon-add" aria-hidden="true"></i>
                     </span>
@@ -69,7 +70,8 @@
                 <li data-ng-repeat="target in $ctrl.targetList"
                     data-ng-click="$ctrl.remove($index, target)"
                     class="oui-dual-list__item"
-                    title="Remove {{$ctrl.getProperty(target)}}">
+                    role="link"
+                    aria-label="{{$ctrl.ariaRemoveText}} {{$ctrl.getProperty(target)}}">
                     <span data-ng-if="!$ctrl.isLoading(target)" class="oui-dual-list__item_remove-icon">
                         <i class="oui-icon oui-icon-close_thin" aria-hidden="true"></i>
                     </span>

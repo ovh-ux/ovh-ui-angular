@@ -11,7 +11,7 @@
 <div class="oui-doc-preview-only" style="margin-bottom: 20px;"></div>
 ```
 
-### Basic (Empty source and destination list)
+### Basic (Empty source and target list)
 
 ```html:preview
 <oui-dual-list 
