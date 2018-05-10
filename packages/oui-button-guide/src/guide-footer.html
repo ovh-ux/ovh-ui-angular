@@ -1,0 +1,7 @@
+<div class="oui-guide__footer">
+    <oui-action-menu-divider></oui-action-menu-divider>
+    <oui-action-menu-item text="{{$ctrl.text}}" href="#" external ng-if="!$ctrl.button"></oui-action-menu-item>
+    <div class="oui-guide__footer-button" ng-if="$ctrl.button">
+        <button class="oui-button oui-button_secondary" type="button" ng-click="$ctrl.onClick()" ng-bind="::$ctrl.text" ng-attr-aria-label="::$ctrl.ariaLabel"></button>
+    </div>
+</div>
