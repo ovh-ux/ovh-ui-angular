@@ -1,0 +1,18 @@
+<div class="oui-inline-adder__item">
+    <div class="oui-inline-adder__rows_container" ng-transclude></div>
+    <div class="oui-inline-adder__actions-container">
+        <oui-spinner size="s" ng-if="$ctrl.isLoading"></oui-spinner>
+        <button class="oui-inline-adder__actions-button oui-button oui-button_secondary oui-button_small-width"
+            aria-label="{{::$ctrl.ariaRemoveItem}}"
+            ng-if="!$ctrl.isLoading && !$ctrl.isNewItem"
+            ng-click="$ctrl.removeItem()">
+            <i class="oui-icon oui-icon-trash_line" aria-hidden="true"></i>
+        </button>
+        <button class="oui-inline-adder__actions-button oui-button oui-button_secondary oui-button_small-width"
+            aria-label="{{::$ctrl.ariaAddItem}}"
+            ng-if="!$ctrl.isLoading && $ctrl.isNewItem"
+            ng-click="$ctrl.addItem()">
+            <i class="oui-icon oui-icon-add" aria-hidden="true"></i>
+        </button>
+    </div>
+</div>

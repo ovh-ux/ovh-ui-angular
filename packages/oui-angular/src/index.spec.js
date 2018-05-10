@@ -37,6 +37,7 @@ loadTests(require.context("../../oui-guide-menu/src/", true, /.*((\.spec)|(index
 loadTests(require.context("../../oui-header-tabs/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-progress/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-switch/src/", true, /.*((\.spec)|(index))$/));
+loadTests(require.context("../../oui-inline-adder/src/", true, /.*((\.spec)|(index))$/));
 
 function loadTests (context) {
     context.keys().forEach(context);
