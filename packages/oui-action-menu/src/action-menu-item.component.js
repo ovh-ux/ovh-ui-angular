@@ -8,6 +8,6 @@ export default {
         ariaLabel: "@?",
         href: "@?",
         external: "<?",
-        onClick: "&"
+        onClick: "&?"
     }
 };
