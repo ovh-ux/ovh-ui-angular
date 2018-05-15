@@ -26,7 +26,7 @@ import "@oui-angular/oui-criteria-adder/src";
 import "@oui-angular/oui-chips/src";
 import "@oui-angular/oui-popover/src";
 import "@oui-angular/oui-stepper/src";
-import "@oui-angular/oui-button-guide/src";
+import "@oui-angular/oui-guide-dropdown/src";
 
 angular.module("oui", [
     "oui.button",

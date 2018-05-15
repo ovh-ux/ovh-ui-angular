@@ -1,4 +1,4 @@
-# Guide Button
+# Guide Dropdown
 
 <component-status cx-design="complete" ux="complete"></component-status>
 
