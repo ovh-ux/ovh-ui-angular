@@ -11,25 +11,39 @@
     <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
     <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
     <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
-  <oui-guide-body>  
+  </oui-guide-body>  
 </oui-guide>
 ```
-## With sections
+
+## Without title
+
+
+```html:preview
+<oui-guide>
+  <oui-guide-body>
+    <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
+    <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
+    <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
+  </oui-guide-body>  
+</oui-guide>
+```
+
+## With sections and long texts
 
 
 ```html:preview
 <oui-guide title="Guides">
   <oui-guide-body>  
     <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
-    <oui-guide-section header="Section1">
+    <oui-guide-section title="Section1">
       <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
       <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
     </oui-guide-section>
-    <oui-guide-section header="Section2">
+    <oui-guide-section title="Section2 verrrrrrrrrrrrrrrrrrrrrrrrrrrry very long title for section title">
+      <oui-action-menu-item text="External link verrrrrrrrrrrrrrrrrrrrrrrrrrrry long title for the link item" href="#" external></oui-action-menu-item>
       <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
-      <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
-    </oui-guide-section> 
-  <oui-guide-body>  
+    </oui-guide-section>
+  </oui-guide-body>
 </oui-guide>
 ```
 ## With simple footer
@@ -40,8 +54,10 @@
   <oui-guide-body>  
     <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
     <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
-  <oui-guide-body>
-  <oui-guide-footer text="footer"></oui-guide-footer>
+  </oui-guide-body>
+  <oui-guide-footer>
+      <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>  
+  </oui-guide-footer>
 </oui-guide>
 ```
 ## With footer as button
@@ -53,8 +69,11 @@
     <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
     <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
   </oui-guide-body>
-  <oui-guide-footer text="footer"></oui-guide-footer>
-  <oui-guide-footer text="footer" button="true"></oui-guide-footer>
+  <oui-guide-footer>
+    <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
+    <oui-action-menu-divider></oui-action-menu-divider>
+    <oui-button text="Guide button"></oui-button>
+  </oui-guide-footer>
 </oui-guide>
 ```
 ## Complete example
@@ -66,55 +85,50 @@
     <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
     <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
     <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
-    <oui-guide-section header="header">
+    <oui-guide-section title="section 1">
       <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
       <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
     </oui-guide-section>
-    <oui-guide-section header="header">
+    <oui-guide-section title="section 2">
       <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
       <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
     </oui-guide-section>
-    <oui-guide-section header="header">
+    <oui-guide-section title="section 3">
       <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
       <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
     </oui-guide-section>
-    <oui-guide-section header="header">
+    <oui-guide-section title="section 4">
       <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
       <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
     </oui-guide-section>
-    <oui-guide-section header="header">
+    <oui-guide-section title="section 5">
       <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
       <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
     </oui-guide-section>
-    <oui-guide-section header="header">
+    <oui-guide-section title="section 6">
       <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
       <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
     </oui-guide-section>
     <oui-action-menu-divider></oui-action-menu-divider>
     <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
   </oui-guide-body>
-  <oui-guide-footer text="footer"></oui-guide-footer>
-  <oui-guide-footer text="footer" button="true" ariaLabel="guide button" on-click="$ctrl.action = true"></oui-guide-footer>
+  <oui-guide-footer>
+    <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
+    <oui-action-menu-divider></oui-action-menu-divider>
+    <oui-button text="Guide button"></oui-button>
+  </oui-guide-footer>
 </oui-guide>
-  <div>Action 1: {{$ctrl.action}}</div>
 ```
 
 
 ## API
+### oui-guide
+| Attribute         | Type            | Binding | One-time binding | Values                    | Default             | Description                        |
+| ----              | ----            | ----    | ----             | ----                      | ----                | ----                               |
+| `title`           | string          | @       | yes              |                           |                     | name of the button                 |
 
 ### oui-guide-section
 
 | Attribute         | Type            | Binding | One-time binding | Values                    | Default             | Description                        |
 | ----              | ----            | ----    | ----             | ----                      | ----                | ----                               |
-| `header`          | string          | @       | yes              |                           |                     | section title                      |
-
-### oui-guide-footer
-
-| Attribute         | Type            | Binding | One-time binding | Values                    | Default             | Description                        |
-| ----              | ----            | ----    | ----             | ----                      | ----                | ----                               |
-| `text`            | string          | @       | yes              |                           |                     | footer text                        |
-| `button`          | boolean         | @?      | yes              |                           |                     | button inside footer               |
-| `ariaLabel`       | string          | @?      | yes              |                           |                     | aria label for button              |
-| `on-click`        |                 | &?      |                  |                           |                     | on-click handler (button)          |
-
-### oui-guide-body
+| `title`           | string          | @       | yes              |                           |                     | section title                      |

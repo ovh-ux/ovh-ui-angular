@@ -4,7 +4,7 @@ describe("ouiGuide", () => {
     beforeEach(angular.mock.module("oui.guide"));
     beforeEach(angular.mock.module("oui.test-utils"));
 
-    beforeEach(inject((_TestUtils_) => {
+    beforeEach(inject(_TestUtils_ => {
         TestUtils = _TestUtils_;
     }));
 
@@ -23,13 +23,14 @@ describe("ouiGuide", () => {
         it("should display a button item", () => {
             const element = TestUtils.compileTemplate(
                 `<oui-guide>
-                    <oui-guide-footer text="footer" button="true" ariaLabel="guide button" on-click="$ctrl.action = true"></oui-guide-footer>
+                    <oui-guide-footer>
+                      <oui-action-menu-item text="Action 1" external></oui-action-menu-item>
+                      <oui-button text="Guide button"></oui-button>             
+                    </oui-guide-footer>
                 </oui-guide>`
             );
-
-            const buttonElement = element[0].querySelector(".oui-button_secondary");
-            expect(buttonElement).toBeTruthy();
-            expect(angular.element(buttonElement).text()).toBe("footer");
+            const footerElement = element[0].querySelector(".oui-guide__footer");
+            expect(footerElement).toBeTruthy();
         });
 
         it("should display a header", () => {

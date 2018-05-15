@@ -5,6 +5,6 @@ import GuideSection from "./guide-section.component.js";
 
 angular.module("oui.guide", [])
     .component("ouiGuide", Guide)
+    .component("ouiGuideBody", GuideBody)
     .component("ouiGuideSection", GuideSection)
-    .component("ouiGuideFooter", GuideFooter)
-    .component("ouiGuideBody", GuideBody);
+    .component("ouiGuideFooter", GuideFooter);
