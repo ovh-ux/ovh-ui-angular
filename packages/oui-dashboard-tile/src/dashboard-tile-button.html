@@ -1,0 +1,11 @@
+<button
+    class="oui-dashboard-tile__button oui-button oui-button_link oui-button_icon-right oui-button_full-width"
+    ng-attr-aria-label="{{::$ctrl.ariaLabel}}"
+    ng-attr-id="{{::$ctrl.id}}"
+    ng-attr-name="{{::$ctrl.name}}"
+    ng-attr-type="{{::$ctrl.type}}"
+    ng-click="$ctrl.onClick()"
+    ng-disabled="$ctrl.disabled">
+    <span ng-bind="::$ctrl.text"></span>
+    <i class="oui-icon oui-icon-chevron-right" aria-label="{{::$ctrl.ariaLabel}}"></i>
+</button>
