@@ -1,0 +1,11 @@
+<li class="oui-tabs__tab"
+    role="menuitem"
+    data-ng-class="{ 'oui-tabs__tab_active': $ctrl.active, 'oui-tabs__tab_animate': $ctrl.isActivating }">
+    <a data-ng-if="$ctrl.state && !$ctrl.disabled"
+        ui-sref="{{ $ctrl.state + '(' + String($ctrl.stateParams) + ')' }}">
+        <span data-ng-bind="$ctrl.text"></span>
+    </a>
+    <a data-ng-if="$ctrl.state && $ctrl.disabled" class="oui-tabs__tab_disabled">
+        <span data-ng-bind="$ctrl.text"></span>
+    </a>
+</li>
