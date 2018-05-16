@@ -7,13 +7,17 @@ export default class HeaderTabsService {
         this.registeredTabs = [];
         this.activeTab = undefined;
 
-        $transitions.onSuccess({}, () => {
+        this.onTransitionHandler = $transitions.onSuccess({}, () => {
             this.refreshActiveTab();
         });
     }
 
     $onInit () {
         this.init();
+    }
+
+    destroy () {
+        this.onTransitionHandler();
     }
 
     init () {

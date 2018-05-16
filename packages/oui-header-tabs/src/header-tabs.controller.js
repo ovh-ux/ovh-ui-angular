@@ -9,6 +9,10 @@ export default class {
         this.tabs = [];
     }
 
+    $onDestroy () {
+        this.tabsService.destroy();
+    }
+
     addTab (tab) {
         this.tabsService.registerTab(tab);
         this.tabs = this.tabsService.getRegisteredTabs();
