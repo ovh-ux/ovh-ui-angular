@@ -6,7 +6,7 @@
 
 
 ```html:preview
-<oui-guide title="Guides">
+<oui-guide title="Guide name">
   <oui-guide-body>
     <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
     <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
@@ -19,7 +19,7 @@
 
 
 ```html:preview
-<oui-guide>
+<oui-guide title="">
   <oui-guide-body>
     <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
     <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
