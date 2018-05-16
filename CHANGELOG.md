@@ -1,3 +1,13 @@
+<a name="2.13.1"></a>
+## [2.13.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.13.0...v2.13.1) (2018-05-16)
+
+
+### Bug Fixes
+
+* **oui-modal:** remove one time binding on some attributes ([#182](https://github.com/ovh-ux/ovh-ui-angular/issues/182)) ([1658fb6](https://github.com/ovh-ux/ovh-ui-angular/commit/1658fb6))
+
+
+
 <a name="2.13.0"></a>
 # [2.13.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.12.0...v2.13.0) (2018-05-03)
 
