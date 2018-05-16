@@ -31,11 +31,11 @@
                     class="oui-dual-list__item"
                     role="link"
                     aria-label="{{$ctrl.addLabel}} {{$ctrl.getProperty(source)}}">
-                    <span data-ng-if="!$ctrl.isLoading(source)" class="oui-dual-list__item_add-icon">
+                    <span data-ng-if="!$ctrl.isLoading(source)" class="oui-dual-list__item-add-icon">
                         <i class="oui-icon oui-icon-add" aria-hidden="true"></i>
                     </span>
-                    <span data-ng-if="!$ctrl.isLoading(source)" class="oui-dual-list__item_add-label">{{$ctrl.addLabel}}</span>
-                    <oui-spinner size="s" class="oui-dual-list__item_loading-icon" data-ng-if="$ctrl.isLoading(source)"></oui-spinner>
+                    <span data-ng-if="!$ctrl.isLoading(source)" class="oui-dual-list__item-add-label">{{$ctrl.addLabel}}</span>
+                    <oui-spinner size="s" class="oui-dual-list__item-loading-icon" data-ng-if="$ctrl.isLoading(source)"></oui-spinner>
                     <span class="oui-dual-list__item-text">{{$ctrl.getProperty(source)}}</span>
                 </li>
             </ul>
@@ -72,10 +72,10 @@
                     class="oui-dual-list__item"
                     role="link"
                     aria-label="{{$ctrl.ariaRemoveText}} {{$ctrl.getProperty(target)}}">
-                    <span data-ng-if="!$ctrl.isLoading(target)" class="oui-dual-list__item_remove-icon">
+                    <span data-ng-if="!$ctrl.isLoading(target)" class="oui-dual-list__item-remove-icon">
                         <i class="oui-icon oui-icon-close_thin" aria-hidden="true"></i>
                     </span>
-                    <oui-spinner size="s" class="oui-dual-list__item_loading-icon" data-ng-if="$ctrl.isLoading(target)"></oui-spinner>
+                    <oui-spinner size="s" class="oui-dual-list__item-loading-icon" data-ng-if="$ctrl.isLoading(target)"></oui-spinner>
                     <span class="oui-dual-list__item-text">{{$ctrl.getProperty(target)}}</span>
                 </li>
             </ul>
