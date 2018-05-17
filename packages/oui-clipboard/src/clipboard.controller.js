@@ -17,6 +17,16 @@ export default class {
         addDefaultParameter(this, "tooltipText", this.ouiClipboardConfiguration.translations.copyToClipboardLabel);
     }
 
+    $postLink () {
+        // Sometimes the digest cycle is done before dom manipulation,
+        // So we use $timeout to force the $apply
+        this.$timeout(() =>
+            this.$element
+                .removeAttr("id")
+                .removeAttr("name")
+        );
+    }
+
     onClick () {
         this.$element.find("input")[0].select();
         this.copyText();

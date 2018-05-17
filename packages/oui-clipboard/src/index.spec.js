@@ -34,6 +34,10 @@ describe("ouiClipboard", () => {
         return element[0].querySelector("input[type=text]");
     }
 
+    function getContainerElement (element) {
+        return element[0].querySelector(".oui-input-group_clipboard_container");
+    }
+
     describe("Provider", () => {
         let configuration;
 
@@ -50,35 +54,45 @@ describe("ouiClipboard", () => {
     describe("Component", () => {
 
         describe("text field", () => {
-            it("should generate an input for the componet which has the text given", () => {
-                const element = TestUtils.compileTemplate("<oui-clipboard data-text=\'copy this text'\></oui-clipboard>");
+            it("should generate an input with the given text", () => {
+                const element = TestUtils.compileTemplate("<oui-clipboard data-text='copy this text'></oui-clipboard>");
 
                 expect(getInputElement(element)).toBeDefined();
                 const inputElement = getInputElement(element);
                 expect(angular.element(inputElement).val()).toMatch("copy this text");
             });
 
-            it("controller status should be initial", () => {
+            it("should generate an input with name and id attribute", () => {
+                const element = TestUtils.compileTemplate("<oui-clipboard data-id='id' data-name='name'></oui-clipboard>");
 
-                const element = TestUtils.compileTemplate("<oui-clipboard data-text=\'copy this text'\></oui-clipboard>");
+                expect(getInputElement(element)).toBeDefined();
+                const inputElement = getInputElement(element);
+                expect(angular.element(inputElement).attr("id")).toBe("id");
+                expect(angular.element(inputElement).attr("name")).toBe("name");
+            });
+
+            it("should let status to initial", () => {
+
+                const element = TestUtils.compileTemplate("<oui-clipboard data-text='copy this text'></oui-clipboard>");
                 const $ctrl = element.controller("ouiClipboard");
                 expect($ctrl.status).toEqual(initial);
                 expect($ctrl.ouiClipboardConfiguration.action.copy).toEqual(copy);
             });
 
-            it("on focus status should change to success", () => {
-                const element = TestUtils.compileTemplate("<oui-clipboard data-text=\'copy this text'\></oui-clipboard>");
+            it("should change status to success on click", () => {
+                const element = TestUtils.compileTemplate("<oui-clipboard data-text='copy this text'></oui-clipboard>");
 
-                const inputElement = getInputElement(element);
-                const $inputElement = angular.element(inputElement);
+                const containerElement = getContainerElement(element);
+                const $containerElement = angular.element(containerElement);
 
                 const $ctrl = element.controller("ouiClipboard");
-                $inputElement.triggerHandler("focus");
+                $containerElement.triggerHandler("click");
+
                 expect($ctrl.status).toEqual(success);
             });
 
-            it("on reset tool tip text and status set to initial", () => {
-                const element = TestUtils.compileTemplate("<oui-clipboard data-text=\'copy this text'\></oui-clipboard>");
+            it("should reset tool tip text and set status to initial", () => {
+                const element = TestUtils.compileTemplate("<oui-clipboard data-text='copy this text'></oui-clipboard>");
                 const $ctrl = element.controller("ouiClipboard");
                 $ctrl.reset();
                 $ctrl.handleResult(false);
