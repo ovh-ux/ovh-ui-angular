@@ -1,19 +1,29 @@
-export default class {
-    constructor ($timeout) {
-        "ngInject";
+import { addBooleanParameter } from "@oui-angular/common/component-utils";
 
+export default class {
+    constructor ($timeout, $attrs) {
+        "ngInject";
+        this.$timeout = $timeout;
+        this.$attrs = $attrs;
+        this.ANIMATION_TIME = 200;
+    }
+
+    $onInit () {
+        addBooleanParameter(this, "disabled");
+        addBooleanParameter(this, "active");
+        addBooleanParameter(this, "isActivating");
+        this.tabsCtrl.addTab(this);
+    }
+
+    activate () {
+        this.isActivating = true;
+        this.$timeout(() => {
+            this.isActivating = false;
+            this.active = true;
+        }, this.ANIMATION_TIME);
+    }
+
+    deActivate () {
         this.active = false;
-        this.isActivating = false;
-        const ANIMATION_TIME = 200;
-        this.updateActive = tabAttr => {
-            this.active = tabAttr.active;
-            this.isActivating = tabAttr.isActivating;
-            if (tabAttr.isActivating) {
-                $timeout(() => {
-                    tabAttr.isActivating = false;
-                    this.updateActive(tabAttr);
-                }, ANIMATION_TIME);
-            }
-        };
     }
 }

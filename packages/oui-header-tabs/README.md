@@ -1,14 +1,10 @@
 
 # Header Tabs
-
 <component-status cx-design="complete" ux="complete"></component-status>
-
 ## Usage
-
-
-### Basic
+### With state and state params
 ```html:preview
-<oui-header-tabs>
+<oui-header-tabs on-activate="$ctrl.onActivate(tab)">
     <oui-header-tab 
         data-text="Home" 
         data-state="showcase.oui-angular.header-tabs.home"
@@ -27,8 +23,6 @@
 </oui-header-tabs>
 <div class="oui-doc-preview-only-keep-children" style="margin-bottom: 15px;">
 ```
-
-
 ### Disable tab
 ```html:preview
 <oui-header-tabs>
@@ -48,7 +42,6 @@
 </oui-header-tabs>
 <div class="oui-doc-preview-only-keep-children" style="margin-bottom: 15px;">
 ```
-
 ### Hide tab
 ```html:preview
 <oui-header-tabs>
@@ -68,17 +61,11 @@
 </oui-header-tabs>
 <div class="oui-doc-preview-only-keep-children" style="margin-bottom: 15px;">
 ```
-
-
-
-
 ## API 
-
 ### oui-header-tab
-
 | Attribute     | Type     | Binding | One-time Binding | Mandatory    | Default   | Description                               |
 | ----          | ----     | ----    | ----             | ----      | ----      | ----                                      |
 | text          | string   | @       | true             | true      |           | tab header text.                  |
 | state         | string   | @       | true             | true      |           | route name associated with this tab. This rout gets activated on clicking this tab.              |
-| state-params  |expression| <?      |                  | false     |           | route params associated with this route.              |
-| disabled      | boolean  | <?      |                  | false     | false     | if set to true, tab will be disabled.                    |
+| state-params  | string   | <?      | true             | false     |           | route params associated with this route.              |
+| disabled      | boolean  | <?      | false            | false     | false     | if set to true, tab will be disabled.                    |

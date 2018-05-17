@@ -5,6 +5,8 @@ export default {
     template,
     controller,
     transclude: true,
-    restrict: "E",
-    controllerAs: "$ctrl"
+    bindings: {
+        onActivate: "&?",
+        onInactivate: "&?"
+    }
 };
