@@ -16,7 +16,8 @@ export default class {
         // Sometimes the digest cycle is done before dom manipulation,
         // So we use $timeout to force the $apply
         this.$timeout(() =>
-            this.$element.removeAttr("id")
+            this.$element
+                .removeAttr("id")
                 .removeAttr("aria-label")
         );
     }

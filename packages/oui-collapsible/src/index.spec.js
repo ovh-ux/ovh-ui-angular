@@ -8,16 +8,26 @@ describe("ouiCollapsible", () => {
         TestUtils = _TestUtils_;
     }));
 
+    function getHeaderElement (element) {
+        return element[0].querySelector(".oui-collapsible__header-button");
+    }
+
+    function getBodyElement (element) {
+        return element[0].querySelector(".oui-collapsible__body");
+    }
+
     describe("Component", () => {
-        it("should have a header", () => {
+        it("should have a header button with icon", () => {
             const element = TestUtils.compileTemplate(`
                 <oui-collapsible title="Title" aria-label="Action">
                     <div>Collapsible body</div>
                 </oui-collapsible>`
             );
 
-            const headerEl = element[0].querySelector(".oui-collapsible__header");
+            const headerEl = getHeaderElement(element);
+            const iconEl = headerEl.querySelector(".oui-collapsible__toggle-icon");
             expect(headerEl).toBeTruthy();
+            expect(iconEl).toBeTruthy();
         });
 
         it("should have a body", () => {
@@ -27,7 +37,7 @@ describe("ouiCollapsible", () => {
                 </oui-collapsible>`
             );
 
-            const bodyEl = element[0].querySelector(".oui-collapsible__body");
+            const bodyEl = getBodyElement(element);
             expect(bodyEl).toBeTruthy();
         });
 
@@ -39,22 +49,8 @@ describe("ouiCollapsible", () => {
                 </oui-collapsible>`
             );
 
-            const titleEl = element[0].querySelector(".oui-collapsible__header-text");
-            expect(titleEl).toBeTruthy();
-            expect(titleEl.innerText).toBe(titleText);
-        });
-
-        it("should have the toggle button", () => {
-            const element = TestUtils.compileTemplate(`
-                <oui-collapsible title="Title" aria-label="Action">
-                    <div>Collapsible body</div>
-                </oui-collapsible>`
-            );
-
-            const buttonEl = element[0].querySelector(".oui-collapsible__toggle-button");
-            expect(buttonEl).toBeTruthy();
-            const iconEl = buttonEl.querySelector(".oui-collapsible__toggle-icon");
-            expect(iconEl).toBeTruthy();
+            const headerEl = getHeaderElement(element);
+            expect(headerEl.innerText).toContain(titleText);
         });
 
         it("should have the correct aria-label", () => {
@@ -65,42 +61,19 @@ describe("ouiCollapsible", () => {
                 </oui-collapsible>`
             );
 
-            const buttonEl = element[0].querySelector(".oui-collapsible__toggle-button");
-            expect(buttonEl).toBeTruthy();
-            expect(buttonEl.getAttribute("aria-label")).toBe(ariaLabel);
+            const headerEl = getHeaderElement(element);
+            expect(headerEl.getAttribute("aria-label")).toBe(ariaLabel);
         });
 
-        it("should not be expanded when expanded is false", () => {
+
+        it("should expand on header click", () => {
             const element = TestUtils.compileTemplate(`
                 <oui-collapsible title="Title" aria-label="Action" expanded="false">
                     <div>Collapsible body</div>
                 </oui-collapsible>`
             );
 
-            const openCollapsible = element[0].querySelector(".oui-collapsible_open");
-            expect(openCollapsible).toBeFalsy();
-        });
-
-        it("should be expanded when expanded is true", () => {
-            const element = TestUtils.compileTemplate(`
-                <oui-collapsible title="Title" aria-label="Action" expanded="true">
-                    <div>Collapsible body</div>
-                </oui-collapsible>`
-            );
-
-            const openCollapsible = element[0].querySelector(".oui-collapsible_open");
-            expect(openCollapsible).toBeTruthy();
-        });
-
-        it("should be expand when header is clicked", () => {
-            const element = TestUtils.compileTemplate(`
-                <oui-collapsible title="Title" aria-label="Action" expanded="false">
-                    <div>Collapsible body</div>
-                </oui-collapsible>`
-            );
-
-            const headerEl = element[0].querySelector(".oui-collapsible__header");
-            expect(headerEl).toBeTruthy();
+            const headerEl = getHeaderElement(element);
             angular.element(headerEl).triggerHandler("click");
 
             const openCollapsible = element[0].querySelector(".oui-collapsible_open");
@@ -114,8 +87,7 @@ describe("ouiCollapsible", () => {
                 </oui-collapsible>`
             );
 
-            const headerEl = element[0].querySelector(".oui-collapsible__header");
-            expect(headerEl).toBeTruthy();
+            const headerEl = getHeaderElement(element);
             angular.element(headerEl).triggerHandler("click");
 
             const openCollapsible = element[0].querySelector(".oui-collapsible_open");
@@ -129,7 +101,7 @@ describe("ouiCollapsible", () => {
                 </oui-collapsible>`
             );
 
-            const bodyEl = element[0].querySelector(".oui-collapsible__body");
+            const bodyEl = getBodyElement(element);
             expect(bodyEl).toBeTruthy();
 
             const contentEl = bodyEl.querySelector(".custom-content");
