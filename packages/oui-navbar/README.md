@@ -32,6 +32,7 @@ Note: All children menus have `.oui-navbar-menu_fixed`. The component is intende
 ### Properties of attribute `brand`
 
 - `label` _(optional)_: define `aria-label` of the brand link.
+- `title`: _(optional)_: define the brand text.
 - `url`: define `href` of the brand link.
 
 #### Set a brand icon with a CSS class (for `oui-icon`)
@@ -45,6 +46,7 @@ The brand icon will be set as a `<span>`.
 ```json
 {
     "label": String,
+    "title": String,
     "url": String<Url>,
     "iconClass": String
 }
@@ -63,6 +65,7 @@ The brand icon will be set as a `<img>`.
 ```json
 {
     "label": String,
+    "title": String,
     "url": String<Url>,
     "iconAlt": String,
     "iconClass": String,
