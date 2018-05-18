@@ -4,7 +4,7 @@
 ## Usage
 ### With state and state params
 ```html:preview
-<oui-header-tabs on-activate="$ctrl.onActivate(tab)">
+<oui-header-tabs on-activate="$ctrl.onActivate(tabName)">
     <oui-header-tab 
         data-text="Home" 
         data-state="showcase.oui-angular.header-tabs.home"
@@ -62,10 +62,16 @@
 <div class="oui-doc-preview-only-keep-children" style="margin-bottom: 15px;">
 ```
 ## API 
+### oui-header-tabs
+| Attribute     | Type     | Binding | One-time Binding | Mandatory    | Default   | Description                               |
+| ----          | ----     | ----    | ----             | ----      | ----      | ----                                      |
+| on-activate   | expression | &?    | true             | false     |           | Callback method called on activating a tab. Sends active tab name(text) in arguments.                    |
+| on-inactivate | expression | &?    | true             | false     |           | Callback method called on inactivating a tab. Sends inactive tab name(text) in arguments.  |
+
 ### oui-header-tab
 | Attribute     | Type     | Binding | One-time Binding | Mandatory    | Default   | Description                               |
 | ----          | ----     | ----    | ----             | ----      | ----      | ----                                      |
-| text          | string   | @       | true             | true      |           | tab header text.                  |
-| state         | string   | @       | true             | true      |           | route name associated with this tab. This rout gets activated on clicking this tab.              |
-| state-params  | string   | <?      | true             | false     |           | route params associated with this route.              |
-| disabled      | boolean  | <?      | false            | false     | false     | if set to true, tab will be disabled.                    |
+| text          | string   | @       | true             | true      |           | Tab header text.                  |
+| state         | string   | @       | true             | true      |           | Route name associated with this tab. This route gets activated on clicking this tab or tab gets activated on navigating to this route.              |
+| state-params  | string   | <?      | true             | false     |           | Route params associated with this route.              |
+| disabled      | boolean  | <?      | false            | false     | false     | If set to true, tab will be disabled.                    |

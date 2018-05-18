@@ -26,4 +26,16 @@ export default class {
     deActivate () {
         this.active = false;
     }
+
+    /**
+     * tow tabs are equal of they have same name and same state
+     * @param {*} tab
+     */
+    isEqual (tab) {
+        return tab && this.text === tab.text && this.state === tab.state;
+    }
+
+    isActive () {
+        return this.active;
+    }
 }

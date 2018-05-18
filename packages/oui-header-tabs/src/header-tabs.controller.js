@@ -1,4 +1,4 @@
-import _ from "lodash";
+import find from "lodash/find";
 export default class {
     constructor ($state, $transitions) {
         "ngInject";
@@ -14,9 +14,9 @@ export default class {
     }
 
     updateActiveTab () {
-        const currentTab = _.find(this.tabs, tab => tab.state && this.$state.includes(tab.state));
-        if (currentTab && currentTab !== this.activeTab) {
-            this.selectTab(currentTab);
+        const currentActiveTab = find(this.tabs, tab => tab.state && this.$state.includes(tab.state));
+        if (currentActiveTab && !currentActiveTab.isEqual(this.activeTab)) {
+            this.selectTab(currentActiveTab);
         } else if (this.activeTab) {
             this.unselectTab(this.activeTab);
         }
@@ -30,15 +30,15 @@ export default class {
     }
 
     unselectTab (tab) {
-        this.activeTab = null;
-        tab.deActivate();
-        this.onInactivateHandler(tab);
+        if (tab) {
+            tab.deActivate();
+            this.onInactivateHandler(tab);
+            this.activeTab = null;
+        }
     }
 
     selectTab (tab) {
-        this.tabs.forEach((t) => {
-            this.unselectTab(t);
-        });
+        this.unselectTab(this.activeTab);
         this.activeTab = tab;
         tab.activate();
         this.onActivateHandler(tab);
@@ -46,14 +46,13 @@ export default class {
 
     onActivateHandler (tab) {
         if (this.onActivate) {
-            this.onActivate({ tab: tab.text });
+            this.onActivate({ tabName: tab.text });
         }
     }
 
     onInactivateHandler (tab) {
         if (this.onInactivate) {
-            this.onInactivate({ tab: tab.text });
+            this.onInactivate({ tabName: tab.text });
         }
     }
-
 }
