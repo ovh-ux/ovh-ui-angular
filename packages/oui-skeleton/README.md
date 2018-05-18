@@ -15,7 +15,7 @@
 ```
 ### With transclude
 ```html:preview
-<oui-skeleton loading="true" width="50%">
+<oui-skeleton loading="$ctrl.loading" width="50%">
     <oui-button variant="primary" text="Primary"></oui-button>
 </oui-skeleton>
 ```
