@@ -26,6 +26,7 @@ import "@oui-angular/oui-criteria-adder/src";
 import "@oui-angular/oui-chips/src";
 import "@oui-angular/oui-popover/src";
 import "@oui-angular/oui-stepper/src";
+import "@oui-angular/oui-skeleton/src";
 
 angular.module("oui", [
     "oui.button",
@@ -55,5 +56,6 @@ angular.module("oui", [
     "oui.criteria-adder",
     "oui.chips",
     "oui.popover",
-    "oui.stepper"
+    "oui.stepper",
+    "oui.skeleton"
 ]);
