@@ -1,10 +1,11 @@
 import { addBooleanParameter } from "@oui-angular/common/component-utils";
 
 export default class {
-    constructor ($timeout, $attrs) {
+    constructor ($scope, $timeout, $attrs, $transclude) {
         "ngInject";
         this.$timeout = $timeout;
         this.$attrs = $attrs;
+        this.$transclude = $transclude;
         this.ANIMATION_TIME = 200;
     }
 

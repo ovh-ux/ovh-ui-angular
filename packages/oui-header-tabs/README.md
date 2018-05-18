@@ -2,6 +2,68 @@
 # Header Tabs
 <component-status cx-design="complete" ux="complete"></component-status>
 ## Usage
+### Basic
+```html:preview
+<oui-header-tabs>
+    <oui-header-tab data-text="Cloud" data-active="true">
+        <h4>Cloud Heading </h4>
+        <p>Cloud content </p>
+    </oui-header-tab>
+    <oui-header-tab data-text="Dedicated">
+        <h4>Dedicated Heading </h4>
+        <p>Dedicated content </p>
+    </oui-header-tab>
+    <oui-header-tab data-text="Web">
+        <h4>Web Heading </h4>
+        <p>Web content </p>
+    </oui-header-tab>
+</oui-header-tabs>
+<div class="oui-doc-preview-only-keep-children" style="margin-bottom: 15px;">
+```
+### Disabled
+```html:preview
+<oui-header-tabs>
+    <oui-header-tab data-text="Cloud" data-active="true">
+        <h4>Cloud Heading </h4>
+        <p>Cloud content </p>
+    </oui-header-tab>
+    <oui-header-tab data-text="Dedicated">
+        <h4>Dedicated Heading </h4>
+        <p>Dedicated content </p>
+    </oui-header-tab>
+    <oui-header-tab data-text="Web">
+        <h4>Web Heading </h4>
+        <p>Web content </p>
+    </oui-header-tab>
+    <oui-header-tab data-text="Sunrise" disabled="true">
+        <h4>Sunrise Heading </h4>
+        <p>Sunrise content </p>
+    </oui-header-tab>
+</oui-header-tabs>
+<div class="oui-doc-preview-only-keep-children" style="margin-bottom: 15px;">
+```
+### OnActive and OnInactive 
+```html:preview
+<oui-header-tabs on-activate="$ctrl.onActivate(tabName)" on-inactivate="$ctrl.onInactivate(tabName)">
+    <oui-header-tab data-text="Cloud" data-active="true">
+        <h4>Cloud Heading </h4>
+        <p>Cloud content </p>
+    </oui-header-tab>
+    <oui-header-tab data-text="Dedicated">
+        <h4>Dedicated Heading </h4>
+        <p>Dedicated content </p>
+    </oui-header-tab>
+    <oui-header-tab data-text="Web">
+        <h4>Web Heading </h4>
+        <p>Web content </p>
+    </oui-header-tab>
+    <oui-header-tab data-text="Sunrise" disabled="true">
+        <h4>Sunrise Heading </h4>
+        <p>Sunrise content </p>
+    </oui-header-tab>
+</oui-header-tabs>
+<div class="oui-doc-preview-only-keep-children" style="margin-bottom: 15px;">
+```
 ### With state and state params
 ```html:preview
 <oui-header-tabs on-activate="$ctrl.onActivate(tabName)">
@@ -23,7 +85,7 @@
 </oui-header-tabs>
 <div class="oui-doc-preview-only-keep-children" style="margin-bottom: 15px;">
 ```
-### Disable tab
+### With state and disable tab
 ```html:preview
 <oui-header-tabs>
     <oui-header-tab 
@@ -72,6 +134,7 @@
 | Attribute     | Type     | Binding | One-time Binding | Mandatory    | Default   | Description                               |
 | ----          | ----     | ----    | ----             | ----      | ----      | ----                                      |
 | text          | string   | @       | true             | true      |           | Tab header text.                  |
-| state         | string   | @       | true             | true      |           | Route name associated with this tab. This route gets activated on clicking this tab or tab gets activated on navigating to this route.              |
-| state-params  | string   | <?      | true             | false     |           | Route params associated with this route.              |
+| state         | string   | @       | true             | false      |           | Route name associated with this tab. This route gets activated on clicking this tab or tab gets activated on navigating to this route. If state is used, oui-header-tab should not have content.           |
+| state-params  | string   | <?      | true             | false     |           | Route params associated with this route. Must be used with state. Has no effect if used without state.             |
 | disabled      | boolean  | <?      | false            | false     | false     | If set to true, tab will be disabled.                    |
+| active        | boolean  | <?      | false            | false     | false     | If set to true, tab will be activated, selected. Active has no effect if state is provided. Tab with current state will be activated.                   |

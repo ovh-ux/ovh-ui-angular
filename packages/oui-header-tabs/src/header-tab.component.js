@@ -12,6 +12,7 @@ export default {
         state: "@",
         stateParams: "<?",
         text: "@",
-        disabled: "<?"
+        disabled: "<?",
+        active: "<?"
     }
 };

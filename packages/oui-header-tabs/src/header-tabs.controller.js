@@ -14,12 +14,21 @@ export default class {
     }
 
     updateActiveTab () {
-        const currentActiveTab = find(this.tabs, tab => tab.state && this.$state.includes(tab.state));
+        const currentActiveTab = find(this.tabs, tab => this.isTabActive(tab));
         if (currentActiveTab && !currentActiveTab.isEqual(this.activeTab)) {
             this.selectTab(currentActiveTab);
         } else if (this.activeTab) {
             this.unselectTab(this.activeTab);
         }
+    }
+
+    isTabActive (tab) {
+        if (tab && tab.state) {
+            return tab.state && this.$state.includes(tab.state);
+        } else if (tab) {
+            return tab.isActive();
+        }
+        return false;
     }
 
     addTab (tab) {
