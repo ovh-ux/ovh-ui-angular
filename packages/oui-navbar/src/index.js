@@ -1,5 +1,6 @@
 import KEYBOARD_KEYS from "./keyboard-keys.constant";
 import Navbar from "./navbar.component";
+import NavbarConfigurationProvider from "./navbar.provider.js";
 import NavbarGroup from "./group/navbar-group.directive";
 import NavbarGroupService from "./group/navbar-group.service";
 import NavbarMenu from "./menu/navbar-menu.component";
@@ -14,5 +15,6 @@ angular
     .component("ouiNavbar", Navbar)
     .directive("ouiNavbarGroup", NavbarGroup)
     .component("ouiNavbarMenu", NavbarMenu)
+    .provider("ouiNavbarConfiguration", NavbarConfigurationProvider)
     .service("NavbarService", NavbarService)
     .service("NavbarGroupService", NavbarGroupService);

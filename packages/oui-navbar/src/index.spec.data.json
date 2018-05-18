@@ -45,20 +45,36 @@
             "iconClass": "oui-icon oui-icon-info_circle",
             "subLinks": [
               {
-                "title": "Maecenas id ipsum suscipit",
+                "subject": "Maecenas id ipsum suscipit",
+                "time": "10:10",
+                "level": "warning",
                 "url": "#/",
-                "template": "Maecenas id ipsum suscipit, efficitur lectus non, <strong>tempor ante</strong>.",
+                "description": "Maecenas id ipsum suscipit, efficitur lectus non, <strong>tempor ante</strong>.",
                 "isActive": true
-              },
-              {
-                "title": "Vestibulum malesuada justo ac lectus tincidunt",
+              }, {
+                "subject": "Vestibulum malesuada justo ac lectus tincidunt",
+                "time": "yesterday, 10:10",
+                "level": "info",
                 "url": "#/",
-                "template": "Vestibulum malesuada justo ac lectus tincidunt, <strong>sit amet fringilla lectus iaculis</strong>."
-              },
-              {
-                "title": "Duis placerat lacus at nibh fringilla",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In fermentum faucibus ante, sed ullamcorper quam pretium ut. Donec et eros at nisi egestas scelerisque quis id erat. Cras suscipit diam id lorem congue aliquam. Integer ornare urna vel turpis blandit, mattis placerat est dictum. Etiam porta venenatis odio tristique condimentum."
+              }, {
+                "subject": "Duis placerat lacus at nibh fringilla",
+                "time": "February 21",
+                "level": "success",
                 "url": "#/",
-                "template": "Duis placerat lacus at nibh fringilla, <strong>at ultrices nunc suscipit</strong>."
+                "description": "Duis placerat lacus at nibh fringilla, at ultrices nunc suscipit."
+              }, {
+                 "subject": "Mauris ipsum",
+                 "time": "February 22",
+                    "level": "error",
+                 "url": "#/",
+                 "description": "Nunc mattis tellus maximus nisl ullamcorper, nec <strong>blandit dolor</strong> varius. Morbi ut turpis elit. Fusce nec augue mi."
+              }, {
+                "subject": "Mauris ipsum",
+                "time": "February 22, 2017",
+                "level": "error",
+                "url": "#/",
+                "description": "Duis placerat lacus at nibh fringilla, at ultrices nunc suscipit."
               }
             ],
             "limitTo": 10,

@@ -7,5 +7,5 @@ export default () => ({
         placement: "@?ouiTooltipPlacement" // values: top|top-start|top-end|bottom|bottom-start|bottom-end (default: top)
     },
     controller,
-    controllerAs: "$ctrl"
+    controllerAs: "$tooltipCtrl"
 });
