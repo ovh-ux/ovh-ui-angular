@@ -3,9 +3,12 @@ import template from "./dashboard-tile-item.html";
 
 export default {
     bindings: {
-        title: "@"
+        title: "@",
+        bordered: "<?"
     },
     controller,
     template,
-    transclude: true
+    transclude: {
+        actionMenu: "?ouiActionMenu"
+    }
 };

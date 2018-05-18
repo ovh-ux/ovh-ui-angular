@@ -3,7 +3,8 @@ import template from "./dashboard-tile.html";
 
 export default {
     bindings: {
-        title: "@"
+        title: "@",
+        titleSeperator: "<?"
     },
     controller,
     template,
