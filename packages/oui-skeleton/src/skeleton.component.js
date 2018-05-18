@@ -3,7 +3,6 @@ import template from "./skeleton.html";
 
 export default {
     controller,
-    controllerAs: "$ctrl",
     template,
     bindings: {
         loading: "<",
