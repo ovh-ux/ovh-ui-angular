@@ -12,7 +12,11 @@
                 ui-sref="{{ ::tab.state + '(' + String(tab.stateParams) + ')' }}"
                 ng-bind="::tab.text">
             </a>
-            <a ng-if="!tab.disabled && !tab.state " href ng-click="$ctrl.selectTab(tab)" ng-bind="::tab.text"></a>
+            <a ng-if="!tab.disabled && !tab.state " 
+                href
+                aria-expanded="{{tab.active ? 'true' : 'false' }}"
+                ng-click="$ctrl.selectTab(tab)" 
+                ng-bind="::tab.text"></a>
         </li>
     </ul>
     <div class="oui-tabs__content" ng-transclude></div>
