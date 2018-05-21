@@ -9,17 +9,14 @@ describe("ouiSkeleton", () => {
     }));
 
     describe("Component", () => {
-        it("should display a oui skeleton div", () => {
-            const element = TestUtils.compileTemplate(`
-                <oui-skeleton width="30%" loading="true"></oui-skeleton`);
+        it("should display a oui-skeleton", () => {
+            const element = TestUtils.compileTemplate("<oui-skeleton></oui-skeleton");
             expect(angular.element(element[0].querySelector(".oui-skeleton"))).toBeTruthy();
         });
 
         it("should display a oui skeleton div", () => {
-            const element = TestUtils.compileTemplate(`
-                <oui-skeleton width="30%" loading="fasle"></oui-skeleton`);
-            const skeleton = angular.element(element[0].querySelector(".oui-skeleton__loader"));
-            expect(skeleton.hasClass("ng-hide")).toBe(true);
+            const element = TestUtils.compileTemplate("<oui-skeleton size=\"m\"></oui-skeleton");
+            expect(angular.element(element[0].querySelector(".oui-skeleton_m"))).toBeTruthy();
         });
     });
 });

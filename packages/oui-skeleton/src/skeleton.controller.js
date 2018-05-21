@@ -1,12 +1,22 @@
+import { addDefaultParameter } from "@oui-angular/common/component-utils";
+
 export default class {
-    constructor ($element) {
+    constructor ($attrs, $element, $timeout) {
         "ngInject";
 
+        this.$attrs = $attrs;
         this.$element = $element;
+        this.$timeout = $timeout;
     }
 
     $onInit () {
-        this.size = this.size || "auto";
-        this.$element.addClass(`oui-skeleton oui-skeleton_${this.size}`);
+        addDefaultParameter(this, "size", "auto");
+    }
+
+    $postLink () {
+        this.$timeout(() =>
+            this.$element
+                .addClass(`oui-skeleton oui-skeleton_${this.size}`)
+        );
     }
 }

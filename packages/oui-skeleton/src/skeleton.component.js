@@ -5,7 +5,6 @@ export default {
     controller,
     template,
     bindings: {
-        width: "@",
-        size: "@"
+        size: "@?"
     }
 };
