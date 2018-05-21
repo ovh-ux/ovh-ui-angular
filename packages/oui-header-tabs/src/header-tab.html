@@ -1,5 +1,20 @@
-<div class="oui-tabs__pane"
-    ng-if="$ctrl.active || $ctrl.isActivating"
-    ng-class="{active: $ctrl.active}">
-    <div ng-transclude></div>
-</div>
+<li class="oui-tabs__tab" 
+    ng-class="{ 'oui-tabs__tab_active': $ctrl.active, 'oui-tabs__tab_animate': $ctrl.isActivating }">
+    <a ng-if="$ctrl.disabled" 
+        class="oui-tabs__tab_disabled"
+        ng-transclude="tabHeading">
+        <span ng-bind="::$ctrl.text"></span>
+    </a>
+    <a ng-if="!$ctrl.disabled && $ctrl.state"
+        aria-expanded="{{$ctrl.active ? 'true' : 'false' }}"
+        ui-sref="{{ ::$ctrl.state + '(' + String($ctrl.stateParams) + ')' }}"
+        ng-bind="::$ctrl.text">
+    </a>
+    <a ng-if="!$ctrl.disabled && !$ctrl.state" 
+        href
+        aria-expanded="{{$ctrl.active ? 'true' : 'false' }}"
+        ng-click="$ctrl.selectTab()"
+        ng-transclude="tabHeading">
+        <span ng-bind="::$ctrl.text"></span>
+    </a>
+</li>

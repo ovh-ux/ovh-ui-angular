@@ -5,7 +5,7 @@ export default class {
         "ngInject";
         this.$timeout = $timeout;
         this.$attrs = $attrs;
-        this.$transclude = $transclude;
+        this.$transcludeFn = $transclude;
         this.ANIMATION_TIME = 200;
     }
 
@@ -26,6 +26,14 @@ export default class {
 
     deActivate () {
         this.active = false;
+    }
+
+    selectTab () {
+        if (this.disabled) {
+            return true;
+        }
+        this.tabsCtrl.selectTab(this);
+        return true;
     }
 
     /**

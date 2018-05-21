@@ -5,9 +5,12 @@ export default {
     template,
     controller,
     require: {
-        tabsCtrl: "^^ouiHeaderTabs"
+        tabCtrl: "^ouiHeaderTab",
+        tabsCtrl: "^ouiHeaderTabs"
     },
-    transclude: true,
+    transclude: {
+        tabHeading: "?ouiTabHeading"
+    },
     bindings: {
         state: "@",
         stateParams: "<?",

@@ -1,23 +1,15 @@
 <nav role="navigation">
     <ul class="oui-tabs"
-        role="tablist">
-        <li class="oui-tabs__tab" 
-            ng-repeat="tab in $ctrl.tabs"
-            ng-class="{ 'oui-tabs__tab_active': tab.active, 'oui-tabs__tab_animate': tab.isActivating }">
-            <a ng-if="tab.disabled" class="oui-tabs__tab_disabled">
-                <span ng-bind="::tab.text"></span>
-            </a>
-            <a ng-if="!tab.disabled && tab.state"
-                aria-expanded="{{tab.active ? 'true' : 'false' }}"
-                ui-sref="{{ ::tab.state + '(' + String(tab.stateParams) + ')' }}"
-                ng-bind="::tab.text">
-            </a>
-            <a ng-if="!tab.disabled && !tab.state " 
-                href
-                aria-expanded="{{tab.active ? 'true' : 'false' }}"
-                ng-click="$ctrl.selectTab(tab)" 
-                ng-bind="::tab.text"></a>
-        </li>
+        role="tablist"
+        ng-transclude>
     </ul>
-    <div class="oui-tabs__content" ng-transclude></div>
+    <div class="oui-tabs__content">
+        <div class="oui-tabs__pane"
+            ng-repeat="tab in $ctrl.tabs"
+            ng-if="tab.active || tab.isActivating"
+            ng-class="{active: tab.active}"
+            oui-tab-content-transclude="tab">
+        </div>
+    </div>
 </nav>
+

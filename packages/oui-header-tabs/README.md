@@ -64,6 +64,65 @@
 </oui-header-tabs>
 <div class="oui-doc-preview-only-keep-children" style="margin-bottom: 15px;">
 ```
+### Custom header
+```html:preview
+<oui-header-tabs on-activate="$ctrl.onActivate(tabName)" on-inactivate="$ctrl.onInactivate(tabName)">
+    <oui-header-tab data-active="true" data-text="Cloud">
+        <h4>Cloud Heading </h4>
+        <p>Cloud content </p>
+    </oui-header-tab>
+    <oui-header-tab data-text="Filter">
+        <oui-tab-heading>
+            <i class="oui-icon oui-icon-filter" aria-hidden="true"></i> Filter!
+        </oui-tab-heading>
+        <h4>Dedicated Heading </h4>
+        <p>Dedicated content </p>
+    </oui-header-tab>
+    <oui-header-tab data-text="Search" data-disabled="true">
+         <oui-tab-heading>
+            <i class="oui-icon oui-icon-search" aria-hidden="true"></i> Search!
+        </oui-tab-heading>
+        <h4>Web Heading </h4>
+        <p>Web content </p>
+    </oui-header-tab>
+    <oui-header-tab data-text="Sunrise" disabled="true">
+        <h4>Sunrise Heading </h4>
+        <p>Sunrise content </p>
+    </oui-header-tab>
+</oui-header-tabs>
+<div class="oui-doc-preview-only-keep-children" style="margin-bottom: 15px;">
+```
+### Action header
+```html:preview
+<oui-header-tabs on-activate="$ctrl.onActivate(tabName)" on-inactivate="$ctrl.onInactivate(tabName)">
+    <oui-header-tab data-active="true" data-text="Cloud">
+        <h4>Cloud Heading </h4>
+        <p>Cloud content </p>
+    </oui-header-tab>
+    <oui-header-tab data-text="Filter">
+        <h4>Dedicated Heading </h4>
+        <p>Dedicated content </p>
+    </oui-header-tab>
+    <oui-header-tab data-text="Search">
+        <h4>Web Heading </h4>
+        <p>Web content </p>
+    </oui-header-tab>
+    <oui-header-tab data-text="Actions">
+        <oui-tab-heading>
+            <oui-action-menu text="Actions" aria-label="actions" align="start">
+                <oui-action-menu-item text="Action 1" aria-label="Server: action 1" on-click="$ctrl.action1 =   true"></oui-action-menu-item>
+                <oui-action-menu-item text="Action 2" aria-label="Server: action 2" on-click="$ctrl.action2 = true"></oui-action-menu-item>
+                <oui-action-menu-item text="Action 3 (disabled)" aria-label="Server: action 3" on-click="$ctrl.action3 = true" disabled></oui-action-menu-item>
+                <oui-action-menu-divider></oui-action-menu-divider>
+                <oui-action-menu-item text="Lien externe" href="#" external></oui-action-menu-item>
+            </oui-action-menu>
+        </oui-tab-heading>
+        <h4>Sunrise Heading </h4>
+        <p>Sunrise content </p>
+    </oui-header-tab>
+</oui-header-tabs>
+<div class="oui-doc-preview-only-keep-children" style="margin-bottom: 15px;">
+```
 ### With state and state params
 ```html:preview
 <oui-header-tabs on-activate="$ctrl.onActivate(tabName)">
