@@ -5,8 +5,7 @@ export default {
     controller,
     template,
     bindings: {
-        loading: "<",
-        width: "@"
-    },
-    transclude: true
+        width: "@",
+        size: "@"
+    }
 };
