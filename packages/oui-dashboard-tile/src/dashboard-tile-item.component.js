@@ -4,7 +4,7 @@ import template from "./dashboard-tile-item.html";
 export default {
     bindings: {
         title: "@",
-        bordered: "<?"
+        bottomBorder: "<?"
     },
     controller,
     template,
