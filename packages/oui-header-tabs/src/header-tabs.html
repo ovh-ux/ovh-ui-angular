@@ -1,0 +1,15 @@
+<nav role="navigation">
+    <ul class="oui-tabs"
+        role="tablist"
+        ng-transclude>
+    </ul>
+    <div class="oui-tabs__content">
+        <div class="oui-tabs__pane"
+            ng-repeat="tab in $ctrl.tabs"
+            ng-if="tab.active || tab.isActivating"
+            ng-class="{active: tab.active}"
+            oui-tab-content-transclude="tab">
+        </div>
+    </div>
+</nav>
+
