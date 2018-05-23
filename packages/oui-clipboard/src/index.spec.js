@@ -35,7 +35,7 @@ describe("ouiClipboard", () => {
     }
 
     function getContainerElement (element) {
-        return element[0].querySelector(".oui-input-group_clipboard_container");
+        return element[0].querySelector(".oui-input-group_clipboard-container");
     }
 
     describe("Provider", () => {
