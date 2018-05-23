@@ -12,7 +12,13 @@ export default class {
 
         this.$element.css("display", "block");
 
-        this._compileCell();
+        if (this.row && this.row.$promise) {
+            this.row.$promise.finally(() => {
+                this._compileCell();
+            });
+        } else {
+            this._compileCell();
+        }
     }
 
     $onChanges (changes) {
