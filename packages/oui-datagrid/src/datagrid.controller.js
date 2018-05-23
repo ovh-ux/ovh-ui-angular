@@ -80,16 +80,45 @@ export default class DatagridController {
         const builtColumns = this.buildColumns();
         this.previousRows = this.columns;
 
-        if (this.rowsLoader) {
-            this.paging = this.ouiDatagridPaging.createRemote(this.columns, builtColumns.currentSorting, this.pageSize, this.rowLoader, this.rowsLoader);
-            this.refreshData(() => this.paging.setOffset(1));
-        } else {
-            this.paging = this.ouiDatagridPaging.createLocal(this.columns, builtColumns.currentSorting, this.pageSize, this.rowLoader, this.rows);
+        const refreshDatagrid = () => {
+            if (this.rowsLoader) {
+                this.paging = this.ouiDatagridPaging.createRemote(this.columns, builtColumns.currentSorting, this.pageSize, this.rowLoader, this.rowsLoader);
+                this.refreshData(() => this.paging.setOffset(1));
+            } else {
+                this.paging = this.ouiDatagridPaging.createLocal(this.columns, builtColumns.currentSorting, this.pageSize, this.rowLoader, this.rows);
 
-            if (this.rows) {
-                this.refreshData(() => this.paging.setRows(this.rows));
+                if (this.rows) {
+                    this.refreshData(() => this.paging.setRows(this.rows));
+                }
             }
-        }
+        };
+
+        this.$scope.$on("datagrid-refresh", () => {
+            if (!this.refreshDatagridPromise) {
+                refreshDatagrid();
+            }
+        });
+        refreshDatagrid();
+
+        this.$scope.$on("datagrid-update-rows", (ev, updater) => {
+            const doUpdate = () => {
+                if (angular.isFunction(updater)) {
+                    const rowCount = this.displayedRows.length;
+                    updater(this.displayedRows);
+                    const rowDiff = this.displayedRows.length - rowCount;
+
+                    // In case rows have been removed/added, updates paging total count
+                    if (this.paging) {
+                        this.paging.totalCount += rowDiff;
+                    }
+                }
+            };
+            if (this.refreshDatagridPromise) {
+                this.refreshDatagridPromise.finally(doUpdate);
+            } else {
+                doUpdate();
+            }
+        });
 
         // Manage responsiveness
         if (this.hasActionMenu) {
@@ -212,7 +241,7 @@ export default class DatagridController {
         this.loading = true;
         this.displayedRows = DatagridController.createEmptyRows(this.paging.getCurrentPageSize());
 
-        this.$q.when(callback())
+        this.refreshDatagridPromise = this.$q.when(callback())
             .then(() => this.paging.loadData(skipSortAndFilter))
             .then(result => {
                 this.displayedRows = result.data;
@@ -226,6 +255,7 @@ export default class DatagridController {
             .finally(() => {
                 this.loading = false;
                 this.firstLoading = false;
+                this.refreshDatagridPromise = null;
             });
     }
 
