@@ -26,7 +26,7 @@ export default class {
             }
 
             // Create a new scope to compile the tooltip next to the trigger
-            const tooltipScope = angular.extend(this.$scope.$new(true), { $ctrl: this });
+            const tooltipScope = angular.extend(this.$scope.$new(true), { $tooltipCtrl: this });
             const tooltipTemplate = this.$compile(template)(tooltipScope);
 
             this.$element
