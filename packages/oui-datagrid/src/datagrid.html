@@ -77,7 +77,7 @@
             </div>
         </div>
     </div>
-    <div ng-hide="!$ctrl.displayedRows.length || $ctrl.firstLoading">
+    <div ng-hide="!$ctrl.displayedRows.length || $ctrl.firstLoading || $ctrl.loading">
         <oui-pagination
             class="oui-datagrid-panel__pagination"
             current-offset="$ctrl.paging.offset"
