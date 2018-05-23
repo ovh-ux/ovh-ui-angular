@@ -3,7 +3,7 @@
   "description": "A set of maintainable components for the OVH ecosystem (Angular).",
   "license": "BSD-3-Clause",
   "author": "OVH SAS",
-  "version": "2.13.1",
+  "version": "2.14.0",
   "keywords": [
     "angular"
   ],

@@ -1,3 +1,22 @@
+<a name="2.14.0"></a>
+# [2.14.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.13.1...v2.14.0) (2018-05-23)
+
+
+### Features
+
+* **oui-navbar:** replace template by new notifications ([#159](https://github.com/ovh-ux/ovh-ui-angular/issues/159)) ([e213ef8](https://github.com/ovh-ux/ovh-ui-angular/commit/e213ef8))
+
+
+### BREAKING CHANGES
+
+* **oui-navbar:** notification html template cannot be used anymore
+
+* feat(oui-tooltip): avoid controller interference
+
+* fix(oui-tooltip): update controller name in template
+
+
+
 <a name="2.13.1"></a>
 ## [2.13.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.13.0...v2.13.1) (2018-05-16)
 
