@@ -83,6 +83,7 @@ The brand icon will be set as a `<img>`.
 - `headerBreadcrumb` _(optional)_: define the breadcrumb of the menu header.
 - `headerTemplate` _(optional)_: define the HTML template of the menu header.
 - `isActive` _(optional)_: define if the menu item has active variant `.oui-navbar-menu__item_active`.
+- `acknowledged` _(optional)_: define if the menu item is acknowledged.
 
 If `headerTemplate` is defined, `headerBreadcrumb` and `headerTitle` are not used.
 
@@ -235,12 +236,16 @@ If `footerTemplate` is defined, `footerTitle` and `footerUrl` are not used.
     "headerTemplate": String<Html>,
     "footerTitle": String,
     "footerUrl": String<Url>,
+    "onClick": Function,
     "subLinks": Array[{
-        "label": String,
-        "title": String,
+        "subject": String,
+        "description": String,
         "url": String<Url>,
-        "template": String<Html>,
-        "isActive": Boolean
+        "time": String<Html>,
+        "actionClicked": Function,
+        "linkClicked": Function,
+        "isActive": Boolean,
+        "acknowledged": Boolean
     }]
 }
 ```
