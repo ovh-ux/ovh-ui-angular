@@ -1,3 +1,18 @@
+<a name="2.15.0"></a>
+# [2.15.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.14.0...v2.15.0) (2018-05-23)
+
+
+### Bug Fixes
+
+* **oui-tooltip:** fix controller name in new scope ([2aacbb3](https://github.com/ovh-ux/ovh-ui-angular/commit/2aacbb3))
+
+
+### Features
+
+* **oui-navbar:** add notification documentation ([f4995a3](https://github.com/ovh-ux/ovh-ui-angular/commit/f4995a3))
+
+
+
 <a name="2.14.0"></a>
 # [2.14.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.13.1...v2.14.0) (2018-05-23)
 
