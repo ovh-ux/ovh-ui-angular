@@ -35,6 +35,7 @@ import "@oui-angular/oui-tile/src";
 import "@oui-angular/oui-guide-menu/src";
 import "@oui-angular/oui-header-tabs/src";
 import "@oui-angular/oui-progress/src";
+import "@oui-angular/oui-switch/src";
 
 angular.module("oui", [
     "oui.button",
@@ -73,5 +74,6 @@ angular.module("oui", [
     "oui.tile",
     "oui.guide-menu",
     "oui.header-tabs",
-    "oui.progress"
+    "oui.progress",
+    "oui.switch"
 ]);
