@@ -1,0 +1,9 @@
+<div ng-if="::!$ctrl.indeterminate" ng-class=":: 'oui-progress oui-progress_' + $ctrl.type" ng-transclude></div>
+<div
+    ng-if="::$ctrl.indeterminate"
+    ng-class=":: 'oui-progress oui-progress_indeterminate oui-progress_' + $ctrl.type"
+    role="progressbar"
+    aria-valuemin="0"
+    aria-valuemax="100"
+    ng-transclude>
+</div>

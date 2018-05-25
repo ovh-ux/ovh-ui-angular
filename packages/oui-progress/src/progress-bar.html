@@ -1,0 +1,7 @@
+<div role="progressbar"
+    ng-class=":: 'oui-progress__bar_text-' + $ctrl.labelAlign"
+    aria-valuenow="{{$ctrl.value}}"
+    aria-valuemin="0"
+    aria-valuemax="{{::$ctrl.parent.maxValue}}">
+    <span class="oui-progress__label" ng-transclude></span>
+</div>

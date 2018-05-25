@@ -54,6 +54,18 @@ export function hasAttributeValue (element, attributeName) {
 }
 
 /**
+ * Check if an attribute is present and have a value in an HTML element.
+ * @param  {HTMLElement}  element        a HTML element
+ * @param  {string}       attributeName  the attribute name
+ * @return {Boolean}                     true if it exists and have a value
+ */
+export function throwErrorOnMissingAttributeValue (element, attributeName) {
+    if (!hasAttributeValue(element, attributeName)) {
+        throw new Error(`ovh-ui-angular: required attribute "${attributeName}" is not defined`);
+    }
+}
+
+/**
  * Return the value of an attribute of an HTML Element.
  * @param  {HTMLElement}  element       a HTML element
  * @param  {string}       attributeName the attribute name
