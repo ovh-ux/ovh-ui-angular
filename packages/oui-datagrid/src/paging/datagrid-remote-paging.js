@@ -18,11 +18,13 @@ export default class DatagridRemotePaging extends DatagridPagingAbstract {
                 skipSort
             })
         })
-            .then(result => {
-                this.loadRowsData(result.data);
-                this.totalCount = result.meta.totalCount;
+            .then(result => this.loadRows(result));
+    }
 
-                return result;
-            });
+    loadRows (pageResult) {
+        this.loadRowsData(pageResult.data);
+        this.totalCount = pageResult.meta.totalCount;
+
+        return pageResult;
     }
 }

@@ -15,7 +15,7 @@ const checkScrollOnRefreshDataDelay = 1000;
 
 export default class DatagridController {
     constructor ($compile, $element, $transclude, $q, $scope, $window, $timeout, ouiDatagridPaging,
-                 ouiDatagridColumnBuilder, ouiDatagridConfiguration) {
+                 ouiDatagridColumnBuilder, ouiDatagridConfiguration, ouiDatagridService) {
         "ngInject";
 
         this.$compile = $compile;
@@ -27,6 +27,7 @@ export default class DatagridController {
         this.$timeout = $timeout;
         this.ouiDatagridPaging = ouiDatagridPaging;
         this.ouiDatagridColumnBuilder = ouiDatagridColumnBuilder;
+        this.ouiDatagridService = ouiDatagridService;
         this.columnElements = [];
         this.actionColumnElements = [];
         this.extraTopElements = [];
@@ -63,6 +64,10 @@ export default class DatagridController {
         this.pageSize = parseInt(this.pageSize, 10) || this.config.pageSize;
         this.filterableColumns = [];
         this.criteria = [];
+
+        if (this.id) {
+            this.ouiDatagridService.registerDatagrid(this);
+        }
     }
 
     $postLink () {
@@ -78,47 +83,18 @@ export default class DatagridController {
         }
 
         const builtColumns = this.buildColumns();
-        this.previousRows = this.columns;
+        this.previousRows = angular.copy(this.rows);
 
-        const refreshDatagrid = () => {
-            if (this.rowsLoader) {
-                this.paging = this.ouiDatagridPaging.createRemote(this.columns, builtColumns.currentSorting, this.pageSize, this.rowLoader, this.rowsLoader);
-                this.refreshData(() => this.paging.setOffset(1));
-            } else {
-                this.paging = this.ouiDatagridPaging.createLocal(this.columns, builtColumns.currentSorting, this.pageSize, this.rowLoader, this.rows);
+        if (this.rowsLoader) {
+            this.paging = this.ouiDatagridPaging.createRemote(this.columns, builtColumns.currentSorting, this.pageSize, this.rowLoader, this.rowsLoader);
+            this.refreshData(() => this.paging.setOffset(1));
+        } else {
+            this.paging = this.ouiDatagridPaging.createLocal(this.columns, builtColumns.currentSorting, this.pageSize, this.rowLoader, this.rows);
 
-                if (this.rows) {
-                    this.refreshData(() => this.paging.setRows(this.rows));
-                }
+            if (this.rows) {
+                this.refreshData(() => this.paging.setRows(this.rows));
             }
-        };
-
-        this.$scope.$on("datagrid-refresh", () => {
-            if (!this.refreshDatagridPromise) {
-                refreshDatagrid();
-            }
-        });
-        refreshDatagrid();
-
-        this.$scope.$on("datagrid-update-rows", (ev, updater) => {
-            const doUpdate = () => {
-                if (angular.isFunction(updater)) {
-                    const rowCount = this.displayedRows.length;
-                    updater(this.displayedRows);
-                    const rowDiff = this.displayedRows.length - rowCount;
-
-                    // In case rows have been removed/added, updates paging total count
-                    if (this.paging) {
-                        this.paging.totalCount += rowDiff;
-                    }
-                }
-            };
-            if (this.refreshDatagridPromise) {
-                this.refreshDatagridPromise.finally(doUpdate);
-            } else {
-                doUpdate();
-            }
-        });
+        }
 
         // Manage responsiveness
         if (this.hasActionMenu) {
@@ -157,6 +133,10 @@ export default class DatagridController {
         if (this.hasActionMenu) {
             angular.element(this.$window).off("resize", this.checkScroll);
             angular.element(this.scrollablePanel).off("scroll");
+        }
+
+        if (this.id) {
+            this.ouiDatagridService.unregisterDatagrid(this.id);
         }
     }
 
@@ -233,16 +213,18 @@ export default class DatagridController {
         });
     }
 
-    refreshData (callback, skipSortAndFilter, requireScrollToTop) {
+    refreshData (callback, skipSortAndFilter, requireScrollToTop, hideLoader, forceLoadRows) {
         if (this.loading) {
-            return;
+            return this.$q.when();
         }
 
-        this.loading = true;
-        this.displayedRows = DatagridController.createEmptyRows(this.paging.getCurrentPageSize());
+        if (!hideLoader) {
+            this.loading = true;
+            this.displayedRows = DatagridController.createEmptyRows(this.paging.getCurrentPageSize());
+        }
 
-        this.refreshDatagridPromise = this.$q.when(callback())
-            .then(() => this.paging.loadData(skipSortAndFilter))
+        this.refreshDatagridPromise = this.$q.when((callback || angular.noop)())
+            .then(() => this.paging.loadData(skipSortAndFilter, forceLoadRows))
             .then(result => {
                 this.displayedRows = result.data;
                 if (requireScrollToTop) {
@@ -257,6 +239,8 @@ export default class DatagridController {
                 this.firstLoading = false;
                 this.refreshDatagridPromise = null;
             });
+
+        return this.refreshDatagridPromise;
     }
 
     sort (column) {

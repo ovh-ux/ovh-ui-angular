@@ -5,18 +5,27 @@ export default class DatagridLocalPaging extends DatagridPagingAbstract {
     constructor (columns, currentSorting, pageSize, rowLoader, pagingService, rows) {
         super(columns, currentSorting, pageSize, rowLoader, pagingService);
 
-        this.rows = rows;
-        this.rowLoader = rowLoader;
-        this.totalCount = rows ? rows.length : 0;
+        this.setRows(rows);
     }
 
     setRows (rows) {
-        this.rows = rows;
+        // Keep pristine rows to force reload if necessary.
+        this.rows = angular.copy(rows);
+
+        // Work with cachedRows.
+        // Copied to not trigger reload in $doCheck.
+        this.cachedRows = angular.copy(rows);
+
         this.totalCount = rows ? rows.length : 0;
     }
 
-    loadData (skipSortAndFilter) {
-        if (!skipSortAndFilter) {
+    loadData (skipSortAndFilter, forceLoadRows) {
+        // Reset rows.
+        if (forceLoadRows) {
+            this.cachedRows = angular.copy(this.rows);
+        }
+
+        if (!skipSortAndFilter || forceLoadRows) {
             this._filter();
             this._sort();
         }
@@ -28,25 +37,27 @@ export default class DatagridLocalPaging extends DatagridPagingAbstract {
                 totalCount: this.sortedRows.length
             }
         })
-            .then(result => {
-                this.preventLoadingRows = true;
-                this.loadRowsData(result.data)
-                    .finally(() => {
-                        // Delay the change of the value to prevent $doCheck of DatagridController
-                        // calling refreshData for the last update.
-                        this.$timeout(() => {
-                            this.preventLoadingRows = false;
-                        });
-                    });
-                this.totalCount = result.meta.totalCount;
+            .then(result => this.loadRows(result));
+    }
 
-                return result;
+    loadRows (pageResult) {
+        this.preventLoadingRows = true;
+        this.loadRowsData(pageResult.data)
+            .finally(() => {
+                // Delay the change of the value to prevent $doCheck of DatagridController
+                // calling refreshData for the last update.
+                this.$timeout(() => {
+                    this.preventLoadingRows = false;
+                });
             });
+        this.totalCount = pageResult.meta.totalCount;
+
+        return pageResult;
     }
 
     _filter () {
         const filter = new Filter(this.criteria, this.columns);
-        this.filteredRows = filter.applyFilter(this.rows);
+        this.filteredRows = filter.applyFilter(this.cachedRows);
     }
 
     _sort () {

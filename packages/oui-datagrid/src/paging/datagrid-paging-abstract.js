@@ -14,6 +14,9 @@ export default class DatagridPagingAbstract {
         this.orderByFilter = pagingService.orderByFilter;
 
         this.preventLoadingRows = false;
+
+        this.cachedPageResult = null;
+        this.cachedPageResultPristine = null;
     }
 
     setCriteria (criteria) {
@@ -108,5 +111,9 @@ export default class DatagridPagingAbstract {
     isRowLoaded (row) {
         return this.columns.map(column => hasProperty(row, column.name))
             .reduce((a, b) => a && b, true);
+    }
+
+    reloadRows () {
+        return this.loadRows(null, true);
     }
 }
