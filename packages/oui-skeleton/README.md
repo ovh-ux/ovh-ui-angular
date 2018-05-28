@@ -19,8 +19,18 @@
 <oui-skeleton size="auto"></oui-skeleton>
 ```
 
+### Randomized width
+```html:preview
+<oui-skeleton randomized></oui-skeleton>
+<oui-skeleton randomized></oui-skeleton>
+<oui-skeleton randomized></oui-skeleton>
+<oui-skeleton randomized></oui-skeleton>
+<oui-skeleton randomized></oui-skeleton>
+```
+
 ## API
 
-| Attribute     | Type                    | Binding | One-time Binding | Values                     | Default               | Description
-| ----          | ----                    | ----    | ----             | ----                       | ----                  | ----
-| size          | String                  | @?      | yes              | `xs`, `s`, `m`, `l`, `xl`  | `auto`                | Skeleton size
+| Attribute     | Type      | Binding | One-time Binding | Values                     | Default   | Description
+| ----          | ----      | ----    | ----             | ----                       | ----      | ----
+| size          | String    | @?      | yes              | `xs`, `s`, `m`, `l`, `xl`  | `auto`    | Skeleton size
+| randomized    | Boolean   | <?      | yes              |                            | `false`   | Randomized width flag

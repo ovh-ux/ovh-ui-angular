@@ -13,14 +13,21 @@ describe("ouiSkeleton", () => {
     describe("Component", () => {
         it("should display a oui-skeleton", () => {
             const element = TestUtils.compileTemplate("<oui-skeleton></oui-skeleton");
-            expect(angular.element(element[0].querySelector(".oui-skeleton"))).toBeTruthy();
+            expect(element).toBeTruthy();
         });
 
         it("should display a oui skeleton div", () => {
             const element = TestUtils.compileTemplate("<oui-skeleton size=\"m\"></oui-skeleton");
 
             $timeout.flush();
-            expect(angular.element(element[0].querySelector(".oui-skeleton_m"))).toBeTruthy();
+            expect(element.hasClass("oui-skeleton_m")).toBeTruthy();
+        });
+
+        it("should display a oui skeleton div with a randomized width", () => {
+            const element = TestUtils.compileTemplate("<oui-skeleton randomized></oui-skeleton");
+
+            $timeout.flush();
+            expect(!!element.css("width")).toBeTruthy();
         });
     });
 });

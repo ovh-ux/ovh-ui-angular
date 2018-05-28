@@ -1,4 +1,4 @@
-import { addDefaultParameter } from "@oui-angular/common/component-utils";
+import { addBooleanParameter, addDefaultParameter } from "@oui-angular/common/component-utils";
 
 export default class {
     constructor ($attrs, $element, $timeout) {
@@ -11,12 +11,21 @@ export default class {
 
     $onInit () {
         addDefaultParameter(this, "size", "auto");
+        addBooleanParameter(this, "randomized");
     }
 
     $postLink () {
-        this.$timeout(() =>
-            this.$element
-                .addClass(`oui-skeleton oui-skeleton_${this.size}`)
-        );
+        this.$timeout(() => {
+            this.$element.addClass(`oui-skeleton oui-skeleton_${this.size}`);
+
+            if (this.randomized) {
+                // Needed for eslint
+                const minWidth = 30;
+                const maxWidth = 100;
+                const randomWidth = Math.round((Math.random() * (maxWidth - minWidth)) + minWidth);
+
+                this.$element.css("width", `${randomWidth}%`);
+            }
+        });
     }
 }
