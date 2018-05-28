@@ -5,6 +5,8 @@ import originalFakeData from "./index.spec.data.json";
 describe("ouiDatagrid", () => {
     let TestUtils;
     let $rootScope;
+    let $timeout;
+    let ouiDatagridService;
     let fakeData;
 
     const getRows = element => element[0].querySelectorAll(".oui-datagrid__body .oui-datagrid__row:not(.oui-datagrid__row_loading)");
@@ -25,10 +27,11 @@ describe("ouiDatagrid", () => {
     beforeEach(angular.mock.module("oui.test-utils"));
     beforeEach(angular.mock.module("oui.action-menu"));
 
-    beforeEach(inject((_TestUtils_, _$rootScope_) => {
+    beforeEach(inject((_TestUtils_, _$rootScope_, _$timeout_, _ouiDatagridService_) => {
         TestUtils = _TestUtils_;
         $rootScope = _$rootScope_;
-
+        $timeout = _$timeout_;
+        ouiDatagridService = _ouiDatagridService_;
         fakeData = angular.copy(originalFakeData);
     }));
 
@@ -70,6 +73,9 @@ describe("ouiDatagrid", () => {
                 );
 
                 changeCellValue(element, 0, "firstName", newCellValue);
+
+                // Let DatagridPagingAbstract.preventLoadingRows return to false.
+                $timeout.flush();
 
                 const $firstRow = getRow(element, 0);
 
@@ -203,6 +209,39 @@ describe("ouiDatagrid", () => {
 
                         expect(getCell($row, 1).children().html()).toBe(lastName);
                     });
+            });
+
+            it("should refresh datagrid", () => {
+                const element = TestUtils.compileTemplate(`
+                        <oui-datagrid
+                            id="refreshableDatagrid"
+                            rows="$ctrl.rows"
+                            row-loader="$ctrl.loadRow($row)">
+                            <oui-column property="firstName"></oui-column>
+                            <oui-column property="lastName"></oui-column>
+                            <oui-column property="more"></oui-column>
+                        </oui-datagrid>
+                    `, {
+                    rows: angular.copy(fakeData.slice(0, 1)),
+                    loadRow: ($row) => ({
+                        ...$row,
+                        more: `More ${1000 * Math.random()}` //eslint-disable-line
+                    })
+                });
+
+                let row = getRow(element, 0);
+                let cell = getCell(row, 2);
+
+                const originalValue = cell.text();
+
+                ouiDatagridService.refresh("refreshableDatagrid");
+                element.scope().$digest();
+
+                row = getRow(element, 0);
+                cell = getCell(row, 2);
+                const newValue = cell.text();
+
+                expect(newValue).not.toEqual(originalValue);
             });
 
             describe("Filtering", () => {
@@ -535,6 +574,47 @@ describe("ouiDatagrid", () => {
                     }
                 }));
             });
+
+            it("should refresh datagrid", inject(($q) => {
+                const element = TestUtils.compileTemplate(`
+                        <oui-datagrid
+                            id="refreshableDatagrid"
+                            rows-loader="$ctrl.loadRows($config)"
+                            row-loader="$ctrl.loadRow($row)">
+                            <oui-column property="firstName"></oui-column>
+                            <oui-column property="lastName"></oui-column>
+                            <oui-column property="more"></oui-column>
+                        </oui-datagrid>
+                    `, {
+                    loadRows: () => $q.when({
+                        data: angular.copy(fakeData.slice(0, 1)),
+                        meta: {
+                            currentOffset: 0,
+                            pageCount: 1,
+                            totalCount: 1,
+                            pageSize: 1
+                        }
+                    }),
+                    loadRow: ($row) => ({
+                        ...$row,
+                        more: `More ${1000 * Math.random()}` //eslint-disable-line
+                    })
+                });
+
+                let row = getRow(element, 0);
+                let cell = getCell(row, 2);
+
+                const originalValue = cell.text();
+
+                ouiDatagridService.refresh("refreshableDatagrid");
+                element.scope().$digest();
+
+                row = getRow(element, 0);
+                cell = getCell(row, 2);
+                const newValue = cell.text();
+
+                expect(newValue).not.toEqual(originalValue);
+            }));
 
             describe("Filtering", () => {
                 describe("Search text", () => {

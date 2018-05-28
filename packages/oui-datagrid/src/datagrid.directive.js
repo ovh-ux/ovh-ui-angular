@@ -8,6 +8,7 @@ export default () => {
         controllerAs: "$ctrl",
         bindToController: true,
         scope: {
+            id: "@?",
             columnsDescription: "<?columns",
             pageSize: "@?",
             rows: "<?",

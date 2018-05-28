@@ -428,6 +428,87 @@ You can use `row-loader`. It take the current row as argument and must return a 
 </oui-datagrid>
 ```
 
+### Refresh
+
+#### Local datagrid
+
+Local datagrid can be refreshed by simply mutate `rows` value.
+
+To refresh asynchronous data, you need to define an id for the datagrid and use `ouiDatagridService` to refresh it.
+
+```html:preview
+<oui-datagrid
+  page-size="5"
+  id="localRefreshDatagrid"
+  rows="$ctrl.data"
+  row-loader="$ctrl.loadRandom($row)">
+  <oui-column
+    title="'Firstname'"
+    property="firstName"></oui-column>
+  <oui-column
+    title="'Lastname'"
+    property="lastName"></oui-column>
+  <oui-column
+    title="'Random value'"
+    property="number"></oui-column>
+</oui-datagrid>
+<button type="button"
+    class="oui-button oui-button_secondary"
+    ng-click="$ctrl.refreshDatagrid('localRefreshDatagrid')">Refresh</button>
+```
+
+In your controller:
+
+```javascript
+class YourController {
+    constructor(ouiDatagridService) {
+        this.ouiDatagridService = ouiDatagridService;
+    }
+
+    refreshDatagrid (datagridId, showSpinner) {
+        this.ouiDatagridService.refresh(datagridId, showSpinner);
+    }
+}
+```
+
+#### Remote datagrid
+
+For a remote datagrid, the whole page is refreshed with `ouiDatagridService.refresh` as it will firstly
+call `rows-loader` and then a `row-loader` call for each line.
+
+```html:preview
+<oui-datagrid
+  page-size="5"
+  id="remoteRefreshDatagrid"
+  rows-loader="$ctrl.loadPartialData($config)"
+  row-loader="$ctrl.loadRowWithRandom($row)">
+  <oui-column
+    title="'Firstname'"
+    property="firstName"></oui-column>
+  <oui-column
+    title="'Lastname'"
+    property="lastName"></oui-column>
+  <oui-column
+    title="'Email'"
+    property="email"></oui-column>
+  <oui-column
+    title="'Phone'"
+    property="phone"></oui-column>
+  <oui-column
+    title="'Birth'"
+    property="birth"></oui-column>
+  <oui-column
+    title="'Random value'"
+    property="number"></oui-column>
+</oui-datagrid>
+<button type="button"
+    class="oui-button oui-button_secondary"
+    ng-click="$ctrl.refreshDatagrid('remoteRefreshDatagrid')">Refresh</button>
+<button type="button"
+    class="oui-button oui-button_secondary"
+    ng-click="$ctrl.refreshDatagrid('remoteRefreshDatagrid', true)">Refresh with spinner</button>
+```
+
 ### Extra top content
 
 ```html:preview
@@ -471,6 +552,7 @@ You can use `row-loader`. It take the current row as argument and must return a 
 
 | Attribute         | Type            | Binding | One-time binding | Values                    | Default             | Description                                       |
 | ----              | ----            | ----    | ----             | ----                      | ----                | ----                                              |
+| `id`              | string          | @?      |                  |                           |                     | id of the datagrid                                |
 | `page-size`       | number          | @?      |                  |                           | 25                  | maximum number of rows to show on each pages      |
 | `rows`            | array           | <?      | yes              |                           |                     | rows to show                                      |
 | `rows-loader`     | function        | &?      | yes              |                           |                     | gets all rows (returns a promise with all rows)   |
@@ -516,6 +598,18 @@ const typeOptions = {
 ### oui-action-menu
 
 Can be used as a column and will be sticked on side on smaller devices. Documentation about `oui-action-menu` can be found [here](#!/oui-angular/action-menu).
+
+### ouiDatagridService
+
+#### refresh
+
+It will refresh the content of a datagrid that has a specific `id`.
+
+| Argument          | Type            | Default      | Description                                                                            |
+| ----              | ----            | ----         | ----                                                                                   |
+| `id`              | string          | (mandatory)  | the `id` of the datagrid                                                               |
+| `showSpinner`     | boolean         | false        | if you want to show the spinner while `rows-loader` is executed (like a first load)    |
+
 
 ## Configuration
 
