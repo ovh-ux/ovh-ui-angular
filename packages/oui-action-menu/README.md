@@ -87,8 +87,8 @@
 
 | Attribute         | Type            | Binding | One-time binding | Values                    | Default             | Description                        |
 | ----              | ----            | ----    | ----             | ----                      | ----                | ----                               |
-| `text`            | string          | @       | yes              |                           |                     | button label                       |
-| `aria-label`      | string          | @?      | yes              |                           |                     | accessibility label                |
+| `text`            | string          | @       |                  |                           |                     | button label                       |
+| `aria-label`      | string          | @?      |                  |                           |                     | accessibility label                |
 | `href`            | string          | @?      | yes              |                           |                     | hypertext link (link)              |
 | `disabled`        | boolean         | <?      |                  |                           | `false`             | disable (button).                  |
 | `external`        | boolean         | @?      | yes              |                           |                     | display external icon (link)       |
