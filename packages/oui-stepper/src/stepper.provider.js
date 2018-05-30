@@ -12,6 +12,10 @@ export default class {
         };
     }
 
+    /**
+     * Set the translations
+     * @param {Object} translations a map of translations
+     */
     setTranslations (translations) {
         this.translations = merge(this.translations, translations);
         return this;

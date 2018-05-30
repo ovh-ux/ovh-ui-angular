@@ -6,8 +6,8 @@ export default {
     controller,
     controllerAs: "$ctrl",
     bindings: {
-        text: "@?",
         name: "@?",
-        id: "@?"
+        id: "@?",
+        model: "<?"
     }
 };

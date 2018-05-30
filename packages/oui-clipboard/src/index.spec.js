@@ -1,53 +1,33 @@
 describe("ouiClipboard", () => {
-    let TestUtils;
-    const copyToClipboardLabel = "Copy to Clipboard";
-    const copiedLabel = "Copied";
-    const copy = "copy";
-    const initial = "initial";
-    const success = "success";
+    let $timeout;
+    let testUtils;
+    let configuration;
 
     beforeEach(angular.mock.module("oui.clipboard"));
+    beforeEach(angular.mock.module("oui.clipboard.configuration"));
     beforeEach(angular.mock.module("oui.test-utils"));
-    beforeEach(angular.mock.module("test.clipboardConfig"));
 
-    angular.module("test.clipboardConfig", [
-        "oui.clipboard"
-    ]).config(ouiClipboardConfigurationProvider => {
-        ouiClipboardConfigurationProvider.setTranslations({
-            copyToClipboardLabel,
-            copiedLabel
-        });
-        ouiClipboardConfigurationProvider.setStatus({
-            initial,
-            success
-        });
-        ouiClipboardConfigurationProvider.setAction({
-            copy
-        });
-    });
-
-    beforeEach(inject(_TestUtils_ => {
-        TestUtils = _TestUtils_;
+    beforeEach(inject((_$timeout_, _TestUtils_) => {
+        $timeout = _$timeout_;
+        testUtils = _TestUtils_;
     }));
 
-    function getInputElement (element) {
-        return element[0].querySelector("input[type=text]");
-    }
-
-    function getContainerElement (element) {
-        return element[0].querySelector(".oui-input-group_clipboard-container");
-    }
-
     describe("Provider", () => {
-        let configuration;
+
+        angular.module("oui.clipboard.configuration", [
+            "oui.clipboard"
+        ]).config(ouiClipboardConfigurationProvider => {
+            ouiClipboardConfigurationProvider.setTranslations({
+                foo: "bar"
+            });
+        });
 
         beforeEach(inject(_ouiClipboardConfiguration_ => {
             configuration = _ouiClipboardConfiguration_;
         }));
 
-        it("should have custom values", () => {
-            expect(configuration.translations.copyToClipboardLabel).toEqual(copyToClipboardLabel);
-            expect(configuration.translations.copiedLabel).toEqual(copiedLabel);
+        it("should have custom options", () => {
+            expect(configuration.translations.foo).toEqual("bar");
         });
     });
 
@@ -55,51 +35,45 @@ describe("ouiClipboard", () => {
 
         describe("text field", () => {
             it("should generate an input with the given text", () => {
-                const element = TestUtils.compileTemplate("<oui-clipboard data-text='copy this text'></oui-clipboard>");
+                const model = "foo";
+                const element = testUtils.compileTemplate("<oui-clipboard model='$ctrl.model'></oui-clipboard>", {
+                    model
+                });
 
-                expect(getInputElement(element)).toBeDefined();
-                const inputElement = getInputElement(element);
-                expect(angular.element(inputElement).val()).toMatch("copy this text");
+                const inputElement = element[0].querySelector("input[type=text]");
+                expect(angular.element(inputElement).val()).toMatch(model);
             });
 
             it("should generate an input with name and id attribute", () => {
-                const element = TestUtils.compileTemplate("<oui-clipboard data-id='id' data-name='name'></oui-clipboard>");
+                const element = testUtils.compileTemplate("<oui-clipboard data-id='id' data-name='name'></oui-clipboard>");
+                const inputElement = element[0].querySelector("input[type=text]");
 
-                expect(getInputElement(element)).toBeDefined();
-                const inputElement = getInputElement(element);
+                $timeout.flush();
+
                 expect(angular.element(inputElement).attr("id")).toBe("id");
                 expect(angular.element(inputElement).attr("name")).toBe("name");
             });
 
-            it("should let status to initial", () => {
-
-                const element = TestUtils.compileTemplate("<oui-clipboard data-text='copy this text'></oui-clipboard>");
+            it("should update tooltip text when copied on click", () => {
+                const element = testUtils.compileTemplate("<oui-clipboard data-text='copy this text'></oui-clipboard>");
+                const inputElement = angular.element(element[0].querySelector("input[type=text]"));
                 const $ctrl = element.controller("ouiClipboard");
-                expect($ctrl.status).toEqual(initial);
-                expect($ctrl.ouiClipboardConfiguration.action.copy).toEqual(copy);
+
+                inputElement.triggerHandler("click");
+
+                $timeout.flush();
+                expect($ctrl.tooltipText).toEqual(configuration.translations.copiedLabel);
             });
 
-            it("should change status to success on click", () => {
-                const element = TestUtils.compileTemplate("<oui-clipboard data-text='copy this text'></oui-clipboard>");
-
-                const containerElement = getContainerElement(element);
-                const $containerElement = angular.element(containerElement);
-
+            it("should reset tooltip text", () => {
+                const element = testUtils.compileTemplate("<oui-clipboard data-text='copy this text'></oui-clipboard>");
                 const $ctrl = element.controller("ouiClipboard");
-                $containerElement.triggerHandler("click");
 
-                expect($ctrl.status).toEqual(success);
-            });
-
-            it("should reset tool tip text and set status to initial", () => {
-                const element = TestUtils.compileTemplate("<oui-clipboard data-text='copy this text'></oui-clipboard>");
-                const $ctrl = element.controller("ouiClipboard");
                 $ctrl.reset();
-                $ctrl.handleResult(false);
-                expect($ctrl.tooltipText).toEqual(copyToClipboardLabel);
-                expect($ctrl.status).toEqual(initial);
-            });
+                $timeout.flush();
 
+                expect($ctrl.tooltipText).toEqual(configuration.translations.copyToClipboardLabel);
+            });
         });
     });
 });
