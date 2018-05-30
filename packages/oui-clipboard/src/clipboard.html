@@ -1,10 +1,13 @@
-<div oui-tooltip="{{$ctrl.tooltipText}}" class="oui-input-group_clipboard-container">
+<div class="oui-input-group_clipboard-container"
+    oui-tooltip="{{$ctrl.tooltipText}}"
+    ng-click="$ctrl.onClick()">
     <input class="oui-input"
         type="text"
         ng-attr-id="{{::$ctrl.id}}"
         ng-attr-name="{{::$ctrl.name}}"
-        ng-click="$ctrl.onClick()"
         ng-model="::$ctrl.model"
         contenteditable>
-    <button class="oui-button"><i class="oui-icon oui-icon-copy-normal" aria-hidden="true"></i></button>
+    <button class="oui-button">
+        <span class="oui-icon oui-icon-copy-normal"></span>
+    </button>
 </div>
