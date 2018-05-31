@@ -29,6 +29,7 @@ import "@oui-angular/oui-popover/src";
 import "@oui-angular/oui-stepper/src";
 import "@oui-angular/oui-skeleton/src";
 import "@oui-angular/oui-clipboard/src";
+import "@oui-angular/oui-modal-on-boarding/src";
 
 angular.module("oui", [
     "oui.button",
@@ -61,5 +62,6 @@ angular.module("oui", [
     "oui.popover",
     "oui.stepper",
     "oui.skeleton",
-    "oui.clipboard"
+    "oui.clipboard",
+    "oui.modal-on-boarding"
 ]);

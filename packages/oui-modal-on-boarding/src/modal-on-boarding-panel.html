@@ -1,0 +1,36 @@
+<div class="oui-modal-on-boarding__content-panel" aria-hidden="true">
+    <div class="oui-modal-on-boarding__picture-container"
+         ng-if="::$ctrl.picture">
+        <div class="oui-modal-on-boarding__picture"
+             ng-style="{ 'background-image': 'url(' + $ctrl.picture + ')' }">
+        </div>
+    </div>
+    <div class="oui-modal-on-boarding__content-container"
+         ng-if="::$ctrl.title || $ctrl.text">
+        <div class="oui-modal-on-boarding__content-title"
+             ng-bind="::$ctrl.title"
+             ng-if="::$ctrl.title">
+        </div>
+        <div class="oui-modal-on-boarding__content-text"
+             ng-bind-html="::$ctrl.text"
+             ng-if="::$ctrl.text">
+        </div>
+        <div class="oui-modal-on-boarding__content-action"
+             ng-if="::$ctrl.onClick || $ctrl.href">
+            <button type="button" class="oui-button oui-button_secondary"
+                    ng-bind="::$ctrl.label"
+                    ng-click="$ctrl.onClick()"
+                    ng-if="::$ctrl.onClick && !$ctrl.href">
+            </button>
+            <a class="oui-button oui-button_secondary"
+               ng-attr-rel="{{ ::$ctrl.external ? 'noopener' : undefined }}"
+               ng-attr-target="{{ ::$ctrl.external ? '_blank' : undefined }}"
+               ng-href="{{ ::$ctrl.href }}"
+               ng-if="::$ctrl.href">
+                <span ng-bind="::$ctrl.label"></span>
+                <span class="oui-icon oui-icon-external_link" aria-hidden="true"
+                      ng-if="::$ctrl.external"></span>
+            </a>
+        </div>
+    </div>
+</div>
