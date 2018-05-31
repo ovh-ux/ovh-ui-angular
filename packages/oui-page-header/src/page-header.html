@@ -1,0 +1,13 @@
+<header class="oui-page-header">
+    <div class="oui-page-header__container">
+        <div class="oui-page-header__content">
+            <h1 class="oui-page-header__title">{{::$ctrl.title}}</h1>
+            <h2 class="oui-page-header__subtitle"
+            	ng-if="::!!$ctrl.subtitle">{{::$ctrl.subtitle}}</h2>
+        </div>
+        <div ng-if="$ctrl.transcludeGuide"
+        	 ng-transclude="guide"></div>
+    </div>
+    <div ng-if="$ctrl.transcludeTabs"
+		 ng-transclude="tabs"></div>
+</header>
