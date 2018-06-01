@@ -32,48 +32,77 @@ describe("ouiClipboard", () => {
     });
 
     describe("Component", () => {
+        it("should generate an input with the given text", () => {
+            const model = "foo";
+            const element = testUtils.compileTemplate("<oui-clipboard model='$ctrl.model'></oui-clipboard>", {
+                model
+            });
 
-        describe("text field", () => {
-            it("should generate an input with the given text", () => {
-                const model = "foo";
-                const element = testUtils.compileTemplate("<oui-clipboard model='$ctrl.model'></oui-clipboard>", {
-                    model
+            const inputElement = element[0].querySelector("input[type=text]");
+            expect(angular.element(inputElement).val()).toMatch(model);
+        });
+
+        it("should generate an input with name and id attribute", () => {
+            const element = testUtils.compileTemplate("<oui-clipboard id='id' name='name'></oui-clipboard>");
+            const inputElement = element[0].querySelector("input[type=text]");
+
+            $timeout.flush();
+
+            expect(angular.element(inputElement).attr("id")).toBe("id");
+            expect(angular.element(inputElement).attr("name")).toBe("name");
+        });
+
+        it("should have an instance of clipboardjs", () => {
+            const model = "foo";
+            const element = testUtils.compileTemplate("<oui-clipboard model='$ctrl.model'></oui-clipboard>", {
+                model
+            });
+            const $ctrl = element.controller("ouiClipboard");
+
+            expect($ctrl.clipboard).toBeDefined();
+
+            const target = angular.element($ctrl.clipboard.target());
+            expect(target.hasClass("oui-clipboard__control")).toBeTruthy();
+            expect($ctrl.clipboard.text()).toBe(model);
+        });
+
+        it("should update tooltip text when copied on click", (done) => {
+            const model = "bar";
+            const element = testUtils.compileTemplate("<oui-clipboard model='$ctrl.model'></oui-clipboard>", {
+                model
+            });
+            const btnElement = element[0].querySelector(".oui-clipboard__button");
+            const $ctrl = element.controller("ouiClipboard");
+
+            $ctrl.clipboard
+                .on("success", () => {
+                    $timeout.flush();
+                    expect($ctrl.tooltipText).toEqual(configuration.translations.copiedLabel);
+                    done();
+                })
+                .on("error", () => {
+                    $timeout.flush();
+                    expect($ctrl.tooltipText).toEqual(configuration.translations.notSupported);
+                    done();
                 });
 
-                const inputElement = element[0].querySelector("input[type=text]");
-                expect(angular.element(inputElement).val()).toMatch(model);
-            });
+            btnElement.click();
+        });
 
-            it("should generate an input with name and id attribute", () => {
-                const element = testUtils.compileTemplate("<oui-clipboard data-id='id' data-name='name'></oui-clipboard>");
-                const inputElement = element[0].querySelector("input[type=text]");
+        it("should reset tooltip text", () => {
+            const element = testUtils.compileTemplate("<oui-clipboard text='copy this text'></oui-clipboard>");
+            const btnElement = element[0].querySelector(".oui-clipboard__button");
+            const $ctrl = element.controller("ouiClipboard");
 
-                $timeout.flush();
+            // Simulate click
+            btnElement.click();
+            $timeout.flush();
 
-                expect(angular.element(inputElement).attr("id")).toBe("id");
-                expect(angular.element(inputElement).attr("name")).toBe("name");
-            });
+            // Then reset
+            $ctrl.reset();
+            $timeout.flush();
 
-            it("should update tooltip text when copied on click", () => {
-                const element = testUtils.compileTemplate("<oui-clipboard data-text='copy this text'></oui-clipboard>");
-                const inputElement = angular.element(element[0].querySelector("input[type=text]"));
-                const $ctrl = element.controller("ouiClipboard");
-
-                inputElement.triggerHandler("click");
-
-                $timeout.flush();
-                expect($ctrl.tooltipText).toEqual(configuration.translations.copiedLabel);
-            });
-
-            it("should reset tooltip text", () => {
-                const element = testUtils.compileTemplate("<oui-clipboard data-text='copy this text'></oui-clipboard>");
-                const $ctrl = element.controller("ouiClipboard");
-
-                $ctrl.reset();
-                $timeout.flush();
-
-                expect($ctrl.tooltipText).toEqual(configuration.translations.copyToClipboardLabel);
-            });
+            expect($ctrl.tooltipText).toEqual(configuration.translations.copyToClipboardLabel);
         });
     });
 });

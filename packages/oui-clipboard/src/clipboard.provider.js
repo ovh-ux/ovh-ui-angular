@@ -3,7 +3,8 @@ export default class {
     constructor () {
         this.translations = {
             copyToClipboardLabel: "Copy to Clipboard",
-            copiedLabel: "Copied"
+            copiedLabel: "Copied",
+            notSupported: "Not supported. Please copy the text manually"
         };
     }
 

@@ -1,6 +1,4 @@
 import Clipboard from "clipboard";
-
-const switchBackDelay = 2000;
 export default class {
     constructor ($attrs, $element, $timeout, ouiClipboardConfiguration) {
         "ngInject";
@@ -31,25 +29,25 @@ export default class {
 
         // Init the clipboard instance
         this.clipboard = new Clipboard(this.trigger, {
-            action: "copy",
             target: () => this.target,
             text: () => this.model
         });
 
         // Events for updating the tooltip
         this.clipboard
-            .on("success", () => {
-                this.$timeout(() => {
-                    this.target.select();
-                    this.tooltipText = this.translations.copiedLabel;
-                });
+            .on("success", () => this.selectInputText(this.translations.copiedLabel))
+            .on("error", () => this.selectInputText(this.translations.notSupported));
+    }
 
-                // Reset after a delay
-                this.$timeout(() => this.reset(), switchBackDelay);
-            })
-            .on("error", () => {
-                throw new Error("Could not copy text to clipboard.");
-            });
+    selectInputText (tooltipText) {
+        const rangeSelection = 9999;
+
+        this.$timeout(() => {
+            // Need to focus before selecting
+            this.target.focus();
+            this.target.setSelectionRange(0, rangeSelection);
+            this.tooltipText = tooltipText;
+        });
     }
 
     onInputClick () {
@@ -57,6 +55,11 @@ export default class {
     }
 
     reset () {
-        this.tooltipText = this.translations.copyToClipboardLabel;
+        const resetDelay = 500;
+
+        // Add delay for resetting after tooltip animation
+        this.$timeout(() => {
+            this.tooltipText = this.translations.copyToClipboardLabel;
+        }, resetDelay);
     }
 }

@@ -1,5 +1,6 @@
 <div class="oui-clipboard__container"
-    oui-tooltip="{{$ctrl.tooltipText}}">
+    oui-tooltip="{{$ctrl.tooltipText}}"
+    ng-mouseleave="$ctrl.reset()">
     <input class="oui-clipboard__control oui-input"
         type="text"
         ng-attr-id="{{::$ctrl.id}}"
