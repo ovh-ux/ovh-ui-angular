@@ -9,24 +9,12 @@ describe("ouiProgress", () => {
     }));
 
     describe("ouiProgress Component", () => {
-        function getProgressComponent (element, type) {
-            return element[0].querySelector(`.oui-progress_${type}`);
-        }
-
         function getProgressBarComponent (element, type) {
             return element[0].querySelector(`.oui-progress__bar_${type}`);
         }
 
-        function getIndeterminateProgressComponent (element) {
-            return element[0].querySelector(".oui-progress_indeterminate");
-        }
-
         function getProgressBarLabel (element) {
             return element[0].querySelector(".oui-progress__label");
-        }
-
-        function getProgressBarAlignedLabel (element, alignment) {
-            return element[0].querySelector(`.oui-progress__bar_text-${alignment}`);
         }
 
         function getProgressThreshold (element) {
@@ -39,108 +27,73 @@ describe("ouiProgress", () => {
             const warningValue = 60;
             const errorValue = 100;
             const infoElement = TestUtils.compileTemplate(`
-                <oui-progress type="info">
-                    <oui-progress-bar value="${infoValue}"></oui-progress-bar>
+                <oui-progress type="info" value="${infoValue}">
                 </oui-progress>`
             );
             const successElement = TestUtils.compileTemplate(`
-                <oui-progress type="success">
-                    <oui-progress-bar value="${successValue}"></oui-progress-bar>
+                <oui-progress type="success" value="${successValue}">
                 </oui-progress>`
             );
             const warningElement = TestUtils.compileTemplate(`
-                <oui-progress type="warning">
-                    <oui-progress-bar value="${warningValue}"></oui-progress-bar>
+                <oui-progress type="warning" value="${warningValue}">
                 </oui-progress>`
             );
             const errorElement = TestUtils.compileTemplate(`
-                <oui-progress type="error">
-                    <oui-progress-bar value="${errorValue}"></oui-progress-bar>
+                <oui-progress type="error" value="${errorValue}">
                 </oui-progress>`
             );
-
-            expect(getProgressComponent(infoElement, "info")).toBeTruthy();
-            expect(getProgressComponent(successElement, "success")).toBeTruthy();
-            expect(getProgressComponent(warningElement, "warning")).toBeTruthy();
-            expect(getProgressComponent(errorElement, "error")).toBeTruthy();
             expect(getProgressBarComponent(infoElement, "info")).toBeTruthy();
             expect(getProgressBarComponent(successElement, "success")).toBeTruthy();
             expect(getProgressBarComponent(warningElement, "warning")).toBeTruthy();
             expect(getProgressBarComponent(errorElement, "error")).toBeTruthy();
         });
 
-        it("should display a indeterminate progress", () => {
-            const element = TestUtils.compileTemplate("<oui-progress type='info' indeterminate='true'></oui-progress>");
-            expect(getIndeterminateProgressComponent(element)).toBeTruthy();
+        it("should have the correct width set", () => {
+            const value = 5;
+            const element = TestUtils.compileTemplate(`
+                <oui-progress type="info" value="${value}">
+                </oui-progress>`
+            );
+
+            const progressBarEl = getProgressBarComponent(element, "info");
+            expect(progressBarEl).toBeTruthy();
+            expect(progressBarEl.getAttribute("style")).toBe(`width: ${value}%;`);
         });
 
-        describe("ouiProgressBar Component", () => {
-            it("should have the correct width set", () => {
-                const value = 5;
-                const element = TestUtils.compileTemplate(`
-                    <oui-progress type="info">
-                        <oui-progress-bar value="${value}"></oui-progress-bar>
-                    </oui-progress>`
-                );
+        it("should have the correct width when max-value is used", () => {
+            const value = 10;
+            const expectedWidth = value / 2;
+            const element = TestUtils.compileTemplate(`
+                <oui-progress type="info" max-value="200" value="${value}">
+                </oui-progress>`
+            );
 
-                const progressBarEl = getProgressBarComponent(element, "info");
-                expect(progressBarEl).toBeTruthy();
-                expect(progressBarEl.getAttribute("style")).toBe(`width: ${value}%;`);
-            });
+            const progressBarEl = getProgressBarComponent(element, "info");
+            expect(progressBarEl).toBeTruthy();
+            expect(progressBarEl.getAttribute("style")).toBe(`width: ${expectedWidth}%;`);
+        });
 
-            it("should have the correct width when max-value is used", () => {
-                const value = 10;
-                const expectedWidth = value / 2;
-                const element = TestUtils.compileTemplate(`
-                    <oui-progress type="info" max-value="200">
-                        <oui-progress-bar value="${value}"></oui-progress-bar>
-                    </oui-progress>`
-                );
+        it("should have the correct default label", () => {
+            const value = 5;
+            const element = TestUtils.compileTemplate(`
+                <oui-progress type="info" value="${value}">
+                </oui-progress>`
+            );
 
-                const progressBarEl = getProgressBarComponent(element, "info");
-                expect(progressBarEl).toBeTruthy();
-                expect(progressBarEl.getAttribute("style")).toBe(`width: ${expectedWidth}%;`);
-            });
+            const progressBarLabelEl = getProgressBarLabel(element);
+            expect(progressBarLabelEl.innerHTML.trim()).toBe(`${value}%`);
+        });
 
-            it("should overide parent's type", () => {
-                const type = "warning";
-                const element = TestUtils.compileTemplate(`
-                    <oui-progress type="info">
-                        <oui-progress-bar type="${type}" value="5"></oui-progress-bar>
-                    </oui-progress>`
-                );
+        it("should have the correct label", () => {
+            const value = 5;
+            const label = `Progress: ${value}%`;
+            const element = TestUtils.compileTemplate(`
+                <oui-progress type="info" value="${value}" label="${label}">
+                </oui-progress>`
+            );
 
-                const progressBarEl = getProgressBarComponent(element, type);
-                expect(progressBarEl).toBeTruthy();
-            });
-
-            it("should have the correct label", () => {
-                const value = 5;
-                const label = `${value}%`;
-                const element = TestUtils.compileTemplate(`
-                    <oui-progress type="info">
-                        <oui-progress-bar value="${value}">${label}</oui-progress-bar>
-                    </oui-progress>`
-                );
-
-                const progressBarLabelEl = getProgressBarLabel(element);
-                expect(progressBarLabelEl.innerHTML).toBe(label);
-            });
-
-            it("should have the label aligned correctly", () => {
-                const rightLabelElement = TestUtils.compileTemplate(`
-                    <oui-progress type="info">
-                        <oui-progress-bar value="5" label-align="right">5%</oui-progress-bar>
-                    </oui-progress>`
-                );
-                const leftLabelElement = TestUtils.compileTemplate(`
-                    <oui-progress type="info">
-                        <oui-progress-bar value="5" label-align="left">5%</oui-progress-bar>
-                    </oui-progress>`
-                );
-                expect(getProgressBarAlignedLabel(rightLabelElement, "right")).toBeTruthy();
-                expect(getProgressBarAlignedLabel(leftLabelElement, "left")).toBeTruthy();
-            });
+            const progressBarLabelEl = getProgressBarLabel(element);
+            expect(progressBarLabelEl.innerHTML.trim()).toBe(label);
         });
 
         describe("ouiProgressThreshold Component", () => {
@@ -149,9 +102,8 @@ describe("ouiProgress", () => {
                 const maxValue = 200;
                 const leftPosition = value / (maxValue / 100);
                 const element = TestUtils.compileTemplate(`
-                    <oui-progress type="info" max-value="${maxValue}">
+                    <oui-progress type="info" max-value="${maxValue}" value="${value}">
                         <oui-progress-threshold value="${value}"></oui-progress-threshold>
-                        <oui-progress-bar value="${value}">${value}%</oui-progress-bar>
                     </oui-progress>`
                 );
 

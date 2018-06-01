@@ -6,8 +6,10 @@ export default {
     controller,
     bindings: {
         type: "@",
+        value: "<",
+        compact: "<?",
         maxValue: "@?",
-        indeterminate: "<?"
+        label: "@?"
     },
     transclude: true
 };
