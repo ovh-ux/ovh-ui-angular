@@ -4,7 +4,7 @@ export default class {
         this.translations = {
             copyToClipboardLabel: "Copy to Clipboard",
             copiedLabel: "Copied",
-            notSupported: "Not supported. Please copy the text manually"
+            notSupported: "Copy to Clipboard not supported. Please copy the text manually"
         };
     }
 

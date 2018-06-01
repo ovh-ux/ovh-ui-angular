@@ -40,12 +40,19 @@ export default class {
     }
 
     selectInputText (tooltipText) {
-        const rangeSelection = 9999;
+        const selectionEnd = this.model.length;
 
         this.$timeout(() => {
             // Need to focus before selecting
             this.target.focus();
-            this.target.setSelectionRange(0, rangeSelection);
+
+            // Select text on the target
+            this.target.selectionStart = 0;
+            this.target.selectionEnd = selectionEnd;
+            this.target.setSelectionRange(0, selectionEnd);
+            this.target.select();
+
+            // Update tooltip text
             this.tooltipText = tooltipText;
         });
     }
