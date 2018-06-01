@@ -3,8 +3,9 @@ import Datagrid from "./datagrid.directive";
 import DatagridColumnBuilder from "./datagrid-column-builder.service";
 import DatagridExtraTop from "./extra-top/extra-top.component";
 import DatagridPaging from "./paging/datagrid-paging.service";
-import DatagridProvider from "./datagrid.provider.js";
-import DatagridService from "./datagrid.service.js";
+import DatagridParameters from "./parameters/datagrid-parameters.component";
+import DatagridProvider from "./datagrid.provider";
+import DatagridService from "./datagrid.service";
 
 angular
     .module("oui.datagrid", [
@@ -20,4 +21,5 @@ angular
     .component("ouiDatagridExtraTop", DatagridExtraTop)
     .service("ouiDatagridPaging", DatagridPaging)
     .provider("ouiDatagridConfiguration", DatagridProvider)
-    .service("ouiDatagridService", DatagridService);
+    .service("ouiDatagridService", DatagridService)
+    .component("ouiDatagridParameters", DatagridParameters);

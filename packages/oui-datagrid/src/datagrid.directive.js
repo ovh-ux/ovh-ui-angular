@@ -10,10 +10,13 @@ export default () => {
         scope: {
             id: "@?",
             columnsDescription: "<?columns",
+            columnsParameters: "<?",
+            customizable: "<?",
             pageSize: "@?",
             rows: "<?",
             rowsLoader: "&?",
-            rowLoader: "&?"
+            rowLoader: "&?",
+            onColumnsParametersChange: "&"
         },
         compile: elm => {
             // Transclude can't be used here otherwise transcluded

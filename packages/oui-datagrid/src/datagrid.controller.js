@@ -1,3 +1,5 @@
+import { addBooleanParameter } from "@oui-angular/common/component-utils";
+import { find } from "lodash";
 import { hasProperty } from "./util";
 
 import template from "./datagrid.html";
@@ -14,10 +16,12 @@ const cssSortableDesc = "oui-datagrid__header_sortable-desc";
 const checkScrollOnRefreshDataDelay = 1000;
 
 export default class DatagridController {
-    constructor ($compile, $element, $transclude, $q, $scope, $window, $timeout, ouiDatagridPaging,
-                 ouiDatagridColumnBuilder, ouiDatagridConfiguration, ouiDatagridService) {
+    constructor ($attrs, $compile, $element, $transclude, $q, $scope, $window, $timeout,
+                 ouiDatagridPaging, ouiDatagridColumnBuilder, ouiDatagridConfiguration,
+                 ouiDatagridService) {
         "ngInject";
 
+        this.$attrs = $attrs;
         this.$compile = $compile;
         this.$element = $element;
         this.$transclude = $transclude;
@@ -71,6 +75,8 @@ export default class DatagridController {
     }
 
     $postLink () {
+        addBooleanParameter(this, "customizable");
+
         this.$compile(template)(this.$scope, (clone) => {
             this.$element.append(clone);
         });
@@ -97,7 +103,7 @@ export default class DatagridController {
         }
 
         // Manage responsiveness
-        if (this.hasActionMenu) {
+        if (this.hasActionMenu || this.customizable) {
             this.scrollablePanel = this.$element[0].querySelector(".oui-datagrid-responsive-container__overflow-container");
             if (this.scrollablePanel) {
                 angular.element(this.$window).on("resize", this.checkScroll);
@@ -114,6 +120,10 @@ export default class DatagridController {
 
     $onChanges (changes) { // eslint-disable-line
         if (changes.columnsDescription && !changes.columnsDescription.isFirstChange()) {
+            this.buildColumns();
+        }
+
+        if (changes.columnsParameters && !changes.columnsParameters.isFirstChange()) {
             this.buildColumns();
         }
     }
@@ -146,16 +156,28 @@ export default class DatagridController {
             this.ouiDatagridColumnBuilder.build(this.columnElements, this.getParentScope());
 
         if (this.actionColumnElements.length) {
-            builtColumns.columns.push(this.ouiDatagridColumnBuilder.buildActionColumn(this.actionColumnElements[0]));
+            this.actionColumn = this.ouiDatagridColumnBuilder.buildActionColumn(this.actionColumnElements[0]);
             this.hasActionMenu = true;
         }
 
         if (this.extraTopElements.length) {
-            this.hasExtraTopContent = true;
             this.extraTopCompiledTemplate = this.$compile(`<div>${this.extraTopElements[0].innerHTML}</div>`);
+            this.hasExtraTopContent = true;
         }
 
-        this.columns = builtColumns.columns.filter(column => !column.hidden);
+        this.availableColumns = angular.copy(builtColumns.columns)
+            .map(column => { // Override default with custom columns
+                const customColumn = find(this.columnsParameters, {
+                    name: column.name
+                });
+                if (customColumn) {
+                    column.hidden = customColumn.hidden;
+                }
+                return column;
+            });
+
+        this.columns = this.availableColumns
+            .filter(column => !column.hidden);
 
         this.columns.forEach(column => {
             if (column.title) {
@@ -174,6 +196,32 @@ export default class DatagridController {
         });
 
         return builtColumns;
+    }
+
+    onColumnsChange (columns) {
+        this.availableColumns = angular.copy(columns);
+        this.columns = columns.filter(column => !column.hidden);
+
+        const columnsParameters = this.availableColumns
+            .filter(column => column.name)
+            .map(column => {
+                const cleanColumn = {
+                    name: column.name
+                };
+
+                if (column.hidden) {
+                    cleanColumn.hidden = true;
+                }
+
+                return cleanColumn;
+            });
+
+        if (this.id) {
+            this.onColumnsParametersChange({
+                id: this.id,
+                columns: columnsParameters
+            });
+        }
     }
 
     getParentScope () {
