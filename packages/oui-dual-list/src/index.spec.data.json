@@ -1,0 +1,39 @@
+{
+    "users": [
+        "ANDREW",
+        "RED",
+        "LILA",
+        "MARIE",
+        "ROBERT",
+        "HOPE",
+        "ALEXIS",
+        "MADISON",
+        "VANESSA"
+    ],
+    "selectedUsers": [
+        "KEVIN",
+        "MARK"
+    ],
+    "objects": {
+        "users" : [
+            { "name": "ANDREW", "age": 15 },
+            { "name": "RED", "age": 25 },
+            { "name": "LILA", "age": 34 },
+            { "name": "MARIE", "age": 12 },
+            { "name": "ROBERT", "age": 64 }
+        ],
+        "selectedUsers" : [
+        ]
+    },
+    "deepNestedObjects" : {
+        "users": [
+            { "name": { "firstName": "ANDREW"}, "age": 15 },
+            { "name": { "firstName": "RED"}, "age": 25 },
+            { "name": { "firstName": "LILA"}, "age": 34 },
+            { "name": { "firstName": "MARIE"}, "age": 12 },
+            { "name": { "firstName": "ROBERT"}, "age": 64 }
+        ],
+        "selectedUserObjects" : [
+        ]
+    }
+}

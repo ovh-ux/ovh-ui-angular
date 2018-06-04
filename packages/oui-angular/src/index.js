@@ -25,6 +25,7 @@ import "@oui-angular/oui-criteria-container/src";
 import "@oui-angular/oui-criteria-adder/src";
 import "@oui-angular/oui-chips/src";
 import "@oui-angular/oui-popover/src";
+import "@oui-angular/oui-dual-list/src";
 import "@oui-angular/oui-stepper/src";
 
 angular.module("oui", [
@@ -55,5 +56,6 @@ angular.module("oui", [
     "oui.criteria-adder",
     "oui.chips",
     "oui.popover",
+    "oui.dual-list",
     "oui.stepper"
 ]);
