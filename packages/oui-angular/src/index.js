@@ -1,6 +1,7 @@
 import "@oui-angular/oui-button/src";
 import "@oui-angular/oui-calendar/src";
 import "@oui-angular/oui-checkbox/src";
+import "@oui-angular/oui-collapsible/src";
 import "@oui-angular/oui-radio/src";
 import "@oui-angular/oui-message/src";
 import "@oui-angular/oui-spinner/src";
@@ -31,6 +32,7 @@ angular.module("oui", [
     "oui.button",
     "oui.calendar",
     "oui.checkbox",
+    "oui.collapsible",
     "oui.radio",
     "oui.message",
     "oui.spinner",
