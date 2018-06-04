@@ -7,25 +7,25 @@
 ### Default
 
 ```html:preview
-<oui-page-header title="My title"></oui-page-header>
+<oui-page-header heading="My title"></oui-page-header>
 ```
 
 ```html:preview
-<oui-page-header title="My title" subtitle="My subtitle"></oui-page-header>
+<oui-page-header heading="My title" description="My subtitle"></oui-page-header>
 ```
 
 
 ### With guide
 
 ```html:preview
-<oui-page-header title="My title" subtitle="My subtitle"></oui-page-header>
+<oui-page-header heading="My title" description="My subtitle"></oui-page-header>
 ```
 
 
 ### With tabs
 
 ```html:preview
-<oui-page-header title="My title" subtitle="My subtitle"></oui-page-header>
+<oui-page-header heading="My title" description="My subtitle"></oui-page-header>
 ```
 
 
@@ -33,5 +33,5 @@
 
 | Attribute     | Type     | Binding | One-time Binding | Values                 | Default   | Description                      |
 | ----          | ----     | ----    | ----             | ----                   | ----      | ----                             |
-| title         | string   | @?      | true             |                        |           | title of the header              |
-| subtitle      | string   | @?      | true             |                        |           | subtitle of the header           |
+| heading       | string   | @?      | true             |                        |           | title of the header              |
+| description   | string   | @?      | true             |                        |           | subtitle of the header           |

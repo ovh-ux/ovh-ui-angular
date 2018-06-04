@@ -31,6 +31,7 @@ loadTests(require.context("../../oui-stepper/src/", true, /.*((\.spec)|(index))$
 loadTests(require.context("../../oui-skeleton/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-clipboard/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-slideshow/src/", true, /.*((\.spec)|(index))$/));
+loadTests(require.context("../../oui-page-header/src/", true, /.*((\.spec)|(index))$/));
 
 function loadTests (context) {
     context.keys().forEach(context);

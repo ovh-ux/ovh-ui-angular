@@ -5,8 +5,8 @@ export default {
     template,
     controller,
     bindings: {
-        title: "@?",
-        subtitle: "@?"
+        heading: "@?",
+        description: "@?"
     },
     transclude: {
         guide: "?ouiGuide",
