@@ -21,8 +21,7 @@ export default class {
     $postLink () {
         this.$timeout(() => {
             this.$element
-                .addClass("oui-input-group")
-                .addClass("oui-input-group_clipboard")
+                .addClass("oui-input-group oui-input-group_clipboard")
                 .removeAttr("id")
                 .removeAttr("name");
         });
@@ -40,7 +39,7 @@ export default class {
     }
 
     selectInputText (tooltipText) {
-        const selectionEnd = this.model.length;
+        const selectionEnd = this.model.length || 0;
 
         this.$timeout(() => {
             // Need to focus before selecting
@@ -54,6 +53,11 @@ export default class {
 
             // Update tooltip text
             this.tooltipText = tooltipText;
+
+            // Need to bind the reset like this because
+            // ClipboardJS triggered the "blur" event
+            // By copying in a fake textarea
+            angular.element(this.target).one("blur", () => this.reset());
         });
     }
 

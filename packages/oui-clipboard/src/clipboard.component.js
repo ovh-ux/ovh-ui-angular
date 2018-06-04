@@ -4,10 +4,9 @@ import template from "./clipboard.html";
 export default {
     template,
     controller,
-    controllerAs: "$ctrl",
     bindings: {
         name: "@?",
         id: "@?",
-        model: "<?"
+        model: "="
     }
 };

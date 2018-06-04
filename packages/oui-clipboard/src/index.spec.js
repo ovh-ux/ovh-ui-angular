@@ -90,7 +90,9 @@ describe("ouiClipboard", () => {
         });
 
         it("should reset tooltip text", () => {
-            const element = testUtils.compileTemplate("<oui-clipboard text='copy this text'></oui-clipboard>");
+            const element = testUtils.compileTemplate("<oui-clipboard model='$ctrl.model'></oui-clipboard>", {
+                model: "foo"
+            });
             const btnElement = element[0].querySelector(".oui-clipboard__button");
             const $ctrl = element.controller("ouiClipboard");
 

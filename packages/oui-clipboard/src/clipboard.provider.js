@@ -2,9 +2,9 @@ import { merge } from "lodash";
 export default class {
     constructor () {
         this.translations = {
-            copyToClipboardLabel: "Copy to Clipboard",
+            copyToClipboardLabel: "Copy to clipboard",
             copiedLabel: "Copied",
-            notSupported: "Copy to Clipboard not supported. Please copy the text manually"
+            notSupported: "Copy to clipboard not supported. Please copy the text manually"
         };
     }
 
