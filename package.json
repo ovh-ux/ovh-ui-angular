@@ -33,9 +33,10 @@
     }
   },
   "dependencies": {
+    "clipboard": "2.0.1",
     "escape-string-regexp": "^1.0.5",
-    "popper.js": "^1.12.9",
-    "flatpickr": "4.5.0"
+    "flatpickr": "4.5.0",
+    "popper.js": "^1.12.9"
   },
   "devDependencies": {
     "angular": "~1.6.1",

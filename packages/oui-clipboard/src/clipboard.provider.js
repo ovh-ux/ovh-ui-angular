@@ -1,14 +1,10 @@
 import { merge } from "lodash";
-
 export default class {
     constructor () {
         this.translations = {
-            optionalLabel: "(optional)",
-            modifyThisStep: "Modify this step",
-            skipThisStep: "Skip this step",
-            nextButtonLabel: "Next",
-            submitButtonLabel: "Submit",
-            cancelButtonLabel: "Cancel"
+            copyToClipboardLabel: "Copy to clipboard",
+            copiedLabel: "Copied",
+            notSupported: "Copy to clipboard not supported. Please copy the text manually"
         };
     }
 
