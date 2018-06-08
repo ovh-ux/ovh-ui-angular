@@ -1,25 +1,24 @@
-<!--
-  Use data-align to avoid conflict with native align attribute.
-  For some reason, align can't be deleted in controller $postLink method.
- -->
-<oui-dropdown data-align="{{::$ctrl.align}}"
-  arrow="::$ctrl.compact">
-  <oui-dropdown-trigger
-    ng-if="!$ctrl.compact"
-    aria-label="{{::$ctrl.ariaLabel}}"
-    text="{{::$ctrl.text}}"></oui-dropdown-trigger>
-  <button aria-label="{{::($ctrl.ariaLabel || $ctrl.text)}}"
-    ng-if="$ctrl.compact"
-    oui-dropdown-trigger
-    class="oui-action-menu-button">
-    <svg xmlns="http://www.w3.org/2000/svg" viewbox="-1 -1 74 74">
-      <circle class="oui-action-menu-button__foreground" cx="22.27" cy="36" r="4"></circle>
-      <circle class="oui-action-menu-button__foreground" cx="36.20" cy="36" r="4"></circle>
-      <circle class="oui-action-menu-button__foreground" cx="50.13" cy="36" r="4"></circle>
-    </svg>
-  </button>
-  <div oui-dropdown-content
-    role="menu"
-    ng-class="::$ctrl.baseClass"
-    ng-transclude></div>
+<oui-dropdown class="oui-dropdown_action-menu"
+    align="{{::$ctrl.align}}"
+    arrow="::$ctrl.compact">
+    <oui-dropdown-trigger
+        ng-if="::!$ctrl.compact"
+        text="{{::$ctrl.text}}"
+        aria-label="{{::$ctrl.ariaLabel}}"
+        disabled="$ctrl.disabled">
+    </oui-dropdown-trigger>
+    <button class="oui-button oui-button_action-menu oui-dropdown__trigger"
+        ng-if="::!!$ctrl.compact"
+        ng-disabled="$ctrl.disabled"
+        aria-label="{{::($ctrl.ariaLabel || $ctrl.text)}}"
+        oui-dropdown-trigger>
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="-1 -1 74 74">
+            <circle cx="22.27" cy="36" r="4"></circle>
+            <circle cx="36.20" cy="36" r="4"></circle>
+            <circle cx="50.13" cy="36" r="4"></circle>
+        </svg>
+    </button>
+    <oui-dropdown-content class="oui-action-menu"
+        ng-transclude>
+    </oui-dropdown-content>
 </oui-dropdown>

@@ -21,7 +21,7 @@ export default class {
 
         addBooleanParameter(this, "arrow");
         addBooleanParameter(this, "persistent");
-        addDefaultParameter(this, "align", "center");
+        addDefaultParameter(this, "align", "start");
 
         // Use internal id to map trigger and content with aria-label and aria-labelledby.
         this.id = `ouiDropdown${this.$scope.$id}`;
@@ -29,11 +29,11 @@ export default class {
         this.documentClickHandler = evt => {
             if ((evt && evt.type === "click") &&
                 (!evt.target || !evt.target.getAttribute || evt.target.getAttribute("type") !== "submit") &&
-                (this.referenceElement.contains(evt.target) ||
+                (this.triggerElement.contains(evt.target) ||
                 (this.persistent && this.popperElement.contains(evt.target)))) {
                 return;
             }
-            this.referenceElement.focus();
+            this.triggerElement.focus();
             this.$scope.$apply(() => this.closeDropdown());
         };
 
@@ -71,13 +71,24 @@ export default class {
     }
 
     $postLink () {
-        this.referenceElement = this.$element[0].querySelector(".oui-dropdown__trigger");
-        this.popperElement = this.$element[0].querySelector(".oui-dropdown__content");
-        this.arrowElement = this.$element[0].querySelector(".oui-dropdown__arrow");
+        this.$timeout(() =>
+            this.$element
+                .addClass("oui-dropdown")
+        );
     }
 
-    $destroy () {
-        this.closeDropdown();
+    $onDestroy () {
+        this.destroyPopper();
+    }
+
+    setDropdownTrigger (trigger, ctrl) {
+        this.triggerElement = trigger;
+        this.triggerCtrl = ctrl;
+    }
+
+    setDropdownMenu (menu, arrow) {
+        this.popperElement = menu;
+        this.arrowElement = arrow;
     }
 
     // Handle click, space key press and enter key press
@@ -96,21 +107,27 @@ export default class {
     openDropdown () {
         // Don't use ng-class here, it could cause issue on positionning.
         this.isDropdownOpen = true;
-        angular.element(this.$element.children()[0]).addClass("oui-dropdown_active");
         this.updatePopper();
 
         this.$document.on("click", this.documentClickHandler);
-        this.$scope.$broadcast("oui:dropdown:afterOpen", this.id);
+
+        // Update trigger
+        if (this.triggerCtrl.afterOpen) {
+            this.triggerCtrl.afterOpen();
+        }
     }
 
     closeDropdown () {
         // Don't use ng-class here, it could cause issue on positionning.
         this.isDropdownOpen = false;
-        angular.element(this.$element.children()[0]).removeClass("oui-dropdown_active");
         this.destroyPopper();
 
         this.$document.off("click", this.documentClickHandler);
-        this.$scope.$broadcast("oui:dropdown:afterClose", this.id);
+
+        // Update trigger
+        if (this.triggerCtrl.afterClose) {
+            this.triggerCtrl.afterClose();
+        }
     }
 
     createPopper () {
@@ -127,7 +144,7 @@ export default class {
 
         this.popperElement.style.minWidth = `${this.getTriggerWidth()}px`;
 
-        this.popper = new Popper(this.referenceElement, this.popperElement, {
+        this.popper = new Popper(this.triggerElement, this.popperElement, {
             placement,
             modifiers: {
                 preventOverflow: {
@@ -155,7 +172,7 @@ export default class {
     }
 
     getTriggerWidth () {
-        return this.referenceElement.offsetWidth;
+        return this.triggerElement.offsetWidth;
     }
 
 }
