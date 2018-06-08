@@ -223,6 +223,30 @@ The property `name` **must be** `"notifications"`.
 
 If `footerTemplate` is defined, `footerTitle` and `footerUrl` are not used.
 
+#### Placeholder for notification
+In the notification submenu, a placeholder is shown depending if there's no notification or if variable `subLinks` is not defined inside an `aside-links`.
+```javascript
+// Something went wong with the notification
+subLinks = undefined;
+// No notification
+subLinks = [];
+```
+```html:preview
+<div class="oui-doc-preview-only-keep-children" style="margin-bottom: 15px;">
+<oui-navbar
+    brand="$ctrl.brand"
+    active-link="lorem"
+    aside-links="$ctrl.placeholderNotification"
+    toggler-links="$ctrl.togglerLinks">
+</oui-navbar>
+</div>
+<oui-radio-toggle-group id="xxxxx" model="$ctrl.placeholderNotification[0].subLinks">
+    <oui-radio text="Error in notification" value="null"></oui-radio>
+    <oui-radio text="No notification" value="[]" default></oui-radio>
+</oui-radio-toggle-group>
+```
+
+
 ##### Example
 
 ```json
