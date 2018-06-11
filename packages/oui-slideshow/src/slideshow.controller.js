@@ -1,7 +1,7 @@
 import { addBooleanParameter } from "@oui-angular/common/component-utils";
 
 const KEY_ESCAPE = 27;
-const PANEL_CLASSNAME = "oui-modal-on-boarding__content-panel";
+const PANEL_CLASSNAME = "oui-slideshow-panel";
 const TRANSITION_DURATION = 800;
 const Direction = {
     NEXT: "next",
@@ -26,10 +26,10 @@ export default class {
         addBooleanParameter(this, "loop");
 
         // Use internal id to map trigger
-        this.id = `ouiModalOnBoarding${this.$scope.$id}`;
+        this.id = `ouiSlideshow${this.$scope.$id}`;
 
-        this._componentElement = this.$element[0].querySelector(".oui-modal-on-boarding");
-        this._contentElement = this.$element[0].querySelector(".oui-modal-on-boarding__content");
+        this._componentElement = this.$element[0].querySelector(".oui-slideshow");
+        this._contentElement = this.$element[0].querySelector(".oui-slideshow__content");
 
         this._isSliding = false;
         this.currentIndex = 0;
@@ -44,7 +44,7 @@ export default class {
         this.$document.on("keydown", evt => this._triggerKeyHandler(evt));
 
         this.$timeout(() => {
-            this.panels = this.$element[0].querySelectorAll("oui-modal-on-boarding-panel");
+            this.panels = this.$element[0].querySelectorAll("oui-slideshow-panel");
 
             if (this.panels[0]) {
                 this.isIllustrated = this._isIllustratedPanel(0);

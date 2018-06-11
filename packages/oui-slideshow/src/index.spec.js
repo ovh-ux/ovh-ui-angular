@@ -1,16 +1,16 @@
-describe("ouiModalOnBoarding", () => {
+describe("ouiSlideshow", () => {
     let TestUtils;
     let $timeout;
 
-    const getModalOnBoarding = element => angular.element(element[0].querySelector(".oui-modal-on-boarding"));
-    const getBody = element => angular.element(element[0].querySelector(".oui-modal-on-boarding__body"));
-    const getFirstPanel = element => angular.element(element[0].querySelector(".oui-modal-on-boarding__content-panel"));
-    const getDismissButton = element => angular.element(element[0].querySelector(".oui-modal-on-boarding__header .oui-icon"));
-    const getNextButton = element => angular.element(element[0].querySelector(".oui-modal-on-boarding__content-next"));
-    const getFirstIndicator = element => angular.element(element[0].querySelector(".oui-modal-on-boarding__indicators > button"));
-    const getLastIndicator = element => angular.element(element[0].querySelector(".oui-modal-on-boarding__indicators > button:last-child"));
+    const getModalOnBoarding = element => angular.element(element[0].querySelector(".oui-slideshow"));
+    const getBody = element => angular.element(element[0].querySelector(".oui-slideshow__body"));
+    const getFirstPanel = element => angular.element(element[0].querySelector(".oui-slideshow-panel"));
+    const getDismissButton = element => angular.element(element[0].querySelector(".oui-slideshow__header .oui-icon"));
+    const getNextButton = element => angular.element(element[0].querySelector(".oui-slideshow__next-button"));
+    const getFirstIndicator = element => angular.element(element[0].querySelector(".oui-slideshow__indicators > button"));
+    const getLastIndicator = element => angular.element(element[0].querySelector(".oui-slideshow__indicators > button:last-child"));
 
-    beforeEach(angular.mock.module("oui.modal-on-boarding"));
+    beforeEach(angular.mock.module("oui.onboarding"));
     beforeEach(angular.mock.module("oui.spinner"));
     beforeEach(angular.mock.module("oui.test-utils"));
 
@@ -22,33 +22,33 @@ describe("ouiModalOnBoarding", () => {
     describe("Component", () => {
         describe("ModalOnBoarding", () => {
             it("should display a modal on-boarding", () => {
-                const element = TestUtils.compileTemplate("<oui-modal-on-boarding></oui-modal-on-boarding>");
+                const element = TestUtils.compileTemplate("<oui-slideshow></oui-slideshow>");
                 $timeout.flush();
                 expect(getModalOnBoarding(element)).toBeDefined();
             });
 
             it("should display an overlay when loading", () => {
-                const element = TestUtils.compileTemplate("<oui-modal-on-boarding loading></oui-modal-on-boarding>");
+                const element = TestUtils.compileTemplate("<oui-slideshow loading></oui-slideshow>");
                 $timeout.flush();
                 const $body = getBody(element);
-                expect($body.html()).toContain("oui-modal-on-boarding__loader");
+                expect($body.html()).toContain("oui-slideshow__loader");
                 expect($body.html()).toContain("oui-spinner");
             });
 
             it("should display a modal on-boarding with active panel", () => {
                 const element = TestUtils.compileTemplate(`
-                    <oui-modal-on-boarding>
-                        <oui-modal-on-boarding-panel></oui-modal-on-boarding-panel>
-                    </oui-modal-on-boarding>
+                    <oui-slideshow>
+                        <oui-slideshow-panel></oui-slideshow-panel>
+                    </oui-slideshow>
                 `);
                 $timeout.flush();
-                expect(getBody(element).html()).toContain("oui-modal-on-boarding__content-panel");
+                expect(getBody(element).html()).toContain("oui-slideshow-panel");
                 expect(getFirstPanel(element).hasClass("active")).toBe(true);
             });
 
             it("should trigger on-dismiss action", () => {
                 const dismissSpy = jasmine.createSpy("dismiss");
-                const element = TestUtils.compileTemplate('<oui-modal-on-boarding on-dismiss="$ctrl.dismissSpy()"></oui-modal-on-boarding>', {
+                const element = TestUtils.compileTemplate('<oui-slideshow on-dismiss="$ctrl.dismissSpy()"></oui-slideshow>', {
                     dismissSpy
                 });
                 $timeout.flush();
@@ -58,7 +58,7 @@ describe("ouiModalOnBoarding", () => {
 
             /* it("should dismiss modal on escape key's trigger", () => {
                 const dismissSpy = jasmine.createSpy("dismiss");
-                const element = TestUtils.compileTemplate('<oui-modal-on-boarding on-dismiss="$ctrl.dismissSpy()"></oui-modal-on-boarding>', {
+                const element = TestUtils.compileTemplate('<oui-slideshow on-dismiss="$ctrl.dismissSpy()"></oui-slideshow>', {
                     dismissSpy
                 });
                 $timeout.flush();
@@ -73,10 +73,10 @@ describe("ouiModalOnBoarding", () => {
         describe("ModalOnBoardingPanel", () => {
             it("should update active panel on right button click", () => {
                 const element = TestUtils.compileTemplate(`
-                    <oui-modal-on-boarding>
-                        <oui-modal-on-boarding-panel></oui-modal-on-boarding-panel>
-                        <oui-modal-on-boarding-panel></oui-modal-on-boarding-panel>
-                    </oui-modal-on-boarding>
+                    <oui-slideshow>
+                        <oui-slideshow-panel></oui-slideshow-panel>
+                        <oui-slideshow-panel></oui-slideshow-panel>
+                    </oui-slideshow>
                 `);
                 $timeout.flush();
                 const $firstPanel = getFirstPanel(element);
@@ -88,49 +88,49 @@ describe("ouiModalOnBoarding", () => {
 
             it("should hide left button if first panel is selected", () => {
                 const element = TestUtils.compileTemplate(`
-                    <oui-modal-on-boarding>
-                        <oui-modal-on-boarding-panel></oui-modal-on-boarding-panel>
-                        <oui-modal-on-boarding-panel></oui-modal-on-boarding-panel>
-                    </oui-modal-on-boarding>
+                    <oui-slideshow>
+                        <oui-slideshow-panel></oui-slideshow-panel>
+                        <oui-slideshow-panel></oui-slideshow-panel>
+                    </oui-slideshow>
                 `);
                 $timeout.flush();
-                expect(getBody(element).html()).not.toContain("oui-modal-on-boarding__content-prev");
+                expect(getBody(element).html()).not.toContain("oui-slideshow__prev-button");
             });
 
             it("should always show left button if loop option is active", () => {
                 const element = TestUtils.compileTemplate(`
-                    <oui-modal-on-boarding loop>
-                        <oui-modal-on-boarding-panel></oui-modal-on-boarding-panel>
-                        <oui-modal-on-boarding-panel></oui-modal-on-boarding-panel>
-                    </oui-modal-on-boarding>
+                    <oui-slideshow loop>
+                        <oui-slideshow-panel></oui-slideshow-panel>
+                        <oui-slideshow-panel></oui-slideshow-panel>
+                    </oui-slideshow>
                 `);
                 $timeout.flush();
                 const $body = getBody(element);
-                expect($body.html()).toContain("oui-modal-on-boarding__content-prev");
+                expect($body.html()).toContain("oui-slideshow__prev-button");
             });
 
             it("should hide right button if last panel is selected", () => {
                 const element = TestUtils.compileTemplate(`
-                    <oui-modal-on-boarding>
-                        <oui-modal-on-boarding-panel></oui-modal-on-boarding-panel>
-                        <oui-modal-on-boarding-panel></oui-modal-on-boarding-panel>
-                    </oui-modal-on-boarding>
+                    <oui-slideshow>
+                        <oui-slideshow-panel></oui-slideshow-panel>
+                        <oui-slideshow-panel></oui-slideshow-panel>
+                    </oui-slideshow>
                 `);
                 $timeout.flush();
                 const $body = getBody(element);
-                expect($body.html()).toContain("oui-modal-on-boarding__content-next");
+                expect($body.html()).toContain("oui-slideshow__next-button");
                 getNextButton(element).triggerHandler("click");
                 $timeout.flush();
-                expect($body.html()).toContain("oui-modal-on-boarding__content-prev");
-                expect($body.html()).not.toContain("oui-modal-on-boarding__content-next");
+                expect($body.html()).toContain("oui-slideshow__prev-button");
+                expect($body.html()).not.toContain("oui-slideshow__next-button");
             });
 
             it("should update bottom indicators if panel's changed", () => {
                 const element = TestUtils.compileTemplate(`
-                    <oui-modal-on-boarding>
-                        <oui-modal-on-boarding-panel></oui-modal-on-boarding-panel>
-                        <oui-modal-on-boarding-panel></oui-modal-on-boarding-panel>
-                    </oui-modal-on-boarding>
+                    <oui-slideshow>
+                        <oui-slideshow-panel></oui-slideshow-panel>
+                        <oui-slideshow-panel></oui-slideshow-panel>
+                    </oui-slideshow>
                 `);
                 $timeout.flush();
                 const $firstIndicator = getFirstIndicator(element);
@@ -143,10 +143,10 @@ describe("ouiModalOnBoarding", () => {
 
             it("should update active panel on indicator button click", () => {
                 const element = TestUtils.compileTemplate(`
-                    <oui-modal-on-boarding>
-                        <oui-modal-on-boarding-panel></oui-modal-on-boarding-panel>
-                        <oui-modal-on-boarding-panel></oui-modal-on-boarding-panel>
-                    </oui-modal-on-boarding>
+                    <oui-slideshow>
+                        <oui-slideshow-panel></oui-slideshow-panel>
+                        <oui-slideshow-panel></oui-slideshow-panel>
+                    </oui-slideshow>
                 `);
                 $timeout.flush();
                 const $firstPanel = getFirstPanel(element);

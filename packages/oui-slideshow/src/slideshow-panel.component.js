@@ -1,5 +1,5 @@
-import controller from "./modal-on-boarding-panel.controller";
-import template from "./modal-on-boarding-panel.html";
+import controller from "./slideshow-panel.controller";
+import template from "./slideshow-panel.html";
 
 export default {
     template,

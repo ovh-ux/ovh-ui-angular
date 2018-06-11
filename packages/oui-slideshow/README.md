@@ -1,6 +1,6 @@
-# Modal On Boarding
+# Slideshow
 
-<component-status cx-design="partial" ux="beta"></component-status>
+<component-status cx-design="none" ux="prototype"></component-status>
 
 ## Usage
 
@@ -8,29 +8,29 @@
 
 ```html:preview
 <div class="oui-doc-preview-only-keep-children" style="padding:50px 35px;background-color:rgba(0,0,0,0.3)">
-    <oui-modal-on-boarding>
-        <oui-modal-on-boarding-panel title="New feature"
+    <oui-slideshow>
+        <oui-slideshow-panel title="New feature"
                                      text="Display your infrastructure as a list"
                                      picture="https://upload.wikimedia.org/wikipedia/commons/4/4a/Cercle_rouge_100%25.svg">
-        </oui-modal-on-boarding-panel>
-        <oui-modal-on-boarding-panel title="Introducing Ad-Sync"
+        </oui-slideshow-panel>
+        <oui-slideshow-panel title="Introducing Ad-Sync"
                                      text="Designed to help you synchronize your local Active Directory with your OVH Active Directory."
                                      picture="https://upload.wikimedia.org/wikipedia/commons/4/4a/Cercle_rouge_100%25.svg"
                                      href="http://www.ovh.com/"
                                      label="Discover">
-        </oui-modal-on-boarding-panel>
-        <oui-modal-on-boarding-panel title="New features available in your emails pages"
+        </oui-slideshow-panel>
+        <oui-slideshow-panel title="New features available in your emails pages"
                                      text="Introducing Ad-Sync, designed to help you synchronize your local Active Directory with your OVH Active Directory."
                                      href="http://www.ovh.com/"
                                      label="Discover">
-        </oui-modal-on-boarding-panel>
-        <oui-modal-on-boarding-panel title="Introducing Ad-Sync"
+        </oui-slideshow-panel>
+        <oui-slideshow-panel title="Introducing Ad-Sync"
                                          text="Designed to help you synchronize your local Active Directory with your OVH Active Directory."
                                          picture="https://upload.wikimedia.org/wikipedia/commons/4/4a/Cercle_rouge_100%25.svg"
                                          href="http://www.ovh.com/"
                                          label="Discover">
-            </oui-modal-on-boarding-panel>
-    </oui-modal-on-boarding>
+            </oui-slideshow-panel>
+    </oui-slideshow>
 </div>
 ```
 
@@ -38,9 +38,9 @@
 
 ```html:preview
 <div class="oui-doc-preview-only-keep-children" style="padding:50px 35px;background-color:rgba(0,0,0,0.3)">
-    <oui-modal-on-boarding loading>
-        <oui-modal-on-boarding-panel title="Panel 1" text="This is the first panel description"></oui-modal-on-boarding-panel>
-    </oui-modal-on-boarding>
+    <oui-slideshow loading>
+        <oui-slideshow-panel title="Panel 1" text="This is the first panel description"></oui-slideshow-panel>
+    </oui-slideshow>
 </div>
 ```
 
@@ -48,31 +48,31 @@
 
 ```html:preview
 <div class="oui-doc-preview-only-keep-children" style="padding:50px 35px;background-color:rgba(0,0,0,0.3)">
-    <oui-modal-on-boarding loop>
-        <oui-modal-on-boarding-panel title="Panel 1" text="This is the first panel description"></oui-modal-on-boarding-panel>
-        <oui-modal-on-boarding-panel title="Panel 2" text="This is the second panel description"></oui-modal-on-boarding-panel>
-        <oui-modal-on-boarding-panel title="Panel 3" text="This is the third panel description"></oui-modal-on-boarding-panel>
-    </oui-modal-on-boarding>
+    <oui-slideshow loop>
+        <oui-slideshow-panel title="Panel 1" text="This is the first panel description"></oui-slideshow-panel>
+        <oui-slideshow-panel title="Panel 2" text="This is the second panel description"></oui-slideshow-panel>
+        <oui-slideshow-panel title="Panel 3" text="This is the third panel description"></oui-slideshow-panel>
+    </oui-slideshow>
 </div>
 ```
 
 ### Link
 ```html:preview
 <div class="oui-doc-preview-only-keep-children" style="padding:50px 35px;background-color:rgba(0,0,0,0.3)">
-<oui-modal-on-boarding>
-    <oui-modal-on-boarding-panel title="External link"
+<oui-slideshow>
+    <oui-slideshow-panel title="External link"
                                  text="Introducing Ad-Sync, designed to help you synchronize your local Active Directory with your OVH Active Directory."
                                  href="#"
                                  label="Discover"
                                  external>
-    </oui-modal-on-boarding-panel>
-</oui-modal-on-boarding>
+    </oui-slideshow-panel>
+</oui-slideshow>
 </div>
 ```
 
 ## API
 
-### oui-modal-on-boarding
+### oui-slideshow
 
 | Attribute           | Type     | Binding | One-time Binding | Values          | Default          | Description                                     |
 | ----                | ----     | ----    | ----             | ----            | ----             | ----                                            |
@@ -81,7 +81,7 @@
 | `loop`              | boolean  | <?      |                  |                 | false            | whether the component should cycle continuously |
 | `theme`             | string   | @?      | yes              |                 | `default`        | add specific theme to component                 |
 
-### oui-modal-on-boarding-panel
+### oui-slideshow-panel
 
 | Attribute           | Type     | Binding | One-time Binding | Values          | Default          | Description                                     |
 | ----                | ----     | ----    | ----             | ----            | ----             | ----                                            |

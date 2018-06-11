@@ -1,21 +1,21 @@
-<div class="oui-modal-on-boarding__content-panel" aria-hidden="true">
-    <div class="oui-modal-on-boarding__picture-container"
+<div class="oui-slideshow-panel" aria-hidden="true">
+    <div class="oui-slideshow-panel__picture-container"
          ng-if="::$ctrl.picture">
-        <div class="oui-modal-on-boarding__picture"
+        <div class="oui-slideshow-panel__picture"
              ng-style="{ 'background-image': 'url(' + $ctrl.picture + ')' }">
         </div>
     </div>
-    <div class="oui-modal-on-boarding__content-container"
+    <div class="oui-slideshow-panel__container"
          ng-if="::$ctrl.title || $ctrl.text">
-        <div class="oui-modal-on-boarding__content-title"
+        <div class="oui-slideshow-panel__title"
              ng-bind="::$ctrl.title"
              ng-if="::$ctrl.title">
         </div>
-        <div class="oui-modal-on-boarding__content-text"
+        <div class="oui-slideshow-panel__text"
              ng-bind-html="::$ctrl.text"
              ng-if="::$ctrl.text">
         </div>
-        <div class="oui-modal-on-boarding__content-action"
+        <div class="oui-slideshow-panel__action"
              ng-if="::$ctrl.onClick || $ctrl.href">
             <button type="button" class="oui-button oui-button_secondary"
                     ng-bind="::$ctrl.label"
