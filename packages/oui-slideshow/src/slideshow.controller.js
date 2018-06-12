@@ -1,4 +1,4 @@
-import { addBooleanParameter } from "@oui-angular/common/component-utils";
+import { addBooleanParameter, addDefaultParameter } from "@oui-angular/common/component-utils";
 
 const KEY_ESCAPE = 27;
 const PANEL_CLASSNAME = "oui-slideshow-panel";
@@ -24,9 +24,11 @@ export default class {
     $onInit () {
         addBooleanParameter(this, "loading");
         addBooleanParameter(this, "loop");
+        addDefaultParameter(this, "theme", "onboarding");
 
         // Use internal id to map trigger
         this.id = `ouiSlideshow${this.$scope.$id}`;
+        this.themeClassname = `oui-slideshow_${this.theme}`;
 
         this._componentElement = this.$element[0].querySelector(".oui-slideshow");
         this._contentElement = this.$element[0].querySelector(".oui-slideshow__content");
