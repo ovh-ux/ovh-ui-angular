@@ -2,7 +2,7 @@ describe("ouiSlideshow", () => {
     let TestUtils;
     let $timeout;
 
-    const getModalOnBoarding = element => angular.element(element[0].querySelector(".oui-slideshow"));
+    const getSlideshow = element => angular.element(element[0].querySelector(".oui-slideshow"));
     const getBody = element => angular.element(element[0].querySelector(".oui-slideshow__body"));
     const getFirstPanel = element => angular.element(element[0].querySelector(".oui-slideshow-panel"));
     const getDismissButton = element => angular.element(element[0].querySelector(".oui-slideshow__header .oui-icon"));
@@ -10,7 +10,7 @@ describe("ouiSlideshow", () => {
     const getFirstIndicator = element => angular.element(element[0].querySelector(".oui-slideshow__indicators > button"));
     const getLastIndicator = element => angular.element(element[0].querySelector(".oui-slideshow__indicators > button:last-child"));
 
-    beforeEach(angular.mock.module("oui.onboarding"));
+    beforeEach(angular.mock.module("oui.slideshow"));
     beforeEach(angular.mock.module("oui.spinner"));
     beforeEach(angular.mock.module("oui.test-utils"));
 
@@ -20,11 +20,11 @@ describe("ouiSlideshow", () => {
     }));
 
     describe("Component", () => {
-        describe("ModalOnBoarding", () => {
-            it("should display a modal on-boarding", () => {
+        describe("Slideshow", () => {
+            it("should display a slideshow", () => {
                 const element = TestUtils.compileTemplate("<oui-slideshow></oui-slideshow>");
                 $timeout.flush();
-                expect(getModalOnBoarding(element)).toBeDefined();
+                expect(getSlideshow(element)).toBeDefined();
             });
 
             it("should display an overlay when loading", () => {
@@ -35,7 +35,7 @@ describe("ouiSlideshow", () => {
                 expect($body.html()).toContain("oui-spinner");
             });
 
-            it("should display a modal on-boarding with active panel", () => {
+            it("should display a slideshow with active panel", () => {
                 const element = TestUtils.compileTemplate(`
                     <oui-slideshow>
                         <oui-slideshow-panel></oui-slideshow-panel>
@@ -70,7 +70,7 @@ describe("ouiSlideshow", () => {
             }); */
         });
 
-        describe("ModalOnBoardingPanel", () => {
+        describe("SlideshowPanel", () => {
             it("should update active panel on right button click", () => {
                 const element = TestUtils.compileTemplate(`
                     <oui-slideshow>

@@ -1,6 +1,6 @@
-import ModalOnBoarding from "./slideshow.component";
-import ModalOnBoardingPanel from "./slideshow-panel.component";
+import Slideshow from "./slideshow.component";
+import SlideshowPanel from "./slideshow-panel.component";
 
-angular.module("oui.onboarding", [])
-    .component("ouiSlideshow", ModalOnBoarding)
-    .component("ouiSlideshowPanel", ModalOnBoardingPanel);
+angular.module("oui.slideshow", [])
+    .component("ouiSlideshow", Slideshow)
+    .component("ouiSlideshowPanel", SlideshowPanel);
