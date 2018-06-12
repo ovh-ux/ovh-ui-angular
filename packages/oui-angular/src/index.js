@@ -63,5 +63,5 @@ angular.module("oui", [
     "oui.stepper",
     "oui.skeleton",
     "oui.clipboard",
-    "oui.onboarding"
+    "oui.slideshow"
 ]);
