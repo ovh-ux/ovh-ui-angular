@@ -140,33 +140,33 @@
                            aria-hidden="true"></i>
                     </button>
                 </li>
-                <li class="oui-navbar-menu__item oui-navbar-notification oui-navbar-notification__placeholder"
+                <li class="oui-navbar-menu__item oui-navbar-notification oui-navbar-notification-placeholder"
                     ng-if="asideLink.subLinks.length === 0"
                     oui-navbar-group="{{::asideLink.name}}">
-                    <div class="oui-navbar-notification__placeholder-content">
+                    <div class="oui-navbar-notification-placeholder__content">
                         <i class="oui-icon oui-icon_bicolor oui-icon-success_circle oui-navbar-notification__icon"
                            aria-hidden="true">
                         </i>
                         <div>
-                            <div class="oui-navbar-notification__placeholder-content-title"
+                            <div class="oui-navbar-notification-placeholder__title"
                                  ng-bind="$ctrl.config.translations.notification.noNotification"></div>
-                            <div class="oui-navbar-notification__placeholder-content-description"
+                            <div class="oui-navbar-notification-placeholder__description"
                                  ng-bind="$ctrl.config.translations.notification.noNotificationDescription"></div>
                         </div>
 
                     </div>
                 </li>
-                <li class="oui-navbar-menu__item oui-navbar-notification oui-navbar-notification__placeholder"
+                <li class="oui-navbar-menu__item oui-navbar-notification oui-navbar-notification-placeholder"
                     ng-if="!asideLink.subLinks"
                     oui-navbar-group="{{::asideLink.name}}">
-                    <div class="oui-navbar-notification__placeholder-content">
+                    <div class="oui-navbar-notification-placeholder__content">
                         <i class="oui-icon oui-icon_bicolor oui-icon-error_circle oui-navbar-notification__icon"
                            aria-hidden="true">
                         </i>
                         <div>
-                            <div class="oui-navbar-notification__placeholder-content-title"
+                            <div class="oui-navbar-notification-placeholder__title"
                                  ng-bind="$ctrl.config.translations.notification.errorInNotification"></div>
-                            <div class="oui-navbar-notification__placeholder-content-description"
+                            <div class="oui-navbar-notification-placeholder__description"
                                  ng-bind="$ctrl.config.translations.notification.errorInNotificationDescription"></div>
                         </div>
                     </div>
