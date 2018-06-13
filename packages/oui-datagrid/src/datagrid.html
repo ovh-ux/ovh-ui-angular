@@ -19,11 +19,11 @@
     </oui-criteria-container>
     <div class="oui-datagrid-responsive-container"
         ng-class="::{
-            'oui-datagrid-responsive-container_sticky-actions': $ctrl.hasActionMenu
+            'oui-datagrid-responsive-container_sticky-actions': $ctrl.hasActionMenu || $ctrl.customizable
         }">
         <div class="oui-datagrid-responsive-container__sticky-container"
             ng-class="{
-                'oui-datagrid-responsive-container__sticky-container_scroll-begin': $ctrl.scrollBegin && $ctrl.hasActionMenu,
+                'oui-datagrid-responsive-container__sticky-container_scroll-begin': $ctrl.scrollBegin && ($ctrl.hasActionMenu || $ctrl.customizable),
                 'oui-datagrid-responsive-container__sticky-container_scroll-end': $ctrl.scrollEnd && $ctrl.hasCheckboxes
             }">
             <div class="oui-datagrid-responsive-container__overflow-container">
@@ -31,10 +31,16 @@
                     <thead class="oui-datagrid__headers">
                         <tr class="oui-datagrid__row">
                             <th class="oui-datagrid__header"
-                                ng-class="[$ctrl.getSortableClasses(column), { 'oui-datagrid__cell-sticky': $ctrl.hasActionMenu && $last }]"
+                                ng-class="$ctrl.getSortableClasses(column)"
                                 ng-repeat="column in $ctrl.columns track by $index"
-                                ng-click="::$ctrl.sort(column)"
-                                ng-bind="::column.title">
+                                ng-click="::$ctrl.sort(column)">
+                                <span ng-bind="column.title"></span>
+                            </th>
+                            <th ng-if="$ctrl.hasActionMenu || $ctrl.customizable"
+                                class="oui-datagrid__header oui-datagrid__cell-sticky">
+                                <oui-datagrid-parameters ng-if="$ctrl.customizable"
+                                    columns="$ctrl.availableColumns"
+                                    on-change="$ctrl.onColumnsChange(columns)"></oui-datagrid-parameters>
                             </th>
                         </tr>
                     </thead>
@@ -43,15 +49,22 @@
                         <tr class="oui-datagrid__row oui-action-menu-container"
                             ng-repeat="row in $ctrl.displayedRows track by $index">
                             <td class="oui-datagrid__cell"
-                                ng-class="::[column.class, { 'oui-datagrid__cell-sticky': ($ctrl.hasCheckboxes && $first) || ($ctrl.hasActionMenu && $last) }]"
+                                ng-class="::[column.class]"
                                 ng-repeat="column in $ctrl.columns track by $index"
-                                data-title="{{::column.title}}">
+                                data-title="{{column.title}}">
                                 <span ng-if="!column.name || $ctrl.hasProperty(row, column.name) && !column.template"
                                     ng-bind="column.getValue(row)">
                                 </span>
                                 <oui-datagrid-cell ng-if="row && (!column.name || $ctrl.hasProperty(row, column.name) && column.template)"
                                     row="row"
-                                    column="::column">
+                                    column="column">
+                                </oui-datagrid-cell>
+                            </td>
+                            <td ng-if="$ctrl.hasActionMenu || $ctrl.customizable"
+                                class="oui-datagrid__cell oui-datagrid__cell-sticky">
+                                <oui-datagrid-cell ng-if="row && $ctrl.hasActionMenu"
+                                    row="row"
+                                    column="$ctrl.actionColumn">
                                 </oui-datagrid-cell>
                             </td>
                         </tr>
@@ -62,14 +75,14 @@
                             <td ng-if="$ctrl.hasCheckboxes"
                                 class="oui-datagrid__cell oui-datagrid__cell-sticky"></td>
                             <td class="oui-datagrid__cell"
-                                ng-attr-colspan="{{ $ctrl.columns.length - ( $ctrl.hasActionMenu + $ctrl.hasCheckboxes) }}"
+                                ng-attr-colspan="{{ $ctrl.columns.length }}"
                                 >
                                 <span ng-if="!$ctrl.loading && !$ctrl.firstLoading"
                                     ng-bind="$ctrl.config.translations.emptyPlaceholder"></span>
                                 <oui-spinner ng-if="$ctrl.loading || $ctrl.firstLoading"
                                     size="s"></oui-spinner>
                             </td>
-                            <td ng-if="$ctrl.hasActionMenu"
+                            <td ng-if="$ctrl.hasActionMenu || $ctrl.customizable"
                                 class="oui-datagrid__cell oui-datagrid__cell-sticky"></td>
                         </tr>
                     </tbody>

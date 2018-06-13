@@ -22,7 +22,8 @@ export default class {
     }
 
     $onChanges (changes) {
-        if (changes.row && !changes.row.isFirstChange()) {
+        if ((changes.row && !changes.row.isFirstChange()) ||
+            (changes.column && !changes.column.isFirstChange())) {
             this._compileCell();
         }
     }

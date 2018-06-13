@@ -22,10 +22,13 @@ describe("ouiDatagrid", () => {
     const isSortableDescCell = element => element.hasClass("oui-datagrid__header_sortable-desc");
     const getActionMenu = element => angular.element(element[0].querySelectorAll("oui-action-menu"));
     const isStickyCell = element => element.hasClass("oui-datagrid__cell-sticky");
+    const getDatagridParameters = element => element.find("oui-datagrid-parameters");
+    const getColumnsInDatagridParameters = element => angular.element(element[0].querySelectorAll("oui-datagrid-parameters .oui-datagrid-parameters__column"));
 
     beforeEach(angular.mock.module("oui.datagrid"));
     beforeEach(angular.mock.module("oui.test-utils"));
     beforeEach(angular.mock.module("oui.action-menu"));
+    beforeEach(angular.mock.module("oui.checkbox"));
 
     beforeEach(inject((_TestUtils_, _$rootScope_, _$timeout_, _ouiDatagridService_) => {
         TestUtils = _TestUtils_;
@@ -727,6 +730,196 @@ describe("ouiDatagrid", () => {
             });
         });
 
+        describe("Datagrid customization", () => {
+            describe("Display", () => {
+                it("should not show parameters icon if not enabled", () => {
+                    const element = TestUtils.compileTemplate(`
+                        <oui-datagrid rows="$ctrl.rows">
+                            <oui-column property="firstName"></oui-column>
+                            <oui-column property="lastName"></oui-column>
+                        </oui-datagrid>
+                    `, {
+                        rows: fakeData.slice(0, 5)
+                    });
+
+                    const datagridParameters = getDatagridParameters(element);
+
+                    expect(datagridParameters.length).toEqual(0);
+                });
+
+                it("should show parameters icon if enabled", () => {
+                    const element = TestUtils.compileTemplate(`
+                        <oui-datagrid rows="$ctrl.rows"
+                            customizable>
+                            <oui-column property="firstName"></oui-column>
+                            <oui-column property="lastName"></oui-column>
+                        </oui-datagrid>
+                    `, {
+                        rows: fakeData.slice(0, 5)
+                    });
+
+                    const datagridParameters = getDatagridParameters(element);
+                    expect(datagridParameters.length).toEqual(1);
+                });
+
+                it("should show parameters icon if enabled and with action-menu", () => {
+                    const element = TestUtils.compileTemplate(`
+                        <oui-datagrid rows="$ctrl.rows"
+                            customizable>
+                            <oui-column property="firstName"></oui-column>
+                            <oui-column property="lastName"></oui-column>
+                            <oui-action-menu>
+                                <oui-action-menu-item text="Action 1"></oui-action-menu-item>
+                                <oui-action-menu-item text="Action 2"></oui-action-menu-item>
+                            </oui-action-menu>
+                        </oui-datagrid>
+                    `, {
+                        rows: fakeData.slice(0, 5)
+                    });
+
+                    const datagridParameters = getDatagridParameters(element);
+                    expect(datagridParameters.length).toEqual(1);
+                });
+
+                it("should only show not hidden columns", () => {
+                    const element = TestUtils.compileTemplate(`
+                        <oui-datagrid rows="$ctrl.rows">
+                            <oui-column property="firstName"></oui-column>
+                            <oui-column property="lastName" hidden></oui-column>
+                        </oui-datagrid>
+                    `, {
+                        rows: fakeData.slice(0, 5)
+                    });
+
+                    const headers = getHeaderRow(element)[0].querySelectorAll(".oui-datagrid__header");
+                    expect(headers.length).toEqual(1);
+                });
+
+                it("should show visible and hidden columns in parameters", () => {
+                    const element = TestUtils.compileTemplate(`
+                        <oui-datagrid rows="$ctrl.rows"
+                            customizable>
+                            <oui-column property="firstName"></oui-column>
+                            <oui-column property="lastName" hidden></oui-column>
+                        </oui-datagrid>
+                    `, {
+                        rows: fakeData.slice(0, 5)
+                    });
+
+                    const columnsParameters = getColumnsInDatagridParameters(element);
+                    expect(columnsParameters.length).toBe(2);
+                });
+
+                it("should override base columns with custom columns", () => {
+                    const element = TestUtils.compileTemplate(`
+                        <oui-datagrid rows="$ctrl.rows"
+                            columns-parameters="$ctrl.columnsParameters">
+                            <oui-column property="firstName"></oui-column>
+                            <oui-column property="lastName" hidden></oui-column>
+                        </oui-datagrid>
+                    `, {
+                        rows: fakeData.slice(0, 5),
+                        columnsParameters: [{
+                            name: "firstName",
+                            hidden: true
+                        }, {
+                            name: "lastName"
+                        }]
+                    });
+
+                    const headers = getHeaderRow(element)[0].querySelectorAll(".oui-datagrid__header");
+                    expect(headers.length).toEqual(1);
+                });
+
+                it("should change columns if columns parameters is updated", () => {
+                    const columnsParameters = [{
+                        name: "firstName",
+                        hidden: true
+                    }, {
+                        name: "lastName"
+                    }];
+                    const element = TestUtils.compileTemplate(`
+                        <oui-datagrid rows="$ctrl.rows"
+                            columns-parameters="$ctrl.columnsParameters">
+                            <oui-column property="firstName"></oui-column>
+                            <oui-column property="lastName" hidden></oui-column>
+                        </oui-datagrid>
+                    `, {
+                        rows: fakeData.slice(0, 5),
+                        columnsParameters
+                    });
+
+                    let headers = getHeaderRow(element)[0].querySelectorAll(".oui-datagrid__header");
+                    expect(headers.length).toEqual(1);
+
+                    const scope = element.scope();
+                    const newColumnsParameters = angular.copy(columnsParameters);
+                    newColumnsParameters[0].hidden = false;
+                    scope.$ctrl.columnsParameters = newColumnsParameters;
+                    scope.$digest();
+
+                    headers = getHeaderRow(element)[0].querySelectorAll(".oui-datagrid__header");
+                    expect(headers.length).toEqual(2);
+                });
+            });
+
+            describe("Events", () => {
+                const columns = [{
+                    name: "firstName"
+                }, {
+                    name: "lastName"
+                }];
+
+                it("should not call change handler if no id is defined", () => {
+                    const changeHandler = jasmine.createSpy();
+                    const element = TestUtils.compileTemplate(`
+                        <oui-datagrid rows="$ctrl.rows"
+                            customizable
+                            on-columns-parameters-change="$ctrl.changeHandler(id, column)">
+                            <oui-column property="firstName"></oui-column>
+                            <oui-column property="lastName"></oui-column>
+                        </oui-datagrid>
+                    `, {
+                        rows: fakeData.slice(0, 5),
+                        changeHandler
+                    });
+
+                    const controller = element.controller("oui-datagrid");
+
+                    const changedColumns = angular.copy(columns);
+                    changedColumns[0].hidden = true;
+                    controller.onColumnsChange(changedColumns);
+
+                    expect(changeHandler).not.toHaveBeenCalled();
+                });
+
+                it("should call change handler", () => {
+                    const id = "datagridId";
+                    const changeHandler = jasmine.createSpy();
+                    const element = TestUtils.compileTemplate(`
+                        <oui-datagrid rows="$ctrl.rows"
+                            id="${id}"
+                            customizable
+                            on-columns-parameters-change="$ctrl.changeHandler(id, columns)">
+                            <oui-column property="firstName"></oui-column>
+                            <oui-column property="lastName"></oui-column>
+                        </oui-datagrid>
+                    `, {
+                        rows: fakeData.slice(0, 5),
+                        changeHandler
+                    });
+
+                    const controller = element.controller("oui-datagrid");
+
+                    const changedColumns = angular.copy(columns);
+                    changedColumns[0].hidden = true;
+                    controller.onColumnsChange(changedColumns);
+
+                    expect(changeHandler).toHaveBeenCalledWith(id, changedColumns);
+                });
+            });
+        });
+
         it("should display a pagination component", () => {
             const element = TestUtils.compileTemplate(`
                     <oui-datagrid rows="$ctrl.rows">
@@ -1033,9 +1226,9 @@ describe("ouiDatagrid", () => {
 
                 // Check data-sortable and data-title
                 const $headerRow = getHeaderRow(element);
-                expect(getHeaderCell($headerRow, 0).html()).toEqual("First name");
+                expect(getHeaderCell($headerRow, 0).text().trim()).toEqual("First name");
                 expect(isSortableAscCell(getHeaderCell($headerRow, 0))).toBe(true);
-                expect(getHeaderCell($headerRow, 1).html()).toEqual("Last name");
+                expect(getHeaderCell($headerRow, 1).text().trim()).toEqual("Last name");
                 expect(isSortableCell(getHeaderCell($headerRow, 1))).toBe(true);
 
                 // Check data-property
