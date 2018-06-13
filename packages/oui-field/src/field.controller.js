@@ -20,6 +20,8 @@ const VALIDATION_PARAMETERS = {
     pattern: ["pattern", "ng-pattern", "ngPattern"]
 };
 
+const MESSAGES_ORDER = ["required", "number", "email", "minlength", "maxlength", "min", "max", "pattern"];
+
 export default class FieldController {
     constructor ($element, $scope, $timeout, ouiFieldConfiguration) {
         "ngInject";
@@ -183,6 +185,11 @@ export default class FieldController {
         }
 
         return null;
+    }
+
+    getMessagesOrder () {
+        // first known errors then custom errors
+        return Object.keys(this.getFirstError()).sort((a, b) => MESSAGES_ORDER.indexOf(a) < MESSAGES_ORDER.indexOf(b));
     }
 
     getMessageString (errorName) {
