@@ -58,7 +58,7 @@
                 "url": "#/",
                 "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In fermentum faucibus ante, sed ullamcorper quam pretium ut. Donec et eros at nisi egestas scelerisque quis id erat. Cras suscipit diam id lorem congue aliquam. Integer ornare urna vel turpis blandit, mattis placerat est dictum. Etiam porta venenatis odio tristique condimentum."
               }, {
-                "subject": "Duis placerat lacus at nibh fringilla",
+                "subject": "Duis placerat lacus at nibh fringil",
                 "time": "February 21",
                 "level": "success",
                 "url": "#/",
@@ -72,9 +72,9 @@
               }, {
                 "subject": "Mauris ipsum",
                 "time": "February 22, 2017",
-                "level": "error",
+                "level": "incident",
                 "url": "#/",
-                "description": "Duis placerat lacus at nibh fringilla, at ultrices nunc suscipit."
+                "description": "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis."
               }
             ],
             "limitTo": 10,
@@ -400,5 +400,13 @@
             "url": "#!/oui-angular/navbar",
             "isPrimary": false
         }
-    ]
+    ],
+    "placeholderNotification": [{
+        "name": "notifications",
+        "class": "navbar-notification__list",
+        "title": "Notifications",
+        "iconClass": "oui-icon oui-icon-info_circle",
+        "subLinks": null,
+        "limitTo": 10
+    }]
 }
