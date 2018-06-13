@@ -52,7 +52,7 @@
         <a class="oui-navbar-link"
             ng-attr-aria-label="{{::!!managerLink.label ? managerLink.label : null}}"
             ng-attr-title="{{::!!managerLink.label ? managerLink.label : null}}"
-            ng-class="::{
+            ng-class="{
                 'oui-navbar-link_active': managerLink.name === $ctrl.activeLink,
                 'oui-navbar-link_primary': managerLink.isPrimary,
                 'oui-navbar-link_secondary': !managerLink.isPrimary
