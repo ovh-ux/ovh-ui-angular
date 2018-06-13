@@ -28,10 +28,14 @@ export default class DatagridColumnBuilder {
         angular.forEach(columnElements, columnElement => {
             const column = {};
 
+            if (hasAttribute(columnElement, "name")) {
+                column.name = getAttribute(columnElement, "name");
+            }
+
             if (hasAttribute(columnElement, "property")) {
                 const propertyValue = getAttribute(columnElement, "property");
 
-                column.name = propertyValue;
+                column.name = column.name || propertyValue;
                 column.getValue = this.$parse(propertyValue);
 
                 // A column can be sorted only if it has a "property" attribute.
@@ -55,6 +59,14 @@ export default class DatagridColumnBuilder {
 
             if (column["type-options"]) {
                 column.typeOptions = this.$parse(column["type-options"])($scope);
+            }
+
+            if (hasAttribute(columnElement, "prevent-customization")) {
+                column.preventCustomization = true;
+            }
+
+            if (hasAttribute(columnElement, "hidden")) {
+                column.hidden = true;
             }
 
             if (hasAttribute(columnElement, "title")) {
@@ -96,9 +108,11 @@ export default class DatagridColumnBuilder {
         angular.forEach(columnsDescription, columnDescription => {
             const column = {};
 
+            column.name = columnDescription.name;
+
             const propertyValue = columnDescription.property;
             if (propertyValue) {
-                column.name = propertyValue;
+                column.name = column.name || propertyValue;
                 column.getValue = this.$parse(propertyValue);
 
                 // A column can be sorted only if it has a "property" attribute.
@@ -121,6 +135,8 @@ export default class DatagridColumnBuilder {
             if (column.typeOptions) {
                 column.typeOptions = this.$parse(column.typeOptions)($scope);
             }
+
+            column.preventCustomization = columnDescription.preventCustomization;
 
             column.title = columnDescription.title;
 
@@ -153,6 +169,7 @@ export default class DatagridColumnBuilder {
             template: actionColumnElement.outerHTML
         };
         column.compiledTemplate = this._getColumnTemplate(column);
+        column.alwaysVisible = true;
         return column;
     }
 

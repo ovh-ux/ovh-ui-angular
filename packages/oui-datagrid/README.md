@@ -186,6 +186,43 @@ Using this attribute, a new column property `hidden` is available.
 
 All the properties of a column also become dynamic.
 
+### Customizable columns
+
+```html:preview
+<oui-datagrid
+  id="customizableDatagrid"
+  rows="$ctrl.data"
+  page-size="5"
+  customizable
+  columns-parameters="$ctrl.datagridParameters['customizableDatagrid']"
+  on-columns-parameters-change="$ctrl.onColumnsParametersChange(id, columns)">
+
+  <!-- A column can be tagged with "prevent-customization". -->
+  <oui-column title="'First name'" property="firstName" sortable="asc" type="string" searchable filterable prevent-customization></oui-column>
+  <oui-column title="'Last name'" property="lastName" sortable type="string" searchable filterable></oui-column>
+  <oui-column title="'Mother'" property="parents.mother.lastName" sortable>
+    {{$row.parents.mother.lastName}}, {{$row.parents.mother.firstName}}
+  </oui-column>
+  <oui-column title="'Father'" property="parents.father.lastName" sortable>
+    {{$row.parents.father.lastName}}, {{$row.parents.father.firstName}}
+  </oui-column>
+  <oui-column title="'Email'" property="email" sortable type="string" searchable filterable>
+    <a href="mailto:{{$value}}">{{$value}}</a>
+  </oui-column>
+
+  <!-- To be customizable, a column without property (needed to be sortable, filterable, ...),
+       must have a name. -->
+  <oui-column name="birth" title="'Named column'">
+    Birth: {{$row.birth}}
+  </oui-column>
+
+  <!-- A column without property nor name is not customizable. -->
+  <oui-column title="'Not named column'">
+    Phone: {{$row.phone}}
+  </oui-column>
+</oui-datagrid>
+```
+
 ### Pagination
 
 By default the page size is 25.
@@ -550,26 +587,51 @@ call `rows-loader` and then a `row-loader` call for each line.
 
 ### oui-datagrid
 
-| Attribute         | Type            | Binding | One-time binding | Values                    | Default             | Description                                       |
-| ----              | ----            | ----    | ----             | ----                      | ----                | ----                                              |
-| `id`              | string          | @?      |                  |                           |                     | id of the datagrid                                |
-| `page-size`       | number          | @?      |                  |                           | 25                  | maximum number of rows to show on each pages      |
-| `rows`            | array           | <?      | yes              |                           |                     | rows to show                                      |
-| `rows-loader`     | function        | &?      | yes              |                           |                     | gets all rows (returns a promise with all rows)   |
-| `row-loader`      | function        | &?      | yes              |                           |                     | gets row details (returns a promise with details) |
+| Attribute                      | Type            | Binding | One-time binding | Values                    | Default             | Description                                                        |
+| ----                           | ----            | ----    | ----             | ----                      | ----                | ----                                                               |
+| `id`                           | string          | @?      |                  |                           |                     | id of the datagrid                                                 |
+| `page-size`                    | number          | @?      |                  |                           | 25                  | maximum number of rows to show on each pages                       |
+| `rows`                         | array           | <?      | yes              |                           |                     | rows to show                                                       |
+| `rows-loader`                  | function        | &?      | yes              |                           |                     | gets all rows (returns a promise with all rows)                    |
+| `row-loader`                   | function        | &?      | yes              |                           |                     | gets row details (returns a promise with details)                  |
+| `customizable`                 | boolean         | <?      |                  |                           | false               | if the datagrid is customizable                                    |
+| `columns-parameters`           | array           | <?      |                  |                           | undefined           | columns parameters (see below)                                     |
+| `on-columns-parameters-change` | function        | &       |                  |                           |                     | triggered on column parameter change when datagrid is customizable |
 
+`columns-parameters` is an array describing all basic parameters of each column.
+
+```javascript
+const columnsParameters = [{
+    name: "column1"
+}, {
+    name: "column2",
+    hidden: true
+}];
+```
+
+This example shows columns parameters where "column1" column has no particular parameter and "column2" column is hidden.
+These parameters override properties defined in `oui-column` or `columns` attribute.
+
+**Only `hidden` is supported for now.**
+
+`on-columns-parameters-change` takes 2 parameters:
+
+- `id`: the id of the table
+- `columns`: the overrided parameters of each column. This value can be saved and then set in `columns-parameters`
 
 ### oui-column / `columns` attribute
 
-| Attribute                      | Type            | Binding | One-time binding | Values                      | Default                | Description                                       |
-| ----                           | ----            | ----    | ----             | ----                        | ----                   | ----                                              |
-| `title`                        | string          | N/A     | yes              |                             |                        | column title put in header                        |
-| `property`                     | string          | N/A     | yes              |                             | null                   | property path used to get value from value        |
-| `sortable`                     | string          | N/A     | yes              | `asc`, `desc`               | `asc` on `sortable=""` | makes a column sortable and gives the order       |
-| `type`                         | string          | N/A     |                  | See below                   | null                   | define a column type                              |
-| `filterable`                   | N/A             | N/A     |                  |                             |                        | define a filterable column                        |
-| `searchable`                   | N/A             | N/A     |                  |                             |                        | define a searchable column                        |
-| `type-options` / `typeOptions` | object          | N/A     |                  | See below                   | {}                     | define options related to column type (see below) |
+| Attribute                                        | Type            | Binding | One-time binding | Values                      | Default                | Description                                       |
+| ----                                             | ----            | ----    | ----             | ----                        | ----                   | ----                                              |
+| `title`                                          | string          | N/A     | yes              |                             |                        | column title put in header                        |
+| `property`                                       | string          | N/A     | yes              |                             | null                   | property path used to get value from value        |
+| `sortable`                                       | string          | N/A     | yes              | `asc`, `desc`               | `asc` on `sortable=""` | makes a column sortable and gives the order       |
+| `type`                                           | string          | N/A     |                  | See below                   | null                   | define a column type                              |
+| `filterable`                                     | N/A             | N/A     |                  |                             |                        | define a filterable column                        |
+| `searchable`                                     | N/A             | N/A     |                  |                             |                        | define a searchable column                        |
+| `type-options` / `typeOptions`                   | object          | N/A     |                  | See below                   | {}                     | define options related to column type (see below) |
+| `hidden`                                         | boolean         | N/A     |                  | `true` / `false`            | false                  | if the column is hidden by default                |
+| `prevent-customization` / `preventCustomization` | N/A             | N/A     |                  |                             |                        | prevent a column to be customizable               |
 
 `typeOptions` is used to give options to feed criteria values. Example:
 
