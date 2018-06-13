@@ -23,22 +23,10 @@
         ng-if="$ctrl.isErrorVisible()">
         <span ng-messages="$ctrl.getFirstError()" role="alert">
             <i class="oui-icon oui-icon-error" aria-hidden="true"></i>
-            <span ng-message="required"
-                ng-bind="$ctrl.getErrorMessage('required')"></span>
-            <span ng-message="number"
-                ng-bind="$ctrl.getErrorMessage('number')"></span>
-            <span ng-message="email"
-                ng-bind="$ctrl.getErrorMessage('email')"></span>
-            <span ng-message="minlength"
-                ng-bind="$ctrl.getErrorMessage('minlength')"></span>
-            <span ng-message="maxlength"
-                ng-bind="$ctrl.getErrorMessage('maxlength')"></span>
-            <span ng-message="min"
-                ng-bind="$ctrl.getErrorMessage('min')"></span>
-            <span ng-message="max"
-                ng-bind="$ctrl.getErrorMessage('max')"></span>
-            <span ng-message="pattern"
-                  ng-bind="$ctrl.getErrorMessage('pattern')"></span>
+            <span data-ng-repeat="errorKey in $ctrl.getMessagesOrder()"
+                  ng-message="{{ errorKey }}"
+                  ng-bind="$ctrl.getErrorMessage(errorKey)">
+            </span>
         </span>
     </div>
     <div class="oui-field__helper"
