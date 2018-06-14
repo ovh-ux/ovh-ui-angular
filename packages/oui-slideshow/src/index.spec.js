@@ -55,19 +55,6 @@ describe("ouiSlideshow", () => {
                 getDismissButton(element).triggerHandler("click");
                 expect(dismissSpy).toHaveBeenCalled();
             });
-
-            /* it("should dismiss modal on escape key's trigger", () => {
-                const dismissSpy = jasmine.createSpy("dismiss");
-                const element = TestUtils.compileTemplate('<oui-slideshow on-dismiss="$ctrl.dismissSpy()"></oui-slideshow>', {
-                    dismissSpy
-                });
-                $timeout.flush();
-                $document.triggerHandler({
-                    type: "keydown",
-                    keyCode: 27
-                });
-                expect(dismissSpy).toHaveBeenCalled();
-            }); */
         });
 
         describe("SlideshowPanel", () => {
