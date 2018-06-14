@@ -17,20 +17,20 @@ describe("ouiCollapsible", () => {
     }
 
     describe("Component", () => {
-        it("should have the correct title", () => {
-            const titleText = "Collapsible title";
+        it("should have the correct heading", () => {
+            const headingText = "Collapsible heading";
             const element = TestUtils.compileTemplate(`
-                <oui-collapsible title="${titleText}" aria-label="Action"></oui-collapsible>`
+                <oui-collapsible heading="${headingText}" aria-label="Action"></oui-collapsible>`
             );
 
             const headerEl = getHeaderElement(element);
-            expect(headerEl.innerText).toContain(titleText);
+            expect(headerEl.innerText).toContain(headingText);
         });
 
         it("should have the correct aria-label", () => {
             const ariaLabel = "Action";
             const element = TestUtils.compileTemplate(`
-                <oui-collapsible title="Title" aria-label="${ariaLabel}"></oui-collapsible>`
+                <oui-collapsible heading="Title" aria-label="${ariaLabel}"></oui-collapsible>`
             );
 
             const headerEl = getHeaderElement(element);
@@ -40,7 +40,7 @@ describe("ouiCollapsible", () => {
 
         it("should expand and collapse on header click", () => {
             const element = TestUtils.compileTemplate(`
-                <oui-collapsible title="Title" aria-label="Action"></oui-collapsible>`
+                <oui-collapsible heading="Title" aria-label="Action"></oui-collapsible>`
             );
 
             const headerEl = angular.element(getHeaderElement(element));
@@ -56,7 +56,7 @@ describe("ouiCollapsible", () => {
 
         it("should be expanded", () => {
             const element = TestUtils.compileTemplate(`
-                <oui-collapsible title="Title" aria-label="Action" expanded="true"></oui-collapsible>`
+                <oui-collapsible heading="Title" aria-label="Action" expanded="true"></oui-collapsible>`
             );
             const headerEl = angular.element(getHeaderElement(element));
             expect(headerEl.attr("aria-expanded")).toBe("true");
@@ -64,7 +64,7 @@ describe("ouiCollapsible", () => {
 
         it("should transclude the contents into the collapsible body", () => {
             const element = TestUtils.compileTemplate(`
-                <oui-collapsible title="Title" aria-label="Action" expanded="true">
+                <oui-collapsible heading="Title" aria-label="Action" expanded="true">
                     <div class="custom-content">Collapsible body</div>
                 </oui-collapsible>`
             );
