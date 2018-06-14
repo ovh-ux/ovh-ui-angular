@@ -8,7 +8,8 @@ export default {
         id: "@?",
         name: "@?",
         ariaLabel: "@?",
-        title: "@?",
+        heading: "@?",
+        title: "@?", // Deprecated: Replaced by 'heading'
         onClick: "&?",
         href: "@?"
     }
