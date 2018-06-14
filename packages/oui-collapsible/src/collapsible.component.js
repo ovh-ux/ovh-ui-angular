@@ -6,7 +6,7 @@ export default {
     controller,
     bindings: {
         id: "@",
-        title: "@",
+        heading: "@",
         ariaLabel: "@?",
         expanded: "<?"
     },
