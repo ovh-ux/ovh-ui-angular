@@ -5,7 +5,7 @@ export default {
     template,
     controller,
     bindings: {
-        title: "@?",
+        heading: "@?",
         text: "@?",
         picture: "@?",
         onClick: "&?",
