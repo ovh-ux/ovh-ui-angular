@@ -8,7 +8,7 @@
 <div ng-init="$ctrl.cancel = false; $ctrl.confirm = false"
     class="oui-doc-preview-only-keep-children">
 <oui-modal
-    data-title="Modal title"
+    heading="Modal title"
     primary-action="$ctrl.confirm = true"
     primary-label="Ok"
     secondary-action="$ctrl.cancel = true"
@@ -27,7 +27,7 @@
 <div ng-init="$ctrl.cancel2 = false; $ctrl.confirm2 = false"
     class="oui-doc-preview-only-keep-children">
 <oui-modal
-    data-title="Modal title"
+    heading="Modal title"
     primary-action="$ctrl.confirm2 = true"
     primary-label="Save"
     on-dismiss="$ctrl.cancel2 = true">
@@ -43,7 +43,7 @@
 ```html:preview
 <div ng-init="$ctrl.loading = true" class="oui-doc-preview-only-keep-children">
 <oui-modal
-    data-title="Loading modal title"
+    heading="Loading modal title"
     primary-action="$ctrl.confirm = true"
     primary-label="Ok"
     secondary-action="$ctrl.cancel = true"
@@ -64,7 +64,7 @@
 <div ng-init="$ctrl.dismiss = false"
     class="oui-doc-preview-only-keep-children">
 <oui-modal
-    data-title="Warning modal"
+    heading="Warning modal"
     primary-action="$ctrl.dismiss = true"
     primary-label="Ok"
     on-dismiss="$ctrl.dismiss = true"
@@ -78,7 +78,7 @@
 
 | Attribute           | Type     | Binding | One-time Binding | Values                 | Default           | Description                               |
 | ----                | ----     | ----    | ----             | ----                   | ----              | ----                                      |
-| `data-title`        | string   | @       | yes              |                        |                   | modal title                               |
+| `heading`        | string   | @       | yes              |                        |                   | modal title                               |
 | `primary-action`    | function | &?      |                  |                        |                   | confirmation callback                     |
 | `primary-label`     | string   | @?      | yes              |                        |                   | confirmation label                        |
 | `secondary-action`  | function | &?      |                  |                        |                   | cancellation callback                     |
