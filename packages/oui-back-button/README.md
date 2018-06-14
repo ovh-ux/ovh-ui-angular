@@ -7,7 +7,7 @@
 ### Default
 
 ```html:preview
-<oui-back-button href="#" data-title="Title">
+<oui-back-button href="#" heading="Title">
 </oui-back-button>
 ```
 
@@ -32,6 +32,6 @@
 | id            | string   | @?      | true             |                     |                        | id attribute of the input           |
 | name          | string   | @?      | true             |                     |                        | name attribute of the input         |
 | aria-label    | string   | @?      | true             |                     |                        | accessibility label                 |
-| title         | string   | @?      | true             |                     |                        | text of the header                  |
+| heading       | string   | @?      | true             |                     |                        | text of the header                  |
 | on-click      | function | &?      |                  |                     |                        | callback on component click         |
 | href          | string   | @?      | true             |                     |                        | link url                            |

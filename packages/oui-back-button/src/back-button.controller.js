@@ -1,10 +1,18 @@
 export default class {
-    constructor ($element, $timeout, $window) {
+    constructor ($attrs, $element, $timeout, $window) {
         "ngInject";
 
+        this.$attrs = $attrs;
         this.$element = $element;
         this.$timeout = $timeout;
         this.$window = $window;
+    }
+
+    $onInit () {
+        // Deprecated: Support for 'title' attribute
+        if (!!this.$attrs.title && !this.$attrs.heading) {
+            this.heading = this.title;
+        }
     }
 
     $postLink () {
