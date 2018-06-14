@@ -5,7 +5,8 @@ export default {
     template,
     controller,
     bindings: {
-        title: "@?",
+        heading: "@?",
+        title: "@?", // Deprecated: Replaced by 'heading'
         primaryAction: "&?",
         primaryLabel: "@?",
         secondaryAction: "&?",

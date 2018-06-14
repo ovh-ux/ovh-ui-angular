@@ -25,7 +25,7 @@ describe("ouiModal", () => {
         it("should display a modal", () => {
             const element = TestUtils.compileTemplate(`
                 <oui-modal
-                    title="Modal title">
+                    heading="Modal title">
                 </oui-modal>
             `);
 
@@ -35,7 +35,7 @@ describe("ouiModal", () => {
         it("should display a title", () => {
             const element = TestUtils.compileTemplate(`
                 <oui-modal
-                    title="{{$ctrl.title}}">
+                    heading="{{$ctrl.title}}">
                 </oui-modal>
             `, {
                 title
@@ -50,7 +50,7 @@ describe("ouiModal", () => {
         it("should display a content", () => {
             const element = TestUtils.compileTemplate(`
                 <oui-modal
-                    title="Title">
+                    heading="Title">
                     {{::$ctrl.body}}
                 </oui-modal>
             `, {
@@ -66,7 +66,7 @@ describe("ouiModal", () => {
         it("should display a footer", () => {
             const element = TestUtils.compileTemplate(`
                 <oui-modal
-                    title="Title">
+                    heading="Title">
                 </oui-modal>
             `);
 
@@ -78,7 +78,7 @@ describe("ouiModal", () => {
         it("should display primary button in the footer", () => {
             const element = TestUtils.compileTemplate(`
                 <oui-modal
-                    title="Title"
+                    heading="Title"
                     primary-label="{{::$ctrl.primaryLabel}}">
                 </oui-modal>
             `, {
@@ -96,7 +96,7 @@ describe("ouiModal", () => {
             const primarySpy = jasmine.createSpy("primaryClick");
             const element = TestUtils.compileTemplate(`
                 <oui-modal
-                    title="Title"
+                    heading="Title"
                     primary-label="Save"
                     primary-action="$ctrl.primarySpy()">
                 </oui-modal>
@@ -111,7 +111,7 @@ describe("ouiModal", () => {
         it("should display secondary button in the footer", () => {
             const element = TestUtils.compileTemplate(`
                 <oui-modal
-                    title="Title"
+                    heading="Title"
                     secondary-label="{{::$ctrl.secondaryLabel}}">
                 </oui-modal>
             `, {
@@ -128,7 +128,7 @@ describe("ouiModal", () => {
         it("should display an overlay when loading", () => {
             const element = TestUtils.compileTemplate(`
                 <oui-modal
-                    title="Title"
+                    heading="Title"
                     loading="true">
                 </oui-modal>
             `);
@@ -142,7 +142,7 @@ describe("ouiModal", () => {
         it("should display a warning modal", () => {
             const element = TestUtils.compileTemplate(`
                 <oui-modal
-                    title="Title"
+                    heading="Title"
                     loading="true"
                     type="warning">
                 </oui-modal>
@@ -157,7 +157,7 @@ describe("ouiModal", () => {
         it("should disable buttons when loading", () => {
             const element = TestUtils.compileTemplate(`
                 <oui-modal
-                    title="Title"
+                    heading="Title"
                     primary-label="{{::$ctrl.primaryLabel}}"
                     secondary-label="{{::$ctrl.secondaryLabel}}"
                     loading="true">
@@ -181,7 +181,7 @@ describe("ouiModal", () => {
             const secondarySpy = jasmine.createSpy("secondaryClick");
             const element = TestUtils.compileTemplate(`
                 <oui-modal
-                    title="Title"
+                    heading="Title"
                     secondary-label="Save"
                     secondary-action="$ctrl.secondarySpy()">
                 </oui-modal>
@@ -197,7 +197,7 @@ describe("ouiModal", () => {
             const dismissSpy = jasmine.createSpy("dismiss");
             const element = TestUtils.compileTemplate(`
                 <oui-modal
-                    title="Title"
+                    heading="Title"
                     on-dismiss="$ctrl.dismissSpy()">
                 </oui-modal>
             `, {

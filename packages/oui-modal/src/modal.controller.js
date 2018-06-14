@@ -9,5 +9,10 @@ export default class {
 
     $onInit () {
         addBooleanParameter(this, "loading");
+
+        // Deprecated: Support for 'title' attribute
+        if (!!this.$attrs.title && !this.$attrs.heading) {
+            this.heading = this.title;
+        }
     }
 }
