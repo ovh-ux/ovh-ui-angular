@@ -1,79 +1,79 @@
-import "@oui-angular/oui-button/src";
-import "@oui-angular/oui-calendar/src";
-import "@oui-angular/oui-checkbox/src";
-import "@oui-angular/oui-collapsible/src";
-import "@oui-angular/oui-radio/src";
-import "@oui-angular/oui-message/src";
-import "@oui-angular/oui-spinner/src";
-import "@oui-angular/oui-back-button/src";
-import "@oui-angular/oui-dropdown/src";
-import "@oui-angular/oui-action-menu/src";
-import "@oui-angular/oui-tooltip/src";
-import "@oui-angular/oui-numeric/src";
-import "@oui-angular/oui-pagination/src";
-import "@oui-angular/oui-datagrid/src";
-import "@oui-angular/oui-navbar/src";
-import "@oui-angular/oui-modal/src";
-import "@oui-angular/oui-field/src";
-import "@oui-angular/oui-radio-group/src";
-import "@oui-angular/oui-radio-toggle-group/src";
-import "@oui-angular/oui-select/src";
-import "@oui-angular/oui-select-picker/src";
-import "@oui-angular/oui-textarea/src";
-import "@oui-angular/oui-form-actions/src";
-import "@oui-angular/oui-search/src";
-import "@oui-angular/oui-criteria-container/src";
-import "@oui-angular/oui-criteria-adder/src";
-import "@oui-angular/oui-chips/src";
-import "@oui-angular/oui-popover/src";
-import "@oui-angular/oui-stepper/src";
-import "@oui-angular/oui-skeleton/src";
-import "@oui-angular/oui-clipboard/src";
-import "@oui-angular/oui-slideshow/src";
-import "@oui-angular/oui-page-header/src";
-import "@oui-angular/oui-tile/src";
-import "@oui-angular/oui-guide-menu/src";
-import "@oui-angular/oui-header-tabs/src";
-import "@oui-angular/oui-progress/src";
-import "@oui-angular/oui-switch/src";
+import ActionMenu from "@oui-angular/oui-action-menu/src";
+import BackButton from "@oui-angular/oui-back-button/src";
+import Button from "@oui-angular/oui-button/src";
+import Calendar from "@oui-angular/oui-calendar/src";
+import Checkbox from "@oui-angular/oui-checkbox/src";
+import Chips from "@oui-angular/oui-chips/src";
+import Clipboard from "@oui-angular/oui-clipboard/src";
+import Collapsible from "@oui-angular/oui-collapsible/src";
+import CriteriaAdder from "@oui-angular/oui-criteria-adder/src";
+import CriteriaContainer from "@oui-angular/oui-criteria-container/src";
+import Datagrid from "@oui-angular/oui-datagrid/src";
+import Dropdown from "@oui-angular/oui-dropdown/src";
+import Field from "@oui-angular/oui-field/src";
+import FormActions from "@oui-angular/oui-form-actions/src";
+import GuideMenu from "@oui-angular/oui-guide-menu/src";
+import HeaderTabs from "@oui-angular/oui-header-tabs/src";
+import Message from "@oui-angular/oui-message/src";
+import Modal from "@oui-angular/oui-modal/src";
+import Navbar from "@oui-angular/oui-navbar/src";
+import Numeric from "@oui-angular/oui-numeric/src";
+import PageHeader from "@oui-angular/oui-page-header/src";
+import Pagination from "@oui-angular/oui-pagination/src";
+import Popover from "@oui-angular/oui-popover/src";
+import Progress from "@oui-angular/oui-progress/src";
+import Radio from "@oui-angular/oui-radio/src";
+import RadioGroup from "@oui-angular/oui-radio-group/src";
+import RadioToggleGroup from "@oui-angular/oui-radio-toggle-group/src";
+import Search from "@oui-angular/oui-search/src";
+import Select from "@oui-angular/oui-select/src";
+import SelectPicker from "@oui-angular/oui-select-picker/src";
+import Skeleton from "@oui-angular/oui-skeleton/src";
+import Slideshow from "@oui-angular/oui-slideshow/src";
+import Spinner from "@oui-angular/oui-spinner/src";
+import Stepper from "@oui-angular/oui-stepper/src";
+import Switch from "@oui-angular/oui-switch/src";
+import Textarea from "@oui-angular/oui-textarea/src";
+import Tile from "@oui-angular/oui-tile/src";
+import Tooltip from "@oui-angular/oui-tooltip/src";
 
 angular.module("oui", [
-    "oui.button",
-    "oui.calendar",
-    "oui.checkbox",
-    "oui.collapsible",
-    "oui.radio",
-    "oui.message",
-    "oui.spinner",
-    "oui.back-button",
-    "oui.dropdown",
-    "oui.action-menu",
-    "oui.tooltip",
-    "oui.numeric",
-    "oui.pagination",
-    "oui.datagrid",
-    "oui.navbar",
-    "oui.modal",
-    "oui.field",
-    "oui.radio-group",
-    "oui.select",
-    "oui.select-picker",
-    "oui.textarea",
-    "oui.form-actions",
-    "oui.search",
-    "oui.criteria-container",
-    "oui.radio-toggle-group",
-    "oui.criteria-adder",
-    "oui.chips",
-    "oui.popover",
-    "oui.stepper",
-    "oui.skeleton",
-    "oui.clipboard",
-    "oui.slideshow",
-    "oui.page-header",
-    "oui.tile",
-    "oui.guide-menu",
-    "oui.header-tabs",
-    "oui.progress",
-    "oui.switch"
+    ActionMenu,
+    BackButton,
+    Button,
+    Calendar,
+    Checkbox,
+    Chips,
+    Clipboard,
+    Collapsible,
+    CriteriaAdder,
+    CriteriaContainer,
+    Datagrid,
+    Dropdown,
+    Field,
+    FormActions,
+    GuideMenu,
+    HeaderTabs,
+    Message,
+    Modal,
+    Navbar,
+    Numeric,
+    PageHeader,
+    Pagination,
+    Popover,
+    Progress,
+    Radio,
+    RadioGroup,
+    RadioToggleGroup,
+    Search,
+    Select,
+    SelectPicker,
+    Skeleton,
+    Slideshow,
+    Spinner,
+    Stepper,
+    Switch,
+    Textarea,
+    Tile,
+    Tooltip
 ]);

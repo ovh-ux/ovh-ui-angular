@@ -1,5 +1,6 @@
 import Search from "./search.component";
 
-angular
+export default angular
     .module("oui.search", [])
-    .component("ouiSearch", Search);
+    .component("ouiSearch", Search)
+    .name;

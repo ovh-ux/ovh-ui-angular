@@ -1,3 +1,6 @@
 import Radio from "./radio.component.js";
 
-angular.module("oui.radio", []).component("ouiRadio", Radio);
+export default angular
+    .module("oui.radio", [])
+    .component("ouiRadio", Radio)
+    .name;

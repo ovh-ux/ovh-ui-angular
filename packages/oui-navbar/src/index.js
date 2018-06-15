@@ -6,7 +6,7 @@ import NavbarGroupService from "./group/navbar-group.service";
 import NavbarMenu from "./menu/navbar-menu.component";
 import NavbarService from "./navbar.service";
 
-angular
+export default angular
     .module("oui.navbar", [
         "ngAria",
         "ngSanitize"
@@ -17,4 +17,5 @@ angular
     .component("ouiNavbarMenu", NavbarMenu)
     .provider("ouiNavbarConfiguration", NavbarConfigurationProvider)
     .service("NavbarService", NavbarService)
-    .service("NavbarGroupService", NavbarGroupService);
+    .service("NavbarGroupService", NavbarGroupService)
+    .name;

@@ -1,3 +1,6 @@
 import Message from "./message.component.js";
 
-angular.module("oui.message", []).component("ouiMessage", Message);
+export default angular
+    .module("oui.message", [])
+    .component("ouiMessage", Message)
+    .name;
