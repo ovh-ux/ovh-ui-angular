@@ -1,4 +1,4 @@
-import { clamp } from "lodash";
+import clamp from "lodash/clamp";
 
 // By design, value is restricted to [0, 99999] interval
 const MIN_VALUE = 0;

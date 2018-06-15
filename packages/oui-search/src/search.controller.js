@@ -1,5 +1,5 @@
 import { addBooleanParameter } from "@oui-angular/common/component-utils";
-import { debounce } from "lodash";
+import debounce from "lodash/debounce";
 
 const componentClass = "oui-search";
 

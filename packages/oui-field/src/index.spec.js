@@ -1,4 +1,4 @@
-import { noop } from "lodash";
+import noop from "lodash/noop";
 
 describe("ouiField", () => {
     let $timeout;

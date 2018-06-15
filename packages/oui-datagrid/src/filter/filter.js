@@ -1,5 +1,6 @@
-import { find, get } from "lodash";
 import ComparatorResolver from "./comparator-resolver";
+import find from "lodash/find";
+import get from "lodash/get";
 import StringComparators from "./string";
 
 export default class Filter {
