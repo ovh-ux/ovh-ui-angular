@@ -32,6 +32,7 @@ import "@oui-angular/oui-clipboard/src";
 import "@oui-angular/oui-slideshow/src";
 import "@oui-angular/oui-page-header/src";
 import "@oui-angular/oui-tile/src";
+import "@oui-angular/oui-guide-menu/src";
 
 angular.module("oui", [
     "oui.button",
@@ -67,5 +68,6 @@ angular.module("oui", [
     "oui.clipboard",
     "oui.slideshow",
     "oui.page-header",
-    "oui.tile"
+    "oui.tile",
+    "oui.guide-menu"
 ]);
