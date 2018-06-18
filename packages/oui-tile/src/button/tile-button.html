@@ -1,0 +1,17 @@
+<button
+    ng-if="::!$ctrl.href"
+    type="button"
+    class="oui-tile__button oui-button oui-button_link oui-button_icon-right oui-button_full-width"
+    ng-click="$ctrl.onClick()"
+    ng-attr-aria-label="{{ :: $ctrl.ariaLabel }}">
+    <span ng-transclude>{{ :: $ctrl.text }}</span>
+    <i class="oui-icon oui-icon-chevron-right" aria-hidden="true"></i>
+</button>
+<a
+    ng-if="::!!$ctrl.href"
+    class="oui-tile__button oui-button oui-button_link oui-button_icon-right oui-button_full-width"
+    ng-href="{{:: $ctrl.href }}"
+    ng-attr-aria-label="{{ :: $ctrl.ariaLabel }}">
+    <span ng-transclude>{{ :: $ctrl.text }}</span>
+    <i class="oui-icon oui-icon-chevron-right" aria-hidden="true"></i>
+</a>

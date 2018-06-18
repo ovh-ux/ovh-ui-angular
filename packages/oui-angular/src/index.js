@@ -31,6 +31,7 @@ import "@oui-angular/oui-skeleton/src";
 import "@oui-angular/oui-clipboard/src";
 import "@oui-angular/oui-slideshow/src";
 import "@oui-angular/oui-page-header/src";
+import "@oui-angular/oui-tile/src";
 
 angular.module("oui", [
     "oui.button",
@@ -65,5 +66,6 @@ angular.module("oui", [
     "oui.skeleton",
     "oui.clipboard",
     "oui.slideshow",
-    "oui.page-header"
+    "oui.page-header",
+    "oui.tile"
 ]);
