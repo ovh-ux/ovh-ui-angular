@@ -81,7 +81,7 @@
       </oui-action-menu-item>
       <oui-action-menu-divider></oui-action-menu-divider>
       <oui-action-menu-item
-          text="Lien externe"
+          text="External link"
           href="#"
           external>
       </oui-action-menu-item>
@@ -121,7 +121,7 @@ Clicked row action 1: <span ng-if="$ctrl.action1Row">{{$ctrl.action1Row.lastName
       </oui-action-menu-item>
       <oui-action-menu-divider></oui-action-menu-divider>
       <oui-action-menu-item
-          text="Lien externe"
+          text="External link"
           href="#"
           external>
       </oui-action-menu-item>
