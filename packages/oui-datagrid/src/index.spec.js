@@ -1031,7 +1031,7 @@ describe("ouiDatagrid", () => {
             const $firstRow = getRow(element, 0);
             const $actionCell = getCell($firstRow, 2);
 
-            const actions = $actionCell[0].querySelectorAll(".oui-button_action-menu");
+            const actions = $actionCell[0].querySelectorAll(".oui-dropdown-option");
 
             expect(actions.length).toEqual(2);
         });
