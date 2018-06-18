@@ -37,12 +37,12 @@ describe("ouiDropdown", () => {
 
             const trigger = element[0].querySelector("[oui-dropdown-trigger]");
             const dropdown = element[0].querySelector("[oui-dropdown-content]").parentNode;
-            const arrow = element[0].querySelector(".oui-dropdown__arrow");
+            const arrow = element[0].querySelector(".oui-dropdown-menu__arrow");
 
             expect(angular.element(trigger)
                 .hasClass("oui-dropdown__trigger")).toBeTruthy();
             expect(angular.element(dropdown)
-                .hasClass("oui-dropdown__content")).toBeTruthy();
+                .hasClass("oui-dropdown-menu")).toBeTruthy();
             expect(arrow).toBeFalsy();
         });
 
@@ -58,10 +58,10 @@ describe("ouiDropdown", () => {
 
             const dropdown = element[0].querySelector("[oui-dropdown-content]").parentNode;
             const $dropdown = angular.element(dropdown);
-            const arrow = element[0].querySelector(".oui-dropdown__arrow");
+            const arrow = element[0].querySelector(".oui-dropdown-menu__arrow");
 
             expect(arrow).toBeTruthy();
-            expect($dropdown.hasClass("oui-dropdown__content_arrow")).toBeTruthy();
+            expect($dropdown.hasClass("oui-dropdown-menu_arrow")).toBeTruthy();
         });
 
         it("should display at bottom with the arrow centered by default", () => {
@@ -133,7 +133,7 @@ describe("ouiDropdown", () => {
                 const dropdown = element[0].querySelector("[oui-dropdown-content]").parentNode;
                 const $dropdown = angular.element(dropdown);
 
-                expect($dropdown.hasClass("oui-dropdown__content_active")).toBeFalsy();
+                expect($dropdown.hasClass("oui-dropdown-menu_active")).toBeFalsy();
             });
 
             it("should display and hide dropdown on click", () => {

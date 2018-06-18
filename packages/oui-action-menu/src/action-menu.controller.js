@@ -1,27 +1,16 @@
-import { addBooleanParameter } from "@oui-angular/common/component-utils";
+import { addBooleanParameter, addDefaultParameter } from "@oui-angular/common/component-utils";
+import DropdownCtrl from "../../oui-dropdown/src/dropdown.controller";
 
-const baseClass = "oui-action-menu";
-
-export default class {
-    constructor ($attrs, $element, $timeout) {
-        "ngInject";
-
-        this.$attrs = $attrs;
-        this.$element = $element;
-        this.$timeout = $timeout;
-    }
-
+export default class extends DropdownCtrl {
     $onInit () {
-        this.baseClass = baseClass;
         addBooleanParameter(this, "compact");
+        addBooleanParameter(this, "disabled");
+        addDefaultParameter(this, "align", this.compact ? "center" : "start");
     }
 
     $postLink () {
-        // Sometimes the digest cycle is done before dom manipulation,
-        // So we use $timeout to force the $apply
         this.$timeout(() =>
             this.$element
-                .removeAttr("align")
                 .removeAttr("aria-label")
         );
     }

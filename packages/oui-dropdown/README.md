@@ -4,127 +4,226 @@
 
 ## Usage
 
-### Centered by default with default trigger
+### Basic
 
 ```html:preview
-<div style="text-align: center" class="oui-doc-preview-only-keep-children">
-  <oui-dropdown>
-    <oui-dropdown-trigger text="Actions..."></oui-dropdown-trigger>
+<oui-dropdown>
+    <oui-dropdown-trigger text="Actions"></oui-dropdown-trigger>
     <oui-dropdown-content>
-      xxx
+        <oui-dropdown-group label="Lorem ipsum">
+            <oui-dropdown-item text="Action 1 (button)" on-click="$ctrl.onActionClick()"></oui-dropdown-item>
+            <oui-dropdown-item text="Action 2 (link/href)" href="#"></oui-dropdown-item>
+        </oui-dropdown-group>
+        <oui-dropdown-group label="Dolor sit amet">
+            <oui-dropdown-item text="Action 3 (disabled)" disabled></oui-dropdown-item>
+            <oui-dropdown-item text="Action 4 (link/state)" state="showcase.oui-angular"></oui-dropdown-item>
+        </oui-dropdown-group>
+        <oui-dropdown-divider></oui-dropdown-divider>
+        <oui-dropdown-item text="External link" href="#" external></oui-dropdown-item>
+        <oui-dropdown-item text="Start guided tour" href="#" sticky></oui-dropdown-item>
     </oui-dropdown-content>
-  </oui-dropdown>
-</div>
+</oui-dropdown>
 ```
 
+### Disabled
+
 ```html:preview
-<div style="text-align: center" class="oui-doc-preview-only-keep-children">
-  <oui-dropdown>
-    <oui-dropdown-trigger text="Actions..."></oui-dropdown-trigger>
+<oui-dropdown>
+    <oui-dropdown-trigger text="Actions" disabled></oui-dropdown-trigger>
     <oui-dropdown-content>
-      <button>AAA</button>
-      <button>BBB</button>
-      <button disabled="disabled">CCC</button>
+        <oui-dropdown-group label="Lorem ipsum">
+            <oui-dropdown-item text="Action 1 (button)" on-click="$ctrl.onActionClick()"></oui-dropdown-item>
+            <oui-dropdown-item text="Action 2 (link/href)" href="#"></oui-dropdown-item>
+        </oui-dropdown-group>
+        <oui-dropdown-group label="Dolor sit amet">
+            <oui-dropdown-item text="Action 3 (disabled)" disabled></oui-dropdown-item>
+            <oui-dropdown-item text="Action 4 (link/state)" state="showcase.oui-angular"></oui-dropdown-item>
+        </oui-dropdown-group>
+        <oui-dropdown-divider></oui-dropdown-divider>
+        <oui-dropdown-item text="External link" href="#" external></oui-dropdown-item>
+        <oui-dropdown-item text="Start guided tour" href="#" sticky></oui-dropdown-item>
     </oui-dropdown-content>
-  </oui-dropdown>
-</div>
+</oui-dropdown>
 ```
 
 ### Alignment
 
 ```html:preview
-<div class="oui-doc-preview-only-keep-children">
-  <oui-dropdown align="start">
-    <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
-      <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
-    </button>
+<oui-dropdown align="start">
+    <oui-dropdown-trigger text="Start"></oui-dropdown-trigger>
     <oui-dropdown-content>
-      XXX
+        <oui-dropdown-group label="Lorem ipsum">
+            <oui-dropdown-item text="Action 1 (button)" on-click="$ctrl.onActionClick()"></oui-dropdown-item>
+            <oui-dropdown-item text="Action 2 (link/href)" href="#"></oui-dropdown-item>
+        </oui-dropdown-group>
+        <oui-dropdown-group label="Dolor sit amet">
+            <oui-dropdown-item text="Action 3 (disabled)" disabled></oui-dropdown-item>
+            <oui-dropdown-item text="Action 4 (link/state)" state="showcase.oui-angular"></oui-dropdown-item>
+        </oui-dropdown-group>
+        <oui-dropdown-divider></oui-dropdown-divider>
+        <oui-dropdown-item text="External link" href="#" external></oui-dropdown-item>
+        <oui-dropdown-item text="Start guided tour" href="#" sticky></oui-dropdown-item>
     </oui-dropdown-content>
-  </oui-dropdown>
-</div>
-<div style="text-align: right" class="oui-doc-preview-only-keep-children">
-  <oui-dropdown align="end">
-    <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
-      <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
-    </button>
+</oui-dropdown>
+
+<oui-dropdown align="center">
+    <oui-dropdown-trigger text="Center"></oui-dropdown-trigger>
     <oui-dropdown-content>
-      XXX
+        <oui-dropdown-group label="Lorem ipsum">
+            <oui-dropdown-item text="Action 1 (button)" on-click="$ctrl.onActionClick()"></oui-dropdown-item>
+            <oui-dropdown-item text="Action 2 (link/href)" href="#"></oui-dropdown-item>
+        </oui-dropdown-group>
+        <oui-dropdown-group label="Dolor sit amet">
+            <oui-dropdown-item text="Action 3 (disabled)" disabled></oui-dropdown-item>
+            <oui-dropdown-item text="Action 4 (link/state)" state="showcase.oui-angular"></oui-dropdown-item>
+        </oui-dropdown-group>
+        <oui-dropdown-divider></oui-dropdown-divider>
+        <oui-dropdown-item text="External link" href="#" external></oui-dropdown-item>
+        <oui-dropdown-item text="Start guided tour" href="#" sticky></oui-dropdown-item>
     </oui-dropdown-content>
-  </oui-dropdown>
-</div>
+</oui-dropdown>
+
+<oui-dropdown align="end">
+    <oui-dropdown-trigger text="End"></oui-dropdown-trigger>
+    <oui-dropdown-content>
+        <oui-dropdown-group label="Lorem ipsum">
+            <oui-dropdown-item text="Action 1 (button)" on-click="$ctrl.onActionClick()"></oui-dropdown-item>
+            <oui-dropdown-item text="Action 2 (link/href)" href="#"></oui-dropdown-item>
+        </oui-dropdown-group>
+        <oui-dropdown-group label="Dolor sit amet">
+            <oui-dropdown-item text="Action 3 (disabled)" disabled></oui-dropdown-item>
+            <oui-dropdown-item text="Action 4 (link/state)" state="showcase.oui-angular"></oui-dropdown-item>
+        </oui-dropdown-group>
+        <oui-dropdown-divider></oui-dropdown-divider>
+        <oui-dropdown-item text="External link" href="#" external></oui-dropdown-item>
+        <oui-dropdown-item text="Start guided tour" href="#" sticky></oui-dropdown-item>
+    </oui-dropdown-content>
+</oui-dropdown>
 ```
 
 ### With arrow
 
 ```html:preview
-<div class="oui-doc-preview-only-keep-children">
-  <oui-dropdown align="start" arrow>
+<oui-dropdown align="start" arrow>
+    <oui-dropdown-trigger text="Start"></oui-dropdown-trigger>
+    <oui-dropdown-content>
+        <oui-dropdown-group label="Lorem ipsum">
+            <oui-dropdown-item text="Action 1 (button)" on-click="$ctrl.onActionClick()"></oui-dropdown-item>
+            <oui-dropdown-item text="Action 2 (link/href)" href="#"></oui-dropdown-item>
+        </oui-dropdown-group>
+        <oui-dropdown-group label="Dolor sit amet">
+            <oui-dropdown-item text="Action 3 (disabled)" disabled></oui-dropdown-item>
+            <oui-dropdown-item text="Action 4 (link/state)" state="showcase.oui-angular"></oui-dropdown-item>
+        </oui-dropdown-group>
+        <oui-dropdown-divider></oui-dropdown-divider>
+        <oui-dropdown-item text="External link" href="#" external></oui-dropdown-item>
+        <oui-dropdown-item text="Start guided tour" href="#" sticky></oui-dropdown-item>
+    </oui-dropdown-content>
+</oui-dropdown>
+
+<oui-dropdown align="center" arrow>
+    <oui-dropdown-trigger text="Center"></oui-dropdown-trigger>
+    <oui-dropdown-content>
+        <oui-dropdown-group label="Lorem ipsum">
+            <oui-dropdown-item text="Action 1 (button)" on-click="$ctrl.onActionClick()"></oui-dropdown-item>
+            <oui-dropdown-item text="Action 2 (link/href)" href="#"></oui-dropdown-item>
+        </oui-dropdown-group>
+        <oui-dropdown-group label="Dolor sit amet">
+            <oui-dropdown-item text="Action 3 (disabled)" disabled></oui-dropdown-item>
+            <oui-dropdown-item text="Action 4 (link/state)" state="showcase.oui-angular"></oui-dropdown-item>
+        </oui-dropdown-group>
+        <oui-dropdown-divider></oui-dropdown-divider>
+        <oui-dropdown-item text="External link" href="#" external></oui-dropdown-item>
+        <oui-dropdown-item text="Start guided tour" href="#" sticky></oui-dropdown-item>
+    </oui-dropdown-content>
+</oui-dropdown>
+
+<oui-dropdown align="end" arrow>
+    <oui-dropdown-trigger text="End"></oui-dropdown-trigger>
+    <oui-dropdown-content>
+        <oui-dropdown-group label="Lorem ipsum">
+            <oui-dropdown-item text="Action 1 (button)" on-click="$ctrl.onActionClick()"></oui-dropdown-item>
+            <oui-dropdown-item text="Action 2 (link/href)" href="#"></oui-dropdown-item>
+        </oui-dropdown-group>
+        <oui-dropdown-group label="Dolor sit amet">
+            <oui-dropdown-item text="Action 3 (disabled)" disabled></oui-dropdown-item>
+            <oui-dropdown-item text="Action 4 (link/state)" state="showcase.oui-angular"></oui-dropdown-item>
+        </oui-dropdown-group>
+        <oui-dropdown-divider></oui-dropdown-divider>
+        <oui-dropdown-item text="External link" href="#" external></oui-dropdown-item>
+        <oui-dropdown-item text="Start guided tour" href="#" sticky></oui-dropdown-item>
+    </oui-dropdown-content>
+</oui-dropdown>
+```
+
+### Custom trigger
+
+```html:preview
+<oui-dropdown >
     <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
       <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
     </button>
     <oui-dropdown-content>
-      XXXXXXXX
+        <oui-dropdown-group label="Lorem ipsum">
+            <oui-dropdown-item text="Action 1 (button)" on-click="$ctrl.onActionClick()"></oui-dropdown-item>
+            <oui-dropdown-item text="Action 2 (link/href)" href="#"></oui-dropdown-item>
+        </oui-dropdown-group>
+        <oui-dropdown-group label="Dolor sit amet">
+            <oui-dropdown-item text="Action 3 (disabled)" disabled></oui-dropdown-item>
+            <oui-dropdown-item text="Action 4 (link/state)" state="showcase.oui-angular"></oui-dropdown-item>
+        </oui-dropdown-group>
+        <oui-dropdown-divider></oui-dropdown-divider>
+        <oui-dropdown-item text="External link" href="#" external></oui-dropdown-item>
+        <oui-dropdown-item text="Start guided tour" href="#" sticky></oui-dropdown-item>
     </oui-dropdown-content>
-  </oui-dropdown>
-</div>
-<div style="text-align: center" class="oui-doc-preview-only-keep-children">
-  <oui-dropdown arrow>
-    <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
-      <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
-    </button>
-    <oui-dropdown-content>
-      XXXXXXXX
-    </oui-dropdown-content>
-  </oui-dropdown>
-</div>
-<div style="text-align: right" class="oui-doc-preview-only-keep-children">
-  <oui-dropdown align="end" arrow>
-    <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
-      <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
-    </button>
-    <oui-dropdown-content>
-      XXXXXXXX
-    </oui-dropdown-content>
-  </oui-dropdown>
-</div>
+</oui-dropdown>
 ```
 
 ## API
 
 ### oui-dropdown
 
-The component for a dropdown.
-
-Availability:
-
- - Element
-
-| Attribute         | Type            | Binding | Values              | Default             | Description                        |
-| ----              | ----            | ----    | ----                | ----                | ----                               |
-| `align`           | string          | @?      | start,center,end    | center              | modifier for alignment             |
-| `arrow`           | boolean         | <?      | `true`, `false`     | `false`             | display the dropdown arrow         |
-| `persistent`      | boolean         | <?      | `true`, `false`     | `false`             | prevent dropdown to close on click |
+| Attribute         | Type      | Binding   | One-time Binding  | Values                    | Default   | Description
+| ----              | ----      | ----      | ----              | ----                      | ----      | ----
+| `align`           | string    | @?        | yes               | `start`, `center`, `end`  | `start`   | modifier for alignment
+| `arrow`           | boolean   | <?        |                   | `true`, `false`           | `false`   | display the dropdown arrow
+| `persistent`      | boolean   | <?        |                   | `true`, `false`           | `false`   | prevent dropdown to close on click
 
 ### oui-dropdown-trigger
 
-The directive that triggers the dropdown apparition.
+| Attribute         | Type      | Binding   | One-time Binding  | Values            | Default   | Description
+| ----              | ----      | ----      | ----              | ----              | ----      | ----
+| `text`            | string    | @         | yes               |                   |           | display the default dropdown with this text
+| `aria-label`      | string    | @?        | yes               |                   |           | accessibility label
+| `disabled`        | boolean   | <?        |                   | `true`, `false`   | `false`   | disabled flag
 
-Availability:
-
- - Element
- - Attribute
-
-| Attribute         | Type            | Binding | Values              | Default             | Description                                         |
-| ----              | ----            | ----    | ----                | ----                | ----                                                |
-| `text`            | string          | @?      |                     | `null`              | display the default dropdown with this text         |
-| `aria-label`      | string          | @?      |                     | `null`              | accessibility label                                 |
+**Note:** It can be used as a `component` or an `attribute`.
 
 ### oui-dropdown-content
 
-The directive that wrap the dropdown content.
+**Note:** It can be used as a `component` or an `attribute`.
 
-Availability:
+### oui-dropdown-group
 
- - Element
- - Attribute
+| Attribute         | Type      | Binding   | One-time Binding  | Values            | Default   | Description
+| ----              | ----      | ----      | ----              | ----              | ----      | ----
+| `label`           | string    | @         | yes               |                   |           | dropdown group label
+
+### oui-dropdown-item
+
+| Attribute         | Type      | Binding   | One-time Binding  | Values            | Default   | Description
+| ----              | ----      | ----      | ----              | ----              | ----      | ----
+| `text`            | string    | @         | yes               |                   |           | dropdown item text
+| `aria-label`      | string    | @?        | yes               |                   |           | accessibility label
+| `href`            | string    | @?        | yes               |                   |           | href of the item
+| `state`           | string    | @?        | yes               |                   |           | state of the item
+| `state-params`    | object    | <?        |                   |                   |           | state-params of the item
+| `disabled`        | boolean   | <?        |                   | `true`, `false`   | `false`   | disabled flag
+| `external`        | boolean   | <?        | yes               | `true`, `false`   | `false`   | external flag
+| `on-click`        | function  | &         |                   |                   |           | callback on component click
+
+**Note:** `ui-router` is needed for the attributes `state` and `state-params`.
+
+### oui-dropdown-content
+
+Add a separator for the dropdown menu
