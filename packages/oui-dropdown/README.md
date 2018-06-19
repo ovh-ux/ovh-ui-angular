@@ -224,6 +224,6 @@
 
 **Note:** `ui-router` is needed for the attributes `state` and `state-params`.
 
-### oui-dropdown-content
+### oui-dropdown-divider
 
 Add a separator for the dropdown menu
