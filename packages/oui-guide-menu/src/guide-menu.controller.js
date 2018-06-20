@@ -1,4 +1,4 @@
-import { addBooleanParameter, addDefaultParameter } from "@oui-angular/common/component-utils";
+import { addDefaultParameter } from "@oui-angular/common/component-utils";
 
 export default class {
     constructor ($attrs, $element, $timeout) {
@@ -10,9 +10,7 @@ export default class {
     }
 
     $onInit () {
-        addBooleanParameter(this, "compact");
-        addBooleanParameter(this, "disabled");
-        addDefaultParameter(this, "align", this.compact ? "center" : "start");
+        addDefaultParameter(this, "align", "end");
     }
 
     $postLink () {
