@@ -1,13 +1,15 @@
 describe("ouiDropdown", () => {
     let TestUtils;
     let $document;
+    let $timeout;
 
     beforeEach(angular.mock.module("oui.dropdown"));
     beforeEach(angular.mock.module("oui.test-utils"));
 
-    beforeEach(inject((_TestUtils_, _$document_) => {
+    beforeEach(inject((_TestUtils_, _$document_, _$timeout_) => {
         TestUtils = _TestUtils_;
         $document = _$document_;
+        $timeout = _$timeout_;
     }));
 
     describe("Component", () => {
@@ -20,6 +22,8 @@ describe("ouiDropdown", () => {
                   </oui-dropdown-content>
                 </oui-dropdown>`
             );
+
+            $timeout.flush();
 
             const trigger = element[0].querySelector(".oui-dropdown__trigger");
             expect(angular.element(trigger).hasClass("oui-button_dropdown")).toBeTruthy();
@@ -35,8 +39,10 @@ describe("ouiDropdown", () => {
                 </oui-dropdown>`
             );
 
+            $timeout.flush();
+
             const trigger = element[0].querySelector("[oui-dropdown-trigger]");
-            const dropdown = element[0].querySelector("[oui-dropdown-content]").parentNode;
+            const dropdown = element[0].querySelector("[oui-dropdown-content]");
             const arrow = element[0].querySelector(".oui-dropdown-menu__arrow");
 
             expect(angular.element(trigger)
@@ -56,7 +62,9 @@ describe("ouiDropdown", () => {
                 </oui-dropdown>`
             );
 
-            const dropdown = element[0].querySelector("[oui-dropdown-content]").parentNode;
+            $timeout.flush();
+
+            const dropdown = element[0].querySelector("[oui-dropdown-content]");
             const $dropdown = angular.element(dropdown);
             const arrow = element[0].querySelector(".oui-dropdown-menu__arrow");
 
@@ -74,10 +82,12 @@ describe("ouiDropdown", () => {
                 </oui-dropdown>`
             );
 
+            $timeout.flush();
+
             const controller = element.controller("ouiDropdown");
             controller.toggle();
 
-            expect(controller.popper.options.placement).toEqual("bottom");
+            expect(controller.popper.options.placement).toEqual("bottom-start");
             expect(element[0].querySelector("[x-arrow]")).toBeDefined();
         });
 
@@ -90,6 +100,8 @@ describe("ouiDropdown", () => {
                   </div>
                 </oui-dropdown>`
             );
+
+            $timeout.flush();
 
             const controller = element.controller("ouiDropdown");
             controller.toggle();
@@ -109,6 +121,8 @@ describe("ouiDropdown", () => {
                   </div>
                 </oui-dropdown>`
             );
+
+            $timeout.flush();
 
             const controller = element.controller("ouiDropdown");
             controller.toggle();
@@ -130,10 +144,12 @@ describe("ouiDropdown", () => {
                     </oui-dropdown>`
                 );
 
-                const dropdown = element[0].querySelector("[oui-dropdown-content]").parentNode;
-                const $dropdown = angular.element(dropdown);
+                $timeout.flush();
 
-                expect($dropdown.hasClass("oui-dropdown-menu_active")).toBeFalsy();
+                const trigger = element[0].querySelector("[oui-dropdown-trigger]");
+                const $trigger = angular.element(trigger);
+
+                expect($trigger.attr("aria-expanded")).toBe("false");
             });
 
             it("should display and hide dropdown on click", () => {
@@ -146,20 +162,20 @@ describe("ouiDropdown", () => {
                     </oui-dropdown>`
                 );
 
-                const rootElement = element[0].querySelector(".oui-dropdown");
-                const $rootElement = angular.element(rootElement);
+                $timeout.flush();
+
                 const trigger = element[0].querySelector("[oui-dropdown-trigger]");
                 const $trigger = angular.element(trigger);
 
-                expect($rootElement.hasClass("oui-dropdown_active")).toBeFalsy();
+                expect($trigger.attr("aria-expanded")).toBe("false");
                 $trigger.triggerHandler("click");
-                expect($rootElement.hasClass("oui-dropdown_active")).toBeTruthy();
+                expect($trigger.attr("aria-expanded")).toBe("true");
                 $trigger.triggerHandler("click");
-                expect($rootElement.hasClass("oui-dropdown_active")).toBeFalsy();
+                expect($trigger.attr("aria-expanded")).toBe("false");
                 $trigger.triggerHandler("click");
-                expect($rootElement.hasClass("oui-dropdown_active")).toBeTruthy();
+                expect($trigger.attr("aria-expanded")).toBe("true");
                 $document.triggerHandler("click");
-                expect($rootElement.hasClass("oui-dropdown_active")).toBeFalsy();
+                expect($trigger.attr("aria-expanded")).toBe("false");
             });
         });
     });

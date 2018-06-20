@@ -95,6 +95,7 @@
 | `aria-label`      | string          | @?      | yes              |                           |            | accessibility label
 | `align`           | string          | @?      | yes              | `start`,`center`,`end`    | `center`   | menu alignment
 | `compact`         | boolean         | <?      | yes              |                           | `false`    | use the compact button
+| `disabled`        | boolean         | <?      |                  |                           | `false`    | disable flag
 
 ### oui-action-menu-item
 

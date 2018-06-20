@@ -931,6 +931,8 @@ describe("ouiDatagrid", () => {
             }
             );
 
+            $timeout.flush();
+
             const $paginationOffset = getPaginationOffset(element);
             const $paginationLastItemOffset = getPaginationLastItemOffset(element);
 
