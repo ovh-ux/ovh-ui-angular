@@ -9,7 +9,7 @@ export default {
         description: "@?"
     },
     transclude: {
-        guide: "?ouiGuide",
+        guide: "?ouiGuideMenu",
         tabs: "?ouiHeaderTabs"
     }
 };
