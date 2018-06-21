@@ -1,3 +1,36 @@
+<a name="2.16.0"></a>
+# [2.16.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.15.0...v2.16.0) (2018-06-21)
+
+
+### Bug Fixes
+
+* **oui-action-menu:** disable one-time binding for the text attribute ([e27a019](https://github.com/ovh-ux/ovh-ui-angular/commit/e27a019))
+* **oui-back-button:** rename title attribute to heading ([5ddc0ef](https://github.com/ovh-ux/ovh-ui-angular/commit/5ddc0ef))
+* **oui-datagrid:** add refresh & update events ([6321299](https://github.com/ovh-ux/ovh-ui-angular/commit/6321299))
+* **oui-datagrid:** wait row promise before displaying cell template ([#188](https://github.com/ovh-ux/ovh-ui-angular/issues/188)) ([f80850e](https://github.com/ovh-ux/ovh-ui-angular/commit/f80850e))
+* **oui-modal:** rename title attribute to heading ([000afc0](https://github.com/ovh-ux/ovh-ui-angular/commit/000afc0))
+* **oui-navbar:** remove one-time binding on main links classnames ([928cac3](https://github.com/ovh-ux/ovh-ui-angular/commit/928cac3))
+* **oui-slideshow:** updade slideshow module naming ([#202](https://github.com/ovh-ux/ovh-ui-angular/issues/202)) ([ba8e147](https://github.com/ovh-ux/ovh-ui-angular/commit/ba8e147))
+* **oui-stepper:** remove one time-binding on description ([#203](https://github.com/ovh-ux/ovh-ui-angular/issues/203)) ([3c22057](https://github.com/ovh-ux/ovh-ui-angular/commit/3c22057))
+
+
+### Features
+
+* **oui-clipboard:** add oui-clipboard component ([#174](https://github.com/ovh-ux/ovh-ui-angular/issues/174)) ([e071786](https://github.com/ovh-ux/ovh-ui-angular/commit/e071786))
+* **oui-collapsible:** add oui-collapsible component ([#173](https://github.com/ovh-ux/ovh-ui-angular/issues/173)) ([b0b6f0f](https://github.com/ovh-ux/ovh-ui-angular/commit/b0b6f0f))
+* **oui-datagrid:** add datagrid customization ([#196](https://github.com/ovh-ux/ovh-ui-angular/issues/196)) ([854cc49](https://github.com/ovh-ux/ovh-ui-angular/commit/854cc49))
+* **oui-datagrid:** add datagrid service for refresh ([6a859f0](https://github.com/ovh-ux/ovh-ui-angular/commit/6a859f0))
+* **oui-field:** add custom message support ([#197](https://github.com/ovh-ux/ovh-ui-angular/issues/197)) ([ec183e8](https://github.com/ovh-ux/ovh-ui-angular/commit/ec183e8))
+* **oui-guide-menu:** create component ([#207](https://github.com/ovh-ux/ovh-ui-angular/issues/207)) ([d8eb514](https://github.com/ovh-ux/ovh-ui-angular/commit/d8eb514))
+* **oui-header-tabs:** add header-tabs component ([#209](https://github.com/ovh-ux/ovh-ui-angular/issues/209)) ([943515f](https://github.com/ovh-ux/ovh-ui-angular/commit/943515f))
+* **oui-navbar:** add placeholder for notification ([#199](https://github.com/ovh-ux/ovh-ui-angular/issues/199)) ([22853f5](https://github.com/ovh-ux/ovh-ui-angular/commit/22853f5))
+* **oui-page-header:** create page-header component ([#204](https://github.com/ovh-ux/ovh-ui-angular/issues/204)) ([1dd6847](https://github.com/ovh-ux/ovh-ui-angular/commit/1dd6847))
+* **oui-skeleton:** add oui-skeleton component ([#185](https://github.com/ovh-ux/ovh-ui-angular/issues/185)) ([b580eee](https://github.com/ovh-ux/ovh-ui-angular/commit/b580eee))
+* **oui-slideshow:** add slideshow component ([#184](https://github.com/ovh-ux/ovh-ui-angular/issues/184)) ([8824563](https://github.com/ovh-ux/ovh-ui-angular/commit/8824563))
+* **oui-tile:** create oui-tile component ([#200](https://github.com/ovh-ux/ovh-ui-angular/issues/200)) ([cee441d](https://github.com/ovh-ux/ovh-ui-angular/commit/cee441d))
+
+
+
 <a name="2.15.0"></a>
 # [2.15.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.14.0...v2.15.0) (2018-05-23)
 
