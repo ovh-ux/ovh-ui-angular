@@ -24,7 +24,8 @@ export default class {
 
             if (this.$element[0].tagName.toLowerCase() === "oui-dropdown-trigger") {
                 this.$compile(template)(this.$scope, (clone) => {
-                    this.$element.append(clone);
+                    this.$element.replaceWith(clone);
+                    this.$trigger = clone;
                 });
             } else {
                 // Update custom $element
@@ -37,10 +38,12 @@ export default class {
                     })
                     .on("click", () => !this.disabled && this.dropdown.onTriggerClick())
                     .on("blur", evt => this.dropdown.triggerBlurHandler(evt));
+
+                this.$trigger = this.$element;
             }
 
             // Set the trigger to the parent component
-            this.dropdown.setDropdownTrigger(this.$element[0], this);
+            this.dropdown.setDropdownTrigger(this.$trigger[0], this);
         });
     }
 
@@ -51,13 +54,13 @@ export default class {
     }
 
     afterOpen () {
-        this.$element.attr("aria-expanded", true);
-        this.$element[0].focus();
-        this.$element.on("keydown", evt => this.dropdown.triggerKeyHandler(evt));
+        this.$trigger.attr("aria-expanded", true);
+        this.$trigger[0].focus();
+        this.$trigger.on("keydown", evt => this.dropdown.triggerKeyHandler(evt));
     }
 
     afterClose () {
-        this.$element.attr("aria-expanded", false);
-        this.$element.off("keydown");
+        this.$trigger.attr("aria-expanded", false);
+        this.$trigger.off("keydown");
     }
 }
