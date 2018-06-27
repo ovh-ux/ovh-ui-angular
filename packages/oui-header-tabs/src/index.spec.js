@@ -45,6 +45,46 @@ describe("ouiHeaderTabs", () => {
             expect(linkItem.querySelector(".oui-icon-external_link")).not.toBeNull();
         });
 
+        it("should display the header tabs with disabled items", () => {
+            const element = TestUtils.compileTemplate(`
+                <oui-header-tabs>
+                    <oui-header-tabs-item text="Disabled" disabled></oui-header-tabs-item>
+                    <oui-header-tabs-dropdown text="Dropdown">
+                        <oui-header-tabs-item text="Disabled 1" disabled></oui-header-tabs-item>
+                        <oui-header-tabs-item text="Disabled 2" disabled></oui-header-tabs-item>
+                    </oui-header-tabs-dropdown>
+                </oui-header-tabs>`
+            );
+
+            $timeout.flush();
+
+            const item = element[0].querySelector(".oui-header-tabs__item");
+            expect(angular.element(item).hasClass("oui-header-tabs__item_disabled")).toBe(true);
+            const trigger = element[0].querySelector(".oui-dropdown__trigger");
+            expect(angular.element(trigger).attr("disabled")).toBe("disabled");
+            const dropDown = element[0].querySelector(".oui-header-tabs__item_dropdown");
+            expect(angular.element(dropDown).hasClass("oui-header-tabs__item_disabled")).toBe(true);
+        });
+
+        it("should display the header tabs with active items", () => {
+            const element = TestUtils.compileTemplate(`
+                <oui-header-tabs>
+                    <oui-header-tabs-item text="Active" active></oui-header-tabs-item>
+                    <oui-header-tabs-dropdown text="Dropdown">
+                        <oui-header-tabs-item text="Active 1" active></oui-header-tabs-item>
+                        <oui-header-tabs-item text="Active 2"></oui-header-tabs-item>
+                    </oui-header-tabs-dropdown>
+                </oui-header-tabs>`
+            );
+
+            $timeout.flush();
+
+            const item = element[0].querySelector(".oui-header-tabs__item");
+            expect(angular.element(item).hasClass("oui-header-tabs__item_active")).toBe(true);
+            const dropDown = element[0].querySelector(".oui-header-tabs__item_dropdown");
+            expect(angular.element(dropDown).hasClass("oui-header-tabs__item_active")).toBe(true);
+        });
+
         it("should display the header tabs with closed dropdown", () => {
             const element = TestUtils.compileTemplate(`
                 <oui-header-tabs>

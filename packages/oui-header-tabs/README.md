@@ -33,9 +33,32 @@
     <oui-header-tabs-item text="Datagrid" href="/#!/oui-angular/datagrid"></oui-header-tabs-item>
     <oui-header-tabs-item text="Criteria Adder" href="#!/oui-angular/criteria-adder"></oui-header-tabs-item>
   </oui-header-tabs-dropdown>
+  <oui-header-tabs-item text="Header Tabs" href="/#!/oui-angular/header-tabs" active></oui-header-tabs-item>
+  <oui-header-tabs-item text="Page Header" href="/#!/oui-angular/page-header"></oui-header-tabs-item>
+</oui-header-tabs>  
+```
+
+### Disabled items
+
+```html:preview
+<oui-header-tabs>
+  <oui-header-tabs-item text="Home" href="/#" disabled></oui-header-tabs-item>
+  <oui-header-tabs-dropdown text="Form">
+    <oui-header-tabs-item text="Field" href="/#!/oui-angular/field" disabled></oui-header-tabs-item>
+    <oui-header-tabs-divider></oui-header-tabs-divider>
+    <oui-header-tabs-item text="Checkbox" href="#!/oui-angular/checkbox"></oui-header-tabs-item>
+    <oui-header-tabs-item text="Radio" href="#!/oui-angular/radio-group" disabled></oui-header-tabs-item>
+    <oui-header-tabs-divider></oui-header-tabs-divider>
+    <oui-header-tabs-item text="Select" href="/#!/oui-angular/select"></oui-header-tabs-item>
+    <oui-header-tabs-item text="Select Picker" href="/#!/oui-angular/select-picker"></oui-header-tabs-item>
+  </oui-header-tabs-dropdown>
+  <oui-header-tabs-dropdown text="Datagrid">
+    <oui-header-tabs-item text="Datagrid" href="/#!/oui-angular/datagrid" disabled></oui-header-tabs-item>
+    <oui-header-tabs-item text="Criteria Adder" href="#!/oui-angular/criteria-adder" disabled></oui-header-tabs-item>
+  </oui-header-tabs-dropdown>
   <oui-header-tabs-item text="Page Header" href="/#!/oui-angular/page-header"></oui-header-tabs-item>
   <oui-header-tabs-item text="Header Tabs" href="/#!/oui-angular/header-tabs" active></oui-header-tabs-item>
-</oui-header-tabs>  
+</oui-header-tabs>
 ```
 
 ### In Page Header
@@ -71,8 +94,9 @@
 | `href`            | string    | @?        | yes               |                   |           | href of the menu item
 | `state`           | boolean   | @?        | yes               |                   |           | state of the menu item
 | `stateParams`     | object    | <?        |                   |                   |           | state params of the menu item
-| `external`        | boolean   | <?        | yes               | `true`, `false`   | `false`   | external link flag
 | `active`          | boolean   | <?        |                   | `true`, `false`   | `false`   | manual active flag
+| `disabled`        | boolean   | <?        | yes               | `true`, `false`   | `false`   | disabled flag
+| `external`        | boolean   | <?        | yes               | `true`, `false`   | `false`   | external link flag
 
 **Note:** `ui-router` is needed for the attributes `state` and `state-params`.
 
