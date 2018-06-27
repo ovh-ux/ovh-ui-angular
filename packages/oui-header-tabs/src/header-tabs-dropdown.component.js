@@ -1,6 +1,7 @@
 import template from "./header-tabs-dropdown.html";
 
 const itemClass = "oui-header-tabs__item";
+const itemActiveClass = `${itemClass}_active`;
 const dropDownClass = `${itemClass}_dropdown`;
 
 export default {
@@ -22,11 +23,11 @@ export default {
                     .addClass(`${itemClass} ${dropDownClass}`)
                     .attr("role", "listitem");
 
-                this.$scope.$watch(() => !!this.$element[0].querySelector(`.${itemClass}_active`), hasActive => {
+                this.$scope.$watch(() => !!this.$element[0].querySelector(`.${itemActiveClass}`), hasActive => {
                     if (hasActive) {
-                        this.$element.addClass(`${dropDownClass}_active`);
+                        this.$element.addClass(itemActiveClass);
                     } else {
-                        this.$element.removeClass(`${dropDownClass}_active`);
+                        this.$element.removeClass(itemActiveClass);
                     }
                 });
             });
