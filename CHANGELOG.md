@@ -1,3 +1,13 @@
+<a name="2.16.1"></a>
+## [2.16.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.16.0...v2.16.1) (2018-06-27)
+
+
+### Bug Fixes
+
+* **oui-header-tabs:** add active class when dropdown has an active item ([#212](https://github.com/ovh-ux/ovh-ui-angular/issues/212)) ([761e0e3](https://github.com/ovh-ux/ovh-ui-angular/commit/761e0e3))
+
+
+
 <a name="2.16.0"></a>
 # [2.16.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.15.0...v2.16.0) (2018-06-21)
 
