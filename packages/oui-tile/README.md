@@ -53,6 +53,24 @@
 </oui-tile>
 ```
 
+### Loading state
+
+```html:preview
+<div ng-init="$ctrl.loading = true" class="oui-doc-preview-only-keep-children">
+<button class="oui-button oui-doc-preview-only" type="button"
+    ng-class="{
+        'oui-button_primary': $ctrl.loading,
+        'oui-button_secondary': !$ctrl.loading
+    }"
+    ng-click="$ctrl.loading = !$ctrl.loading">
+    Toggle loading
+</button>
+<oui-tile heading="Title" description="A great legend for this tile." loading="$ctrl.loading">
+    <p>Nulla ac dui a est varius eleifend nec vitae ipsum. Nunc venenatis luctus nisi quis pulvinar. Duis justo massa, mattis nec metus scelerisque, mattis tristique quam. Sed eget neque elementum, facilisis velit eget, iaculis lectus. Quisque at molestie justo. Ut tincidunt augue non tortor tincidunt facilisis. Donec ut lectus a leo porttitor eleifend. Morbi venenatis turpis eu rutrum consectetur. Sed auctor ligula at erat euismod, imperdiet posuere est feugiat. Quisque maximus ultricies risus sed varius.</p>
+</oui-tile>
+</div>
+```
+
 ## API
 
 ### oui-tile
