@@ -98,7 +98,7 @@ export default class DatagridColumnBuilder {
         };
     }
 
-    buildFromJs (columnsDescription, $scope) {
+    buildFromJs (columnsDescription) {
         const columns = [];
         const currentSorting = {
             columnName: undefined,
@@ -132,8 +132,9 @@ export default class DatagridColumnBuilder {
             column.searchable = DatagridColumnBuilder.isSearchable(column) &&
                 columnDescription.searchable;
 
-            if (column.typeOptions) {
-                column.typeOptions = this.$parse(column.typeOptions)($scope);
+
+            if (columnDescription.typeOptions) {
+                column.typeOptions = columnDescription.typeOptions;
             }
 
             column.preventCustomization = columnDescription.preventCustomization;

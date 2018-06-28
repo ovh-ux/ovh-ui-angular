@@ -465,6 +465,67 @@ You can use `row-loader`. It take the current row as argument and must return a 
 </oui-datagrid>
 ```
 
+### Filtering using dynamic column
+
+```html:preview
+<oui-datagrid
+  rows="$ctrl.servers"
+  page-size="5"
+  columns="[{
+    title: 'Name',
+    property: 'name',
+    sortable: 'asc',
+    searchable: true,
+    filterable: true,
+    type: 'string',
+    typeOptions: {
+        operators: [
+            'contains'
+        ]
+    }
+  },
+  {
+    title: 'CPUs',
+    property: 'cpu',
+    sortable: true,
+    searchable: true,
+    filterable: true,
+    type: 'number'
+  },
+  {
+    title: 'Running',
+    property: 'up',
+    sortable: true,
+    filterable: true,
+    type: 'boolean'
+  },
+  {
+    title: 'Purpose',
+    property: 'purpose',
+    sortable: true,
+    filterable: true,
+    type: 'options',
+    typeOptions: {
+        values: {
+            network: 'Network',
+            database: 'Database',
+            static: 'Static content',
+            frontend: 'Frontend',
+            backend: 'Backend',
+            broker: 'Broker',
+            others: 'Others'
+        }
+    }
+  },
+  {
+    title: 'IP',
+    property: 'ip',
+    sortable: true,
+    filterable: true,
+    type: 'string'
+  }]"></oui-datagrid>
+```
+
 ### Refresh
 
 #### Local datagrid
