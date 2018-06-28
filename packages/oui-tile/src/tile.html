@@ -5,7 +5,8 @@
         ng-if="!$ctrl.loading"
         ng-transclude>
     </div>
-    <oui-spinner size="m"
+    <div class="oui-tile__loader"
         ng-if="$ctrl.loading">
-    </oui-spinner>
+        <oui-spinner size="m"></oui-spinner>
+    </div>
 </div>
