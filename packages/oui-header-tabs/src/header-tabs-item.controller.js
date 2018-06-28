@@ -14,6 +14,7 @@ export default class {
 
     $onInit () {
         addBooleanParameter(this, "active");
+        addBooleanParameter(this, "disabled");
         addBooleanParameter(this, "external");
 
         if (this.external) {
