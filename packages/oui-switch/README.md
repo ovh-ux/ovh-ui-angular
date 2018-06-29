@@ -47,12 +47,12 @@ model="false">
 ```html:preview
 <form name="switchForm">
   <div ng-init="$ctrl.agree = false">
-    <oui-switch 
+    <oui-switch
       model="$ctrl.agree"
       required>
     </oui-switch>
   </div>
-  Is this form valid? : {{ form.$valid ? "yes" : "no" }}
+  Is this form valid? : {{ switchForm.$valid ? "yes" : "no" }}
 </form>
 ```
 
