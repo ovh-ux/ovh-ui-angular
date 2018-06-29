@@ -35,7 +35,7 @@
   </oui-header-tabs-dropdown>
   <oui-header-tabs-item text="Header Tabs" href="/#!/oui-angular/header-tabs" active></oui-header-tabs-item>
   <oui-header-tabs-item text="Page Header" href="/#!/oui-angular/page-header"></oui-header-tabs-item>
-</oui-header-tabs>  
+</oui-header-tabs>
 ```
 
 ### Disabled items
