@@ -10,6 +10,7 @@ export default {
         state: "@?",
         stateParams: "<?",
         external: "<?",
-        active: "<?"
+        active: "<?",
+        disabled: "<?"
     }
 };
