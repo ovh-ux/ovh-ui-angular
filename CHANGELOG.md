@@ -4,35 +4,14 @@
 
 ### Bug Fixes
 
-* **oui-action-menu:** disable one-time binding for the text attribute ([0927421](https://github.com/ovh-ux/ovh-ui-angular/commit/0927421))
-* **oui-back-button:** rename title attribute to heading ([3391fe5](https://github.com/ovh-ux/ovh-ui-angular/commit/3391fe5))
-* **oui-datagrid:** add refresh & update events ([7733002](https://github.com/ovh-ux/ovh-ui-angular/commit/7733002))
 * **oui-datagrid:** fix type options with dynamic columns ([#218](https://github.com/ovh-ux/ovh-ui-angular/issues/218)) ([c09b9ba](https://github.com/ovh-ux/ovh-ui-angular/commit/c09b9ba)), closes [#216](https://github.com/ovh-ux/ovh-ui-angular/issues/216)
-* **oui-datagrid:** wait row promise before displaying cell template ([#188](https://github.com/ovh-ux/ovh-ui-angular/issues/188)) ([6083efc](https://github.com/ovh-ux/ovh-ui-angular/commit/6083efc))
-* **oui-header-tabs:** add active class when dropdown has an active item ([#212](https://github.com/ovh-ux/ovh-ui-angular/issues/212)) ([792ae77](https://github.com/ovh-ux/ovh-ui-angular/commit/792ae77))
-* **oui-modal:** rename title attribute to heading ([5ceeb3c](https://github.com/ovh-ux/ovh-ui-angular/commit/5ceeb3c))
-* **oui-navbar:** remove one-time binding on main links classnames ([a67c234](https://github.com/ovh-ux/ovh-ui-angular/commit/a67c234))
-* **oui-slideshow:** updade slideshow module naming ([#202](https://github.com/ovh-ux/ovh-ui-angular/issues/202)) ([a78c62f](https://github.com/ovh-ux/ovh-ui-angular/commit/a78c62f))
-* **oui-stepper:** remove one time-binding on description ([#203](https://github.com/ovh-ux/ovh-ui-angular/issues/203)) ([7a1a444](https://github.com/ovh-ux/ovh-ui-angular/commit/7a1a444))
 * **oui-tile:** fix loading state ([#219](https://github.com/ovh-ux/ovh-ui-angular/issues/219)) ([6bc8c89](https://github.com/ovh-ux/ovh-ui-angular/commit/6bc8c89))
 * **oui-tile:** fix normalize for height sizing ([#221](https://github.com/ovh-ux/ovh-ui-angular/issues/221)) ([62101e8](https://github.com/ovh-ux/ovh-ui-angular/commit/62101e8))
 
 
 ### Features
 
-* **oui-clipboard:** add oui-clipboard component ([#174](https://github.com/ovh-ux/ovh-ui-angular/issues/174)) ([2546d9c](https://github.com/ovh-ux/ovh-ui-angular/commit/2546d9c))
-* **oui-collapsible:** add oui-collapsible component ([#173](https://github.com/ovh-ux/ovh-ui-angular/issues/173)) ([c0233ca](https://github.com/ovh-ux/ovh-ui-angular/commit/c0233ca))
-* **oui-datagrid:** add datagrid customization ([#196](https://github.com/ovh-ux/ovh-ui-angular/issues/196)) ([751e7e7](https://github.com/ovh-ux/ovh-ui-angular/commit/751e7e7))
-* **oui-datagrid:** add datagrid service for refresh ([3d00851](https://github.com/ovh-ux/ovh-ui-angular/commit/3d00851))
-* **oui-field:** add custom message support ([#197](https://github.com/ovh-ux/ovh-ui-angular/issues/197)) ([b48c8c9](https://github.com/ovh-ux/ovh-ui-angular/commit/b48c8c9))
-* **oui-guide-menu:** create component ([#207](https://github.com/ovh-ux/ovh-ui-angular/issues/207)) ([f0b21fd](https://github.com/ovh-ux/ovh-ui-angular/commit/f0b21fd))
 * **oui-header-tabs:** add disabled flag on items ([#217](https://github.com/ovh-ux/ovh-ui-angular/issues/217)) ([d0172b8](https://github.com/ovh-ux/ovh-ui-angular/commit/d0172b8))
-* **oui-header-tabs:** add header-tabs component ([#209](https://github.com/ovh-ux/ovh-ui-angular/issues/209)) ([ad07640](https://github.com/ovh-ux/ovh-ui-angular/commit/ad07640))
-* **oui-navbar:** add placeholder for notification ([#199](https://github.com/ovh-ux/ovh-ui-angular/issues/199)) ([7a3bba5](https://github.com/ovh-ux/ovh-ui-angular/commit/7a3bba5))
-* **oui-page-header:** create page-header component ([#204](https://github.com/ovh-ux/ovh-ui-angular/issues/204)) ([5663a03](https://github.com/ovh-ux/ovh-ui-angular/commit/5663a03))
-* **oui-skeleton:** add oui-skeleton component ([#185](https://github.com/ovh-ux/ovh-ui-angular/issues/185)) ([d2d9d1b](https://github.com/ovh-ux/ovh-ui-angular/commit/d2d9d1b))
-* **oui-slideshow:** add slideshow component ([#184](https://github.com/ovh-ux/ovh-ui-angular/issues/184)) ([8f2e5f7](https://github.com/ovh-ux/ovh-ui-angular/commit/8f2e5f7))
-* **oui-tile:** create oui-tile component ([#200](https://github.com/ovh-ux/ovh-ui-angular/issues/200)) ([c1b312d](https://github.com/ovh-ux/ovh-ui-angular/commit/c1b312d))
 
 
 
