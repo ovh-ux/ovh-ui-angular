@@ -1,3 +1,20 @@
+<a name="2.16.2"></a>
+## [2.16.2](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.16.1...v2.16.2) (2018-06-29)
+
+
+### Bug Fixes
+
+* **oui-datagrid:** fix type options with dynamic columns ([#218](https://github.com/ovh-ux/ovh-ui-angular/issues/218)) ([c09b9ba](https://github.com/ovh-ux/ovh-ui-angular/commit/c09b9ba)), closes [#216](https://github.com/ovh-ux/ovh-ui-angular/issues/216)
+* **oui-tile:** fix loading state ([#219](https://github.com/ovh-ux/ovh-ui-angular/issues/219)) ([6bc8c89](https://github.com/ovh-ux/ovh-ui-angular/commit/6bc8c89))
+* **oui-tile:** fix normalize for height sizing ([#221](https://github.com/ovh-ux/ovh-ui-angular/issues/221)) ([62101e8](https://github.com/ovh-ux/ovh-ui-angular/commit/62101e8))
+
+
+### Features
+
+* **oui-header-tabs:** add disabled flag on items ([#217](https://github.com/ovh-ux/ovh-ui-angular/issues/217)) ([d0172b8](https://github.com/ovh-ux/ovh-ui-angular/commit/d0172b8))
+
+
+
 <a name="2.16.1"></a>
 ## [2.16.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.16.0...v2.16.1) (2018-06-27)
 
