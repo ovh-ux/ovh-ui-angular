@@ -1,4 +1,4 @@
-<div class="oui-progress__bar-container">
+<div class="oui-progress__container">
     <div ng-transclude></div>
     <div class="oui-progress__bar"
         ng-class=":: 'oui-progress__bar_' + $ctrl.type "
@@ -9,7 +9,7 @@
         aria-valuemax="{{::$ctrl.maxValue}}">
     </div>
 </div>
-<div class="oui-progress__label"
+<div class="oui-progress__text"
     ng-style="{ width: $ctrl.compact ? 'auto' : (($ctrl.value * 100) / $ctrl.maxValue) + '%' }">
-    {{ $ctrl.label !== undefined ? $ctrl.label : ($ctrl.value + "%") }}
+    {{ $ctrl.text !== undefined ? $ctrl.text : ($ctrl.value + "%") }}
 </div>

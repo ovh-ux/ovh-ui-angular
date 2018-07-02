@@ -9,7 +9,7 @@ export default {
         value: "<",
         compact: "<?",
         maxValue: "@?",
-        label: "@?"
+        text: "@?"
     },
     transclude: true
 };
