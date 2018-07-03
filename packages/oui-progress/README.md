@@ -1,44 +1,79 @@
 # oui-progress
 
-<component-status cx-design="complete" ux="complete"></component-status>
+<component-status cx-design="complete" ux="rc"></component-status>
 
 ## Usage
 
 ### Simple
 
 ```html:preview
-<oui-progress type="info" value="$ctrl.progressData.value1"></oui-progress>
-<oui-progress type="success" value="$ctrl.progressData.value2"></oui-progress>
-<oui-progress type="warning" value="$ctrl.progressData.value3"></oui-progress>
-<oui-progress type="error" value="$ctrl.progressData.value4"></oui-progress>
+<oui-progress>
+    <oui-progress-bar type="info" value="$ctrl.progressData.value1"></oui-progress-bar>
+</oui-progress>
+
+<oui-progress>
+    <oui-progress-bar type="success" value="$ctrl.progressData.value2"></oui-progress-bar>
+</oui-progress>
+
+<oui-progress>
+    <oui-progress-bar type="warning" value="$ctrl.progressData.value3"></oui-progress-bar>
+</oui-progress>
+
+<oui-progress>
+    <oui-progress-bar type="error" value="$ctrl.progressData.value4"></oui-progress-bar>
+</oui-progress>
 ```
 
 ### With custom labels
 
 ```html:preview
-<oui-progress type="info"
-    value="$ctrl.progressData.value1"
-    label="Progress: {{$ctrl.progressData.value1}}%">
+<oui-progress>
+    <oui-progress-bar type="info"
+        value="$ctrl.progressData.value1"
+        text="Progress: {{$ctrl.progressData.value1}}%">
+    </oui-progress-bar>
 </oui-progress>
 ```
 
 ### Custom max value
 
 ```html:preview
-<oui-progress type="success"
-    value="150"
-    max-value="200"
-    label="Installing components: 150/200">
+<oui-progress max-value="200">
+    <oui-progress-bar type="success"
+        value="150"
+        text="Installing components: 150/200">
+    </oui-progress-bar>
+</oui-progress>
+```
+
+### Stacked
+
+```html:preview
+<oui-progress>
+    <oui-progress-bar type="success" value="30"></oui-progress-bar>
+    <oui-progress-bar type="error" value="15"></oui-progress-bar>
 </oui-progress>
 ```
 
 ### Thresholds
 
 ```html:preview
-<oui-progress type="success" value="35">
+<oui-progress max-value="200">
+    <oui-progress-bar type="success"
+        value="139"
+        text="Installing components: 139/200">
+    </oui-progress-bar>
     <oui-progress-threshold value="25"></oui-progress-threshold>
+    <oui-progress-threshold value="50"></oui-progress-threshold>
+    <oui-progress-threshold value="75"></oui-progress-threshold>
+    <oui-progress-threshold value="100"></oui-progress-threshold>
+    <oui-progress-threshold value="125"></oui-progress-threshold>
+    <oui-progress-threshold value="150"></oui-progress-threshold>
+    <oui-progress-threshold value="175"></oui-progress-threshold>
 </oui-progress>
-<oui-progress type="error" value="60">
+
+<oui-progress>
+    <oui-progress-bar type="error" value="60"></oui-progress-bar>
     <oui-progress-threshold value="20"></oui-progress-threshold>
     <oui-progress-threshold value="50"></oui-progress-threshold>
     <oui-progress-threshold value="80"></oui-progress-threshold>
@@ -48,23 +83,30 @@
 ### Compact mode
 
 ```html:preview
-<oui-progress type="info"
-    value="$ctrl.progressData.value1"
-    label="{{$ctrl.progressData.value1}}% complete"
-    compact="true">
+<oui-progress compact>
+    <oui-progress-bar type="info"
+        value="$ctrl.progressData.value1"
+        text="{{$ctrl.progressData.value1}}% complete">
+    </oui-progress-bar>
 </oui-progress>
-<oui-progress type="success"
-    value="$ctrl.progressData.value2"
-    compact="true">
+
+<oui-progress compact>
+    <oui-progress-bar type="success"
+        value="$ctrl.progressData.value2">
+    </oui-progress-bar>
 </oui-progress>
-<oui-progress type="warning"
-    value="60"
-    compact="true">
+
+<oui-progress compact>
+    <oui-progress-bar type="warning"
+        value="$ctrl.progressData.value3">
+    </oui-progress-bar>
 </oui-progress>
-<oui-progress type="error"
-    value="$ctrl.progressData.value4"
-    label="{{$ctrl.progressData.value4}}% complete"
-    compact="true">
+
+<oui-progress compact>
+    <oui-progress-bar type="error"
+        value="$ctrl.progressData.value4"
+        text="{{$ctrl.progressData.value4}}% complete">
+    </oui-progress-bar>
 </oui-progress>
 ```
 
@@ -72,16 +114,21 @@
 
 ### oui-progress
 
-| Attribute               | Type            | Binding | One-time binding | Values                                 | default | Description                               |
-| ----                    | ----            | ----    | ----             | ----                                   | ----    | ----                                      |
-| type                    | String          | @       | yes              | `info`, `success`, `warning`, `error`  |         | Type of the progress component          |
-| value                   | Number          | <       | no               |                                        |         | The current value for the progress bar   |
-| compact                 | Boolean         | <?      | yes              |                                        | false   | When in compact mode, the progress appears as a dot followed by the label. This is usually used when the component is used in a DataGrid |
-| max-value               | Number          | @?      | yes              |                                        | 100     | The max value for the progress bar |
-| label                    | String         | @?      | yes              |                                        | value forllowd by % | The label for the progress bar. When not specified, the current value is display with a percentage. |
+| Attribute | Type      | Binding | One-time binding    | Values                                 | default  | Description
+| ----      | ----      | ----    | ----                | ----                                   | ----     | ----
+| compact   | Boolean   | <?      | yes                 |                                        | false    | compact mode flag
+| min-value | Number    | @?      | yes                 |                                        | 0        | min value of progress component
+| max-value | Number    | @?      | yes                 |                                        | 100      | max value of progress component
+
+### oui-progress-bar
+| Attribute | Type      | Binding | One-time binding    | Values                                 | default  | Description
+| ----      | ----      | ----    | ----                | ----                                   | ----     | ----
+| type      | String    | @       | yes                 | `info`, `success`, `warning`, `error`  | `info`   | type of the progress bar
+| value     | Number    | <       | no                  |                                        |          | current value of progress bar
+| text      | String    | @?      | yes                 |                                        | value%   | text of progress bar. If undefined, the current value is display as a percentage.
 
 ### oui-progress-threshold
 
-| Attribute               | Type            | Binding | One-time binding | Values                                 | default       | Description                                         |
-| ----                    | ----            | ----    | ----             | ----                                   | ----          | ----                                                |
-| value                   | Number          | <       | yes              |                                        |               | The value at which the threshold should appear  |
+| Attribute | Type      | Binding | One-time binding    | Values    | default   | Description
+| ----      | ----      | ----    | ----                | ----      | ----      | ----
+| value     | Number    | <       | yes                 |           |           | value at which the threshold should appear

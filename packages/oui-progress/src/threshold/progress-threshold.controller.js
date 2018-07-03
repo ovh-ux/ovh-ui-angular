@@ -1,12 +1,16 @@
-import { throwErrorOnMissingAttributeValue } from "@oui-angular/common/component-utils";
-
 export default class {
-    constructor ($attrs, $element) {
+    constructor ($element, $timeout) {
         "ngInject";
+
         this.$element = $element;
+        this.$timeout = $timeout;
     }
 
-    $onInit () {
-        throwErrorOnMissingAttributeValue(this.$element[0], "value");
+    $postLink () {
+        this.$timeout(() =>
+            this.$element
+                .addClass("oui-progress__threshold")
+                .css("left", this.parent.getPercentageValue(this.value))
+        );
     }
 }
