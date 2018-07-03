@@ -6,6 +6,6 @@ export default {
         value: "<"
     },
     require: {
-        parent: "^^ouiProgress"
+        progressCtrl: "^^ouiProgress"
     }
 };

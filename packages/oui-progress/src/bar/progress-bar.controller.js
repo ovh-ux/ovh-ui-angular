@@ -12,9 +12,9 @@ export default class {
     $onInit () {
         addDefaultParameter(this, "type", "info");
 
-        this.compact = this.parent.compact;
-        this.minValue = this.parent.minValue;
-        this.maxValue = this.parent.maxValue;
+        this.compact = this.progressCtrl.compact;
+        this.minValue = this.progressCtrl.minValue;
+        this.maxValue = this.progressCtrl.maxValue;
     }
 
     $onChanges (changes) {
@@ -26,7 +26,7 @@ export default class {
 
             if (!this.compact) {
                 this.$element
-                    .css("width", this.parent.getPercentageValue(value));
+                    .css("width", this.progressCtrl.getPercentageValue(value));
             }
         });
     }
@@ -48,7 +48,7 @@ export default class {
 
             if (!this.compact) {
                 this.$element
-                    .css("width", this.parent.getPercentageValue(this.value));
+                    .css("width", this.progressCtrl.getPercentageValue(this.value));
             }
         });
     }

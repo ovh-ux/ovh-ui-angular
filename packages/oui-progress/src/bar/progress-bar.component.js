@@ -10,6 +10,6 @@ export default {
         text: "@?"
     },
     require: {
-        parent: "^^ouiProgress"
+        progressCtrl: "^^ouiProgress"
     }
 };

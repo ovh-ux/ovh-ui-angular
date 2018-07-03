@@ -10,7 +10,7 @@ export default class {
         this.$timeout(() =>
             this.$element
                 .addClass("oui-progress__threshold")
-                .css("left", this.parent.getPercentageValue(this.value))
+                .css("left", this.progressCtrl.getPercentageValue(this.value))
         );
     }
 }
