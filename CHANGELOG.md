@@ -1,3 +1,13 @@
+<a name="2.16.3"></a>
+## [2.16.3](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.16.2...v2.16.3) (2018-07-04)
+
+
+### Bug Fixes
+
+* **oui-dropdown:** fix dropdown placement ([#226](https://github.com/ovh-ux/ovh-ui-angular/issues/226)) ([4f6f2ad](https://github.com/ovh-ux/ovh-ui-angular/commit/4f6f2ad))
+
+
+
 <a name="2.16.2"></a>
 ## [2.16.2](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.16.1...v2.16.2) (2018-06-29)
 
