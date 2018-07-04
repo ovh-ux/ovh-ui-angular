@@ -644,6 +644,20 @@ call `rows-loader` and then a `row-loader` call for each line.
 </oui-datagrid>
 ```
 
+### Grouping
+
+```html:preview
+<oui-datagrid
+  rows="$ctrl.groupedData"
+  page-size="5"
+  subrows="subrows">
+  <oui-column title="'Last name'" property="lastName"></oui-column>
+  <oui-column title="'First name'" property="firstName"></oui-column>
+  <oui-column title="'Email'" property="email"></oui-column>
+  <oui-column title="'Phone'" property="phone"></oui-column>
+</oui-datagrid>
+```
+
 ## API
 
 ### oui-datagrid
