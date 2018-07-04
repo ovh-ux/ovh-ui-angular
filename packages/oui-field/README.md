@@ -83,6 +83,18 @@
     </oui-field>
 </form>
 ```
+### Switch
+
+```html:preview
+<form novalidate name="switchForm">
+    <oui-field label="Switch options" help-text="Helper text">
+        <oui-switch
+            name="switch"
+            model="$ctrl.switch"
+            required></oui-switch>
+    </oui-field>
+</form>
+```
 
 ### Radio
 
