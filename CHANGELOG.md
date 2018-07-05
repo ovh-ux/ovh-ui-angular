@@ -1,3 +1,13 @@
+<a name="2.16.4"></a>
+## [2.16.4](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.16.3...v2.16.4) (2018-07-05)
+
+
+### Bug Fixes
+
+* **oui-dropdown:** fix popper update ([a63702a](https://github.com/ovh-ux/ovh-ui-angular/commit/a63702a))
+
+
+
 <a name="2.16.3"></a>
 ## [2.16.3](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.16.2...v2.16.3) (2018-07-04)
 

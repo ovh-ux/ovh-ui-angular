@@ -142,6 +142,8 @@ export default class {
             this.arrowElement.setAttribute("x-arrow", "");
         }
 
+        this.popperElement.style.minWidth = `${this.getTriggerWidth()}px`;
+
         this.popper = new Popper(this.triggerElement, this.popperElement, {
             placement,
             modifiers: {
@@ -153,11 +155,11 @@ export default class {
     }
 
     updatePopper () {
-        if (this.popper) {
-            this.popper.scheduleUpdate();
-        } else {
+        if (!this.popper) {
             this.createPopper();
         }
+
+        this.popper.scheduleUpdate();
     }
 
     destroyPopper () {
@@ -167,5 +169,10 @@ export default class {
 
         this.popper.destroy();
         this.popper = null;
+    }
+
+    getTriggerWidth () {
+        const MINWIDTH = 140;
+        return Math.max(this.triggerElement.offsetWidth, MINWIDTH);
     }
 }
