@@ -9,7 +9,7 @@ export default class {
     }
 
     $onInit () {
-        this.isLoading = false;
+        this.loading = false;
         addDefaultParameter(this, "ariaAddItem", this.inlineAdderProvider.translations.ariaAddItem);
         addDefaultParameter(this, "ariaRemoveItem", this.inlineAdderProvider.translations.ariaRemoveItem);
     }
@@ -23,18 +23,20 @@ export default class {
     }
 
     addItem () {
-        this.isLoading = true;
-        this.parent.addItem(this.item)
+        this.loading = true;
+        this.inlineAdderCtrl
+            .addItem(this.item)
             .finally(() => {
-                this.isLoading = false;
+                this.loading = false;
             });
     }
 
     removeItem () {
-        this.isLoading = true;
-        this.parent.removeItem(this.item)
+        this.loading = true;
+        this.inlineAdderCtrl
+            .removeItem(this.item)
             .finally(() => {
-                this.isLoading = false;
+                this.loading = false;
             });
     }
 }

@@ -1,12 +1,11 @@
 import controller from "./inline-adder.controller.js";
-import template from "./inline-adder.html";
 
 export default {
-    template,
-    controller,
-    transclude: true,
     bindings: {
         onAdd: "&",
         onRemove: "&"
-    }
+    },
+    controller,
+    template: "<ng-transclude></ng-transclude>",
+    transclude: true
 };

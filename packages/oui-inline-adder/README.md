@@ -11,82 +11,93 @@ All form elements in an Inline Adder must be short. An Inline Adder can contain 
 ### Single fixed width field
 
 ```html:preview
-<oui-inline-adder
-    on-add="$ctrl.addItem(item)"
-    on-remove="$ctrl.removeItem(item)">
-    <oui-inline-adder-item data-ng-repeat="item in $ctrl.singleFieldItems" item="item" is-new-item="item.isNew" aria-add-item="Add new item" aria-remove-item="Remove item {{$index+1}}">
-        <oui-inline-adder-row>
-            <oui-inline-adder-cell auto-grow=false>
-                <label for="single-field-prop1" class="oui-label">Property 1</label>
-                <input type="text" id="single-field-prop1" class="oui-input oui-input_s"
-                    data-ng-model="item.prop1"
-                    data-ng-disabled="!item.isNew">
-            </oui-inline-adder-cell>
-        </oui-inline-adder-row>
-    </oui-inline-adder-item>
-</oui-inline-adder>
+<form novalidate name="inputForm">
+    <oui-inline-adder on-add="$ctrl.addItem(item)" on-remove="$ctrl.removeItem(item)">
+        <oui-inline-adder-item item="item" is-new-item="item.isNew"
+            aria-add-item="Add new item"
+            aria-remove-item="Remove item {{$index+1}}">
+            <oui-inline-adder-row>
+                <oui-inline-adder-cell>
+                    <oui-field label="Property 1">
+                        <input type="text" class="oui-input" id="single-field-prop1"
+                               data-ng-disabled="!item.isNew"
+                               data-ng-model="item.prop1">
+                    </oui-field>
+                </oui-inline-adder-cell>
+            </oui-inline-adder-row>
+        </oui-inline-adder-item>
+    </oui-inline-adder>
+</form>
 ```
 
 ### Multiple fields with flex-ed width
 
 ```html:preview
-<oui-inline-adder
-    on-add="$ctrl.addItem(item)"
-    on-remove="$ctrl.removeItem(item)">
-    <oui-inline-adder-item data-ng-repeat="item in $ctrl.dualFieldItems" item="item" is-new-item="item.isNew" aria-add-item="Add new item" aria-remove-item="Remove item {{$index+1}}">
-        <oui-inline-adder-row>
-            <oui-inline-adder-cell>
-                <label for="dual-field-prop1" class="oui-label">Property 1</label>
-                <input type="text" class="oui-input"
-                    id="dual-field-prop1"
-                    data-ng-model="item.prop1"
-                    data-ng-disabled="!item.isNew">
-            </oui-inline-adder-cell>
-            <oui-inline-adder-cell>
-                <label for="dual-field-prop2" class="oui-label">Property 2</label>
-                <input type="text" class="oui-input"
-                    id="dual-field-prop2"
-                    data-ng-model="item.prop2"
-                    data-ng-disabled="!item.isNew">
-            </oui-inline-adder-cell>
-        </oui-inline-adder-row>
-    </oui-inline-adder-item>
-</oui-inline-adder>
+<form novalidate name="inputForm">
+    <oui-inline-adder on-add="$ctrl.addItem(item)" on-remove="$ctrl.removeItem(item)">
+        <oui-inline-adder-item item="item" is-new-item="item.isNew">
+            <oui-inline-adder-row>
+                <oui-inline-adder-cell>
+                    <oui-field label="Property 1">
+                        <input type="text" class="oui-input" id="dual-field-prop1"
+                               data-ng-disabled="!item.isNew"
+                               data-ng-model="item.prop1">
+                    </oui-field>
+                </oui-inline-adder-cell>
+                <oui-inline-adder-cell extended="false">
+                    <oui-field label="Property 2">
+                        <input type="text" class="oui-input" id="dual-field-prop2"
+                               data-ng-disabled="!item.isNew"
+                               data-ng-model="item.prop2">
+                    </oui-field>
+                </oui-inline-adder-cell>
+            </oui-inline-adder-row>
+        </oui-inline-adder-item>
+    </oui-inline-adder>
+</form>
 ```
 
 ### Mixed field types
 
 ```html:preview
-<oui-inline-adder
-    on-add="$ctrl.addItem(item)"
-    on-remove="$ctrl.removeItem(item)">
-    <oui-inline-adder-item data-ng-repeat="item in $ctrl.tripleFieldItems" item="item" is-new-item="item.isNew" aria-add-item="Add new item" aria-remove-item="Remove item {{$index+1}}">
-        <oui-inline-adder-row>
-            <oui-inline-adder-cell>
-                <label for="triple-field-prop1" class="oui-label">Property 1</label>
-                <input type="text" class="oui-input"
-                    id="triple-field-prop1"
-                    data-ng-model="item.prop1"
-                    data-ng-disabled="!item.isNew">
-            </oui-inline-adder-cell>
-            <oui-inline-adder-cell>
-                <label for="triple-field-prop2" class="oui-label">Property 2</label>
-                <input type="text" class="oui-input"
-                    id="triple-field-prop2"
-                    data-ng-model="item.prop2"
-                    data-ng-disabled="!item.isNew">
-            </oui-inline-adder-cell>
-            <oui-inline-adder-cell auto-grow=false>
-                <label for="triple-field-prop3" class="oui-label">Property 3</label>
-                <oui-numeric
-                    id="triple-field-prop3"
-                    model="item.prop3"
-                    disabled="!item.isNew">
-                </oui-numeric>
-            </oui-inline-adder-cell>
-        </oui-inline-adder-row>
-    </oui-inline-adder-item>
-</oui-inline-adder>
+<form novalidate name="inputForm">
+    <oui-inline-adder on-add="$ctrl.addItem(item)" on-remove="$ctrl.removeItem(item)">
+        <oui-inline-adder-item is-new-item="item.isNew">
+            <oui-inline-adder-row>
+                <oui-inline-adder-cell>
+                    <oui-field label="Property 1">
+                        <input type="text" class="oui-input" id="triple-field-prop1"
+                               ng-disabled="!item.isNew"
+                               ng-model="item.prop1">
+                    </oui-field>
+                </oui-inline-adder-cell>
+                <oui-inline-adder-cell>
+                    <oui-field label="Property 2">
+                        <label class="oui-select">
+                            <select class="oui-select__input" id="os" name="os"
+                                    ng-disabled="!item.isNew"
+                                    ng-model="os">
+                                <option ng-value="undefined">Select the OS</option>
+                                <option value="freebsd">FreeBSD</option>
+                                <option value="linux">Linux</option>
+                                <option value="osx">OSX</option>
+                                <option value="windows">Windows</option>
+                            </select>
+                            <i class="oui-icon oui-icon-chevron-down" aria-hidden="true"></i>
+                        </label>
+                    </oui-field>
+                </oui-inline-adder-cell>
+                <oui-inline-adder-cell extended="false">
+                    <oui-field label="Property 3">
+                        <oui-numeric id="triple-field-prop3"
+                                     model="item.prop3"
+                                     disabled="!item.isNew"></oui-numeric>
+                    </oui-field>
+                </oui-inline-adder-cell>
+            </oui-inline-adder-row>
+        </oui-inline-adder-item>
+    </oui-inline-adder>
+</form>
 ```
 
 ### Multiple row items
@@ -94,44 +105,46 @@ All form elements in an Inline Adder must be short. An Inline Adder can contain 
 An Inline Adder can have more than one row and be displayed as a group.
 
 ```html:preview
-<oui-inline-adder
-    on-add="$ctrl.addItem(item)"
-    on-remove="$ctrl.removeItem(item)">
-    <oui-inline-adder-item data-ng-repeat="item in $ctrl.quadraFieldItems" item="item" is-new-item="item.isNew" aria-add-item="Add new item" aria-remove-item="Remove item {{$index+1}}">
-        <oui-inline-adder-row>
-            <oui-inline-adder-cell>
-                <label for="quadra-field-prop1" class="oui-label">Property 1</label>
-                <input type="text" class="oui-input"
-                    id = "quadra-field-prop1"
-                    data-ng-model="item.prop1"
-                    data-ng-disabled="!item.isNew">
-            </oui-inline-adder-cell>
-            <oui-inline-adder-cell>
-                <label for="quadra-field-prop2" class="oui-label">Property 2</label>
-                <input type="text" class="oui-input"
-                    id = "quadra-field-prop2"
-                    data-ng-model="item.prop2"
-                    data-ng-disabled="!item.isNew">
-            </oui-inline-adder-cell>
-        </oui-inline-adder-row>
-        <oui-inline-adder-row>
-            <oui-inline-adder-cell>
-                <label for="quadra-field-prop3" class="oui-label">Property 3</label>
-                <input type="text" class="oui-input"
-                    id = "quadra-field-prop3"
-                    data-ng-model="item.prop3"
-                    data-ng-disabled="!item.isNew">
-            </oui-inline-adder-cell>
-            <oui-inline-adder-cell>
-                <label for="quadra-field-prop4" class="oui-label">Property 4</label>
-                <input type="text" class="oui-input"
-                    id = "quadra-field-prop4"
-                    data-ng-model="item.prop4"
-                    data-ng-disabled="!item.isNew">
-            </oui-inline-adder-cell>
-        </oui-inline-adder-row>
-    </oui-inline-adder-item>
-</oui-inline-adder>
+<form novalidate name="inputForm">
+    <oui-inline-adder on-add="$ctrl.addItem(item)" on-remove="$ctrl.removeItem(item)">
+        <oui-inline-adder-item item="item" is-new-item="item.isNew"
+            aria-add-item="Add new item"
+            aria-remove-item="Remove item {{$index+1}}">
+            <oui-inline-adder-row>
+                <oui-inline-adder-cell>
+                    <oui-field label="Property 1">
+                        <input type="text" class="oui-input" id="multi-field-prop1"
+                               data-ng-disabled="!item.isNew"
+                               data-ng-model="item.prop1">
+                    </oui-field>
+                </oui-inline-adder-cell>
+                <oui-inline-adder-cell>
+                    <oui-field label="Property 2">
+                        <input type="text" class="oui-input" id="multi-field-prop2"
+                               data-ng-disabled="!item.isNew"
+                               data-ng-model="item.prop2">
+                    </oui-field>
+                </oui-inline-adder-cell>
+            </oui-inline-adder-row>
+            <oui-inline-adder-row>
+                <oui-inline-adder-cell>
+                    <oui-field label="Property 3">
+                        <input type="text" class="oui-input" id="multi-field-prop3"
+                               data-ng-disabled="!item.isNew"
+                               data-ng-model="item.prop3">
+                    </oui-field>
+                </oui-inline-adder-cell>
+                <oui-inline-adder-cell>
+                    <oui-field label="Property 4">
+                        <input type="text" class="oui-input" id="multi-field-prop4"
+                               data-ng-disabled="!item.isNew"
+                               data-ng-model="item.prop4">
+                    </oui-field>
+                </oui-inline-adder-cell>
+            </oui-inline-adder-row>
+        </oui-inline-adder-item>
+    </oui-inline-adder>
+</form>
 ```
 
 **Note**: The `on-add` and `on-remove` callbacks receive the item being added or removed. These callbacks should return a promise, which is resolved after a new item is added or after the item is removed respectively.
@@ -140,8 +153,8 @@ An Inline Adder can have more than one row and be displayed as a group.
 
 ### oui-inline-adder
 
-| Attribute         | Type            | Binding | One-time binding | Values                    | Default             | Description                        |
-| ----              | ----            | ----    | ----             | ----                      | ----                | ----                               |
+| Attribute         | Type            | Binding | One-time binding | Values                    | Default             | Description                                 |
+| ----              | ----            | ----    | ----             | ----                      | ----                | ----                                        |
 | `on-add`          | function        | &       |                  |                           |                     | new item add handler that returns a promise |
 | `on-remove`       | function        | &       |                  |                           |                     | item remove handler that returns a promise  |
 
@@ -154,6 +167,6 @@ An Inline Adder can have more than one row and be displayed as a group.
 
 ### oui-inline-adder-cell
 
-| Attribute         | Type            | Binding | One-time binding | Values                    | Default             | Description                        |
-| ----              | ----            | ----    | ----             | ----                      | ----                | ----                               |
-| `auto-grow`       | boolean         | <       | yes               |                          | true                | should the cell auto-grow to occupy available space |
+| Attribute         | Type            | Binding | One-time binding | Values                    | Default             | Description                                         |
+| ----              | ----            | ----    | ----             | ----                      | ----                | ----                                                |
+| `extended`        | boolean         | <       | yes              |                           | true                | should the cell auto-grow to occupy available space |

@@ -1,9 +1,11 @@
 import { hasAttributeValue } from "@oui-angular/common/component-utils";
+
 export default class {
-    constructor ($element, $q) {
+    constructor ($element, $q, $timeout) {
         "ngInject";
         this.$element = $element;
         this.$q = $q;
+        this.$timeout = $timeout;
     }
 
     $onInit () {
@@ -13,6 +15,13 @@ export default class {
         if (!hasAttributeValue(this.$element[0], "on-remove")) {
             throw new Error("ovh-ui-angular: The required callback 'on-remove' is not provided.");
         }
+    }
+
+    $postLink () {
+        this.$timeout(() =>
+            this.$element
+                .addClass("oui-inline-adder")
+        );
     }
 
     addItem (item) {
