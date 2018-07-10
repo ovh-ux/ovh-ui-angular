@@ -5,15 +5,19 @@
 ## Usage
 
 ```html:preview
-<div class="oui-doc-preview-only-keep-children" style="margin-bottom: 15px;">
 <oui-navbar
-    brand="$ctrl.brand"
     active-link="lorem"
     main-links="$ctrl.mainLinks"
-    aside-links="$ctrl.asideLinks"
-    toggler-links="$ctrl.togglerLinks">
+    aside-links="$ctrl.asideLinks">
+    <oui-navbar-toggler
+        links="$ctrl.togglerLinks">
+    </oui-navbar-toggler>
+    <oui-navbar-brand
+        href="{{$ctrl.brand.url}}"
+        aria-label="{{$ctrl.brand.label}}"
+        icon-class="{{$ctrl.brand.iconClass}}">
+    </oui-navbar-brand>
 </oui-navbar>
-</div>
 ```
 
 Note: All children menus have `.oui-navbar-menu_fixed`. The component is intended to be used in `fixed` mode. To avoid being hidden by the documentation navbar, this example is not `fixed`.

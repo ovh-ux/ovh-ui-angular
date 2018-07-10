@@ -12,5 +12,11 @@ export default {
         fixed: "<?"
     },
     controller,
-    template
+    template,
+    transclude: {
+        asideSlot: "?ouiNavbarAside",
+        brandSlot: "?ouiNavbarBrand",
+        mainSlot: "?ouiNavbarMain",
+        togglerSlot: "?ouiNavbarToggler"
+    }
 };

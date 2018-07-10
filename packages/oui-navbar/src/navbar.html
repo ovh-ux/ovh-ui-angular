@@ -1,47 +1,24 @@
 <!-- Toggler -->
-<button class="oui-navbar-toggler" type="button"
-    aria-haspopup="true" aria-expanded="{{!!$ctrl.navigation['toggler']}}"
-    ng-if="::$ctrl.togglerLinks"
-    ng-click="$ctrl.toggleMenu('toggler')"
-    oui-navbar-group="toggler">
-    <span class="oui-navbar-toggler__hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-    </span>
-</button>
-<span class="oui-navbar-toggler" ng-if="!$ctrl.togglerLoaded">
-    <oui-spinner size="s"></oui-spinner>
-</span>
-<oui-navbar-menu
-    ng-if="::$ctrl.togglerLinks"
-    class="oui-navbar-menu_fixed oui-navbar-menu_toggle"
-    children-class="oui-navbar-menu_fixed"
-    name="toggler"
-    links="::$ctrl.togglerLinks"
-    navigation="$ctrl.navigation"
-    expanded="$ctrl.navigation['toggler']">
-</oui-navbar-menu>
+<div ng-transclude="togglerSlot">
+    <oui-navbar-toggler
+        ng-if="::$ctrl.togglerLinks"
+        links="::$ctrl.togglerLinks">
+    </oui-navbar-toggler>
+</div>
 <!-- /Toggler -->
 
 <!-- Brand -->
-<a class="oui-navbar__brand" ng-if="::$ctrl.brand"
-    ng-attr-aria-label="{{::!!$ctrl.brand.label ? $ctrl.brand.label : null}}"
-    ng-attr-title="{{::!!$ctrl.brand.label ? $ctrl.brand.label : null}}"
-    ng-href="{{::$ctrl.brand.url}}">
-    <img class="navbar-logo"
-        ng-if="::!!$ctrl.brand.iconSrc"
-        ng-attr-alt="{{::!!$ctrl.brand.iconAlt ? $ctrl.brand.iconAlt : null}}"
-        ng-class="::!!$ctrl.brand.iconClass ? $ctrl.brand.iconClass : null"
-        ng-src="{{::$ctrl.brand.iconSrc}}">
-    <span ng-if="::!$ctrl.brand.iconSrc"
-        ng-class="::$ctrl.brand.iconClass">
-    </span>
-    <span class="oui-navbar__title" ng-if="::$ctrl.brand.title"
-        ng-bind="::$ctrl.brand.title">
-    </span>
-</a>
+<div ng-transclude="brandSlot">
+    <oui-navbar-brand
+        ng-if="::$ctrl.brand"
+        href="{{::$ctrl.brand.url}}"
+        heading="{{::$ctrl.brand.title}}"
+        aria-label="{{::$ctrl.brand.label}}"
+        icon-alt="{{::$ctrl.brand.iconAlt}}"
+        icon-class="{{::$ctrl.brand.iconClass}}"
+        icon-src="{{::$ctrl.brand.iconSrc}}">
+    </oui-navbar-brand>
+</div>
 <!-- /Brand -->
 
 <!-- Main Links -->
