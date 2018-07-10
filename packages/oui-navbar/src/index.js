@@ -4,6 +4,7 @@ import NavbarBrand from "./brand/navbar-brand.component";
 import NavbarConfigurationProvider from "./navbar.provider.js";
 import NavbarGroup from "./group/navbar-group.directive";
 import NavbarGroupService from "./group/navbar-group.service";
+import NavbarLink from "./link/navbar-link.component";
 import NavbarMenu from "./menu/navbar-menu.component";
 import NavbarService from "./navbar.service";
 import NavbarToggler from "./toggler/navbar-toggler.component";
@@ -16,9 +17,10 @@ export default angular
     .constant("KEYBOARD_KEYS", KEYBOARD_KEYS)
     .component("ouiNavbar", Navbar)
     .component("ouiNavbarBrand", NavbarBrand)
-    .directive("ouiNavbarGroup", NavbarGroup)
+    .component("ouiNavbarLink", NavbarLink)
     .component("ouiNavbarMenu", NavbarMenu)
     .component("ouiNavbarToggler", NavbarToggler)
+    .directive("ouiNavbarGroup", NavbarGroup)
     .provider("ouiNavbarConfiguration", NavbarConfigurationProvider)
     .service("NavbarService", NavbarService)
     .service("NavbarGroupService", NavbarGroupService)

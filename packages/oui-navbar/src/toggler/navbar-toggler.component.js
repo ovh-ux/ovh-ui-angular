@@ -8,7 +8,6 @@ export default {
         links: "<"
     },
     controller: class {
-
         $onChanges (changes) {
             // Get links changes for the loader
             if (changes.links) {

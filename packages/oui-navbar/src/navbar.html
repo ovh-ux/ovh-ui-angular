@@ -22,23 +22,19 @@
 <!-- /Brand -->
 
 <!-- Main Links -->
-<ul class="oui-navbar-list oui-navbar-list_main oui-navbar_desktop-only" ng-if="::$ctrl.mainLinks">
-    <li class="oui-navbar-list__item"
+<div class="oui-navbar-list oui-navbar-list_main oui-navbar_desktop-only"
+    ng-if="::$ctrl.mainLinks"
+    ng-transclude="mainSlot">
+    <oui-navbar-link
+        name="{{::managerLink.name}}"
+        text="{{::managerLink.title}}"
+        href="{{::managerLink.url}}"
+        variant="{{::managerLink.isPrimary ? 'primary' : 'secondary'}}"
+        aria-label="{{::!!managerLink.label ? managerLink.label : null}}"
         ng-repeat="managerLink in ::$ctrl.mainLinks track by $index"
         ng-class="::!!managerLink.class ? managerLink.class : null">
-        <a class="oui-navbar-link"
-            ng-attr-aria-label="{{::!!managerLink.label ? managerLink.label : null}}"
-            ng-attr-title="{{::!!managerLink.label ? managerLink.label : null}}"
-            ng-class="{
-                'oui-navbar-link_active': managerLink.name === $ctrl.activeLink,
-                'oui-navbar-link_primary': managerLink.isPrimary,
-                'oui-navbar-link_secondary': !managerLink.isPrimary
-            }"
-            ng-href="{{::managerLink.url}}"
-            ng-bind="::managerLink.title">
-        </a>
-    </li>
-</ul>
+    </oui-navbar-link>
+</div>
 <!-- /Main Links -->
 
 <!-- Aside Links -->
