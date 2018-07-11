@@ -38,32 +38,21 @@
 <!-- /Main Links -->
 
 <!-- Aside Links -->
-<ul class="oui-navbar-list oui-navbar-list_aside oui-navbar-list_end"
+<div class="oui-navbar-list oui-navbar-list_aside oui-navbar-list_end"
     ng-if="::$ctrl.asideLinks"
     ng-transclude="asideSlot">
 
     <!-- Internal -->
-    <li class="oui-navbar-list__item"
-        ng-repeat="asideLink in $ctrl.asideLinks"
+    <oui-navbar-dropdown
+        name="{{::asideLink.name}}"
+        text="{{::asideLink.title}}"
+        aria-label="{{::!!asideLink.label ? asideLink.label : null}}"
+        icon-badge="(asideLink.subLinks | filter: {isActive: 'true', acknowledged: '!true'}).length"
+        icon-class="{{::!!asideLink.iconClass ? asideLink.iconClass : null}}"
+        on-click="asideLink.onClick"
+        ng-repeat="asideLink in ::$ctrl.asideLinks track by $index"
         ng-class="::!!asideLink.class ? asideLink.class : null"
         ng-switch="::asideLink.name">
-        <button class="oui-navbar-link oui-navbar-link_tertiary" type="button"
-            aria-haspopup="true" aria-expanded="{{!!$ctrl.navigation[asideLink.name]}}"
-            ng-attr-aria-label="{{::!!asideLink.label ? asideLink.label : null}}"
-            ng-attr-title="{{::!!asideLink.label ? asideLink.label : null}}"
-            ng-class="::!!asideLink.iconClass ? 'oui-navbar-link_icon' : null"
-            ng-click="$ctrl.toggleMenu(asideLink.name); asideLink.onClick();"
-            oui-navbar-group="{{::asideLink.name}}">
-            <span class="oui-icon" aria-hidden="true"
-                ng-if="::!!asideLink.iconClass"
-                ng-class="::'navbar-' + asideLink.iconClass">
-                <span class="oui-icon__badge"
-                    ng-if="!!asideLink.subLinks && (asideLink.subLinks | filter: {isActive: 'true', acknowledged: '!true'}).length"
-                    ng-bind="(asideLink.subLinks | filter: {isActive: 'true', acknowledged: '!true'}).length">
-                </span>
-            </span>
-            <span ng-bind="::asideLink.title"></span>
-        </button>
 
         <!-- Notifications Menu -->
         <oui-navbar-notification ng-switch-when="notifications"
@@ -106,9 +95,10 @@
         </oui-navbar-menu>
         <!-- Default Menu -->
 
-    </li>
+    </oui-navbar-dropdown>
+    <!-- /Internal -->
 
-</ul>
+</div>
 <!-- Aside Links -->
 
 <!-- Backdrop -->

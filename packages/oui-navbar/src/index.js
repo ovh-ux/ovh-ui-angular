@@ -2,6 +2,7 @@ import KEYBOARD_KEYS from "./keyboard-keys.constant";
 import Navbar from "./navbar.component";
 import NavbarBrand from "./brand/navbar-brand.component";
 import NavbarConfigurationProvider from "./navbar.provider";
+import NavbarDropdown from "./dropdown/navbar-dropdown.component";
 import NavbarGroup from "./group/navbar-group.directive";
 import NavbarGroupService from "./group/navbar-group.service";
 import NavbarLink from "./link/navbar-link.component";
@@ -18,6 +19,7 @@ export default angular
     .constant("KEYBOARD_KEYS", KEYBOARD_KEYS)
     .component("ouiNavbar", Navbar)
     .component("ouiNavbarBrand", NavbarBrand)
+    .component("ouiNavbarDropdown", NavbarDropdown)
     .component("ouiNavbarLink", NavbarLink)
     .component("ouiNavbarMenu", NavbarMenu)
     .component("ouiNavbarNotification", NavbarNotification)
