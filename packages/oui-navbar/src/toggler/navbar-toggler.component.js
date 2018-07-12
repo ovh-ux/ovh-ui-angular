@@ -1,3 +1,4 @@
+import controller from "./navbar-toggler.controller";
 import template from "./navbar-toggler.html";
 
 export default {
@@ -7,13 +8,6 @@ export default {
     bindings: {
         links: "<"
     },
-    controller: class {
-        $onChanges (changes) {
-            // Get links changes for the loader
-            if (changes.links) {
-                this.loaded = !!changes.links.currentValue;
-            }
-        }
-    },
+    controller,
     template
 };

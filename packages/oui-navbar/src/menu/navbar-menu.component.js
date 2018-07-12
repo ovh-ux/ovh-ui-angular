@@ -2,17 +2,18 @@ import controller from "./navbar-menu.controller";
 import template from "./navbar-menu.html";
 
 export default {
+    require: {
+        navbarCtrl: "^^ouiNavbar"
+    },
     bindings: {
         backButton: "<?",
-        childrenClass: "@?",
         headerBreadcrumb: "@?",
         headerClass: "@?",
         headerTitle: "@?",
         menuLinks: "<links",
         menuName: "@name",
-        navigation: "=",
-
-        expanded: "<"
+        align: "@?",
+        fixed: "<?"
     },
     controller,
     template

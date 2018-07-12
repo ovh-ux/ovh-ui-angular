@@ -92,7 +92,7 @@
 | ----              | ----      | ----      | ----              | ----              | ----      | ----
 | `text`            | string    | @         | yes               |                   |           | display the menu item with this text
 | `href`            | string    | @?        | yes               |                   |           | href of the menu item
-| `state`           | boolean   | @?        | yes               |                   |           | state of the menu item
+| `state`           | string    | @?        | yes               |                   |           | state of the menu item
 | `stateParams`     | object    | <?        |                   |                   |           | state params of the menu item
 | `active`          | boolean   | <?        |                   | `true`, `false`   | `false`   | manual active flag
 | `disabled`        | boolean   | <?        | yes               | `true`, `false`   | `false`   | disabled flag

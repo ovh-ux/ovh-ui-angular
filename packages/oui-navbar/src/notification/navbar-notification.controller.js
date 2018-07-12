@@ -1,17 +1,36 @@
+import { addBooleanParameter } from "@oui-angular/common/component-utils";
 export default class {
-    constructor ($element, $timeout, ouiNavbarConfiguration) {
+    constructor ($attrs, $element, $timeout, ouiNavbarConfiguration) {
         "ngInject";
 
+        this.$attrs = $attrs;
         this.$element = $element;
         this.$timeout = $timeout;
         this.translations = ouiNavbarConfiguration.translations;
     }
 
+    // Return value of "ui-sref"
+    getFullSref () {
+        return `${this.state}(${JSON.stringify(this.stateParams)})`;
+    }
+
+    $onInit () {
+        addBooleanParameter(this, "fixed");
+    }
+
     $postLink () {
-        this.$timeout(() =>
+        this.$timeout(() => {
             this.$element
                 .addClass("oui-navbar-menu")
-                .addClass("oui-navbar-menu_notifications")
-        );
+                .addClass("oui-navbar-menu_notifications");
+
+            if (this.fixed) {
+                this.$element.addClass("oui-navbar-menu_fixed");
+            }
+
+            if (this.align) {
+                this.$element.addClass(`oui-navbar-menu_${this.align}`);
+            }
+        });
     }
 }

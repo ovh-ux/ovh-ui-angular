@@ -2,13 +2,12 @@ import template from "./navbar-brand.html";
 
 export default {
     bindings: {
-        href: "@",
         heading: "@?",
         ariaLabel: "@?",
-
         iconAlt: "@?",
         iconClass: "@?",
-        iconSrc: "@?"
+        iconSrc: "@?",
+        href: "@?"
     },
     controller: class {
         constructor ($element, $timeout) {

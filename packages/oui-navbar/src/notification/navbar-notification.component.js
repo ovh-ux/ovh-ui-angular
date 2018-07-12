@@ -13,7 +13,9 @@ export default {
         headerTitle: "@",
         footerTemplate: "<?",
         footerTitle: "@",
-        footerUrl: "@"
+        footerUrl: "@",
+        align: "@?",
+        fixed: "<?"
     },
     controller,
     template

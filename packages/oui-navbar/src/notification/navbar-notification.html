@@ -9,8 +9,7 @@
 <ul class="oui-navbar-menu__body oui-navbar-list">
     <li class="oui-navbar-menu__item oui-navbar-notification"
         ng-repeat="menuLink in ::$ctrl.menuLinks | limitTo: $ctrl.limitTo"
-        ng-class="!!menuLink.isActive ? 'oui-navbar-menu__item_active' : null"
-        oui-navbar-group="{{::$ctrl.menuName}}">
+        ng-class="!!menuLink.isActive ? 'oui-navbar-menu__item_active' : null">
         <i class="oui-icon oui-icon_bicolor oui-navbar-notification__icon"
             ng-class=":: {
                         'oui-icon_bicolor': menuLink.level !== 'incident',
@@ -22,9 +21,14 @@
             }"
             aria-hidden="true">
         </i>
+
+        <!-- Link (href) -->
         <a class="oui-navbar-notification__content"
+            ng-if="::!!menuLink.url"
+            ng-init="$ctrl.notificationsCreated = $last"
             ng-click="menuLink.linkClicked(menuLink);$ctrl.navbarCtrl.toggleMenu()"
-            ng-href="{{::menuLink.url}}">
+            ng-href="{{::menuLink.url}}"
+            oui-navbar-group="{{::$ctrl.menuName}}">
             <div class="oui-navbar-notification__header">
                 <span class="oui-navbar-notification__title" ng-bind=":: menuLink.subject"></span>
                 <span class="oui-navbar-notification__time" ng-bind="menuLink.time"></span>
@@ -33,13 +37,32 @@
                 <div class="oui-navbar-notification__description" ng-bind-html=":: menuLink.description"></div>
             </div>
         </a>
+        <!-- /Link (href) -->
+
+        <!-- Link (ui-sref) -->
+        <a class="oui-navbar-notification__content"
+            ng-if="::!!menuLink.state"
+            ng-init="$ctrl.notificationsCreated = $last"
+            ng-click="menuLink.linkClicked(menuLink);$ctrl.navbarCtrl.toggleMenu()"
+            ui-sref="{{::$ctrl.getFullSref()}}"
+            oui-navbar-group="{{::$ctrl.menuName}}">
+            <div class="oui-navbar-notification__header">
+                <span class="oui-navbar-notification__title" ng-bind=":: menuLink.subject"></span>
+                <span class="oui-navbar-notification__time" ng-bind="menuLink.time"></span>
+            </div>
+            <div class="oui_navbar-notification__body">
+                <div class="oui-navbar-notification__description" ng-bind-html=":: menuLink.description"></div>
+            </div>
+        </a>
+        <!-- /Link (ui-sref) -->
+
         <button class="oui-navbar-notification__action"
-                type="button"
-                ng-click="menuLink.actionClicked(menuLink)"
-                oui-tooltip="{{::menuLink.isActive ?
-                    $ctrl.translations.notification.markRead :
-                    $ctrl.translations.notification.markUnread
-                }}">
+            type="button"
+            ng-click="menuLink.actionClicked(menuLink)"
+            oui-tooltip="{{::menuLink.isActive ?
+                $ctrl.translations.notification.markRead :
+                $ctrl.translations.notification.markUnread
+            }}">
             <i class="oui-icon oui-icon-shape-dot"
                 ng-if="menuLink.isActive"
                 aria-hidden="true"></i>
@@ -49,8 +72,7 @@
         </button>
     </li>
     <li class="oui-navbar-menu__item oui-navbar-notification oui-navbar-notification-placeholder"
-        ng-if="$ctrl.menuLinks.length === 0"
-        oui-navbar-group="{{::$ctrl.menuName}}">
+        ng-if="$ctrl.menuLinks.length === 0">
         <div class="oui-navbar-notification-placeholder__content">
             <i class="oui-icon oui-icon_bicolor oui-icon-success_circle oui-navbar-notification__icon"
                 aria-hidden="true">
@@ -65,8 +87,7 @@
         </div>
     </li>
     <li class="oui-navbar-menu__item oui-navbar-notification oui-navbar-notification-placeholder"
-        ng-if="!$ctrl.menuLinks"
-        oui-navbar-group="{{::$ctrl.menuName}}">
+        ng-if="!$ctrl.menuLinks">
         <div class="oui-navbar-notification-placeholder__content">
             <i class="oui-icon oui-icon_bicolor oui-icon-error_circle oui-navbar-notification__icon"
                 aria-hidden="true">
@@ -81,9 +102,9 @@
     </li>
 </ul>
 <footer class="oui-navbar-menu__footer"
-    ng-if="::!$ctrl.footerTemplate && !!$ctrl.footerTitle">
+    ng-if="::!$ctrl.footerTemplate && !!$ctrl.footerTitle && $ctrl.notificationsCreated">
     <a class="oui-button oui-button_secondary"
-        ng-click="$ctrl.toggleMenu()"
+        ng-click="$ctrl.navbarCtrl.toggleMenu()"
         ng-href="{{::$ctrl.footerUrl}}"
         ng-bind="::$ctrl.footerTitle"
         oui-navbar-group="{{::$ctrl.menuName}}"

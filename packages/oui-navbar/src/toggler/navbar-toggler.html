@@ -1,6 +1,6 @@
 <button class="oui-navbar-toggler" type="button"
     aria-haspopup="true" aria-expanded="{{!!$ctrl.navbarCtrl.navigation['toggler']}}"
-    ng-if="::$ctrl.links"
+    ng-if="!!$ctrl.loaded"
     ng-click="$ctrl.navbarCtrl.toggleMenu('toggler')"
     oui-navbar-group="toggler">
     <span class="oui-navbar-toggler__hamburger">
@@ -15,11 +15,9 @@
     <oui-spinner size="s"></oui-spinner>
 </span>
 <oui-navbar-menu
-    ng-if="::$ctrl.links"
-    class="oui-navbar-menu_fixed oui-navbar-menu_toggle"
-    children-class="oui-navbar-menu_fixed"
+    ng-if="!!$ctrl.loaded"
+    class="oui-navbar-menu_toggle"
     name="toggler"
     links="::$ctrl.links"
-    navigation="$ctrl.navbarCtrl.navigation"
-    expanded="$ctrl.navbarCtrl.navigation['toggler']">
+    fixed>
 </oui-navbar-menu>
