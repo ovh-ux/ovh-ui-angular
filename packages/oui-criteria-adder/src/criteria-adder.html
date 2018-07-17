@@ -15,6 +15,7 @@
                     ng-attr-id="{{::$ctrl.id}}Column"
                     name="{{::$ctrl.name}}Column"
                     model="$ctrl.columnModel"
+                    data-ng-click="$event.stopPropagation()"
                     items="$ctrl.properties"
                     match="title"
                     on-change="$ctrl.onColumnChange()">
@@ -29,6 +30,7 @@
                     ng-attr-id="{{::$ctrl.id}}Operator"
                     name="{{::$ctrl.name}}Operator"
                     model="$ctrl.operatorModel"
+                    data-ng-click="$event.stopPropagation()"
                     items="$ctrl.selectableOperators"
                     match="title">
                     <span ng-bind="$item.title"></span>
@@ -65,6 +67,7 @@
                         <oui-select
                             name="{{::$ctrl.name}}Value"
                             model="$ctrl.valueModel['boolean']"
+                            data-ng-click="$event.stopPropagation()"
                             items="$ctrl.booleanChoices"
                             match="name"
                             data-align="start">
@@ -80,6 +83,7 @@
                         <oui-select
                             name="{{::$ctrl.name}}Value"
                             model="$ctrl.valueModel['options']"
+                            data-ng-click="$event.stopPropagation()"
                             items="$ctrl.optionsChoices"
                             match="name"
                             data-align="start">
