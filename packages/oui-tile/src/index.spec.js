@@ -112,7 +112,7 @@ describe("ouiTile", () => {
                     <oui-tile-definition term-popover="${termPopover}"></oui-tile-button>
                 </oui-tile>`);
 
-            const popoverButton = angular.element(element[0].querySelector(".oui-popover__help-button"));
+            const popoverButton = angular.element(element[0].querySelector(".oui-popover-button"));
             const popoverContent = angular.element(element[0].querySelector("oui-popover-content"));
 
             expect(popoverButton).toBeDefined();
