@@ -8,7 +8,8 @@ export default {
         text: "@",
         align: "@?",
         ariaLabel: "@?",
-        compact: "<?"
+        compact: "<?",
+        disabled: "<?"
     },
     transclude: true
 };
