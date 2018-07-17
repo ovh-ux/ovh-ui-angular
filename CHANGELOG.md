@@ -1,3 +1,13 @@
+<a name="2.16.5"></a>
+## [2.16.5](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.16.4...v2.16.5) (2018-07-17)
+
+
+### Bug Fixes
+
+* **oui-dropdown:** fix dropdown closed when select input was clicked ([2520247](https://github.com/ovh-ux/ovh-ui-angular/commit/2520247))
+
+
+
 <a name="2.16.4"></a>
 ## [2.16.4](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.16.3...v2.16.4) (2018-07-05)
 

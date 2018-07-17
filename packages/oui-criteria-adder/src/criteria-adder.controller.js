@@ -31,6 +31,8 @@ export default class {
 
         this.selectableOperators = this.filterSelectableOperators();
         this.operatorModel = this.selectableOperators[0];
+
+        this.resetValueModel();
     }
 
     $postLink () {
