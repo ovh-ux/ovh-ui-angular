@@ -46,10 +46,12 @@
                     </thead>
                     <tbody class="oui-datagrid__body"
                         ng-hide="$ctrl.loading">
-                        <tr class="oui-datagrid__row oui-action-menu-container"
-                            ng-repeat="row in $ctrl.displayedRows track by $index">
+                        <tr class="oui-datagrid__row  oui-action-menu-container"
+                            ng-class="{ 'oui-datagrid__row_expanded': $ctrl.expandedLines[rowIndex] }"
+                            ng-init="rowIndex = $index"
+                            ng-repeat-start="row in $ctrl.displayedRows track by $index">
                             <td class="oui-datagrid__cell"
-                                ng-class="::[column.class]"
+                                ng-class="[column.class, { 'oui-datagrid__cell_expand-button': $index == 0 && $ctrl.hasSubrows(row) }]"
                                 ng-repeat="column in $ctrl.columns track by $index"
                                 data-title="{{column.title}}">
                                 <span ng-if="!column.name || $ctrl.hasProperty(row, column.name) && !column.template"
@@ -59,11 +61,40 @@
                                     row="row"
                                     column="column">
                                 </oui-datagrid-cell>
+                                <button class="oui-button oui-button_icon-alone oui-datagrid__expand-button"
+                                    ng-if="$index == 0 && $ctrl.hasSubrows(row)"
+                                    ng-click="$ctrl.toggleSubrows(rowIndex)">
+                                    <i class="oui-icon oui-icon-chevron-up" aria-hidden="true"></i>
+                                </button>
                             </td>
                             <td ng-if="$ctrl.hasActionMenu || $ctrl.customizable"
                                 class="oui-datagrid__cell oui-datagrid__cell-sticky">
                                 <oui-datagrid-cell ng-if="row && $ctrl.hasActionMenu"
                                     row="row"
+                                    column="$ctrl.actionColumn">
+                                </oui-datagrid-cell>
+                            </td>
+                        </tr>
+                        <tr class="oui-datagrid__row oui-datagrid__row_sub oui-action-menu-container"
+                            ng-repeat-end
+                            ng-if="$ctrl.expandedLines[rowIndex]"
+                            ng-repeat="subrow in row[$ctrl.subrows] track by $index">
+                            <td class="oui-datagrid__cell oui-datagrid__cell"
+                                ng-class="::[column.class]"
+                                ng-repeat="column in $ctrl.columns track by $index"
+                                data-title="{{column.title}}">
+                                <span ng-if="!column.name || $ctrl.hasProperty(subrow, column.name) && !column.template"
+                                    ng-bind="column.getValue(subrow)">
+                                </span>
+                                <oui-datagrid-cell ng-if="subrow && (!column.name || $ctrl.hasProperty(subrow, column.name) && column.template)"
+                                    row="subrow"
+                                    column="column">
+                                </oui-datagrid-cell>
+                            </td>
+                            <td ng-if="$ctrl.hasActionMenu || $ctrl.customizable"
+                                class="oui-datagrid__cell oui-datagrid__cell-sticky">
+                                <oui-datagrid-cell ng-if="subrow && $ctrl.hasActionMenu"
+                                    row="subrow"
                                     column="$ctrl.actionColumn">
                                 </oui-datagrid-cell>
                             </td>

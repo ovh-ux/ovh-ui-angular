@@ -35,6 +35,7 @@ export default class DatagridController {
         this.columnElements = [];
         this.actionColumnElements = [];
         this.extraTopElements = [];
+        this.expandedLines = [];
 
         this.config = ouiDatagridConfiguration;
 
@@ -148,6 +149,17 @@ export default class DatagridController {
         if (this.id) {
             this.ouiDatagridService.unregisterDatagrid(this.id);
         }
+    }
+
+    toggleSubrows (index) {
+        this.expandedLines[index] = !this.expandedLines[index];
+    }
+
+    hasSubrows (row) {
+        if (!row) {
+            return false;
+        }
+        return this.subrows && row[this.subrows] && row[this.subrows].length;
     }
 
     buildColumns () {

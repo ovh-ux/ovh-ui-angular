@@ -247,6 +247,70 @@ describe("ouiDatagrid", () => {
                 expect(newValue).not.toEqual(originalValue);
             });
 
+            describe("Grouping", () => {
+                const loadGroupedData = data => {
+                    const groupedData = [];
+                    while (data.length > 0) {
+                        const parentRow = groupedData[groupedData.push(data.pop()) - 1];
+                        parentRow.subrows = [];
+                        for (let i = 0; i < 4 && data.length > 0; i++) { // eslint-disable-line
+                            parentRow.subrows.push(data.pop());
+                        }
+                    }
+                    return groupedData;
+                };
+
+                it("should have a collapsible button", () => {
+                    const groupedData = loadGroupedData(fakeData);
+                    const element = TestUtils.compileTemplate(`
+                            <oui-datagrid rows="$ctrl.groupedRow" subrows="subrows">
+                                <oui-column property="firstName" type="string"></oui-column>
+                                <oui-column property="lastName"></oui-column>
+                            </oui-datagrid>
+                        `, {
+                        groupedRow: groupedData
+                    });
+
+                    const collapsibleButton = getCell(element, 0).querySelectorAll(".oui-button");
+
+                    expect(collapsibleButton).toBeDefined();
+                });
+
+                it("should set subrows", () => {
+                    const groupedData = loadGroupedData(fakeData);
+                    const element = TestUtils.compileTemplate(`
+                            <oui-datagrid rows="$ctrl.groupedRow" subrows="subrows">
+                                <oui-column property="firstName" type="string"></oui-column>
+                                <oui-column property="lastName"></oui-column>
+                            </oui-datagrid>
+                        `, {
+                        groupedRow: groupedData
+                    });
+
+                    let $firstRow = getRow(element, 0);
+                    let $secondRow = getRow(element, 1);
+
+                    expect(getCell($firstRow, 0).children().html()).toBe(groupedData[0].firstName);
+                    expect(getCell($firstRow, 1).children().html()).toBe(groupedData[0].lastName);
+
+                    expect(getCell($secondRow, 0).children().html()).toBe(groupedData[1].firstName);
+                    expect(getCell($secondRow, 1).children().html()).toBe(groupedData[1].lastName);
+
+                    const tableController = element.controller("ouiDatagrid");
+                    tableController.toggleSubrows(0);
+                    element.scope().$apply();
+
+                    $firstRow = getRow(element, 0);
+                    $secondRow = getRow(element, 1);
+
+                    expect(getCell($firstRow, 0).children().html()).toBe(groupedData[0].firstName);
+                    expect(getCell($firstRow, 1).children().html()).toBe(groupedData[0].lastName);
+
+                    expect(getCell($secondRow, 0).children().html()).toBe(groupedData[0].subrows[0].firstName);
+                    expect(getCell($secondRow, 1).children().html()).toBe(groupedData[0].subrows[0].lastName);
+                });
+            });
+
             describe("Filtering", () => {
                 it("should set page to 1 on filtering", () => {
                     const element = TestUtils.compileTemplate(`
