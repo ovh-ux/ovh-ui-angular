@@ -8,7 +8,8 @@ export default {
         text: "@?",
         onClick: "&?",
         href: "@?",
-        ariaLabel: "@?"
+        ariaLabel: "@?",
+        external: "<?"
     },
     transclude: true
 };
