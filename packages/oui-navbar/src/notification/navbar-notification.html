@@ -28,7 +28,8 @@
             ng-init="$ctrl.notificationsCreated = $last"
             ng-click="menuLink.linkClicked(menuLink);$ctrl.navbarCtrl.toggleMenu()"
             ng-href="{{::menuLink.url}}"
-            oui-navbar-group="{{::$ctrl.menuName}}">
+            oui-navbar-group="{{::$ctrl.menuName}}"
+            oui-navbar-group-last="::$last && !$ctrl.footerTemplate && !$ctrl.footerTitle">
             <div class="oui-navbar-notification__header">
                 <span class="oui-navbar-notification__title" ng-bind=":: menuLink.subject"></span>
                 <span class="oui-navbar-notification__time" ng-bind="menuLink.time"></span>
@@ -45,7 +46,8 @@
             ng-init="$ctrl.notificationsCreated = $last"
             ng-click="menuLink.linkClicked(menuLink);$ctrl.navbarCtrl.toggleMenu()"
             ui-sref="{{::$ctrl.getFullSref()}}"
-            oui-navbar-group="{{::$ctrl.menuName}}">
+            oui-navbar-group="{{::$ctrl.menuName}}"
+            oui-navbar-group-last="::$last && !$ctrl.footerTemplate && !$ctrl.footerTitle">
             <div class="oui-navbar-notification__header">
                 <span class="oui-navbar-notification__title" ng-bind=":: menuLink.subject"></span>
                 <span class="oui-navbar-notification__time" ng-bind="menuLink.time"></span>

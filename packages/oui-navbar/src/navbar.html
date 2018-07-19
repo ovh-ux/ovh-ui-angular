@@ -57,6 +57,7 @@
         <!-- Notifications Menu -->
         <oui-navbar-notification ng-switch-when="notifications"
             class="oui-navbar-menu_fixed oui-navbar-menu_right"
+            ng-class="::!!asideLink.class ? asideLink.class : null"
             name="{{::asideLink.name}}"
             links="asideLink.subLinks"
             limit-to="::asideLink.limitTo"
@@ -70,6 +71,8 @@
 
         <!-- User Menu -->
         <oui-navbar-menu ng-switch-when="user"
+            class="oui-navbar-menu_user"
+            ng-class="::!!asideLink.class ? asideLink.class : null"
             header-breadcrumb="{{::asideLink.nichandle}}"
             header-title="{{::asideLink.fullName}}"
             name="{{::asideLink.name}}"
@@ -81,6 +84,7 @@
 
         <!-- Default Menu -->
         <oui-navbar-menu ng-switch-default
+            ng-class="::!!asideLink.class ? asideLink.class : null"
             header-class="oui-navbar_mobile-only"
             header-breadcrumb="{{::!!asideLink.headerBreadcrumb ? asideLink.headerBreadcrumb : null}}"
             header-title="{{::asideLink.headerTitle || asideLink.title}}"

@@ -32,7 +32,11 @@ export default class {
     setFocusTo (groupName, index) {
         // Add a delay to force focus
         const delay = 50;
-        this.$timeout(() => this.keyboardNav[groupName][index] && this.keyboardNav[groupName][index].focus(), delay);
+        this.$timeout(() => {
+            if (this.keyboardNav && this.keyboardNav[groupName] && this.keyboardNav[groupName][index]) {
+                this.keyboardNav[groupName][index].focus();
+            }
+        }, delay);
     }
 
     toggleMenu (state, isInternalNav) {
@@ -61,18 +65,20 @@ export default class {
         }
     }
 
-    updateLinks () {
+    $onInit () {
         // If no togglerLinks attribute, we use the value of mainLinks
         if (!angular.isDefined(this.$attrs.togglerLinks) && angular.isDefined(this.$attrs.mainLinks)) {
             this.togglerLinks = this.mainLinks;
         }
-    }
-
-    $onInit () {
-        this.updateLinks();
 
         // Support presence of attribute 'fixed'
         addBooleanParameter(this, "fixed");
+    }
+
+    $onDestroy () {
+        this.$document
+            .off("click")
+            .off("keydown");
     }
 
     $postLink () {
@@ -80,6 +86,7 @@ export default class {
         this.$timeout(() => {
             // Add Classname on root element
             this.$element.addClass("oui-navbar");
+
             if (this.fixed) {
                 this.$element.addClass("oui-navbar_fixed");
             }

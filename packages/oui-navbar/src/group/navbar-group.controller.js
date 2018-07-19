@@ -12,8 +12,8 @@ export default class {
     bindGroup (groupName) {
         const keys = {};
         const keysRegex = new RegExp([
-            this.KEYBOARD_KEYS.ALT,
-            this.KEYBOARD_KEYS.TAB
+            this.KEYBOARD_KEYS.TAB,
+            this.KEYBOARD_KEYS.SHIFT
         ].join("|"));
 
         const tabbableItems = this.navbarCtrl.getGroup(groupName);
@@ -22,10 +22,10 @@ export default class {
             let index = groupIndex;
             keys[e.which] = true;
 
-            if (keys[this.KEYBOARD_KEYS.ALT] && !keys[this.KEYBOARD_KEYS.TAB]) {
+            if (keys[this.KEYBOARD_KEYS.TAB] && !keys[this.KEYBOARD_KEYS.SHIFT]) {
                 // Move Down
                 index = index >= lastIndex ? 0 : index + 1;
-            } else if (keys[this.KEYBOARD_KEYS.ALT] && keys[this.KEYBOARD_KEYS.TAB]) {
+            } else if (keys[this.KEYBOARD_KEYS.TAB] && keys[this.KEYBOARD_KEYS.SHIFT]) {
                 // Move Up
                 index = index <= 0 ? lastIndex : index - 1;
             }

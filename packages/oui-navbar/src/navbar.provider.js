@@ -1,3 +1,5 @@
+import { merge } from "lodash";
+
 export default class {
     constructor () {
         this.translations = {
@@ -13,11 +15,11 @@ export default class {
     }
 
     /**
-     * Set the translations for the navbar component
+     * Set the translations
      * @param {Object} translations a map of translations
      */
     setTranslations (translations) {
-        this.translations = translations;
+        this.translations = merge(this.translations, translations);
         return this;
     }
 
