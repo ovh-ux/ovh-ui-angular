@@ -44,6 +44,7 @@ export default class {
     }
 
     $onInit () {
+        addBooleanParameter(this, "backButton");
         addBooleanParameter(this, "fixed");
     }
 

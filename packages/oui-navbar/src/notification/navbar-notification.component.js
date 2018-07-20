@@ -6,14 +6,14 @@ export default {
         navbarCtrl: "^^ouiNavbar"
     },
     bindings: {
-        menuLinks: "<links",
         menuName: "@name",
+        menuLinks: "<links",
         limitTo: "<?",
         headerTemplate: "<?",
-        headerTitle: "@",
+        headerTitle: "@?",
         footerTemplate: "<?",
-        footerTitle: "@",
-        footerUrl: "@",
+        footerTitle: "@?",
+        footerHref: "@?",
         align: "@?",
         fixed: "<?"
     },

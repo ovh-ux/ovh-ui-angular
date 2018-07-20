@@ -1,5 +1,5 @@
 <header class="oui-navbar-menu__header oui-navbar_mobile-only"
-    ng-if="::!$ctrl.headerTemplate">
+    ng-if="::!!$ctrl.headerTitle">
     <h3 class="oui-navbar-menu__title" ng-bind="::$ctrl.headerTitle"></h3>
 </header>
 <header class="oui-navbar-menu__header"
@@ -12,12 +12,12 @@
         ng-class="!!menuLink.isActive ? 'oui-navbar-menu__item_active' : null">
         <i class="oui-icon oui-icon_bicolor oui-navbar-notification__icon"
             ng-class=":: {
-                        'oui-icon_bicolor': menuLink.level !== 'incident',
-                        'oui-icon-error_circle': menuLink.level === 'error',
-                        'oui-icon-success_circle': menuLink.level === 'success',
-                        'oui-icon-info_circle': menuLink.level === 'info',
-                        'oui-icon-warning_circle': menuLink.level === 'warning',
-                        'oui-icon-clock-wait': menuLink.level === 'incident'
+                'oui-icon_bicolor': menuLink.level !== 'incident',
+                'oui-icon-error_circle': menuLink.level === 'error',
+                'oui-icon-success_circle': menuLink.level === 'success',
+                'oui-icon-info_circle': menuLink.level === 'info',
+                'oui-icon-warning_circle': menuLink.level === 'warning',
+                'oui-icon-clock-wait': menuLink.level === 'incident'
             }"
             aria-hidden="true">
         </i>
@@ -104,10 +104,10 @@
     </li>
 </ul>
 <footer class="oui-navbar-menu__footer"
-    ng-if="::!$ctrl.footerTemplate && !!$ctrl.footerTitle && $ctrl.notificationsCreated">
+    ng-if="::!!$ctrl.footerTitle && !!$ctrl.footerHref && $ctrl.notificationsCreated">
     <a class="oui-button oui-button_secondary"
         ng-click="$ctrl.navbarCtrl.toggleMenu()"
-        ng-href="{{::$ctrl.footerUrl}}"
+        ng-href="{{::$ctrl.footerHref}}"
         ng-bind="::$ctrl.footerTitle"
         oui-navbar-group="{{::$ctrl.menuName}}"
         oui-navbar-group-last>

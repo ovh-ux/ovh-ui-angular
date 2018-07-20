@@ -56,7 +56,7 @@
                 header-title="{{asideLink.title}}"
                 footer-template="asideLink.footerTemplate"
                 footer-title="{{asideLink.footerTitle}}"
-                footer-url="{{asideLink.footerUrl}}"
+                footer-href="{{asideLink.footerUrl}}"
                 align="end"
                 fixed></oui-navbar-notification>
             <oui-navbar-menu ng-switch-when="user"
@@ -79,9 +79,9 @@
 </oui-navbar>
 ```
 
-### Brand
+## Brand
 
-#### With attribute `brand`
+### With attribute `brand`
 
 ```html:preview
 <oui-navbar
@@ -89,13 +89,13 @@
 </oui-navbar>
 ```
 
-#### Properties of attribute `brand`
+### Properties of attribute `brand`
 
 - `label` **(optional)**: define `aria-label` of the brand link.
 - `title`: **(optional)**: define the brand text.
 - `url`: define `href` of the brand link.
 
-##### Set a brand icon with a CSS class (for `oui-icon`)
+#### Set a brand icon with a CSS class (for `oui-icon`)
 
 - `iconClass`: define `class` of the brand icon.
 
@@ -110,7 +110,7 @@ The brand icon will be set as a `<span>`.
 }
 ```
 
-##### Set a brand icon with an image
+#### Set a brand icon with an image
 
 - `iconAlt` **(optional)**: define `alt` of the brand icon.
 - `iconClass` **(optional)**: define `class` of the brand icon.
@@ -129,7 +129,7 @@ The brand icon will be set as a `<img>`.
 }
 ```
 
-#### With component `oui-navbar-brand`
+### With component `oui-navbar-brand`
 
 ```html:preview
 <oui-navbar>
@@ -140,9 +140,9 @@ The brand icon will be set as a `<img>`.
 </oui-navbar>
 ```
 
-### Links
+## Links
 
-#### Common properties of attributes `*-links`
+### Common properties of attributes `*-links`
 
 - `name`: define the navigation name of a menu.
 - `class` **(optional)**: define `class` of the menu item (only used for root links).
@@ -156,7 +156,7 @@ The brand icon will be set as a `<img>`.
 
 If `headerTemplate` is defined, `headerBreadcrumb` and `headerTitle` are not used.
 
-##### Set a menu item as a link
+#### Set a menu item as a link
 
 - `url`: define `href` of the menu item.
 
@@ -172,7 +172,7 @@ The menu item will be set as a `<a>`.
 }
 ```
 
-##### Set a menu item as a link for ui-router
+#### Set a menu item as a link for ui-router
 
 - `state`: define `ui-sref` of the menu item. The menu item will be set as a `<a>`, `click` and `url` will be ignored.
 - `stateParams` **(optional)**: define parameters for `state`.
@@ -190,7 +190,7 @@ The menu item will be set as a `<a>`.
 }
 ```
 
-##### Set a menu item as a button with a click function
+#### Set a menu item as a button with a click function
 
 - `click`: define `ng-click` of the menu item.
 
@@ -206,7 +206,7 @@ The menu item will be set as a `<button>`.
 }
 ```
 
-##### Set a menu item as a button to open a menu
+#### Set a menu item as a button to open a menu
 
 - `subLinks`: define the array of links for the children menu.
 
@@ -226,9 +226,9 @@ The menu item will be set as a `<button>`.
 
 **Note**: Root links can have `url` and `subLinks`. `subLinks` will only be used for the responsive menu.
 
-### Main Links
+## Main Links
 
-#### With attribute `main-links`
+### With attribute `main-links`
 
 ```html:preview
 <oui-navbar
@@ -237,7 +237,7 @@ The menu item will be set as a `<button>`.
 </oui-navbar>
 ```
 
-##### Properties of attribute `main-links`
+#### Properties of attribute `main-links`
 
 This property is only available for root links of `main-links`.
 
@@ -258,7 +258,7 @@ This property is only available for root links of `main-links`.
 }]
 ```
 
-#### With component `oui-navbar-main`
+### With component `oui-navbar-main`
 
 ```html:preview
 <oui-navbar active-link="lorem">
@@ -274,11 +274,11 @@ This property is only available for root links of `main-links`.
 </oui-navbar>
 ```
 
-### Toggler Links
+## Toggler Links
 
 It defines the menu in reponsive mode. It will be visible only for screen resolutions below `1024px` of width.
 
-#### With attributes `toggler-links`
+### With attributes `toggler-links`
 
 ```html:preview
 <oui-navbar
@@ -296,7 +296,7 @@ It defines the menu in reponsive mode. It will be visible only for screen resolu
 </oui-navbar>
 ```
 
-#### With component `oui-navbar-toggler`
+### With component `oui-navbar-toggler`
 
 ```html:preview
 <oui-navbar active-link="lorem">
@@ -304,9 +304,9 @@ It defines the menu in reponsive mode. It will be visible only for screen resolu
 </oui-navbar>
 ```
 
-### Aside Links
+## Aside Links
 
-#### With attribute `aside-links`
+### With attribute `aside-links`
 
 ```html:preview
 <oui-navbar
@@ -314,7 +314,7 @@ It defines the menu in reponsive mode. It will be visible only for screen resolu
 </oui-navbar>
 ```
 
-##### Properties of attribute `aside-links`
+#### Properties of attribute `aside-links`
 
 This property is only available for root links of `aside-links`.
 
@@ -335,7 +335,7 @@ This property is only available for root links of `aside-links`.
 }]
 ```
 
-#### With component `oui-navbar-aside`
+### With component `oui-navbar-aside`
 
 ```html:preview
 <oui-navbar active-link="lorem">
@@ -361,7 +361,7 @@ This property is only available for root links of `aside-links`.
                 header-title="{{asideLink.title}}"
                 footer-template="asideLink.footerTemplate"
                 footer-title="{{asideLink.footerTitle}}"
-                footer-url="{{asideLink.footerUrl}}"
+                footer-href="{{asideLink.footerUrl}}"
                 align="end"
                 fixed></oui-navbar-notification>
             <oui-navbar-menu ng-switch-when="user"
@@ -384,7 +384,7 @@ This property is only available for root links of `aside-links`.
 </oui-navbar>
 ```
 
-### Variant `notifications` menu
+## Variant `notifications` menu
 
 The property `name` **must be** `"notifications"`.
 
@@ -421,7 +421,7 @@ If `footerTemplate` is defined, `footerTitle` and `footerUrl` are not used.
 }
 ```
 
-#### Placeholder for notification
+### Placeholder for notification
 In the notification submenu, a placeholder is shown depending if there's no notification or if variable `subLinks` is not defined inside an `aside-links`.
 ```javascript
 // Something went wong with the notification
@@ -462,7 +462,7 @@ subLinks = [];
 </div>
 ```
 
-### Variant `user` menu
+## Variant `user` menu
 
 The property `name` **must be** `"user"`.
 
@@ -492,53 +492,77 @@ The property `name` **must be** `"user"`.
 
 | Attribute         | Type      | Binding   | One-time Binding  | Values                | Default   | Description
 | ----              | ----      | ----      | ----              | ----                  | ----      | ----
-| `brand`           | object    | <?        | yes               | _see example below_   |           | object for the brand logo of the navbar
+| `brand`           | object    | <?        | yes               | _see example above_   |           | object for the brand logo of the navbar
 | `active-link`     | string    | @?        | yes               |                       |           | current active-link of the navbar
-| `main-links`      | array     | <?        | yes               | _see example below_   |           | array of objects for the items on the left and the toggler (for responsive)
-| `aside-links`     | array     | <?        | yes               | _see example below_   |           | array of objects for the items on the right
-| `toggler-links`   | array     | <?        | yes               | _see example below_   |           | array of objects for the responsive menu
+| `main-links`      | array     | <?        | yes               | _see example above_   |           | array of objects for the items on the left and the toggler (for responsive)
+| `aside-links`     | array     | <?        | yes               | _see example above_   |           | array of objects for the items on the right
+| `toggler-links`   | array     | <?        | yes               | _see example above_   |           | array of objects for the responsive menu
 | `fixed`           | boolean   | <?        | yes               |                       | `false`   | set the navbar in position fixed
 
 ### oui-navbar-brand
 
-| Attribute         | Type      | Binding   | One-time Binding  | Description
-| ----              | ----      |           | ----              | ----
-| `heading`         | string    | @?        | yes               | title of the brand link
-| `aria-label`      | string    | @?        | yes               | accessibility label of the brand link
-| `icon-alt`        | string    | @?        | yes               | alternative text of the brand icon
-| `icon-class`      | string    | @?        | yes               | classname of the brand icon
-| `icon-src`        | string    | @?        | yes               | url of the brand icon
-| `href`            | string    | @?        | yes               | link href of the brand link
-| `state`           | string    | @?        | yes               | state of the brand link
-| `state-params`    | object    | <?        |                   | state params of the brand link
+| Attribute         | Type      | Binding   | One-time Binding  | Values                | Default   | Description
+| ----              | ----      |           | ----              | ----                  | ----      | ----
+| `heading`         | string    | @?        | yes               |                       |           | title of the brand link
+| `aria-label`      | string    | @?        | yes               |                       |           | accessibility label of the brand link
+| `icon-alt`        | string    | @?        | yes               |                       |           | alternative text of the brand icon
+| `icon-class`      | string    | @?        | yes               |                       |           | classname of the brand icon
+| `icon-src`        | string    | @?        | yes               |                       |           | url of the brand icon
+| `href`            | string    | @?        | yes               |                       |           | link href of the brand link
 
 ### oui-navbar-dropdown
 
-| Attribute         | Type      | Binding   | One-time Binding  | Description
-| ----              | ----      | ----      | ----              | ----
-| `name`            | string    | @         | yes               | group name of the dropdown
-| `text`            | string    | @         | yes               | text of the button
-| `aria-label`      | string    | @?        | yes               | accessibility label of the button
-| `icon-class`      | string    | @?        | yes               | classname of the button icon
-| `icon-badge`      | number    | <?        |                   | number on the badge of the button icon
-| `on-click`        | function  | &         |                   | click callback
+| Attribute         | Type      | Binding   | One-time Binding  | Values                | Default   | Description
+| ----              | ----      | ----      | ----              | ----                  | ----      | ----
+| `name`            | string    | @         | yes               |                       |           | group name of the dropdown
+| `text`            | string    | @         | yes               |                       |           | text of the button
+| `aria-label`      | string    | @?        | yes               |                       |           | accessibility label of the button
+| `icon-class`      | string    | @?        | yes               |                       |           | classname of the button icon
+| `icon-badge`      | number    | <?        |                   |                       |           | number on the badge of the button icon
+| `on-click`        | function  | &         |                   |                       |           | click callback
 
 ### oui-navbar-menu
 
-| Attribute         | Type      | Binding   | One-time Binding  | Values                | Default   | Description
-| ----              | ----      | ----      | ----              | ----                  | ----      | ----
+| Attribute             | Type      | Binding   | One-time Binding  | Values                | Default   | Description
+| ----                  | ----      | ----      | ----              | ----                  | ----      | ----
+| `name`                | string    | @         | yes               |                       |           | group name of the menu
+| `links`               | array     | <         | yes               | _see example above_   |           | array of links for the menu
+| `header-class`        | string    | @?        | yes               |                       |           | classname of the header
+| `header-title`        | string    | @?        | yes               |                       |           | text of the header title
+| `header-breadcrumb`   | string    | @?        | yes               |                       |           | text of the header breadcrumb
+| `align`               | string    | @?        | yes               | `start`, `end`        | `start`   | alignment of the menu to his trigger
+| `back-button`         | boolean   | <?        | yes               |                       | `false`   | display a back button in the header title
+| `fixed`               | boolean   | <?        | yes               |                       | `false`   | flag for responsive menu
 
 ### oui-navbar-notification
 
-| Attribute         | Type      | Binding   | One-time Binding  | Values                | Default   | Description
-| ----              | ----      | ----      | ----              | ----                  | ----      | ----
+| Attribute             | Type      | Binding   | One-time Binding  | Values                | Default   | Description
+| ----                  | ----      | ----      | ----              | ----                  | ----      | ----
+| `name`                | string    | @         | yes               |                       |           | group name of the menu
+| `links`               | array     | <         | yes               | _see example above_   |           | array of links for the notifications menu
+| `limit-to`            | number    | <?        | yes               |                       | 10        | maximum displayed notifications
+| `header-template`     | string    | <?        | yes               |                       |           | HTML template of the menu header
+| `header-title`        | string    | @?        | yes               |                       |           | text of the header title
+| `footer-template`     | string    | <?        | yes               |                       |           | HTML template of the menu footer
+| `footer-title`        | string    | @?        | yes               |                       |           | text of the footer link
+| `footer-href`         | string    | @?        | yes               |                       |           | url of the footer link
+| `align`               | string    | @?        | yes               | `start`, `end`        | `start`   | alignment of the menu to his trigger
+| `fixed`               | boolean   | <?        | yes               |                       | `false`   | flag for responsive menu
 
 ### oui-navbar-toggler
 
-| Attribute         | Type      | Binding   | One-time Binding  | Values                | Default   | Description
-| ----              | ----      | ----      | ----              | ----                  | ----      | ----
+| Attribute     | Type      | Binding   | One-time Binding  | Values                | Default   | Description
+| ----          | ----      | ----      | ----              | ----                  | ----      | ----
+| `links`       | array     | <         | yes               | _see example above_   |           | array of links for the responsive menu
 
 ### oui-navbar-link
 
-| Attribute         | Type      | Binding   | One-time Binding  | Values                | Default   | Description
-| ----              | ----      | ----      | ----              | ----                  | ----      | ----
+| Attribute         | Type      | Binding   | One-time Binding  | Values                                | Default   | Description
+| ----              | ----      | ----      | ----              | ----                                  | ----      | ----
+| `name`            | string    | @         | yes               |                                       |           | group name of the link
+| `text`            | string    | @         | yes               |                                       |           | text of the link
+| `aria-label`      | string    | @?        | yes               |                                       |           | accessibility label of the link
+| `href`            | string    | @?        | yes               |                                       |           | href of the link
+| `state`           | string    | @?        | yes               |                                       |           | state of the link
+| `state-params`    | object    | <?        | yes               |                                       |           | state-params of the link
+| `variant`         | string    | @?        | yes               | `primary`, `secondary`, `tertiary`    |           | style modifier of the link

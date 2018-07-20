@@ -1,4 +1,6 @@
-import { addBooleanParameter } from "@oui-angular/common/component-utils";
+import { addBooleanParameter, addDefaultParameter } from "@oui-angular/common/component-utils";
+
+const defaultLimitTo = 10;
 export default class {
     constructor ($attrs, $element, $timeout, ouiNavbarConfiguration) {
         "ngInject";
@@ -15,6 +17,7 @@ export default class {
     }
 
     $onInit () {
+        addDefaultParameter(this, "limitTo", defaultLimitTo);
         addBooleanParameter(this, "fixed");
     }
 

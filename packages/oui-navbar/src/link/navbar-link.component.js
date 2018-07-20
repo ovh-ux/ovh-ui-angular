@@ -8,7 +8,7 @@ export default {
     bindings: {
         name: "@",
         text: "@",
-        href: "@",
+        href: "@?",
         state: "@?",
         stateParams: "<?",
         label: "@?ariaLabel",
