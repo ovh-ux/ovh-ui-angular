@@ -89,6 +89,7 @@
 | `href`              | string   | @?      | yes              |                        |                   | button link url                           |
 | `on-click`          | funcion  | &?      |                  |                        |                   | button action callback                    |
 | `aria-label`        | string   | @?      |                  |                        | `null`            | accessibility label                       |
+| `external`          | boolean  | <?      | yes              |                        | `false`           | open in new tab and display external icon
 
 ### oui-tile-definition
 

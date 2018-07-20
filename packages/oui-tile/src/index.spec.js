@@ -65,6 +65,20 @@ describe("ouiTile", () => {
             expect(button.attr("href")).toBe(url);
         });
 
+        it("should add rel and target attributes if tile button is external link", () => {
+            const relAttr = "noopener";
+            const targetAttr = "_blank";
+            const element = TestUtils.compileTemplate(
+                `<oui-tile>
+                    <oui-tile-button href="http://myurl.com" text="text" external></oui-tile-button>
+                </oui-tile>`);
+
+            const button = getTileButton(element);
+
+            expect(button.attr("rel")).toBe(relAttr);
+            expect(button.attr("target")).toBe(targetAttr);
+        });
+
         it("should handle click in a button tile", () => {
             const clickSpy = jasmine.createSpy("click");
             const element = TestUtils.compileTemplate(
