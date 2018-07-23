@@ -10,9 +10,9 @@
 <!-- Brand -->
 <div ng-transclude="brandSlot">
     <oui-navbar-brand
-        ng-if="::!!$ctrl.$attrs['brand']"
-        href="{{::$ctrl.brand.url}}"
-        heading="{{::$ctrl.brand.title}}"
+        ng-if="::!!$ctrl.$attrs['brand'] && $ctrl.brand"
+        href="{{::$ctrl.brand.href || $ctrl.brand.url}}"
+        heading="{{::$ctrl.brand.heading || $ctrl.brand.title}}"
         aria-label="{{::$ctrl.brand.label}}"
         icon-alt="{{::$ctrl.brand.iconAlt}}"
         icon-class="{{::$ctrl.brand.iconClass}}"
@@ -25,10 +25,10 @@
 <div class="oui-navbar-list oui-navbar-list_main oui-navbar_desktop-only"
     ng-transclude="mainSlot">
     <oui-navbar-link
-        ng-if="::!!$ctrl.$attrs['mainLinks']"
+        ng-if="::!!$ctrl.$attrs['mainLinks'] && $ctrl.mainLinks"
         name="{{::managerLink.name}}"
         text="{{::managerLink.title}}"
-        href="{{::managerLink.url}}"
+        href="{{::managerLink.href || managerLink.url}}"
         variant="{{::managerLink.isPrimary ? 'primary' : 'secondary'}}"
         aria-label="{{::!!managerLink.label ? managerLink.label : null}}"
         ng-repeat="managerLink in ::$ctrl.mainLinks track by $index"
@@ -43,7 +43,7 @@
 
     <!-- Internal -->
     <oui-navbar-dropdown
-        ng-if="::!!$ctrl.$attrs['asideLinks']"
+        ng-if="::!!$ctrl.$attrs['asideLinks'] && $ctrl.asideLinks"
         name="{{::asideLink.name}}"
         text="{{::asideLink.title}}"
         aria-label="{{::!!asideLink.label ? asideLink.label : null}}"
