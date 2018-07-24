@@ -1,6 +1,6 @@
 <header class="oui-navbar-menu__header oui-navbar_mobile-only"
     ng-if="::!!$ctrl.headerTitle">
-    <h3 class="oui-navbar-menu__title" ng-bind="::$ctrl.headerTitle"></h3>
+    <p class="oui-navbar-menu__title" ng-bind="::$ctrl.headerTitle"></p>
 </header>
 <header class="oui-navbar-menu__header"
     ng-if="::!!$ctrl.headerTemplate"
@@ -8,7 +8,7 @@
 </header>
 <ul class="oui-navbar-menu__body oui-navbar-list">
     <li class="oui-navbar-menu__item oui-navbar-notification"
-        ng-repeat="menuLink in ::$ctrl.menuLinks | limitTo: $ctrl.limitTo"
+        ng-repeat="menuLink in ::$ctrl.menuLinks track by $index | limitTo: $ctrl.limitTo"
         ng-class="!!menuLink.isActive ? 'oui-navbar-menu__item_active' : null">
         <i class="oui-icon oui-icon_bicolor oui-navbar-notification__icon"
             ng-class=":: {
@@ -81,9 +81,9 @@
             </i>
             <div>
                 <div class="oui-navbar-notification-placeholder__title"
-                    ng-bind="$ctrl.translations.notification.noNotification"></div>
+                    ng-bind="::$ctrl.translations.notification.noNotification"></div>
                 <div class="oui-navbar-notification-placeholder__description"
-                    ng-bind="$ctrl.translations.notification.noNotificationDescription"></div>
+                    ng-bind="::$ctrl.translations.notification.noNotificationDescription"></div>
             </div>
 
         </div>
@@ -96,9 +96,9 @@
             </i>
             <div>
                 <div class="oui-navbar-notification-placeholder__title"
-                        ng-bind="$ctrl.translations.notification.errorInNotification"></div>
+                        ng-bind="::$ctrl.translations.notification.errorInNotification"></div>
                 <div class="oui-navbar-notification-placeholder__description"
-                        ng-bind="$ctrl.translations.notification.errorInNotificationDescription"></div>
+                        ng-bind="::$ctrl.translations.notification.errorInNotificationDescription"></div>
             </div>
         </div>
     </li>

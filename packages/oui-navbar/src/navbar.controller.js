@@ -1,4 +1,5 @@
 import { addBooleanParameter } from "@oui-angular/common/component-utils";
+import get from "lodash/get";
 
 export default class {
     constructor ($attrs, $document, $element, $timeout, ouiNavbarConfiguration, KEYBOARD_KEYS) {
@@ -33,7 +34,7 @@ export default class {
         // Add a delay to force focus
         const delay = 50;
         this.$timeout(() => {
-            if (this.keyboardNav && this.keyboardNav[groupName] && this.keyboardNav[groupName][index]) {
+            if (get(this.keyboardNav, `${groupName}[${index}]`)) {
                 this.keyboardNav[groupName][index].focus();
             }
         }, delay);
