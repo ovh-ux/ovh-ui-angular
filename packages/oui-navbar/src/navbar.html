@@ -27,7 +27,7 @@
     <oui-navbar-link
         ng-if="::!!$ctrl.$attrs['mainLinks'] && $ctrl.mainLinks"
         name="{{::managerLink.name}}"
-        text="{{::managerLink.title}}"
+        text="{{::managerLink.heading || managerLink.title}}"
         href="{{::managerLink.href || managerLink.url}}"
         variant="{{::managerLink.isPrimary ? 'primary' : 'secondary'}}"
         aria-label="{{::!!managerLink.label ? managerLink.label : null}}"
@@ -45,7 +45,7 @@
     <oui-navbar-dropdown
         ng-if="::!!$ctrl.$attrs['asideLinks'] && $ctrl.asideLinks"
         name="{{::asideLink.name}}"
-        text="{{::asideLink.title}}"
+        text="{{::asideLink.heading || asideLink.title}}"
         aria-label="{{::!!asideLink.label ? asideLink.label : null}}"
         icon-badge="(asideLink.subLinks | filter: {isActive: 'true', acknowledged: '!true'}).length"
         icon-class="{{::!!asideLink.iconClass ? asideLink.iconClass : null}}"
