@@ -1,3 +1,6 @@
 import Numeric from "./numeric.component.js";
 
-angular.module("oui.numeric", []).component("ouiNumeric", Numeric);
+export default angular
+    .module("oui.numeric", [])
+    .component("ouiNumeric", Numeric)
+    .name;

@@ -1,7 +1,8 @@
 import CriteriaAdder from "./criteria-adder.component";
 import CriteriaAdderProvider from "./criteria-adder.provider";
 
-angular
+export default angular
     .module("oui.criteria-adder", [])
     .component("ouiCriteriaAdder", CriteriaAdder)
-    .provider("ouiCriteriaAdderConfiguration", CriteriaAdderProvider);
+    .provider("ouiCriteriaAdderConfiguration", CriteriaAdderProvider)
+    .name;

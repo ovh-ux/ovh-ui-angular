@@ -9,7 +9,7 @@ import "flatpickr/dist/l10n/nl.js";
 import "flatpickr/dist/l10n/pl.js";
 import "flatpickr/dist/l10n/pt.js";
 import "flatpickr/dist/l10n/sk.js";
-import { merge } from "lodash";
+import merge from "lodash/merge";
 
 export default class {
     constructor () {

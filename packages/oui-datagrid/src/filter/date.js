@@ -1,4 +1,5 @@
-import { isDate, isNaN } from "lodash";
+import isDate from "lodash/isDate";
+import isNaN from "lodash/isNaN";
 
 export default class DateComparators {
     static is (subject, value) {

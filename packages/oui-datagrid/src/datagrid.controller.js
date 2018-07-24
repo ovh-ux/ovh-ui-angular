@@ -1,5 +1,5 @@
 import { addBooleanParameter } from "@oui-angular/common/component-utils";
-import { find } from "lodash";
+import find from "lodash/find";
 import { hasProperty } from "./util";
 
 import template from "./datagrid.html";

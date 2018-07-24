@@ -1,4 +1,6 @@
 import Collapsible from "./collapsible.component.js";
 
-angular.module("oui.collapsible", [])
-    .component("ouiCollapsible", Collapsible);
+export default angular
+    .module("oui.collapsible", [])
+    .component("ouiCollapsible", Collapsible)
+    .name;

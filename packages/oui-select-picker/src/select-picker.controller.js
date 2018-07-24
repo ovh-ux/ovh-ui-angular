@@ -1,5 +1,5 @@
 import { addBooleanParameter, addDefaultParameter } from "@oui-angular/common/component-utils";
-import { get } from "lodash";
+import get from "lodash/get";
 
 export default class SelectPickerController {
     constructor ($scope, $element, $attrs, $timeout, $transclude) {
