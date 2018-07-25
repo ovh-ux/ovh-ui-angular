@@ -34,7 +34,7 @@ export default class {
         // Add a delay to force focus
         const delay = 50;
         this.$timeout(() => {
-            if (get(this.keyboardNav, `${groupName}[${index}]`)) {
+            if (get(this.keyboardNav, [groupName, index])) {
                 this.keyboardNav[groupName][index].focus();
             }
         }, delay);

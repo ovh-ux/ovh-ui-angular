@@ -1,3 +1,23 @@
+<a name="2.17.0"></a>
+# [2.17.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.16.5...v2.17.0) (2018-07-25)
+
+
+### Bug Fixes
+
+* **oui-action-menu:** allow to disable action menu dynamically ([#232](https://github.com/ovh-ux/ovh-ui-angular/issues/232)) ([cbb7f2a](https://github.com/ovh-ux/ovh-ui-angular/commit/cbb7f2a))
+* **oui-popover:** update style to specs ([#229](https://github.com/ovh-ux/ovh-ui-angular/issues/229)) ([66291a8](https://github.com/ovh-ux/ovh-ui-angular/commit/66291a8))
+
+
+### Features
+
+* **oui-navbar:** add new components ([#235](https://github.com/ovh-ux/ovh-ui-angular/issues/235)) ([15ff949](https://github.com/ovh-ux/ovh-ui-angular/commit/15ff949))
+* **oui-progress:** add oui-progress component ([#192](https://github.com/ovh-ux/ovh-ui-angular/issues/192)) ([41a0639](https://github.com/ovh-ux/ovh-ui-angular/commit/41a0639))
+* **oui-switch:** add oui-switch component ([#191](https://github.com/ovh-ux/ovh-ui-angular/issues/191)) ([d496e19](https://github.com/ovh-ux/ovh-ui-angular/commit/d496e19))
+* **oui-tile:** add disabled on oui-tile-button ([#237](https://github.com/ovh-ux/ovh-ui-angular/issues/237)) ([6515a1a](https://github.com/ovh-ux/ovh-ui-angular/commit/6515a1a))
+* **oui-tile:** add external link handle ([#234](https://github.com/ovh-ux/ovh-ui-angular/issues/234)) ([8fd418b](https://github.com/ovh-ux/ovh-ui-angular/commit/8fd418b))
+
+
+
 <a name="2.16.5"></a>
 ## [2.16.5](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.16.4...v2.16.5) (2018-07-17)
 
