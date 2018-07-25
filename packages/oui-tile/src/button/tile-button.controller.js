@@ -10,6 +10,7 @@ export default class {
     }
 
     $onInit () {
+        addBooleanParameter(this, "disabled");
         addBooleanParameter(this, "external");
     }
 

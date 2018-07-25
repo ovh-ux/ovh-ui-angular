@@ -9,6 +9,7 @@ export default {
         onClick: "&?",
         href: "@?",
         ariaLabel: "@?",
+        disabled: "<?",
         external: "<?"
     },
     transclude: true
