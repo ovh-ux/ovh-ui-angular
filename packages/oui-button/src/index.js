@@ -1,3 +1,6 @@
 import Button from "./button.component.js";
 
-angular.module("oui.button", []).component("ouiButton", Button);
+export default angular
+    .module("oui.button", [])
+    .component("ouiButton", Button)
+    .name;

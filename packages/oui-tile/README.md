@@ -22,7 +22,9 @@
 <oui-tile heading="Title">
     <oui-tile-button text="Button 1" on-click="$ctrl.click = true"></oui-tile-button>
     <oui-tile-button text="Button 2" href="#"></oui-tile-button>
-    <oui-tile-button aria-label="access to .." href="#">Button 3</oui-tile-button>
+    <oui-tile-button aria-label="access to .." href="#" external>Button 3</oui-tile-button>
+    <oui-tile-button text="Button 4 (disabled)" disabled></oui-tile-button>
+    <oui-tile-button text="Button 5 (disabled)" href="#" disabled></oui-tile-button>
 </oui-tile>
 
 <div class="oui-doc-preview-only">Button 1 clicked: {{$ctrl.click}}</div>
@@ -89,6 +91,8 @@
 | `href`              | string   | @?      | yes              |                        |                   | button link url                           |
 | `on-click`          | funcion  | &?      |                  |                        |                   | button action callback                    |
 | `aria-label`        | string   | @?      |                  |                        | `null`            | accessibility label                       |
+| `disabled`          | boolean  | <?      |                  |                        | `false`           | disabled flag
+| `external`          | boolean  | <?      | yes              |                        | `false`           | open in new tab and display external icon
 
 ### oui-tile-definition
 

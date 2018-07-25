@@ -1,23 +1,19 @@
+import { addBooleanParameter } from "@oui-angular/common/component-utils";
+
 export default class {
-    constructor ($element, $timeout, ouiNavbarConfiguration, NavbarService, NavbarGroupService, KEYBOARD_KEYS) {
+    constructor ($attrs, $element, $timeout, ouiNavbarConfiguration, KEYBOARD_KEYS) {
         "ngInject";
 
+        this.$attrs = $attrs;
         this.$element = $element;
         this.$timeout = $timeout;
         this.config = ouiNavbarConfiguration;
-        this.navbarService = NavbarService;
-        this.navbarGroupService = NavbarGroupService;
         this.KEYBOARD_KEYS = KEYBOARD_KEYS;
-    }
-
-    toggleMenu (state, isInternalNav) {
-        // Update navbar navigation
-        this.navigation = this.navbarService.toggleMenu(state, isInternalNav);
     }
 
     closeMenu (state, isInternalNav) {
         // Update navbar navigation
-        this.navigation = this.navbarService.toggleMenu(state, isInternalNav);
+        this.navbarCtrl.toggleMenu(state, isInternalNav);
 
         // Set focus on menu toggler, preceding $element
         const prev = this.$element[0].previousElementSibling;
@@ -34,7 +30,7 @@ export default class {
         }
 
         // Then close all menus
-        this.navigation = this.navbarService.toggleMenu();
+        this.navbarCtrl.toggleMenu();
     }
 
     // Return value of "ui-sref"
@@ -47,17 +43,9 @@ export default class {
         return this.headerBreadcrumb ? `${this.headerBreadcrumb} › ${this.headerTitle}` : this.headerTitle;
     }
 
-    setFirstFocus () {
-        // Force focus when last is initialized
-        this.navbarGroupService.setFocusTo(this.menuName, 0);
-    }
-
-    $onChanges () {
-        // Focus first list item when opened
-        if (this.expanded) {
-            // Add a little delay to avoid transition bug on Webkit
-            this.navbarGroupService.setFocusTo(this.menuName, 0);
-        }
+    $onInit () {
+        addBooleanParameter(this, "backButton");
+        addBooleanParameter(this, "fixed");
     }
 
     $postLink () {
@@ -65,6 +53,14 @@ export default class {
         this.$timeout(() => {
             // Add classnames on root $element
             this.$element.addClass("oui-navbar-menu");
+
+            if (this.fixed) {
+                this.$element.addClass("oui-navbar-menu_fixed");
+            }
+
+            if (this.align) {
+                this.$element.addClass(`oui-navbar-menu_${this.align}`);
+            }
 
             // Add "role" attribute for accessibility
             this.$element.attr("role", "menu");

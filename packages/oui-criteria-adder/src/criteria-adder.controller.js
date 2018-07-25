@@ -1,5 +1,5 @@
 import { addDefaultParameter } from "@oui-angular/common/component-utils";
-import { get } from "lodash";
+import get from "lodash/get";
 
 export default class {
     constructor ($attrs, $element, $scope, $timeout, ouiCriteriaAdderConfiguration) {

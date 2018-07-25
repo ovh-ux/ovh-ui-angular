@@ -1,5 +1,5 @@
 export default {
-    ALT: 9,
-    TAB: 16,
+    TAB: 9,
+    SHIFT: 16,
     ESC: 27
 };

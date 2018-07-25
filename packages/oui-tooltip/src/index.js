@@ -1,4 +1,6 @@
 import Tooltip from "./tooltip.directive";
 
-angular.module("oui.tooltip", [])
-    .directive("ouiTooltip", Tooltip);
+export default angular
+    .module("oui.tooltip", [])
+    .directive("ouiTooltip", Tooltip)
+    .name;

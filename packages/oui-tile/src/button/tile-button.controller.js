@@ -1,3 +1,5 @@
+import { addBooleanParameter } from "@oui-angular/common/component-utils";
+
 export default class {
     constructor ($attrs, $element, $timeout) {
         "ngInject";
@@ -5,6 +7,11 @@ export default class {
         this.$attrs = $attrs;
         this.$element = $element;
         this.$timeout = $timeout;
+    }
+
+    $onInit () {
+        addBooleanParameter(this, "disabled");
+        addBooleanParameter(this, "external");
     }
 
     $postLink () {

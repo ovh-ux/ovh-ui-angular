@@ -1,6 +1,7 @@
-import { endsWith, negate } from "lodash";
 import BasicComparators from "./basic";
 import DateComparators from "./date";
+import endsWith from "lodash/endsWith";
+import negate from "lodash/negate";
 import NumberComparators from "./number";
 import StringComparators from "./string";
 

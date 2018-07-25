@@ -7,7 +7,7 @@ import DatagridParameters from "./parameters/datagrid-parameters.component";
 import DatagridProvider from "./datagrid.provider";
 import DatagridService from "./datagrid.service";
 
-angular
+export default angular
     .module("oui.datagrid", [
         "oui.pagination",
         "oui.dropdown",
@@ -22,4 +22,5 @@ angular
     .service("ouiDatagridPaging", DatagridPaging)
     .provider("ouiDatagridConfiguration", DatagridProvider)
     .service("ouiDatagridService", DatagridService)
-    .component("ouiDatagridParameters", DatagridParameters);
+    .component("ouiDatagridParameters", DatagridParameters)
+    .name;

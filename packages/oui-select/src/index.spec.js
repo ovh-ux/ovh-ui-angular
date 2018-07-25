@@ -1,5 +1,5 @@
 import data from "./index.spec.data";
-import { uniq } from "lodash";
+import uniq from "lodash/uniq";
 
 describe("ouiSelect", () => {
     let TestUtils;

@@ -3,8 +3,10 @@ import HeaderTabsDivider from "../../oui-dropdown/src/divider/dropdown-divider.c
 import HeaderTabsDropdown from "./header-tabs-dropdown.component";
 import HeaderTabsItem from "./header-tabs-item.component";
 
-angular.module("oui.header-tabs", [])
+export default angular
+    .module("oui.header-tabs", [])
     .component("ouiHeaderTabs", HeaderTabs)
     .component("ouiHeaderTabsDivider", HeaderTabsDivider)
     .component("ouiHeaderTabsDropdown", HeaderTabsDropdown)
-    .component("ouiHeaderTabsItem", HeaderTabsItem);
+    .component("ouiHeaderTabsItem", HeaderTabsItem)
+    .name;

@@ -8,7 +8,9 @@ export default {
         text: "@?",
         onClick: "&?",
         href: "@?",
-        ariaLabel: "@?"
+        ariaLabel: "@?",
+        disabled: "<?",
+        external: "<?"
     },
     transclude: true
 };

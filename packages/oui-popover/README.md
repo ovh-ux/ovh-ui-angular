@@ -64,7 +64,7 @@
 ```html:preview
 <div class="oui-doc-preview-only-keep-children">
     <oui-popover>
-      <button type="button" class="oui-popover__help-button" oui-popover-trigger>Need help ?</button>
+      <button type="button" class="oui-popover-button" oui-popover-trigger>Need help ?</button>
       <oui-popover-content>This is an awesome popover content.</oui-popover-content>
     </oui-popover>
 </div>
