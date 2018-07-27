@@ -7,37 +7,37 @@
 ### Default
 
 ```html:preview
-<oui-button text="Default button" on-click="onClick()"></oui-button>
+<oui-button on-click="onClick()">Default button</oui-button>
 ```
 
 ### Action buttons
 
 ```html:preview
-<div>
+<p>
   <oui-button variant="primary" text="Primary"></oui-button>
   <oui-button variant="secondary" text="Secondary"></oui-button>
   <oui-button variant="link" text="Link"></oui-button>
-</div>
+</p>
 
-<div>
+<p>
   <oui-button variant="primary" text="Primary" disabled></oui-button>
   <oui-button variant="secondary" text="Secondary" disabled></oui-button>
   <oui-button variant="link" text="Link" disabled></oui-button>
-</div>
+</p>
 ```
 
 ### Steps buttons
 
 ```html:preview
-<div>
+<p>
   <oui-button variant-nav="previous" text="Previous" on-click="previous()"></oui-button>
   <oui-button variant="primary" variant-nav="next" text="Next" on-click="next()"></oui-button>
-</div>
+</p>
 
-<div>
+<p>
   <oui-button variant-nav="previous" text="Previous" on-click="previous()" disabled></oui-button>
   <oui-button variant="primary" variant-nav="next" text="Next" on-click="next()" disabled></oui-button>
-</div>
+</p>
 ```
 
 ### Accessibility
