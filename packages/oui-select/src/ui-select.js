@@ -213,13 +213,13 @@ uis.factory('$$uisDebounce', ['$timeout', function($timeout) {
   };
 }]);
 
-uis.directive('uiSelectChoices',
+uis.directive('ouiUiSelectChoices',
   ['uiSelectConfig', 'uisRepeatParser', 'uiSelectMinErr', '$compile', '$window',
   function(uiSelectConfig, RepeatParser, uiSelectMinErr, $compile, $window) {
 
   return {
     restrict: 'EA',
-    require: '^uiSelect',
+    require: '^ouiUiSelect',
     replace: true,
     transclude: true,
     templateUrl: function(tElement) {
@@ -343,10 +343,10 @@ uis.controller('uiSelectCtrl',
 
   ctrl.focusser = undefined; //Reference to input element used to handle focus events
   ctrl.multiple = undefined; // Initialized inside uiSelect directive link function
-  ctrl.disableChoiceExpression = undefined; // Initialized inside uiSelectChoices directive link function
+  ctrl.disableChoiceExpression = undefined; // Initialized inside ouiUiSelectChoices directive link function
   ctrl.tagging = {isActivated: false, fct: undefined};
   ctrl.taggingTokens = {isActivated: false, tokens: undefined};
-  ctrl.lockChoiceExpression = undefined; // Initialized inside uiSelectMatch directive link function
+  ctrl.lockChoiceExpression = undefined; // Initialized inside ouiUiSelectMatch directive link function
   ctrl.clickTriggeredSelect = false;
   ctrl.$filter = $filter;
   ctrl.$element = $element;
@@ -1106,7 +1106,7 @@ uis.controller('uiSelectCtrl',
   });
 }]);
 
-uis.directive('uiSelect',
+uis.directive('ouiUiSelect',
   ['$document', 'uiSelectConfig', 'uiSelectMinErr', 'uisOffset', '$compile', '$parse', '$timeout',
   function($document, uiSelectConfig, uiSelectMinErr, uisOffset, $compile, $parse, $timeout) {
 
@@ -1118,7 +1118,7 @@ uis.directive('uiSelect',
     },
     replace: true,
     transclude: true,
-    require: ['uiSelect', '^ngModel'],
+    require: ['ouiUiSelect', '^ngModel'],
     scope: true,
 
     controller: 'uiSelectCtrl',
@@ -1310,7 +1310,7 @@ uis.directive('uiSelect',
             if (!$select.skipFocusser) {
               //Will lose focus only with certain targets
               var focusableControls = ['input','button','textarea','select'];
-              var targetController = angular.element(e.target).controller('uiSelect'); //To check if target is other ui-select
+              var targetController = angular.element(e.target).controller('ouiUiSelect'); //To check if target is other ui-select
               skipFocusser = targetController && targetController !== $select; //To check if target is other ui-select
               if (!skipFocusser) skipFocusser =  ~focusableControls.indexOf(e.target.tagName.toLowerCase()); //Check if target is input, button or textarea
             } else {
@@ -1538,10 +1538,10 @@ uis.directive('uiSelect',
   };
 }]);
 
-uis.directive('uiSelectMatch', ['uiSelectConfig', function(uiSelectConfig) {
+uis.directive('ouiUiSelectMatch', ['uiSelectConfig', function(uiSelectConfig) {
   return {
     restrict: 'EA',
-    require: '^uiSelect',
+    require: '^ouiUiSelect',
     replace: true,
     transclude: true,
     templateUrl: function(tElement) {
@@ -1591,7 +1591,7 @@ uis.directive('uiSelectMatch', ['uiSelectConfig', function(uiSelectConfig) {
 uis.directive('uiSelectMultiple', ['uiSelectMinErr','$timeout', function(uiSelectMinErr, $timeout) {
   return {
     restrict: 'EA',
-    require: ['^uiSelect', '^ngModel'],
+    require: ['^ouiUiSelect', '^ngModel'],
 
     controller: ['$scope','$timeout', function($scope, $timeout){
 
@@ -2053,7 +2053,7 @@ uis.directive('uiSelectNoChoice',
     ['uiSelectConfig', function (uiSelectConfig) {
         return {
             restrict: 'EA',
-            require: '^uiSelect',
+            require: '^ouiUiSelect',
             replace: true,
             transclude: true,
             templateUrl: function (tElement) {
@@ -2070,7 +2070,7 @@ uis.directive('uiSelectNoChoice',
 uis.directive('uiSelectSingle', ['$timeout','$compile', function($timeout, $compile) {
   return {
     restrict: 'EA',
-    require: ['^uiSelect', '^ngModel'],
+    require: ['^ouiUiSelect', '^ngModel'],
     link: function(scope, element, attrs, ctrls) {
 
       var $select = ctrls[0];
@@ -2366,7 +2366,7 @@ uis.directive('uiSelectSort', ['$timeout', 'uiSelectConfig', 'uiSelectMinErr', f
 uis.directive('uisOpenClose', ['$parse', '$timeout', function ($parse, $timeout) {
   return {
     restrict: 'A',
-    require: 'uiSelect',
+    require: 'ouiUiSelect',
     link: function (scope, element, attrs, $select) {
       $select.onOpenCloseCallback = $parse(attrs.uisOpenClose);
 
