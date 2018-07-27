@@ -12,5 +12,6 @@ export default {
         title: "@?", // Deprecated: Replaced by 'heading'
         onClick: "&?",
         href: "@?"
-    }
+    },
+    transclude: true
 };

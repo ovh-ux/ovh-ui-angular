@@ -7,8 +7,7 @@
 ### Default
 
 ```html:preview
-<oui-back-button href="#" heading="Title">
-</oui-back-button>
+<oui-back-button href="#">Title</oui-back-button>
 ```
 
 ### Aria label
@@ -27,11 +26,13 @@
 
 ## API
 
-| Attribute     | Type     | Binding | One-time binding | Values              | Default                | Description                         |
-| ----          | ----     | ----    | ----             | ----                | ----                   | ----                                |
-| id            | string   | @?      | true             |                     |                        | id attribute of the input           |
-| name          | string   | @?      | true             |                     |                        | name attribute of the input         |
-| aria-label    | string   | @?      | true             |                     |                        | accessibility label                 |
-| heading       | string   | @?      | true             |                     |                        | text of the header                  |
-| on-click      | function | &?      |                  |                     |                        | callback on component click         |
-| href          | string   | @?      | true             |                     |                        | link url                            |
+| Attribute     | Type      | Binding   | One-time binding  | Values | Default   | Description
+| ----          | ----      | ----      | ----              | ----   | ----      | ----
+| `id`          | string    | @?        | true              |        |           | id attribute of the input
+| `name`        | string    | @?        | true              |        |           | name attribute of the input
+| `aria-label`  | string    | @?        | true              |        |           | accessibility label
+| `heading`     | string    | @?        | true              |        |           | text of the header
+| `on-click`    | function  | &?        |                   |        |           | callback on component click
+| `href`        | string    | @?        | true              |        |           | url of the return link
+| `state`       | string    | @?        | yes               |        |           | state of the return link
+| `stateParams` | object    | <?        |                   |        |           | state params of the return link
