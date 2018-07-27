@@ -223,7 +223,7 @@ uis.directive('ouiUiSelectChoices',
     replace: true,
     transclude: true,
     templateUrl: function(tElement) {
-      // Needed so the uiSelect can detect the transcluded content
+      // Needed so the ouiUiSelect can detect the transcluded content
       tElement.addClass('ui-select-choices');
 
       // Gets theme attribute from parent (ui-select)
@@ -309,7 +309,7 @@ uis.directive('ouiUiSelectChoices',
  * The goal is to limit dependency on the DOM whenever possible and
  * put as much logic in the controller (instead of the link functions) as possible so it can be easily tested.
  */
-uis.controller('uiSelectCtrl',
+uis.controller('ouiUiSelectCtrl',
   ['$scope', '$element', '$timeout', '$filter', '$$uisDebounce', 'uisRepeatParser', 'uiSelectMinErr', 'uiSelectConfig', '$parse', '$injector', '$window', '$document', '$attrs',
   function($scope, $element, $timeout, $filter, $$uisDebounce, RepeatParser, uiSelectMinErr, uiSelectConfig, $parse, $injector, $window, $document, $attrs) {
 
@@ -327,7 +327,7 @@ uis.controller('uiSelectCtrl',
   ctrl.spinnerEnabled = uiSelectConfig.spinnerEnabled;
   ctrl.spinnerClass = uiSelectConfig.spinnerClass;
   ctrl.removeSelected = uiSelectConfig.removeSelected; //If selected item(s) should be removed from dropdown list
-  ctrl.closeOnSelect = true; //Initialized inside uiSelect directive link function
+  ctrl.closeOnSelect = true; //Initialized inside ouiUiSelect directive link function
   ctrl.skipFocusser = false; //Set to true to avoid returning focus to ctrl when item is selected
   ctrl.search = EMPTY_SEARCH;
 
@@ -342,7 +342,7 @@ uis.controller('uiSelectCtrl',
   ctrl.dropdownPosition = 'auto';
 
   ctrl.focusser = undefined; //Reference to input element used to handle focus events
-  ctrl.multiple = undefined; // Initialized inside uiSelect directive link function
+  ctrl.multiple = undefined; // Initialized inside ouiUiSelect directive link function
   ctrl.disableChoiceExpression = undefined; // Initialized inside ouiUiSelectChoices directive link function
   ctrl.tagging = {isActivated: false, fct: undefined};
   ctrl.taggingTokens = {isActivated: false, tokens: undefined};
@@ -1121,11 +1121,11 @@ uis.directive('ouiUiSelect',
     require: ['ouiUiSelect', '^ngModel'],
     scope: true,
 
-    controller: 'uiSelectCtrl',
+    controller: 'ouiUiSelectCtrl',
     controllerAs: '$select',
     compile: function(tElement, tAttrs) {
 
-      // Allow setting ngClass on uiSelect
+      // Allow setting ngClass on ouiUiSelect
       var match = /{(.*)}\s*{(.*)}/.exec(tAttrs.ngClass);
       if(match) {
         var combined = '{'+ match[1] +', '+ match[2] +'}';
@@ -1135,9 +1135,9 @@ uis.directive('ouiUiSelect',
 
       //Multiple or Single depending if multiple attribute presence
       if (angular.isDefined(tAttrs.multiple))
-        tElement.append('<ui-select-multiple/>').removeAttr('multiple');
+        tElement.append('<oui-ui-select-multiple/>').removeAttr('multiple');
       else
-        tElement.append('<ui-select-single/>');
+        tElement.append('<oui-ui-select-single/>');
 
       if (tAttrs.inputId)
         tElement.querySelectorAll('input.ui-select-search')[0].id = tAttrs.inputId;
@@ -1176,7 +1176,7 @@ uis.directive('ouiUiSelect',
           $select.onFocusCallback(scope);
         };
 
-        //Set reference to ngModel from uiSelectCtrl
+        //Set reference to ngModel from ouiUiSelectCtrl
         $select.ngModel = ngModel;
 
         $select.choiceGrouped = function(group){
@@ -1545,7 +1545,7 @@ uis.directive('ouiUiSelectMatch', ['uiSelectConfig', function(uiSelectConfig) {
     replace: true,
     transclude: true,
     templateUrl: function(tElement) {
-      // Needed so the uiSelect can detect the transcluded content
+      // Needed so the ouiUiSelect can detect the transcluded content
       tElement.addClass('ui-select-match');
 
       var parent = tElement.parent();
@@ -1588,7 +1588,7 @@ uis.directive('ouiUiSelectMatch', ['uiSelectConfig', function(uiSelectConfig) {
   }
 }]);
 
-uis.directive('uiSelectMultiple', ['uiSelectMinErr','$timeout', function(uiSelectMinErr, $timeout) {
+uis.directive('ouiUiSelectMultiple', ['uiSelectMinErr','$timeout', function(uiSelectMinErr, $timeout) {
   return {
     restrict: 'EA',
     require: ['^ouiUiSelect', '^ngModel'],
@@ -2049,7 +2049,7 @@ uis.directive('uiSelectMultiple', ['uiSelectMinErr','$timeout', function(uiSelec
   };
 }]);
 
-uis.directive('uiSelectNoChoice',
+uis.directive('ouiUiSelectNoChoice',
     ['uiSelectConfig', function (uiSelectConfig) {
         return {
             restrict: 'EA',
@@ -2057,7 +2057,7 @@ uis.directive('uiSelectNoChoice',
             replace: true,
             transclude: true,
             templateUrl: function (tElement) {
-                // Needed so the uiSelect can detect the transcluded content
+                // Needed so the ouiUiSelect can detect the transcluded content
                 tElement.addClass('ui-select-no-choice');
 
                 // Gets theme attribute from parent (ui-select)
@@ -2067,7 +2067,7 @@ uis.directive('uiSelectNoChoice',
         };
     }]);
 
-uis.directive('uiSelectSingle', ['$timeout','$compile', function($timeout, $compile) {
+uis.directive('ouiUiSelectSingle', ['$timeout','$compile', function($timeout, $compile) {
   return {
     restrict: 'EA',
     require: ['^ouiUiSelect', '^ngModel'],
@@ -2215,9 +2215,9 @@ uis.directive('uiSelectSingle', ['$timeout','$compile', function($timeout, $comp
 }]);
 
 // Make multiple matches sortable
-uis.directive('uiSelectSort', ['$timeout', 'uiSelectConfig', 'uiSelectMinErr', function($timeout, uiSelectConfig, uiSelectMinErr) {
+uis.directive('ouiUiSelectSort', ['$timeout', 'uiSelectConfig', 'uiSelectMinErr', function($timeout, uiSelectConfig, uiSelectMinErr) {
   return {
-    require: ['^^uiSelect', '^ngModel'],
+    require: ['^^ouiUiSelect', '^ngModel'],
     link: function(scope, element, attrs, ctrls) {
       if (scope[attrs.uiSelectSort] === null) {
         throw uiSelectMinErr('sort', 'Expected a list to sort');
