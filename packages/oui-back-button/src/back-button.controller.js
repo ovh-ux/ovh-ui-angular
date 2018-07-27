@@ -37,4 +37,9 @@ export default class {
         }
     }
 
+    // Return value of "ui-sref"
+    getFullSref () {
+        return `${this.state}(${JSON.stringify(this.stateParams)})`;
+    }
+
 }
