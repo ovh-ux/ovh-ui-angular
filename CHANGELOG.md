@@ -1,3 +1,15 @@
+<a name="2.17.1"></a>
+## [2.17.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.17.0...v2.17.1) (2018-07-30)
+
+
+### Bug Fixes
+
+* **oui-back-button:** add transclude support ([59f8e19](https://github.com/ovh-ux/ovh-ui-angular/commit/59f8e19))
+* **oui-back-button:** add ui-router support ([6e188ca](https://github.com/ovh-ux/ovh-ui-angular/commit/6e188ca))
+* **oui-button:** add transclude support ([718b014](https://github.com/ovh-ux/ovh-ui-angular/commit/718b014))
+
+
+
 <a name="2.17.0"></a>
 # [2.17.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.16.5...v2.17.0) (2018-07-25)
 
