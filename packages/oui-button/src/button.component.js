@@ -16,5 +16,6 @@ export default {
         onClick: "&?"
     },
     controller,
-    template
+    template,
+    transclude: true
 };

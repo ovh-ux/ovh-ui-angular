@@ -11,6 +11,9 @@ export default {
         heading: "@?",
         title: "@?", // Deprecated: Replaced by 'heading'
         onClick: "&?",
-        href: "@?"
-    }
+        href: "@?",
+        state: "@?",
+        stateParams: "<?"
+    },
+    transclude: true
 };
