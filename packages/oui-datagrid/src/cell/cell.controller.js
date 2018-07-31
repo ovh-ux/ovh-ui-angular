@@ -19,6 +19,11 @@ export default class {
         } else {
             this._compileCell();
         }
+
+        this.index = this.index || 0;
+        this.cellScope.$watch(() => this.datagridCtrl.selectedRows[this.index], (selected) => {
+            this.cellScope.$selected = selected || false;
+        });
     }
 
     $onChanges (changes) {

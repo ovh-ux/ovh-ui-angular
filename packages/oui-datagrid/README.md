@@ -91,6 +91,38 @@
 Clicked row action 1: <span ng-if="$ctrl.action1Row">{{$ctrl.action1Row.lastName}}, {{$ctrl.action1Row.firstName}}</span>
 ```
 
+### Global Actions
+
+```html:preview
+<oui-datagrid rows="$ctrl.data" page-size="5" global-actions>
+  <oui-column title="'First name'" property="firstName" sortable="asc"></oui-column>
+  <oui-column title="'Last name'" property="lastName" sortable></oui-column>
+  <oui-column title="'Mother'" property="parents.mother.lastName" sortable>
+    {{$row.parents.mother.lastName}}, {{$row.parents.mother.firstName}}
+  </oui-column>
+  <oui-column title="'Father'" property="parents.father.lastName" sortable>
+    {{$row.parents.father.lastName}}, {{$row.parents.father.firstName}}
+  </oui-column>
+  <oui-column title="'Email'" property="email" sortable>
+    <a href="mailto:{{$value}}">{{$ctrl.label}}: {{$value}}</a>
+  </oui-column>
+  <oui-column title="'Phone'" property="phone"></oui-column>
+  <oui-column title="'Birth'" property="birth" sortable>
+    {{$value|date:short}}
+  </oui-column>
+  <oui-column title="'Selected'">
+    <span>{{ $selected }}</span>
+  </oui-column>
+  <oui-action-menu align="end" compact>
+      <oui-action-menu-item text="Some action" disabled="$selected" on-click="">
+      </oui-action-menu-item>
+  </oui-action-menu>
+  <extra-top>
+    <pre>You have selected {{ $selectedRows.length }} row(s).</pre>
+  </extra-top>
+</oui-datagrid>
+```
+
 ### Empty datagrid
 
 ```html:preview

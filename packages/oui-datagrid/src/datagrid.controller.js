@@ -35,6 +35,8 @@ export default class DatagridController {
         this.columnElements = [];
         this.actionColumnElements = [];
         this.extraTopElements = [];
+        this.selectedRows = [];
+        this.selectAllRows = false;
 
         this.config = ouiDatagridConfiguration;
 
@@ -103,7 +105,7 @@ export default class DatagridController {
         }
 
         // Manage responsiveness
-        if (this.hasActionMenu || this.customizable) {
+        if (this.hasActionMenu || this.customizable || this.globalActions) {
             this.scrollablePanel = this.$element[0].querySelector(".oui-datagrid-responsive-container__overflow-container");
             if (this.scrollablePanel) {
                 angular.element(this.$window).on("resize", this.checkScroll);
@@ -271,6 +273,9 @@ export default class DatagridController {
             this.displayedRows = DatagridController.createEmptyRows(this.paging.getCurrentPageSize());
         }
 
+        this.selectedRows = this.selectedRows.map(() => false);
+        this.selectAllRows = false;
+
         this.refreshDatagridPromise = this.$q.when((callback || angular.noop)())
             .then(() => this.paging.loadData(skipSortAndFilter, forceLoadRows))
             .then(result => {
@@ -311,6 +316,37 @@ export default class DatagridController {
             [cssSortableAsc]: this.paging.isSortAsc(),
             [cssSortableDesc]: this.paging.isSortDesc()
         };
+    }
+
+    getSelectedRows () {
+        return this.selectedRows.reduce((result, selected, index) => {
+            if (selected) {
+                result.push(this.displayedRows[index]);
+            }
+            return result;
+        }, []);
+    }
+
+    onSelectRow (index, selected) {
+        const rowCount = this.displayedRows.length;
+        this.selectedRows[index] = selected;
+        const selectedRowsCount = this.getSelectedRows().length;
+
+        if (selectedRowsCount === rowCount) {
+            this.selectAllRows = true;
+        } else if (selectedRowsCount === 0) {
+            this.selectAllRows = false;
+        } else {
+            this.selectAllRows = null;
+        }
+    }
+
+    toggleSelectAllRows (modelValue) {
+        if (modelValue === null) {
+            this.selectedRows = this.displayedRows.map(() => true);
+        } else {
+            this.selectedRows = this.displayedRows.map(() => modelValue);
+        }
     }
 
     static createEmptyRows (pageSize) {
