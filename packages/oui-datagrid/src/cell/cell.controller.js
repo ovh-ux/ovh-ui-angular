@@ -24,8 +24,8 @@ export default class {
             this._compileCell();
         }
 
-        this.cellScope.$watch(() => this.datagridCtrl.selectedRows[this.index], (selected) => {
-            this.cellScope.$selected = selected || false;
+        this.cellScope.$watch(() => this.datagridCtrl.selectedRows[this.index], (isSelected) => {
+            this.cellScope.$isSelected = isSelected || false;
         });
     }
 

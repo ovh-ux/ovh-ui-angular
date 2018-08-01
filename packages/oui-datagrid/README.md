@@ -111,10 +111,10 @@ Clicked row action 1: <span ng-if="$ctrl.action1Row">{{$ctrl.action1Row.lastName
     {{$value|date:short}}
   </oui-column>
   <oui-column title="'Selected'">
-    <span>{{ $selected }}</span>
+    <span>{{ $isSelected }}</span>
   </oui-column>
   <oui-action-menu align="end" compact>
-      <oui-action-menu-item text="Some action" disabled="$selected" on-click="">
+      <oui-action-menu-item text="Some action" disabled="$isSelected" on-click="">
       </oui-action-menu-item>
   </oui-action-menu>
   <extra-top>

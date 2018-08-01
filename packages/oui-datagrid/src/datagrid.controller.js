@@ -321,8 +321,8 @@ export default class DatagridController {
     }
 
     getSelectedRows () {
-        return this.selectedRows.reduce((result, selected, index) => {
-            if (selected) {
+        return this.selectedRows.reduce((result, isSelected, index) => {
+            if (isSelected) {
                 result.push(this.displayedRows[index]);
             }
             return result;
