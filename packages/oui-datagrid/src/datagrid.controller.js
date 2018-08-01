@@ -71,6 +71,8 @@ export default class DatagridController {
         this.filterableColumns = [];
         this.criteria = [];
 
+        addBooleanParameter(this, "selectableRows");
+
         if (this.id) {
             this.ouiDatagridService.registerDatagrid(this);
         }
@@ -105,7 +107,7 @@ export default class DatagridController {
         }
 
         // Manage responsiveness
-        if (this.hasActionMenu || this.customizable || this.globalActions) {
+        if (this.hasActionMenu || this.customizable || this.selectableRows) {
             this.scrollablePanel = this.$element[0].querySelector(".oui-datagrid-responsive-container__overflow-container");
             if (this.scrollablePanel) {
                 angular.element(this.$window).on("resize", this.checkScroll);
@@ -327,9 +329,9 @@ export default class DatagridController {
         }, []);
     }
 
-    onSelectRow (index, selected) {
+    toggleRowSelection (index, isSelected) {
         const rowCount = this.displayedRows.length;
-        this.selectedRows[index] = selected;
+        this.selectedRows[index] = isSelected;
         const selectedRowsCount = this.getSelectedRows().length;
 
         if (selectedRowsCount === rowCount) {
@@ -341,7 +343,7 @@ export default class DatagridController {
         }
     }
 
-    toggleSelectAllRows (modelValue) {
+    toggleAllRowsSelection (modelValue) {
         if (modelValue === null) {
             this.selectedRows = this.displayedRows.map(() => true);
         } else {

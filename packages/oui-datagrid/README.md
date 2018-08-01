@@ -91,10 +91,10 @@
 Clicked row action 1: <span ng-if="$ctrl.action1Row">{{$ctrl.action1Row.lastName}}, {{$ctrl.action1Row.firstName}}</span>
 ```
 
-### Global Actions
+### Selectable rows
 
 ```html:preview
-<oui-datagrid rows="$ctrl.data" page-size="5" global-actions>
+<oui-datagrid rows="$ctrl.data" page-size="5" selectable-rows>
   <oui-column title="'First name'" property="firstName" sortable="asc"></oui-column>
   <oui-column title="'Last name'" property="lastName" sortable></oui-column>
   <oui-column title="'Mother'" property="parents.mother.lastName" sortable>
@@ -688,6 +688,7 @@ call `rows-loader` and then a `row-loader` call for each line.
 | `rows-loader`                  | function        | &?      | yes              |                           |                     | gets all rows (returns a promise with all rows)                    |
 | `row-loader`                   | function        | &?      | yes              |                           |                     | gets row details (returns a promise with details)                  |
 | `customizable`                 | boolean         | <?      |                  |                           | false               | if the datagrid is customizable                                    |
+| `selectable-rows`              | boolean         | <?      |                  |                           | false               | if rows can be selected
 | `columns-parameters`           | array           | <?      |                  |                           | undefined           | columns parameters (see below)                                     |
 | `on-columns-parameters-change` | function        | &       |                  |                           |                     | triggered on column parameter change when datagrid is customizable |
 

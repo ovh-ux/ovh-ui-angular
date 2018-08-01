@@ -20,21 +20,21 @@
     <div class="oui-datagrid-responsive-container"
         ng-class="{
             'oui-datagrid-responsive-container_sticky-actions': $ctrl.hasActionMenu || $ctrl.customizable,
-            'oui-datagrid-responsive-container_sticky-checkbox': $ctrl.globalActions
+            'oui-datagrid-responsive-container_sticky-checkbox': $ctrl.selectableRows
         }">
         <div class="oui-datagrid-responsive-container__sticky-container"
             ng-class="{
                 'oui-datagrid-responsive-container__sticky-container_scroll-begin': $ctrl.scrollBegin && ($ctrl.hasActionMenu || $ctrl.customizable),
-                'oui-datagrid-responsive-container__sticky-container_scroll-end': $ctrl.scrollEnd && $ctrl.globalActions
+                'oui-datagrid-responsive-container__sticky-container_scroll-end': $ctrl.scrollEnd && $ctrl.selectableRows
             }">
             <div class="oui-datagrid-responsive-container__overflow-container">
                 <table class="oui-datagrid oui-datagrid_responsive">
                     <thead class="oui-datagrid__headers">
                         <tr class="oui-datagrid__row">
                             <th class="oui-datagrid__header oui-datagrid__cell-sticky"
-                                ng-if="$ctrl.globalActions">
+                                ng-if="$ctrl.selectableRows">
                                 <oui-checkbox model="$ctrl.selectAllRows"
-                                              on-change="$ctrl.toggleSelectAllRows(modelValue)">
+                                              on-change="$ctrl.toggleAllRowsSelection(modelValue)">
                                 </oui-checkbox>
                             </th>
                             <th class="oui-datagrid__header"
@@ -57,9 +57,9 @@
                             ng-repeat="row in $ctrl.displayedRows track by $index"
                             ng-init="rowIndex = $index">
                             <td class="oui-datagrid__cell oui-datagrid__cell-sticky"
-                                ng-if="$ctrl.globalActions">
+                                ng-if="$ctrl.selectableRows">
                                 <oui-checkbox model="$ctrl.selectedRows[$index]"
-                                              on-change="$ctrl.onSelectRow($index, modelValue)">
+                                              on-change="$ctrl.toggleRowSelection($index, modelValue)">
                                 </oui-checkbox>
                             </td>
                             <td class="oui-datagrid__cell"

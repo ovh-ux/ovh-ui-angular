@@ -26,7 +26,6 @@ export default () => {
 
             return (scope, elem, attrs, tableCtrl) => {
                 tableCtrl.htmlContent = htmlContent;
-                tableCtrl.globalActions = "globalActions" in attrs;
             };
         }
     };
