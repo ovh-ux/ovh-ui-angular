@@ -108,7 +108,7 @@ if (angular.element.prototype.closest === undefined) {
 
 var latestId = 0;
 
-var uis = angular.module('oui.ui.select', [])
+var uis = angular.module('oui.ui-select', [])
 
 .constant('ouiUiSelectConfig', {
   theme: 'bootstrap',
@@ -132,7 +132,7 @@ var uis = angular.module('oui.ui.select', [])
 
 // See Rename minErr and make it accessible from outside https://github.com/angular/angular.js/issues/6913
 .service('ouiUiSelectMinErr', function() {
-  var minErr = angular.$$minErr('oui.ui.select');
+  var minErr = angular.$$minErr('oui.ui-select');
   return function() {
     var error = minErr.apply(this, arguments);
     var message = error.message.replace(new RegExp('\nhttp://errors.angularjs.org/.*'), '');
@@ -2468,7 +2468,7 @@ uis.service('ouiUisRepeatParser', ['ouiUiSelectMinErr','$parse', function(ouiUiS
 }]);
 
 }());
-angular.module("oui.ui.select")
+angular.module("oui.ui-select")
   .run(["$templateCache", function($templateCache) {
     $templateCache.put("bootstrap/choices.tpl.html", require("./templates/choices.html"));
     $templateCache.put("bootstrap/match-multiple.tpl.html","<span class=\"ui-select-match\"><span ng-repeat=\"$item in $select.selected track by $index\"><span class=\"ui-select-match-item btn btn-default btn-xs\" tabindex=\"-1\" type=\"button\" ng-disabled=\"$select.disabled\" ng-click=\"$selectMultiple.activeMatchIndex = $index;\" ng-class=\"{\'btn-primary\':$selectMultiple.activeMatchIndex === $index, \'select-locked\':$select.isLocked(this, $index)}\" oui-ui-select-sort=\"$select.selected\"><span class=\"close ui-select-match-close\" ng-hide=\"$select.disabled\" ng-click=\"$selectMultiple.removeChoice($index)\">&nbsp;&times;</span> <span oui-uis-transclude-append=\"\"></span></span></span></span>");
