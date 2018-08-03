@@ -1,3 +1,4 @@
+import { addBooleanParameter, addDefaultParameter } from "@oui-angular/common/component-utils";
 import clamp from "lodash/clamp";
 
 // By design, value is restricted to [0, 99999] interval
@@ -5,29 +6,19 @@ const MIN_VALUE = 0;
 const MAX_VALUE = 99999;
 
 export default class {
-    constructor ($attrs, $element, $log, $timeout) {
+    constructor ($attrs, $element, $log, $scope, $timeout) {
         "ngInject";
 
         this.$attrs = $attrs;
         this.$element = $element;
         this.$log = $log;
+        this.$id = $scope.$id;
         this.$timeout = $timeout;
     }
 
-    $postLink () {
-        // Sometimes the digest cycle is done before dom manipulation,
-        // So we use $timeout to force the $apply
-        this.$timeout(() =>
-            this.$element
-                .removeAttr("id")
-                .removeAttr("name")
-        );
-    }
-
     $onInit () {
-        if (!this.id) {
-            this.$log.warn("Missing required attribute id");
-        }
+        addDefaultParameter(this, "id", `ouiNumeric${this.$id}`);
+        addBooleanParameter(this, "disabled");
 
         if (!angular.isNumber(this.min)) {
             if (angular.isDefined(this.min)) {
@@ -70,6 +61,18 @@ export default class {
         // used to trigger only onChange when necessary and
         // reset input if invalid characters are used
         this.previousValue = this.model;
+    }
+
+    $postLink () {
+        // Sometimes the digest cycle is done before dom manipulation,
+        // So we use $timeout to force the $apply
+        this.$timeout(() =>
+            this.$element
+                .addClass("oui-input-group")
+                .addClass("oui-input-group_numeric")
+                .removeAttr("id")
+                .removeAttr("name")
+        );
     }
 
     setModelValue (value) {
