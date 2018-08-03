@@ -43,7 +43,7 @@
 
 ### Events
 
-**Note:** If you want to access the model inside `on-change` and `on-submit` callbacks, you need to use the `modelValue` variable as below.
+**Note**: If you want to access the model inside `on-change` and `on-submit` callbacks, you need to use the `modelValue` variable as below.
 
 ```html:preview
 <oui-search
@@ -62,14 +62,14 @@
 
 ## API
 
-| Attribute     | Type     | Binding | One-time Binding | Values    | Default   | Description                               |
-| ----          | ----     | ----    | ----             | ----      | ----      | ----                                      |
-| model         | object   | =       |                  |           |           | model bound to component                  |
-| id            | string   | @?      | true             |           |           | id attribute of the button                |
-| name          | string   | @?      | true             |           |           | name attribute of the button              |
-| placeholder   | string   | @?      | true             |           |           | placeholder text                          |
-| aria-label    | string   | @?      | true             |           |           | accessibility label                       |
-| disabled      | boolean  | <?      |                  |           | false     | disabled flag                             |
-| on-change     | function | &       |                  |           |           | handler triggered when model has changed  |
-| on-reset      | function | &       |                  |           |           | handler triggered when form is reseted    |
-| on-submit     | function | &       |                  |           |           | handler triggered when form is submitted  |
+| Attribute     | Type      | Binding   | One-time Binding  | Values            | Default   | Description
+| ----          | ----      | ----      | ----              | ----              | ----      | ----
+| `model`       | object    | =         | no                | n/a               | n/a       | model bound to component
+| `id`          | string    | @?        | yes               | n/a               | n/a       | id attribute of the button
+| `name`        | string    | @?        | yes               | n/a               | n/a       | name attribute of the button
+| `placeholder` | string    | @?        | yes               | n/a               | n/a       | placeholder text
+| `aria-label`  | string    | @?        | yes               | n/a               | n/a       | accessibility label
+| `disabled`    | boolean   | <?        | no                | `true`, `false`   | `false`   | disabled flag
+| `on-change`   | function  | &         | no                | n/a               | n/a       | handler triggered when model has changed
+| `on-reset`    | function  | &         | no                | n/a               | n/a       | handler triggered when form is reseted
+| `on-submit`   | function  | &         | no                | n/a               | n/a       | handler triggered when form is submitted

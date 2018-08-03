@@ -44,9 +44,7 @@ If there is no `aria-label` attribute, the directive create one based on `oui-to
 
 ## API
 
-| Attribute             | Type   | Binding | One-time Binding | Values                                               | Default   | Description       |
-| ----                  | ----   | ----    | ----             | ----                                                 | ----      | ----              |
-| oui-tooltip           | string | @       |                  |                                                      |           | tooltip text      |
-| oui-tooltip-placement | string | @?      | true             | top,top-start,top-end,bottom,bottom-start,bottom-end | top       | tooltip placement |
-
-
+| Attribute                 | Type      | Binding   | One-time Binding  | Values                                                                | Default   | Description
+| ----                      | ----      | ----      | ----              | ----                                                                  | ----      | ----
+| `oui-tooltip`             | string    | @         | no                | n/a                                                                   | n/a       | tooltip text
+| `oui-tooltip-placement`   | string    | @?        | yes               | `top`, `top-start`, `top-end`, `bottom`, `bottom-start`, `bottom-end` | `top`     | tooltip placement

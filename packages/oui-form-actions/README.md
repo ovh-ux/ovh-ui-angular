@@ -7,53 +7,57 @@
 ### Default
 
 ```html:preview
-<oui-form-actions
-  on-submit="$ctrl.submit()"
-  href="#">
-</oui-form-actions>
+<oui-form-actions></oui-form-actions>
 ```
 
+**Note**: Cancel button is hidden if there is no `href` or `on-cancel` attributes.
 
 ### Custom naming
 
 ```html:preview
-<div class="oui-doc-preview-only-keep-children">
-    <oui-form-actions
-      on-submit="$ctrl.submit()"
-      href="#"
-      submit-text="Apply"
-      cancel-text="Close">
-    </oui-form-actions>
-</div>
+<oui-form-actions
+    on-submit="$ctrl.submit()"
+    href="#"
+    submit-text="Apply"
+    cancel-text="Close">
+</oui-form-actions>
 ```
-
 
 ### on-submit and on-cancel events
 
 ```html:preview
 <div ng-init="$ctrl.disabled = false" class="oui-doc-preview-only-keep-children">
-    <oui-form-actions
-      on-submit="$ctrl.lastAction = 'submit'"
-      on-cancel="$ctrl.lastAction = 'cancel'">
-    </oui-form-actions>
-    <div>Last action: {{ $ctrl.lastAction }}</div>
+<p class="oui-doc-preview-only">
+    <strong>Last action</strong>: {{ $ctrl.lastAction }}
+</p>
+<oui-form-actions
+    on-submit="$ctrl.lastAction = 'submit'"
+    on-cancel="$ctrl.lastAction = 'cancel'">
+</oui-form-actions>
 </div>
 ```
 
-### on-submit only
-```html:preview
-<oui-form-actions
-  on-submit="$ctrl.submit()">
-</oui-form-actions>
-```
-In accordance to guidelines, submit button must be always enabled.
-
 ## API
 
-| Attribute     | Type     | Binding | One-time Binding | Values                 | Default   | Description                      |
-| ----          | ----     | ----    | ----             | ----                   | ----      | ----                             |
-| on-submit     | function | &       |                  |                        |           | submit handler                   |
-| on-cancel     | function | &       |                  |                        |           | cancel handler                   |
-| submit-text   | string   | @?      | true             |                        | "Submit"  | submit button text               |
-| cancel-text   | string   | @?      | true             |                        | "Cancel"  | cancel button text               |
-| href          | string   | @?      | true             |                        |           | link url on cancel               |
+| Attribute     | Type      | Binding   | One-time Binding  | Values    | Default   | Description
+| ----          | ----      | ----      | ----              | ----      | ----      | ----
+| `submit-text` | string    | @?        | yes               | n/a       | `Submit`  | submit button text
+| `cancel-text` | string    | @?        | yes               | n/a       | `Cancel`  | cancel button text
+| `href`        | string    | @?        | yes               | n/a       | n/a       | link url on cancel
+| `on-submit`   | function  | &         | no                | n/a       | n/a       | button submit click handler
+| `on-cancel`   | function  | &?        | no                | n/a       | n/a       | button cancel click handler
+
+## Configuration
+
+The form actions can be globally configured with a provider.
+
+```js
+angular.module("myModule", [
+    "oui.form-actions"
+]).config(ouiFormActionsConfiguration => {
+    ouiFormActionsConfiguration.setTranslations({ // default translations
+        submit: "Submit",
+        cancel: "Cancel"
+    });
+});
+```

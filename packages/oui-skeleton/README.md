@@ -30,7 +30,7 @@
 
 ## API
 
-| Attribute     | Type      | Binding | One-time Binding | Values                     | Default   | Description
-| ----          | ----      | ----    | ----             | ----                       | ----      | ----
-| size          | String    | @?      | yes              | `xs`, `s`, `m`, `l`, `xl`  | `auto`    | Skeleton size
-| randomized    | Boolean   | <?      | yes              |                            | `false`   | Randomized width flag
+| Attribute     | Type      | Binding | One-time Binding    | Values                    | Default   | Description
+| ----          | ----      | ----    | ----                | ----                      | ----      | ----
+| `size`        | String    | @?      | yes                 | `xs`, `s`, `m`, `l`, `xl` | `auto`    | Skeleton size
+| `randomized`  | Boolean   | <?      | yes                 | `true`, `false`           | `false`   | Randomized width flag

@@ -150,33 +150,33 @@
 
 ### oui-stepper
 
-| Attribute       | Type            | Binding | One-time binding | Values                 | Default             | Description                                   |
-| ----            | ----            | ----    | ----             | ----                   | ----                | ----                                          |
-| `name`          | string          | @?      | yes              |                        |                     | stepper name used to identify step            |
-| `id`            | string          | @?      | yes              |                        |                     | stepper id used to identify step              |
-| `on-init`       | function        | &       |                  |                        |                     | initialization function                       |
-| `on-finish`     | function        | &       |                  |                        |                     | submit all steps function                     |
+| Attribute         | Type      | Binding   | One-time binding  | Values            | Default   | Description
+| ----              | ----      | ----      | ----              | ----              | ----      | ----
+| `name`            | string    | @?        | yes               | n/a               | n/a       | stepper name used to identify step
+| `id`              | string    | @?        | yes               | n/a               | n/a       | stepper id used to identify step
+| `on-init`         | function  | &         | no                | n/a               | n/a       | initialization function
+| `on-finish`       | function  | &         | no                | n/a               | n/a       | submit all steps function
 
 ### oui-step-form
 
-| Attribute         | Type            | Binding | One-time binding | Values                 | Default             | Description                                 |
-| ----              | ----            | ----    | ----             | ----                   | ----                | ----                                        |
-| `name`            | string          | @?      | yes              |                        |                     | step form name, same as normal form         |
-| `id`              | string          | @?      | yes              |                        |                     | step form id, same as normal form           |
-| `header`          | string          | @?      | yes              |                        |                     | title of the step                           |
-| `description`     | string          | @?      | yes              |                        |                     | description of the step                     |
-| `cancel-href`     | string          | @?      | yes              |                        |                     | link url on cancel                          |
-| `cancel-text`     | string          | @?      | yes              |                        |                     | text for the cancel button                  |
-| `submit-text`     | string          | @?      | yes              |                        |                     | text for the submit button                  |
-| `loading-text`    | string          | @?      |                  |                        |                     | text for the loading state                  |
-| `loading`         | boolean         | <?      |                  |                        | false               | display the loading state                   |
-| `disabled`        | boolean         | <?      |                  |                        | false               | disable the step and shrink it              |
-| `navigation`      | boolean         | <?      |                  |                        | true                | show the navigation buttons                 |
-| `skippable`       | boolean         | <?      |                  |                        | false               | add button to skip facultative step         |
-| `valid`           | boolean         | <?      |                  |                        | true                | custom validation for the form              |
-| `on-cancel`       | function        | &?      |                  |                        |                     | cancel step function                        |
-| `on-focus`        | function        | &       |                  |                        |                     | focused step function                       |
-| `on-submit`       | function        | &       |                  |                        |                     | submit step function                        |
+| Attribute         | Type      | Binding   | One-time binding  | Values            | Default   | Description
+| ----              | ----      | ----      | ----              | ----              | ----      | ----
+| `name`            | string    | @?        | yes               | n/a               | n/a       | step form name, same as normal form
+| `id`              | string    | @?        | yes               | n/a               | n/a       | step form id, same as normal form
+| `header`          | string    | @?        | yes               | n/a               | n/a       | title of the step
+| `description`     | string    | @?        | yes               | n/a               | n/a       | description of the step
+| `cancel-href`     | string    | @?        | yes               | n/a               | n/a       | link url on cancel
+| `cancel-text`     | string    | @?        | yes               | n/a               | n/a       | text for the cancel button
+| `submit-text`     | string    | @?        | yes               | n/a               | `Submit`  | text for the submit button
+| `loading-text`    | string    | @?        | no                | n/a               | n/a       | text for the loading state
+| `loading`         | boolean   | <?        | no                | `true`, `false`   | `false`   | display the loading state
+| `disabled`        | boolean   | <?        | no                | `true`, `false`   | `false`   | disable the step and shrink it
+| `navigation`      | boolean   | <?        | no                | `true`, `false`   | `true`    | show the navigation buttons
+| `skippable`       | boolean   | <?        | no                | `true`, `false`   | `false`   | add button to skip facultative step
+| `valid`           | boolean   | <?        | no                | `true`, `false`   | `true`    | custom validation for the form
+| `on-cancel`       | function  | &?        | no                | n/a               | n/a       | cancel step function
+| `on-focus`        | function  | &         | no                | n/a               | n/a       | focused step function
+| `on-submit`       | function  | &         | no                | n/a               | n/a       | submit step function
 
 ## Configuration
 

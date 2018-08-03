@@ -70,7 +70,7 @@
 
 ### On Change
 
-**Note:** Model will not be refreshed until the `on-change` callback as not finished. If you want to access the new model inside the `on-change` callback you need to use the `modelValue` variable as below.
+**Note**: Model will not be refreshed until the `on-change` callback as not finished. If you want to access the new model inside the `on-change` callback you need to use the `modelValue` variable as below.
 
 ```html:preview
 <oui-select name="country"
@@ -101,19 +101,19 @@
 
 ## API
 
-| Attribute         | Type                    | Binding | One-time binding | Values                    | Default             | Description                                                                      |
-| ----              | ----                    | ----    | ----             | ----                      | ----                | ----                                                                             |
-| `name`            | string                  | @?      | yes              |                           |                     | name of the form component                                                       |
-| `model`           | object                  | =       |                  |                           |                     | model bound to component                                                         |
-| `data-title`      | string                  | @?      | yes              |                           |                     | title attribute of the component                                                 |
-| `placeholder`     | string                  | @?      | yes              |                           |                     | placeholder displayed when model is undefined                                    |
-| `items`           | array                   | <       |                  |                           |                     | array used to populate the list                                                  |
-| `required`        | boolean                 | <?      |                  | `true`, `false`           | `false`             | define if the field is required                                                  |
-| `disabled`        | boolean                 | <?      |                  | `true`, `false`           | `false`             | define if the field is disabled                                                  |
-| `group-by`        | function                | <?      |                  |                           |                     | function taking an item as parameter and returning the group name as as string   |
-| `match`           | string                  | @?      |                  |                           |                     | property of item to show as selected item                                        |
-| `data-align`      | string                  | @?      |                  | `start`, `end`            | `start`             | dropdown alignment                                                               |
-| `on-blur`         | string                  | &       |                  |                           |                     | called focus is lost                                                             |
-| `on-focus`        | string                  | &       |                  |                           |                     | called on focus                                                                  |
-| `on-change`       | string                  | &       |                  |                           |                     | handler triggered when value has changed                                         |
+| Attribute     | Type      | Binding   | One-time binding  | Values            | Default   | Description
+| ----          | ----      | ----      | ----              | ----              | ----      | ----
+| `model`       | object    | =         | no                | n/a               | n/a       | model bound to component
+| `name`        | string    | @?        | yes               | n/a               | n/a       | name of the form component
+| `data-align`  | string    | @?        | yes               | `start`, `end`    | `start`   | dropdown alignment
+| `data-title`  | string    | @?        | yes               | n/a               | n/a       | title attribute of the component
+| `placeholder` | string    | @?        | yes               | n/a               | n/a       | placeholder displayed when model is undefined
+| `match`       | string    | @?        | no                | n/a               | n/a       | property of item to show as selected item
+| `items`       | array     | <         | no                | n/a               | n/a       | array used to populate the list
+| `required`    | boolean   | <?        | no                | `true`, `false`   | `false`   | define if the field is required
+| `disabled`    | boolean   | <?        | no                | `true`, `false`   | `false`   | define if the field is disabled
+| `group-by`    | function  | <?        | no                | n/a               | n/a       | function taking an item as parameter and returning the group name as as string
+| `on-blur`     | function  | &         | no                | n/a               | n/a       | called focus is lost
+| `on-focus`    | function  | &         | no                | n/a               | n/a       | called on focus
+| `on-change`   | function  | &         | no                | n/a               | n/a       | handler triggered when value has changed
 
