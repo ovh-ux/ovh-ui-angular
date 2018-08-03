@@ -1,3 +1,5 @@
+import merge from "lodash/merge";
+
 export default class {
     constructor () {
         this.translations = {
@@ -19,7 +21,7 @@ export default class {
      * @param {Object} translations a map of translations
      */
     setTranslations (translations) {
-        this.translations = translations;
+        this.translations = merge(this.translations, translations);
         return this;
     }
 
