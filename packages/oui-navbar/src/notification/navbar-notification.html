@@ -10,7 +10,7 @@
     <li class="oui-navbar-menu__item oui-navbar-notification"
         ng-repeat="menuLink in ::$ctrl.menuLinks track by $index | limitTo: $ctrl.limitTo"
         ng-class="!!menuLink.isActive ? 'oui-navbar-menu__item_active' : null">
-        <i class="oui-icon oui-icon_bicolor oui-navbar-notification__icon"
+        <span class="oui-icon oui-icon_bicolor oui-navbar-notification__icon"
             ng-class=":: {
                 'oui-icon_bicolor': menuLink.level !== 'incident',
                 'oui-icon-error_circle': menuLink.level === 'error',
@@ -20,7 +20,7 @@
                 'oui-icon-clock-wait': menuLink.level === 'incident'
             }"
             aria-hidden="true">
-        </i>
+        </span>
 
         <!-- Link (href) -->
         <a class="oui-navbar-notification__content"
@@ -65,20 +65,20 @@
                 $ctrl.translations.notification.markRead :
                 $ctrl.translations.notification.markUnread
             }}">
-            <i class="oui-icon oui-icon-shape-dot"
+            <span class="oui-icon oui-icon-shape-dot"
                 ng-if="menuLink.isActive"
-                aria-hidden="true"></i>
-            <i class="oui-icon oui-icon-shape-circle"
+                aria-hidden="true"></span>
+            <span class="oui-icon oui-icon-shape-circle"
                 ng-if="!menuLink.isActive"
-                aria-hidden="true"></i>
+                aria-hidden="true"></span>
         </button>
     </li>
     <li class="oui-navbar-menu__item oui-navbar-notification oui-navbar-notification-placeholder"
         ng-if="$ctrl.menuLinks.length === 0">
         <div class="oui-navbar-notification-placeholder__content">
-            <i class="oui-icon oui-icon_bicolor oui-icon-success_circle oui-navbar-notification__icon"
+            <span class="oui-icon oui-icon_bicolor oui-icon-success_circle oui-navbar-notification__icon"
                 aria-hidden="true">
-            </i>
+            </span>
             <div>
                 <div class="oui-navbar-notification-placeholder__title"
                     ng-bind="::$ctrl.translations.notification.noNotification"></div>
@@ -91,9 +91,9 @@
     <li class="oui-navbar-menu__item oui-navbar-notification oui-navbar-notification-placeholder"
         ng-if="!$ctrl.menuLinks">
         <div class="oui-navbar-notification-placeholder__content">
-            <i class="oui-icon oui-icon_bicolor oui-icon-error_circle oui-navbar-notification__icon"
+            <span class="oui-icon oui-icon_bicolor oui-icon-error_circle oui-navbar-notification__icon"
                 aria-hidden="true">
-            </i>
+            </span>
             <div>
                 <div class="oui-navbar-notification-placeholder__title"
                         ng-bind="::$ctrl.translations.notification.errorInNotification"></div>

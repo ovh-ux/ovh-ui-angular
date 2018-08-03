@@ -680,17 +680,17 @@ call `rows-loader` and then a `row-loader` call for each line.
 
 ### oui-datagrid
 
-| Attribute                      | Type            | Binding | One-time binding | Values                    | Default             | Description                                                        |
-| ----                           | ----            | ----    | ----             | ----                      | ----                | ----                                                               |
-| `id`                           | string          | @?      |                  |                           |                     | id of the datagrid                                                 |
-| `page-size`                    | number          | @?      |                  |                           | 25                  | maximum number of rows to show on each pages                       |
-| `rows`                         | array           | <?      | yes              |                           |                     | rows to show                                                       |
-| `rows-loader`                  | function        | &?      | yes              |                           |                     | gets all rows (returns a promise with all rows)                    |
-| `row-loader`                   | function        | &?      | yes              |                           |                     | gets row details (returns a promise with details)                  |
-| `customizable`                 | boolean         | <?      |                  |                           | false               | if the datagrid is customizable                                    |
-| `selectable-rows`              | boolean         | <?      |                  |                           | false               | if rows can be selected
-| `columns-parameters`           | array           | <?      |                  |                           | undefined           | columns parameters (see below)                                     |
-| `on-columns-parameters-change` | function        | &       |                  |                           |                     | triggered on column parameter change when datagrid is customizable |
+| Attribute                         | Type      | Binding   | One-time binding    | Values           | Default      | Description
+| ----                              | ----      | ----      | ----                | ----             | ----         | ----
+| `id`                              | string    | @?        | no                  | n/a              | n/a          | id of the datagrid
+| `page-size`                       | number    | @?        | no                  | n/a              | `25`         | maximum number of rows to show on each pages
+| `rows`                            | array     | <?        | yes                 | n/a              | n/a          | rows to show
+| `rows-loader`                     | function  | &?        | yes                 | n/a              | n/a          | gets all rows (returns a promise with all rows)
+| `row-loader`                      | function  | &?        | yes                 | n/a              | n/a          | gets row details (returns a promise with details)
+| `customizable`                    | boolean   | <?        | no                  | `true`, `false`  | `false`      | if the datagrid is customizable
+| `selectable-rows`                 | boolean   | <?        | no                  | `true`, `false`  | `false`      | if rows can be selected
+| `columns-parameters`              | array     | <?        | no                  | n/a              | `undefined`  | columns parameters (see below)
+| `on-columns-parameters-change`    | function  | &         | no                  | n/a              | n/a          | triggered on column parameter change when datagrid is customizable
 
 `columns-parameters` is an array describing all basic parameters of each column.
 
@@ -715,17 +715,17 @@ These parameters override properties defined in `oui-column` or `columns` attrib
 
 ### oui-column / `columns` attribute
 
-| Attribute                                        | Type            | Binding | One-time binding | Values                      | Default                | Description                                       |
-| ----                                             | ----            | ----    | ----             | ----                        | ----                   | ----                                              |
-| `title`                                          | string          | N/A     | yes              |                             |                        | column title put in header                        |
-| `property`                                       | string          | N/A     | yes              |                             | null                   | property path used to get value from value        |
-| `sortable`                                       | string          | N/A     | yes              | `asc`, `desc`               | `asc` on `sortable=""` | makes a column sortable and gives the order       |
-| `type`                                           | string          | N/A     |                  | See below                   | null                   | define a column type                              |
-| `filterable`                                     | N/A             | N/A     |                  |                             |                        | define a filterable column                        |
-| `searchable`                                     | N/A             | N/A     |                  |                             |                        | define a searchable column                        |
-| `type-options` / `typeOptions`                   | object          | N/A     |                  | See below                   | {}                     | define options related to column type (see below) |
-| `hidden`                                         | boolean         | N/A     |                  | `true` / `false`            | false                  | if the column is hidden by default                |
-| `prevent-customization` / `preventCustomization` | N/A             | N/A     |                  |                             |                        | prevent a column to be customizable               |
+| Attribute                                        | Type            | Binding  | One-time binding  | Values            | Default   | Description
+| ----                                             | ----            | ----     | ----              | ----              | ----      | ----
+| `title`                                          | string          | n/a      | yes               | n/a               | n/a       | column title put in header
+| `property`                                       | string          | n/a      | yes               | n/a               | `null`    | property path used to get value from value
+| `sortable`                                       | string          | n/a      | yes               | `asc`, `desc`     | `asc`     | makes a column sortable and gives the order
+| `type`                                           | string          | n/a      | no                | See below         | `null`    | define a column type
+| `filterable`                                     | n/a             | n/a      | no                | n/a               | n/a       | define a filterable column
+| `searchable`                                     | n/a             | n/a      | no                | n/a               | n/a       | define a searchable column
+| `type-options` / `typeOptions`                   | object          | n/a      | no                | See below         | `{}`      | define options related to column type (see below)
+| `hidden`                                         | boolean         | n/a      | no                | `true`, `false`   | `false`   | if the column is hidden by default
+| `prevent-customization` / `preventCustomization` | n/a             | n/a      | no                | n/a               | n/a       | prevent a column to be customizable
 
 `typeOptions` is used to give options to feed criteria values. Example:
 
@@ -746,10 +746,10 @@ const typeOptions = {
 
 ### rows-loader promise response
 
-| Attribute         | Type            | Binding | One-time binding | Values                    | Default             | Description                                                                                  |
-| ----              | ----            | ----    | ----             | ----                      | ----                | ----                                                                                         |
-| `data`            | array           | <?      | yes              |                           |                     | rows to show                                                                                 |
-| `meta`            | object          | N/A     | yes              |                           |                     | an object containing pagination information { totalCount: X } |
+| Attribute         | Type      | Binding   | One-time binding  | Values    | Default   | Description
+| ----              | ----      | ----      | ----              | ----      | ----      | ----
+| `data`            | array     | <?        | yes               | n/a       | n/a       | rows to show
+| `meta`            | object    | n/a       | yes               | n/a       | n/a       | an object containing pagination information { totalCount: X }
 
 ### oui-action-menu
 
@@ -761,10 +761,10 @@ Can be used as a column and will be sticked on side on smaller devices. Document
 
 It will refresh the content of a datagrid that has a specific `id`.
 
-| Argument          | Type            | Default      | Description                                                                            |
-| ----              | ----            | ----         | ----                                                                                   |
-| `id`              | string          | (mandatory)  | the `id` of the datagrid                                                               |
-| `showSpinner`     | boolean         | false        | if you want to show the spinner while `rows-loader` is executed (like a first load)    |
+| Argument      | Type      | Default       | Description
+| ----          | ----      | ----          | ----
+| `id`          | string    | (mandatory)   | the `id` of the datagrid
+| `showSpinner` | boolean   | `false`       | if you want to show the spinner while `rows-loader` is executed (like a first load)
 
 
 ## Configuration

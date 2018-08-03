@@ -30,7 +30,7 @@ model="false">
 
 ### On change
 
-**Note:** Model will not be refreshed until the `on-change` callback as not finished. If you want to access the new model inside the `on-change` callback you need to use the `modelValue` variable as below.
+**Note**: Model will not be refreshed until the `on-change` callback hasn't returned. If you want to access the new model inside the `on-change` callback you need to use the `modelValue` variable as below.
 
 ```html:preview
 <div style="margin-bottom: 5px;">
@@ -58,11 +58,11 @@ model="false">
 
 ## API
 
-| Attribute     | Type                    | Binding | One-time Binding | Values                   | Default | Description
-| ----          | ----                    | ----    | ----             | ----                     | ----    | ----
-| disabled      | boolean                 | <?      |                  | `true`, `false`          | false   | disabled flag                          |
-| id            | string                  | @?      | `true`           |                          |         | id attribute of the switch             |
-| model         | nullable&lt;boolean&gt; | =?      |                  | `true`, `false`, `null`  |         | model bound to component               |
-| name          | string                  | @?      | `true`           |                          |         | name attribute of the switch           |
-| on-change     | function                | &?      |                  |                          |         | function to call when model changes    |
-| required      | boolean                 | <?      |                  | `true`, `false`          | false   | `true` if the switch should be actived |
+| Attribute     | Type      | Binding   | One-time Binding  | Values            | Default   | Description
+| ----          | ----      | ----      | ----              | ----              | ----      | ----
+| `model`       | boolean   | =?        | no                | `true`, `false`   | n/a       | model bound to component
+| `id`          | string    | @?        | yes               | n/a               | n/a       | id attribute of the switch
+| `name`        | string    | @?        | yes               | n/a               | n/a       | name attribute of the switch
+| `disabled`    | boolean   | <?        | no                | `true`, `false`   | `false`   | disabled flag
+| `required`    | boolean   | <?        | no                | `true`, `false`   | `false`   | required flag
+| `on-change`   | function  | &         | no                | n/a               | n/a       | function to call when model changes

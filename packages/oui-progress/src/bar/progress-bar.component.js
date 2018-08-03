@@ -5,11 +5,12 @@ export default {
     template,
     controller,
     bindings: {
+        text: "@?", // Deprecated: Replaced by transclude value
         type: "@",
-        value: "<",
-        text: "@?"
+        value: "<"
     },
     require: {
         progressCtrl: "^^ouiProgress"
-    }
+    },
+    transclude: true
 };

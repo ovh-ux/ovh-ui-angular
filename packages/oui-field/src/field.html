@@ -22,7 +22,7 @@
     <div class="oui-field__error"
         ng-if="$ctrl.isErrorVisible()">
         <span ng-messages="$ctrl.getFirstError()" role="alert">
-            <i class="oui-icon oui-icon-error" aria-hidden="true"></i>
+            <span class="oui-icon oui-icon-error" aria-hidden="true"></span>
             <span data-ng-repeat="errorKey in $ctrl.getMessagesOrder() track by $index"
                   ng-message="{{ :: errorKey }}"
                   ng-bind="$ctrl.getErrorMessage(errorKey)">

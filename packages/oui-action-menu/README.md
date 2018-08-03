@@ -91,19 +91,19 @@
 
 | Attribute         | Type            | Binding | One-time binding | Values                    | Default    | Description
 | ----              | ----            | ----    | ----             | ----                      | ----       | ----
-| `text`            | string          | @       | yes              |                           |            | button label
-| `aria-label`      | string          | @?      | yes              |                           |            | accessibility label
-| `align`           | string          | @?      | yes              | `start`,`center`,`end`    | `center`   | menu alignment
-| `compact`         | boolean         | <?      | yes              |                           | `false`    | use the compact button
-| `disabled`        | boolean         | <?      |                  |                           | `false`    | disable flag
+| `text`            | string          | @       | yes              | n/a                       | n/a        | button label
+| `aria-label`      | string          | @?      | yes              | n/a                       | n/a        | accessibility label
+| `align`           | string          | @?      | yes              | `start`, `center`, `end`  | `center`   | menu alignment
+| `compact`         | boolean         | <?      | yes              | `true`, `false`           | `false`    | use the compact button
+| `disabled`        | boolean         | <?      | no               | `true`, `false`           | `false`    | disable flag
 
 ### oui-action-menu-item
 
 | Attribute         | Type            | Binding | One-time binding | Values                    | Default    | Description
 | ----              | ----            | ----    | ----             | ----                      | ----       | ----
-| `text`            | string          | @       |                  |                           |            | button label
-| `aria-label`      | string          | @?      |                  |                           |            | accessibility label
-| `href`            | string          | @?      | yes              |                           |            | hypertext link (link)
-| `disabled`        | boolean         | <?      |                  |                           | `false`    | disable (button)
-| `external`        | boolean         | @?      | yes              |                           |            | display external icon (link)
-| `on-click`        |                 | &?      |                  |                           |            | on-click handler (button)
+| `text`            | string          | @       | no               | n/a                       | n/a        | button label
+| `aria-label`      | string          | @?      | no               | n/a                       | n/a        | accessibility label
+| `href`            | string          | @?      | yes              | n/a                       | n/a        | hypertext link (link)
+| `disabled`        | boolean         | <?      | no               | `true`, `false`           | `false`    | disable (button)
+| `external`        | boolean         | @?      | yes              | `true`, `false`           | `false`    | display external icon (link)
+| `on-click`        | function        | &?      | no               | n/a                       | n/a        | on-click handler (button)

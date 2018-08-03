@@ -8,29 +8,29 @@
 
 ```html:preview
 <div class="oui-doc-preview-only-keep-children" style="padding:50px 35px;background-color:rgba(0,0,0,0.3)">
-    <oui-slideshow>
-        <oui-slideshow-panel heading="New feature"
-                                     text="Display your infrastructure as a list"
-                                     picture="https://upload.wikimedia.org/wikipedia/commons/4/4a/Cercle_rouge_100%25.svg">
-        </oui-slideshow-panel>
-        <oui-slideshow-panel heading="Introducing Ad-Sync"
-                                     text="Designed to help you synchronize your local Active Directory with your OVH Active Directory."
-                                     picture="https://upload.wikimedia.org/wikipedia/commons/4/4a/Cercle_rouge_100%25.svg"
-                                     href="http://www.ovh.com/"
-                                     label="Discover">
-        </oui-slideshow-panel>
-        <oui-slideshow-panel heading="New features available in your emails pages"
-                                     text="Introducing Ad-Sync, designed to help you synchronize your local Active Directory with your OVH Active Directory."
-                                     href="http://www.ovh.com/"
-                                     label="Discover">
-        </oui-slideshow-panel>
-        <oui-slideshow-panel heading="Introducing Ad-Sync"
-                                         text="Designed to help you synchronize your local Active Directory with your OVH Active Directory."
-                                         picture="https://upload.wikimedia.org/wikipedia/commons/4/4a/Cercle_rouge_100%25.svg"
-                                         href="http://www.ovh.com/"
-                                         label="Discover">
-            </oui-slideshow-panel>
-    </oui-slideshow>
+<oui-slideshow>
+    <oui-slideshow-panel heading="New feature"
+        text="Display your infrastructure as a list"
+        picture="https://upload.wikimedia.org/wikipedia/commons/4/4a/Cercle_rouge_100%25.svg">
+    </oui-slideshow-panel>
+    <oui-slideshow-panel heading="Introducing Ad-Sync"
+        text="Designed to help you synchronize your local Active Directory with your OVH Active Directory."
+        picture="https://upload.wikimedia.org/wikipedia/commons/4/4a/Cercle_rouge_100%25.svg"
+        href="http://www.ovh.com/"
+        label="Discover">
+    </oui-slideshow-panel>
+    <oui-slideshow-panel heading="New features available in your emails pages"
+        text="Introducing Ad-Sync, designed to help you synchronize your local Active Directory with your OVH Active Directory."
+        href="http://www.ovh.com/"
+        label="Discover">
+    </oui-slideshow-panel>
+    <oui-slideshow-panel heading="Introducing Ad-Sync"
+        text="Designed to help you synchronize your local Active Directory with your OVH Active Directory."
+        picture="https://upload.wikimedia.org/wikipedia/commons/4/4a/Cercle_rouge_100%25.svg"
+        href="http://www.ovh.com/"
+        label="Discover">
+    </oui-slideshow-panel>
+</oui-slideshow>
 </div>
 ```
 
@@ -38,9 +38,9 @@
 
 ```html:preview
 <div class="oui-doc-preview-only-keep-children" style="padding:50px 35px;background-color:rgba(0,0,0,0.3)">
-    <oui-slideshow loading>
-        <oui-slideshow-panel heading="Panel 1" text="This is the first panel description"></oui-slideshow-panel>
-    </oui-slideshow>
+<oui-slideshow loading>
+    <oui-slideshow-panel heading="Panel 1" text="This is the first panel description"></oui-slideshow-panel>
+</oui-slideshow>
 </div>
 ```
 
@@ -48,11 +48,11 @@
 
 ```html:preview
 <div class="oui-doc-preview-only-keep-children" style="padding:50px 35px;background-color:rgba(0,0,0,0.3)">
-    <oui-slideshow loop>
-        <oui-slideshow-panel heading="Panel 1" text="This is the first panel description"></oui-slideshow-panel>
-        <oui-slideshow-panel heading="Panel 2" text="This is the second panel description"></oui-slideshow-panel>
-        <oui-slideshow-panel heading="Panel 3" text="This is the third panel description"></oui-slideshow-panel>
-    </oui-slideshow>
+<oui-slideshow loop>
+    <oui-slideshow-panel heading="Panel 1" text="This is the first panel description"></oui-slideshow-panel>
+    <oui-slideshow-panel heading="Panel 2" text="This is the second panel description"></oui-slideshow-panel>
+    <oui-slideshow-panel heading="Panel 3" text="This is the third panel description"></oui-slideshow-panel>
+</oui-slideshow>
 </div>
 ```
 
@@ -61,10 +61,10 @@
 <div class="oui-doc-preview-only-keep-children" style="padding:50px 35px;background-color:rgba(0,0,0,0.3)">
 <oui-slideshow>
     <oui-slideshow-panel heading="External link"
-                                 text="Introducing Ad-Sync, designed to help you synchronize your local Active Directory with your OVH Active Directory."
-                                 href="#"
-                                 label="Discover"
-                                 external>
+        text="Introducing Ad-Sync, designed to help you synchronize your local Active Directory with your OVH Active Directory."
+        href="#"
+        label="Discover"
+        external>
     </oui-slideshow-panel>
 </oui-slideshow>
 </div>
@@ -74,21 +74,21 @@
 
 ### oui-slideshow
 
-| Attribute           | Type     | Binding | One-time Binding | Values          | Default          | Description                                     |
-| ----                | ----     | ----    | ----             | ----            | ----             | ----                                            |
-| `on-dismiss`        | function | &       |                  |                 |                  | dismiss callback                                |
-| `loading`           | boolean  | <?      |                  |                 | false            | display loader flag                             |
-| `loop`              | boolean  | <?      |                  |                 | false            | whether the component should cycle continuously |
-| `theme`             | string   | @?      | yes              |                 | `default`        | add specific theme to component                 |
+| Attribute     | Type      | Binding   | One-time Binding  | Values            | Default   | Description
+| ----          | ----      | ----      | ----              | ----              | ----      | ----
+| `theme`       | string    | @?        | yes               | n/a               | `default` | add specific theme to component
+| `loading`     | boolean   | <?        | no                | `true`, `false`   | `false`   | display loader flag
+| `loop`        | boolean   | <?        | no                | `true`, `false`   | `false`   | whether the component should cycle continuously
+| `on-dismiss`  | function  | &         | no                | n/a               | n/a       | dismiss callback
 
 ### oui-slideshow-panel
 
-| Attribute           | Type     | Binding | One-time Binding | Values          | Default          | Description                                     |
-| ----                | ----     | ----    | ----             | ----            | ----             | ----                                            |
-| `heading`           | string   | @?      | yes              |                 |                  | the panel's heading                             |
-| `text`              | string   | @?      | yes              |                 |                  | the panel's description                         |
-| `picture`           | string   | @?      | yes              |                 |                  | the panel's picture / illustration              |
-| `on-click`          | function | &?      |                  |                 |                  | on-click handler (button)                       |
-| `href`              | string   | @?      | yes              |                 |                  | link href (button)                              |
-| `external`          | boolean  | <?      | yes              |                 | false            | add external link indicators (target, icon)     |
-| `label`             | string   | @?      | yes              |                 |                  | the button / link 's label                      |
+| Attribute     | Type      | Binding   | One-time Binding  | Values            | Default   | Description
+| ----          | ----      | ----      | ----              | ----              | ----      | ----
+| `heading`     | string    | @?        | yes               | n/a               | n/a       | heading of the panel
+| `text`        | string    | @?        | yes               | n/a               | n/a       | description of the panel
+| `picture`     | string    | @?        | yes               | n/a               | n/a       | picture/illustration of the panel
+| `label`       | string    | @?        | yes               | n/a               | n/a       | label of the link
+| `href`        | string    | @?        | yes               | n/a               | n/a       | href of the link
+| `external`    | boolean   | <?        | yes               | `true`, `false`   | `false`   | external link flag
+| `on-click`    | function  | &?        | no                | n/a               | n/a       | on-click handler

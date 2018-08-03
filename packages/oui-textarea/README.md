@@ -65,16 +65,16 @@ Has model changed? {{$ctrl.changed}}
 
 ## API
 
-| Attribute           | Type     | Binding | One-time Binding | Values                 | Default             | Description                                      |
-| ----                | ----     | ----    | ----             | ----                   | ----                | ----                                             |
-| `model`             | string   | =?      |                  |                        |                     | current value of the textarea                    |
-| `id`                | string   | @?      | yes              |                        |                     | id attribute of the radio                        |
-| `name`              | string   | @?      | yes              |                        |                     | name attribute of the textarea                   |
-| `placeholder`       | string   | @?      | yes              |                        |                     | placeholder attribute of the textarea            |
-| `rows`              | string   | @?      | yes              |                        |                     | number of displayed rows without scrolling       |
-| `disabled`          | boolean  | <?      |                  | `true`, `false`        | `false`             | disabled flag                                    |
-| `readonly`          | boolean  | <?      |                  | `true`, `false`        | `false`             | readonly flag                                    |
-| `minlength`         | number   | <?      |                  |                        |                     | min length of the model value                    |
-| `maxlength`         | number   | <?      |                  |                        |                     | max length of the model value                    |
-| `required`          | boolean  | <?      |                  | `true`, `false`        | `false`             | required flag                                    |
-| `on-change`         | function | &?      |                  |                        |                     | model value change callback                      |
+| Attribute     | Type      | Binding   | One-time Binding  | Values            | Default   | Description
+| ----          | ----      | ----      | ----              | ----              | ----      | ----
+| `model`       | string    | =?        | no                | n/a               | n/a       | current value of the textarea
+| `id`          | string    | @?        | yes               | n/a               | n/a       | id attribute of the textarea
+| `name`        | string    | @?        | yes               | n/a               | n/a       | name attribute of the textarea
+| `placeholder` | string    | @?        | yes               | n/a               | n/a       | placeholder attribute of the textarea
+| `rows`        | string    | @?        | yes               | n/a               | n/a       | number of displayed rows without scrolling
+| `minlength`   | number    | <?        | no                | n/a               | n/a       | min length of the model value
+| `maxlength`   | number    | <?        | no                | n/a               | n/a       | max length of the model value
+| `disabled`    | boolean   | <?        | no                | `true`, `false`   | `false`   | disabled flag
+| `readonly`    | boolean   | <?        | no                | `true`, `false`   | `false`   | readonly flag
+| `required`    | boolean   | <?        | no                | `true`, `false`   | `false`   | required flag
+| `on-change`   | function  | &?        | no                | n/a               | n/a       | model value change callback

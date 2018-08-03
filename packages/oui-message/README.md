@@ -36,8 +36,8 @@
 
 ## API
 
-| Attribute               | Type            | Binding | One-time binding | Values                                 | default | Description                            |
-| ----                    | ----            | ----    | ----             | ----                                   | ----    | ----                                   |
-| type                    | String          | @       | yes              | `info`, `success`, `warning`, `error`  |         | Message type                           |
-| aria-close-button-label | function        | @?      | yes              |                                        |         | accessibility label for close button   |
-| on-dismissed            | function        | &?      |                  |                                        |         | dismissed handler                      |
+| Attribute                 | Type      | Binding   | One-time binding  | Values                                | Default   | Description
+| ----                      | ----      | ----      | ----              | ----                                  | ----      | ----
+| `type`                    | string    | @         | yes               | `info`, `success`, `warning`, `error` | n/a       | message type
+| `aria-close-button-label` | function  | @?        | yes               | n/a                                   | n/a       | accessibility label for close button
+| `on-dismissed`            | function  | &?        | no                | n/a                                   | n/a       | dismissed handler

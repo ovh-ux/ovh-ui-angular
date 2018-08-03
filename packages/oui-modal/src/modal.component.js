@@ -7,13 +7,13 @@ export default {
     bindings: {
         heading: "@?",
         title: "@?", // Deprecated: Replaced by 'heading'
-        primaryAction: "&?",
-        primaryLabel: "@?",
-        secondaryAction: "&?",
-        secondaryLabel: "@?",
-        onDismiss: "&?",
+        type: "@?",
         loading: "<?",
-        type: "@?"
+        primaryLabel: "@?",
+        primaryAction: "&",
+        secondaryLabel: "@?",
+        secondaryAction: "&",
+        onDismiss: "&"
     },
     transclude: true
 };

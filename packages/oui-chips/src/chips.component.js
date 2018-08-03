@@ -9,10 +9,8 @@ export default {
     controller,
     bindings: {
         items: "<",
-
         closable: "<?",
         stacked: "<?",
-
         onRemove: "&"
     }
 };

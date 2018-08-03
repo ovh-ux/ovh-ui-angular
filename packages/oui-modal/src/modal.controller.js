@@ -1,10 +1,12 @@
 import { addBooleanParameter } from "@oui-angular/common/component-utils";
 
 export default class {
-    constructor ($attrs) {
+    constructor ($attrs, $element, $timeout) {
         "ngInject";
 
         this.$attrs = $attrs;
+        this.$element = $element;
+        this.$timeout = $timeout;
     }
 
     $onInit () {
@@ -14,5 +16,13 @@ export default class {
         if (!!this.$attrs.title && !this.$attrs.heading) {
             this.heading = this.title;
         }
+    }
+
+    $postLink () {
+        this.$timeout(() =>
+            this.$element
+                .addClass("oui-modal")
+                .addClass("oui-modal_shadow")
+        );
     }
 }

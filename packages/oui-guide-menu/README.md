@@ -55,25 +55,25 @@
 
 ### oui-guide-menu
 
-| Attribute     | Type     | Binding | One-time Binding | Values                 | Default   | Description
-| ----          | ----     | ----    | ----             | ----                   | ----      | ----
-| `text`        | string   | @       | yes              |                        |           | button guide text
-| `aria-label`  | string   | @?      | yes              |                        |           | accessibility label
-| `align`       | string   | @?      | yes              | `start`,`center`,`end` | `end`     | menu alignment
+| Attribute     | Type      | Binding   | One-time Binding  | Values                    | Default   | Description
+| ----          | ----      | ----      | ----              | ----                      | ----      | ----
+| `text`        | string    | @         | yes               | n/a                       | n/a       | button guide text
+| `aria-label`  | string    | @?        | yes               | n/a                       | n/a       | accessibility label
+| `align`       | string    | @?        | yes               | `start`,`center`,`end`    | `end`     | menu alignment
 
 ### oui-guide-menu-item
 
-| Attribute         | Type            | Binding | One-time binding | Values                    | Default    | Description
-| ----              | ----            | ----    | ----             | ----                      | ----       | ----
-| `text`            | string          | @       |                  |                           |            | button label
-| `aria-label`      | string          | @?      |                  |                           |            | accessibility label
-| `href`            | string          | @?      | yes              |                           |            | hypertext link (link)
-| `disabled`        | boolean         | <?      |                  |                           | `false`    | disable (button)
-| `external`        | boolean         | @?      | yes              |                           |            | display external icon (link)
-| `on-click`        |                 | &?      |                  |                           |            | on-click handler (button)
+| Attribute     | Type      | Binding   | One-time binding  | Values                    | Default   | Description
+| ----          | ----      | ----      | ----              | ----                      | ----      | ----
+| `text`        | string    | @         | no                | n/a                       | n/a       | button label
+| `aria-label`  | string    | @?        | no                | n/a                       | n/a       | accessibility label
+| `href`        | string    | @?        | yes               | n/a                       | n/a       | hypertext link (link)
+| `disabled`    | boolean   | <?        | no                | `true`, `false`           | `false`   | disable (button)
+| `external`    | boolean   | @?        | yes               | `true`, `false`           | `false`   | display external icon (link)
+| `on-click`    | function  | &?        | no                | n/a                       | n/a       | on-click handler (button)
 
 ### oui-guide-menu-group
 
-| Attribute         | Type      | Binding   | One-time Binding  | Values            | Default   | Description
-| ----              | ----      | ----      | ----              | ----              | ----      | ----
-| `label`           | string    | @         | yes               |                   |           | guide-menu group label
+| Attribute     | Type      | Binding   | One-time Binding  | Values                    | Default   | Description
+| ----          | ----      | ----      | ----              | ----                      | ----      | ----
+| `label`       | string    | @         | yes               | n/a                       | n/a       | guide-menu group label

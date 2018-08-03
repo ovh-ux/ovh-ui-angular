@@ -11,15 +11,19 @@
 <oui-clipboard model="$ctrl.simpleModel"></oui-clipboard>
 </div>
 <div class="oui-doc-preview-only">
-    <p><strong>Model value:</strong> {{$ctrl.simpleModel | json}}</p>
+    <p><strong>Model value:</strong> {{$ctrl.simpleModel}}</p>
 </div>
 ```
 
 ### Formatted text
 
 ```html:preview
-<div class="oui-doc-preview-only-keep-children" ng-init="$ctrl.formattedModel = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed lacinia nisi. Integer eleifend ipsum in pulvinar sodales.
-Donec vitae lobortis dui, at accumsan purus. Nullam porta leo purus, nec dignissim leo hendrerit non. Aliquam semper, ante vitae consequat accumsan, diam tortor tempus diam, in hendrerit justo diam in urna.'">
+<div class="oui-doc-preview-only-keep-children" ng-init="$ctrl.formattedModel = 'Lorem ipsum dolor sit amet,
+consectetur adipiscing elit.
+Integer sed lacinia nisi.
+Integer eleifend ipsum in pulvinar sodales.
+Donec vitae lobortis dui,
+at accumsan purus.'">
 <oui-clipboard model="$ctrl.formattedModel"></oui-clipboard>
 </div>
 <div class="oui-doc-preview-only">
@@ -29,8 +33,8 @@ Donec vitae lobortis dui, at accumsan purus. Nullam porta leo purus, nec digniss
 
 ## API
 
-| Attribute             | Type   | Binding | One-time Binding | Values  | Default   | Description
-| ----                  | ----   | ----    | ----             | ----    | ----      | ----
-| id                    | string | @?      | true             |         |           | id attribute of the input
-| name                  | string | @?      | true             |         |           | name attribute of the input
-| model                 | object | =       | true             |         |           | model bound to component
+| Attribute | Type      | Binding   | One-time Binding  | Values    | Default   | Description
+| ----      | ----      | ----      | ----              | ----      | ----      | ----
+| `model`   | object    | =         | no                | n/a       | n/a       | model bound to component
+| `id`      | string    | @?        | yes               | n/a       | n/a       | id attribute of the input
+| `name`    | string    | @?        | yes               | n/a       | n/a       | name attribute of the input

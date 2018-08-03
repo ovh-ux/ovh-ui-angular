@@ -21,6 +21,6 @@
 
 ## API
 
-| Attribute       | Type            | Binding | One-time binding | Values              | Default             | Description         |
-| ----            | ----            | ----    | ----             | ----                | ----                | ----                |
-| size            | String          | @?      | yes              | `s`, `m`, `l`       | `m`                 | Spinner size        |
+| Attribute | Type      | Binding   | One-time binding  | Values        | Default   | Description
+| ----      | ----      | ----      | ----              | ----          | ----      | ----
+| `size`    | string    | @?        | yes               | `s`, `m`, `l` | `m`       | Spinner size

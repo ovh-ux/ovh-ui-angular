@@ -49,9 +49,9 @@
 
 ## API
 
-| Attribute     | Type     | Binding | One-time Binding | Values    | Default   | Description                               |
-| ----          | ----     | ----    | ----             | ----      | ----      | ----                                      |
-| items         | object   | <       |                  |           |           | items bound to component                  |
-| closable      | boolean  | <?      |                  |           | false     | closable flag                             |
-| stacked       | boolean  | <?      |                  |           | false     | stacked flag                              |
-| on-remove     | function | &       |                  |           |           | handler triggered when items are removed  |
+| Attribute     | Type      | Binding   | One-time Binding  | Values            | Default   | Description
+| ----          | ----      | ----      | ----              | ----              | ----      | ----
+| `items`       | object    | <         | no                | n/a               | n/a       | items bound to component
+| `closable`    | boolean   | <?        | yes               | `true`, `false`   | `false`   | closable flag
+| `stacked`     | boolean   | <?        | yes               | `true`, `false`   | `false`   | stacked flag
+| `on-remove`   | function  | &         | no                | n/a               | n/a       | handler triggered when items are removed

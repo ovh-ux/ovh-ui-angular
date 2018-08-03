@@ -132,7 +132,7 @@ describe("ouiProgress", () => {
             const text = `Progress: ${value}%`;
             const element = TestUtils.compileTemplate(`
                 <oui-progress>
-                    <oui-progress-bar value="${value}" text="${text}"></oui-progress-bar>
+                    <oui-progress-bar value="${value}">${text}</oui-progress-bar>
                 </oui-progress>`
             );
 

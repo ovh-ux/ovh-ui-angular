@@ -51,7 +51,7 @@ describe("ouiSelectPicker", () => {
 
         describe("text attribute", () => {
             it("should display a text inside the selector's text container", () => {
-                const element = TestUtils.compileTemplate('<oui-select-picker text="test"></oui-select-picker>');
+                const element = TestUtils.compileTemplate('<oui-select-picker label="test"></oui-select-picker>');
 
                 const textContainerRadioElement = getRadioTextContainerElement(element);
                 expect(angular.element(textContainerRadioElement).html()).toBe("test");
@@ -83,7 +83,8 @@ describe("ouiSelectPicker", () => {
             });
 
             it("should display a img inside the selector's picture container", () => {
-                const element = TestUtils.compileTemplate('<oui-select-picker picture="/test/test.png"></oui-select-picker>');
+                const img = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAApJREFUCNdjYAAAAAIAAeIhvDMAAAAASUVORK5CYII=";
+                const element = TestUtils.compileTemplate(`<oui-select-picker picture="${img}"></oui-select-picker>`);
 
                 const pictureRadioElement = getRadioPictureElement(element);
                 expect(angular.element(pictureRadioElement).html()).toMatch(/<img/);

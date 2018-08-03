@@ -37,13 +37,13 @@
 
 ## API
 
-| Attribute         | Type     | Binding | One-time Binding | Values                 | Default             | Description                                      |
-| ----              | ----     | ----    | ----             | ----                   | ----                | ----                                             |
-| `current-offset`  | Number   | <       | no               |                        |                     | offset of the current page first item            |
-| `page-size`       | Number   | <?      | no               |                        | defined by provider | number of items per page                         |
-| `page-size-max`   | Number   | <?      | no               |                        |                     | max page size of the page sizes list             |
-| `total-items`     | Number   | <       | no               |                        |                     | total number of items                            |
-| `on-change`       | function | &?      |                  |                        |                     | change callback, called on pagination changes    |
+| Attribute         | Type      | Binding   | One-time Binding  | Values    | Default   | Description                                      |
+| ----              | ----      | ----      | ----              | ----      | ----      | ----                                             |
+| `current-offset`  | number    | <         | no                | n/a       | n/a       | offset of the current page first item            |
+| `page-size`       | number    | <?        | no                | n/a       | `25`      | number of items per page                         |
+| `page-size-max`   | number    | <?        | no                | n/a       | n/a       | max page size of the page sizes list             |
+| `total-items`     | number    | <         | no                | n/a       | n/a       | total number of items                            |
+| `on-change`       | function  | &?        | no                | n/a       | n/a       | change callback, called on pagination changes    |
 
 `on-change` callback takes a parameter `$event` containing:
 

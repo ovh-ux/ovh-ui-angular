@@ -490,79 +490,79 @@ The property `name` **must be** `"user"`.
 
 ### oui-navbar
 
-| Attribute         | Type      | Binding   | One-time Binding  | Values                | Default   | Description
-| ----              | ----      | ----      | ----              | ----                  | ----      | ----
-| `brand`           | object    | <?        | yes               | _see example above_   |           | object for the brand logo of the navbar
-| `active-link`     | string    | @?        | yes               |                       |           | current active-link of the navbar
-| `main-links`      | array     | <?        | yes               | _see example above_   |           | array of objects for the items on the left and the toggler (for responsive)
-| `aside-links`     | array     | <?        | yes               | _see example above_   |           | array of objects for the items on the right
-| `toggler-links`   | array     | <?        | yes               | _see example above_   |           | array of objects for the responsive menu
-| `fixed`           | boolean   | <?        | yes               |                       | `false`   | set the navbar in position fixed
+| Attribute             | Type      | Binding   | One-time Binding  | Values                                | Default   | Description
+| ----                  | ----      | ----      | ----              | ----                                  | ----      | ----
+| `brand`               | object    | <?        | yes               | _see example above_                   | n/a       | object for the brand logo of the navbar
+| `active-link`         | string    | @?        | yes               | n/a                                   | n/a       | current active-link of the navbar
+| `main-links`          | array     | <?        | yes               | _see example above_                   | n/a       | array of objects for the items on the left and the toggler (for responsive)
+| `aside-links`         | array     | <?        | yes               | _see example above_                   | n/a       | array of objects for the items on the right
+| `toggler-links`       | array     | <?        | yes               | _see example above_                   | n/a       | array of objects for the responsive menu
+| `fixed`               | boolean   | <?        | yes               | `true`, `false`                       | `false`   | set the navbar in position fixed
 
 ### oui-navbar-brand
 
-| Attribute         | Type      | Binding   | One-time Binding  | Values                | Default   | Description
-| ----              | ----      |           | ----              | ----                  | ----      | ----
-| `heading`         | string    | @?        | yes               |                       |           | title of the brand link
-| `aria-label`      | string    | @?        | yes               |                       |           | accessibility label of the brand link
-| `icon-alt`        | string    | @?        | yes               |                       |           | alternative text of the brand icon
-| `icon-class`      | string    | @?        | yes               |                       |           | classname of the brand icon
-| `icon-src`        | string    | @?        | yes               |                       |           | url of the brand icon
-| `href`            | string    | @?        | yes               |                       |           | link href of the brand link
+| Attribute             | Type      | Binding   | One-time Binding  | Values                                | Default   | Description
+| ----                  | ----      |           | ----              | ----                                  | ----      | ----
+| `heading`             | string    | @?        | yes               | n/a                                   | n/a       | title of the brand link
+| `aria-label`          | string    | @?        | yes               | n/a                                   | n/a       | accessibility label of the brand link
+| `icon-alt`            | string    | @?        | yes               | n/a                                   | n/a       | alternative text of the brand icon
+| `icon-class`          | string    | @?        | yes               | n/a                                   | n/a       | classname of the brand icon
+| `icon-src`            | string    | @?        | yes               | n/a                                   | n/a       | url of the brand icon
+| `href`                | string    | @?        | yes               | n/a                                   | n/a       | link href of the brand link
 
 ### oui-navbar-dropdown
 
-| Attribute         | Type      | Binding   | One-time Binding  | Values                | Default   | Description
-| ----              | ----      | ----      | ----              | ----                  | ----      | ----
-| `name`            | string    | @         | yes               |                       |           | group name of the dropdown
-| `text`            | string    | @         | yes               |                       |           | text of the button
-| `aria-label`      | string    | @?        | yes               |                       |           | accessibility label of the button
-| `icon-class`      | string    | @?        | yes               |                       |           | classname of the button icon
-| `icon-badge`      | number    | <?        |                   |                       |           | number on the badge of the button icon
-| `on-click`        | function  | &         |                   |                       |           | click callback
+| Attribute             | Type      | Binding   | One-time Binding  | Values                                | Default   | Description
+| ----                  | ----      | ----      | ----              | ----                                  | ----      | ----
+| `name`                | string    | @         | yes               | n/a                                   | n/a       | group name of the dropdown
+| `text`                | string    | @         | yes               | n/a                                   | n/a       | text of the button
+| `aria-label`          | string    | @?        | yes               | n/a                                   | n/a       | accessibility label of the button
+| `icon-class`          | string    | @?        | yes               | n/a                                   | n/a       | classname of the button icon
+| `icon-badge`          | number    | <?        | no                | n/a                                   | n/a       | number on the badge of the button icon
+| `on-click`            | function  | &         | no                | n/a                                   | n/a       | click callback
 
 ### oui-navbar-menu
 
-| Attribute             | Type      | Binding   | One-time Binding  | Values                | Default   | Description
-| ----                  | ----      | ----      | ----              | ----                  | ----      | ----
-| `name`                | string    | @         | yes               |                       |           | group name of the menu
-| `links`               | array     | <         | yes               | _see example above_   |           | array of links for the menu
-| `header-class`        | string    | @?        | yes               |                       |           | classname of the header
-| `header-title`        | string    | @?        | yes               |                       |           | text of the header title
-| `header-breadcrumb`   | string    | @?        | yes               |                       |           | text of the header breadcrumb
-| `align`               | string    | @?        | yes               | `start`, `end`        | `start`   | alignment of the menu to his trigger
-| `back-button`         | boolean   | <?        | yes               |                       | `false`   | display a back button in the header title
-| `fixed`               | boolean   | <?        | yes               |                       | `false`   | flag for responsive menu
+| Attribute             | Type      | Binding   | One-time Binding  | Values                                | Default   | Description
+| ----                  | ----      | ----      | ----              | ----                                  | ----      | ----
+| `name`                | string    | @         | yes               | n/a                                   | n/a       | group name of the menu
+| `links`               | array     | <         | yes               | _see example above_                   | n/a       | array of links for the menu
+| `header-class`        | string    | @?        | yes               | n/a                                   | n/a       | classname of the header
+| `header-title`        | string    | @?        | yes               | n/a                                   | n/a       | text of the header title
+| `header-breadcrumb`   | string    | @?        | yes               | n/a                                   | n/a       | text of the header breadcrumb
+| `align`               | string    | @?        | yes               | `start`, `end`                        | `start`   | alignment of the menu to his trigger
+| `back-button`         | boolean   | <?        | yes               | `true`, `false`                       | `false`   | display a back button in the header title
+| `fixed`               | boolean   | <?        | yes               | `true`, `false`                       | `false`   | flag for responsive menu
 
 ### oui-navbar-notification
 
-| Attribute             | Type      | Binding   | One-time Binding  | Values                | Default   | Description
-| ----                  | ----      | ----      | ----              | ----                  | ----      | ----
-| `name`                | string    | @         | yes               |                       |           | group name of the menu
-| `links`               | array     | <         | yes               | _see example above_   |           | array of links for the notifications menu
-| `limit-to`            | number    | <?        | yes               |                       | 10        | maximum displayed notifications
-| `header-template`     | string    | <?        | yes               |                       |           | HTML template of the menu header
-| `header-title`        | string    | @?        | yes               |                       |           | text of the header title
-| `footer-template`     | string    | <?        | yes               |                       |           | HTML template of the menu footer
-| `footer-title`        | string    | @?        | yes               |                       |           | text of the footer link
-| `footer-href`         | string    | @?        | yes               |                       |           | url of the footer link
-| `align`               | string    | @?        | yes               | `start`, `end`        | `start`   | alignment of the menu to his trigger
-| `fixed`               | boolean   | <?        | yes               |                       | `false`   | flag for responsive menu
+| Attribute             | Type      | Binding   | One-time Binding  | Values                                | Default   | Description
+| ----                  | ----      | ----      | ----              | ----                                  | ----      | ----
+| `name`                | string    | @         | yes               | n/a                                   | n/a       | group name of the menu
+| `links`               | array     | <         | yes               | _see example above_                   | n/a       | array of links for the notifications menu
+| `limit-to`            | number    | <?        | yes               | n/a                                   | `10`      | maximum displayed notifications
+| `header-template`     | string    | <?        | yes               | n/a                                   | n/a       | HTML template of the menu header
+| `header-title`        | string    | @?        | yes               | n/a                                   | n/a       | text of the header title
+| `footer-template`     | string    | <?        | yes               | n/a                                   | n/a       | HTML template of the menu footer
+| `footer-title`        | string    | @?        | yes               | n/a                                   | n/a       | text of the footer link
+| `footer-href`         | string    | @?        | yes               | n/a                                   | n/a       | url of the footer link
+| `align`               | string    | @?        | yes               | `start`, `end`                        | `start`   | alignment of the menu to his trigger
+| `fixed`               | boolean   | <?        | yes               | `true`, `false`                       | `false`   | flag for responsive menu
 
 ### oui-navbar-toggler
 
-| Attribute     | Type      | Binding   | One-time Binding  | Values                | Default   | Description
-| ----          | ----      | ----      | ----              | ----                  | ----      | ----
-| `links`       | array     | <         | yes               | _see example above_   |           | array of links for the responsive menu
+| Attribute             | Type      | Binding   | One-time Binding  | Values                                | Default   | Description
+| ----                  | ----      | ----      | ----              | ----                                  | ----      | ----
+| `links`               | array     | <         | yes               | _see example above_                   | n/a       | array of links for the responsive menu
 
 ### oui-navbar-link
 
-| Attribute         | Type      | Binding   | One-time Binding  | Values                                | Default   | Description
-| ----              | ----      | ----      | ----              | ----                                  | ----      | ----
-| `name`            | string    | @         | yes               |                                       |           | group name of the link
-| `text`            | string    | @         | yes               |                                       |           | text of the link
-| `aria-label`      | string    | @?        | yes               |                                       |           | accessibility label of the link
-| `href`            | string    | @?        | yes               |                                       |           | href of the link
-| `state`           | string    | @?        | yes               |                                       |           | state of the link
-| `state-params`    | object    | <?        | yes               |                                       |           | state-params of the link
-| `variant`         | string    | @?        | yes               | `primary`, `secondary`, `tertiary`    |           | style modifier of the link
+| Attribute             | Type      | Binding   | One-time Binding  | Values                                | Default   | Description
+| ----                  | ----      | ----      | ----              | ----                                  | ----      | ----
+| `name`                | string    | @         | yes               | n/a                                   | n/a       | group name of the link
+| `text`                | string    | @         | yes               | n/a                                   | n/a       | text of the link
+| `aria-label`          | string    | @?        | yes               | n/a                                   | n/a       | accessibility label of the link
+| `href`                | string    | @?        | yes               | n/a                                   | n/a       | href of the link
+| `state`               | string    | @?        | yes               | n/a                                   | n/a       | state of the link
+| `state-params`        | object    | <?        | yes               | n/a                                   | n/a       | state-params of the link
+| `variant`             | string    | @?        | yes               | `primary`, `secondary`, `tertiary`    | n/a       | style modifier of the link

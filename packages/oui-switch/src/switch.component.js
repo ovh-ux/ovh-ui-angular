@@ -5,11 +5,11 @@ export default {
     controller,
     template,
     bindings: {
-        disabled: "<?",
-        id: "@?",
         model: "=?",
+        id: "@?",
         name: "@?",
-        onChange: "&?",
-        required: "<?"
+        disabled: "<?",
+        required: "<?",
+        onChange: "&"
     }
 };
