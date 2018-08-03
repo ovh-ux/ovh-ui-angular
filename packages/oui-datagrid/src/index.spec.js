@@ -417,6 +417,94 @@ describe("ouiDatagrid", () => {
             });
         });
 
+        describe("Selectable rows", () => {
+
+            it("should toggle row selection", () => {
+                const element = TestUtils.compileTemplate(`
+                <oui-datagrid rows="$ctrl.rows">
+                    <oui-column property="firstName"></oui-column>
+                    <oui-column property="lastName"></oui-column>
+                </oui-datagrid>`, {
+                    rows: fakeData.slice(0, 5)
+                });
+                const ctrl = element.controller("ouiDatagrid");
+
+                let selection = [];
+                ctrl.toggleRowSelection(0, true);
+                selection = ctrl.getSelectedRows();
+                expect(selection.length).toBe(1);
+                expect(selection[0]).toEqual(fakeData[0]);
+
+                ctrl.toggleRowSelection(0, false);
+                selection = ctrl.getSelectedRows();
+                expect(selection.length).toBe(0);
+            });
+
+            it("should toggle all rows", () => {
+                const element = TestUtils.compileTemplate(`
+                <oui-datagrid rows="$ctrl.rows">
+                    <oui-column property="firstName"></oui-column>
+                    <oui-column property="lastName"></oui-column>
+                </oui-datagrid>`, {
+                    rows: fakeData.slice(0, 5)
+                });
+                const ctrl = element.controller("ouiDatagrid");
+
+                let selection = [];
+                expect(ctrl.selectAllRows).toBe(false);
+                ctrl.toggleAllRowsSelection(true);
+                selection = ctrl.getSelectedRows();
+                expect(selection.length).toBe(5);
+
+                ctrl.toggleAllRowsSelection(false);
+                selection = ctrl.getSelectedRows();
+                expect(selection.length).toBe(0);
+            });
+
+            it("should update global selection checkbox", () => {
+                const element = TestUtils.compileTemplate(`
+                <oui-datagrid rows="$ctrl.rows">
+                    <oui-column property="firstName"></oui-column>
+                    <oui-column property="lastName"></oui-column>
+                </oui-datagrid>`, {
+                    rows: fakeData.slice(0, 5)
+                });
+                const ctrl = element.controller("ouiDatagrid");
+
+                expect(ctrl.selectAllRows).toBe(false);
+                ctrl.toggleRowSelection(0, true);
+                expect(ctrl.selectAllRows).toBe(null);
+                ctrl.toggleRowSelection(1, true);
+                ctrl.toggleRowSelection(2, true);
+                ctrl.toggleRowSelection(3, true);
+                expect(ctrl.selectAllRows).toBe(null);
+                ctrl.toggleRowSelection(4, true);
+                expect(ctrl.selectAllRows).toBe(true);
+                ctrl.toggleRowSelection(4, false);
+                expect(ctrl.selectAllRows).toBe(null);
+                ctrl.toggleRowSelection(0, false);
+                ctrl.toggleRowSelection(1, false);
+                ctrl.toggleRowSelection(2, false);
+                ctrl.toggleRowSelection(3, false);
+                expect(ctrl.selectAllRows).toBe(false);
+            });
+
+            it("should updates extra-top content", () => {
+                const element = TestUtils.compileTemplate(`
+                <oui-datagrid rows="$ctrl.rows">
+                    <oui-column property="firstName"></oui-column>
+                    <oui-column property="lastName"></oui-column>
+                    <extra-top>{{ $selectedRows.length }}</extra-top>
+                </oui-datagrid>`, {
+                    rows: fakeData.slice(0, 5)
+                });
+                const ctrl = element.controller("ouiDatagrid");
+                ctrl.toggleAllRowsSelection(true);
+                element.scope().$apply();
+                expect(element.find("oui-datagrid-extra-top").text()).toBe("5");
+            });
+        });
+
         describe("Remote rows", () => {
             let rowsLoaderSpy;
 

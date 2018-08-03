@@ -5,6 +5,10 @@ export default class {
         this.$element = $element;
     }
 
+    $onInit () {
+        this.index = this.index || 0;
+    }
+
     $postLink () {
         // The parent scope of datagrid is required to get parent
         // values inside cells
@@ -19,6 +23,10 @@ export default class {
         } else {
             this._compileCell();
         }
+
+        this.cellScope.$watch(() => this.datagridCtrl.selectedRows[this.index], (isSelected) => {
+            this.cellScope.$isSelected = isSelected || false;
+        });
     }
 
     $onChanges (changes) {
