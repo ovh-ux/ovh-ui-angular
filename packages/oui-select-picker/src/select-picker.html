@@ -1,7 +1,7 @@
 <div class="oui-select-picker">
     <input type="radio" class="oui-select-picker__input"
            name="{{:: $ctrl.name }}"
-           ng-attr-aria-labelledby="{{:: $ctrl.id }}-text"
+           ng-attr-aria-labelledby="{{:: $ctrl.id }}-label"
            ng-attr-aria-describedby="{{:: $ctrl.description && $ctrl.id + '-description' || undefined }}"
            ng-attr-id="{{:: $ctrl.selectedValue ? $ctrl.id : undefined }}"
            ng-change="$ctrl.onRadioModelChange({ modelValue: $ctrl.model })"
@@ -20,8 +20,8 @@
                   ng-if="!$ctrl.isImgPath"></span>
         </span>
         <span class="oui-select-picker__label">
-            <span id="{{:: $ctrl.id }}-text"
-                  ng-bind="$ctrl.text">
+            <span id="{{:: $ctrl.id }}-label"
+                  ng-bind="$ctrl.label">
             </span>
         </span>
         <span class="oui-select-picker__description"
