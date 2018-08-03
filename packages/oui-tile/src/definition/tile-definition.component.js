@@ -7,8 +7,7 @@ export default {
     bindings: {
         term: "@?",
         termPopover: "@?",
-        description: "@?",
-        actions: "=?"
+        description: "@?"
     },
     transclude: {
         descriptionSlot: "?ouiTileDescription",
