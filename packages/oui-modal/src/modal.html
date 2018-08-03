@@ -1,41 +1,40 @@
-<div class="oui-modal oui-modal_shadow">
-  <div class="oui-modal__header">
-    <button
-      class="oui-icon oui-icon-close_thin oui-modal__close-button"
-      type="button"
-      aria-label="Exit"
-      ng-click="$ctrl.onDismiss()">
+<div class="oui-modal__header">
+    <button class="oui-icon oui-icon-close_thin oui-modal__close-button"
+        type="button"
+        aria-label="Exit"
+        ng-click="$ctrl.onDismiss()">
     </button>
-  </div>
-  <div class="oui-modal__body"
-       ng-class="{'oui-modal__body_no-icon': !$ctrl.type}">
-    <i  ng-if="!!$ctrl.type"
-        class="oui-icon oui-icon_bicolor"
+</div>
+<div class="oui-modal__body"
+    ng-class="{'oui-modal__body_no-icon': !$ctrl.type}">
+    <span class="oui-icon oui-icon_bicolor"
+        ng-if="!!$ctrl.type"
         ng-class="'oui-icon-' + $ctrl.type + '_circle'"
-        aria-hidden="true"></i>
-    <div class="oui-modal__loader" ng-if="$ctrl.loading">
-      <oui-spinner></oui-spinner>
+        aria-hidden="true">
+    </span>
+    <div class="oui-modal__loader"
+        ng-if="$ctrl.loading">
+        <oui-spinner></oui-spinner>
     </div>
     <h2 class="oui-modal__title"
-        ng-bind="::$ctrl.heading"
-        ng-if="::!!$ctrl.heading">
+        ng-if="::!!$ctrl.heading"
+        ng-bind="::$ctrl.heading">
     </h2>
     <div ng-transclude></div>
-  </div>
-  <div class="oui-modal__footer">
-    <button ng-if="$ctrl.secondaryLabel"
-      class="oui-button oui-button_secondary"
-      type="button"
-      ng-bind="$ctrl.secondaryLabel"
-      ng-click="$ctrl.secondaryAction()"
-      ng-disabled="$ctrl.loading">
+</div>
+<div class="oui-modal__footer">
+    <button class="oui-button oui-button_secondary"
+        type="button"
+        ng-if="$ctrl.secondaryLabel"
+        ng-bind="$ctrl.secondaryLabel"
+        ng-click="$ctrl.secondaryAction()"
+        ng-disabled="$ctrl.loading">
     </button>
-    <button ng-if="$ctrl.primaryLabel"
-      class="oui-button oui-button_primary"
-      type="submit"
-      ng-bind="$ctrl.primaryLabel"
-      ng-click="$ctrl.primaryAction()"
-      ng-disabled="$ctrl.loading">
+    <button class="oui-button oui-button_primary"
+        type="submit"
+        ng-if="$ctrl.primaryLabel"
+        ng-bind="$ctrl.primaryLabel"
+        ng-click="$ctrl.primaryAction()"
+        ng-disabled="$ctrl.loading">
     </button>
-  </div>
 </div>
