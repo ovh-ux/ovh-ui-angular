@@ -7,13 +7,13 @@ export default {
     bindings: {
         id: "@?",
         name: "@?",
+        heading: "@?", // Deprecated: Replaced by transclude value
+        title: "@?", // Deprecated: Replaced by transclude value
         ariaLabel: "@?",
-        heading: "@?",
-        title: "@?", // Deprecated: Replaced by 'heading'
-        onClick: "&?",
         href: "@?",
         state: "@?",
-        stateParams: "<?"
+        stateParams: "<?",
+        onClick: "&?"
     },
     transclude: true
 };
