@@ -5,7 +5,7 @@
     ng-attr-id="{{:: $ctrl.id }}"
     ng-attr-name="{{:: $ctrl.name }}"
     ng-click="$ctrl.onBtnClick()">
-  <i class="oui-icon oui-icon-chevron-left" aria-hidden="true"></i>
+  <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
 </button>
 <a ng-if="::!!$ctrl.href"
    class="oui-button oui-button_icon-alone"
@@ -14,7 +14,7 @@
    ng-attr-name="{{:: $ctrl.name }}"
    ng-click="$ctrl.onBtnClick()"
    ng-href="{{:: $ctrl.href }}">
-  <i class="oui-icon oui-icon-chevron-left" aria-hidden="true"></i>
+  <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
 </a>
 <a ng-if="::!!$ctrl.state"
    class="oui-button oui-button_icon-alone"
@@ -23,6 +23,6 @@
    ng-attr-name="{{:: $ctrl.name }}"
    ng-click="$ctrl.onBtnClick()"
    ui-sref="{{::$ctrl.getFullSref()}}">
-  <i class="oui-icon oui-icon-chevron-left" aria-hidden="true"></i>
+  <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
 </a>
 <h2 class="oui-back-button_title oui-header_2" ng-transclude>{{::$ctrl.heading}}</h2>

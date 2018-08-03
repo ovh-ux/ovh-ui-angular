@@ -51,7 +51,7 @@
 
 ### On change
 
-**Note**: Model will not be refreshed until the `on-change` callback as not finished. If you want to access the new model inside the `on-change` callback you need to use the `modelValue` variable as below.
+**Note**: Model will not be refreshed until the `on-change` callback hasn't returned. If you want to access the new model inside the `on-change` callback you need to use the `modelValue` variable as below.
 
 ```html:preview
 <oui-checkbox
@@ -66,7 +66,7 @@
 
 | Attribute     | Type                    | Binding | One-time Binding  | Values                   | Default    | Description
 | ----          | ----                    | ----    | ----              | ----                     | ----       | ----
-| `model`       | nullable&lt;boolean&gt; | =?      | no                | `true`, `false`, `null`  | n/a        | current value of the checkbox and null is considered as `indeterminate`
+| `model`       | boolean &#124; null     | =?      | no                | `true`, `false`, `null`  | n/a        | current value of the checkbox and null is considered as `indeterminate`
 | `id`          | string                  | @?      | yes               | n/a                      | n/a        | id attribute of the checkbox
 | `name`        | string                  | @?      | yes               | n/a                      | n/a        | name attribute of the checkbox
 | `description` | string                  | @?      | no                | n/a                      | n/a        | description text

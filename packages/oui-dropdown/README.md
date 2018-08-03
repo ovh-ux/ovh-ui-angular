@@ -163,7 +163,7 @@ Use `oui-dropdown-trigger` as a directive for custom trigger button
 ```html:preview
 <oui-dropdown>
     <button type="button" class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" oui-dropdown-trigger>
-      <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
+      <span class="oui-icon oui-icon-gear_line" aria-hidden="true"></span>
     </button>
     <oui-dropdown-content>
         <oui-dropdown-group label="Lorem ipsum">

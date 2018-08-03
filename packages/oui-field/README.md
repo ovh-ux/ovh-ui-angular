@@ -165,7 +165,7 @@
                 <option value="osx">OSX</option>
                 <option value="windows">Windows</option>
             </select>
-            <i class="oui-icon oui-icon-chevron-down" aria-hidden="true"></i>
+            <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
         </label>
     </oui-field>
 

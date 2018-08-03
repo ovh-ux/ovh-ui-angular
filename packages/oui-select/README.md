@@ -70,7 +70,7 @@
 
 ### On Change
 
-**Note**: Model will not be refreshed until the `on-change` callback as not finished. If you want to access the new model inside the `on-change` callback you need to use the `modelValue` variable as below.
+**Note**: Model will not be refreshed until the `on-change` callback hasn't returned. If you want to access the new model inside the `on-change` callback you need to use the `modelValue` variable as below.
 
 ```html:preview
 <oui-select name="country"
