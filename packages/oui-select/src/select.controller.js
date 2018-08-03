@@ -21,7 +21,7 @@ export default class {
 
     $postLink () {
         const $htmlContent = angular.element(this.htmlContent);
-        const matchElement = $htmlContent.find("ui-select-match");
+        const matchElement = $htmlContent.find("oui-ui-select-match");
 
         if (this.match) {
             matchElement.html(`{{$select.selected.${this.match}}}`);
