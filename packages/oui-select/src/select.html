@@ -1,4 +1,4 @@
-<ui-select name="{{::$ctrl.name}}"
+<oui-ui-select name="{{::$ctrl.name}}"
         class="oui-field__component"
         ng-model="$ctrl.model"
         search-enabled="false"
@@ -8,6 +8,6 @@
         on-blur="$ctrl.onUiSelectBlur()"
         on-focus="$ctrl.onUiSelectFocus()"
         on-select="$ctrl.onChange({ modelValue: $model })">
-    <ui-select-match placeholder="{{::$ctrl.placeholder}}"></ui-select-match>
-    <ui-select-choices repeat="$item in $ctrl.items track by $index"></ui-select-choices>
-</ui-select>
+    <oui-ui-select-match placeholder="{{::$ctrl.placeholder}}"></oui-ui-select-match>
+    <oui-ui-select-choices repeat="$item in $ctrl.items track by $index"></oui-ui-select-choices>
+</oui-ui-select>

@@ -4,7 +4,7 @@ import Select from "./select.directive";
 export default angular
     .module("oui.select", [
         "oui.field",
-        "ui.select",
+        "oui.ui-select",
         "ngSanitize"
     ])
     .directive("ouiSelect", Select)

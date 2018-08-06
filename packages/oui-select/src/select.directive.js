@@ -27,7 +27,7 @@ export default () => ({
     compile: ($element, $attrs) => {
         const itemTemplate = $element.html();
         const $template = angular.element(template);
-        const choicesElement = $template.find("ui-select-choices");
+        const choicesElement = $template.find("oui-ui-select-choices");
 
         choicesElement.html(itemTemplate);
         if ($attrs.groupBy) {
