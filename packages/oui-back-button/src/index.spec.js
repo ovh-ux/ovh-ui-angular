@@ -26,8 +26,8 @@ describe("ouiBackButton", () => {
         it("should display a button with a chevron left icon", () => {
             const element = compile("<oui-back-button></oui-back-button>");
             expect(element.find("button").length).toBe(1);
-            expect(element.find("button").find("i").length).toBe(1);
-            expect(element.find("i").hasClass("oui-icon-chevron-left")).toBe(true);
+            expect(element.find("button").find("span").length).toBe(1);
+            expect(element.find("span").hasClass("oui-icon-chevron-left")).toBe(true);
         });
 
         it("should have a oui-back-button class", () => {
