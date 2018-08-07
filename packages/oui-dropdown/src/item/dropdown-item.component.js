@@ -5,7 +5,7 @@ export default {
     controller,
     template,
     bindings: {
-        text: "@",
+        text: "@", // Deprecated: Replaced by transclude value
         ariaLabel: "@?",
         href: "@?",
         state: "@?",
@@ -13,5 +13,6 @@ export default {
         disabled: "<?",
         external: "<?",
         onClick: "&"
-    }
+    },
+    transclude: true
 };

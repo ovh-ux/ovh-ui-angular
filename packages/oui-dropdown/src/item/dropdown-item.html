@@ -2,9 +2,10 @@
     role="menuitem"
     ng-if="::!$ctrl.href && !$ctrl.state"
     ng-click="$ctrl.onClick()"
-    ng-bind="$ctrl.text"
     ng-attr-aria-label="{{$ctrl.ariaLabel}}"
-    ng-disabled="$ctrl.disabled">
+    ng-disabled="$ctrl.disabled"
+    ng-transclude>
+    {{::$ctrl.text}}
 </button>
 <a class="oui-dropdown-option"
     role="menuitem"
@@ -12,7 +13,7 @@
     ng-href="{{::$ctrl.href}}"
     ng-attr-target="{{::$ctrl.linkTarget}}"
     ng-attr-rel="{{::$ctrl.linkRel}}">
-    <span ng-bind="::$ctrl.text"></span>
+    <span ng-transclude>{{::$ctrl.text}}</span>
     <span ng-if="::$ctrl.external"
         class="oui-icon oui-icon-external_link"
         aria-hidden="true">
@@ -21,6 +22,7 @@
 <a class="oui-dropdown-option"
     role="menuitem"
     ng-if="::!!$ctrl.state"
-    ng-bind="::$ctrl.text"
-    ui-sref="{{::$ctrl.getFullSref()}}">
+    ui-sref="{{::$ctrl.getFullSref()}}"
+    ng-transclude>
+    {{::$ctrl.text}}
 </a>

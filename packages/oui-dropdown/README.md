@@ -11,16 +11,16 @@
     <oui-dropdown-trigger text="Actions"></oui-dropdown-trigger>
     <oui-dropdown-content>
         <oui-dropdown-group label="Lorem ipsum">
-            <oui-dropdown-item text="Action 1 (button)" on-click="$ctrl.onActionClick()"></oui-dropdown-item>
-            <oui-dropdown-item text="Action 2 (link/href)" href="#"></oui-dropdown-item>
+            <oui-dropdown-item on-click="$ctrl.onActionClick()">Action 1 (button)</oui-dropdown-item>
+            <oui-dropdown-item href="#">Action 2 (link/href)</oui-dropdown-item>
         </oui-dropdown-group>
         <oui-dropdown-group label="Dolor sit amet">
-            <oui-dropdown-item text="Action 3 (disabled)" disabled></oui-dropdown-item>
-            <oui-dropdown-item text="Action 4 (link/state)" state="showcase.oui-angular"></oui-dropdown-item>
+            <oui-dropdown-item disabled>Action 3 (disabled)</oui-dropdown-item>
+            <oui-dropdown-item state="showcase.oui-angular">Action 4 (link/state)</oui-dropdown-item>
         </oui-dropdown-group>
         <oui-dropdown-divider></oui-dropdown-divider>
-        <oui-dropdown-item text="External link" href="#" external></oui-dropdown-item>
-        <oui-dropdown-item text="Start guided tour" href="#" sticky></oui-dropdown-item>
+        <oui-dropdown-item href="#" external>External link</oui-dropdown-item>
+        <oui-dropdown-item href="#" sticky>Start guided tour</oui-dropdown-item>
     </oui-dropdown-content>
 </oui-dropdown>
 ```
@@ -32,16 +32,16 @@
     <oui-dropdown-trigger text="Actions" disabled></oui-dropdown-trigger>
     <oui-dropdown-content>
         <oui-dropdown-group label="Lorem ipsum">
-            <oui-dropdown-item text="Action 1 (button)" on-click="$ctrl.onActionClick()"></oui-dropdown-item>
-            <oui-dropdown-item text="Action 2 (link/href)" href="#"></oui-dropdown-item>
+            <oui-dropdown-item on-click="$ctrl.onActionClick()">Action 1 (button)</oui-dropdown-item>
+            <oui-dropdown-item href="#">Action 2 (link/href)</oui-dropdown-item>
         </oui-dropdown-group>
         <oui-dropdown-group label="Dolor sit amet">
-            <oui-dropdown-item text="Action 3 (disabled)" disabled></oui-dropdown-item>
-            <oui-dropdown-item text="Action 4 (link/state)" state="showcase.oui-angular"></oui-dropdown-item>
+            <oui-dropdown-item disabled>Action 3 (disabled)</oui-dropdown-item>
+            <oui-dropdown-item state="showcase.oui-angular">Action 4 (link/state)</oui-dropdown-item>
         </oui-dropdown-group>
         <oui-dropdown-divider></oui-dropdown-divider>
-        <oui-dropdown-item text="External link" href="#" external></oui-dropdown-item>
-        <oui-dropdown-item text="Start guided tour" href="#" sticky></oui-dropdown-item>
+        <oui-dropdown-item href="#" external>External link</oui-dropdown-item>
+        <oui-dropdown-item href="#" sticky>Start guided tour</oui-dropdown-item>
     </oui-dropdown-content>
 </oui-dropdown>
 ```
@@ -53,16 +53,16 @@
     <oui-dropdown-trigger text="Start"></oui-dropdown-trigger>
     <oui-dropdown-content>
         <oui-dropdown-group label="Lorem ipsum">
-            <oui-dropdown-item text="Action 1 (button)" on-click="$ctrl.onActionClick()"></oui-dropdown-item>
-            <oui-dropdown-item text="Action 2 (link/href)" href="#"></oui-dropdown-item>
+            <oui-dropdown-item on-click="$ctrl.onActionClick()">Action 1 (button)</oui-dropdown-item>
+            <oui-dropdown-item href="#">Action 2 (link/href)</oui-dropdown-item>
         </oui-dropdown-group>
         <oui-dropdown-group label="Dolor sit amet">
-            <oui-dropdown-item text="Action 3 (disabled)" disabled></oui-dropdown-item>
-            <oui-dropdown-item text="Action 4 (link/state)" state="showcase.oui-angular"></oui-dropdown-item>
+            <oui-dropdown-item disabled>Action 3 (disabled)</oui-dropdown-item>
+            <oui-dropdown-item state="showcase.oui-angular">Action 4 (link/state)</oui-dropdown-item>
         </oui-dropdown-group>
         <oui-dropdown-divider></oui-dropdown-divider>
-        <oui-dropdown-item text="External link" href="#" external></oui-dropdown-item>
-        <oui-dropdown-item text="Start guided tour" href="#" sticky></oui-dropdown-item>
+        <oui-dropdown-item href="#" external>External link</oui-dropdown-item>
+        <oui-dropdown-item href="#" sticky>Start guided tour</oui-dropdown-item>
     </oui-dropdown-content>
 </oui-dropdown>
 
@@ -70,16 +70,16 @@
     <oui-dropdown-trigger text="Center"></oui-dropdown-trigger>
     <oui-dropdown-content>
         <oui-dropdown-group label="Lorem ipsum">
-            <oui-dropdown-item text="Action 1 (button)" on-click="$ctrl.onActionClick()"></oui-dropdown-item>
-            <oui-dropdown-item text="Action 2 (link/href)" href="#"></oui-dropdown-item>
+            <oui-dropdown-item on-click="$ctrl.onActionClick()">Action 1 (button)</oui-dropdown-item>
+            <oui-dropdown-item href="#">Action 2 (link/href)</oui-dropdown-item>
         </oui-dropdown-group>
         <oui-dropdown-group label="Dolor sit amet">
-            <oui-dropdown-item text="Action 3 (disabled)" disabled></oui-dropdown-item>
-            <oui-dropdown-item text="Action 4 (link/state)" state="showcase.oui-angular"></oui-dropdown-item>
+            <oui-dropdown-item disabled>Action 3 (disabled)</oui-dropdown-item>
+            <oui-dropdown-item state="showcase.oui-angular">Action 4 (link/state)</oui-dropdown-item>
         </oui-dropdown-group>
         <oui-dropdown-divider></oui-dropdown-divider>
-        <oui-dropdown-item text="External link" href="#" external></oui-dropdown-item>
-        <oui-dropdown-item text="Start guided tour" href="#" sticky></oui-dropdown-item>
+        <oui-dropdown-item href="#" external>External link</oui-dropdown-item>
+        <oui-dropdown-item href="#" sticky>Start guided tour</oui-dropdown-item>
     </oui-dropdown-content>
 </oui-dropdown>
 
@@ -87,16 +87,16 @@
     <oui-dropdown-trigger text="End"></oui-dropdown-trigger>
     <oui-dropdown-content>
         <oui-dropdown-group label="Lorem ipsum">
-            <oui-dropdown-item text="Action 1 (button)" on-click="$ctrl.onActionClick()"></oui-dropdown-item>
-            <oui-dropdown-item text="Action 2 (link/href)" href="#"></oui-dropdown-item>
+            <oui-dropdown-item on-click="$ctrl.onActionClick()">Action 1 (button)</oui-dropdown-item>
+            <oui-dropdown-item href="#">Action 2 (link/href)</oui-dropdown-item>
         </oui-dropdown-group>
         <oui-dropdown-group label="Dolor sit amet">
-            <oui-dropdown-item text="Action 3 (disabled)" disabled></oui-dropdown-item>
-            <oui-dropdown-item text="Action 4 (link/state)" state="showcase.oui-angular"></oui-dropdown-item>
+            <oui-dropdown-item disabled>Action 3 (disabled)</oui-dropdown-item>
+            <oui-dropdown-item state="showcase.oui-angular">Action 4 (link/state)</oui-dropdown-item>
         </oui-dropdown-group>
         <oui-dropdown-divider></oui-dropdown-divider>
-        <oui-dropdown-item text="External link" href="#" external></oui-dropdown-item>
-        <oui-dropdown-item text="Start guided tour" href="#" sticky></oui-dropdown-item>
+        <oui-dropdown-item href="#" external>External link</oui-dropdown-item>
+        <oui-dropdown-item href="#" sticky>Start guided tour</oui-dropdown-item>
     </oui-dropdown-content>
 </oui-dropdown>
 ```
@@ -108,16 +108,16 @@
     <oui-dropdown-trigger text="Start"></oui-dropdown-trigger>
     <oui-dropdown-content>
         <oui-dropdown-group label="Lorem ipsum">
-            <oui-dropdown-item text="Action 1 (button)" on-click="$ctrl.onActionClick()"></oui-dropdown-item>
-            <oui-dropdown-item text="Action 2 (link/href)" href="#"></oui-dropdown-item>
+            <oui-dropdown-item on-click="$ctrl.onActionClick()">Action 1 (button)</oui-dropdown-item>
+            <oui-dropdown-item href="#">Action 2 (link/href)</oui-dropdown-item>
         </oui-dropdown-group>
         <oui-dropdown-group label="Dolor sit amet">
-            <oui-dropdown-item text="Action 3 (disabled)" disabled></oui-dropdown-item>
-            <oui-dropdown-item text="Action 4 (link/state)" state="showcase.oui-angular"></oui-dropdown-item>
+            <oui-dropdown-item disabled>Action 3 (disabled)</oui-dropdown-item>
+            <oui-dropdown-item state="showcase.oui-angular">Action 4 (link/state)</oui-dropdown-item>
         </oui-dropdown-group>
         <oui-dropdown-divider></oui-dropdown-divider>
-        <oui-dropdown-item text="External link" href="#" external></oui-dropdown-item>
-        <oui-dropdown-item text="Start guided tour" href="#" sticky></oui-dropdown-item>
+        <oui-dropdown-item href="#" external>External link</oui-dropdown-item>
+        <oui-dropdown-item href="#" sticky>Start guided tour</oui-dropdown-item>
     </oui-dropdown-content>
 </oui-dropdown>
 
@@ -125,16 +125,16 @@
     <oui-dropdown-trigger text="Center"></oui-dropdown-trigger>
     <oui-dropdown-content>
         <oui-dropdown-group label="Lorem ipsum">
-            <oui-dropdown-item text="Action 1 (button)" on-click="$ctrl.onActionClick()"></oui-dropdown-item>
-            <oui-dropdown-item text="Action 2 (link/href)" href="#"></oui-dropdown-item>
+            <oui-dropdown-item on-click="$ctrl.onActionClick()">Action 1 (button)</oui-dropdown-item>
+            <oui-dropdown-item href="#">Action 2 (link/href)</oui-dropdown-item>
         </oui-dropdown-group>
         <oui-dropdown-group label="Dolor sit amet">
-            <oui-dropdown-item text="Action 3 (disabled)" disabled></oui-dropdown-item>
-            <oui-dropdown-item text="Action 4 (link/state)" state="showcase.oui-angular"></oui-dropdown-item>
+            <oui-dropdown-item disabled>Action 3 (disabled)</oui-dropdown-item>
+            <oui-dropdown-item state="showcase.oui-angular">Action 4 (link/state)</oui-dropdown-item>
         </oui-dropdown-group>
         <oui-dropdown-divider></oui-dropdown-divider>
-        <oui-dropdown-item text="External link" href="#" external></oui-dropdown-item>
-        <oui-dropdown-item text="Start guided tour" href="#" sticky></oui-dropdown-item>
+        <oui-dropdown-item href="#" external>External link</oui-dropdown-item>
+        <oui-dropdown-item href="#" sticky>Start guided tour</oui-dropdown-item>
     </oui-dropdown-content>
 </oui-dropdown>
 
@@ -142,16 +142,16 @@
     <oui-dropdown-trigger text="End"></oui-dropdown-trigger>
     <oui-dropdown-content>
         <oui-dropdown-group label="Lorem ipsum">
-            <oui-dropdown-item text="Action 1 (button)" on-click="$ctrl.onActionClick()"></oui-dropdown-item>
-            <oui-dropdown-item text="Action 2 (link/href)" href="#"></oui-dropdown-item>
+            <oui-dropdown-item on-click="$ctrl.onActionClick()">Action 1 (button)</oui-dropdown-item>
+            <oui-dropdown-item href="#">Action 2 (link/href)</oui-dropdown-item>
         </oui-dropdown-group>
         <oui-dropdown-group label="Dolor sit amet">
-            <oui-dropdown-item text="Action 3 (disabled)" disabled></oui-dropdown-item>
-            <oui-dropdown-item text="Action 4 (link/state)" state="showcase.oui-angular"></oui-dropdown-item>
+            <oui-dropdown-item disabled>Action 3 (disabled)</oui-dropdown-item>
+            <oui-dropdown-item state="showcase.oui-angular">Action 4 (link/state)</oui-dropdown-item>
         </oui-dropdown-group>
         <oui-dropdown-divider></oui-dropdown-divider>
-        <oui-dropdown-item text="External link" href="#" external></oui-dropdown-item>
-        <oui-dropdown-item text="Start guided tour" href="#" sticky></oui-dropdown-item>
+        <oui-dropdown-item href="#" external>External link</oui-dropdown-item>
+        <oui-dropdown-item href="#" sticky>Start guided tour</oui-dropdown-item>
     </oui-dropdown-content>
 </oui-dropdown>
 ```
@@ -167,16 +167,16 @@ Use `oui-dropdown-trigger` as a directive for custom trigger button
     </button>
     <oui-dropdown-content>
         <oui-dropdown-group label="Lorem ipsum">
-            <oui-dropdown-item text="Action 1 (button)" on-click="$ctrl.onActionClick()"></oui-dropdown-item>
-            <oui-dropdown-item text="Action 2 (link/href)" href="#"></oui-dropdown-item>
+            <oui-dropdown-item on-click="$ctrl.onActionClick()">Action 1 (button)</oui-dropdown-item>
+            <oui-dropdown-item href="#">Action 2 (link/href)</oui-dropdown-item>
         </oui-dropdown-group>
         <oui-dropdown-group label="Dolor sit amet">
-            <oui-dropdown-item text="Action 3 (disabled)" disabled></oui-dropdown-item>
-            <oui-dropdown-item text="Action 4 (link/state)" state="showcase.oui-angular"></oui-dropdown-item>
+            <oui-dropdown-item disabled>Action 3 (disabled)</oui-dropdown-item>
+            <oui-dropdown-item state="showcase.oui-angular">Action 4 (link/state)</oui-dropdown-item>
         </oui-dropdown-group>
         <oui-dropdown-divider></oui-dropdown-divider>
-        <oui-dropdown-item text="External link" href="#" external></oui-dropdown-item>
-        <oui-dropdown-item text="Start guided tour" href="#" sticky></oui-dropdown-item>
+        <oui-dropdown-item href="#" external>External link</oui-dropdown-item>
+        <oui-dropdown-item href="#" sticky>Start guided tour</oui-dropdown-item>
     </oui-dropdown-content>
 </oui-dropdown>
 ```
@@ -190,16 +190,16 @@ Use `oui-dropdown-content` as a directive for custom content menu
     <oui-dropdown-trigger text="Custom menu"></oui-dropdown-trigger>
     <div class="oui-dropdown-menu" oui-dropdown-content>
         <oui-dropdown-group label="Lorem ipsum">
-            <oui-dropdown-item text="Action 1 (button)" on-click="$ctrl.onActionClick()"></oui-dropdown-item>
-            <oui-dropdown-item text="Action 2 (link/href)" href="#"></oui-dropdown-item>
+            <oui-dropdown-item on-click="$ctrl.onActionClick()">Action 1 (button)</oui-dropdown-item>
+            <oui-dropdown-item href="#">Action 2 (link/href)</oui-dropdown-item>
         </oui-dropdown-group>
         <oui-dropdown-group label="Dolor sit amet">
-            <oui-dropdown-item text="Action 3 (disabled)" disabled></oui-dropdown-item>
-            <oui-dropdown-item text="Action 4 (link/state)" state="showcase.oui-angular"></oui-dropdown-item>
+            <oui-dropdown-item disabled>Action 3 (disabled)</oui-dropdown-item>
+            <oui-dropdown-item state="showcase.oui-angular">Action 4 (link/state)</oui-dropdown-item>
         </oui-dropdown-group>
         <oui-dropdown-divider></oui-dropdown-divider>
-        <oui-dropdown-item text="External link" href="#" external></oui-dropdown-item>
-        <oui-dropdown-item text="Start guided tour" href="#" sticky></oui-dropdown-item>
+        <oui-dropdown-item href="#" external>External link</oui-dropdown-item>
+        <oui-dropdown-item href="#" sticky>Start guided tour</oui-dropdown-item>
     </div>
 </oui-dropdown>
 ```
@@ -212,11 +212,11 @@ See <a href="#!/oui-angular/action-menu">Action menu component</a>.
 
 ```html:preview
 <oui-action-menu compact>
-    <oui-action-menu-item text="Action 1 (link)" href="#"></oui-action-menu-item>
-    <oui-action-menu-item text="Action 2 (button)" on-click="$ctrl.onActionClick()"></oui-action-menu-item>
-    <oui-action-menu-item text="Action 3 (disabled)" disabled></oui-action-menu-item>
+    <oui-action-menu-item href="#">Action 1 (link)</oui-action-menu-item>
+    <oui-action-menu-item on-click="$ctrl.onActionClick()">Action 2 (button)</oui-action-menu-item>
+    <oui-action-menu-item disabled>Action 3 (disabled)</oui-action-menu-item>
     <oui-action-menu-divider></oui-action-menu-divider>
-    <oui-action-menu-item text="External link" href="#" external></oui-action-menu-item>
+    <oui-action-menu-item href="#" external>External link</oui-action-menu-item>
 </oui-action-menu>
 ```
 
@@ -226,10 +226,10 @@ See <a href="#!/oui-angular/guide-menu">Guide menu component</a>.
 
 ```html:preview
 <oui-guide-menu text="Guides">
-    <oui-guide-menu-item text="Guide 1 (link)" href="#"></oui-guide-menu-item>
-    <oui-guide-menu-item text="Guide 2 (button)" on-click="$ctrl.onActionClick()"></oui-guide-menu-item>
+    <oui-guide-menu-item href="#">Guide 1 (link)</oui-guide-menu-item>
+    <oui-guide-menu-item on-click="$ctrl.onActionClick()">Guide 2 (button)</oui-guide-menu-item>
     <oui-guide-menu-divider></oui-guide-menu-divider>
-    <oui-guide-menu-item text="External link" href="#" external></oui-guide-menu-item>
+    <oui-guide-menu-item href="#" external>External link</oui-guide-menu-item>
 </oui-guide-menu>
 ```
 
@@ -267,7 +267,6 @@ See <a href="#!/oui-angular/guide-menu">Guide menu component</a>.
 
 | Attribute         | Type      | Binding   | One-time Binding  | Values                    | Default   | Description
 | ----              | ----      | ----      | ----              | ----                      | ----      | ----
-| `text`            | string    | @         | yes               | n/a                       | n/a       | dropdown item text
 | `aria-label`      | string    | @?        | yes               | n/a                       | n/a       | accessibility label
 | `href`            | string    | @?        | yes               | n/a                       | n/a       | href of the item
 | `state`           | string    | @?        | yes               | n/a                       | n/a       | state of the item
@@ -277,6 +276,10 @@ See <a href="#!/oui-angular/guide-menu">Guide menu component</a>.
 | `on-click`        | function  | &         | no                | n/a                       | n/a       | callback on component click
 
 **Note**: `ui-router` is needed for the attributes `state` and `state-params`.
+
+#### Deprecated
+
+* `text`: Replaced by transclude value
 
 ### oui-dropdown-divider
 
