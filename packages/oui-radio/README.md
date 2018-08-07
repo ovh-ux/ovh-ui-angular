@@ -75,3 +75,7 @@
 | `required`    | boolean   | <?        | no                | `true`, `false`   | `false`   | required flag
 | `thumbnail`   | boolean   | <?        | no                | `true`, `false`   | `false`   | thumbnail style of the radio
 | `on-change`   | function  | &?        | no                | n/a               | n/a       | handler triggered when value has changed
+
+#### Deprecated
+
+* `text`: Replaced by transclude value

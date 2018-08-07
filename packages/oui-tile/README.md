@@ -87,12 +87,15 @@
 
 | Attribute         | Type      | Binding   | One-time Binding  | Values            | Default   | Description
 | ----              | ----      | ----      | ----              | ----              | ----      | ----
-| `text`            | string    | @         | yes               | n/a               | n/a       | button text
 | `href`            | string    | @?        | yes               | n/a               | n/a       | button link url
 | `aria-label`      | string    | @?        | no                | n/a               | `null`    | accessibility label
 | `disabled`        | boolean   | <?        | no                | `true`, `false`   | `false`   | disabled flag
 | `external`        | boolean   | <?        | yes               | `true`, `false`   | `false`   | open in new tab and display external icon
 | `on-click`        | funcion   | &         | no                | n/a               | n/a       | button action callback
+
+#### Deprecated
+
+* `text`: Replaced by transclude value
 
 ### oui-tile-definition
 

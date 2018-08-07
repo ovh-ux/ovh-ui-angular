@@ -86,3 +86,7 @@
 | `secondary-label`     | string    | @?        | yes              | n/a                            | n/a       | cancellation label
 | `secondary-action`    | function  | &         | no               | n/a                            | n/a       | cancellation callback
 | `on-dismiss`          | function  | &         | no               | n/a                            | n/a       | dismiss callback
+
+#### Deprecated
+
+* `title`: Replaced by `heading` attribute

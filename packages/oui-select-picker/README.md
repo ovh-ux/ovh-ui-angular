@@ -85,7 +85,7 @@
 | `model`       | Object    | =?        | no                | n/a               | n/a       | current value of the radio
 | `id`          | string    | @?        | yes               | n/a               | n/a       | id attribute of the radio
 | `name`        | string    | @?        | yes               | n/a               | n/a       | name attribute of the radio
-| `text`        | string    | @         | no                | n/a               | n/a       | label text
+| `label`       | string    | @         | no                | n/a               | n/a       | label text
 | `description` | string    | @?        | no                | n/a               | n/a       | description text
 | `placeholder` | string    | @?        | no                | n/a               | n/a       | initial label text of the select
 | `picture`     | string    | @?        | no                | n/a               | n/a       | picture path or icon class
@@ -95,3 +95,6 @@
 | `required`    | boolean   | <?        | no                | `true`, `false`   | `false`   | define if the field is required
 | `on-change`   | function  | &?        | no                | n/a               | n/a       | handler triggered when value has changed
 
+#### Deprecated
+
+* `text`: Replaced by `label` attribute
