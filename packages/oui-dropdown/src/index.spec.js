@@ -133,6 +133,106 @@ describe("ouiDropdown", () => {
             expect(element[0].querySelector("[x-arrow]")).toBeNull();
         });
 
+        describe("Item", () => {
+            it("should have default classname", () => {
+                const element = TestUtils.compileTemplate(`
+                    <oui-dropdown>
+                        <oui-dropdown-trigger text="Actions"></oui-dropdown-trigger>
+                        <oui-dropdown-content>
+                            <oui-dropdown-item text="Lorem ipsum"></oui-dropdown-item>
+                        </oui-dropdown-content>
+                    </oui-dropdown>
+                `);
+
+                $timeout.flush();
+
+                expect(element.find("oui-dropdown-item").hasClass("oui-dropdown-menu__item")).toBeTruthy();
+            });
+
+            it("should be sticky", () => {
+                const element = TestUtils.compileTemplate(`
+                    <oui-dropdown>
+                        <oui-dropdown-trigger text="Actions"></oui-dropdown-trigger>
+                        <oui-dropdown-content>
+                            <oui-dropdown-item text="Lorem ipsum" href="#" sticky></oui-dropdown-item>
+                        </oui-dropdown-content>
+                    </oui-dropdown>
+                `);
+
+                $timeout.flush();
+
+                expect(element.find("oui-dropdown-item").hasClass("oui-dropdown-menu__item_sticky")).toBeTruthy();
+            });
+
+            it("should be a button", () => {
+                const element = TestUtils.compileTemplate(`
+                    <oui-dropdown>
+                        <oui-dropdown-trigger text="Actions"></oui-dropdown-trigger>
+                        <oui-dropdown-content>
+                            <oui-dropdown-item text="Lorem ipsum"></oui-dropdown-item>
+                        </oui-dropdown-content>
+                    </oui-dropdown>
+                `);
+                const button = element.find("oui-dropdown-item").find("button");
+
+                expect(button.length).toBe(1);
+                expect(button.hasClass("oui-dropdown-option")).toBeTruthy();
+            });
+
+            it("should be links", () => {
+                const element = TestUtils.compileTemplate(`
+                    <oui-dropdown>
+                        <oui-dropdown-trigger text="Actions"></oui-dropdown-trigger>
+                        <oui-dropdown-content>
+                            <oui-dropdown-item text="Lorem ipsum" href="#"></oui-dropdown-item>
+                            <oui-dropdown-item text="Lorem ipsum" state="lorem"></oui-dropdown-item>
+                        </oui-dropdown-content>
+                    </oui-dropdown>
+                `);
+                const links = element.find("oui-dropdown-item").find("a");
+
+                expect(links.length).toBe(2);
+                expect(links.hasClass("oui-dropdown-option")).toBeTruthy();
+            });
+
+            it("should be an external link", () => {
+                const element = TestUtils.compileTemplate(`
+                    <oui-dropdown>
+                        <oui-dropdown-trigger text="Actions"></oui-dropdown-trigger>
+                        <oui-dropdown-content>
+                            <oui-dropdown-item text="Lorem ipsum" href="#" external></oui-dropdown-item>
+                        </oui-dropdown-content>
+                    </oui-dropdown>
+                `);
+                const link = element.find("oui-dropdown-item").find("a");
+
+                $timeout.flush();
+
+                expect(link.attr("target")).toBe("_blank");
+                expect(link.attr("rel")).toBe("noopener");
+            });
+        });
+
+        describe("Group", () => {
+            it("should have default classname", () => {
+                const element = TestUtils.compileTemplate(`
+                    <oui-dropdown>
+                        <oui-dropdown-trigger text="Actions"></oui-dropdown-trigger>
+                        <oui-dropdown-content>
+                            <oui-dropdown-group label="Lorem ipsum">
+                                <oui-dropdown-item text="Action 1"></oui-dropdown-item>
+                                <oui-dropdown-item text="Action 2"></oui-dropdown-item>
+                            </oui-dropdown-group>
+                        </oui-dropdown-content>
+                    </oui-dropdown>
+                `);
+
+                $timeout.flush();
+
+                expect(element.find("oui-dropdown-group").hasClass("oui-dropdown-group")).toBeTruthy();
+            });
+        });
+
         describe("Events", () => {
             it("should not be visible", () => {
                 const element = TestUtils.compileTemplate(`
