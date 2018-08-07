@@ -8,10 +8,10 @@
 
 ```html:preview
 <oui-guide-menu text="Guides">
-    <oui-guide-menu-item text="Guide 1 (link)" href="#"></oui-guide-menu-item>
-    <oui-guide-menu-item text="Guide 2 (button)" on-click="$ctrl.onActionClick()"></oui-guide-menu-item>
+    <oui-guide-menu-item href="#">Guide 1 (link)</oui-guide-menu-item>
+    <oui-guide-menu-item on-click="$ctrl.onActionClick()">Guide 2 (button)</oui-guide-menu-item>
     <oui-guide-menu-divider></oui-guide-menu-divider>
-    <oui-guide-menu-item text="External link" href="#" external></oui-guide-menu-item>
+    <oui-guide-menu-item href="#" external>External link</oui-guide-menu-item>
 </oui-guide-menu>
 ```
 
@@ -20,15 +20,15 @@
 ```html:preview
 <oui-guide-menu text="Guides">
     <oui-guide-menu-group label="Section 1">
-        <oui-guide-menu-item text="Guide 1 (link)" href="#"></oui-guide-menu-item>
-        <oui-guide-menu-item text="Guide 2 (button)" on-click="$ctrl.onActionClick()"></oui-guide-menu-item>
+        <oui-guide-menu-item href="#">Guide 1 (link)</oui-guide-menu-item>
+        <oui-guide-menu-item on-click="$ctrl.onActionClick()">Guide 2 (button)</oui-guide-menu-item>
     </oui-guide-menu-group>
     <oui-guide-menu-group label="Section 2">
-        <oui-guide-menu-item text="Guide 1 (link)" href="#"></oui-guide-menu-item>
-        <oui-guide-menu-item text="Guide 2 (button)" on-click="$ctrl.onActionClick()"></oui-guide-menu-item>
+        <oui-guide-menu-item href="#">Guide 1 (link)</oui-guide-menu-item>
+        <oui-guide-menu-item on-click="$ctrl.onActionClick()">Guide 2 (button)</oui-guide-menu-item>
     </oui-guide-menu-group>
     <oui-guide-menu-divider></oui-guide-menu-divider>
-    <oui-guide-menu-item text="External link" href="#" external></oui-guide-menu-item>
+    <oui-guide-menu-item href="#" external>External link</oui-guide-menu-item>
 </oui-guide-menu>
 ```
 
@@ -38,15 +38,15 @@
 <oui-page-header heading="My title" description="My subtitle">à
     <oui-guide-menu text="Guides">
         <oui-guide-menu-group label="Section 1">
-            <oui-guide-menu-item text="Guide 1 (link)" href="#"></oui-guide-menu-item>
-            <oui-guide-menu-item text="Guide 2 (button)" on-click="$ctrl.onActionClick()"></oui-guide-menu-item>
+            <oui-guide-menu-item href="#">Guide 1 (link)</oui-guide-menu-item>
+            <oui-guide-menu-item on-click="$ctrl.onActionClick()">Guide 2 (button)</oui-guide-menu-item>
         </oui-guide-menu-group>
         <oui-guide-menu-group label="Section 2">
-            <oui-guide-menu-item text="Guide 1 (link)" href="#"></oui-guide-menu-item>
-            <oui-guide-menu-item text="Guide 2 (button)" on-click="$ctrl.onActionClick()"></oui-guide-menu-item>
+            <oui-guide-menu-item href="#">Guide 1 (link)</oui-guide-menu-item>
+            <oui-guide-menu-item on-click="$ctrl.onActionClick()">Guide 2 (button)</oui-guide-menu-item>
         </oui-guide-menu-group>
         <oui-guide-menu-divider></oui-guide-menu-divider>
-        <oui-guide-menu-item text="External link" href="#" external></oui-guide-menu-item>
+        <oui-guide-menu-item href="#" external>External link</oui-guide-menu-item>
     </oui-guide-menu>
 </oui-page-header>
 ```
@@ -65,12 +65,15 @@
 
 | Attribute     | Type      | Binding   | One-time binding  | Values                    | Default   | Description
 | ----          | ----      | ----      | ----              | ----                      | ----      | ----
-| `text`        | string    | @         | no                | n/a                       | n/a       | button label
 | `aria-label`  | string    | @?        | no                | n/a                       | n/a       | accessibility label
 | `href`        | string    | @?        | yes               | n/a                       | n/a       | hypertext link (link)
 | `disabled`    | boolean   | <?        | no                | `true`, `false`           | `false`   | disable (button)
 | `external`    | boolean   | @?        | yes               | `true`, `false`           | `false`   | display external icon (link)
 | `on-click`    | function  | &?        | no                | n/a                       | n/a       | on-click handler (button)
+
+#### Deprecated
+
+* `text`: Replaced by transclude value
 
 ### oui-guide-menu-group
 
