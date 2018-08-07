@@ -85,8 +85,6 @@ describe("Filter", () => {
             const filtered = filter.applyFilter(fakeData);
             expect(filtered.length).toBe(2);
         });
-
-        it("should apply several filters");
     });
 
     describe("applyCriteria", () => {

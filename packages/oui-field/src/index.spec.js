@@ -370,9 +370,6 @@ describe("ouiField", () => {
                 $timeout.flush();
                 expect(getError(element)).toBeNull();
             });
-
-            // TODO
-            it("should show the right error message");
         });
 
         // We assume that if ouiField is able to find the form field,
