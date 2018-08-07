@@ -1,18 +1,20 @@
+# OVH UI Kit (AngularJS)
+
+![OVH component](https://user-images.githubusercontent.com/3379410/27423240-3f944bc4-5731-11e7-87bb-3ff603aff8a7.png)
+
+A set of maintainable components for the OVH ecosystem (AngularJS).
+
 [![NPM](https://nodei.co/npm/ovh-ui-angular.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/ovh-ui-angular/)
 
 ![Project status stable](https://img.shields.io/badge/status-stable-blue.svg)
 [![Maintenance](https://img.shields.io/maintenance/yes/2018.svg)]()
 [![Chat on gitter](https://img.shields.io/gitter/room/ovh/ux.svg)](https://gitter.im/ovh/ux)
 
-# OVH UI (Angular)
-
-A set of maintainable components for the OVH ecosystem (Angular).
-
 ## Installation
 
 ### Prerequisites
 
-This library has been tested with AngularJS 1.6.
+This library has been tested with AngularJS 1.6+.
 
 You will also need these dependencies in your project:
 
@@ -23,25 +25,31 @@ You will also need these dependencies in your project:
 
 Follow the [guide](https://github.com/ovh-ux/ovh-ui-kit) for _ovh-ui-kit_, because you need to integrate it by _yourself_.
 
-### bower
+### Install with [npm](https://www.npmjs.com/)
+
+```bash
+npm install ovh-ui-angular
+```
+
+### Install with [yarn](https://yarnpkg.com)
+
+```bash
+yarn add ovh-ui-angular
+```
+
+### Install with [bower](https://bower.io/) (deprecated)
 
 ```bash
 bower install --save ovh-ui-angular
 ```
 
-### npm
-
-```bash
-npm install --save ovh-ui-angular
-```
-
 ## Usage
 
-1. In your `index.html`, you need to load `oui-angular.js`:
+1. In your `index.html`, you need to load `oui-angular.min.js`:
 
 ```html
   ...
-  <script src="ovh-ui-angular/packages/oui-angular/dist/oui-angular.js" type="text/javascript"></script>
+  <script src="ovh-ui-angular/dist/oui-angular.min.js" type="text/javascript"></script>
   ...
 ```
 

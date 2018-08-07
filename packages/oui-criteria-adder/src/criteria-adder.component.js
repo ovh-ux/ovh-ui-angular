@@ -9,10 +9,8 @@ export default {
         id: "@?",
         name: "@",
         align: "@?",
-
         properties: "<",
         disabled: "<?",
-
         onSubmit: "&"
     },
     controller,

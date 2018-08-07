@@ -41,7 +41,6 @@ export default class FieldController {
         this.invalidOnBlur = false;
         this.hasFocus = false;
         this.size = this.size || "auto";
-
     }
 
     $postLink () {

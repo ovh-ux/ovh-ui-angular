@@ -104,9 +104,8 @@ describe("ouiFormActions", () => {
                 <oui-form-actions
                     on-submit="$ctrl.submit()">
                 </oui-form-actions>`);
-            const cancelButton = component.find("button").eq(1);
 
-            expect(cancelButton.hasClass("ng-hide")).toBe(true);
+            expect(component.find("button").length).toBe(1);
         });
 
         it("should trigger click on submit button", () => {

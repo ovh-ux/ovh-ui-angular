@@ -5,13 +5,14 @@ export default {
     template,
     controller,
     bindings: {
-        text: "@",
-        description: "@?",
+        model: "=?",
         id: "@?",
         name: "@?",
-        model: "=?",
-        onChange: "&?",
+        text: "@?", // Deprecated: Replaced by transclude value
+        description: "@?",
         disabled: "<?",
-        required: "<?"
-    }
+        required: "<?",
+        onChange: "&"
+    },
+    transclude: true
 };

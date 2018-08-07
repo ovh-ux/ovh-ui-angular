@@ -17,6 +17,7 @@ export default class {
         // So we use $timeout to force the $apply
         this.$timeout(() =>
             this.$element
+                .addClass("oui-checkbox")
                 .removeAttr("id")
                 .removeAttr("name")
         );

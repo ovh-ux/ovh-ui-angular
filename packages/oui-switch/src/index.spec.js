@@ -89,7 +89,8 @@ describe("ouiSwitch", () => {
                 const checkboxElement = getSwitchInputElement(element);
                 const $checkboxElement = angular.element(checkboxElement);
                 $checkboxElement.prop("checked", true);
-                $checkboxElement.triggerHandler("click");
+                $checkboxElement.triggerHandler("click"); // NG 1.6
+                $checkboxElement.triggerHandler("change"); // NG 1.7
                 expect($ctrl.currentModel).toBe(true);
             });
         });
@@ -134,7 +135,8 @@ describe("ouiSwitch", () => {
                 const checkboxElement = getSwitchInputElement(element);
                 const $checkboxElement = angular.element(checkboxElement);
                 $checkboxElement.prop("checked", true);
-                $checkboxElement.triggerHandler("click");
+                $checkboxElement.triggerHandler("click"); // NG 1.6
+                $checkboxElement.triggerHandler("change"); // NG 1.7
                 expect(onChangeSpy).toHaveBeenCalledWith(true);
             });
         });
@@ -187,7 +189,8 @@ describe("ouiSwitch", () => {
                 expect(form.$valid).toBeFalsy();
 
                 $checkboxElement.prop("checked", true);
-                $checkboxElement.triggerHandler("click");
+                $checkboxElement.triggerHandler("click"); // NG 1.6
+                $checkboxElement.triggerHandler("change"); // NG 1.7
                 expect(form.$valid).toBeTruthy();
             });
         });

@@ -6,11 +6,12 @@ export default {
     controller,
     bindings: {
         heading: "@?",
-        text: "@?",
+        text: "@?", // Deprecated: Replaced by transclude value
         picture: "@?",
         onClick: "&?",
         href: "@?",
         external: "<?",
         label: "@?"
-    }
+    },
+    transclude: true
 };

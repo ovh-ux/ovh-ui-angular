@@ -8,17 +8,18 @@ export default {
         sectionSlot: "?span"
     },
     bindings: {
-        text: "@",
-        description: "@?",
-        picture: "@?",
-        placeholder: "@?",
-        values: "<",
+        model: "=?",
         id: "@?",
         name: "@?",
+        text: "@", // Deprecated: Replaced by "label"
+        label: "@",
+        description: "@?",
+        placeholder: "@?",
+        picture: "@?",
         match: "@",
-        model: "=?",
-        onChange: "&?",
+        values: "<",
         disabled: "<?",
-        required: "<?"
+        required: "<?",
+        onChange: "&?"
     }
 };

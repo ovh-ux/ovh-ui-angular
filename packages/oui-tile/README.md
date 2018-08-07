@@ -17,16 +17,14 @@
 ### Button Tile
 
 ```html:preview
-<div ng-init="$ctrl.click = false"
-    class="oui-doc-preview-only-keep-children">
+<div class="oui-doc-preview-only-keep-children" ng-init="$ctrl.click = false">
 <oui-tile heading="Title">
-    <oui-tile-button text="Button 1" on-click="$ctrl.click = true"></oui-tile-button>
-    <oui-tile-button text="Button 2" href="#"></oui-tile-button>
+    <oui-tile-button on-click="$ctrl.click = true">Button 1</oui-tile-button>
+    <oui-tile-button href="#">Button 2</oui-tile-button>
     <oui-tile-button aria-label="access to .." href="#" external>Button 3</oui-tile-button>
-    <oui-tile-button text="Button 4 (disabled)" disabled></oui-tile-button>
-    <oui-tile-button text="Button 5 (disabled)" href="#" disabled></oui-tile-button>
+    <oui-tile-button disabled>Button 4 (disabled)</oui-tile-button>
+    <oui-tile-button href="#" disabled>Button 5 (disabled)</oui-tile-button>
 </oui-tile>
-
 <div class="oui-doc-preview-only">Button 1 clicked: {{$ctrl.click}}</div>
 </div>
 ```
@@ -59,14 +57,16 @@
 
 ```html:preview
 <div ng-init="$ctrl.loading = true" class="oui-doc-preview-only-keep-children">
-<button class="oui-button oui-doc-preview-only" type="button"
-    ng-class="{
-        'oui-button_primary': $ctrl.loading,
-        'oui-button_secondary': !$ctrl.loading
-    }"
-    ng-click="$ctrl.loading = !$ctrl.loading">
-    Toggle loading
-</button>
+<p>
+    <button class="oui-button oui-doc-preview-only" type="button"
+        ng-class="{
+            'oui-button_primary': $ctrl.loading,
+            'oui-button_secondary': !$ctrl.loading
+        }"
+        ng-click="$ctrl.loading = !$ctrl.loading">
+        Toggle loading
+    </button>
+</p>
 <oui-tile heading="Title" description="A great legend for this tile." loading="$ctrl.loading">
     <p>Nulla ac dui a est varius eleifend nec vitae ipsum. Nunc venenatis luctus nisi quis pulvinar. Duis justo massa, mattis nec metus scelerisque, mattis tristique quam. Sed eget neque elementum, facilisis velit eget, iaculis lectus. Quisque at molestie justo. Ut tincidunt augue non tortor tincidunt facilisis. Donec ut lectus a leo porttitor eleifend. Morbi venenatis turpis eu rutrum consectetur. Sed auctor ligula at erat euismod, imperdiet posuere est feugiat. Quisque maximus ultricies risus sed varius.</p>
 </oui-tile>
@@ -77,28 +77,30 @@
 
 ### oui-tile
 
-| Attribute           | Type     | Binding | One-time Binding | Values                 | Default           | Description                               |
-| ----                | ----     | ----    | ----             | ----                   | ----              | ----                                      |
-| `heading`           | string   | @?      | yes              |                        |                   | tile title                                |
-| `description`       | string   | @?      | yes              |                        |                   | tile description behind title             |
-| `loading`           | boolean  | <?      |                  |                        | false             | display loader flag                       |
+| Attribute         | Type      | Binding   | One-time Binding  | Values            | Default   | Description
+| ----              | ----      | ----      | ----              | ----              | ----      | ----
+| `heading`         | string    | @?        | yes               | n/a               | n/a       | tile title
+| `description`     | string    | @?        | yes               | n/a               | n/a       | tile description behind title
+| `loading`         | boolean   | <?        | no                | `true`, `false`   | `false`   | display loader flag
 
 ### oui-tile-button
 
-| Attribute           | Type     | Binding | One-time Binding | Values                 | Default           | Description                               |
-| ----                | ----     | ----    | ----             | ----                   | ----              | ----                                      |
-| `text`              | string   | @       | yes              |                        |                   | button text                               |
-| `href`              | string   | @?      | yes              |                        |                   | button link url                           |
-| `on-click`          | funcion  | &?      |                  |                        |                   | button action callback                    |
-| `aria-label`        | string   | @?      |                  |                        | `null`            | accessibility label                       |
-| `disabled`          | boolean  | <?      |                  |                        | `false`           | disabled flag
-| `external`          | boolean  | <?      | yes              |                        | `false`           | open in new tab and display external icon
+| Attribute         | Type      | Binding   | One-time Binding  | Values            | Default   | Description
+| ----              | ----      | ----      | ----              | ----              | ----      | ----
+| `href`            | string    | @?        | yes               | n/a               | n/a       | button link url
+| `aria-label`      | string    | @?        | no                | n/a               | `null`    | accessibility label
+| `disabled`        | boolean   | <?        | no                | `true`, `false`   | `false`   | disabled flag
+| `external`        | boolean   | <?        | yes               | `true`, `false`   | `false`   | open in new tab and display external icon
+| `on-click`        | funcion   | &         | no                | n/a               | n/a       | button action callback
+
+#### Deprecated
+
+* `text`: Replaced by transclude value
 
 ### oui-tile-definition
 
-| Attribute           | Type     | Binding | One-time Binding | Values                 | Default           | Description                               |
-| ----                | ----     | ----    | ----             | ----                   | ----              | ----                                      |
-| `term`              | string   | @?      | yes              |                        |                   | definition term item                      |
-| `term-popover`      | string   | @?      | yes              |                        |                   | definition term item popover              |
-| `description`       | string   | @?      | yes              |                        |                   | definition description item               |
-| `actions`           | array    | =?      |                  | [Object]               |                   | action menu item                          |
+| Attribute         | Type     | Binding    | One-time Binding  | Values            | Default   | Description
+| ----              | ----     | ----       | ----              | ----              | ----      | ----
+| `term`            | string   | @?         | yes               | n/a               | n/a       | definition term item
+| `term-popover`    | string   | @?         | yes               | n/a               | n/a       | definition term item popover
+| `description`     | string   | @?         | yes               | n/a               | n/a       | definition description item

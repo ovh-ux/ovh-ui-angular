@@ -39,26 +39,26 @@
 
 ```html:preview
 <oui-page-header heading="My title" description="My subtitle">
-  <oui-header-tabs>
-    <oui-header-tabs-item text="Home" href="/#"></oui-header-tabs-item>
-    <oui-header-tabs-item text="Page Header" href="/#!/oui-angular/page-header" active></oui-header-tabs-item>
-    <oui-header-tabs-item text="Header Tabs" href="/#!/oui-angular/header-tabs"></oui-header-tabs-item>
-    <oui-header-tabs-dropdown text="Form">
-      <oui-header-tabs-item text="Field" href="/#!/oui-angular/field"></oui-header-tabs-item>
-      <oui-header-tabs-divider></oui-header-tabs-divider>
-      <oui-header-tabs-item text="Checkbox" href="#!/oui-angular/checkbox"></oui-header-tabs-item>
-      <oui-header-tabs-item text="Radio" href="#!/oui-angular/radio-group"></oui-header-tabs-item>
-    </oui-header-tabs-dropdown>
-    <oui-header-tabs-item text="Pagination" href="/#!/oui-angular/pagination"></oui-header-tabs-item>
-    <oui-header-tabs-item text="Datagrid" href="/#!/oui-angular/datagrid"></oui-header-tabs-item>
-  </oui-header-tabs>
+    <oui-header-tabs>
+        <oui-header-tabs-item text="Home" href="/#"></oui-header-tabs-item>
+        <oui-header-tabs-item text="Page Header" href="/#!/oui-angular/page-header" active></oui-header-tabs-item>
+        <oui-header-tabs-item text="Header Tabs" href="/#!/oui-angular/header-tabs"></oui-header-tabs-item>
+        <oui-header-tabs-dropdown text="Form">
+            <oui-header-tabs-item text="Field" href="/#!/oui-angular/field"></oui-header-tabs-item>
+            <oui-header-tabs-divider></oui-header-tabs-divider>
+            <oui-header-tabs-item text="Checkbox" href="#!/oui-angular/checkbox"></oui-header-tabs-item>
+            <oui-header-tabs-item text="Radio" href="#!/oui-angular/radio-group"></oui-header-tabs-item>
+        </oui-header-tabs-dropdown>
+        <oui-header-tabs-item text="Pagination" href="/#!/oui-angular/pagination"></oui-header-tabs-item>
+        <oui-header-tabs-item text="Datagrid" href="/#!/oui-angular/datagrid"></oui-header-tabs-item>
+    </oui-header-tabs>
 </oui-page-header>
 ```
 
 
 ## API
 
-| Attribute     | Type     | Binding | One-time Binding | Values                 | Default   | Description                      |
-| ----          | ----     | ----    | ----             | ----                   | ----      | ----                             |
-| heading       | string   | @?      | true             |                        |           | title of the header              |
-| description   | string   | @?      | true             |                        |           | subtitle of the header           |
+| Attribute     | Type     | Binding    | One-time Binding  | Values    | Default   | Description
+| ----          | ----     | ----       | ----              | ----      | ----      | ----
+| `heading`     | string   | @?         | yes               | n/a       | n/a       | title of the header
+| `description` | string   | @?         | yes               | n/a       | n/a       | subtitle of the header

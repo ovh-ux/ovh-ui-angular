@@ -1,7 +1,6 @@
 import { addBooleanParameter, addDefaultParameter } from "@oui-angular/common/component-utils";
 
 const KEY_ESCAPE = 27;
-const PANEL_CLASSNAME = "oui-slideshow-panel";
 const TRANSITION_DURATION = 800;
 const Direction = {
     NEXT: "next",
@@ -46,11 +45,11 @@ export default class {
         this.$document.on("keydown", evt => this._triggerKeyHandler(evt));
 
         this.$timeout(() => {
-            this.panels = this.$element[0].querySelectorAll("oui-slideshow-panel");
+            this.panels = this.$element.find("oui-slideshow-panel");
 
             if (this.panels[0]) {
                 this.isIllustrated = this._isIllustratedPanel(0);
-                const firstPanelElement = this.panels[0].querySelector(`.${PANEL_CLASSNAME}`);
+                const firstPanelElement = this.panels[0];
                 firstPanelElement.setAttribute("aria-hidden", "false");
                 const $firstPanelElement = angular.element(firstPanelElement);
                 $firstPanelElement.addClass("active");
@@ -122,10 +121,10 @@ export default class {
 
     _slide (direction, indexTo) {
         const slideType = direction === Direction.NEXT ? Direction.LEFT : Direction.RIGHT;
-        const activePanel = this.panels[this.currentIndex].querySelector(`.${PANEL_CLASSNAME}`);
+        const activePanel = this.panels[this.currentIndex];
         const $activePanel = angular.element(activePanel);
         const nextPanelIndex = indexTo === 0 ? 0 : indexTo || (activePanel && this._getIndexByDirection(direction));
-        const nextPanel = this.panels[nextPanelIndex].querySelector(`.${PANEL_CLASSNAME}`);
+        const nextPanel = this.panels[nextPanelIndex];
         const $nextPanel = angular.element(nextPanel);
 
         if (nextPanel && $nextPanel.hasClass("active")) {

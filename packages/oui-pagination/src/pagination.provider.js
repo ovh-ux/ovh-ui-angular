@@ -1,3 +1,5 @@
+import merge from "lodash/merge";
+
 export default class {
     constructor () {
         this.pageSize = 25;
@@ -32,11 +34,11 @@ export default class {
     }
 
     /**
-     * Set the translations for the pagination component
+     * Set the translations
      * @param {Object} translations a map of translations
      */
     setTranslations (translations) {
-        this.translations = translations;
+        this.translations = merge(this.translations, translations);
         return this;
     }
 

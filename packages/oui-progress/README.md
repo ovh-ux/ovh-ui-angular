@@ -60,8 +60,8 @@
 ```html:preview
 <oui-progress max-value="200">
     <oui-progress-bar type="success"
-        value="139"
-        text="Installing components: 139/200">
+        value="139">
+        Installing components: 139/200
     </oui-progress-bar>
     <oui-progress-threshold value="25"></oui-progress-threshold>
     <oui-progress-threshold value="50"></oui-progress-threshold>
@@ -85,8 +85,8 @@
 ```html:preview
 <oui-progress compact>
     <oui-progress-bar type="info"
-        value="$ctrl.progressData.value1"
-        text="{{$ctrl.progressData.value1}}% complete">
+        value="$ctrl.progressData.value1">
+        {{$ctrl.progressData.value1}}% complete
     </oui-progress-bar>
 </oui-progress>
 
@@ -104,8 +104,8 @@
 
 <oui-progress compact>
     <oui-progress-bar type="error"
-        value="$ctrl.progressData.value4"
-        text="{{$ctrl.progressData.value4}}% complete">
+        value="$ctrl.progressData.value4">
+        {{$ctrl.progressData.value4}}% complete
     </oui-progress-bar>
 </oui-progress>
 ```
@@ -114,21 +114,24 @@
 
 ### oui-progress
 
-| Attribute | Type      | Binding | One-time binding    | Values                                 | default  | Description
-| ----      | ----      | ----    | ----                | ----                                   | ----     | ----
-| compact   | Boolean   | <?      | yes                 |                                        | false    | compact mode flag
-| min-value | Number    | @?      | yes                 |                                        | 0        | min value of progress component
-| max-value | Number    | @?      | yes                 |                                        | 100      | max value of progress component
+| Attribute     | Type      | Binding   | One-time binding  | Values                                | default       | Description
+| ----          | ----      | ----      | ----              | ----                                  | ----          | ----
+| `min-value`   | number    | @?        | yes               | n/a                                   | `0`           | min value of progress component
+| `max-value`   | number    | @?        | yes               | n/a                                   | `100`         | max value of progress component
+| `compact`     | boolean   | <?        | yes               | `true`, `false`                       | `false`       | compact mode flag
 
 ### oui-progress-bar
-| Attribute | Type      | Binding | One-time binding    | Values                                 | default  | Description
-| ----      | ----      | ----    | ----                | ----                                   | ----     | ----
-| type      | String    | @       | yes                 | `info`, `success`, `warning`, `error`  | `info`   | type of the progress bar
-| value     | Number    | <       | no                  |                                        |          | current value of progress bar
-| text      | String    | @?      | yes                 |                                        | value%   | text of progress bar. If undefined, the current value is display as a percentage.
+| Attribute     | Type      | Binding | One-time binding    | Values                                | default       | Description
+| ----          | ----      | ----    | ----                | ----                                  | ----          | ----
+| `type`        | string    | @       | yes                 | `info`, `success`, `warning`, `error` | `info`        | type of the progress bar
+| `value`       | number    | <       | no                  | n/a                                   | n/a           | current value of progress bar
+
+#### Deprecated
+
+* `text`: Replaced by transclude value
 
 ### oui-progress-threshold
 
-| Attribute | Type      | Binding | One-time binding    | Values    | default   | Description
-| ----      | ----      | ----    | ----                | ----      | ----      | ----
-| value     | Number    | <       | yes                 |           |           | value at which the threshold should appear
+| Attribute     | Type      | Binding | One-time binding    | Values                                | default       | Description
+| ----          | ----      | ----    | ----                | ----                                  | ----          | ----
+| `value`       | number    | <       | yes                 | n/a                                   | n/a           | value at which the threshold should appear

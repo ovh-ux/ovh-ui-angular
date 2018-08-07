@@ -1,4 +1,4 @@
-import { addBooleanParameter } from "@oui-angular/common/component-utils";
+import { addBooleanParameter, addDefaultParameter } from "@oui-angular/common/component-utils";
 
 export default class {
     constructor ($attrs, $element, $timeout) {
@@ -10,17 +10,9 @@ export default class {
     }
 
     $onInit () {
-        // Add default value for attribute 'type'
-        if (angular.isUndefined(this.type)) {
-            this.type = "button";
-        }
-
-        // Add default value for attribute 'variant'
-        if (angular.isUndefined(this.variant)) {
-            this.variant = "secondary";
-        }
-
         addBooleanParameter(this, "disabled");
+        addDefaultParameter(this, "type", "button");
+        addDefaultParameter(this, "variant", "secondary");
     }
 
     $postLink () {

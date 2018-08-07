@@ -24,8 +24,8 @@
 
 ### oui-collapsible
 
-| Attribute     | Type      | Binding | One-time binding | Values | Default   | Description
-| ----          | ----      | ----    | ----             | ----   | ----      | ----
-| `heading`     | string    | @       |                  |        |           | collapsible heading
-| `aria-label`  | string    | @?      | yes              |        |           | accessibility label
-| `expanded`    | boolean   | <?      | yes              |        | `false`   | initial expanded state
+| Attribute     | Type      | Binding | One-time binding    | Values    | Default   | Description
+| ----          | ----      | ----    | ----                | ----      | ----      | ----
+| `heading`     | string    | @       | no                  | n/a       | n/a       | text of the heading
+| `aria-label`  | string    | @?      | yes                 | n/a       | n/a       | accessibility label
+| `expanded`    | boolean   | <?      | yes                 | n/a       | `false`   | initial expanded state

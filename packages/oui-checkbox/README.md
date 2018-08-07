@@ -7,16 +7,16 @@
 ### Unchecked
 
 ```html:preview
-<oui-checkbox text="Normal"></oui-checkbox>
-<oui-checkbox text="Disabled" disabled></oui-checkbox>
+<oui-checkbox>Normal</oui-checkbox>
+<oui-checkbox disabled>Disabled</oui-checkbox>
 ```
 
 ### Checked
 
 ```html:preview
 <div ng-init="$ctrl.checked = true">
-  <oui-checkbox text="Normal" model="$ctrl.checked"></oui-checkbox>
-  <oui-checkbox text="Disabled" model="$ctrl.checked" disabled></oui-checkbox>
+  <oui-checkbox model="$ctrl.checked">Normal</oui-checkbox>
+  <oui-checkbox model="$ctrl.checked" disabled>Disabled</oui-checkbox>
 </div>
 ```
 
@@ -24,8 +24,8 @@
 
 ```html:preview
 <div ng-init="$ctrl.indeterminate = null">
-  <oui-checkbox text="Normal" model="$ctrl.indeterminate"></oui-checkbox>
-  <oui-checkbox text="Disabled" model="$ctrl.indeterminate" disabled></oui-checkbox>
+  <oui-checkbox model="$ctrl.indeterminate">Normal</oui-checkbox>
+  <oui-checkbox model="$ctrl.indeterminate" disabled>Disabled</oui-checkbox>
 </div>
 ```
 
@@ -34,7 +34,7 @@
 ```html:preview
 <form name="form">
   <div ng-init="$ctrl.agreements = false">
-    <oui-checkbox text="Agreements" model="$ctrl.agreements" name="agreements" required></oui-checkbox>
+    <oui-checkbox model="$ctrl.agreements" name="agreements" required>Agreements</oui-checkbox>
   </div>
   Is this form valid? : {{ form.$valid ? "yes" : "no" }}
 </form>
@@ -44,38 +44,36 @@
 
 ```html:preview
 <div ng-init="$ctrl.indeterminate = null">
-  <oui-checkbox text="Normal" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod magna rutrum lectus gravida semper. Praesent ultrices feugiat enim, nec cursus ipsum fringilla luctus. Sed vel ornare neque. Vestibulum bibendum."></oui-checkbox>
-  <oui-checkbox text="Disabled" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod magna rutrum lectus gravida semper. Praesent ultrices feugiat enim, nec cursus ipsum fringilla luctus. Sed vel ornare neque. Vestibulum bibendum." disabled></oui-checkbox>
+  <oui-checkbox description="Lorem ipsum dolor sit amet, consectetur adipiscing elit.">Normal</oui-checkbox>
+  <oui-checkbox description="Pellentesque euismod magna rutrum lectus gravida semper." disabled>Disabled</oui-checkbox>
 </div>
 ```
 
 ### On change
 
-**Note:** Model will not be refreshed until the `on-change` callback as not finished. If you want to access the new model inside the `on-change` callback you need to use the `modelValue` variable as below.
+**Note**: Model will not be refreshed until the `on-change` callback hasn't returned. If you want to access the new model inside the `on-change` callback you need to use the `modelValue` variable as below.
 
 ```html:preview
 <oui-checkbox
-  text="Normal"
   model="$ctrl.onChangeValue"
   on-change="$ctrl.lastOnChangeValue = modelValue"
-></oui-checkbox>
+>Normal</oui-checkbox>
 
 <span>Last onChange value: {{ $ctrl.lastOnChangeValue }}</span>
 ```
 
-### Accessibility
-
-Needs to be done.
-
 ## API
 
-| Attribute     | Type                    | Binding | One-time Binding | Values                   | Default | Description
-| ----          | ----                    | ----    | ----             | ----                     | ----    | ----
-| text          | string                  | @       |                  |                          |         | checkbox text
-| description   | string                  | @?      |                  |                          |         | description text
-| id            | string                  | @?      | `true`           |                          |         | id attribute of the checkbox
-| name          | string                  | @?      | `true`           |                          |         | name attribute of the checkbox
-| disabled      | boolean                 | <?      |                  |                          | false   | disabled flag
-| model         | nullable&lt;boolean&gt; | =?      |                  | `true`, `false`, `null`  |         | current value of the checkbox and null is considered as `indeterminate`
-| required      | boolean                 | <?      |                  |                          | false   | `true` if the checkbox should be checked
-| on-change     | function                | &?      |                  |                          |         | handler triggered when value has changed
+| Attribute     | Type                    | Binding | One-time Binding  | Values                   | Default    | Description
+| ----          | ----                    | ----    | ----              | ----                     | ----       | ----
+| `model`       | boolean &#124; null     | =?      | no                | `true`, `false`, `null`  | n/a        | current value of the checkbox and null is considered as `indeterminate`
+| `id`          | string                  | @?      | yes               | n/a                      | n/a        | id attribute of the checkbox
+| `name`        | string                  | @?      | yes               | n/a                      | n/a        | name attribute of the checkbox
+| `description` | string                  | @?      | no                | n/a                      | n/a        | description text
+| `disabled`    | boolean                 | <?      | no                | `true`, `false`          | `false`    | disabled flag
+| `required`    | boolean                 | <?      | no                | `true`, `false`          | `false`    | required flag
+| `on-change`   | function                | &       | no                | n/a                      | n/a        | handler triggered when value has changed
+
+#### Deprecated
+
+* `text`: Replaced by transclude value

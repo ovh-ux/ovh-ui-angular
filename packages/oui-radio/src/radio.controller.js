@@ -10,16 +10,6 @@ export default class {
         this.$timeout = $timeout;
     }
 
-    $postLink () {
-        // Sometimes the digest cycle is done before dom manipulation,
-        // So we use $timeout to force the $apply
-        this.$timeout(() =>
-            this.$element
-                .removeAttr("id")
-                .removeAttr("name")
-        );
-    }
-
     $onInit () {
         addBooleanParameter(this, "disabled");
         addBooleanParameter(this, "thumbnail");
@@ -40,6 +30,16 @@ export default class {
         } else {
             addDefaultParameter(this, "name", this.id);
         }
+    }
+
+    $postLink () {
+        // Sometimes the digest cycle is done before dom manipulation,
+        // So we use $timeout to force the $apply
+        this.$timeout(() =>
+            this.$element
+                .removeAttr("id")
+                .removeAttr("name")
+        );
     }
 
     onRadioModelChange (event) {

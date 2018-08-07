@@ -19,7 +19,8 @@ describe("ouiRadioGroup", () => {
     const getRadioGroupElement = (element) => angular.element(element[0]);
     const clickRadio = (radioToCheck) => {
         radioToCheck.prop("checked", true);
-        radioToCheck.triggerHandler("click");
+        radioToCheck.triggerHandler("click"); // NG 1.6
+        radioToCheck.triggerHandler("change"); // NG 1.7
     };
 
     describe("Component", () => {

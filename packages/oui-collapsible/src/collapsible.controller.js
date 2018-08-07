@@ -11,6 +11,7 @@ export default class {
     }
 
     $onInit () {
+        addDefaultParameter(this, "id", `ouiCollapsible${this.$scope.$id}`);
         addDefaultParameter(this, "expanded", false);
 
         // Check body height for transition animation
@@ -26,6 +27,7 @@ export default class {
         this.$timeout(() =>
             this.$element
                 .addClass("oui-collapsible")
+                .attr("id", this.id)
                 .removeAttr("aria-label")
         );
 

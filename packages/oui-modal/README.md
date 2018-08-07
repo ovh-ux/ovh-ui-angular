@@ -76,13 +76,17 @@
 
 ## API
 
-| Attribute           | Type     | Binding | One-time Binding | Values                 | Default           | Description                               |
-| ----                | ----     | ----    | ----             | ----                   | ----              | ----                                      |
-| `heading`        | string   | @       | yes              |                        |                   | modal title                               |
-| `primary-action`    | function | &?      |                  |                        |                   | confirmation callback                     |
-| `primary-label`     | string   | @?      | yes              |                        |                   | confirmation label                        |
-| `secondary-action`  | function | &?      |                  |                        |                   | cancellation callback                     |
-| `secondary-label`   | string   | @?      | yes              |                        |                   | cancellation label                        |
-| `on-dismiss`        | function | &?      |                  |                        |                   | dismiss callback                          |
-| `loading`           | boolean  | <?      |                  |                        | false             | display loader flag                       |
-| `type`              | string   | @?      | yes              | warning, success, info |                   | display loader flag                       |
+| Attribute             | Type      | Binding   | One-time Binding | Values                         | Default   | Description
+| ----                  | ----      | ----      | ----             | ----                           | ----      | ----
+| `heading`             | string    | @         | yes              | n/a                            | n/a       | modal title
+| `type`                | string    | @?        | yes              | `warning`, `success`, `info`   | n/a       | modal type
+| `loading`             | boolean   | <?        | no               | `true`, `false`                | `false`   | display loader flag
+| `primary-label`       | string    | @?        | yes              | n/a                            | n/a       | confirmation label
+| `primary-action`      | function  | &         | no               | n/a                            | n/a       | confirmation callback
+| `secondary-label`     | string    | @?        | yes              | n/a                            | n/a       | cancellation label
+| `secondary-action`    | function  | &         | no               | n/a                            | n/a       | cancellation callback
+| `on-dismiss`          | function  | &         | no               | n/a                            | n/a       | dismiss callback
+
+#### Deprecated
+
+* `title`: Replaced by `heading` attribute

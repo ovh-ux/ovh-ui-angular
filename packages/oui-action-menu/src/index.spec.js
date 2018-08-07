@@ -12,7 +12,7 @@ describe("ouiActionMenu", () => {
         it("should display an action menu", () => {
             const element = TestUtils.compileTemplate(`
                 <oui-action-menu>
-                  <oui-action-menu-item text="Action 1"></oui-action-menu-item>
+                  <oui-action-menu-item>Action 1</oui-action-menu-item>
                 </oui-action-menu>`
             );
 
@@ -24,8 +24,7 @@ describe("ouiActionMenu", () => {
             const clickSpy = jasmine.createSpy("spy");
             const element = TestUtils.compileTemplate(
                 `<oui-action-menu>
-                  <oui-action-menu-item text="Action 1"
-                    on-click="$ctrl.clickHandler()"></oui-action-menu-item>
+                  <oui-action-menu-item on-click="$ctrl.clickHandler()">Action 1</oui-action-menu-item>
                 </oui-action-menu>`,
                 {
                     clickHandler: clickSpy
@@ -44,9 +43,7 @@ describe("ouiActionMenu", () => {
         it("should display a link item", () => {
             const element = TestUtils.compileTemplate(`
                 <oui-action-menu>
-                  <oui-action-menu-item
-                    text="Action 1"
-                    href="http://foo.bar"></oui-action-menu-item>
+                  <oui-action-menu-item href="http://foo.bar">Action 1</oui-action-menu-item>
                 </oui-action-menu>`
             );
 
@@ -59,9 +56,9 @@ describe("ouiActionMenu", () => {
             it("should display a disabled button item", () => {
                 const element = TestUtils.compileTemplate(
                     `<oui-action-menu>
-                      <oui-action-menu-item text="Action 1"
+                      <oui-action-menu-item
                         on-click="$ctrl.clickHandler()"
-                        disabled></oui-action-menu-item>
+                        disabled>Action 1</oui-action-menu-item>
                     </oui-action-menu>`
                 );
 
@@ -72,9 +69,9 @@ describe("ouiActionMenu", () => {
             it("should display a disabled button item with dynamic binding", () => {
                 const element = TestUtils.compileTemplate(
                     `<oui-action-menu>
-                      <oui-action-menu-item text="Action 1"
+                      <oui-action-menu-item
                         on-click="$ctrl.clickHandler()"
-                        disabled="$ctrl.isDisabled"></oui-action-menu-item>
+                        disabled="$ctrl.isDisabled">Action 1</oui-action-menu-item>
                     </oui-action-menu>`, {
                         isDisabled: true
                     }

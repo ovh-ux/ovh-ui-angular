@@ -5,12 +5,12 @@ export default {
     template,
     controller,
     bindings: {
-        text: "@?",
-        onClick: "&?",
+        text: "@?", // Deprecated: Replaced by transclude value
         href: "@?",
         ariaLabel: "@?",
         disabled: "<?",
-        external: "<?"
+        external: "<?",
+        onClick: "&"
     },
     transclude: true
 };

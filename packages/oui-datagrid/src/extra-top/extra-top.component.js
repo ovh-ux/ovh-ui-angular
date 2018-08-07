@@ -4,5 +4,8 @@ export default {
     controller,
     require: {
         datagridCtrl: "^^ouiDatagrid"
+    },
+    bindings: {
+        selectedItems: "<"
     }
 };

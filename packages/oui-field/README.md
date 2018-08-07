@@ -165,7 +165,7 @@
                 <option value="osx">OSX</option>
                 <option value="windows">Windows</option>
             </select>
-            <i class="oui-icon oui-icon-chevron-down" aria-hidden="true"></i>
+            <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
         </label>
     </oui-field>
 
@@ -237,17 +237,15 @@
 </form>
 ```
 
-
 ## API
 
-| Attribute         | Type            | Binding | One-time binding | Values                             | Default        | Description                                            |
-| ----              | ----            | ----    | ----             | ----                               | ----           | ----                                                   |
-| `error-messages`  | object          | <?      | no               |                                    |                | a dictionary to override default messages              |
-| `help-text`       | string          | @?      | yes              |                                    |                | a text to help fill the form field                     |
-| `size`            | string          | @?      | yes              | `xs`, `s`, `m`, `l`, `xl`, `auto`  | `auto`         | the field size                                         |
-| `label`           | function        | @?      | yes              |                                    |                | the field label                                        |
-| `label-popover`   | string          | @?      | yes              |                                    |                | a text to describe the field or give more information  |
-
+| Attribute         | Type      | Binding   | One-time binding  | Values                            | Default   | Description
+| ----              | ----      | ----      | ----              | ----                              | ----      | ----
+| `label`           | string    | @?        | yes               | n/a                               | n/a       | field label
+| `label-popover`   | string    | @?        | yes               | n/a                               | n/a       | text to describe the field or give more information
+| `help-text`       | string    | @?        | yes               | n/a                               | n/a       | text to help fill the form field
+| `size`            | string    | @?        | yes               | `xs`, `s`, `m`, `l`, `xl`, `auto` | `auto`    | field size
+| `error-messages`  | object    | <?        | no                | n/a                               | n/a       | dictionary to override default messages
 
 ## Configuration
 
@@ -257,7 +255,7 @@ The validation messages can be globally configured with a provider.
 angular.module("myModule", [
     "oui.field"
 ]).config(ouiFieldConfiguration => {
-    ouiFieldConfiguration.translations = {
+    ouiFieldConfiguration.setTranslations({ // default translations
         errors: {
             required: "Mandatory.",
             number: "Invalid number.",
@@ -268,6 +266,6 @@ angular.module("myModule", [
             maxlength: "Too high ({{maxlength}} characters max).",
             pattern: "Invalid format."
         }
-    };
+    });
 });
 ```

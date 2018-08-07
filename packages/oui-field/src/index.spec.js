@@ -370,9 +370,6 @@ describe("ouiField", () => {
                 $timeout.flush();
                 expect(getError(element)).toBeNull();
             });
-
-            // TODO
-            it("should show the right error message");
         });
 
         // We assume that if ouiField is able to find the form field,
@@ -389,7 +386,7 @@ describe("ouiField", () => {
                                 <option value="osx">OSX</option>
                                 <option value="windows">Windows</option>
                             </select>
-                            <i class="oui-icon oui-icon-chevron-down" aria-hidden="true"></i>
+                            <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                         </label>
                     </oui-field>
                     `);

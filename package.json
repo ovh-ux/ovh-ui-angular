@@ -33,16 +33,16 @@
     }
   },
   "dependencies": {
-    "clipboard": "2.0.1",
+    "angular": "^1.6.x",
+    "angular-aria": "^1.6.x",
+    "angular-sanitize": "^1.6.x",
+    "clipboard": "^2.0.1",
     "escape-string-regexp": "^1.0.5",
-    "flatpickr": "4.5.0",
+    "flatpickr": "^4.5.1",
     "popper.js": "^1.14.3"
   },
   "devDependencies": {
-    "angular": "~1.6.1",
-    "angular-aria": "~1.6.1",
-    "angular-mocks": "~1.6.1",
-    "angular-sanitize": "~1.6.1",
+    "angular-mocks": "^1.6.x",
     "autoprefixer": "^8.0.0",
     "babel-cli": "^6.18.0",
     "babel-core": "^6.21.0",
@@ -54,7 +54,6 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-2": "^6.22.0",
     "babel-register": "^6.18.0",
-    "bootstrap": "^3.3.7",
     "cross-env": "^5.1.0",
     "css-loader": "^0.28.4",
     "eslint": "^4.3.0",

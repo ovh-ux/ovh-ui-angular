@@ -32,8 +32,13 @@ export default class SelectPickerController {
         addBooleanParameter(this, "required");
         addDefaultParameter(this, "id", `ouiSelectPicker${this.$scope.$id}`);
 
+        // Deprecated: Support for 'text' attribute
+        if (!!this.$attrs.text && !this.$attrs.label) {
+            this.label = this.text;
+        }
+
         if (this.picture) {
-            this.isImgPath = /\.(gif|png|jpg)$/.test(this.picture);
+            this.isImgPath = /^data:/.test(this.picture) || /\.(gif|png|jpg)$/.test(this.picture);
         }
 
         if (this.values && this.values.length === 1) {

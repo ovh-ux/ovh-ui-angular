@@ -158,7 +158,7 @@ describe("ouiMessage", () => {
     }
 
     function getIcons (element, className) {
-        return getElementsByClassName(element, "i", className);
+        return getElementsByClassName(element, "span", className);
     }
 
     function isMessageDisplayed (element) {

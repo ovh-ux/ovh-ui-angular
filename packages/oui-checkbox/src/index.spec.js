@@ -1,10 +1,12 @@
 describe("ouiCheckbox", () => {
+    let $timeout;
     let TestUtils;
 
     beforeEach(angular.mock.module("oui.checkbox"));
     beforeEach(angular.mock.module("oui.test-utils"));
 
-    beforeEach(inject((_TestUtils_) => {
+    beforeEach(inject((_$timeout_, _TestUtils_) => {
+        $timeout = _$timeout_;
         TestUtils = _TestUtils_;
     }));
 
@@ -25,6 +27,14 @@ describe("ouiCheckbox", () => {
     }
 
     describe("Component", () => {
+        it("should have a default classname", () => {
+            const element = TestUtils.compileTemplate("<oui-checkbox></oui-checkbox>");
+
+            $timeout.flush();
+
+            expect(element.hasClass("oui-checkbox")).toBeTruthy();
+        });
+
         describe("id attribute", () => {
             it("should generate an id for the input and label when undefined", () => {
                 const element = TestUtils.compileTemplate("<oui-checkbox></oui-checkbox>");
@@ -137,7 +147,8 @@ describe("ouiCheckbox", () => {
                 const $checkboxElement = angular.element(checkboxElement);
 
                 $checkboxElement.prop("checked", true);
-                $checkboxElement.triggerHandler("click");
+                $checkboxElement.triggerHandler("click"); // NG 1.6
+                $checkboxElement.triggerHandler("change"); // NG 1.7
 
                 expect($ctrl.currentModel).toBe(true);
             });
@@ -189,7 +200,8 @@ describe("ouiCheckbox", () => {
                 const $checkboxElement = angular.element(checkboxElement);
 
                 $checkboxElement.prop("checked", true);
-                $checkboxElement.triggerHandler("click");
+                $checkboxElement.triggerHandler("click"); // NG 1.6
+                $checkboxElement.triggerHandler("change"); // NG 1.7
 
                 expect(onChangeSpy).toHaveBeenCalledWith(true);
             });
@@ -240,7 +252,8 @@ describe("ouiCheckbox", () => {
                 expect(form.$valid).toBeFalsy();
 
                 $checkboxElement.prop("checked", true);
-                $checkboxElement.triggerHandler("click");
+                $checkboxElement.triggerHandler("click"); // NG 1.6
+                $checkboxElement.triggerHandler("change"); // NG 1.7
                 expect(form.$valid).toBeTruthy();
             });
         });

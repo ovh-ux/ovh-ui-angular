@@ -3,17 +3,15 @@ import template from "./button.html";
 
 export default {
     bindings: {
-        text: "@",
+        text: "@?", // Deprecated: Replaced by transclude value
         id: "@?",
         name: "@?",
-        type: "@?", // values: submit|button|reset (default: button)
-        variant: "@?", // values: primary|secondary|link (default: secondary)
-        variantNav: "@?", // values: previous|next
+        type: "@?",
+        variant: "@?",
+        variantNav: "@?",
         ariaLabel: "@?",
-
         disabled: "<?",
-
-        onClick: "&?"
+        onClick: "&"
     },
     controller,
     template,

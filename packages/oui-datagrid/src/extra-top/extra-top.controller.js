@@ -7,6 +7,10 @@ export default class {
 
     $postLink () {
         this.extraTopScope = this.datagridCtrl.getParentScope().$new(false);
+        this.extraTopScope.$selectedRows = [];
+        this.extraTopScope.$watchCollection(() => this.datagridCtrl.getSelectedRows(), (rows) => {
+            this.extraTopScope.$selectedRows = rows || [];
+        });
         this._compileElement();
     }
 
