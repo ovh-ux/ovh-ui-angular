@@ -1,3 +1,33 @@
+<a name="2.18.0"></a>
+# [2.18.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.17.2...v2.18.0) (2018-08-07)
+
+
+### Bug Fixes
+
+* fix provider methods ([1acc3ab](https://github.com/ovh-ux/ovh-ui-angular/commit/1acc3ab))
+* **oui-back-button:** fix attributes on template ([a21a35f](https://github.com/ovh-ux/ovh-ui-angular/commit/a21a35f))
+* **oui-form-actions:** fix cancel button template ([cb8b9ad](https://github.com/ovh-ux/ovh-ui-angular/commit/cb8b9ad))
+* **oui-modal:** fix modal template ([291cc10](https://github.com/ovh-ux/ovh-ui-angular/commit/291cc10))
+* **oui-numeric:** fix attributes on template ([673e372](https://github.com/ovh-ux/ovh-ui-angular/commit/673e372))
+* **oui-select:** fix ui-select templates override ([f16aa49](https://github.com/ovh-ux/ovh-ui-angular/commit/f16aa49))
+* **oui-select-picker:** standardize attribute text to label ([e0e6fd0](https://github.com/ovh-ux/ovh-ui-angular/commit/e0e6fd0))
+
+
+### Features
+
+* add support for angularjs 1.7 ([7fba84a](https://github.com/ovh-ux/ovh-ui-angular/commit/7fba84a))
+* **oui-action-menu:** add transclude support ([e1d9168](https://github.com/ovh-ux/ovh-ui-angular/commit/e1d9168))
+* **oui-checkbox:** add transclude support ([6322998](https://github.com/ovh-ux/ovh-ui-angular/commit/6322998))
+* **oui-datagrid:** add selectable rows ([#242](https://github.com/ovh-ux/ovh-ui-angular/issues/242)) ([08d0841](https://github.com/ovh-ux/ovh-ui-angular/commit/08d0841))
+* **oui-dropdown:** add transclude support ([d16c57f](https://github.com/ovh-ux/ovh-ui-angular/commit/d16c57f))
+* **oui-guide-menu:** add transclude support ([314a986](https://github.com/ovh-ux/ovh-ui-angular/commit/314a986))
+* **oui-progress:** add transclude support ([d20ff03](https://github.com/ovh-ux/ovh-ui-angular/commit/d20ff03))
+* **oui-radio:** add transclude support ([edee954](https://github.com/ovh-ux/ovh-ui-angular/commit/edee954))
+* **oui-slideshow:** add transclude support ([c86a592](https://github.com/ovh-ux/ovh-ui-angular/commit/c86a592))
+* **oui-tile:** add transclude support ([b206dd6](https://github.com/ovh-ux/ovh-ui-angular/commit/b206dd6))
+
+
+
 <a name="2.17.2"></a>
 ## [2.17.2](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.17.1...v2.17.2) (2018-08-06)
 
