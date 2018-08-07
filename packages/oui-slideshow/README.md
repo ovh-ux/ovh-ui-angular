@@ -10,25 +10,25 @@
 <div class="oui-doc-preview-only-keep-children" style="padding:50px 35px;background-color:rgba(0,0,0,0.3)">
 <oui-slideshow>
     <oui-slideshow-panel heading="New feature"
-        text="Display your infrastructure as a list"
         picture="https://upload.wikimedia.org/wikipedia/commons/4/4a/Cercle_rouge_100%25.svg">
+        Display your infrastructure as a list
     </oui-slideshow-panel>
     <oui-slideshow-panel heading="Introducing Ad-Sync"
-        text="Designed to help you synchronize your local Active Directory with your OVH Active Directory."
         picture="https://upload.wikimedia.org/wikipedia/commons/4/4a/Cercle_rouge_100%25.svg"
         href="http://www.ovh.com/"
         label="Discover">
+        Designed to help you synchronize your local Active Directory with your OVH Active Directory.
     </oui-slideshow-panel>
     <oui-slideshow-panel heading="New features available in your emails pages"
-        text="Introducing Ad-Sync, designed to help you synchronize your local Active Directory with your OVH Active Directory."
         href="http://www.ovh.com/"
         label="Discover">
+        Introducing Ad-Sync, designed to help you synchronize your local Active Directory with your OVH Active Directory.
     </oui-slideshow-panel>
     <oui-slideshow-panel heading="Introducing Ad-Sync"
-        text="Designed to help you synchronize your local Active Directory with your OVH Active Directory."
         picture="https://upload.wikimedia.org/wikipedia/commons/4/4a/Cercle_rouge_100%25.svg"
         href="http://www.ovh.com/"
         label="Discover">
+        Designed to help you synchronize your local Active Directory with your OVH Active Directory.
     </oui-slideshow-panel>
 </oui-slideshow>
 </div>
@@ -39,7 +39,9 @@
 ```html:preview
 <div class="oui-doc-preview-only-keep-children" style="padding:50px 35px;background-color:rgba(0,0,0,0.3)">
 <oui-slideshow loading>
-    <oui-slideshow-panel heading="Panel 1" text="This is the first panel description"></oui-slideshow-panel>
+    <oui-slideshow-panel heading="Panel 1">
+        This is the first panel description
+    </oui-slideshow-panel>
 </oui-slideshow>
 </div>
 ```
@@ -49,9 +51,15 @@
 ```html:preview
 <div class="oui-doc-preview-only-keep-children" style="padding:50px 35px;background-color:rgba(0,0,0,0.3)">
 <oui-slideshow loop>
-    <oui-slideshow-panel heading="Panel 1" text="This is the first panel description"></oui-slideshow-panel>
-    <oui-slideshow-panel heading="Panel 2" text="This is the second panel description"></oui-slideshow-panel>
-    <oui-slideshow-panel heading="Panel 3" text="This is the third panel description"></oui-slideshow-panel>
+    <oui-slideshow-panel heading="Panel 1">
+        This is the first panel description
+    </oui-slideshow-panel>
+    <oui-slideshow-panel heading="Panel 2">
+        This is the second panel description
+    </oui-slideshow-panel>
+    <oui-slideshow-panel heading="Panel 3">
+        This is the third panel description
+    </oui-slideshow-panel>
 </oui-slideshow>
 </div>
 ```
@@ -61,10 +69,10 @@
 <div class="oui-doc-preview-only-keep-children" style="padding:50px 35px;background-color:rgba(0,0,0,0.3)">
 <oui-slideshow>
     <oui-slideshow-panel heading="External link"
-        text="Introducing Ad-Sync, designed to help you synchronize your local Active Directory with your OVH Active Directory."
         href="#"
         label="Discover"
         external>
+        Introducing Ad-Sync, designed to help you synchronize your local Active Directory with your OVH Active Directory.
     </oui-slideshow-panel>
 </oui-slideshow>
 </div>
@@ -86,9 +94,12 @@
 | Attribute     | Type      | Binding   | One-time Binding  | Values            | Default   | Description
 | ----          | ----      | ----      | ----              | ----              | ----      | ----
 | `heading`     | string    | @?        | yes               | n/a               | n/a       | heading of the panel
-| `text`        | string    | @?        | yes               | n/a               | n/a       | description of the panel
 | `picture`     | string    | @?        | yes               | n/a               | n/a       | picture/illustration of the panel
 | `label`       | string    | @?        | yes               | n/a               | n/a       | label of the link
 | `href`        | string    | @?        | yes               | n/a               | n/a       | href of the link
 | `external`    | boolean   | <?        | yes               | `true`, `false`   | `false`   | external link flag
 | `on-click`    | function  | &?        | no                | n/a               | n/a       | on-click handler
+
+#### Deprecated
+
+* `text`: Replaced by transclude value
