@@ -14,7 +14,7 @@ A set of maintainable components for the OVH ecosystem (AngularJS).
 
 ### Prerequisites
 
-This library has been tested with AngularJS 1.6.
+This library has been tested with AngularJS 1.6+.
 
 You will also need these dependencies in your project:
 

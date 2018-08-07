@@ -184,13 +184,15 @@ describe("ouiSelectPicker", () => {
                 const $radioElement2 = angular.element(selectPickerComponent2).find("input");
 
                 $radioElement1.prop("checked", true);
-                $radioElement1.triggerHandler("click");
+                $radioElement1.triggerHandler("click"); // NG 1.6
+                $radioElement1.triggerHandler("change"); // NG 1.7
                 $timeout.flush();
                 expect(onChangeSpy).toHaveBeenCalledWith("aValue");
 
                 $radioElement1.prop("checked", false);
                 $radioElement2.prop("checked", true);
-                $radioElement2.triggerHandler("click");
+                $radioElement2.triggerHandler("click"); // NG 1.6
+                $radioElement2.triggerHandler("change"); // NG 1.7
                 $timeout.flush();
                 expect(onChangeSpy).toHaveBeenCalledWith("bValue");
             });

@@ -96,7 +96,8 @@ describe("ouiDatagridParameters", () => {
                 expected[0].hidden = true;
 
                 $checkbox1.prop("checked", false);
-                $checkbox1.triggerHandler("click");
+                $checkbox1.triggerHandler("click"); // NG 1.6
+                $checkbox1.triggerHandler("change"); // NG 1.7
 
                 // 2nd checkbox should stay unchecked
                 expect($checkbox2.prop("checked")).toBe(false);
@@ -115,7 +116,8 @@ describe("ouiDatagridParameters", () => {
                 expected[1].hidden = false;
 
                 $checkbox2.prop("checked", true);
-                $checkbox2.triggerHandler("click");
+                $checkbox2.triggerHandler("click"); // NG 1.6
+                $checkbox2.triggerHandler("change"); // NG 1.7
 
                 // 1st checkbox should stay checked
                 expect($checkbox1.prop("checked")).toBe(true);

@@ -349,21 +349,21 @@ amqplib@^0.5.2:
     readable-stream "1.x >=1.1.9"
     safe-buffer "^5.0.1"
 
-angular-aria@~1.6.1:
-  version "1.6.10"
-  resolved "https://registry.yarnpkg.com/angular-aria/-/angular-aria-1.6.10.tgz#472bfff8682c4cfe634d4bfda0524443e07e3501"
+angular-aria@^1.6.x:
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/angular-aria/-/angular-aria-1.7.2.tgz#68cb3d15aece7a22517b1fe3e00d9d3807ceca88"
 
-angular-mocks@~1.6.1:
-  version "1.6.10"
-  resolved "https://registry.yarnpkg.com/angular-mocks/-/angular-mocks-1.6.10.tgz#6a139e43c461d0c9a5a1acebc91e63db16031176"
+angular-mocks@^1.6.x:
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/angular-mocks/-/angular-mocks-1.7.2.tgz#8a2bc7a7ce355697a48ab00e548b88e78f71fa52"
 
-angular-sanitize@~1.6.1:
-  version "1.6.10"
-  resolved "https://registry.yarnpkg.com/angular-sanitize/-/angular-sanitize-1.6.10.tgz#635a362afb2dd040179f17d3a5455962b2c1918f"
+angular-sanitize@^1.6.x:
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/angular-sanitize/-/angular-sanitize-1.7.2.tgz#e9f6e6a3e966c479c02dbc5712bee6de031f8eef"
 
-angular@~1.6.1:
-  version "1.6.10"
-  resolved "https://registry.yarnpkg.com/angular/-/angular-1.6.10.tgz#eed3080a34d29d0f681ff119b18ce294e3f74826"
+angular@^1.6.x:
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/angular/-/angular-1.7.2.tgz#687b955dbe5c533f8d73460461707af00360251f"
 
 ansi-escapes@^1.1.0:
   version "1.4.0"
