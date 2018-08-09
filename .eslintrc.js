@@ -29,9 +29,9 @@ module.exports = {
     "overrides": {
         "files": "*.spec.js",
         "rules": {
-          "no-magic-numbers": 0,
-          "no-underscore-dangle": 0,
-          "no-empty-function": 0
+          "no-magic-numbers": false,
+          "no-underscore-dangle": false,
+          "no-empty-function": false
         }
     }
 }
