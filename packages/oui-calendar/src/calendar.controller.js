@@ -44,6 +44,7 @@ export default class {
         this.setOptionsProperty("minDate", this.minDate);
         this.setOptionsProperty("mode", this.mode);
         this.setOptionsProperty("weekNumbers", this.weekNumbers);
+        this.setOptionsProperty("enableTime", this.enableTime);
 
         // Set formatting options
         this.setOptionsProperty("dateFormat", this.format);
