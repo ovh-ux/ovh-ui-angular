@@ -94,7 +94,7 @@
                                 ng-attr-colspan="{{ $ctrl.columns.length }}"
                                 >
                                 <span ng-if="!$ctrl.loading && !$ctrl.firstLoading"
-                                    ng-bind="$ctrl.config.translations.emptyPlaceholder"></span>
+                                      ng-bind="$ctrl.emptyText || $ctrl.config.translations.emptyPlaceholder"></span>
                                 <oui-spinner ng-if="$ctrl.loading || $ctrl.firstLoading"
                                     size="s"></oui-spinner>
                             </td>

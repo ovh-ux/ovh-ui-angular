@@ -128,6 +128,7 @@ Clicked row action 1: <span ng-if="$ctrl.action1Row">{{$ctrl.action1Row.lastName
 ```html:preview
 <oui-datagrid
   rows="$ctrl.emptyList"
+  empty-text="There's no bananas here, sorry :("
   page-size="5">
   <oui-column title="'First name'" property="firstName" sortable="asc"></oui-column>
   <oui-column title="'Last name'" property="lastName" sortable></oui-column>
