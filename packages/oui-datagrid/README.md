@@ -688,6 +688,7 @@ call `rows-loader` and then a `row-loader` call for each line.
 | `rows`                            | array     | <?        | yes                 | n/a              | n/a          | rows to show
 | `rows-loader`                     | function  | &?        | yes                 | n/a              | n/a          | gets all rows (returns a promise with all rows)
 | `row-loader`                      | function  | &?        | yes                 | n/a              | n/a          | gets row details (returns a promise with details)
+| `empty-text`                      | string    | @?        | no                  | n/a              | n/a          | custom placeholder text when there is no data
 | `customizable`                    | boolean   | <?        | no                  | `true`, `false`  | `false`      | if the datagrid is customizable
 | `selectable-rows`                 | boolean   | <?        | no                  | `true`, `false`  | `false`      | if rows can be selected
 | `columns-parameters`              | array     | <?        | no                  | n/a              | `undefined`  | columns parameters (see below)
