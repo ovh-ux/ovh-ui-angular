@@ -51,7 +51,7 @@
 
 | Attribute     | Type      | Binding   | One-time Binding  | Values            | Default   | Description
 | ----          | ----      | ----      | ----              | ----              | ----      | ----
-| `items`       | object    | <         | no                | n/a               | n/a       | items bound to component
+| `items`       | object    | =         | no                | n/a               | n/a       | items bound to component
 | `closable`    | boolean   | <?        | yes               | `true`, `false`   | `false`   | closable flag
 | `stacked`     | boolean   | <?        | yes               | `true`, `false`   | `false`   | stacked flag
 | `on-remove`   | function  | &         | no                | n/a               | n/a       | handler triggered when items are removed

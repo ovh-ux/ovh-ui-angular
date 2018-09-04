@@ -56,7 +56,7 @@
     "babel-register": "^6.18.0",
     "cross-env": "^5.1.0",
     "css-loader": "^0.28.4",
-    "eslint": "^4.3.0",
+    "eslint": "^3.13.1",
     "eslint-config-ovh": "^0.1.1",
     "eslint-friendly-formatter": "^3.0.0",
     "eslint-loader": "^1.9.0",
