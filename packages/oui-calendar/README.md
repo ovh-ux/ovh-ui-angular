@@ -168,6 +168,7 @@ Use `mode` to set a different selection mode for the calendar
 | `min-date`        | object    | <?        | yes               | See [Supplying Dates](https://flatpickr.js.org/examples/#supplying-dates-for-flatpickr)   | n/a       | specifies the minimum/earliest date (inclusively) allowed for selection
 | `disable-date`    | array     | <?        | yes               | See [Supplying Dates](https://flatpickr.js.org/examples/#supplying-dates-for-flatpickr)   | n/a       | make certain dates unavailable for selection
 | `enable-date`     | array     | <?        | yes               | See [Supplying Dates](https://flatpickr.js.org/examples/#supplying-dates-for-flatpickr)   | n/a       | make certain dates only available for selection
+| `enable-time`     | boolean   | <?        | yes               | See [Options](https://flatpickr.js.org/options/)                                          | n/a       | enables time picker
 | `week-numbers`    | boolean   | <?        | yes               | `true`, `false`                                                                           | `false`   | week numbers flag
 | `disabled`        | boolean   | <?        | no                | `true`, `false`                                                                           | `false`   | disabled flag
 | `required`        | boolean   | <?        | no                | `true`, `false`                                                                           | `false`   | required flag
