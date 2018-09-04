@@ -19,6 +19,8 @@ export default {
         disableDate: "<?",
         enableDate: "<?",
 
+        enableTime: "<?",
+
         disabled: "<?",
         required: "<?",
         weekNumbers: "<?",
