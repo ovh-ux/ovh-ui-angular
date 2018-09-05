@@ -1,3 +1,19 @@
+<a name="2.19.0"></a>
+# [2.19.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.18.0...v2.19.0) (2018-09-05)
+
+
+### Bug Fixes
+
+* **oui-chips:** fix items attribute binding ([#249](https://github.com/ovh-ux/ovh-ui-angular/issues/249)) ([cd7be96](https://github.com/ovh-ux/ovh-ui-angular/commit/cd7be96))
+
+
+### Features
+
+* **oui-calendar:** add enableTime option ([#253](https://github.com/ovh-ux/ovh-ui-angular/issues/253)) ([6e48743](https://github.com/ovh-ux/ovh-ui-angular/commit/6e48743))
+* **oui-datagrid:** add a way to customize empty placeholder ([#254](https://github.com/ovh-ux/ovh-ui-angular/issues/254)) ([09b5c73](https://github.com/ovh-ux/ovh-ui-angular/commit/09b5c73))
+
+
+
 <a name="2.18.0"></a>
 # [2.18.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.17.2...v2.18.0) (2018-08-07)
 
