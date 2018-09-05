@@ -69,22 +69,22 @@ angular.module("myAwesomeApp", [
 
 ### Run in development mode
 
-1. Clone and install `ovh-ui-kit`
+1. Clone and install `ovh-ui-angular`
 
 ```bash
-git clone https://github.com/ovh-ux/ovh-ui-kit.git
-cd ovh-ui-kit
+git clone https://github.com/ovh-ux/ovh-ui-angular.git
+cd ovh-ui-angular
 yarn install
 yarn link
 ```
 
-2. Run `ovh-ui-kit` with [ovh-ui-kit-documentation](https://github.com/ovh-ux/ovh-ui-kit-documentation)
+2. Run `ovh-ui-angular` with [ovh-ui-kit-documentation](https://github.com/ovh-ux/ovh-ui-kit-documentation)
 
 ```bash
 git clone https://github.com/ovh-ux/ovh-ui-kit-documentation.git
 cd ovh-ui-kit-documentation
 yarn install
-yarn link ovh-ui-kit
+yarn link ovh-ui-angular
 yarn start
 ```
 
