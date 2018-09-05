@@ -16,6 +16,7 @@ export default () => {
             rows: "<?",
             rowsLoader: "&?",
             rowLoader: "&?",
+            emptyPlaceholder: "@?",
             onColumnsParametersChange: "&"
         },
         compile: elm => {

@@ -45,12 +45,14 @@ bower install --save ovh-ui-angular
 
 ## Usage
 
+### Integration
+
 1. In your `index.html`, you need to load `oui-angular.min.js`:
 
 ```html
-  ...
-  <script src="ovh-ui-angular/dist/oui-angular.min.js" type="text/javascript"></script>
-  ...
+    ...
+    <script src="ovh-ui-angular/dist/oui-angular.min.js" type="text/javascript"></script>
+    ...
 ```
 
 2. You need to add `oui` in your angular module dependencies like that:
@@ -63,7 +65,34 @@ angular.module("myAwesomeApp", [
 ]);
 ```
 
-## Developers
+## Develop
+
+### Run in development mode
+
+1. Clone and install `ovh-ui-angular`
+
+```bash
+git clone https://github.com/ovh-ux/ovh-ui-angular.git
+cd ovh-ui-angular
+yarn install
+yarn link
+```
+
+2. Run `ovh-ui-angular` with [ovh-ui-kit-documentation](https://github.com/ovh-ux/ovh-ui-kit-documentation)
+
+```bash
+git clone https://github.com/ovh-ux/ovh-ui-kit-documentation.git
+cd ovh-ui-kit-documentation
+yarn install
+yarn link ovh-ui-angular
+yarn start
+```
+
+### Hot reload
+
+Once you have `yarn start`-ed the project, you can edit anything with an automatic browser refresh as a result.
+
+### Contributing
 
 You've developed a new cool feature? Fixed an annoying bug? We'd be happy
 to hear from you!
