@@ -22,11 +22,12 @@ describe("ouiSearch", () => {
             const buttons = component.find("button");
             const reset = buttons.eq(0);
             const submit = buttons.eq(1);
+            const length = 2;
 
             expect(form.length).toBe(1);
             expect(input.length).toBe(1);
             expect(input.attr("type")).toBe("text");
-            expect(buttons.length).toBe(2);
+            expect(buttons.length).toBe(length);
             expect(reset.attr("type")).toBe("reset");
             expect(submit.attr("type")).toBe("submit");
         });
@@ -185,6 +186,7 @@ describe("ouiSearch", () => {
                 `, {
                     onChangeSpy
                 });
+                const delay = 850;
 
                 setTimeout(() => {
                     const input = element.find("input");
@@ -192,7 +194,7 @@ describe("ouiSearch", () => {
                     input.triggerHandler("input");
                     expect(onChangeSpy).not.toHaveBeenCalled();
                     done();
-                }, 850);
+                }, delay);
             });
 
             it("should delete preview criterion if search becomes too short", done => {

@@ -42,8 +42,8 @@ describe("ouiSelect", () => {
                     data-align="start">
                     <span ng-bind="$item.name"></span>
                 </oui-select>`, {
-                countries: data
-            });
+                    countries: data
+                });
 
             expect(angular.element(getContainer(element)).attr("title")).toEqual(title);
             expect(angular.element(getDropdownButton(element)).text()).toContain(placeholder);
@@ -62,8 +62,8 @@ describe("ouiSelect", () => {
                     data-align="start">
                     <span ng-bind="$item.name"></span>
                 </oui-select>`, {
-                countries: data
-            });
+                    countries: data
+                });
 
             const $container = angular.element(getContainer(element));
             const $triggerButton = angular.element(getDropdownButton(element));
@@ -93,8 +93,8 @@ describe("ouiSelect", () => {
                     </oui-select>
                     <button class="outside-button">Outside</button>
                 </div>`, {
-                countries: data
-            });
+                    countries: data
+                });
 
             const $container = angular.element(getContainer(element));
             const $triggerButton = angular.element(getDropdownButton(element));
@@ -120,8 +120,8 @@ describe("ouiSelect", () => {
                         data-align="start">
                         <span ng-bind="$item.name"></span>
                     </oui-select>`, {
-                    countries: data
-                });
+                        countries: data
+                    });
 
                 const $container = angular.element(getContainer(element));
                 const $triggerButton = angular.element(getDropdownButton(element));
@@ -132,7 +132,7 @@ describe("ouiSelect", () => {
                 $triggerButton.triggerHandler("click");
 
                 // Select 5th element and check if it's highlighted.
-                let $itemButton = angular.element(getDropdownItem(element, 4));
+                let $itemButton = angular.element(getDropdownItem(element, 4)); // eslint-disable-line no-magic-numbers
                 expect($itemButton.hasClass(selectedItemClass)).toBeFalsy();
                 $itemButton.triggerHandler("click");
                 expect($itemButton.hasClass(selectedItemClass)).toBeTruthy();
@@ -142,7 +142,7 @@ describe("ouiSelect", () => {
 
                 // Reopen dropdown and check if the selected element is highlighted.
                 // The element is retrieved again to be sure to not test on a detached element.
-                $itemButton = angular.element(getDropdownItem(element, 4));
+                $itemButton = angular.element(getDropdownItem(element, 4)); // eslint-disable-line no-magic-numbers
                 expect($itemButton.hasClass(selectedItemClass)).toBeTruthy();
             });
         });
@@ -159,8 +159,8 @@ describe("ouiSelect", () => {
                         data-align="start">
                         <span ng-bind="$item.name"></span>
                     </oui-select>`, {
-                    countries: data
-                });
+                        countries: data
+                    });
 
                 expect(getDropdownItems(element).length).toEqual(data.length);
                 expect(angular.element(getDropdownItem(element, 0)).text()).toContain(data[0].name);
@@ -178,8 +178,8 @@ describe("ouiSelect", () => {
                         data-align="start">
                         <span ng-bind="$item"></span>
                     </oui-select>`, {
-                    array: stringArray
-                });
+                        array: stringArray
+                    });
 
                 expect(getDropdownItems(element).length).toEqual(stringArray.length);
                 expect(angular.element(getDropdownItem(element, 0)).text()).toContain(stringArray[0]);
@@ -202,9 +202,9 @@ describe("ouiSelect", () => {
                         data-align="start">
                         <span ng-bind="$item.name"></span>
                     </oui-select>`, {
-                    countries: data,
-                    groupByFirstLetter
-                });
+                        countries: data,
+                        groupByFirstLetter
+                    });
 
                 const groups = uniq(data.map(groupByFirstLetter));
                 const firstGroupElement = getItemsGroup(element, 0);
@@ -230,8 +230,8 @@ describe("ouiSelect", () => {
                         on-blur="$ctrl.onBlur()">
                         <span ng-bind="$item.name"></span>
                     </oui-select>`, {
-                    onBlur
-                });
+                        onBlur
+                    });
 
                 angular.element(getDropdownButton(element)).triggerHandler("blur");
                 expect(onBlur).toHaveBeenCalled();
@@ -251,8 +251,8 @@ describe("ouiSelect", () => {
                         on-focus="$ctrl.onFocus()">
                         <span ng-bind="$item.name"></span>
                     </oui-select>`, {
-                    onFocus
-                });
+                        onFocus
+                    });
 
                 angular.element(getDropdownButton(element)).triggerHandler("focus");
                 expect(onFocus).toHaveBeenCalled();
@@ -272,19 +272,21 @@ describe("ouiSelect", () => {
                         on-change="$ctrl.onChange(modelValue)">
                         <span ng-bind="$item.name"></span>
                     </oui-select>`, {
-                    countries: data,
-                    onChange
-                });
+                        countries: data,
+                        onChange
+                    });
 
-                let $itemButton = angular.element(getDropdownItem(element, 4));
+                const index1 = 4;
+                const index2 = 10;
+                let $itemButton = angular.element(getDropdownItem(element, index1));
                 $itemButton.triggerHandler("click");
                 $timeout.flush();
-                expect(onChange).toHaveBeenCalledWith(data[4]);
+                expect(onChange).toHaveBeenCalledWith(data[index1]);
 
-                $itemButton = angular.element(getDropdownItem(element, 10));
+                $itemButton = angular.element(getDropdownItem(element, index2));
                 $itemButton.triggerHandler("click");
                 $timeout.flush();
-                expect(onChange).toHaveBeenCalledWith(data[10]);
+                expect(onChange).toHaveBeenCalledWith(data[index2]);
             });
         });
     });
