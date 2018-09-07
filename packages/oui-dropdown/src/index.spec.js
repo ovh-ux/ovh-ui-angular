@@ -190,8 +190,9 @@ describe("ouiDropdown", () => {
                     </oui-dropdown>
                 `);
                 const links = element.find("oui-dropdown-item").find("a");
+                const expectedLength = 2;
 
-                expect(links.length).toBe(2);
+                expect(links.length).toBe(expectedLength);
                 expect(links.hasClass("oui-dropdown-option")).toBeTruthy();
             });
 

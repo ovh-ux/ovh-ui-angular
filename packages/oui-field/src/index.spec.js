@@ -425,6 +425,7 @@ describe("ouiField", () => {
         describe("with radio buttons", () => {
             it("should detect all the radio buttons", () => {
                 const name = "protocol";
+                const expectedLength = 3;
 
                 const element = TestUtils.compileTemplate(`
                     <oui-field>
@@ -454,7 +455,7 @@ describe("ouiField", () => {
                 const controller = element.controller("ouiField");
 
                 // There is 3 HTML elements with the same name
-                expect(controller.controls[name].length).toEqual(3);
+                expect(controller.controls[name].length).toEqual(expectedLength);
             });
         });
 

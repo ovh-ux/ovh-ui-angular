@@ -2,7 +2,7 @@ describe("ouiPagination", () => {
     let TestUtils;
 
     const customPageSize = 50;
-    const customPageSizesList = [25, 50, 100, 200];
+    const customPageSizesList = [25, 50, 100, 200]; // eslint-disable-line no-magic-numbers
 
     const getPagination = elt => elt[0].querySelector(".oui-pagination");
     const getProgress = elt => elt[0].querySelector(".oui-pagination__progress");
@@ -70,9 +70,10 @@ describe("ouiPagination", () => {
                     total-items="100">
                 </oui-pagination>
             `);
+            const pageSize = 50;
 
             const paginationController = element.controller("ouiPagination");
-            expect(paginationController.pageSize).toEqual(50);
+            expect(paginationController.pageSize).toEqual(pageSize);
         });
 
         it("should display 4 buttons for page selection", () => {
@@ -83,8 +84,9 @@ describe("ouiPagination", () => {
                     total-items="100">
                 </oui-pagination>
             `);
+            const expectedLength = 4;
 
-            expect(getSelector(element).querySelectorAll(".oui-button-group .oui-button").length).toEqual(4);
+            expect(getSelector(element).querySelectorAll(".oui-button-group .oui-button").length).toEqual(expectedLength);
             expect(getSelector(element).querySelector(".oui-pagination-menu")).toBeNull();
         });
 
@@ -138,8 +140,8 @@ describe("ouiPagination", () => {
                         on-change="$ctrl.clickHandler($event)">
                     </oui-pagination>
                     `, {
-                    clickHandler: clickSpy
-                });
+                        clickHandler: clickSpy
+                    });
 
                 angular.element(getNextButton(element)).triggerHandler("click");
                 expect(clickSpy).toHaveBeenCalledWith({
@@ -159,8 +161,8 @@ describe("ouiPagination", () => {
                         on-change="$ctrl.clickHandler($event)">
                     </oui-pagination>
                     `, {
-                    clickHandler: clickSpy
-                });
+                        clickHandler: clickSpy
+                    });
 
                 angular.element(getPreviousButton(element)).triggerHandler("click");
                 expect(clickSpy).toHaveBeenCalledWith({
@@ -204,7 +206,8 @@ describe("ouiPagination", () => {
                 expect(buttons[1].hasAttribute("disabled")).toBeTruthy();
 
                 clickSpy.calls.reset();
-                angular.element(buttons[3]).triggerHandler("click");
+                const index = 3;
+                angular.element(buttons[index]).triggerHandler("click");
                 expect(clickSpy).toHaveBeenCalledWith({
                     offset: 76,
                     pageSize: 25
@@ -243,7 +246,9 @@ describe("ouiPagination", () => {
                 expect(buttons[1].hasAttribute("disabled")).toBeTruthy();
 
                 clickSpy.calls.reset();
-                angular.element(buttons[39]).triggerHandler("click");
+
+                const index = 39;
+                angular.element(buttons[index]).triggerHandler("click");
                 expect(clickSpy).toHaveBeenCalledWith(jasmine.objectContaining({ offset: 976 }));
                 expect(clickSpy.calls.count()).toEqual(1);
             });
@@ -260,7 +265,8 @@ describe("ouiPagination", () => {
                 `);
 
                 const buttons = getProgress(element).querySelectorAll(".oui-pagination-menu__items-list .oui-pagination-menu__item");
-                expect(buttons.length).toEqual(4);
+                const expectedLength = 4;
+                expect(buttons.length).toEqual(expectedLength);
                 expect(buttons[0].hasAttribute("disabled")).toBeTruthy();
             });
 
@@ -292,7 +298,8 @@ describe("ouiPagination", () => {
 
                 // Count page buttons
                 const pageButtons = getSelector(element).querySelectorAll(".oui-pagination-menu__items-list .oui-pagination-menu__item");
-                expect(pageButtons.length).toEqual(20);
+                const length = 20;
+                expect(pageButtons.length).toEqual(length);
             });
 
             it("should reset offset to 1 when page size is changed", () => {
@@ -331,7 +338,8 @@ describe("ouiPagination", () => {
                 // So, instead of displaying 4 values (see customPageSizesList = [25, 50, 100, 200]) the page size list
                 // is limited to all values lower or equal to pageSizeMax: [25, 50] (length: 2).
                 const pageSizesButtons = getProgress(element).querySelectorAll(".oui-pagination-menu__items-list .oui-pagination-menu__item");
-                expect(pageSizesButtons.length).toEqual(2);
+                const expectedLength = 2;
+                expect(pageSizesButtons.length).toEqual(expectedLength);
             });
 
             it("should have max page size limiting the page size list (and creating a new value in this list)", () => {
@@ -343,16 +351,18 @@ describe("ouiPagination", () => {
                             total-items="1000">
                         </oui-pagination>
                     `, {
-                    pageSizeMax: 80
-                });
+                        pageSizeMax: 80
+                    });
 
                 // Page sizes list should not list page size above pageSizeMax (80).
                 // So, instead of displaying 4 values (see customPageSizesList = [25, 50, 100, 200]) the page size list
                 // is limited to all values lower or equal to pageSizeMax and pageSizeMax: [25, 50, 80] (length: 3).
                 const pageSizesButtons = getPageSizeButtons(element);
+                const expectedLength = 3;
+                const index = 2;
 
-                expect(pageSizesButtons.length).toEqual(3);
-                expect(pageSizesButtons[2].innerHTML).toEqual("80");
+                expect(pageSizesButtons.length).toEqual(expectedLength);
+                expect(pageSizesButtons[index].innerHTML).toEqual("80");
             });
 
             it("should be reinitilized", () => {
@@ -364,8 +374,8 @@ describe("ouiPagination", () => {
                             total-items="1000">
                         </oui-pagination>
                     `, {
-                    pageSizeMax: 80
-                });
+                        pageSizeMax: 80
+                    });
 
                 const contextController = element.scope().$ctrl;
                 let pageSizesButtons = getPageSizeButtons(element);

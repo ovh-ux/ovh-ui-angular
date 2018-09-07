@@ -25,11 +25,9 @@ describe("ouiActionMenu", () => {
             const element = TestUtils.compileTemplate(
                 `<oui-action-menu>
                   <oui-action-menu-item on-click="$ctrl.clickHandler()">Action 1</oui-action-menu-item>
-                </oui-action-menu>`,
-                {
+                </oui-action-menu>`, {
                     clickHandler: clickSpy
-                }
-            );
+                });
 
             const buttonElement = element[0].querySelector("button");
             expect(buttonElement).toBeTruthy();

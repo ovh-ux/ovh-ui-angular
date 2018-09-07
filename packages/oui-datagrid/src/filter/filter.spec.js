@@ -83,7 +83,8 @@ describe("Filter", () => {
         it("should apply 1 filter", () => {
             filter = new Filter([textSearchCriterion], columns);
             const filtered = filter.applyFilter(fakeData);
-            expect(filtered.length).toBe(2);
+            const expectedLength = 2;
+            expect(filtered.length).toBe(expectedLength);
         });
     });
 
@@ -92,7 +93,8 @@ describe("Filter", () => {
             it("should find text in object", () => {
                 filter = new Filter([textSearchCriterion], columns);
                 const filtered = filter.applyCriteria(fakeData, textSearchCriterion);
-                expect(filtered.length).toBe(2);
+                const expectedLength = 2;
+                expect(filtered.length).toBe(expectedLength);
             });
         });
 
@@ -106,7 +108,8 @@ describe("Filter", () => {
                         operator: "contains",
                         value: "aaron"
                     });
-                    expect(filtered.length).toBe(2);
+                    const expectedLength = 2;
+                    expect(filtered.length).toBe(expectedLength);
                 });
 
                 it("should filter (negated)", () => {
@@ -117,7 +120,8 @@ describe("Filter", () => {
                         operator: "containsNot",
                         value: "aaron"
                     });
-                    expect(filtered.length).toBe(fakeData.length - 2);
+                    const expectedLength = 2;
+                    expect(filtered.length).toBe(fakeData.length - expectedLength);
                 });
             });
 

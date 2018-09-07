@@ -66,7 +66,8 @@ describe("ouiCriteriaContainer", () => {
         it("should delete a criteria", () => {
             controller.criteria.push(criterion);
             controller.criteria.push(criterion2);
-            expect(controller.criteria.length).toEqual(2);
+            const expectedLength = 2;
+            expect(controller.criteria.length).toEqual(expectedLength);
 
             controller.remove(criterion);
             expect(controller.criteria.length).toEqual(1);
@@ -87,13 +88,15 @@ describe("ouiCriteriaContainer", () => {
             expect(controller.criteria.length).toEqual(0);
 
             controller.set(criteria);
-            expect(controller.criteria.length).toEqual(2);
+            const expectedLength = 2;
+            expect(controller.criteria.length).toEqual(expectedLength);
         });
 
         it("should delete all criteria", () => {
             controller.criteria.push(criterion);
             controller.criteria.push(criterion2);
-            expect(controller.criteria.length).toEqual(2);
+            const expectedLength = 2;
+            expect(controller.criteria.length).toEqual(expectedLength);
 
             controller.clear();
             expect(controller.criteria.length).toEqual(0);

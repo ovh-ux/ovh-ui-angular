@@ -114,9 +114,9 @@ describe("ouiStepper", () => {
                     <oui-stepper on-init="$ctrl.onInit()" on-finish="$ctrl.onFinish()">
                         <oui-step-form></oui-step-form>
                     </oui-stepper>`, {
-                    onInit,
-                    onFinish
-                });
+                        onInit,
+                        onFinish
+                    });
                 $timeout.flush();
 
                 // Initial condition

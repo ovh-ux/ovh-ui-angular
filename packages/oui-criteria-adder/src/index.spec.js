@@ -73,13 +73,14 @@ describe("ouiCriteriaAdder", () => {
             const submitButton = component[0].querySelectorAll("[type=submit]");
             const dropdown = component.find("oui-dropdown");
             const fields = component.find("oui-field");
+            const expectedLength = 3;
 
             expect(form.length).toBe(1);
             expect(triggerButton.length).toBe(1);
             expect(submitButton.length).toBe(1);
             expect(angular.element(triggerButton).attr("oui-dropdown-trigger")).toBeDefined();
             expect(dropdown.length).toBe(1);
-            expect(fields.length).toBe(3);
+            expect(fields.length).toBe(expectedLength);
         });
 
         it("should have an attribute id and name on the form and every inputs/selectors, and removed on the root component", () => {
