@@ -6,7 +6,10 @@ export default {
         navbarCtrl: "^^ouiNavbar"
     },
     bindings: {
-        links: "<"
+        links: "<?",
+        active: "<?",
+        loading: "<?",
+        onClick: "&"
     },
     controller,
     template

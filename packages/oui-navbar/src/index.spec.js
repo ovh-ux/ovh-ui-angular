@@ -581,6 +581,44 @@ describe("ouiNavbar", () => {
             });
         });
 
+        describe("Toggler", () => {
+            it("should set the toggler active", () => {
+                const component = testUtils.compileTemplate(`<oui-navbar>
+                    <oui-navbar-toggler active="$ctrl.active"></oui-navbar-toggler>
+                </oui-navbar>`);
+                const scope = component.scope();
+                const toggler = angular.element(component[0].querySelector(".oui-navbar-toggler"));
+
+                expect(toggler.attr("aria-expanded")).toBe("false"); // Check when undefined
+
+                scope.$ctrl.active = true;
+                scope.$apply();
+                expect(toggler.attr("aria-expanded")).toBe("true");
+
+                scope.$ctrl.active = false;
+                scope.$apply();
+                expect(toggler.attr("aria-expanded")).toBe("false");
+            });
+
+            it("should set the toggler loading", () => {
+                const component = testUtils.compileTemplate(`<oui-navbar>
+                    <oui-navbar-toggler loading="$ctrl.loading"></oui-navbar-toggler>
+                </oui-navbar>`);
+                const scope = component.scope();
+                const toggler = angular.element(component[0].querySelector(".oui-navbar-toggler_button"));
+
+                expect(toggler.hasClass("ng-hide")).toBeFalsy(); // Check when undefined
+
+                scope.$ctrl.loading = true;
+                scope.$apply();
+                expect(toggler.hasClass("ng-hide")).toBeTruthy();
+
+                scope.$ctrl.loading = false;
+                scope.$apply();
+                expect(toggler.hasClass("ng-hide")).toBeFalsy();
+            });
+        });
+
         describe("Backdrop", () => {
             const data = mockData.mainLinks;
 
