@@ -311,7 +311,7 @@ It defines the menu in reponsive mode. It will be visible only for screen resolu
 ```html:preview
 <div class="oui-doc-preview-only">
     <p>
-        <button class="oui-button oui-button_primary" type="text" ng-class="{
+        <button class="oui-button oui-button_primary" type="button" ng-class="{
                 'oui-button_primary': $ctrl.togglerLoading,
                 'oui-button_secondary': !$ctrl.togglerLoading
             }" ng-click="$ctrl.togglerLoading = !$ctrl.togglerLoading">

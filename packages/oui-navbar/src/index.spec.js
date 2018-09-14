@@ -607,15 +607,18 @@ describe("ouiNavbar", () => {
                 const scope = component.scope();
                 const toggler = angular.element(component[0].querySelector(".oui-navbar-toggler_button"));
 
-                expect(toggler.hasClass("ng-hide")).toBeFalsy(); // Check when undefined
+                expect(toggler.hasClass("ng-hide")).toBeFalsy(); // ngHide: Check when undefined
+                expect(angular.element(component[0].querySelector(".oui-navbar-toggler_loading")).length).toBe(0); // ngIf
 
                 scope.$ctrl.loading = true;
                 scope.$apply();
                 expect(toggler.hasClass("ng-hide")).toBeTruthy();
+                expect(angular.element(component[0].querySelector(".oui-navbar-toggler_loading")).length).toBe(1);
 
                 scope.$ctrl.loading = false;
                 scope.$apply();
                 expect(toggler.hasClass("ng-hide")).toBeFalsy();
+                expect(angular.element(component[0].querySelector(".oui-navbar-toggler_loading")).length).toBe(0);
             });
         });
 
