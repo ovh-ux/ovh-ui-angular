@@ -1,3 +1,14 @@
+<a name="2.20.0"></a>
+# [2.20.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.19.0...v2.20.0) (2018-09-17)
+
+
+### Features
+
+* **oui-message:** add dismissable attribute ([#259](https://github.com/ovh-ux/ovh-ui-angular/issues/259)) ([3450292](https://github.com/ovh-ux/ovh-ui-angular/commit/3450292))
+* **oui-navbar:** add onclick and manual control on toggler ([#260](https://github.com/ovh-ux/ovh-ui-angular/issues/260)) ([a7cf575](https://github.com/ovh-ux/ovh-ui-angular/commit/a7cf575))
+
+
+
 <a name="2.19.0"></a>
 # [2.19.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.18.0...v2.19.0) (2018-09-05)
 
