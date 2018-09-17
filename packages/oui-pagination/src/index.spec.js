@@ -140,8 +140,8 @@ describe("ouiPagination", () => {
                         on-change="$ctrl.clickHandler($event)">
                     </oui-pagination>
                     `, {
-                        clickHandler: clickSpy
-                    });
+                    clickHandler: clickSpy
+                });
 
                 angular.element(getNextButton(element)).triggerHandler("click");
                 expect(clickSpy).toHaveBeenCalledWith({
@@ -161,8 +161,8 @@ describe("ouiPagination", () => {
                         on-change="$ctrl.clickHandler($event)">
                     </oui-pagination>
                     `, {
-                        clickHandler: clickSpy
-                    });
+                    clickHandler: clickSpy
+                });
 
                 angular.element(getPreviousButton(element)).triggerHandler("click");
                 expect(clickSpy).toHaveBeenCalledWith({
@@ -351,8 +351,8 @@ describe("ouiPagination", () => {
                             total-items="1000">
                         </oui-pagination>
                     `, {
-                        pageSizeMax: 80
-                    });
+                    pageSizeMax: 80
+                });
 
                 // Page sizes list should not list page size above pageSizeMax (80).
                 // So, instead of displaying 4 values (see customPageSizesList = [25, 50, 100, 200]) the page size list
@@ -374,8 +374,8 @@ describe("ouiPagination", () => {
                             total-items="1000">
                         </oui-pagination>
                     `, {
-                        pageSizeMax: 80
-                    });
+                    pageSizeMax: 80
+                });
 
                 const contextController = element.scope().$ctrl;
                 let pageSizesButtons = getPageSizeButtons(element);

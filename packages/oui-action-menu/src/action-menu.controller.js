@@ -16,9 +16,7 @@ export default class {
     }
 
     $postLink () {
-        this.$timeout(() =>
-            this.$element
-                .removeAttr("aria-label")
-        );
+        this.$timeout(() => this.$element
+            .removeAttr("aria-label"));
     }
 }

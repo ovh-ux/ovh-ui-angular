@@ -211,9 +211,9 @@ describe("ouiRadio", () => {
                                 on-change="$ctrl.onChange(modelValue)"></oui-radio>
                         </div>
                         `, {
-                            onChange: onChangeSpy,
-                            radioValue: "bValue"
-                        });
+                        onChange: onChangeSpy,
+                        radioValue: "bValue"
+                    });
 
                     const radioComponent1 = element.children()[0];
                     const radioComponent2 = element.children()[1];
@@ -239,8 +239,8 @@ describe("ouiRadio", () => {
                                 on-change="$ctrl.onChange(modelValue)"></oui-radio>
                         </div>
                         `, {
-                            onChange: onChangeSpy
-                        });
+                        onChange: onChangeSpy
+                    });
 
                     const radioComponent1 = element.children()[0];
                     const radioComponent2 = element.children()[1];
@@ -334,8 +334,8 @@ describe("ouiRadio", () => {
                         <oui-radio value="'${defaultRadioValue}'"></oui-radio>
                     </oui-radio-group>
                     `, {
-                        defaultValue: defaultRadioValue
-                    });
+                    defaultValue: defaultRadioValue
+                });
 
                 expect(getRadioInputElementByValue(element, defaultRadioValue).prop("checked")).toEqual(true);
                 expect(getRadioInputElementByValue(element, otherRadioValue).prop("checked")).toEqual(false);
@@ -350,8 +350,8 @@ describe("ouiRadio", () => {
                         <oui-radio value="'${defaultRadioValue}'"></oui-radio>
                     </oui-radio-group>
                     `, {
-                        defaultValue: defaultRadioValue
-                    });
+                    defaultValue: defaultRadioValue
+                });
 
                 TestUtils.getElementController(element).defaultValue = newRadioValue;
                 $rootScope.$digest();
@@ -386,8 +386,8 @@ describe("ouiRadio", () => {
                         <oui-radio value="'${clickedRadioValue}'"></oui-radio>
                     </oui-radio-group>
                     `, {
-                        onChange: onChangeSpy
-                    });
+                    onChange: onChangeSpy
+                });
 
                 clickRadio(getRadioInputElementByValue(element, clickedRadioValue));
                 $timeout.flush();
@@ -466,8 +466,8 @@ describe("ouiRadio", () => {
                         <oui-radio value="'${defaultRadioValue}'"></oui-radio>
                     </oui-radio-toggle-group>
                     `, {
-                        defaultValue: defaultRadioValue
-                    });
+                    defaultValue: defaultRadioValue
+                });
 
                 expect(getRadioInputElementByValue(element, defaultRadioValue).prop("checked")).toEqual(true);
                 expect(getRadioInputElementByValue(element, otherRadioValue).prop("checked")).toEqual(false);
@@ -482,8 +482,8 @@ describe("ouiRadio", () => {
                         <oui-radio value="'${defaultRadioValue}'"></oui-radio>
                     </oui-radio-toggle-group>
                     `, {
-                        defaultValue: defaultRadioValue
-                    });
+                    defaultValue: defaultRadioValue
+                });
 
                 TestUtils.getElementController(element).defaultValue = newRadioValue;
                 $rootScope.$digest();
@@ -518,8 +518,8 @@ describe("ouiRadio", () => {
                         <oui-radio value="'${clickedRadioValue}'"></oui-radio>
                     </oui-radio-toggle-group>
                     `, {
-                        onChange: onChangeSpy
-                    });
+                    onChange: onChangeSpy
+                });
 
                 clickRadio(getRadioInputElementByValue(element, clickedRadioValue));
                 $timeout.flush();

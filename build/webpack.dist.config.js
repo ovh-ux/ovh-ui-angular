@@ -1,9 +1,9 @@
-import baseConfig from "./webpack.base.babel";
-import merge from "webpack-merge";
-import path from "path";
-import webpack from "webpack";
+const baseConfig = require("./webpack.base.config");
+const merge = require("webpack-merge");
+const path = require("path");
+const webpack = require("webpack");
 
-export default merge(baseConfig, {
+module.exports = merge(baseConfig, {
     devtool: "#source-map",
     output: {
         path: path.resolve(".", "dist"),

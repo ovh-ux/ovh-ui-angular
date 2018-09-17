@@ -8,9 +8,10 @@
  * @param {string} parameterName the lowerCamelCased attribute name
  */
 export function addBooleanParameter (controller, parameterName) {
-    if (angular.isDefined(controller.$attrs[parameterName]) &&
-    controller.$attrs[parameterName] === "") {
-        controller[parameterName] = true;
+    const ctrl = controller;
+    if (angular.isDefined(ctrl.$attrs[parameterName]) &&
+        ctrl.$attrs[parameterName] === "") {
+        ctrl[parameterName] = true;
     }
 }
 
@@ -25,9 +26,10 @@ export function addBooleanParameter (controller, parameterName) {
  * @param {string} defaultValue  the default value
  */
 export function addDefaultParameter (controller, parameterName, defaultValue) {
-    if (!angular.isDefined(controller.$attrs[parameterName]) ||
-    (angular.isDefined(controller.$attrs[parameterName]) && controller.$attrs[parameterName].trim() === "")) {
-        controller[parameterName] = defaultValue;
+    const ctrl = controller;
+    if (!angular.isDefined(ctrl.$attrs[parameterName]) ||
+        (angular.isDefined(ctrl.$attrs[parameterName]) && ctrl.$attrs[parameterName].trim() === "")) {
+        ctrl[parameterName] = defaultValue;
     }
 }
 

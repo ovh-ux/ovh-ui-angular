@@ -1,11 +1,11 @@
-import formatter from "eslint-friendly-formatter";
-import path from "path";
-import webpack from "webpack";
-import LodashModuleReplacementPlugin from "lodash-webpack-plugin";
+const formatter = require("eslint-friendly-formatter");
+const path = require("path");
+const webpack = require("webpack");
+const LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
 
 const exclude = [/node_modules/, /dist/];
 
-export default {
+module.exports = {
     entry: {
         component: ["./packages/oui-angular/src/index.js"]
     },
