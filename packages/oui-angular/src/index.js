@@ -23,8 +23,6 @@ import Pagination from "@oui-angular/oui-pagination/src";
 import Popover from "@oui-angular/oui-popover/src";
 import Progress from "@oui-angular/oui-progress/src";
 import Radio from "@oui-angular/oui-radio/src";
-import RadioGroup from "@oui-angular/oui-radio-group/src";
-import RadioToggleGroup from "@oui-angular/oui-radio-toggle-group/src";
 import Search from "@oui-angular/oui-search/src";
 import Select from "@oui-angular/oui-select/src";
 import SelectPicker from "@oui-angular/oui-select-picker/src";
@@ -64,8 +62,6 @@ export default angular
         Popover,
         Progress,
         Radio,
-        RadioGroup,
-        RadioToggleGroup,
         Search,
         Select,
         SelectPicker,

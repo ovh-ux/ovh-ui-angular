@@ -66,7 +66,7 @@ describe("ouiDatagridParameters", () => {
 
             it("should display a disabled checkbox column when customization is prevented", () => {
                 const columnsElements = getColumns(element);
-                const disabledColumn = getCheckbox(columnsElements, 3);
+                const disabledColumn = getCheckbox(columnsElements, 3); // eslint-disable-line no-magic-numbers
                 expect(disabledColumn.prop("disabled")).toBe(true);
             });
         });
@@ -91,7 +91,7 @@ describe("ouiDatagridParameters", () => {
                 const columnsElements = getColumns(element);
                 const $checkbox1 = getCheckbox(columnsElements, 0);
                 const $checkbox2 = getCheckbox(columnsElements, 1);
-                const $checkbox3 = getCheckbox(columnsElements, 2);
+                const $checkbox3 = getCheckbox(columnsElements, 2); // eslint-disable-line no-magic-numbers
                 const expected = angular.copy(columns);
                 expected[0].hidden = true;
 

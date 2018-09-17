@@ -114,8 +114,8 @@ describe("ouiFormActions", () => {
                     on-submit="$ctrl.onSubmitTest()"
                     on-cancel="$ctrl.onCancelTest()">
                 </oui-form-actions>`, {
-                onSubmitTest: jasmine.createSpy("onSubmit")
-            });
+                    onSubmitTest: jasmine.createSpy("onSubmit")
+                });
             component.find("button").eq(0).triggerHandler("click");
 
             expect(component.scope().$ctrl.onSubmitTest).toHaveBeenCalled();
@@ -127,8 +127,8 @@ describe("ouiFormActions", () => {
                     on-submit="$ctrl.onSubmitTest()"
                     on-cancel="$ctrl.onCancelTest()">
                 </oui-form-actions>`, {
-                onCancelTest: jasmine.createSpy("onCancel")
-            });
+                    onCancelTest: jasmine.createSpy("onCancel")
+                });
             component.find("button").eq(1).triggerHandler("click");
 
             expect(component.scope().$ctrl.onCancelTest).toHaveBeenCalled();

@@ -52,12 +52,12 @@ describe("ouiNavbar", () => {
                     aside-links="$ctrl.asideLinks"
                     toggler-links="$ctrl.togglerLinks">
                 </oui-navbar>`, {
-                brand: mockData.brand,
-                activeLink: mockData.mainLinks[0].name,
-                mainLinks: mockData.mainLinks,
-                asideLinks: mockData.asideLinks,
-                togglerLinks: mockData.togglerLinks
-            });
+                    brand: mockData.brand,
+                    activeLink: mockData.mainLinks[0].name,
+                    mainLinks: mockData.mainLinks,
+                    asideLinks: mockData.asideLinks,
+                    togglerLinks: mockData.togglerLinks
+                });
             const controller = component.controller("ouiNavbar");
 
             $timeout.flush();
@@ -238,8 +238,8 @@ describe("ouiNavbar", () => {
                             icon-class="{{$ctrl.brand.iconClass}}"></oui-navbar-brand>
                         <oui-navbar-main>
                     </oui-navbar>`, {
-                    brand: data
-                });
+                        brand: data
+                    });
                 controller = component.find("oui-navbar-brand").controller("ouiNavbarBrand");
 
                 $timeout.flush();
@@ -287,13 +287,13 @@ describe("ouiNavbar", () => {
                             </oui-navbar-dropdown>
                         <oui-navbar-aside>
                     </oui-navbar>`, {
-                    name: "foo",
-                    title: "bar",
-                    label: "lorem",
-                    badge: 5,
-                    icon: "oui-icon oui-icon-help_circle",
-                    text: "Lorem ipsum"
-                });
+                        name: "foo",
+                        title: "bar",
+                        label: "lorem",
+                        badge: 5,
+                        icon: "oui-icon oui-icon-help_circle",
+                        text: "Lorem ipsum"
+                    });
 
                 $timeout.flush();
             });
@@ -332,13 +332,13 @@ describe("ouiNavbar", () => {
                             </oui-navbar-dropdown>
                         <oui-navbar-aside>
                     </oui-navbar>`, {
-                    name: "foo",
-                    title: "bar",
-                    label: "lorem",
-                    badge: 5,
-                    icon: "oui-icon oui-icon-help_circle",
-                    text: "Lorem ipsum"
-                });
+                        name: "foo",
+                        title: "bar",
+                        label: "lorem",
+                        badge: 5,
+                        icon: "oui-icon oui-icon-help_circle",
+                        text: "Lorem ipsum"
+                    });
                 const dropdownMenu = component.find("oui-navbar-dropdown-menu");
 
                 $timeout.flush();
@@ -367,11 +367,11 @@ describe("ouiNavbar", () => {
                             </oui-navbar-dropdown>
                         <oui-navbar-aside>
                     </oui-navbar>`, {
-                    name: data.name,
-                    title: data.title,
-                    headerTitle: data.headerTitle,
-                    subLinks: data.subLinks
-                });
+                        name: data.name,
+                        title: data.title,
+                        headerTitle: data.headerTitle,
+                        subLinks: data.subLinks
+                    });
 
                 $timeout.flush();
 
@@ -403,11 +403,11 @@ describe("ouiNavbar", () => {
                             </oui-navbar-dropdown>
                         <oui-navbar-aside>
                     </oui-navbar>`, {
-                    name: data.name,
-                    title: data.title,
-                    headerTitle: data.headerTitle,
-                    subLinks: data.subLinks
-                });
+                        name: data.name,
+                        title: data.title,
+                        headerTitle: data.headerTitle,
+                        subLinks: data.subLinks
+                    });
 
                 $timeout.flush();
 
@@ -430,11 +430,11 @@ describe("ouiNavbar", () => {
                             </oui-navbar-dropdown>
                         <oui-navbar-aside>
                     </oui-navbar>`, {
-                    name: data.name,
-                    title: data.title,
-                    headerTitle: data.headerTitle,
-                    subLinks: data.subLinks
-                });
+                        name: data.name,
+                        title: data.title,
+                        headerTitle: data.headerTitle,
+                        subLinks: data.subLinks
+                    });
 
                 $timeout.flush();
 
@@ -578,6 +578,47 @@ describe("ouiNavbar", () => {
             it("should open the responsive menu when the toggler button is clicked", () => {
                 toggler.triggerHandler("click");
                 expect(toggler.attr("aria-expanded")).toBe("true");
+            });
+        });
+
+        describe("Toggler", () => {
+            it("should set the toggler active", () => {
+                const component = testUtils.compileTemplate(`<oui-navbar>
+                    <oui-navbar-toggler active="$ctrl.active"></oui-navbar-toggler>
+                </oui-navbar>`);
+                const scope = component.scope();
+                const toggler = angular.element(component[0].querySelector(".oui-navbar-toggler"));
+
+                expect(toggler.attr("aria-expanded")).toBe("false"); // Check when undefined
+
+                scope.$ctrl.active = true;
+                scope.$apply();
+                expect(toggler.attr("aria-expanded")).toBe("true");
+
+                scope.$ctrl.active = false;
+                scope.$apply();
+                expect(toggler.attr("aria-expanded")).toBe("false");
+            });
+
+            it("should set the toggler loading", () => {
+                const component = testUtils.compileTemplate(`<oui-navbar>
+                    <oui-navbar-toggler loading="$ctrl.loading"></oui-navbar-toggler>
+                </oui-navbar>`);
+                const scope = component.scope();
+                const toggler = angular.element(component[0].querySelector(".oui-navbar-toggler_button"));
+
+                expect(toggler.hasClass("ng-hide")).toBeFalsy(); // ngHide: Check when undefined
+                expect(angular.element(component[0].querySelector(".oui-navbar-toggler_loading")).length).toBe(0); // ngIf
+
+                scope.$ctrl.loading = true;
+                scope.$apply();
+                expect(toggler.hasClass("ng-hide")).toBeTruthy();
+                expect(angular.element(component[0].querySelector(".oui-navbar-toggler_loading")).length).toBe(1);
+
+                scope.$ctrl.loading = false;
+                scope.$apply();
+                expect(toggler.hasClass("ng-hide")).toBeFalsy();
+                expect(angular.element(component[0].querySelector(".oui-navbar-toggler_loading")).length).toBe(0);
             });
         });
 

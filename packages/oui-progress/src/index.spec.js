@@ -102,7 +102,7 @@ describe("ouiProgress", () => {
 
         it("should have the correct width when max-value is used", () => {
             const value = 10;
-            const expectedWidth = value / 2;
+            const expectedWidth = value / 2; // eslint-disable-line no-magic-numbers
             const element = TestUtils.compileTemplate(`
                 <oui-progress max-value="200">
                     <oui-progress-bar value="${value}"></oui-progress-bar>
@@ -145,7 +145,7 @@ describe("ouiProgress", () => {
             it("should have the correct position according to value", () => {
                 const value = 10;
                 const maxValue = 200;
-                const leftPosition = value / (maxValue / 100);
+                const leftPosition = value / (maxValue / 100); // eslint-disable-line no-magic-numbers
                 const element = TestUtils.compileTemplate(`
                     <oui-progress max-value="${maxValue}">
                         <oui-progress-threshold value="${value}"></oui-progress-threshold>
