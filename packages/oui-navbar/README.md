@@ -298,11 +298,40 @@ It defines the menu in reponsive mode. It will be visible only for screen resolu
 
 ### With component `oui-navbar-toggler`
 
+#### As toggler menu
+
 ```html:preview
 <oui-navbar active-link="lorem">
     <oui-navbar-toggler links="$ctrl.togglerLinks"></oui-navbar-toggler>
 </oui-navbar>
 ```
+
+#### As toggler button
+
+```html:preview
+<div class="oui-doc-preview-only">
+    <p>
+        <button class="oui-button oui-button_primary" type="button" ng-class="{
+                'oui-button_primary': $ctrl.togglerLoading,
+                'oui-button_secondary': !$ctrl.togglerLoading
+            }" ng-click="$ctrl.togglerLoading = !$ctrl.togglerLoading">
+            Toggle loading
+        </button>
+    </p>
+</div>
+<oui-navbar active-link="lorem">
+    <oui-navbar-toggler
+        on-click="$ctrl.togglerActive = !$ctrl.togglerActive"
+        active="$ctrl.togglerActive"
+        loading="$ctrl.togglerLoading">
+    </oui-navbar-toggler>
+</oui-navbar>
+<div class="oui-doc-preview-only">
+    <p><strong>active value:</strong> {{!!$ctrl.togglerActive | json}}</p>
+</div>
+```
+
+**Note**: By using this mode, you disable the internal `oui-navbar-backdrop` and toggler navigation.
 
 ## Aside Links
 
