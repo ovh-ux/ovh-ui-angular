@@ -1,4 +1,4 @@
-import { addBooleanParameter } from "@oui-angular/common/component-utils";
+import { addBooleanParameter } from "@ovh-ui/common/component-utils";
 import get from "lodash/get";
 
 export default class {

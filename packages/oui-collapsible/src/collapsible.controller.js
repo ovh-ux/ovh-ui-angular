@@ -1,4 +1,4 @@
-import { addDefaultParameter } from "@oui-angular/common/component-utils";
+import { addDefaultParameter } from "@ovh-ui/common/component-utils";
 
 export default class {
     constructor ($attrs, $element, $scope, $timeout, $window) {

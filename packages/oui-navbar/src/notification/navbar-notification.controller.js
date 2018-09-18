@@ -1,4 +1,4 @@
-import { addBooleanParameter, addDefaultParameter } from "@oui-angular/common/component-utils";
+import { addBooleanParameter, addDefaultParameter } from "@ovh-ui/common/component-utils";
 
 const defaultLimitTo = 10;
 export default class {

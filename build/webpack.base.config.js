@@ -13,7 +13,7 @@ module.exports = {
     resolve: {
         extensions: [".js", ".json"],
         alias: {
-            "@oui-angular": path.resolve(__dirname, "../packages")
+            "@ovh-ui": path.resolve(__dirname, "../packages")
         }
     },
     plugins: [
