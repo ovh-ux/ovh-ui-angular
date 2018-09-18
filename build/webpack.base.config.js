@@ -1,5 +1,4 @@
 const formatter = require("eslint-friendly-formatter");
-const path = require("path");
 const webpack = require("webpack");
 const LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
 
@@ -9,12 +8,6 @@ module.exports = {
     mode: "development",
     entry: {
         component: ["./packages/oui-angular/src/index.js"]
-    },
-    resolve: {
-        extensions: [".js", ".json"],
-        alias: {
-            "@ovh-ui": path.resolve(__dirname, "../packages")
-        }
     },
     plugins: [
         new webpack.DefinePlugin({
