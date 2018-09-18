@@ -6,6 +6,7 @@ const LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
 const exclude = [/node_modules/, /dist/];
 
 module.exports = {
+    mode: "development",
     entry: {
         component: ["./packages/oui-angular/src/index.js"]
     },
