@@ -23,7 +23,7 @@ module.exports = {
         new LodashModuleReplacementPlugin({
             shorthands: true,
             paths: true
-        }), // Save bytes on Lodash
+        })
     ],
     module: {
         rules: [
