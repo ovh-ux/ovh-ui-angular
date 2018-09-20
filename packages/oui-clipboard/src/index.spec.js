@@ -78,7 +78,7 @@ describe("ouiClipboard", () => {
             $timeout.flush();
 
             // Will display the notSupported text because of Karma
-            expect($ctrl.tooltipText).toEqual(configuration.translations.notSupported);
+            expect($ctrl.tooltipText).toEqual($ctrl.translations.notSupported);
         });
 
         it("should reset tooltip text", () => {
@@ -96,7 +96,7 @@ describe("ouiClipboard", () => {
             $ctrl.reset();
             $timeout.flush();
 
-            expect($ctrl.tooltipText).toEqual(configuration.translations.copyToClipboardLabel);
+            expect($ctrl.tooltipText).toEqual($ctrl.translations.copyToClipboardLabel);
         });
     });
 });
