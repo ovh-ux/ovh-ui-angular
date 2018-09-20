@@ -3,9 +3,9 @@
 // we are also using it with karma-webpack
 //   https://github.com/webpack/karma-webpack
 
-import webpackConfig from "./webpack.test.babel";
+const webpackConfig = require("./webpack.test.config");
 
-export default config => {
+module.exports = function (config) {
     config.set({
         // to run in additional browsers:
         // 1. install corresponding karma launcher

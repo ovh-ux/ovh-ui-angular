@@ -1,4 +1,4 @@
-import { getAttribute, hasAttribute } from "@oui-angular/common/component-utils";
+import { getAttribute, hasAttribute } from "@ovh-ui/common/component-utils";
 
 const copyValueProperties = ["hidden", "title", "type", "type-options"];
 const searchableTypes = ["string"];

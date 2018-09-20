@@ -1,4 +1,4 @@
-import ActionMenu from "./action-menu.component.js";
+import ActionMenu from "./action-menu.component";
 import DropdownDivider from "../../oui-dropdown/src/divider/dropdown-divider.component";
 import DropdownItem from "../../oui-dropdown/src/item/dropdown-item.component";
 

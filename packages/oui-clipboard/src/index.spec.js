@@ -66,7 +66,7 @@ describe("ouiClipboard", () => {
             expect($ctrl.clipboard.text()).toBe(model);
         });
 
-        it("should update tooltip text when copied on click", (done) => {
+        it("should update tooltip text when copied on click", () => {
             const model = "bar";
             const element = testUtils.compileTemplate("<oui-clipboard model='$ctrl.model'></oui-clipboard>", {
                 model
@@ -74,19 +74,11 @@ describe("ouiClipboard", () => {
             const btnElement = element[0].querySelector(".oui-clipboard__button");
             const $ctrl = element.controller("ouiClipboard");
 
-            $ctrl.clipboard
-                .on("success", () => {
-                    $timeout.flush();
-                    expect($ctrl.tooltipText).toEqual(configuration.translations.copiedLabel);
-                    done();
-                })
-                .on("error", () => {
-                    $timeout.flush();
-                    expect($ctrl.tooltipText).toEqual(configuration.translations.notSupported);
-                    done();
-                });
-
             btnElement.click();
+            $timeout.flush();
+
+            // Will display the notSupported text because of Karma
+            expect($ctrl.tooltipText).toEqual(configuration.translations.notSupported);
         });
 
         it("should reset tooltip text", () => {

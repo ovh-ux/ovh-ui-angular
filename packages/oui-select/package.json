@@ -1,0 +1,10 @@
+{
+  "name": "@ovh-ui/oui-select",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "license": "BSD-3-Clause",
+  "author": "OVH SAS",
+  "dependencies": {
+    "popper.js": "^1.14.4"
+  }
+}
