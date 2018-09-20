@@ -33,10 +33,9 @@ module.exports = {
             },
             {
                 test: /\.js$/,
-                use: [
-                    "ng-annotate-loader",
-                    "babel-loader"
-                ],
+                use: {
+                    loader: "babel-loader"
+                },
                 exclude
             }, {
                 test: /\.(html|svg)$/,
