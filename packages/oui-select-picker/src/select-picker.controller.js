@@ -24,12 +24,18 @@ export default class SelectPickerController {
 
             this.labelElement = this.$element.find("label");
             this.labelElement.on("click", event => this.openSelectMenu(event));
+
+            // Avoid apply undefined class if this.variant is not already set
+            if (this.variant) {
+                this.$element.addClass(`oui-select-picker_${this.variant}`);
+            }
         });
     }
 
     $onInit () {
         addBooleanParameter(this, "disabled");
         addBooleanParameter(this, "required");
+        addDefaultParameter(this, "variant", "default");
         addDefaultParameter(this, "id", `ouiSelectPicker${this.$scope.$id}`);
 
         // Deprecated: Support for 'text' attribute
