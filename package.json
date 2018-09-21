@@ -3,7 +3,7 @@
   "description": "A set of maintainable components for the OVH ecosystem (Angular).",
   "license": "BSD-3-Clause",
   "author": "OVH SAS",
-  "version": "2.20.0",
+  "version": "2.20.1",
   "keywords": [
     "angular"
   ],
@@ -41,8 +41,8 @@
     "clipboard": "^2.0.1",
     "escape-string-regexp": "^1.0.5",
     "flatpickr": "^4.5.2",
-    "popper.js": "^1.14.4",
-    "ovh-ui-kit": "^2.20.0"
+    "ovh-ui-kit": "^2.20.0",
+    "popper.js": "^1.14.4"
   },
   "devDependencies": {
     "angular-mocks": ">=1.6.x",
