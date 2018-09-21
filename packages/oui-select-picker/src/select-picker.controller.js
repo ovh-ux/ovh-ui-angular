@@ -1,4 +1,4 @@
-import { addBooleanParameter, addDefaultParameter } from "@oui-angular/common/component-utils";
+import { addBooleanParameter, addDefaultParameter } from "@ovh-ui/common/component-utils";
 import get from "lodash/get";
 
 export default class SelectPickerController {

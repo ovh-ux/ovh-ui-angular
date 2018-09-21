@@ -146,8 +146,8 @@ describe("ouiSelectPicker", () => {
                             model="$ctrl.selectValue"></oui-select-picker>
                     </div>
                     `, {
-                        selectValue: "bValue"
-                    });
+                    selectValue: "bValue"
+                });
 
                 const selectPickerComponent1 = element.children()[0];
                 const selectPickerComponent2 = element.children()[1];
@@ -175,8 +175,8 @@ describe("ouiSelectPicker", () => {
                             on-change="$ctrl.onChange(modelValue)"></oui-select-picker>
                     </div>
                     `, {
-                        onChange: onChangeSpy
-                    });
+                    onChange: onChangeSpy
+                });
 
                 const selectPickerComponent1 = element.children()[0];
                 const selectPickerComponent2 = element.children()[1];
@@ -212,8 +212,8 @@ describe("ouiSelectPicker", () => {
                             on-change="$ctrl.onChange(modelValue)"></oui-select-picker>
                     </div>
                     `, {
-                        onChange: onChangeSpy
-                    });
+                    onChange: onChangeSpy
+                });
 
                 const selectPickerComponent1 = element.children()[0];
                 const selectPickerComponent2 = element.children()[1];

@@ -154,8 +154,8 @@ describe("ouiSwitch", () => {
                 const element = TestUtils.compileTemplate(`
                         <oui-switch required="$ctrl.isRequired"></oui-switch>
                     `, {
-                        isRequired: true
-                    });
+                    isRequired: true
+                });
 
                 $timeout.flush();
                 const checkboxElement = getSwitchInputElement(element);
@@ -166,8 +166,8 @@ describe("ouiSwitch", () => {
                 const element = TestUtils.compileTemplate(`
                         <oui-switch required="$ctrl.isRequired"></oui-switch>
                     `, {
-                        isRequired: false
-                    });
+                    isRequired: false
+                });
 
                 $timeout.flush();
                 const checkboxElement = getSwitchInputElement(element);
@@ -179,8 +179,8 @@ describe("ouiSwitch", () => {
                         <oui-switch required="$ctrl.isRequired"></oui-switch>
                     </form>
                     `, {
-                        isRequired: true
-                    });
+                    isRequired: true
+                });
 
                 $timeout.flush();
                 const form = element.scope().form;

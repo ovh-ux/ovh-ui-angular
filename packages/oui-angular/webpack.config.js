@@ -1,9 +1,9 @@
-import merge from "webpack-merge";
-import path from "path";
+const merge = require("webpack-merge");
+const path = require("path");
 
 const webpackConfig = require(__dirname, path.resolve("../../build/webpack.dist.config"));
 
-export default merge(webpackConfig, {
+module.exports = merge(webpackConfig, {
     context: __dirname,
     output: {
         filename: "oui-angular.js"

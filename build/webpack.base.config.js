@@ -1,19 +1,13 @@
-import formatter from "eslint-friendly-formatter";
-import path from "path";
-import webpack from "webpack";
-import LodashModuleReplacementPlugin from "lodash-webpack-plugin";
+const formatter = require("eslint-friendly-formatter");
+const webpack = require("webpack");
+const LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
 
 const exclude = [/node_modules/, /dist/];
 
-export default {
+module.exports = {
+    mode: "development",
     entry: {
         component: ["./packages/oui-angular/src/index.js"]
-    },
-    resolve: {
-        extensions: [".js", ".json"],
-        alias: {
-            "@oui-angular": path.resolve(__dirname, "../packages")
-        }
     },
     plugins: [
         new webpack.DefinePlugin({
@@ -22,7 +16,7 @@ export default {
         new LodashModuleReplacementPlugin({
             shorthands: true,
             paths: true
-        }), // Save bytes on Lodash
+        })
     ],
     module: {
         rules: [
@@ -39,10 +33,9 @@ export default {
             },
             {
                 test: /\.js$/,
-                use: [
-                    "ng-annotate-loader",
-                    "babel-loader"
-                ],
+                use: {
+                    loader: "babel-loader"
+                },
                 exclude
             }, {
                 test: /\.(html|svg)$/,

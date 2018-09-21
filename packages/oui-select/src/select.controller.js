@@ -1,4 +1,4 @@
-import { addBooleanParameter } from "@oui-angular/common/component-utils";
+import { addBooleanParameter } from "@ovh-ui/common/component-utils";
 
 const UI_SELECT_SELECTOR = ".oui-ui-select-container";
 const UI_SELECT_DROPDOWN_TRIGGER = ".oui-button_dropdown";

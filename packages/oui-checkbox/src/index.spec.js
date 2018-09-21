@@ -219,8 +219,8 @@ describe("ouiCheckbox", () => {
                 const element = TestUtils.compileTemplate(`
                         <oui-checkbox required="$ctrl.isRequired"></oui-checkbox>
                     `, {
-                        isRequired: true
-                    });
+                    isRequired: true
+                });
 
                 const checkboxElement = getCheckboxInputElement(element);
                 expect(angular.element(checkboxElement).prop("required")).toBe(true);
@@ -230,8 +230,8 @@ describe("ouiCheckbox", () => {
                 const element = TestUtils.compileTemplate(`
                         <oui-checkbox required="$ctrl.isRequired"></oui-checkbox>
                     `, {
-                        isRequired: false
-                    });
+                    isRequired: false
+                });
 
                 const checkboxElement = getCheckboxInputElement(element);
                 expect(angular.element(checkboxElement).prop("required")).toBe(false);
@@ -242,8 +242,8 @@ describe("ouiCheckbox", () => {
                         <oui-checkbox name="checkbox" required="$ctrl.isRequired"></oui-checkbox>
                     </form>
                     `, {
-                        isRequired: true
-                    });
+                    isRequired: true
+                });
 
                 const form = element.scope().form;
                 const checkboxElement = getCheckboxInputElement(element);

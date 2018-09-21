@@ -1,4 +1,4 @@
-import { addBooleanParameter, addDefaultParameter } from "@oui-angular/common/component-utils";
+import { addBooleanParameter, addDefaultParameter } from "@ovh-ui/common/component-utils";
 
 export default class {
     constructor ($attrs, $element, $timeout) {
@@ -16,9 +16,7 @@ export default class {
     }
 
     $postLink () {
-        this.$timeout(() =>
-            this.$element
-                .removeAttr("aria-label")
-        );
+        this.$timeout(() => this.$element
+            .removeAttr("aria-label"));
     }
 }

@@ -1,4 +1,4 @@
-import { addBooleanParameter, addDefaultParameter } from "@oui-angular/common/component-utils";
+import { addBooleanParameter, addDefaultParameter } from "@ovh-ui/common/component-utils";
 import clamp from "lodash/clamp";
 
 // By design, value is restricted to [0, 99999] interval

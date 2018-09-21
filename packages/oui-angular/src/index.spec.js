@@ -1,4 +1,4 @@
-import "@oui-angular/common/test-utils";
+import "@ovh-ui/common/test-utils";
 
 loadTests(require.context("../../oui-action-menu/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-back-button/src/", true, /.*((\.spec)|(index))$/));

@@ -13,8 +13,7 @@ describe("ouiActionMenu", () => {
             const element = TestUtils.compileTemplate(`
                 <oui-action-menu>
                   <oui-action-menu-item>Action 1</oui-action-menu-item>
-                </oui-action-menu>`
-            );
+                </oui-action-menu>`);
 
             const ulElement = element.find("ul");
             expect(ulElement).toBeTruthy();
@@ -27,7 +26,8 @@ describe("ouiActionMenu", () => {
                   <oui-action-menu-item on-click="$ctrl.clickHandler()">Action 1</oui-action-menu-item>
                 </oui-action-menu>`, {
                     clickHandler: clickSpy
-                });
+                }
+            );
 
             const buttonElement = element[0].querySelector("button");
             expect(buttonElement).toBeTruthy();
@@ -42,8 +42,7 @@ describe("ouiActionMenu", () => {
             const element = TestUtils.compileTemplate(`
                 <oui-action-menu>
                   <oui-action-menu-item href="http://foo.bar">Action 1</oui-action-menu-item>
-                </oui-action-menu>`
-            );
+                </oui-action-menu>`);
 
             const linkElement = element[0].querySelector("a");
             expect(linkElement).toBeTruthy();
