@@ -1,5 +1,5 @@
 {
-  "name": "@ovh-ui/oui-angular",
+  "name": "ovh-ui-angular",
   "version": "1.0.0",
   "main": "src/index.js",
   "license": "BSD-3-Clause",
