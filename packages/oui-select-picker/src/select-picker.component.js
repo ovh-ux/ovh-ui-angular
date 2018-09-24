@@ -20,6 +20,7 @@ export default {
         values: "<",
         disabled: "<?",
         required: "<?",
-        onChange: "&?"
+        onChange: "&?",
+        variant: "@?"
     }
 };
