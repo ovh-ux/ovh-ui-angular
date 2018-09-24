@@ -78,6 +78,17 @@
 <span>Last onChange value: {{ $ctrl.lastOnChangeValue }}</span>
 ```
 
+### Variant
+
+```html:preview
+<oui-select-picker name="oui-select-picker-5"
+    match="name"
+    model="$ctrl.value1"
+    label="Value A or B"
+    values="[{id:'a', name: 'Value A'}, {id:'b', name: 'Value B'}]"
+    variant="light"></oui-select-picker>
+```
+
 ## API
 
 | Attribute     | Type      | Binding   | One-time Binding  | Values            | Default   | Description
@@ -94,6 +105,7 @@
 | `disabled`    | boolean   | <?        | no                | `true`, `false`   | `false`   | disabled flag
 | `required`    | boolean   | <?        | no                | `true`, `false`   | `false`   | define if the field is required
 | `on-change`   | function  | &?        | no                | n/a               | n/a       | handler triggered when value has changed
+| `variant`     | string    | @?        | yes               | `default`, `light`| `default` | define specific style
 
 #### Deprecated
 
