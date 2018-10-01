@@ -183,7 +183,7 @@ export default class FieldController {
             }
         }
 
-        return null;
+        return {};
     }
 
     getMessagesOrder () {
