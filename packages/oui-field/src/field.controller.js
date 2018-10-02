@@ -188,7 +188,7 @@ export default class FieldController {
 
     getMessagesOrder () {
         // first known errors then custom errors
-        return Object.keys(this.getFirstError()).sort((a, b) => MESSAGES_ORDER.indexOf(a) < MESSAGES_ORDER.indexOf(b));
+        return Object.keys(this.getFirstError() || {}).sort((a, b) => MESSAGES_ORDER.indexOf(a) < MESSAGES_ORDER.indexOf(b));
     }
 
     getMessageString (errorName) {
