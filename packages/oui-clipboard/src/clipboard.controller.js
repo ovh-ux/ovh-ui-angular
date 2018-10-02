@@ -1,4 +1,6 @@
-import Clipboard from "clipboard";
+// Must import minified version (https://github.com/zenorocha/clipboard.js/issues/570)
+import Clipboard from "clipboard/dist/clipboard.min";
+
 export default class {
     constructor ($attrs, $element, $timeout, ouiClipboardConfiguration) {
         "ngInject";
