@@ -8,9 +8,9 @@
     "angular"
   ],
   "repository": "ovh-ux/ovh-ui-angular",
-  "main": "dist/oui-angular.min.js",
-  "browser": "dist/oui-angular.min.js",
-  "module": "packages/oui-angular/src/index.js",
+  "main": "./dist/oui-angular.min.js",
+  "browser": "./dist/oui-angular.min.js",
+  "module": "./packages/oui-angular/src/index.js",
   "scripts": {
     "commit": "npm-scripts-config commit",
     "commitmsg": "npm-scripts-config commitmsg",
