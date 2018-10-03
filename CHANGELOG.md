@@ -1,3 +1,29 @@
+<a name="2.21.0"></a>
+# [2.21.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.20.3...v2.21.0) (2018-10-03)
+
+
+### Bug Fixes
+
+* fix value of main property ([69bb26f](https://github.com/ovh-ux/ovh-ui-angular/commit/69bb26f))
+* **oui-clipboard:** fix packaging issue ([26d1fbb](https://github.com/ovh-ux/ovh-ui-angular/commit/26d1fbb))
+
+
+### Features
+
+* **oui-select-picker:** add variant attribute ([#269](https://github.com/ovh-ux/ovh-ui-angular/issues/269)) ([c227361](https://github.com/ovh-ux/ovh-ui-angular/commit/c227361))
+
+
+
+<a name="2.20.3"></a>
+## [2.20.3](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.20.2...v2.20.3) (2018-10-02)
+
+
+### Bug Fixes
+
+* **oui-field:** fix getFirstError return ([#274](https://github.com/ovh-ux/ovh-ui-angular/issues/274)) ([fc92944](https://github.com/ovh-ux/ovh-ui-angular/commit/fc92944))
+
+
+
 <a name="2.20.2"></a>
 ## [2.20.2](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.20.1...v2.20.2) (2018-09-21)
 
