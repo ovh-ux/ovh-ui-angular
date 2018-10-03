@@ -45,7 +45,8 @@
                 <span ng-bind=":: $ctrl.$scope.$parent.getItemValue($item, $ctrl.match)"></span>
             </oui-select>
         </span>
-        <span ng-if="$ctrl.transcludeSection"
+        <span class="oui-select-picker__transclude-container"
+              ng-if="$ctrl.transcludeSection"
               ng-transclude="sectionSlot"></span>
     </label>
 </div>
