@@ -19,6 +19,7 @@ export default class SelectPickerController {
         // So we use $timeout to force the $apply
         this.$timeout(() => {
             this.$element
+                .addClass("oui-select-picker")
                 .removeAttr("id")
                 .removeAttr("name");
 
