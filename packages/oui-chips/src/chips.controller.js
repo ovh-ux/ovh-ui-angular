@@ -1,4 +1,4 @@
-import { addBooleanParameter } from "@ovh-ui/common/component-utils";
+import { addBooleanParameter, addDefaultParameter } from "@ovh-ui/common/component-utils";
 
 export default class {
     constructor ($attrs, $element, $timeout) {
@@ -12,8 +12,7 @@ export default class {
     $onInit () {
         addBooleanParameter(this, "closable");
         addBooleanParameter(this, "stacked");
-
-        this.items = this.items ? angular.copy(this.items) : [];
+        addDefaultParameter(this, "item", []);
     }
 
     $postLink () {
