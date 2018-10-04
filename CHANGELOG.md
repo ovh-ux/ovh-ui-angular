@@ -1,3 +1,14 @@
+<a name="2.21.1"></a>
+## [2.21.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.21.0...v2.21.1) (2018-10-04)
+
+
+### Bug Fixes
+
+* **oui-chips:** fix item removal ([#279](https://github.com/ovh-ux/ovh-ui-angular/issues/279)) ([9a1f9a0](https://github.com/ovh-ux/ovh-ui-angular/commit/9a1f9a0))
+* **oui-select-picker:** fix main classname on component ([#280](https://github.com/ovh-ux/ovh-ui-angular/issues/280)) ([8e7189d](https://github.com/ovh-ux/ovh-ui-angular/commit/8e7189d))
+
+
+
 <a name="2.21.0"></a>
 # [2.21.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.20.3...v2.21.0) (2018-10-03)
 
