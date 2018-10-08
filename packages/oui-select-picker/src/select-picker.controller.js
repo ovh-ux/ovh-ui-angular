@@ -50,6 +50,11 @@ export default class SelectPickerController {
 
         if (this.values && this.values.length === 1) {
             this.selectedValue = this.values[0];
+
+            // Apply default model value if model is set
+            if (this.model && this.model.id === this.selectedValue.id) {
+                this.model = this.selectedValue;
+            }
         }
 
         this.transcludeSection = this.$transclude.isSlotFilled("sectionSlot");
