@@ -1,6 +1,6 @@
 import Popover from "./popover.component.js";
-import PopoverContent from "./popover-content.directive";
-import PopoverTrigger from "./popover-trigger.directive";
+import PopoverContent from "./content/popover-content.directive";
+import PopoverTrigger from "./trigger/popover-trigger.directive";
 
 export default angular
     .module("oui.popover", [])

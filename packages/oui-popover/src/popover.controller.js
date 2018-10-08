@@ -25,9 +25,11 @@ export default class PopoverController {
     }
 
     $postLink () {
-        this.triggerElement = this.$element[0].querySelector(".oui-popover__trigger");
-        this.popperElement = this.$element[0].querySelector(".oui-popover__content");
-        this.arrowElement = this.$element[0].querySelector(".oui-popover__arrow");
+        this.$timeout(() => {
+            this.triggerElement = this.$element[0].querySelector(".oui-popover__trigger");
+            this.popperElement = this.$element[0].querySelector(".oui-popover__content");
+            this.arrowElement = this.$element[0].querySelector(".oui-popover__arrow");
+        });
     }
 
     $destroy () {

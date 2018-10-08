@@ -18,13 +18,13 @@
 ### All directions
 
 ```html:preview
-<oui-popover placement="top">
-    <button type="button" class="oui-button oui-button_primary" oui-popover-trigger>Popover on top</button>
+<oui-popover placement="right">
+    <button type="button" class="oui-button oui-button_primary" oui-popover-trigger>Popover on right</button>
     <oui-popover-content>This is an awesome popover content.</oui-popover-content>
 </oui-popover>
 
-<oui-popover placement="right">
-    <button type="button" class="oui-button oui-button_primary" oui-popover-trigger>Popover on right</button>
+<oui-popover placement="top">
+    <button type="button" class="oui-button oui-button_primary" oui-popover-trigger>Popover on top</button>
     <oui-popover-content>This is an awesome popover content.</oui-popover-content>
 </oui-popover>
 
@@ -75,8 +75,6 @@ Availability:
 | Attribute     | Type      | Binding   | Values                                                                                        | Default   | Description
 | ----          | ----      | ----      | ----                                                                                          | ----      | ----
 | `placement`   | string    | @?        | See [Popper placements](https://popper.js.org/popper-documentation.html#Popper.placements)    | `right`   | modifier for alignment
-
-For placement values, see Popper.JS documentation (https://popper.js.org/popper-documentation.html#Popper.placements)
 
 ### oui-popover-trigger
 

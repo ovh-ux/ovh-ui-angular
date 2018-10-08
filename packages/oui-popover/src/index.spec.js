@@ -1,10 +1,12 @@
 describe("ouiPopover", () => {
+    let $timeout;
     let TestUtils;
 
     beforeEach(angular.mock.module("oui.popover"));
     beforeEach(angular.mock.module("oui.test-utils"));
 
-    beforeEach(inject((_TestUtils_) => {
+    beforeEach(inject((_$timeout_, _TestUtils_) => {
+        $timeout = _$timeout_;
         TestUtils = _TestUtils_;
     }));
 
@@ -19,6 +21,8 @@ describe("ouiPopover", () => {
                 </oui-popover>`
             );
 
+            $timeout.flush();
+
             const trigger = element[0].querySelector("[oui-popover-trigger]");
             expect(angular.element(trigger).hasClass("oui-popover__trigger")).toBeTruthy();
         });
@@ -32,6 +36,8 @@ describe("ouiPopover", () => {
                   </div>
                 </oui-popover>`
             );
+
+            $timeout.flush();
 
             const controller = element.controller("ouiPopover");
             controller.openPopover();
@@ -50,6 +56,8 @@ describe("ouiPopover", () => {
                 </oui-popover>`
             );
 
+            $timeout.flush();
+
             const controller = element.controller("ouiPopover");
             controller.openPopover();
 
@@ -67,6 +75,8 @@ describe("ouiPopover", () => {
                     </oui-popover>`
                 );
 
+                $timeout.flush();
+
                 const popover = element[0].querySelector("[oui-popover-content]").parentNode;
                 const $popover = angular.element(popover);
 
@@ -82,6 +92,8 @@ describe("ouiPopover", () => {
                       </div>
                     </oui-popover>`
                 );
+
+                $timeout.flush();
 
                 const rootElement = element[0].querySelector(".oui-popover");
                 const $rootElement = angular.element(rootElement);
