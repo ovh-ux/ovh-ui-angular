@@ -35,6 +35,7 @@ loadTests(require.context("../../oui-stepper/src/", true, /.*((\.spec)|(index))$
 loadTests(require.context("../../oui-switch/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-tile/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-textarea/src/", true, /.*((\.spec)|(index))$/));
+loadTests(require.context("../../oui-tooltip/src/", true, /.*((\.spec)|(index))$/));
 
 function loadTests (context) {
     context.keys().forEach(context);
