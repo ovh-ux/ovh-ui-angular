@@ -118,7 +118,7 @@
 </oui-stepper>
 <div class="oui-doc-preview-only">
     <p>On Finish</p>
-    <pre>{{$ctrl.onFinishForms | json}}</pre>
+    <pre class="oui-doc-code oui-doc-code_json">{{$ctrl.onFinishForms | json}}</pre>
 </div>
 ```
 
@@ -142,7 +142,7 @@
 </oui-stepper>
 <div class="oui-doc-preview-only">
     <p>On Submit</p>
-    <pre>{{$ctrl.onSubmitForm | json}}</pre>
+    <pre class="oui-doc-code oui-doc-code_json">{{$ctrl.onSubmitForm | json}}</pre>
 </div>
 ```
 

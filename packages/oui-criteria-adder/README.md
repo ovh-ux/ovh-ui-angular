@@ -14,9 +14,9 @@
 </oui-criteria-adder>
 <div class="oui-doc-preview-only">
     <p>Input</p>
-    <pre>{{$ctrl.inputValue | json}}</pre>
+    <pre class="oui-doc-code oui-doc-code_json">{{$ctrl.inputValue | json}}</pre>
     <p>Output</p>
-    <pre>{{$ctrl.outputValue | json}}</pre>
+    <pre class="oui-doc-code oui-doc-code_json">{{$ctrl.outputValue | json}}</pre>
 </div>
 ```
 
