@@ -1,4 +1,5 @@
 import { addBooleanParameter, addDefaultParameter } from "@ovh-ui/common/component-utils";
+import find from "lodash/find";
 import get from "lodash/get";
 
 export default class SelectPickerController {
@@ -12,6 +13,34 @@ export default class SelectPickerController {
         this.$transclude = $transclude;
 
         this.$scope.getItemValue = (item, path) => get(item, path, "");
+    }
+
+    $onInit () {
+        addBooleanParameter(this, "disabled");
+        addBooleanParameter(this, "required");
+        addDefaultParameter(this, "variant", "default");
+        addDefaultParameter(this, "id", `ouiSelectPicker${this.$scope.$id}`);
+
+        // Deprecated: Support for 'text' attribute
+        if (!!this.$attrs.text && !this.$attrs.label) {
+            this.label = this.text;
+        }
+
+        if (this.picture) {
+            this.isImgPath = /^data:/.test(this.picture) || /\.(gif|png|jpg)$/.test(this.picture);
+        }
+
+        if (this.values) {
+            if (this.values.length === 1) {
+                this.selectedValue = this.values[0];
+            }
+
+            if (this.model && find(this.values, this.model)) {
+                this.selectedValue = this.model;
+            }
+        }
+
+        this.transcludeSection = this.$transclude.isSlotFilled("sectionSlot");
     }
 
     $postLink () {
@@ -31,28 +60,6 @@ export default class SelectPickerController {
                 this.$element.addClass(`oui-select-picker_${this.variant}`);
             }
         });
-    }
-
-    $onInit () {
-        addBooleanParameter(this, "disabled");
-        addBooleanParameter(this, "required");
-        addDefaultParameter(this, "variant", "default");
-        addDefaultParameter(this, "id", `ouiSelectPicker${this.$scope.$id}`);
-
-        // Deprecated: Support for 'text' attribute
-        if (!!this.$attrs.text && !this.$attrs.label) {
-            this.label = this.text;
-        }
-
-        if (this.picture) {
-            this.isImgPath = /^data:/.test(this.picture) || /\.(gif|png|jpg)$/.test(this.picture);
-        }
-
-        if (this.values && this.values.length === 1) {
-            this.selectedValue = this.values[0];
-        }
-
-        this.transcludeSection = this.$transclude.isSlotFilled("sectionSlot");
     }
 
     $destroy () {

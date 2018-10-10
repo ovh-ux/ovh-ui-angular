@@ -1,10 +1,12 @@
+import { addDefaultParameter } from "@ovh-ui/common/component-utils";
 import Popper from "popper.js";
 import template from "./tooltip.html";
 
 export default class {
-    constructor ($compile, $element, $scope, $timeout) {
+    constructor ($attrs, $compile, $element, $scope, $timeout) {
         "ngInject";
 
+        this.$attrs = $attrs; // Used for addDefaultParameter()
         this.$compile = $compile;
         this.$element = $element;
         this.$scope = $scope;
@@ -12,15 +14,17 @@ export default class {
     }
 
     $onInit () {
-    // Add default value for attribute 'placement'
-        if (angular.isUndefined(this.placement)) {
-            this.placement = "top";
-        }
+        addDefaultParameter(this, "placement", "top");
     }
 
     $postLink () {
+
         this.$timeout(() => {
-            // Add an attribute 'aria-label' if undefined
+            if (this.title) {
+                addDefaultParameter(this, "text", this.title);
+                this.$element.removeAttr("title"); // Remove title to avoid native tooltip
+            }
+
             if (!this.$element.attr("aria-label")) {
                 this.$element.attr("aria-label", this.text);
             }
