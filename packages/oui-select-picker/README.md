@@ -8,22 +8,22 @@
 
 ```html:preview
 <div ng-init="$ctrl.value1 = {id:'a', name: 'Value A'}">
-    <oui-select-picker name="oui-select-picker-1"
-        match="name"
-        model="$ctrl.value1"
-        label="Value A or B"
-        values="[{id:'a', name: 'Value A'}, {id:'b', name: 'Value B'}]"></oui-select-picker>
-    <oui-select-picker name="oui-select-picker-1"
-        match="name"
-        model="$ctrl.value1"
-        label="Value C"
-        values="[{id:'c', name: 'Value C'}]"></oui-select-picker>
-    <oui-select-picker name="oui-select-picker-1"
-        match="name"
-        model="$ctrl.value1"
-        placeholder="Select"
-        label="Value D, E or F"
-        values="[{id:'d', name: 'Value D'}, {id:'e', name: 'Value E'}, {id:'f', name: 'Value F'}]"></oui-select-picker>
+<oui-select-picker name="ouiSelectPicker1"
+    match="name"
+    model="$ctrl.value1"
+    label="Value A or B"
+    values="[{id:'a', name: 'Value A'}, {id:'b', name: 'Value B'}]"></oui-select-picker>
+<oui-select-picker name="ouiSelectPicker1"
+    match="name"
+    model="$ctrl.value1"
+    label="Value C"
+    values="[{id:'c', name: 'Value C'}]"></oui-select-picker>
+<oui-select-picker name="ouiSelectPicker1"
+    match="name"
+    model="$ctrl.value1"
+    placeholder="Select"
+    label="Value D, E or F"
+    values="[{id:'d', name: 'Value D'}, {id:'e', name: 'Value E'}, {id:'f', name: 'Value F'}]"></oui-select-picker>
 </div>
 ```
 
@@ -62,13 +62,13 @@
 ```html:preview
 <div ng-init="$ctrl.value2 = {id:'a', name: 'Value A'}">
     <oui-select-picker label="Value A or B"
-        name="oui-select-picker-2"
+        name="ouiSelectPicker2"
         match="name"
         model="$ctrl.value2"
         values="[{id:'a', name: 'Value A'}, {id:'b', name: 'Value B'}]"
         on-change="$ctrl.lastOnChangeValue = modelValue"></oui-select-picker>
     <oui-select-picker label="Value C"
-        name="oui-select-picker-2"
+        name="ouiSelectPicker2"
         match="name"
         model="$ctrl.value2"
         values="[{id:'c', name: 'Value C'}]"
@@ -81,12 +81,27 @@
 ### Variant
 
 ```html:preview
-<oui-select-picker name="oui-select-picker-5"
+<div ng-init="$ctrl.value3 = {id:'a', name: 'Value A'}">
+<oui-select-picker name="ouiSelectPicker5"
     match="name"
-    model="$ctrl.value1"
+    model="$ctrl.value3"
     label="Value A or B"
     values="[{id:'a', name: 'Value A'}, {id:'b', name: 'Value B'}]"
     variant="light"></oui-select-picker>
+<oui-select-picker name="ouiSelectPicker5"
+    match="name"
+    model="$ctrl.value3"
+    label="Value C"
+    values="[{id:'c', name: 'Value C'}]"
+    variant="light"></oui-select-picker>
+<oui-select-picker name="ouiSelectPicker5"
+    match="name"
+    model="$ctrl.value3"
+    placeholder="Select"
+    label="Value D, E or F"
+    values="[{id:'d', name: 'Value D'}, {id:'e', name: 'Value E'}, {id:'f', name: 'Value F'}]"
+    variant="light"></oui-select-picker>
+</div>
 ```
 
 ## API
