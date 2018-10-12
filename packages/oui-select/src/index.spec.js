@@ -289,5 +289,59 @@ describe("ouiSelect", () => {
                 expect(onChange).toHaveBeenCalledWith(data[index2]);
             });
         });
+
+        describe("Disable options", () => {
+            it("should disable corresponding items", () => {
+                const disableCountry = (item) => item.name === data[3].name;
+                const element = TestUtils.compileTemplate(`
+                    <oui-select name="country"
+                                model="$ctrl.country"
+                                title="Select a country"
+                                placeholder="Select a country..."
+                                items="$ctrl.countries"
+                                disable-items="$ctrl.disableCountry($item)"
+                                match="name">
+                        <span ng-bind="$item.name"></span>
+                    </oui-select>`, {
+                    countries: data,
+                    disableCountry
+                });
+
+                $timeout.flush();
+
+                // Trigger click to update the options with corresponding dynamic attributes
+                getDropdownButton(element).click();
+                expect(angular.element(getDropdownItem(element, 3)).prop("disabled")).toBeTruthy();
+            });
+
+            it("should update item", () => {
+                const countries = data.concat({ name: "Imaginary country", code: "IC" });
+                const disableCountry = (item) => item.code === "";
+                const element = TestUtils.compileTemplate(`
+                    <oui-select name="country"
+                                model="$ctrl.country"
+                                title="Select a country"
+                                placeholder="Select a country..."
+                                items="$ctrl.countries"
+                                disable-items="$ctrl.disableCountry($item)"
+                                match="name">
+                        <span ng-bind="$item.name"></span>
+                    </oui-select>`, {
+                    countries,
+                    disableCountry
+                });
+
+                $timeout.flush();
+
+                // Trigger click to update the options with corresponding dynamic attributes
+                getDropdownButton(element).click();
+                expect(angular.element(getDropdownItem(element, data.length - 1)).prop("disabled")).toBeFalsy();
+
+                element.scope().$ctrl.countries[data.length - 1].code = "";
+                $timeout.flush();
+
+                expect(angular.element(getDropdownItem(element, data.length - 1)).prop("disabled")).toBeTruthy();
+            });
+        });
     });
 });

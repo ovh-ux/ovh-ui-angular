@@ -9,5 +9,5 @@
         on-focus="$ctrl.onUiSelectFocus()"
         on-select="$ctrl.onChange({ modelValue: $model })">
     <oui-ui-select-match placeholder="{{::$ctrl.placeholder}}"></oui-ui-select-match>
-    <oui-ui-select-choices repeat="$item in $ctrl.items track by $index"></oui-ui-select-choices>
+    <oui-ui-select-choices repeat="$item in $ctrl.items track by $index" ui-disable-choice="$ctrl.disableItems({ $item: $item })"></oui-ui-select-choices>
 </oui-ui-select>
