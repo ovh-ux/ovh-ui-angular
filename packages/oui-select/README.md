@@ -68,6 +68,21 @@
 </oui-select>
 ```
 
+### Disable option
+
+```html:preview
+<oui-select name="letter"
+    model="$ctrl.selectedLetter"
+    data-title="Select a letter"
+    placeholder="Select a letter..."
+    items="[{ letter: 'a', disabled: true }, {letter: 'b' }, { letter: 'c' }]"
+    required
+    match="letter"
+    data-align="start">
+    <span ng-bind="$item.letter"></span>
+</oui-select>
+```
+
 ### On Change
 
 **Note**: Model will not be refreshed until the `on-change` callback hasn't returned. If you want to access the new model inside the `on-change` callback you need to use the `modelValue` variable as below.
@@ -101,6 +116,8 @@
 
 ## API
 
+### oui-select
+
 | Attribute     | Type      | Binding   | One-time binding  | Values            | Default   | Description
 | ----          | ----      | ----      | ----              | ----              | ----      | ----
 | `model`       | object    | =         | no                | n/a               | n/a       | model bound to component
@@ -117,3 +134,8 @@
 | `on-focus`    | function  | &         | no                | n/a               | n/a       | called on focus
 | `on-change`   | function  | &         | no                | n/a               | n/a       | handler triggered when value has changed
 
+### items attribute 
+
+| Attribute     | Type      | Binding   | One-time binding  | Values            | Default   | Description
+| ----          | ----      | ----      | ----              | ----              | ----      | ----
+| `disabled`    | boolean   | n/a       | no                | true, false       | false     | if the item is disabled 
