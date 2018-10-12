@@ -5,10 +5,11 @@
             ng-attr-id="ui-select-choices-row-{{ $select.generatedId }}-{{$index}}"
             class="ui-select-choices-row oui-dropdown-option"
             ng-class="{
-                active: $select.isActive(this),
+                active: $select.isActive(this) && !$select.isDisabled(this),
                 selected: $select.isSelected(this),
                 disabled: $select.isDisabled(this)
             }"
+            ng-disabled="$select.isDisabled(this)"
             role="option"
             type="button">
             <span class="ui-select-choices-row-inner" ng-class="{ 'ui-select-choices-row-inner_grouped': $select.isGrouped }">
