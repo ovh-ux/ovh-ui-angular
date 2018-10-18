@@ -1,3 +1,19 @@
+<a name="2.21.3"></a>
+## [2.21.3](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.21.2...v2.21.3) (2018-10-18)
+
+
+### Bug Fixes
+
+* **oui-select-picker:** add selection on init if model is set ([#282](https://github.com/ovh-ux/ovh-ui-angular/issues/282)) ([2c0a33b](https://github.com/ovh-ux/ovh-ui-angular/commit/2c0a33b))
+* **oui-select-picker:** fix selected value on init ([#284](https://github.com/ovh-ux/ovh-ui-angular/issues/284)) ([e1a570d](https://github.com/ovh-ux/ovh-ui-angular/commit/e1a570d))
+
+
+### Features
+
+* **oui-tooltip:** add title attribute support ([c3c16f7](https://github.com/ovh-ux/ovh-ui-angular/commit/c3c16f7))
+
+
+
 <a name="2.21.2"></a>
 ## [2.21.2](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.21.1...v2.21.2) (2018-10-10)
 
