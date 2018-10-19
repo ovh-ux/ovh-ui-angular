@@ -17,6 +17,7 @@ export default () => ({
         title: "@?",
         placeholder: "@?",
         items: "<",
+        disableItems: "&",
         match: "@?",
         groupBy: "<?",
         align: "@?",
