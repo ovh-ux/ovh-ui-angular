@@ -29,6 +29,8 @@
         name="{{::managerLink.name}}"
         text="{{::managerLink.heading || managerLink.title}}"
         href="{{::managerLink.href || managerLink.url}}"
+        state="{{::!!managerLink.state ? managerLink.state : null}}"
+        state-params="::!!managerLink.stateParams ? managerLink.stateParams : null"
         variant="{{::managerLink.isPrimary ? 'primary' : 'secondary'}}"
         aria-label="{{::!!managerLink.label ? managerLink.label : null}}"
         ng-repeat="managerLink in ::$ctrl.mainLinks track by $index"
