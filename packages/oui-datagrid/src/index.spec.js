@@ -1076,6 +1076,38 @@ describe("ouiDatagrid", () => {
             expect(actualCellHtml).toBe(`test: ${fakeData[0].lastName}`);
         });
 
+        it("should support row index data binding inside cell", () => {
+            const element = TestUtils.compileTemplate(`
+                    <oui-datagrid rows="$ctrl.rows">
+                        <oui-column property="firstName"></oui-column>
+                        <oui-column property="">
+                            test: {{ $rowIndex }}
+                        </oui-column>
+                    </oui-datagrid>
+                `, {
+                rows: fakeData.slice(0, 5)
+            }
+            );
+
+            const $firstRow = getRow(element, 0);
+            expect(
+                getCell($firstRow, 1).children().children().html()
+                    .trim())
+                .toBe("test: 0");
+
+            const $middleRow = getRow(element, 2);
+            expect(
+                getCell($middleRow, 1).children().children().html()
+                    .trim())
+                .toBe("test: 2");
+
+            const $lastRow = getRow(element, 4);
+            expect(
+                getCell($lastRow, 1).children().children().html()
+                    .trim())
+                .toBe("test: 4");
+        });
+
         it("should support parent binding inside cell", () => {
             const element = TestUtils.compileTemplate(`
                     <oui-datagrid rows="$ctrl.rows">
