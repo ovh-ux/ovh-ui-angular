@@ -55,6 +55,13 @@ export default class SelectPickerController {
             this.labelElement = this.$element.find("label");
             this.labelElement.on("click", event => this.openSelectMenu(event));
 
+            // Prevent click propagation on parent label (Safari)
+            this.dropdownElement = angular.element(this.$element[0].querySelectorAll(".ui-select-match"));
+            this.dropdownElement.on("click", event => {
+                event.stopPropagation();
+                event.preventDefault();
+            });
+
             // Avoid apply undefined class if this.variant is not already set
             if (this.variant) {
                 this.$element.addClass(`oui-select-picker_${this.variant}`);
