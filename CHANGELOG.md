@@ -1,3 +1,13 @@
+<a name="2.21.4"></a>
+## [2.21.4](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.21.3...v2.21.4) (2018-10-23)
+
+
+### Bug Fixes
+
+* **oui-select-picker:** fix click propagation on parent label ([#297](https://github.com/ovh-ux/ovh-ui-angular/issues/297)) ([dd08a3e](https://github.com/ovh-ux/ovh-ui-angular/commit/dd08a3e))
+
+
+
 <a name="2.21.3"></a>
 ## [2.21.3](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.21.2...v2.21.3) (2018-10-18)
 
