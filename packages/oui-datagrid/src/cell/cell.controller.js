@@ -40,6 +40,7 @@ export default class {
         this.cellScope.$row = this.row;
         this.cellScope.$column = this.column;
         this.cellScope.$value = this.row[this.column.name];
+        this.cellScope.$rowIndex = this.index;
 
         if (this.column.compiledTemplate) {
             this.column.compiledTemplate(this.cellScope, clone => {
