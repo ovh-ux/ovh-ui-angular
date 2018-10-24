@@ -28,7 +28,7 @@
             ng-bind=":: $ctrl.description"
             ng-if="$ctrl.description"></span>
     <span class="oui-select-picker__value-container oui-select-picker__section"
-        ng-if="$ctrl.values.length">
+        ng-if="$ctrl.values.length && $ctrl.match">
         <span class="oui-select-picker__value"
                 ng-bind=":: $ctrl.getFirstValueMatch($ctrl.match)"
                 ng-if="$ctrl.values.length === 1"></span>
