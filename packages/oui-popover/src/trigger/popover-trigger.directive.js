@@ -1,5 +1,6 @@
 import controller from "./popover-trigger.controller";
 
+// Deprecated: Support only for old use
 export default () => {
     "ngInject";
 

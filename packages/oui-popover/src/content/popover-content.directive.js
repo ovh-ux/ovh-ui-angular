@@ -1,5 +1,6 @@
 import contentTemplate from "./popover-content.html";
 
+// Deprecated: Support only for old use
 export default () => {
     "ngInject";
 
@@ -13,6 +14,9 @@ export default () => {
         bindToController: true,
         scope: {},
         template: contentTemplate,
-        transclude: true
+        transclude: true,
+        link: (scope, element) => {
+            element.addClass("oui-popover");
+        }
     };
 };
