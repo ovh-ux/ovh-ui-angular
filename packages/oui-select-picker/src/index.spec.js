@@ -98,6 +98,30 @@ describe("ouiSelectPicker", () => {
                 const radioElement = getRadioInputElement(element);
                 expect(angular.element(radioElement).attr("value")).toEqual("aValue");
             });
+
+            it("should allow to pick one of values attribute", () => {
+                const element = TestUtils.compileTemplate('<oui-select-picker values="[\'aValue\', \'bValue\']"></oui-select-picker>');
+
+                const selectElement = element[0].querySelector("oui-select");
+                expect(angular.element(selectElement)).not.toBeUndefined();
+
+                const selectValues = element[0].querySelectorAll(".oui-dropdown-option");
+                expect(angular.element(selectValues[0]).text().trim()).toEqual("aValue");
+            });
+
+            it("should display radio value according to match", () => {
+                const element = TestUtils.compileTemplate('<oui-select-picker values="[{id: \'a\', name: \'aValue\'}]" match="name"></oui-select-picker>');
+
+                const value = element[0].querySelectorAll(".oui-select-picker__value");
+                expect(angular.element(value).text().trim()).toEqual("aValue");
+            });
+
+            it("should display select values according to match", () => {
+                const element = TestUtils.compileTemplate('<oui-select-picker values="[{id: \'a\', name: \'aValue\'}, {id: \'b\', name: \'bValue\'}]" match="name"></oui-select-picker>');
+
+                const selectValues = element[0].querySelectorAll(".oui-dropdown-option");
+                expect(angular.element(selectValues[1]).text().trim()).toEqual("bValue");
+            });
         });
 
         describe("disabled attribute", () => {
