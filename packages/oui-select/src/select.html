@@ -3,7 +3,7 @@
         ng-model="$ctrl.model"
         search-enabled="false"
         ng-attr-title="{{::$ctrl.title}}"
-        ng-required="$ctrl.required"
+        ng-required="$ctrl.required && !$select.open"
         ng-disabled="$ctrl.disabled"
         on-blur="$ctrl.onUiSelectBlur()"
         on-focus="$ctrl.onUiSelectFocus()"
