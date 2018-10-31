@@ -1,81 +1,132 @@
 describe("ouiPopover", () => {
-    let TestUtils;
+    let $timeout;
+    let testUtils;
 
     beforeEach(angular.mock.module("oui.popover"));
     beforeEach(angular.mock.module("oui.test-utils"));
 
-    beforeEach(inject((_TestUtils_) => {
-        TestUtils = _TestUtils_;
+    beforeEach(inject((_$timeout_, _TestUtils_) => {
+        $timeout = _$timeout_;
+        testUtils = _TestUtils_;
     }));
 
-    describe("Component", () => {
-        it("should display the trigger with correct class name", () => {
-            const element = TestUtils.compileTemplate(`
-                <oui-popover>
-                  <button type="button" oui-popover-trigger>Popover trigger</button>
-                  <oui-popover-content>
-                    <b>Popover content</b>
-                  </oui-popover-content>
-                </oui-popover>`
-            );
+    describe("Directive", () => {
+        describe("oui-popover", () => {
+            it("should create a popover, next to the trigger, with the attribute value as text", () => {
+                const component = testUtils.compileTemplate('<div><button class="trigger" oui-popover="foo"></button></div>');
 
-            const trigger = element[0].querySelector("[oui-popover-trigger]");
-            expect(angular.element(trigger).hasClass("oui-popover__trigger")).toBeTruthy();
-        });
+                $timeout.flush();
 
-        it("should display at right with arrow by default", () => {
-            const element = TestUtils.compileTemplate(`
-                <oui-popover>
-                  <button type="button" oui-popover-trigger></button>
-                  <div oui-popover-content>
-                    <b>Popover content</b>
-                  </div>
-                </oui-popover>`
-            );
+                const popover = angular.element(component[0].querySelector(".trigger")).next();
 
-            const controller = element.controller("ouiPopover");
-            controller.openPopover();
-
-            expect(controller.popper.options.placement).toEqual("right");
-            expect(element[0].querySelector("[x-arrow]")).toBeDefined();
-        });
-
-        it("should display the popover at bottom aligned the left border", () => {
-            const element = TestUtils.compileTemplate(`
-                <oui-popover placement="bottom-start">
-                  <button class="oui-button" oui-popover-trigger></button>
-                  <div oui-popover-content>
-                    <b>Popover content</b>
-                  </div>
-                </oui-popover>`
-            );
-
-            const controller = element.controller("ouiPopover");
-            controller.openPopover();
-
-            expect(controller.popper.options.placement).toEqual("bottom-start");
-        });
-
-        describe("Events", () => {
-            it("should not be visible", () => {
-                const element = TestUtils.compileTemplate(`
-                    <oui-popover>
-                      <button class="oui-button" oui-popover-trigger></button>
-                      <div oui-popover-content>
-                        <b>Popover content</b>
-                      </div>
-                    </oui-popover>`
-                );
-
-                const popover = element[0].querySelector("[oui-popover-content]").parentNode;
-                const $popover = angular.element(popover);
-
-                expect($popover.hasClass("oui-popover_active")).toBeFalsy();
+                expect(popover.length).toBe(1);
+                expect(popover.hasClass("oui-popover")).toBe(true);
+                expect(popover.text().trim()).toBe("foo");
             });
 
-            it("should display and hide popover on click", () => {
-                const element = TestUtils.compileTemplate(`
+            it("should create a popover, next to the trigger, with the attribute value as text", () => {
+                const component = testUtils.compileTemplate('<div><button class="trigger" title="foo" oui-popover></button></div>');
+
+                $timeout.flush();
+
+                const popover = angular.element(component[0].querySelector(".trigger")).next();
+
+                expect(popover.length).toBe(1);
+                expect(popover.hasClass("oui-popover")).toBe(true);
+                expect(popover.text().trim()).toBe("foo");
+            });
+
+            it("should position the popover with right direction when trigger is clicked, if there is no placement defined", () => {
+                const component = testUtils.compileTemplate('<div><button class="trigger" oui-popover="foo"></button></div>');
+
+                $timeout.flush();
+
+                const trigger = angular.element(component[0].querySelector(".trigger")).triggerHandler("click");
+                const popover = trigger.next();
+
+                expect(popover.attr("x-placement")).toBe("right");
+            });
+
+
+            it("should position the popover with placement attribute value, when trigger is clicked", () => {
+                const component = testUtils.compileTemplate('<div><button class="trigger" oui-popover="foo" oui-popover-placement="bottom-start"></button></div>');
+
+                $timeout.flush();
+
+                const trigger = angular.element(component[0].querySelector(".trigger")).triggerHandler("click");
+                const popover = trigger.next();
+
+                expect(popover.attr("x-placement")).toBe("bottom-start");
+            });
+
+            it("should create a popover, next to the trigger, with the content of the template", () => {
+                const component = testUtils.compileTemplate(`<div>
+                    <button class="trigger" oui-popover="foo" oui-popover-template="popover.html"></button>
+                    <script type="text/ng-template" id="popover.html">foo</script>
+                    </div>`);
+
+                $timeout.flush();
+
+                const popover = angular.element(component[0].querySelector(".trigger")).next();
+
+                expect(popover.text().trim()).toBe("foo");
+            });
+
+            it("should set aria-expanded when trigger is clicked", () => {
+                const component = testUtils.compileTemplate('<div><button class="trigger" oui-popover="foo"></button></div>');
+
+                $timeout.flush();
+
+                const trigger = angular.element(component[0].querySelector(".trigger"));
+                expect(trigger.attr("aria-expanded")).toBe("false");
+
+                trigger.triggerHandler("click");
+                expect(trigger.attr("aria-expanded")).toBe("true");
+
+                trigger.triggerHandler("click");
+                expect(trigger.attr("aria-expanded")).toBe("false");
+            });
+        });
+
+        describe("Deprecated support", () => {
+            it("should display the trigger with correct class name", () => {
+                const element = testUtils.compileTemplate(`
                     <oui-popover>
+                      <button type="button" oui-popover-trigger>Popover trigger</button>
+                      <oui-popover-content>
+                        <b>Popover content</b>
+                      </oui-popover-content>
+                    </oui-popover>`
+                );
+
+                $timeout.flush();
+
+                const trigger = element[0].querySelector("[oui-popover-trigger]");
+                expect(angular.element(trigger).hasClass("oui-popover__trigger")).toBeTruthy();
+            });
+
+            it("should display at right with arrow by default", () => {
+                const element = testUtils.compileTemplate(`
+                    <oui-popover>
+                      <button type="button" oui-popover-trigger></button>
+                      <div oui-popover-content>
+                        <b>Popover content</b>
+                      </div>
+                    </oui-popover>`
+                );
+
+                $timeout.flush();
+
+                const controller = element.controller("ouiPopover");
+                controller.openPopover();
+
+                expect(controller.popper.options.placement).toEqual("right");
+                expect(element[0].querySelector("[x-arrow]")).toBeDefined();
+            });
+
+            it("should display the popover at bottom aligned the left border", () => {
+                const element = testUtils.compileTemplate(`
+                    <oui-popover placement="bottom-start">
                       <button class="oui-button" oui-popover-trigger></button>
                       <div oui-popover-content>
                         <b>Popover content</b>
@@ -83,22 +134,34 @@ describe("ouiPopover", () => {
                     </oui-popover>`
                 );
 
-                const rootElement = element[0].querySelector(".oui-popover");
-                const $rootElement = angular.element(rootElement);
-                const trigger = element[0].querySelector("[oui-popover-trigger]");
-                const $trigger = angular.element(trigger);
-                const closeButton = element[0].querySelector(".oui-popover__close-button");
-                const $closeButton = angular.element(closeButton);
+                $timeout.flush();
 
-                expect($rootElement.hasClass("oui-popover_active")).toBeFalsy();
-                $trigger.triggerHandler("click");
-                expect($rootElement.hasClass("oui-popover_active")).toBeTruthy();
-                $trigger.triggerHandler("click");
-                expect($rootElement.hasClass("oui-popover_active")).toBeFalsy();
-                $trigger.triggerHandler("click");
-                expect($rootElement.hasClass("oui-popover_active")).toBeTruthy();
-                $closeButton.triggerHandler("click");
-                expect($rootElement.hasClass("oui-popover_active")).toBeFalsy();
+                const controller = element.controller("ouiPopover");
+                controller.openPopover();
+
+                expect(controller.popper.options.placement).toEqual("bottom-start");
+            });
+
+            it("should set aria-expanded when trigger is clicked", () => {
+                const element = testUtils.compileTemplate(`
+                    <oui-popover>
+                      <button type="button" oui-popover-trigger>Popover trigger</button>
+                      <oui-popover-content>
+                        <b>Popover content</b>
+                      </oui-popover-content>
+                    </oui-popover>`
+                );
+
+                $timeout.flush();
+
+                const trigger = angular.element(element[0].querySelector("[oui-popover-trigger]"));
+                expect(trigger.attr("aria-expanded")).toBe("false");
+
+                trigger.triggerHandler("click");
+                expect(trigger.attr("aria-expanded")).toBe("true");
+
+                trigger.triggerHandler("click");
+                expect(trigger.attr("aria-expanded")).toBe("false");
             });
         });
     });

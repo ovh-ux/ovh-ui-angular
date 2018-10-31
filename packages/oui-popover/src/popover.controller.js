@@ -1,37 +1,89 @@
+import { addDefaultParameter } from "@ovh-ui/common/component-utils";
 import Popper from "popper.js";
+import template from "./popover.html";
 
 const KEY_ESCAPE = 27;
 
 export default class PopoverController {
-    constructor ($scope, $element, $attrs, $document, $timeout) {
+    constructor ($attrs, $compile, $document, $element, $scope, $timeout) {
         "ngInject";
 
-        this.$scope = $scope;
-        this.$element = $element;
         this.$attrs = $attrs;
+        this.$compile = $compile;
         this.$document = $document;
+        this.$element = $element;
+        this.$scope = $scope;
         this.$timeout = $timeout;
     }
 
     $onInit () {
+        // Deprecated: Support for component `oui-popover`
+        // Check if directive is an attribute or a component
+        this.isComponent = angular.isUndefined(this.$attrs.ouiPopover);
+
+        // Deprecated: Support for `placement` attribute
+        this.placement = this.placement || this.$attrs.placement;
+
+        this.id = `ouiPopover${this.$scope.$id}`;
         this.isPopoverOpen = false;
 
-        // Use internal id to map trigger
-        this.id = `ouiPopover${this.$scope.$id}`;
-
-        if (angular.isUndefined(this.placement)) {
-            this.placement = "right";
-        }
+        addDefaultParameter(this, "placement", "right");
     }
 
     $postLink () {
-        this.triggerElement = this.$element[0].querySelector(".oui-popover__trigger");
-        this.popperElement = this.$element[0].querySelector(".oui-popover__content");
-        this.arrowElement = this.$element[0].querySelector(".oui-popover__arrow");
+        this.setPopover();
+        this.setTrigger();
     }
 
     $destroy () {
         this.closePopover();
+    }
+
+    setPopover () {
+        this.$timeout(() => {
+            // Deprecated: Support for component `oui-popover-content`
+            if (this.isComponent) {
+                this.popperElement = this.$element[0].querySelector(".oui-popover");
+                this.arrowElement = this.$element[0].querySelector(".oui-popover__arrow");
+                return;
+            }
+
+            // Support for attribute `oui-popover`
+            // Create a new scope to compile the popover next to the trigger
+            const popoverScope = angular.extend(this.$scope.$new(true), { $popoverCtrl: this });
+            const popoverTemplate = this.$compile(template)(popoverScope);
+
+            // Add compiled template after $element
+            this.$element
+                .removeAttr("title") // Remove title to avoid native tooltip
+                .after(popoverTemplate);
+
+            this.popperElement = this.$element.next()[0];
+            this.arrowElement = this.popperElement.querySelector(".oui-popover__arrow");
+        });
+    }
+
+    setTrigger () {
+        this.$timeout(() => {
+            // Deprecated: Support for component `oui-popover-trigger`
+            if (this.isComponent) {
+                this.triggerElement = this.$element[0].querySelector(".oui-popover__trigger");
+                this.$triggerElement = angular.element(this.triggerElement);
+                return;
+            }
+
+            // Support for attribute `oui-popover`
+            this.triggerElement = this.$element[0];
+            this.$triggerElement = angular.element(this.triggerElement);
+
+            this.$triggerElement
+                .addClass("oui-popover__trigger")
+                .attr({
+                    "aria-haspopup": true,
+                    "aria-expanded": false
+                })
+                .on("click", () => this.onTriggerClick());
+        });
     }
 
     onTriggerClick () {
@@ -52,20 +104,33 @@ export default class PopoverController {
 
     openPopover () {
         this.isPopoverOpen = true;
-        angular.element(this.$element.children()[0]).addClass("oui-popover_active");
         this.updatePopper();
 
         this.$document.on("keydown", evt => this.triggerKeyHandler(evt));
-        this.$scope.$broadcast("oui:popover:afterOpen", this.id);
+
+        // Deprecated: Support for component `oui-popover-trigger`
+        if (this.isComponent) {
+            this.$triggerElement.attr("aria-expanded", true);
+            return;
+        }
+
+        // Support for attribute `oui-popover`
+        this.$element.attr("aria-expanded", true);
     }
 
     closePopover () {
         this.isPopoverOpen = false;
-        angular.element(this.$element.children()[0]).removeClass("oui-popover_active");
-        this.destroyPopper();
 
         this.$document.off("keydown", evt => this.triggerKeyHandler(evt));
-        this.$scope.$broadcast("oui:popover:afterClose", this.id);
+
+        // Deprecated: Support for component `oui-popover-trigger`
+        if (this.isComponent) {
+            this.$triggerElement.attr("aria-expanded", false);
+            return;
+        }
+
+        // Support for attribute `oui-popover`
+        this.$element.attr("aria-expanded", false);
     }
 
     createPopper () {
