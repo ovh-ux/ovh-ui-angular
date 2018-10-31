@@ -82,8 +82,10 @@ export default class {
     $onInit () {
         addBooleanParameter(this, "appendToBody");
         addBooleanParameter(this, "disabled");
+        addBooleanParameter(this, "enableTime");
         addBooleanParameter(this, "inline");
         addBooleanParameter(this, "required");
+        addBooleanParameter(this, "static");
         addBooleanParameter(this, "weekNumbers");
 
         this.initCalendarInstance();
