@@ -38,6 +38,7 @@
     "angular": ">=1.6.x",
     "angular-aria": ">=1.6.x",
     "angular-sanitize": ">=1.6.x",
+    "bloodhound-js": "^1.2.3",
     "clipboard": "^2.0.1",
     "escape-string-regexp": "^1.0.5",
     "flatpickr": "^4.5.2",

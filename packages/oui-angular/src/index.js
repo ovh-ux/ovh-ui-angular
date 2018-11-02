@@ -1,4 +1,5 @@
 import ActionMenu from "@ovh-ui/oui-action-menu";
+import Autocomplete from "@ovh-ui/oui-autocomplete";
 import BackButton from "@ovh-ui/oui-back-button";
 import Button from "@ovh-ui/oui-button";
 import Calendar from "@ovh-ui/oui-calendar";
@@ -40,6 +41,7 @@ import Tooltip from "@ovh-ui/oui-tooltip";
 export default angular
     .module("oui", [
         ActionMenu,
+        Autocomplete,
         BackButton,
         Button,
         Calendar,
