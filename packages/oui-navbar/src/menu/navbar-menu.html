@@ -31,7 +31,7 @@
                 'oui-navbar_desktop-only': !!menuLink.subLinks,
                 'oui-navbar-link_external': !!menuLink.isExternal
             }"
-            ng-click="$ctrl.navbarCtrl.toggleMenu()"
+            ng-click="$ctrl.closeMenuWithCallback($event, menuLink.click)"
             ng-href="{{::menuLink.url}}"
             oui-navbar-group="{{::$ctrl.menuName}}"
             oui-navbar-group-last="::$last">
@@ -50,7 +50,7 @@
             ng-class="::{
                 'oui-navbar_desktop-only': !!menuLink.subLinks
             }"
-            ng-click="$ctrl.navbarCtrl.toggleMenu()"
+            ng-click="$ctrl.closeMenuWithCallback($event, menuLink.click)"
             ng-bind="::menuLink.title"
             ui-sref="{{::$ctrl.constructor.getFullSref(menuLink)}}"
             oui-navbar-group="{{::$ctrl.menuName}}"
@@ -60,7 +60,7 @@
 
         <!-- Button (click) -->
         <button class="oui-navbar-link" type="button"
-            ng-if="::(!menuLink.subLinks && !!menuLink.click)"
+            ng-if="::(!menuLink.subLinks && !!menuLink.click && !menuLink.state  && !menuLink.url)"
             ng-attr-aria-label="{{::!!menuLink.label ? menuLink.label : null}}"
             ng-attr-title="{{::!!menuLink.label ? menuLink.label : null}}"
             ng-click="$ctrl.closeMenuWithCallback($event, menuLink.click)"

@@ -12,7 +12,8 @@ export default {
         state: "@?",
         stateParams: "<?",
         label: "@?ariaLabel",
-        variant: "@?"
+        variant: "@?",
+        onClick: "&"
     },
     controller,
     template
