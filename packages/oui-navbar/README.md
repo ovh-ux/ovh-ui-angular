@@ -250,6 +250,7 @@ This property is only available for root links of `main-links`.
     "title": String,
     "url": String<Url>,
     "isPrimary": Boolean,
+    "click": Function,
     "subLinks": Array[{
         "label": String,
         "title": String,
@@ -595,3 +596,4 @@ The property `name` **must be** `"user"`.
 | `state`               | string    | @?        | yes               | n/a                                   | n/a       | state of the link
 | `state-params`        | object    | <?        | yes               | n/a                                   | n/a       | state-params of the link
 | `variant`             | string    | @?        | yes               | `primary`, `secondary`, `tertiary`    | n/a       | style modifier of the link
+| `on-click`            | function  | &         | no                | n/a                                   | n/a       | click callback

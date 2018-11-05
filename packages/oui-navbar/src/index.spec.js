@@ -655,5 +655,35 @@ describe("ouiNavbar", () => {
                 expect(toggler.attr("aria-expanded")).toBe("false");
             });
         });
+
+        describe("Links", () => {
+            const data = mockData.mainLinks[0];
+
+            it("should call click callback", () => {
+                const onClickSpy = jasmine.createSpy("onClickSpy");
+                const navbar = testUtils.compileTemplate(
+                    `<oui-navbar>
+                        <oui-navbar-main>
+                            <oui-navbar-link name="name"
+                                             text="title"
+                                             href="url"
+                                             on-click="$ctrl.onClick()">
+                            </oui-navbar-link>
+                        <oui-navbar-main>
+                    </oui-navbar>`, {
+                        name: data.name,
+                        title: data.title,
+                        url: data.url,
+                        onClick: onClickSpy
+                    });
+
+                $timeout.flush();
+
+                const link = angular.element(navbar[0].querySelector(".oui-navbar-link"));
+                link.triggerHandler("click");
+
+                expect(onClickSpy).toHaveBeenCalled();
+            });
+        });
     });
 });
