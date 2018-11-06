@@ -12,7 +12,8 @@
     ng-if="::!!$ctrl.href"
     ng-href="{{::$ctrl.href}}"
     ng-attr-target="{{::$ctrl.linkTarget}}"
-    ng-attr-rel="{{::$ctrl.linkRel}}">
+    ng-attr-rel="{{::$ctrl.linkRel}}"
+    ng-click="$ctrl.onClick()">
     <span ng-transclude>{{::$ctrl.text}}</span>
     <span ng-if="::$ctrl.external"
         class="oui-icon oui-icon-external_link"
@@ -23,6 +24,7 @@
     role="menuitem"
     ng-if="::!!$ctrl.state"
     ui-sref="{{::$ctrl.getFullSref()}}"
+    ng-click="$ctrl.onClick()"
     ng-transclude>
     {{::$ctrl.text}}
 </a>
