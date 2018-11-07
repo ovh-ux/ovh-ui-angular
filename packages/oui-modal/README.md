@@ -44,11 +44,10 @@
 <div ng-init="$ctrl.loading = true" class="oui-doc-preview-only-keep-children">
 <oui-modal
     heading="Loading modal title"
-    primary-action="$ctrl.confirm = true"
+    primary-action="$ctrl.doSomething()"
     primary-label="Ok"
-    secondary-action="$ctrl.cancel = true"
+    secondary-action="$ctrl.cancel()"
     secondary-label="Cancel"
-    on-dismiss="$ctrl.cancel = true"
     loading="$ctrl.loading">
 <oui-field label="Label for Input text">
     <input type="text" id="text" name="text" class="oui-input">
@@ -61,24 +60,19 @@
 ### Warning modal
 
 ```html:preview
-<div ng-init="$ctrl.dismiss = false"
-    class="oui-doc-preview-only-keep-children">
 <oui-modal
     heading="Warning modal"
-    primary-action="$ctrl.dismiss = true"
+    primary-action="$ctrl.doSomething()"
     primary-label="Ok"
-    on-dismiss="$ctrl.dismiss = true"
+    on-dismiss="$ctrl.dismiss()"
     type="warning">
   Modal content
 </oui-modal>
-</div>
 ```
 
 ### Disabled buttons
 
 ```html:preview
-<div ng-init="$ctrl.dismiss = false"
-    class="oui-doc-preview-only-keep-children">
 <oui-modal
     heading="Fight a wizard on a bridge"
     primary-action="$ctrl.pass()"
@@ -89,7 +83,6 @@
     secondary-disabled="true">
   You shall not pass!
 </oui-modal>
-</div>
 ```
 
 ## API
@@ -101,10 +94,10 @@
 | `loading`             | boolean   | <?        | no               | `true`, `false`                | `false`   | display loader flag
 | `primary-label`       | string    | @?        | yes              | n/a                            | n/a       | confirmation label
 | `primary-action`      | function  | &         | no               | n/a                            | n/a       | confirmation callback
-| `primary-disabled`    | boolean   | <?        | no               | `true`, `false`                | n/a       | disable the primary button
+| `primary-disabled`    | boolean   | <?        | no               | `true`, `false`                | `false`   | disable the primary button
 | `secondary-label`     | string    | @?        | yes              | n/a                            | n/a       | cancellation label
 | `secondary-action`    | function  | &         | no               | n/a                            | n/a       | cancellation callback
-| `secondary-disabled`  | boolean   | <?        | no               | `true`, `false`                | n/a       | disable the secondary button
+| `secondary-disabled`  | boolean   | <?        | no               | `true`, `false`                | `false`   | disable the secondary button
 | `on-dismiss`          | function  | &         | no               | n/a                            | n/a       | dismiss callback
 
 #### Deprecated

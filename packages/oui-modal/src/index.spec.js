@@ -179,7 +179,7 @@ describe("ouiModal", () => {
 
         it("should disable buttons when the conditions are met", () => {
             const primaryDisabled = true;
-            const secondaryDisabled = false;
+            const secondaryDisabled = true;
 
             const element = TestUtils.compileTemplate(`
                 <oui-modal
