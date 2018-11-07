@@ -74,6 +74,24 @@
 </div>
 ```
 
+### Disabled buttons
+
+```html:preview
+<div ng-init="$ctrl.dismiss = false"
+    class="oui-doc-preview-only-keep-children">
+<oui-modal
+    heading="Fight a wizard on a bridge"
+    primary-action="$ctrl.pass()"
+    primary-label="Pass"
+    primary-disabled="true"
+    secondary-action="$ctrl.flee()"
+    secondary-label="Turn back"
+    secondary-disabled="true">
+  You shall not pass!
+</oui-modal>
+</div>
+```
+
 ## API
 
 | Attribute             | Type      | Binding   | One-time Binding | Values                         | Default   | Description
@@ -83,8 +101,10 @@
 | `loading`             | boolean   | <?        | no               | `true`, `false`                | `false`   | display loader flag
 | `primary-label`       | string    | @?        | yes              | n/a                            | n/a       | confirmation label
 | `primary-action`      | function  | &         | no               | n/a                            | n/a       | confirmation callback
+| `primary-disabled`    | boolean   | <?        | no               | `true`, `false`                | n/a       | disable the primary button
 | `secondary-label`     | string    | @?        | yes              | n/a                            | n/a       | cancellation label
 | `secondary-action`    | function  | &         | no               | n/a                            | n/a       | cancellation callback
+| `secondary-disabled`  | boolean   | <?        | no               | `true`, `false`                | n/a       | disable the secondary button
 | `on-dismiss`          | function  | &         | no               | n/a                            | n/a       | dismiss callback
 
 #### Deprecated

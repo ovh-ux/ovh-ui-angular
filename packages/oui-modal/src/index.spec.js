@@ -177,6 +177,35 @@ describe("ouiModal", () => {
             expect($secondaryButton.attr("disabled")).toBe("disabled");
         });
 
+        it("should disable buttons when the conditions are met", () => {
+            const primaryDisabled = true;
+            const secondaryDisabled = false;
+
+            const element = TestUtils.compileTemplate(`
+                <oui-modal
+                    heading="Title"
+                    primary-label="{{::$ctrl.primaryLabel}}"
+                    primary-disabled="$ctrl.primaryDisabled"
+                    secondary-label="{{::$ctrl.secondaryLabel}}"
+                    secondary-disabled="$ctrl.secondaryDisabled">
+                </oui-modal>
+            `, {
+                primaryLabel,
+                secondaryLabel,
+                primaryDisabled,
+                secondaryDisabled
+            });
+
+            const $footer = getFooter(element);
+            const $primaryButton = getPrimaryButton($footer);
+            const $secondaryButton = getSecondaryButton($footer);
+
+            expect($primaryButton).toBeDefined();
+            expect($primaryButton.attr("disabled")).toBe("disabled");
+            expect($secondaryButton).toBeDefined();
+            expect($secondaryButton.attr("disabled")).toBe("disabled");
+        });
+
         it("should trigger secondary action", () => {
             const secondarySpy = jasmine.createSpy("secondaryClick");
             const element = TestUtils.compileTemplate(`
