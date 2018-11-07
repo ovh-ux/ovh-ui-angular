@@ -52,6 +52,7 @@
         aria-label="{{::!!asideLink.label ? asideLink.label : null}}"
         icon-badge="(asideLink.subLinks | filter: {isActive: 'true', acknowledged: '!true'}).length"
         icon-class="{{::!!asideLink.iconClass ? asideLink.iconClass : null}}"
+        icon-animated="asideLink.iconAnimated ? asideLink.iconAnimated : false"
         on-click="asideLink.onClick()"
         ng-repeat="asideLink in $ctrl.asideLinks track by $index"
         ng-class="::!!asideLink.class ? asideLink.class : null"

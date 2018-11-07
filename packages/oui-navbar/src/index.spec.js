@@ -546,6 +546,12 @@ describe("ouiNavbar", () => {
                 expect(data[userIndex].name).toBe("user");
                 expect(userMenu.hasClass("oui-navbar-menu_user")).toBe(true);
             });
+
+            it("should animate menu item icon", () => {
+                const notificationsIndex = 1;
+                const notificationsMenu = angular.element(menu.children("oui-navbar-dropdown")[notificationsIndex].querySelector(".oui-icon"));
+                expect(notificationsMenu.hasClass("oui-icon_shake")).toBe(true);
+            });
         });
 
         describe("Responsive menu", () => {
