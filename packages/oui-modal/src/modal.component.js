@@ -11,8 +11,10 @@ export default {
         loading: "<?",
         primaryLabel: "@?",
         primaryAction: "&",
+        primaryDisabled: "<?",
         secondaryLabel: "@?",
         secondaryAction: "&",
+        secondaryDisabled: "<?",
         onDismiss: "&"
     },
     transclude: true
