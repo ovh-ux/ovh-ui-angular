@@ -1,3 +1,27 @@
+<a name="2.22.0"></a>
+# [2.22.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.21.4...v2.22.0) (2018-11-08)
+
+
+### Bug Fixes
+
+* **oui-navbar:** fix state attributes on component links ([#295](https://github.com/ovh-ux/ovh-ui-angular/issues/295)) ([3cf97fc](https://github.com/ovh-ux/ovh-ui-angular/commit/3cf97fc))
+* **oui-select:** prevent required validation to trigger on select ([#303](https://github.com/ovh-ux/ovh-ui-angular/issues/303)) ([c39dc82](https://github.com/ovh-ux/ovh-ui-angular/commit/c39dc82))
+* **oui-select-picker:** prevent leaving blank space ([#300](https://github.com/ovh-ux/ovh-ui-angular/issues/300)) ([2fa7c15](https://github.com/ovh-ux/ovh-ui-angular/commit/2fa7c15))
+
+
+### Features
+
+* **oui-datagrid:** permit to access row index ([#296](https://github.com/ovh-ux/ovh-ui-angular/issues/296)) ([b84e08e](https://github.com/ovh-ux/ovh-ui-angular/commit/b84e08e))
+* **oui-dropdown:** allow click on link items ([#306](https://github.com/ovh-ux/ovh-ui-angular/issues/306)) ([b01d260](https://github.com/ovh-ux/ovh-ui-angular/commit/b01d260))
+* **oui-inline-adder:** add inline-adder component ([#304](https://github.com/ovh-ux/ovh-ui-angular/issues/304)) ([9824bbb](https://github.com/ovh-ux/ovh-ui-angular/commit/9824bbb))
+* **oui-modal:** allow disabling oui-modal buttons ([#307](https://github.com/ovh-ux/ovh-ui-angular/issues/307)) ([f763666](https://github.com/ovh-ux/ovh-ui-angular/commit/f763666))
+* **oui-navbar:** allow actions on navbar menu links ([#305](https://github.com/ovh-ux/ovh-ui-angular/issues/305)) ([0842039](https://github.com/ovh-ux/ovh-ui-angular/commit/0842039))
+* **oui-navbar:** allow to animate icon on aside links ([#308](https://github.com/ovh-ux/ovh-ui-angular/issues/308)) ([ac77580](https://github.com/ovh-ux/ovh-ui-angular/commit/ac77580))
+* **oui-popover:** add ng-template and title attribute support  ([#301](https://github.com/ovh-ux/ovh-ui-angular/issues/301)) ([1f790fb](https://github.com/ovh-ux/ovh-ui-angular/commit/1f790fb))
+* **oui-select:** allow items to be disabled ([#291](https://github.com/ovh-ux/ovh-ui-angular/issues/291)) ([fbc565b](https://github.com/ovh-ux/ovh-ui-angular/commit/fbc565b))
+
+
+
 <a name="2.21.4"></a>
 ## [2.21.4](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.21.3...v2.21.4) (2018-10-23)
 
