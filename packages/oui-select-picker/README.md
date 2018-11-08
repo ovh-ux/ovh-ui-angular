@@ -39,7 +39,25 @@
     disabled></oui-select-picker>
 ```
 
-### Sections
+### Sections using `oui-select-picker-section`
+
+```html:preview
+<oui-select-picker label="Checked"
+    match="name"
+    description="Checked select picker">
+    <oui-select-picker-section>Section 1</oui-select-picker-section>
+    <oui-select-picker-section>Section 2</oui-select-picker-section>
+</oui-select-picker>
+<oui-select-picker label="Disabled"
+    match="name"
+    description="Disabled select picker"
+    disabled>
+    <oui-select-picker-section>Section 1</oui-select-picker-section>
+    <oui-select-picker-section>Section 2</oui-select-picker-section>
+</oui-select-picker>
+```
+
+### Sections using `span`
 
 ```html:preview
 <oui-select-picker label="Checked"
@@ -56,6 +74,8 @@
     <span class="oui-select-picker__section">Section 2</span>
 </oui-select-picker>
 ```
+
+**Note**: This use is **deprecated** and will be removed in the next major version
 
 ### On change
 

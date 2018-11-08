@@ -40,7 +40,8 @@ export default class SelectPickerController {
             }
         }
 
-        this.transcludeSection = this.$transclude.isSlotFilled("sectionSlot");
+        this.sectionTransclude = this.$transclude.isSlotFilled("sectionSlot");
+        this.deprecatedTransclude = this.$transclude.isSlotFilled("deprecatedSlot");
     }
 
     $postLink () {
