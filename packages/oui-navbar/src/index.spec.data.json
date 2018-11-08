@@ -43,6 +43,7 @@
             "class": "navbar-notification__list",
             "title": "Notifications",
             "iconClass": "oui-icon oui-icon-info_circle",
+            "iconAnimated": true,
             "subLinks": [
               {
                 "subject": "Maecenas id ipsum suscipit",

@@ -5,9 +5,11 @@
     ng-class="::!!$ctrl.iconClass ? 'oui-navbar-link_icon' : null"
     ng-click="$ctrl.navbarCtrl.toggleMenu($ctrl.name); $ctrl.onClick();"
     oui-navbar-group="{{::$ctrl.name}}">
-    <span class="oui-icon" aria-hidden="true"
+    <span class="oui-icon {{:: 'navbar-' + $ctrl.iconClass }}" aria-hidden="true"
         ng-if="::!!$ctrl.iconClass"
-        ng-class="::'navbar-' + $ctrl.iconClass">
+        ng-class="{
+            'oui-icon_shake': $ctrl.iconAnimated
+        }">
         <span class="oui-icon__badge"
             ng-if="!!$ctrl.iconBadge"
             ng-bind="$ctrl.iconBadge">

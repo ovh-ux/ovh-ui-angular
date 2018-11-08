@@ -349,6 +349,7 @@ It defines the menu in reponsive mode. It will be visible only for screen resolu
 This property is only available for root links of `aside-links`.
 
 - `iconClass`: define `class` of the menu item icon.
+- `iconAnimated`: define if the menu item icon should be animated
 
 ```json
 [{
@@ -357,6 +358,7 @@ This property is only available for root links of `aside-links`.
     "label": String,
     "title": String,
     "iconClass": String,
+    "iconAnimated": Boolean,
     "subLinks": Array[{
         "label": String,
         "title": String,
@@ -379,6 +381,7 @@ This property is only available for root links of `aside-links`.
                 acknowledged: '!true'
             }).length"
             icon-class="{{asideLink.iconClass}}"
+            icon-animated="asideLink.name === 'notifications'"
             on-click="asideLink.onClick"
             ng-repeat="asideLink in $ctrl.asideLinks track by $index"
             ng-class="asideLink.class"
@@ -548,6 +551,7 @@ The property `name` **must be** `"user"`.
 | `text`                | string    | @         | yes               | n/a                                   | n/a       | text of the button
 | `aria-label`          | string    | @?        | yes               | n/a                                   | n/a       | accessibility label of the button
 | `icon-class`          | string    | @?        | yes               | n/a                                   | n/a       | classname of the button icon
+| `icon-animated`        | boolean   | <?        | no                | `true`, `false`                       | `false`   | defines if the menu item icon should be shaking 
 | `icon-badge`          | number    | <?        | no                | n/a                                   | n/a       | number on the badge of the button icon
 | `on-click`            | function  | &         | no                | n/a                                   | n/a       | click callback
 
