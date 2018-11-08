@@ -17,8 +17,11 @@ export default class {
         addDefaultParameter(this, "placement", "top");
     }
 
-    $postLink () {
+    $onDestroy () {
+        this.destroyPopper();
+    }
 
+    $postLink () {
         this.$timeout(() => {
             if (this.title) {
                 addDefaultParameter(this, "text", this.title);
@@ -48,5 +51,14 @@ export default class {
         this.popper = new Popper(trigger, tooltip, {
             placement: this.placement
         });
+    }
+
+    destroyPopper () {
+        if (!this.popper) {
+            return;
+        }
+
+        this.popper.destroy();
+        this.popper = null;
     }
 }

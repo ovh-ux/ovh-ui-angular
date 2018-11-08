@@ -546,6 +546,12 @@ describe("ouiNavbar", () => {
                 expect(data[userIndex].name).toBe("user");
                 expect(userMenu.hasClass("oui-navbar-menu_user")).toBe(true);
             });
+
+            it("should animate menu item icon", () => {
+                const notificationsIndex = 1;
+                const notificationsMenu = angular.element(menu.children("oui-navbar-dropdown")[notificationsIndex].querySelector(".oui-icon"));
+                expect(notificationsMenu.hasClass("oui-icon_shake")).toBe(true);
+            });
         });
 
         describe("Responsive menu", () => {
@@ -653,6 +659,36 @@ describe("ouiNavbar", () => {
                 toggler.triggerHandler("click");
                 backdrop.triggerHandler("click");
                 expect(toggler.attr("aria-expanded")).toBe("false");
+            });
+        });
+
+        describe("Links", () => {
+            const data = mockData.mainLinks[0];
+
+            it("should call click callback", () => {
+                const onClickSpy = jasmine.createSpy("onClickSpy");
+                const navbar = testUtils.compileTemplate(
+                    `<oui-navbar>
+                        <oui-navbar-main>
+                            <oui-navbar-link name="name"
+                                             text="title"
+                                             href="url"
+                                             on-click="$ctrl.onClick()">
+                            </oui-navbar-link>
+                        <oui-navbar-main>
+                    </oui-navbar>`, {
+                        name: data.name,
+                        title: data.title,
+                        url: data.url,
+                        onClick: onClickSpy
+                    });
+
+                $timeout.flush();
+
+                const link = angular.element(navbar[0].querySelector(".oui-navbar-link"));
+                link.triggerHandler("click");
+
+                expect(onClickSpy).toHaveBeenCalled();
             });
         });
     });

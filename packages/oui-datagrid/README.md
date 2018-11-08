@@ -294,6 +294,26 @@ Or you can use the `page-size` property. It takes precedence over value configur
 </oui-datagrid>
 ```
 
+### Access row index 
+
+```html:preview
+<oui-datagrid rows="$ctrl.data" page-size="5">
+  <oui-column title="'Index'">
+    {{$rowIndex}}
+  </oui-column>
+  <oui-column title="'Name'">
+    {{$row.firstName}} {{$row.lastName}}
+  </oui-column>
+  <oui-column property="email">
+    <a href="mailto:{{$value}}">{{$value}}</a>
+  </oui-column>
+  <oui-column property="phone"></oui-column>
+  <oui-column property="birth">
+    {{$value | date:shortDate}}
+  </oui-column>
+</oui-datagrid>
+```
+
 ### Remote data
 
 ```html

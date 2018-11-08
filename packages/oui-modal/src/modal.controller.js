@@ -11,6 +11,8 @@ export default class {
 
     $onInit () {
         addBooleanParameter(this, "loading");
+        addBooleanParameter(this, "primaryDisabled");
+        addBooleanParameter(this, "secondaryDisabled");
 
         // Deprecated: Support for 'title' attribute
         if (!!this.$attrs.title && !this.$attrs.heading) {

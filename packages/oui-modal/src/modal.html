@@ -28,13 +28,13 @@
         ng-if="$ctrl.secondaryLabel"
         ng-bind="$ctrl.secondaryLabel"
         ng-click="$ctrl.secondaryAction()"
-        ng-disabled="$ctrl.loading">
+        ng-disabled="$ctrl.loading || $ctrl.secondaryDisabled">
     </button>
     <button class="oui-button oui-button_primary"
         type="submit"
         ng-if="$ctrl.primaryLabel"
         ng-bind="$ctrl.primaryLabel"
         ng-click="$ctrl.primaryAction()"
-        ng-disabled="$ctrl.loading">
+        ng-disabled="$ctrl.loading || $ctrl.primaryDisabled">
     </button>
 </div>

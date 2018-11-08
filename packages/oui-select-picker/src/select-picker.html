@@ -28,10 +28,13 @@
             ng-bind=":: $ctrl.description"
             ng-if="$ctrl.description"></span>
     <span class="oui-select-picker__value-container oui-select-picker__section"
-        ng-if="$ctrl.values.length">
+            ng-if="$ctrl.values.length === 1 && $ctrl.match">
         <span class="oui-select-picker__value"
-                ng-bind=":: $ctrl.getFirstValueMatch($ctrl.match)"
-                ng-if="$ctrl.values.length === 1"></span>
+                ng-bind=":: $ctrl.getFirstValueMatch($ctrl.match)">
+        </span>
+    </span>
+    <span class="oui-select-picker__value-container oui-select-picker__section"
+          ng-if="$ctrl.values.length > 1">
         <oui-select name="{{:: $ctrl.name }}"
                     disabled="$ctrl.disabled"
                     items="$ctrl.values"
@@ -39,9 +42,9 @@
                     model="$ctrl.selectedValue"
                     on-change="$ctrl.onSelectModelChange({ modelValue: $ctrl.selectedValue })"
                     placeholder="{{:: $ctrl.placeholder || ' - ' }}"
-                    data-align="end"
-                    ng-if="$ctrl.values.length > 1">
-            <span ng-bind=":: $ctrl.$scope.$parent.getItemValue($item, $ctrl.match)"></span>
+                    data-align="end">
+            <span ng-if="$ctrl.match" ng-bind=":: $ctrl.$scope.$parent.getItemValue($item, $ctrl.match)"></span>
+            <span ng-if="!$ctrl.match" ng-bind=":: $item"></span>
         </oui-select>
     </span>
     <span class="oui-select-picker__transclude-container"

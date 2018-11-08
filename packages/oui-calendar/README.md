@@ -61,6 +61,17 @@
 </div>
 ```
 
+### Enabling time
+
+Use `enable-time` to show time selection after a date is selected.
+
+```html:preview
+<oui-calendar model="$ctrl.weekModel" format="Y-m-d H:i" enable-time>
+</oui-calendar>
+```
+
+**Note**: See [Flatpickr documentation](https://flatpickr.js.org/examples/#time-picker) for more information.
+
 ### Disabling dates
 
 Use `disable-date` to make certain dates unavailable for selection.
@@ -168,7 +179,7 @@ Use `mode` to set a different selection mode for the calendar
 | `min-date`        | object    | <?        | yes               | See [Supplying Dates](https://flatpickr.js.org/examples/#supplying-dates-for-flatpickr)   | n/a       | specifies the minimum/earliest date (inclusively) allowed for selection
 | `disable-date`    | array     | <?        | yes               | See [Supplying Dates](https://flatpickr.js.org/examples/#supplying-dates-for-flatpickr)   | n/a       | make certain dates unavailable for selection
 | `enable-date`     | array     | <?        | yes               | See [Supplying Dates](https://flatpickr.js.org/examples/#supplying-dates-for-flatpickr)   | n/a       | make certain dates only available for selection
-| `enable-time`     | boolean   | <?        | yes               | See [Options](https://flatpickr.js.org/options/)                                          | n/a       | enables time picker
+| `enable-time`     | boolean   | <?        | yes               | `true`, `false`                                                                           | `false`   | enables time selection
 | `week-numbers`    | boolean   | <?        | yes               | `true`, `false`                                                                           | `false`   | week numbers flag
 | `disabled`        | boolean   | <?        | no                | `true`, `false`                                                                           | `false`   | disabled flag
 | `required`        | boolean   | <?        | no                | `true`, `false`                                                                           | `false`   | required flag

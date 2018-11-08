@@ -9,7 +9,8 @@
         'oui-navbar-link_tertiary': $ctrl.variant === 'tertiary'
     }"
     ng-href="{{::$ctrl.href}}"
-    ng-bind="::$ctrl.text">
+    ng-bind="::$ctrl.text"
+    ng-click="$ctrl.onClick()">
 </a>
 <a class="oui-navbar-link"
     ng-if="::!!$ctrl.state"
@@ -23,5 +24,6 @@
     }"
     ng-bind="::$ctrl.text"
     ui-sref="{{::$ctrl.getFullSref()}}"
-    ui-sref-active="oui-navbar-link_active">
+    ui-sref-active="oui-navbar-link_active"
+    ng-click="$ctrl.onClick()">
 </a>

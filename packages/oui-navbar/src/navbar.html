@@ -29,10 +29,13 @@
         name="{{::managerLink.name}}"
         text="{{::managerLink.heading || managerLink.title}}"
         href="{{::managerLink.href || managerLink.url}}"
+        state="{{::!!managerLink.state ? managerLink.state : null}}"
+        state-params="::!!managerLink.stateParams ? managerLink.stateParams : null"
         variant="{{::managerLink.isPrimary ? 'primary' : 'secondary'}}"
         aria-label="{{::!!managerLink.label ? managerLink.label : null}}"
         ng-repeat="managerLink in ::$ctrl.mainLinks track by $index"
-        ng-class="::!!managerLink.class ? managerLink.class : null">
+        ng-class="::!!managerLink.class ? managerLink.class : null"
+        on-click="managerLink.click()">
     </oui-navbar-link>
 </div>
 <!-- /Main Links -->
@@ -49,7 +52,8 @@
         aria-label="{{::!!asideLink.label ? asideLink.label : null}}"
         icon-badge="(asideLink.subLinks | filter: {isActive: 'true', acknowledged: '!true'}).length"
         icon-class="{{::!!asideLink.iconClass ? asideLink.iconClass : null}}"
-        on-click="asideLink.onClick"
+        icon-animated="asideLink.iconAnimated ? asideLink.iconAnimated : false"
+        on-click="asideLink.onClick()"
         ng-repeat="asideLink in $ctrl.asideLinks track by $index"
         ng-class="::!!asideLink.class ? asideLink.class : null"
         ng-switch="::asideLink.name">

@@ -11,6 +11,7 @@ export default {
         label: "@?ariaLabel",
         iconBadge: "<?",
         iconClass: "@?",
+        iconAnimated: "<?",
         onClick: "&"
     },
     controller,

@@ -14,6 +14,7 @@ import Field from "@ovh-ui/oui-field";
 import FormActions from "@ovh-ui/oui-form-actions";
 import GuideMenu from "@ovh-ui/oui-guide-menu";
 import HeaderTabs from "@ovh-ui/oui-header-tabs";
+import InlineAdder from "@ovh-ui/oui-inline-adder";
 import Message from "@ovh-ui/oui-message";
 import Modal from "@ovh-ui/oui-modal";
 import Navbar from "@ovh-ui/oui-navbar";
@@ -53,6 +54,7 @@ export default angular
         FormActions,
         GuideMenu,
         HeaderTabs,
+        InlineAdder,
         Message,
         Modal,
         Navbar,

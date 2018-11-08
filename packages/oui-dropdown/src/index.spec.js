@@ -212,6 +212,32 @@ describe("ouiDropdown", () => {
                 expect(link.attr("target")).toBe("_blank");
                 expect(link.attr("rel")).toBe("noopener");
             });
+
+            it("should call click callback", () => {
+                const onLinkClickSpy = jasmine.createSpy("onLinkClickSpy");
+                const onButtonClickSpy = jasmine.createSpy("onButtonClickSpy");
+                const element = TestUtils.compileTemplate(`
+                    <oui-dropdown>
+                        <oui-dropdown-trigger text="Actions"></oui-dropdown-trigger>
+                        <oui-dropdown-content>
+                            <oui-dropdown-item text="Lorem ipsum" href="#" on-click="$ctrl.onLinkClick()"></oui-dropdown-item>
+                            <oui-dropdown-item text="Lorem ipsum" on-click="$ctrl.onButtonClick()"></oui-dropdown-item>
+                            <oui-dropdown-item text="Lorem ipsum" href="#"></oui-dropdown-item>
+                        </oui-dropdown-content>
+                    </oui-dropdown>
+                `, {
+                    onLinkClick: onLinkClickSpy,
+                    onButtonClick: onButtonClickSpy
+                });
+
+                $timeout.flush();
+                const items = angular.element(element[0].querySelectorAll("oui-dropdown-item")).children();
+                angular.element(items[0]).triggerHandler("click");
+                angular.element(items[1]).triggerHandler("click");
+
+                expect(onLinkClickSpy).toHaveBeenCalled();
+                expect(onButtonClickSpy).toHaveBeenCalled();
+            });
         });
 
         describe("Group", () => {

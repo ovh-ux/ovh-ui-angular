@@ -16,6 +16,7 @@ loadTests(require.context("../../oui-field/src/", true, /.*((\.spec)|(index))$/)
 loadTests(require.context("../../oui-form-actions/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-guide-menu/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-header-tabs/src/", true, /.*((\.spec)|(index))$/));
+loadTests(require.context("../../oui-inline-adder/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-message/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-modal/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-navbar/src/", true, /.*((\.spec)|(index))$/));
