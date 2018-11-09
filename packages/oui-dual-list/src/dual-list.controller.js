@@ -2,11 +2,12 @@ import get from "lodash/get";
 import remove from "lodash/remove";
 
 export default class {
-    constructor ($attrs, $element, $timeout) {
+    constructor ($attrs, $element, $filter, $timeout) {
         "ngInject";
 
         this.$attrs = $attrs;
         this.$element = $element;
+        this.$filter = $filter;
         this.$timeout = $timeout;
     }
 
@@ -31,10 +32,10 @@ export default class {
         }
     }
 
-    moveAllToSource () {
+    moveAllToSource (searchQuery) {
         // Need to do a while for the callbacks
-        while (angular.isArray(this.source) && this.target.length) {
-            this.moveToSource(this.target[0]);
+        while (angular.isArray(this.source) && this.$filter("filter")(this.target, searchQuery).length) {
+            this.moveToSource(this.$filter("filter")(this.target, searchQuery)[0]);
         }
     }
 
@@ -49,10 +50,10 @@ export default class {
         }
     }
 
-    moveAllToTarget () {
+    moveAllToTarget (searchQuery) {
         // Need to do a while for the callbacks
-        while (angular.isArray(this.target) && this.source.length) {
-            this.moveToTarget(this.source[0]);
+        while (angular.isArray(this.target) && this.$filter("filter")(this.source, searchQuery).length) {
+            this.moveToTarget(this.$filter("filter")(this.source, searchQuery)[0]);
         }
     }
 }

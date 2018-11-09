@@ -31,7 +31,7 @@
         ng-if="$ctrl.searchable"
         arial-label="{{::$ctrl.translations.search}}"
         placeholder="{{::$ctrl.translations.search}}"
-        model="$ctrl.search">
+        model="$ctrl.searchQuery">
     </oui-search>
     <!-- /Search -->
 
@@ -40,7 +40,7 @@
         ng-if="$ctrl.dualList.source.length > 1"
         ng-show="!$ctrl.isLoading()">
         <oui-button variant="link"
-            on-click="$ctrl.dualList.moveAllToTarget()">
+            on-click="$ctrl.dualList.moveAllToTarget($ctrl.searchQuery)">
             {{::$ctrl.translations.moveAll}}
         </oui-button>
     </p>
@@ -63,7 +63,7 @@
 
             <!-- Item -->
             <li class="oui-dual-list-item"
-                ng-repeat="item in $ctrl.dualList.source | filter:$ctrl.search | orderBy:$ctrl.dualList.property">
+                ng-repeat="item in $ctrl.dualList.source | filter:$ctrl.searchQuery | orderBy:$ctrl.dualList.property">
                 <button type="button" class="oui-dual-list-item__button"
                     ng-attr-aria-label="{{::$ctrl.translations.move}} {{::$ctrl.dualList.getProperty(item)}}"
                     ng-click="$ctrl.dualList.moveToTarget(item)">
