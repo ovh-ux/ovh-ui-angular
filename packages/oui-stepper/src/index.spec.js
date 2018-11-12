@@ -152,6 +152,38 @@ describe("ouiStepper", () => {
                 // Final condition
                 expect(form2.hasClass(disabledClass)).toBe(false);
             });
+
+            it("should display dynamically steps", () => {
+                const element = TestUtils.compileTemplate(`
+                    <oui-stepper>
+                        <oui-step-form name="form1"></oui-step-form>
+                        <oui-step-form name="form2" data-ng-if="$ctrl.isForm2" data-position="2"></oui-step-form>
+                        <oui-step-form name="form3"></oui-step-form>
+                    </oui-stepper>`, { isForm2: false });
+
+                $timeout.flush();
+
+                // it should be 2 forms
+                expect(element.find("form").length).toBe(2);
+
+                element.scope().$ctrl.isForm2 = true;
+
+                element.scope().$digest();
+
+                // it should be 3 forms
+                expect(element.find("form").length).toBe(3);
+
+                const form1 = element.find("form").eq(0);
+                const form2 = element.find("form").eq(1);
+                const form3 = element.find("form").eq(2);
+
+                // submit the form and be sure that second form is active
+                element.find("form").eq(0).triggerHandler("submit");
+                element.scope().$digest();
+                expect(form1.hasClass(completeClass)).toBe(true);
+                expect(form2.hasClass(disabledClass)).toBe(false);
+                expect(form3.hasClass(disabledClass)).toBe(true);
+            });
         });
     });
 });

@@ -5,7 +5,7 @@ loadTests(require.context("../../oui-back-button/src/", true, /.*((\.spec)|(inde
 loadTests(require.context("../../oui-button/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-calendar/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-checkbox/src/", true, /.*((\.spec)|(index))$/));
-loadTests(require.context("../../oui-chips/src/", true, /.*((\.spec)|(index))$/));
+// loadTests(require.context("../../oui-chips/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-clipboard/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-collapsible/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-criteria-adder/src/", true, /.*((\.spec)|(index))$/));

@@ -167,7 +167,7 @@
 | `description`     | string    | @?        | yes               | n/a               | n/a       | description of the step
 | `cancel-href`     | string    | @?        | yes               | n/a               | n/a       | link url on cancel
 | `cancel-text`     | string    | @?        | yes               | n/a               | n/a       | text for the cancel button
-| `submit-text`     | string    | @?        | yes               | n/a               | `Submit`  | text for the submit button
+| `submit-text`     | string    | @?        | no                | n/a               | `Submit`  | text for the submit button
 | `loading-text`    | string    | @?        | no                | n/a               | n/a       | text for the loading state
 | `loading`         | boolean   | <?        | no                | `true`, `false`   | `false`   | display the loading state
 | `disabled`        | boolean   | <?        | no                | `true`, `false`   | `false`   | disable the step and shrink it
