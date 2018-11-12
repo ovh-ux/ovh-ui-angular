@@ -12,6 +12,7 @@ loadTests(require.context("../../oui-criteria-adder/src/", true, /.*((\.spec)|(i
 loadTests(require.context("../../oui-criteria-container/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-datagrid/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-dropdown/src/", true, /.*((\.spec)|(index))$/));
+loadTests(require.context("../../oui-dual-list/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-field/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-form-actions/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-guide-menu/src/", true, /.*((\.spec)|(index))$/));
