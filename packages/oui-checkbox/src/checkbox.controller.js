@@ -17,7 +17,6 @@ export default class {
         // So we use $timeout to force the $apply
         this.$timeout(() =>
             this.$element
-                .addClass("oui-checkbox")
                 .removeAttr("id")
                 .removeAttr("name")
         );
@@ -36,6 +35,13 @@ export default class {
         addBooleanParameter(this, "disabled");
         addBooleanParameter(this, "required");
         addDefaultParameter(this, "id", `ouiCheckbox${this.$scope.$id}`);
+    }
+
+    hasError () {
+        if (!this.form) {
+            return false;
+        }
+        return this.form.$submitted && this.form[this.name].$invalid;
     }
 
     _updateIndeterminateState (model) {
