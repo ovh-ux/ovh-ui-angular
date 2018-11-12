@@ -4,19 +4,18 @@ export default class {
     constructor () {
         this.translations = {
             source: {
-                heading: "Unselected items",
-                placeholder: "No items to select",
+                heading: "Items to select",
+                placeholder: "No item to select",
                 move: "Add",
                 moveAll: "Add all",
                 search: "Search in source content"
             },
             target: {
                 heading: "Selected items",
-                placeholder: "No items are selected",
+                placeholder: "No selected item",
                 move: "Remove",
                 moveAll: "Remove all",
                 search: "Search in target content"
-
             }
         };
     }
