@@ -12,13 +12,13 @@
         <button type="submit" class="oui-inline-adder__action"
             ng-attr-aria-label="{{::$ctrl.translations.ariaAddItem}}"
             ng-if="!$ctrl.isDisabled[$index]">
-            <i class="oui-icon oui-icon-add"></i>
+            <span class="oui-icon oui-icon-add"></span>
         </button>
         <button type="button" class="oui-inline-adder__action"
             ng-attr-aria-label="{{::$ctrl.translations.ariaRemoveItem}}"
             ng-click="$ctrl.onFormRemove(this[$ctrl.name + '_'+ $index], $index)"
             ng-if="$ctrl.isDisabled[$index]">
-            <i class="oui-icon oui-icon-trash_line"></i>
+            <span class="oui-icon oui-icon-trash_line"></span>
         </button>
     </footer>
 </form>
