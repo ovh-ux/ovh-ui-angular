@@ -45,7 +45,7 @@
             ng-if="$ctrl.navigation"
             ng-show="!$ctrl.loading && $ctrl.stepper.focused">
             <oui-button variant="primary" type="submit"
-                text="{{::$ctrl.submitText || ($ctrl.stepper.last ? $ctrl.translations.submitButtonLabel : $ctrl.translations.nextButtonLabel)}}">
+                text="{{$ctrl.submitText || ($ctrl.stepper.last ? $ctrl.translations.submitButtonLabel : $ctrl.translations.nextButtonLabel)}}">
             </oui-button>
             <oui-button variant="link"
                 ng-if="::!$ctrl.cancelHref && !!$ctrl.onCancel"

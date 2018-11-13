@@ -51,6 +51,12 @@ export default class StepFormController {
         );
     }
 
+    $onDestroy () {
+        if (this.stepperCtrl) {
+            this.stepperCtrl.removeStep(this);
+        }
+    }
+
     onFormSubmit (form) {
         if (form.$valid && this.valid) {
             this.onSubmit({ form });

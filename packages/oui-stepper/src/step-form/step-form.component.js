@@ -21,6 +21,7 @@ export default {
         navigation: "<?",
         skippable: "<?",
         valid: "<?",
+        position: "@?",
 
         onCancel: "&?",
         onFocus: "&",
