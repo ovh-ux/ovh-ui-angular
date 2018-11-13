@@ -38,10 +38,10 @@ export default class {
     }
 
     hasError () {
-        if (!this.form) {
+        if (!this.form || !this.form[this.name]) {
             return false;
         }
-        return this.form.$submitted && this.form[this.name].$invalid;
+        return (!this.form[this.name].$dirty || this.form.$submitted) && !this.focused && this.form[this.name].$invalid;
     }
 
     _updateIndeterminateState (model) {

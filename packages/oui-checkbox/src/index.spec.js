@@ -27,12 +27,12 @@ describe("ouiCheckbox", () => {
     }
 
     describe("Component", () => {
-        it("should have a default classname", () => {
+        it("should have an element with default classname", () => {
             const element = TestUtils.compileTemplate("<oui-checkbox></oui-checkbox>");
 
             $timeout.flush();
 
-            expect(element.hasClass("oui-checkbox")).toBeTruthy();
+            expect(element.find("div").eq(0).hasClass("oui-checkbox")).toBe(true);
         });
 
         describe("id attribute", () => {

@@ -1,5 +1,5 @@
 <div class="oui-checkbox"
-     data-ng-class="{ 'oui-checkbox_error': $ctrl.hasError() }">
+    ng-class="{ 'oui-checkbox_error': $ctrl.hasError() }">
     <input class="oui-checkbox__input"
         type="checkbox"
         id="{{:: $ctrl.id }}"
@@ -9,7 +9,9 @@
         ng-model="$ctrl.model"
         ng-change="$ctrl.onChange({ modelValue: $ctrl.model })"
         ng-disabled="$ctrl.disabled"
-        ng-required="$ctrl.required">
+        ng-required="$ctrl.required"
+        ng-focus="$ctrl.focused = true"
+        ng-blur="$ctrl.focused = false">
     <label for="{{:: $ctrl.id }}"
         class="oui-checkbox__label-container"
         ng-attr-aria-labelledby="{{:: $ctrl.id }}-text"
