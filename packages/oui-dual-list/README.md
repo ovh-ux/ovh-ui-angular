@@ -121,3 +121,30 @@
 | `placeholder` | string    | @?        | yes               | n/a               | n/a       | placeholder text
 | `loading`     | boolean   | <?        | no                | `true`, `false`   | `false`   | loading flag
 | `searchable`  | boolean   | <?        | no                | `true`, `false`   | `false`   | searchbale flag
+
+## Configuration
+
+The dual list can be globally configured with a provider.
+
+```js
+angular.module("myModule", [
+    "oui.dual-list"
+]).config(ouiDualListConfiguration => {
+    ouiDualListConfiguration.setTranslations({ // default translations
+        source: {
+            heading: "Items to select",
+            placeholder: "No item to select",
+            move: "Add",
+            moveAll: "Add all",
+            search: "Search in source content"
+        },
+        target: {
+            heading: "Selected items",
+            placeholder: "No selected item",
+            move: "Remove",
+            moveAll: "Remove all",
+            search: "Search in target content"
+        }
+    });
+});
+```
