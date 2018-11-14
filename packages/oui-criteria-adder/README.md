@@ -48,8 +48,8 @@ The pagination can be globally configured with a provider.
 ```js
 angular.module("myModule", [
     "oui.criteria-adder"
-]).config(ouiCriteriaAdderConfiguration => {
-    ouiCriteriaAdderConfiguration.setOperatorsByType({ // default operatorsByType
+]).config(ouiCriteriaAdderConfigurationProvider => {
+    ouiCriteriaAdderConfigurationProvider.setOperatorsByType({ // default operatorsByType
         "boolean": [
             "is",
             "isNot"
@@ -77,7 +77,7 @@ angular.module("myModule", [
             "isNot"
         ]
     });
-    ouiCriteriaAdderConfiguration.setTranslations({ // default translations
+    ouiCriteriaAdderConfigurationProvider.setTranslations({ // default translations
         column_label: "Column",
         operator_label: "Operator",
 

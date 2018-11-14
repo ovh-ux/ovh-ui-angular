@@ -86,8 +86,8 @@ The textarea can be globally configured with a provider.
 ```js
 angular.module("myModule", [
     "oui.textarea"
-]).config(ouiTextareaConfiguration => {
-    ouiTextareaConfiguration.setTranslations({ // default translations
+]).config(ouiTextareaConfigurationProvider => {
+    ouiTextareaConfigurationProvider.setTranslations({ // default translations
         lengthCounter: "{{length}}/{{max}} characters"
     });
 });

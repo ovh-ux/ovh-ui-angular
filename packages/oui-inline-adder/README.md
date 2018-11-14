@@ -174,8 +174,8 @@ The inline adder can be globally configured with a provider.
 ```js
 angular.module("myModule", [
     "oui.inline-adder"
-]).config(ouiInlineAdderConfiguration => {
-    ouiInlineAdderConfiguration.setTranslations({ // default translations
+]).config(ouiInlineAdderConfigurationProvider => {
+    ouiInlineAdderConfigurationProvider.setTranslations({ // default translations
         ariaAddItem: "Add Item",
         ariaRemoveItem: "Remove Item"
     });

@@ -46,8 +46,8 @@ The clipboard can be globally configured with a provider.
 ```js
 angular.module("myModule", [
     "oui.clipboard"
-]).config(ouiClipboardConfiguration => {
-    ouiClipboardConfiguration.setTranslations({ // default translations
+]).config(ouiClipboardConfigurationProvider => {
+    ouiClipboardConfigurationProvider.setTranslations({ // default translations
         copyToClipboardLabel: "Copy to clipboard",
         copiedLabel: "Copied",
         notSupported: "Copy to clipboard not supported. Please copy the text manually"

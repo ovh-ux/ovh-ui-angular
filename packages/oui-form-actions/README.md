@@ -54,8 +54,8 @@ The form actions can be globally configured with a provider.
 ```js
 angular.module("myModule", [
     "oui.form-actions"
-]).config(ouiFormActionsConfiguration => {
-    ouiFormActionsConfiguration.setTranslations({ // default translations
+]).config(ouiFormActionsConfigurationProvider => {
+    ouiFormActionsConfigurationProvider.setTranslations({ // default translations
         submit: "Submit",
         cancel: "Cancel"
     });

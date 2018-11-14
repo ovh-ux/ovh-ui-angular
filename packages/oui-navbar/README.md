@@ -609,8 +609,8 @@ The navbar can be globally configured with a provider.
 ```js
 angular.module("myModule", [
     "oui.navbar"
-]).config(ouiNavbarConfiguration => {
-    ouiNavbarConfiguration.setTranslations({ // default translations
+]).config(ouiNavbarConfigurationProvider => {
+    ouiNavbarConfigurationProvider.setTranslations({ // default translations
         notification: {
             errorInNotification: "Oups, there’s an error!",
             errorInNotificationDescription: "We can’t initialize the menu.",

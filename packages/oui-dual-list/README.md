@@ -129,8 +129,8 @@ The dual list can be globally configured with a provider.
 ```js
 angular.module("myModule", [
     "oui.dual-list"
-]).config(ouiDualListConfiguration => {
-    ouiDualListConfiguration.setTranslations({ // default translations
+]).config(ouiDualListConfigurationProvider => {
+    ouiDualListConfigurationProvider.setTranslations({ // default translations
         source: {
             heading: "Items to select",
             placeholder: "No item to select",
