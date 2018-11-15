@@ -264,5 +264,22 @@ describe("ouiSelectPicker", () => {
                 expect(onChangeSpy).toHaveBeenCalledWith("cValue");
             });
         });
+
+        describe("section component", () => {
+            it("should add default classname", () => {
+                const element = TestUtils.compileTemplate(`
+                    <oui-select-picker values="[\'test\']">
+                        <oui-select-picker-section>Section 1</oui-select-picker-section>
+                        <oui-select-picker-section>Section 2</oui-select-picker-section>
+                    </oui-select-picker>`, {
+                    selectValue: "aValue"
+                });
+
+                $timeout.flush();
+
+                const sections = element.find("oui-select-picker-section");
+                expect(sections.hasClass("oui-select-picker__section")).toBeTruthy();
+            });
+        });
     });
 });
