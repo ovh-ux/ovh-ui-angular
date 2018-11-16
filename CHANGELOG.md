@@ -1,3 +1,13 @@
+<a name="2.22.1"></a>
+## [2.22.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.22.0...v2.22.1) (2018-11-16)
+
+
+### Bug Fixes
+
+* **oui-select-picker:** default value ([#317](https://github.com/ovh-ux/ovh-ui-angular/issues/317)) ([cf9de11](https://github.com/ovh-ux/ovh-ui-angular/commit/cf9de11))
+
+
+
 <a name="2.22.0"></a>
 # [2.22.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.21.4...v2.22.0) (2018-11-08)
 
