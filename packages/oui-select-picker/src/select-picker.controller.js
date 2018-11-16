@@ -34,7 +34,7 @@ export default class SelectPickerController {
             if (this.model && find(this.values, this.model)) {
                 this.selectedValue = this.model;
             } else {
-                this.selectedValue = this.values[0];
+                [this.selectedValue] = this.values;
             }
         }
 
