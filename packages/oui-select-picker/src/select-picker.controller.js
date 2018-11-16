@@ -31,12 +31,10 @@ export default class SelectPickerController {
         }
 
         if (this.values) {
-            if (this.values.length === 1) {
-                this.selectedValue = this.values[0];
-            }
-
             if (this.model && find(this.values, this.model)) {
                 this.selectedValue = this.model;
+            } else {
+                this.selectedValue = this.values[0];
             }
         }
 
