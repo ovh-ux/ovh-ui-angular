@@ -15,6 +15,7 @@ loadTests(require.context("../../oui-datagrid/src/", true, /.*((\.spec)|(index))
 loadTests(require.context("../../oui-dropdown/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-dual-list/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-field/src/", true, /.*((\.spec)|(index))$/));
+loadTests(require.context("../../oui-file/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-form-actions/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-guide-menu/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-header-tabs/src/", true, /.*((\.spec)|(index))$/));
