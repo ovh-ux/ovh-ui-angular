@@ -35,12 +35,6 @@ export default class {
 
         this.hasCheckmark = angular.isDefined(this.$attrs.checked);
 
-        if (this.tabsCtrl) {
-            // Add item to parent oui-tabs and give node index
-            // To support ngIf directive, which delay the adding
-            this.tabsCtrl.addItem(this, this.getNodeIndex());
-        }
-
         // Watch if hidden
         this.$scope.$watch(
             () => this.tabsCtrl.activeId,
@@ -60,5 +54,11 @@ export default class {
         this.$timeout(() =>
             this.$element.addClass("oui-tabs-item")
         );
+
+        if (this.tabsCtrl) {
+            // Add item to parent oui-tabs and give node index
+            // To support ngIf directive, which delay the adding
+            this.tabsCtrl.addItem(this, this.getNodeIndex());
+        }
     }
 }
