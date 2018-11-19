@@ -1,4 +1,4 @@
-describe("ouiSwitch", () => {
+describe("ouiTabs", () => {
     let TestUtils;
     let $timeout;
 
