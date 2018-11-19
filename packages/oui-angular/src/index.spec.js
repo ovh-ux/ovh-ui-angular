@@ -1,6 +1,7 @@
 import "@ovh-ui/common/test-utils";
 
 loadTests(require.context("../../oui-action-menu/src/", true, /.*((\.spec)|(index))$/));
+loadTests(require.context("../../oui-autocomplete/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-back-button/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-button/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-calendar/src/", true, /.*((\.spec)|(index))$/));
