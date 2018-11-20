@@ -34,6 +34,7 @@ import Slideshow from "@ovh-ui/oui-slideshow";
 import Spinner from "@ovh-ui/oui-spinner";
 import Stepper from "@ovh-ui/oui-stepper";
 import Switch from "@ovh-ui/oui-switch";
+import Tabs from "@ovh-ui/oui-tabs";
 import Textarea from "@ovh-ui/oui-textarea";
 import Tile from "@ovh-ui/oui-tile";
 import Tooltip from "@ovh-ui/oui-tooltip";
@@ -76,6 +77,7 @@ export default angular
         Spinner,
         Stepper,
         Switch,
+        Tabs,
         Textarea,
         Tile,
         Tooltip
