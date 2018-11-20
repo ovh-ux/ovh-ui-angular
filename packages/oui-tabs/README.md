@@ -65,7 +65,7 @@
 
 ## API
 
-### oui-tabs-item
+### oui-tabs
 
 | Attribute     | Type      | Binding   | One-time Binding  | Values            | Default   | Description
 | ----          | ----      | ----      | ----              | ----              | ----      | ----
