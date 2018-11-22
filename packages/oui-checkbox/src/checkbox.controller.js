@@ -41,7 +41,7 @@ export default class {
         if (!this.form || !this.form[this.name]) {
             return false;
         }
-        return (!this.form[this.name].$dirty || this.form.$submitted) && !this.focused && this.form[this.name].$invalid;
+        return (this.form[this.name].$dirty || this.form.$submitted) && !this.focused && this.form[this.name].$invalid;
     }
 
     _updateIndeterminateState (model) {
