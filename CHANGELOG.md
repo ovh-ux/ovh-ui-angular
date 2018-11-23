@@ -1,3 +1,13 @@
+<a name="2.22.2"></a>
+## [2.22.2](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.22.1...v2.22.2) (2018-11-23)
+
+
+### Bug Fixes
+
+* **oui-datagrid:** fix empty td when selectable-rows is active ([#321](https://github.com/ovh-ux/ovh-ui-angular/issues/321)) ([0ddeed0](https://github.com/ovh-ux/ovh-ui-angular/commit/0ddeed0))
+
+
+
 <a name="2.22.1"></a>
 ## [2.22.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.22.0...v2.22.1) (2018-11-16)
 
