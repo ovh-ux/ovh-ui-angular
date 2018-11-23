@@ -94,7 +94,7 @@ Clicked row action 1: <span ng-if="$ctrl.action1Row">{{$ctrl.action1Row.lastName
 ### Selectable rows
 
 ```html:preview
-<oui-datagrid rows="$ctrl.data" page-size="5" selectable-rows>
+<oui-datagrid rows="$ctrl.data" page-size="5" selectable-rows on-row-select="$ctrl.onRowSelect($row, $rows)">
   <oui-column title="'First name'" property="firstName" sortable="asc"></oui-column>
   <oui-column title="'Last name'" property="lastName" sortable></oui-column>
   <oui-column title="'Mother'" property="parents.mother.lastName" sortable>
@@ -122,6 +122,10 @@ Clicked row action 1: <span ng-if="$ctrl.action1Row">{{$ctrl.action1Row.lastName
   </extra-top>
 </oui-datagrid>
 ```
+
+<oui-message type="info" dismissable="false">
+  When <code class="oui-doc-codespan">selectable-rows</code> is provided, you can listen to checkboxes changes with the <code class="oui-doc-codespan">on-row-select</code> event. It provides <strong>$row</strong> as the triggered row and <strong>$rows</strong> as the complete list of rows selected so far.
+</oui-message>
 
 ### Empty datagrid
 
@@ -713,6 +717,7 @@ call `rows-loader` and then a `row-loader` call for each line.
 | `selectable-rows`                 | boolean   | <?        | no                  | `true`, `false`  | `false`      | if rows can be selected
 | `columns-parameters`              | array     | <?        | no                  | n/a              | `undefined`  | columns parameters (see below)
 | `on-columns-parameters-change`    | function  | &         | no                  | n/a              | n/a          | triggered on column parameter change when datagrid is customizable
+| `on-row-select`                   | function  | &         | no                  | n/a              | n/a          | triggered when a row is selected
 
 `columns-parameters` is an array describing all basic parameters of each column.
 

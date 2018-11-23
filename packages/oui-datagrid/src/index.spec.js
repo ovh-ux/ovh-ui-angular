@@ -420,6 +420,7 @@ describe("ouiDatagrid", () => {
         describe("Selectable rows", () => {
 
             it("should toggle row selection", () => {
+                const selectHandler = jasmine.createSpy();
                 const element = TestUtils.compileTemplate(`
                 <oui-datagrid rows="$ctrl.rows">
                     <oui-column property="firstName"></oui-column>
@@ -435,9 +436,13 @@ describe("ouiDatagrid", () => {
                 expect(selection.length).toBe(1);
                 expect(selection[0]).toEqual(fakeData[0]);
 
+                expect(selectHandler).toHaveBeenCalled(fakeData[0], fakeData.slice(0, 1));
+
                 ctrl.toggleRowSelection(0, false);
                 selection = ctrl.getSelectedRows();
                 expect(selection.length).toBe(0);
+
+                expect(selectHandler).toHaveBeenCalled(fakeData[0], []);
             });
 
             it("should toggle all rows", () => {
