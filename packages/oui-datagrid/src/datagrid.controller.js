@@ -320,6 +320,10 @@ export default class DatagridController {
         };
     }
 
+    hasSelectedRows () {
+        return this.selectedRows.some(isSelected => isSelected);
+    }
+
     getSelectedRows () {
         return this.selectedRows.reduce((result, isSelected, index) => {
             if (isSelected) {

@@ -19,6 +19,10 @@ export default class DatagridService {
         delete this.datagrids[datagridId];
     }
 
+    getController (datagridId) {
+        return this.datagrids[datagridId];
+    }
+
     /**
      * Refresh the content of a datagrid that has a specific `id`.
      * @param  string  datagridId  the `id` of the datagrid
