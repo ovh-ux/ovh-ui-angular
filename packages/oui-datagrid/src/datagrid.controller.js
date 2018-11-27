@@ -341,6 +341,11 @@ export default class DatagridController {
         } else {
             this.selectAllRows = null;
         }
+
+        this.onRowSelect({
+            $row: this.displayedRows[index],
+            $rows: this.getSelectedRows()
+        });
     }
 
     toggleAllRowsSelection (modelValue) {
@@ -349,6 +354,11 @@ export default class DatagridController {
         } else {
             this.selectedRows = this.displayedRows.map(() => modelValue);
         }
+
+        this.onRowSelect({
+            $row: null,
+            $rows: this.getSelectedRows()
+        });
     }
 
     static createEmptyRows (pageSize) {
