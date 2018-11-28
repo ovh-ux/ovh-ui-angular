@@ -102,10 +102,10 @@ describe("ouiSelectPicker", () => {
             it("should allow to pick one of values attribute", () => {
                 const element = TestUtils.compileTemplate('<oui-select-picker values="[\'aValue\', \'bValue\']"></oui-select-picker>');
 
-                const selectElement = element[0].querySelector("oui-select");
-                expect(angular.element(selectElement)).not.toBeUndefined();
+                const selectElement = angular.element(element[0].querySelector(".ui-select-match"));
+                selectElement.triggerHandler("click");
 
-                const selectValues = element[0].querySelectorAll(".oui-dropdown-option");
+                const selectValues = element[0].querySelectorAll(".ui-select-choices-row");
                 expect(angular.element(selectValues[0]).text().trim()).toEqual("aValue");
             });
 
@@ -119,7 +119,10 @@ describe("ouiSelectPicker", () => {
             it("should display select values according to match", () => {
                 const element = TestUtils.compileTemplate('<oui-select-picker values="[{id: \'a\', name: \'aValue\'}, {id: \'b\', name: \'bValue\'}]" match="name"></oui-select-picker>');
 
-                const selectValues = element[0].querySelectorAll(".oui-dropdown-option");
+                const selectElement = angular.element(element[0].querySelector(".ui-select-match"));
+                selectElement.triggerHandler("click");
+
+                const selectValues = element[0].querySelectorAll(".ui-select-choices-row");
                 expect(angular.element(selectValues[1]).text().trim()).toEqual("bValue");
             });
         });
@@ -239,28 +242,33 @@ describe("ouiSelectPicker", () => {
                     onChange: onChangeSpy
                 });
 
-                const selectPickerComponent1 = element.children()[0];
-                const selectPickerComponent2 = element.children()[1];
-                const $radioElement1 = angular.element(selectPickerComponent1).find("input");
-                const $radioElement2 = angular.element(selectPickerComponent2).find("input");
-                const $triggerElement1 = angular.element(selectPickerComponent1.querySelector("button.oui-dropdown__trigger"));
-                const $triggerElement2 = angular.element(selectPickerComponent2.querySelector("button.oui-dropdown__trigger"));
+                const selectPickers = element.find("oui-select-picker");
+
+                const selectPickerComponent1 = selectPickers[0];
+                const $radioElement1 = angular.element(selectPickerComponent1.querySelector(".oui-select-picker__input"));
+                const $triggerElement1 = angular.element(selectPickerComponent1.querySelector(".ui-select-match"));
+
+                const selectPickerComponent2 = selectPickers[1];
+                const $radioElement2 = angular.element(selectPickerComponent2.querySelector(".oui-select-picker__input"));
+                const $triggerElement2 = angular.element(selectPickerComponent2.querySelector(".ui-select-match"));
 
                 $radioElement1.prop("checked", true);
                 $triggerElement1.triggerHandler("click");
-                expect(angular.element(selectPickerComponent1.querySelector(".oui-ui-select-container")).hasClass("oui-ui-select-container_open")).toBe(true);
-                const $choiceElement1 = angular.element(selectPickerComponent1.querySelector(".ui-select-choices li button"));
+
+                const $choiceElement1 = angular.element(selectPickerComponent1.querySelector(".ui-select-choices-row"));
                 $choiceElement1.triggerHandler("click");
-                expect(angular.element(selectPickerComponent1.querySelector(".oui-ui-select-container")).hasClass("oui-ui-select-container_open")).toBe(false);
                 $timeout.flush();
+
                 expect(onChangeSpy).toHaveBeenCalledWith("aValue");
 
                 $radioElement1.prop("checked", false);
                 $radioElement2.prop("checked", true);
                 $triggerElement2.triggerHandler("click");
-                const $choicesElement2 = angular.element(selectPickerComponent2.querySelector(".ui-select-choices li button"));
+
+                const $choicesElement2 = angular.element(selectPickerComponent2.querySelector(".ui-select-choices-row"));
                 $choicesElement2.triggerHandler("click");
                 $timeout.flush();
+
                 expect(onChangeSpy).toHaveBeenCalledWith("cValue");
             });
         });

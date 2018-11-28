@@ -4,51 +4,44 @@
 
 ## Usage
 
-### Basic (Object array)
-
-```html:preview
-<oui-select name="country"
-    model="$ctrl.country"
-    data-title="Select a country"
-    placeholder="Select a country..."
-    items="$ctrl.countries"
-    required
-    match="name"
-    data-align="start">
-    <span ng-bind="$item.name"></span>
-</oui-select>
-```
-
 ### Basic (String array)
 
 ```html:preview
 <oui-select name="letter"
-    model="$ctrl.letter"
-    data-title="Select a letter"
-    placeholder="Select a letter..."
-    items="['a', 'b', 'c']"
-    required
-    data-align="start">
-    <span ng-bind="$item"></span>
+    model="$ctrl.modelBasicString"
+    items="['a', 'b', 'c']">
 </oui-select>
 ```
 
-### Grouping / Custom template
+### Basic (Object array)
 
 ```html:preview
 <oui-select name="country"
-    model="$ctrl.country2"
-    data-title="Select a country"
+    model="$ctrl.modelBasicObject"
+    items="$ctrl.countries"
+    match="name">
+</oui-select>
+```
+
+### Placeholder
+
+```html:preview
+<oui-select name="letter"
+    model="$ctrl.modelPlaceholder"
+    placeholder="Select a letter..."
+    items="['a', 'b', 'c']">
+</oui-select>
+```
+
+### Searchable
+
+```html:preview
+<oui-select name="country"
+    model="$ctrl.modelSearchable"
     placeholder="Select a country..."
     items="$ctrl.countries"
-    required
-    group-by="$ctrl.groupByFirstLetter"
     match="name"
-    data-align="start">
-    <span ng-bind="$item.name" class="d-inline-block text-truncate"></span><br>
-    <small>
-        Code: <span ng-bind="$item.code"></span>
-    </small>
+    searchable>
 </oui-select>
 ```
 
@@ -56,44 +49,76 @@
 
 ```html:preview
 <oui-select name="country"
-    model="$ctrl.country"
-    data-title="Select a country"
+    model="$ctrl.modelDisabled"
     placeholder="Select a country..."
     items="$ctrl.countries"
     required
     match="name"
     data-align="start"
     disabled>
-    <span ng-bind="$item.name"></span>
 </oui-select>
 ```
 
 ### Disabled Items
 
+<oui-message type="info" dismissable="false">
+    For each <code class="oui-doc-codespan">$item</code> in <code class="oui-doc-codespan">items</code> array, <code class="oui-doc-codespan">disable-item</code> will be called with current <code class="oui-doc-codespan">$item</code> as an argument. <br />
+    If it returns true, <code class="oui-doc-codespan">$item</code> will be disabled. 
+</oui-message>
+
 ```html:preview
 <oui-select name="country"
-    model="$ctrl.country"
-    data-title="Select a country"
+    model="$ctrl.modelDisabledItems"
     placeholder="Select a country..."
     items="$ctrl.countries"
     disable-items="$ctrl.disableItems($item)"
-    required
-    match="name"
-    data-align="start">
-    <span ng-bind="$item.name"></span>
+    match="name">
 </oui-select>
 ```
 
-**Note**: For each `$item` in `items` array, `disable-item` will be called with current `$item` as an argument. If it returns true, `$item` will be disabled. 
-
-### On Change
-
-**Note**: Model will not be refreshed until the `on-change` callback hasn't returned. If you want to access the new model inside the `on-change` callback you need to use the `modelValue` variable as below.
+### Grouping
 
 ```html:preview
 <oui-select name="country"
-    model="$ctrl.country3"
-    data-title="Select a country"
+    model="$ctrl.modelGrouping"
+    placeholder="Select a country..."
+    items="$ctrl.countries"
+    group-by="$ctrl.groupByFirstLetter"
+    match="name">
+</oui-select>
+```
+
+### Custom option template
+
+<oui-message type="info" dismissable="false">
+    Template inside <code class="oui-doc-codespan">oui-select</code> component will be used as the content of each option. <br />
+    You can use <code class="oui-doc-codespan">$item</code> variable to get option value for your template.
+</oui-message>
+
+```html:preview
+<oui-select name="country"
+    model="$ctrl.modelCustomTemplate"
+    placeholder="Select a country..."
+    items="$ctrl.countries"
+    group-by="$ctrl.groupByFirstLetter"
+    match="name">
+    <span ng-bind="$item.name" class="d-inline-block text-truncate"></span><br>
+    <small>
+        Code: <span ng-bind="$item.code"></span>
+    </small>
+</oui-select>
+```
+
+### On Change
+
+<oui-message type="warning">
+    Model will not be refreshed until the <code class="oui-doc-codespan">on-change</code> callback hasn't returned. <br />
+    If you want to access the new model inside the <code class="oui-doc-codespan">on-change</code> callback you need to use the <code class="oui-doc-codespan">modelValue</code> variable as below.
+</oui-message>
+
+```html:preview
+<oui-select name="country"
+    model="$ctrl.modelOnChange"
     placeholder="Select a country..."
     items="$ctrl.countries"
     required
@@ -102,9 +127,8 @@
     data-align="start"
     on-change="$ctrl.onChange(modelValue)"
     on-blur="$ctrl.onBlur()"
-    on-focus="$ctrl.onFocus()"
-    >
-    <span ng-bind="$item.name" class="d-inline-block text-truncate"></span><br>
+    on-focus="$ctrl.onFocus()">
+    <span ng-bind="$item.name"></span><br>
     <small>
         Code: <span ng-bind="$item.code"></span>
     </small>
@@ -123,8 +147,7 @@
 | ----          | ----      | ----      | ----              | ----              | ----      | ----
 | `model`       | object    | =         | no                | n/a               | n/a       | model bound to component
 | `name`        | string    | @?        | yes               | n/a               | n/a       | name of the form component
-| `data-align`  | string    | @?        | yes               | `start`, `end`    | `start`   | dropdown alignment
-| `data-title`  | string    | @?        | yes               | n/a               | n/a       | title attribute of the component
+| `title`       | string    | @?        | yes               | n/a               | n/a       | title attribute of the component
 | `placeholder` | string    | @?        | yes               | n/a               | n/a       | placeholder displayed when model is undefined
 | `match`       | string    | @?        | no                | n/a               | n/a       | property of item to show as selected item
 | `items`       | array     | <         | no                | n/a               | n/a       | array used to populate the list
@@ -136,3 +159,6 @@
 | `on-focus`    | function  | &         | no                | n/a               | n/a       | called on focus
 | `on-change`   | function  | &         | no                | n/a               | n/a       | handler triggered when value has changed
 
+#### Deprecated
+
+* `data-align`: Unused

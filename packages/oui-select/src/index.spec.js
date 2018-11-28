@@ -15,12 +15,12 @@ describe("ouiSelect", () => {
         $timeout = _$timeout_;
     }));
 
-    const openClass = "oui-ui-select-container_open";
-    const selectedItemClass = "selected";
+    const selectedItemClass = "ui-select-choices-row_selected";
 
-    const getContainer = element => element[0].querySelector(".oui-ui-select-container");
-    const getDropdownButton = element => element[0].querySelector(".oui-button_dropdown");
+    const getContainer = element => element[0].querySelector(".ui-select-container");
+    const getDropdownButton = element => element[0].querySelector(".ui-select-match");
     const getDropdown = element => element[0].querySelector(".ui-select-choices-content");
+    const getFocusser = element => element[0].querySelector(".ui-select-focusser");
     const getItemsGroups = element => element[0].querySelectorAll(".ui-select-choices-group");
     const getItemsGroup = (element, index) => element[0].querySelectorAll(".ui-select-choices-group")[index];
     const getItemsGroupLabel = groupElement => groupElement.querySelector(".ui-select-choices-group-label");
@@ -35,11 +35,10 @@ describe("ouiSelect", () => {
             const element = TestUtils.compileTemplate(`
                 <oui-select name="country"
                     model="$ctrl.country"
-                    data-title="${title}"
+                    title="${title}"
                     placeholder="${placeholder}"
                     items="$ctrl.countries"
-                    match="name"
-                    data-align="start">
+                    match="name">
                     <span ng-bind="$item.name"></span>
                 </oui-select>`, {
                 countries: data
@@ -55,28 +54,26 @@ describe("ouiSelect", () => {
             const element = TestUtils.compileTemplate(`
                 <oui-select name="country"
                     model="$ctrl.country"
-                    data-title="Select a country"
+                    title="Select a country"
                     placeholder="Select a country..."
                     items="$ctrl.countries"
-                    match="name"
-                    data-align="start">
+                    match="name">
                     <span ng-bind="$item.name"></span>
                 </oui-select>`, {
                 countries: data
             });
 
-            const $container = angular.element(getContainer(element));
             const $triggerButton = angular.element(getDropdownButton(element));
 
             // The dropdown should be initially closed.
-            expect($container.hasClass(openClass)).toBeFalsy();
+            expect($triggerButton.attr("aria-expanded")).toBe("false");
 
             // Click on the trigger and check if it's open.
             $triggerButton.triggerHandler("click");
-            expect($container.hasClass(openClass)).toBeTruthy();
+            expect($triggerButton.attr("aria-expanded")).toBe("true");
 
             $triggerButton.triggerHandler("click");
-            expect($container.hasClass(openClass)).toBeFalsy();
+            expect($triggerButton.attr("aria-expanded")).toBe("false");
         });
 
         it("should close the dropdown on click outside it", () => {
@@ -84,11 +81,10 @@ describe("ouiSelect", () => {
                 <div>
                     <oui-select name="country"
                         model="$ctrl.country"
-                        data-title="Select a country"
+                        title="Select a country"
                         placeholder="Select a country..."
                         items="$ctrl.countries"
-                        match="name"
-                        data-align="start">
+                        match="name">
                         <span ng-bind="$item.name"></span>
                     </oui-select>
                     <button class="outside-button">Outside</button>
@@ -96,7 +92,6 @@ describe("ouiSelect", () => {
                 countries: data
             });
 
-            const $container = angular.element(getContainer(element));
             const $triggerButton = angular.element(getDropdownButton(element));
             const outsideElement = element[0].querySelector(".outside-button");
 
@@ -105,28 +100,26 @@ describe("ouiSelect", () => {
 
             // Close the dropdown by clicking outside the dropdown.
             $document.triggerHandler({ type: "click", target: outsideElement });
-            expect($container.hasClass(openClass)).toBeFalsy();
+            expect($triggerButton.attr("aria-expanded")).toBe("false");
         });
 
         describe("Single select", () => {
-            it("should open dropdown when trigger button is clicked", () => {
+            it("should close dropdown when item is select", () => {
                 const element = TestUtils.compileTemplate(`
                     <oui-select name="country"
                         model="$ctrl.country"
-                        data-title="Select a country"
+                        title="Select a country"
                         placeholder="Select a country..."
                         items="$ctrl.countries"
-                        match="name"
-                        data-align="start">
+                        match="name">
                         <span ng-bind="$item.name"></span>
                     </oui-select>`, {
                     countries: data
                 });
 
-                const $container = angular.element(getContainer(element));
                 const $triggerButton = angular.element(getDropdownButton(element));
 
-                expect($container.hasClass(openClass)).toBeFalsy();
+                expect($triggerButton.attr("aria-expanded")).toBe("false");
 
                 // Open the dropdown
                 $triggerButton.triggerHandler("click");
@@ -135,13 +128,13 @@ describe("ouiSelect", () => {
                 let $itemButton = angular.element(getDropdownItem(element, 4)); // eslint-disable-line no-magic-numbers
                 expect($itemButton.hasClass(selectedItemClass)).toBeFalsy();
                 $itemButton.triggerHandler("click");
-                expect($itemButton.hasClass(selectedItemClass)).toBeTruthy();
 
-                // By the way, the dropdown should have been closed.
-                expect($container.hasClass(openClass)).toBeFalsy();
+                // The dropdown should have been closed.
+                expect($triggerButton.attr("aria-expanded")).toBe("false");
 
                 // Reopen dropdown and check if the selected element is highlighted.
                 // The element is retrieved again to be sure to not test on a detached element.
+                $triggerButton.triggerHandler("click");
                 $itemButton = angular.element(getDropdownItem(element, 4)); // eslint-disable-line no-magic-numbers
                 expect($itemButton.hasClass(selectedItemClass)).toBeTruthy();
             });
@@ -152,15 +145,18 @@ describe("ouiSelect", () => {
                 const element = TestUtils.compileTemplate(`
                     <oui-select name="country"
                         model="$ctrl.country"
-                        data-title="Select a country"
+                        title="Select a country"
                         placeholder="Select a country..."
                         items="$ctrl.countries"
-                        match="name"
-                        data-align="start">
+                        match="name">
                         <span ng-bind="$item.name"></span>
                     </oui-select>`, {
                     countries: data
                 });
+
+                // Must open the select first, to init the dropdown menu
+                const $triggerButton = angular.element(getDropdownButton(element));
+                $triggerButton.triggerHandler("click");
 
                 expect(getDropdownItems(element).length).toEqual(data.length);
                 expect(angular.element(getDropdownItem(element, 0)).text()).toContain(data[0].name);
@@ -172,14 +168,17 @@ describe("ouiSelect", () => {
                 const stringArray = ["a", "b", "c"];
                 const element = TestUtils.compileTemplate(`
                     <oui-select name="country"
-                        data-title="Select a country"
+                        title="Select a country"
                         model="$ctrl.country"
-                        items="$ctrl.array"
-                        data-align="start">
+                        items="$ctrl.array">
                         <span ng-bind="$item"></span>
                     </oui-select>`, {
                     array: stringArray
                 });
+
+                // Must open the select first, to init the dropdown menu
+                const $triggerButton = angular.element(getDropdownButton(element));
+                $triggerButton.triggerHandler("click");
 
                 expect(getDropdownItems(element).length).toEqual(stringArray.length);
                 expect(angular.element(getDropdownItem(element, 0)).text()).toContain(stringArray[0]);
@@ -194,17 +193,20 @@ describe("ouiSelect", () => {
                 const element = TestUtils.compileTemplate(`
                     <oui-select name="country"
                         model="$ctrl.country"
-                        data-title="Select a country"
+                        title="Select a country"
                         placeholder="Select a country..."
                         items="$ctrl.countries"
                         match="name"
-                        group-by="$ctrl.groupByFirstLetter"
-                        data-align="start">
+                        group-by="$ctrl.groupByFirstLetter">
                         <span ng-bind="$item.name"></span>
                     </oui-select>`, {
                     countries: data,
                     groupByFirstLetter
                 });
+
+                // Must open the select first, to init the dropdown menu
+                const $triggerButton = angular.element(getDropdownButton(element));
+                $triggerButton.triggerHandler("click");
 
                 const groups = uniq(data.map(groupByFirstLetter));
                 const firstGroupElement = getItemsGroup(element, 0);
@@ -223,7 +225,7 @@ describe("ouiSelect", () => {
                 const element = TestUtils.compileTemplate(`
                     <oui-select name="country"
                         model="$ctrl.country"
-                        data-title="Select a country"
+                        title="Select a country"
                         placeholder="Select a country..."
                         items="$ctrl.countries"
                         match="name"
@@ -233,7 +235,9 @@ describe("ouiSelect", () => {
                     onBlur
                 });
 
-                angular.element(getDropdownButton(element)).triggerHandler("blur");
+                $timeout.flush();
+
+                angular.element(getFocusser(element)).triggerHandler("blur");
                 expect(onBlur).toHaveBeenCalled();
             });
         });
@@ -244,7 +248,7 @@ describe("ouiSelect", () => {
                 const element = TestUtils.compileTemplate(`
                     <oui-select name="country"
                         model="$ctrl.country"
-                        data-title="Select a country"
+                        title="Select a country"
                         placeholder="Select a country..."
                         items="$ctrl.countries"
                         match="name"
@@ -254,7 +258,9 @@ describe("ouiSelect", () => {
                     onFocus
                 });
 
-                angular.element(getDropdownButton(element)).triggerHandler("focus");
+                $timeout.flush();
+
+                angular.element(getFocusser(element)).triggerHandler("focus");
                 expect(onFocus).toHaveBeenCalled();
             });
         });
@@ -265,7 +271,7 @@ describe("ouiSelect", () => {
                 const element = TestUtils.compileTemplate(`
                     <oui-select name="country"
                         model="$ctrl.country"
-                        data-title="Select a country"
+                        title="Select a country"
                         placeholder="Select a country..."
                         items="$ctrl.countries"
                         match="name"
@@ -276,17 +282,19 @@ describe("ouiSelect", () => {
                     onChange
                 });
 
-                const index1 = 4;
-                const index2 = 10;
-                let $itemButton = angular.element(getDropdownItem(element, index1));
-                $itemButton.triggerHandler("click");
                 $timeout.flush();
-                expect(onChange).toHaveBeenCalledWith(data[index1]);
 
-                $itemButton = angular.element(getDropdownItem(element, index2));
+                // Must open the select first, to init the dropdown menu
+                const $triggerButton = angular.element(getDropdownButton(element));
+                $triggerButton.triggerHandler("click");
+
+                const index = 4;
+                const $itemButton = angular.element(getDropdownItem(element, index));
                 $itemButton.triggerHandler("click");
+
+                // onSelect from ui-select is inside a $timeout
                 $timeout.flush();
-                expect(onChange).toHaveBeenCalledWith(data[index2]);
+                expect(onChange).toHaveBeenCalledWith(data[index]);
             });
         });
 

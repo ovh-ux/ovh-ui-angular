@@ -1,8 +1,5 @@
 import { addBooleanParameter } from "@ovh-ui/common/component-utils";
 
-const UI_SELECT_SELECTOR = ".oui-ui-select-container";
-const UI_SELECT_DROPDOWN_TRIGGER = ".oui-button_dropdown";
-
 export default class {
     constructor ($attrs, $compile, $element, $scope, $timeout) {
         "ngInject";
@@ -17,32 +14,29 @@ export default class {
     $onInit () {
         addBooleanParameter(this, "disabled");
         addBooleanParameter(this, "required");
+        addBooleanParameter(this, "searchable");
     }
 
     $postLink () {
         const $htmlContent = angular.element(this.htmlContent);
-        const matchElement = $htmlContent.find("oui-ui-select-match");
-
-        if (this.match) {
-            matchElement.html(`{{$select.selected.${this.match}}}`);
-        } else {
-            matchElement.html("{{$select.selected}}");
-        }
-
         this.$compile($htmlContent)(this.$scope, (clone) => {
             this.$element.append(clone);
         });
 
         this.$timeout(() => {
-            this.$element.removeAttr("name");
+            this.$element
+                .removeAttr("name")
+                .removeAttr("title");
 
-            this.uiSelectElement = this.$element[0].querySelector(UI_SELECT_SELECTOR);
-            this.uiSelectDropdownTrigger = this.$element[0].querySelector(UI_SELECT_DROPDOWN_TRIGGER);
-
-            this.unregisterFocus = this.$scope.$on("oui:focus", () => {
-                this.uiSelectDropdownTrigger.focus();
-            });
+            this.$select.focusser
+                .on("blur", () => this.onUiSelectBlur())
+                .on("focus", () => this.onUiSelectFocus());
         });
+
+        this.unregisterFocus = this.$scope.$on("oui:focus", () => this.$select.setFocus());
+
+        // Fix this issue: https://github.com/angular-ui/ui-select/issues/1355
+        this.tagHandler = () => null;
     }
 
     $destroy () {
@@ -54,7 +48,7 @@ export default class {
     onUiSelectBlur () {
         if (this.fieldCtrl) {
             this.fieldCtrl.hasFocus = false;
-            this.fieldCtrl.checkControlErrors(this.uiSelectElement, this.name);
+            this.fieldCtrl.checkControlErrors(this.$select.$element[0], this.name);
         }
 
         this.onBlur();
@@ -63,7 +57,7 @@ export default class {
     onUiSelectFocus () {
         if (this.fieldCtrl) {
             this.fieldCtrl.hasFocus = true;
-            this.fieldCtrl.hideErrors(this.uiSelectElement, this.name);
+            this.fieldCtrl.hideErrors(this.$select.$element[0], this.name);
         }
 
         this.onFocus();

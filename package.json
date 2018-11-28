@@ -39,7 +39,8 @@
     "clipboard": "^2.0.1",
     "escape-string-regexp": "^1.0.5",
     "flatpickr": "^4.5.2",
-    "popper.js": "^1.14.4"
+    "popper.js": "^1.14.4",
+    "ui-select": "^0.19.8"
   },
   "peerDependencies": {
     "angular": ">=1.6.x",
