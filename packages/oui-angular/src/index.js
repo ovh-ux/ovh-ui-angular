@@ -13,6 +13,7 @@ import Datagrid from "@ovh-ui/oui-datagrid";
 import Dropdown from "@ovh-ui/oui-dropdown";
 import DualList from "@ovh-ui/oui-dual-list";
 import Field from "@ovh-ui/oui-field";
+import File from "@ovh-ui/oui-file";
 import FormActions from "@ovh-ui/oui-form-actions";
 import GuideMenu from "@ovh-ui/oui-guide-menu";
 import HeaderTabs from "@ovh-ui/oui-header-tabs";
@@ -56,6 +57,7 @@ export default angular
         Dropdown,
         DualList,
         Field,
+        File,
         FormActions,
         GuideMenu,
         HeaderTabs,

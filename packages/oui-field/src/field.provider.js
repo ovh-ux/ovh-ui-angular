@@ -11,6 +11,7 @@ export default class {
                 max: "Too high ({{max}} max).",
                 minlength: "Too short ({{minlength}} characters min).",
                 maxlength: "Too high ({{maxlength}} characters max).",
+                maxsize: "This file exceeds the size limit",
                 pattern: "Invalid format."
             }
         };
