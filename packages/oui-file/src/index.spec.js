@@ -205,16 +205,16 @@ describe("ouiFile", () => {
                 $timeout.flush();
             });
 
-            it("should return a file name", () => {
-                expect(controller.constructor.getFileName(mockFile)).toBe("test");
+            it("should return file's informations", () => {
+                const infos = controller.getFileInfos(mockFile).infos;
+                expect(infos.name).toBe("test");
+                expect(infos.extension).toBe("png");
+                expect(infos.size).toBe("(150 KB)");
             });
 
-            it("should return a file extension", () => {
-                expect(controller.constructor.getFileExtension(mockFile)).toBe("png");
-            });
-
-            it("should return a file size", () => {
-                expect(controller.getFileSize(mockFile)).toBe("(150 KB)");
+            it("should return undefined as extesion", () => {
+                const infos = controller.getFileInfos({ name: "test" }).infos;
+                expect(infos.extension).toBeUndefined();
             });
 
             it("should check file validity", () => {

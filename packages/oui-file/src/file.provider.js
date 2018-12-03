@@ -9,7 +9,8 @@ export default class {
             dropAreaSelector: "select a file",
             fileSelector: "Select file",
             filesSelector: "Select file(s)...",
-            maxsizeError: "This file exceeds the size limit"
+            maxsizeError: "This file exceeds the size limit",
+            removeFile: "Remove file from selector"
         };
 
         this.units = [

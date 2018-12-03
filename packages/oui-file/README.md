@@ -105,7 +105,8 @@ angular.module("myModule", [
         dropAreaSelector: "select a file",
         fileSelector: "Select file",
         filesSelector: "Select file(s)...",
-        maxsizeError: "This file exceeds the size limit"
+        maxsizeError: "This file exceeds the size limit",
+        removeFile: "Remove file from selector"
     });
     ouiFileConfigurationProvider.setUnits([ // default units
         { size: 1000000000, suffix: "GB" },

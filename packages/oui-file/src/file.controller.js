@@ -53,10 +53,6 @@ export default class {
             file.reader.onload = () => {
                 file.preview = `url("${file.reader.result}")`;
 
-                // Clean file object
-                delete file.loading;
-                delete file.reader;
-
                 this.$scope.$apply();
             };
         }
@@ -65,7 +61,10 @@ export default class {
     }
 
     addFile (file) {
-        this.model = [this.checkFileValidity(file)];
+        this.getFileInfos(file);
+        this.checkFileValidity(file);
+
+        this.model = [file];
         this.onSelect({ modelValue: this.model });
         this.$scope.$apply();
 
@@ -82,6 +81,7 @@ export default class {
             files.forEach((file) => {
                 // Check for duplicate before adding
                 if (!find(this.model, (item) => file.name === item.name)) {
+                    this.getFileInfos(file);
                     this.checkFileValidity(file);
                     this.loadFilePreview(file);
                     this.model.push(file);
@@ -113,17 +113,18 @@ export default class {
         this.fileSelector[0].click();
     }
 
-    static getFileName (file) {
-        // Remove file extension from name
+    getFileInfos (file) {
         const parts = file.name.split(".");
-        parts.pop();
-        return parts.join(".");
-    }
+        const extension = parts.length > 1 ? parts.pop() : undefined;
+        const name = parts.join(".");
 
-    static getFileExtension (file) {
-        // Get only file extension from name
-        const parts = file.name.split(".");
-        return parts[parts.length - 1];
+        file.infos = {
+            extension,
+            name,
+            size: this.getFileSize(file)
+        };
+
+        return file;
     }
 
     getFileSize (file) {
