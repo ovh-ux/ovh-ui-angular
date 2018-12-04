@@ -41,7 +41,8 @@
         {
             "name": "notifications",
             "class": "navbar-notification__list",
-            "title": "Notifications",
+            "title": "<div class=\"oui-color-text_oui-color-pomegranate\">Your</div><span>notifications</span>",
+            "headerTitle": "Your notifications",
             "iconClass": "oui-icon oui-icon-info_circle",
             "iconAnimated": true,
             "subLinks": [
@@ -83,8 +84,9 @@
             "footerUrl": "#/"
         },
         {
-            "name": "libero",
-            "title": "Libero",
+            "name": "help",
+            "title": "<div class=\"oui-color-text_oui-color-pomegranate\">Need</div><span>help</span>",
+            "headerTitle": "Need help",
             "iconClass": "oui-icon oui-icon-help_circle",
             "subLinks": [
                 {
@@ -125,7 +127,7 @@
         },
         {
             "name": "user",
-            "title": "User",
+            "title": "<div class=\"oui-color-text_oui-color-pomegranate\">Hello Username</div><span>your account</span>",
             "iconClass": "oui-icon oui-icon-info_circle",
             "subLinks": [
                 {

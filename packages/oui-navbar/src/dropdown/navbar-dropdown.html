@@ -5,16 +5,21 @@
     ng-class="::!!$ctrl.iconClass ? 'oui-navbar-link_icon' : null"
     ng-click="$ctrl.navbarCtrl.toggleMenu($ctrl.name); $ctrl.onClick();"
     oui-navbar-group="{{::$ctrl.name}}">
-    <span class="oui-icon {{:: 'navbar-' + $ctrl.iconClass }}" aria-hidden="true"
+    <span class="oui-icon {{:: 'navbar-' + $ctrl.iconClass }} oui-navbar-link_icon__heading"
+        aria-hidden="true"
         ng-if="::!!$ctrl.iconClass"
         ng-class="{
-            'oui-icon_shake': $ctrl.iconAnimated
+            'oui-icon_shake': $ctrl.iconAnimated,
+            'oui-navbar-link_icon__hasBadge': $ctrl.iconBadge
         }">
-        <span class="oui-icon__badge"
+        <span class="oui-navbar-link_icon__badge"
             ng-if="!!$ctrl.iconBadge"
             ng-bind="$ctrl.iconBadge">
         </span>
     </span>
-    <span ng-bind="::$ctrl.text"></span>
+    <span ng-bind-html="::$ctrl.text"></span>
+    <span
+        class="oui-icon oui-icon-chevron-down oui-navbar-link_icon__ending"
+        aria-hidden="true"></span>
 </button>
 <div class="oui-navbar-menu__wrapper" ng-transclude></div>
