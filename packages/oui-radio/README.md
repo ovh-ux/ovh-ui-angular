@@ -41,6 +41,13 @@
 <oui-radio description="Disabled radio" disabled thumbnail="true">Disabled</oui-radio>
 ```
 
+### Thumbnail Variant
+
+```html:preview
+<oui-radio thumbnail variant="light">Checked</oui-radio>
+<oui-radio description="Disabled radio" disabled thumbnail="true" variant="light">Disabled</oui-radio>
+```
+
 ### On change
 
 ```html:preview
@@ -155,6 +162,7 @@
 | `required`    | boolean   | <?        | no                | `true`, `false`   | `false`   | required flag
 | `thumbnail`   | boolean   | <?        | no                | `true`, `false`   | `false`   | thumbnail style of the radio
 | `on-change`   | function  | &?        | no                | n/a               | n/a       | handler triggered when value has changed
+| `variant`     | string    | @?        | yes               | `default`, `light`| `default` | used in conjunction with `thumbnail`. Defines specific style for the thumbnail
 
 #### Deprecated
 

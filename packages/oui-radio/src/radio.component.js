@@ -18,7 +18,8 @@ export default {
         onChange: "&?",
         disabled: "<?",
         thumbnail: "<?",
-        required: "<?"
+        required: "<?",
+        variant: "@?"
     },
     transclude: true
 };
