@@ -257,6 +257,9 @@ describe("ouiSelectPicker", () => {
 
                 const $choiceElement1 = angular.element(selectPickerComponent1.querySelector(".ui-select-choices-row"));
                 $choiceElement1.triggerHandler("click");
+
+                // Must open the dropdown before flushing the $timeout
+                $triggerElement1.triggerHandler("click");
                 $timeout.flush();
 
                 expect(onChangeSpy).toHaveBeenCalledWith("aValue");
@@ -267,6 +270,9 @@ describe("ouiSelectPicker", () => {
 
                 const $choicesElement2 = angular.element(selectPickerComponent2.querySelector(".ui-select-choices-row"));
                 $choicesElement2.triggerHandler("click");
+
+                // Must open the dropdown before flushing the $timeout
+                $triggerElement2.triggerHandler("click");
                 $timeout.flush();
 
                 expect(onChangeSpy).toHaveBeenCalledWith("cValue");

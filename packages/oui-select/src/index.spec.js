@@ -293,6 +293,8 @@ describe("ouiSelect", () => {
                 $itemButton.triggerHandler("click");
 
                 // onSelect from ui-select is inside a $timeout
+                // Must open the dropdown before flushing the $timeout
+                $triggerButton.triggerHandler("click");
                 $timeout.flush();
                 expect(onChange).toHaveBeenCalledWith(data[index]);
             });

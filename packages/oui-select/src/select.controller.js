@@ -34,9 +34,6 @@ export default class {
         });
 
         this.unregisterFocus = this.$scope.$on("oui:focus", () => this.$select.setFocus());
-
-        // Fix this issue: https://github.com/angular-ui/ui-select/issues/1355
-        this.tagHandler = () => null;
     }
 
     $destroy () {

@@ -6,7 +6,6 @@
         ng-required="$ctrl.required && !$select.open"
         ng-disabled="$ctrl.disabled"
         on-select="$ctrl.onChange({ modelValue: $model })"
-        tagging="$ctrl.tagHandler"
         search-enabled="{{::!!$ctrl.searchable}}"
         theme="oui-ui-select">
     <ui-select-match placeholder="{{::$ctrl.placeholder}}"></ui-select-match>
