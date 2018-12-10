@@ -255,17 +255,6 @@ describe("ouiFile", () => {
                 controller.removeFile(mockFile);
                 expect(controller.model.length).toBe(0);
             });
-
-            it("should load a preview", (done) => {
-                const delay = 500;
-                controller.preview = true;
-                const file = controller.loadFilePreview(mockFile);
-                setTimeout(() => {
-                    expect(file.loading).toBeTruthy();
-                    expect(file.reader).toBeDefined();
-                    done();
-                }, delay);
-            });
         });
 
         describe("Form controls", () => {

@@ -1,13 +1,16 @@
-<oui-ui-select name="{{::$ctrl.name}}"
-        class="oui-field__component"
-        ng-model="$ctrl.model"
-        search-enabled="false"
+<ui-select class="oui-field__component"
+        ng-attr-name="{{::$ctrl.name}}"
         ng-attr-title="{{::$ctrl.title}}"
+        ng-init="$ctrl.$select = $select"
+        ng-model="$ctrl.model"
         ng-required="$ctrl.required && !$select.open"
         ng-disabled="$ctrl.disabled"
-        on-blur="$ctrl.onUiSelectBlur()"
-        on-focus="$ctrl.onUiSelectFocus()"
-        on-select="$ctrl.onChange({ modelValue: $model })">
-    <oui-ui-select-match placeholder="{{::$ctrl.placeholder}}"></oui-ui-select-match>
-    <oui-ui-select-choices repeat="$item in $ctrl.items track by $index" ui-disable-choice="$ctrl.disableItems({ $item: $item })"></oui-ui-select-choices>
-</oui-ui-select>
+        on-select="$ctrl.onChange({ modelValue: $model })"
+        search-enabled="{{::!!$ctrl.searchable}}"
+        theme="oui-ui-select">
+    <ui-select-match placeholder="{{::$ctrl.placeholder}}"></ui-select-match>
+    <ui-select-choices repeat="$item in $ctrl.items | filter: $select.search track by $index"
+        ui-disable-choice="$ctrl.disableItems({ $item: $item })">
+        <span ng-bind-html="($item[$ctrl.match] || $item) | highlight: $select.search"></span>
+    </ui-select-choices>
+</ui-select>
