@@ -483,7 +483,7 @@ describe("ouiField", () => {
         });
 
         describe("with oui-select", () => {
-            const getDropdownButton = element => element[0].querySelector(".oui-button_dropdown");
+            const getDropdownButton = element => element[0].querySelector(".ui-select-match");
             const getSelectController = element => element.find("oui-select").controller("ouiSelect");
 
             it("should give focus to oui-select after on label click", () => {
@@ -506,14 +506,14 @@ describe("ouiField", () => {
                     ]
                 });
 
+                $timeout.flush();
+
                 const selectController = getSelectController(element);
                 const $label = angular.element(getLabel(element));
-
-                $timeout.flush();
-                selectController.uiSelectDropdownTrigger.focus = jasmine.createSpy();
+                selectController.$select.focusser[0].focus = jasmine.createSpy();
 
                 $label.triggerHandler("click");
-                expect(selectController.uiSelectDropdownTrigger.focus).toHaveBeenCalled();
+                expect(selectController.$select.focusser[0].focus).toHaveBeenCalled();
             });
 
             it("should show errors when blur is triggered on select", () => {

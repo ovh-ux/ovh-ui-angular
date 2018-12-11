@@ -166,3 +166,18 @@
 | Attribute     | Type      | Binding   | One-time binding  | Values            | Default   | Description
 | ----          | ----      | ----      | ----              | ----              | ----      | ----
 | `adaptive`    | boolean   | <?        | yes               | `true`, `false`   | `false`   | adaptive field flag
+
+## Configuration
+
+The inline adder can be globally configured with a provider.
+
+```js
+angular.module("myModule", [
+    "oui.inline-adder"
+]).config(ouiInlineAdderConfigurationProvider => {
+    ouiInlineAdderConfigurationProvider.setTranslations({ // default translations
+        ariaAddItem: "Add Item",
+        ariaRemoveItem: "Remove Item"
+    });
+});
+```

@@ -254,8 +254,8 @@ The validation messages can be globally configured with a provider.
 ```js
 angular.module("myModule", [
     "oui.field"
-]).config(ouiFieldConfiguration => {
-    ouiFieldConfiguration.setTranslations({ // default translations
+]).config(ouiFieldConfigurationProvider => {
+    ouiFieldConfigurationProvider.setTranslations({ // default translations
         errors: {
             required: "Mandatory.",
             number: "Invalid number.",

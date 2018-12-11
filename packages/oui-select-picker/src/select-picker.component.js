@@ -5,7 +5,8 @@ export default {
     template,
     controller,
     transclude: {
-        sectionSlot: "?span"
+        sectionSlot: "?ouiSelectPickerSection",
+        deprecatedSlot: "?span" // Deprecated: Replaced by "oui-select-picker-section"
     },
     bindings: {
         model: "=?",

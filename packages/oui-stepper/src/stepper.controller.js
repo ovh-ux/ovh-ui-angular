@@ -24,8 +24,20 @@ export default class {
     }
 
     addStep (step) {
-        this.steps.push(step);
+        if (!step.position) {
+            this.steps.push(step);
+        } else {
+            this.steps.splice(step.position - 1, 0, step);
+        }
+
         this.focusStep(this.currentIndex);
+    }
+
+    removeStep (step) {
+        const indexOfStep = this.steps.indexOf(step);
+        if (indexOfStep > -1) {
+            this.steps.splice(indexOfStep, 1);
+        }
     }
 
     addForm (form, index) {

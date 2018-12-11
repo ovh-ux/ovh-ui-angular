@@ -78,3 +78,17 @@ Has model changed? {{$ctrl.changed}}
 | `readonly`    | boolean   | <?        | no                | `true`, `false`   | `false`   | readonly flag
 | `required`    | boolean   | <?        | no                | `true`, `false`   | `false`   | required flag
 | `on-change`   | function  | &?        | no                | n/a               | n/a       | model value change callback
+
+## Configuration
+
+The textarea can be globally configured with a provider.
+
+```js
+angular.module("myModule", [
+    "oui.textarea"
+]).config(ouiTextareaConfigurationProvider => {
+    ouiTextareaConfigurationProvider.setTranslations({ // default translations
+        lengthCounter: "{{length}}/{{max}} characters"
+    });
+});
+```

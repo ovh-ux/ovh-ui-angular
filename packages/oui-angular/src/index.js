@@ -1,4 +1,5 @@
 import ActionMenu from "@ovh-ui/oui-action-menu";
+import Autocomplete from "@ovh-ui/oui-autocomplete";
 import BackButton from "@ovh-ui/oui-back-button";
 import Button from "@ovh-ui/oui-button";
 import Calendar from "@ovh-ui/oui-calendar";
@@ -10,7 +11,9 @@ import CriteriaAdder from "@ovh-ui/oui-criteria-adder";
 import CriteriaContainer from "@ovh-ui/oui-criteria-container";
 import Datagrid from "@ovh-ui/oui-datagrid";
 import Dropdown from "@ovh-ui/oui-dropdown";
+import DualList from "@ovh-ui/oui-dual-list";
 import Field from "@ovh-ui/oui-field";
+import File from "@ovh-ui/oui-file";
 import FormActions from "@ovh-ui/oui-form-actions";
 import GuideMenu from "@ovh-ui/oui-guide-menu";
 import HeaderTabs from "@ovh-ui/oui-header-tabs";
@@ -32,6 +35,7 @@ import Slideshow from "@ovh-ui/oui-slideshow";
 import Spinner from "@ovh-ui/oui-spinner";
 import Stepper from "@ovh-ui/oui-stepper";
 import Switch from "@ovh-ui/oui-switch";
+import Tabs from "@ovh-ui/oui-tabs";
 import Textarea from "@ovh-ui/oui-textarea";
 import Tile from "@ovh-ui/oui-tile";
 import Tooltip from "@ovh-ui/oui-tooltip";
@@ -39,6 +43,7 @@ import Tooltip from "@ovh-ui/oui-tooltip";
 export default angular
     .module("oui", [
         ActionMenu,
+        Autocomplete,
         BackButton,
         Button,
         Calendar,
@@ -50,7 +55,9 @@ export default angular
         CriteriaContainer,
         Datagrid,
         Dropdown,
+        DualList,
         Field,
+        File,
         FormActions,
         GuideMenu,
         HeaderTabs,
@@ -72,6 +79,7 @@ export default angular
         Spinner,
         Stepper,
         Switch,
+        Tabs,
         Textarea,
         Tile,
         Tooltip

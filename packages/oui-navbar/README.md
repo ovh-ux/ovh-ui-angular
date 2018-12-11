@@ -601,3 +601,24 @@ The property `name` **must be** `"user"`.
 | `state-params`        | object    | <?        | yes               | n/a                                   | n/a       | state-params of the link
 | `variant`             | string    | @?        | yes               | `primary`, `secondary`, `tertiary`    | n/a       | style modifier of the link
 | `on-click`            | function  | &         | no                | n/a                                   | n/a       | click callback
+
+## Configuration
+
+The navbar can be globally configured with a provider.
+
+```js
+angular.module("myModule", [
+    "oui.navbar"
+]).config(ouiNavbarConfigurationProvider => {
+    ouiNavbarConfigurationProvider.setTranslations({ // default translations
+        notification: {
+            errorInNotification: "Oups, there’s an error!",
+            errorInNotificationDescription: "We can’t initialize the menu.",
+            markRead: "Mark as read",
+            markUnread: "Mark as unread",
+            noNotification: "You are all caught up!",
+            noNotificationDescription: "You don't have any notification."
+        }
+    });
+});
+```

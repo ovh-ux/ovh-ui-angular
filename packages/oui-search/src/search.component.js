@@ -11,12 +11,15 @@ export default {
         name: "@?",
         placeholder: "@?",
         ariaLabel: "@?",
-
         disabled: "<?",
 
         onChange: "&",
         onReset: "&",
-        onSubmit: "&"
+        onSubmit: "&",
+
+        autocomplete: "<?",
+        autocompleteProperty: "@?",
+        autocompleteOnSelect: "&"
     },
     controller,
     template

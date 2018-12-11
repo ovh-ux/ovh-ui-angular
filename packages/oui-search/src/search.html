@@ -1,6 +1,10 @@
 <form class="oui-input-group oui-input-group_search" novalidate
     ng-submit="$ctrl.onSearchSubmit($ctrl.model)">
     <input autocomplete="off" class="oui-input" type="text"
+        oui-autocomplete="$ctrl.autocomplete"
+        oui-autocomplete-options="::$ctrl.autocompleteOptions"
+        oui-autocomplete-property="{{$ctrl.autocompleteProperty}}"
+        oui-autocomplete-on-select="$ctrl.autocompleteOnSelect({ value })"
         ng-attr-aria-label="{{::$ctrl.ariaLabel}}"
         ng-attr-id="{{::$ctrl.id}}"
         ng-attr-name="{{::$ctrl.name}}"
@@ -13,10 +17,10 @@
         ng-click="$ctrl.onSearchReset()"
         ng-show="$ctrl.model.length"
         ng-disabled="$ctrl.disabled">
-        <i class="oui-icon oui-icon-close_thin"></span>
+        <span class="oui-icon oui-icon-close_thin"></span>
     </button>
     <button class="oui-button" type="submit"
         ng-disabled="$ctrl.disabled">
-        <i class="oui-icon oui-icon-search"></span>
+        <span class="oui-icon oui-icon-search"></span>
     </button>
 </form>

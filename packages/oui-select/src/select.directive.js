@@ -12,25 +12,27 @@ export default () => ({
     scope: {
         model: "=",
         name: "@?",
-        required: "<?",
-        disabled: "<?",
-        title: "@?",
         placeholder: "@?",
+        title: "@?",
         items: "<",
         disableItems: "&",
         match: "@?",
         groupBy: "<?",
-        align: "@?",
+        required: "<?",
+        disabled: "<?",
+        searchable: "<?",
         onBlur: "&",
         onFocus: "&",
         onChange: "&"
     },
     compile: ($element, $attrs) => {
-        const itemTemplate = $element.html();
+        const itemTemplate = $element.html().trim();
         const $template = angular.element(template);
-        const choicesElement = $template.find("oui-ui-select-choices");
+        const choicesElement = $template.find("ui-select-choices");
 
-        choicesElement.html(itemTemplate);
+        if (itemTemplate) {
+            choicesElement.html(itemTemplate);
+        }
         if ($attrs.groupBy) {
             choicesElement.attr("group-by", "$ctrl.groupBy");
         }

@@ -15,10 +15,11 @@ export default class {
         addBooleanParameter(this, "thumbnail");
         addBooleanParameter(this, "required");
         addDefaultParameter(this, "id", `ouiRadio${this.$scope.$id}`);
+        addDefaultParameter(this, "variant", "default");
 
         this.$element.addClass(this.radioToggleGroup ? "oui-radio-toggle" : "oui-radio");
         if (this.thumbnail && !this.radioToggleGroup) {
-            this.$element.addClass("oui-radio_thumbnail");
+            this.$element.addClass(this.variant === "default" ? "oui-radio_thumbnail" : `oui-radio_thumbnail-${this.variant}`);
         }
 
         this.group = this.radioGroup || this.radioToggleGroup;

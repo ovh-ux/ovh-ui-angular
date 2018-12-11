@@ -1,6 +1,7 @@
 import "@ovh-ui/common/test-utils";
 
 loadTests(require.context("../../oui-action-menu/src/", true, /.*((\.spec)|(index))$/));
+loadTests(require.context("../../oui-autocomplete/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-back-button/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-button/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-calendar/src/", true, /.*((\.spec)|(index))$/));
@@ -12,7 +13,9 @@ loadTests(require.context("../../oui-criteria-adder/src/", true, /.*((\.spec)|(i
 loadTests(require.context("../../oui-criteria-container/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-datagrid/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-dropdown/src/", true, /.*((\.spec)|(index))$/));
+loadTests(require.context("../../oui-dual-list/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-field/src/", true, /.*((\.spec)|(index))$/));
+loadTests(require.context("../../oui-file/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-form-actions/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-guide-menu/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-header-tabs/src/", true, /.*((\.spec)|(index))$/));
@@ -34,6 +37,7 @@ loadTests(require.context("../../oui-slideshow/src/", true, /.*((\.spec)|(index)
 loadTests(require.context("../../oui-spinner/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-stepper/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-switch/src/", true, /.*((\.spec)|(index))$/));
+loadTests(require.context("../../oui-tabs/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-tile/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-textarea/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-tooltip/src/", true, /.*((\.spec)|(index))$/));
