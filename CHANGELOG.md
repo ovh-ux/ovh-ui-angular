@@ -1,3 +1,37 @@
+<a name="2.23.0"></a>
+# [2.23.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.22.2...v2.23.0) (2018-12-11)
+
+
+### Bug Fixes
+
+* **oui-checkbox:** fix error class display condition ([#320](https://github.com/ovh-ux/ovh-ui-angular/issues/320)) ([9ce4b1c](https://github.com/ovh-ux/ovh-ui-angular/commit/9ce4b1c))
+* **oui-select-picker:** fix transclude with component instead of span ([#312](https://github.com/ovh-ux/ovh-ui-angular/issues/312)) ([3a7ad05](https://github.com/ovh-ux/ovh-ui-angular/commit/3a7ad05))
+
+
+### Features
+
+* **oui-autocomplete:** add oui-autocomplete directive ([#315](https://github.com/ovh-ux/ovh-ui-angular/issues/315)) ([a0a5183](https://github.com/ovh-ux/ovh-ui-angular/commit/a0a5183))
+* **oui-checkbox:** add error class when checkbox is in error ([#314](https://github.com/ovh-ux/ovh-ui-angular/issues/314)) ([e08dc8f](https://github.com/ovh-ux/ovh-ui-angular/commit/e08dc8f))
+* **oui-datagrid:** add on-row-select event ([#323](https://github.com/ovh-ux/ovh-ui-angular/issues/323)) ([98c6154](https://github.com/ovh-ux/ovh-ui-angular/commit/98c6154))
+* **oui-dual-list:** add dual-list component ([#311](https://github.com/ovh-ux/ovh-ui-angular/issues/311)) ([2eb2013](https://github.com/ovh-ux/ovh-ui-angular/commit/2eb2013))
+* **oui-file:** add file component ([#324](https://github.com/ovh-ux/ovh-ui-angular/issues/324)) ([b50ac81](https://github.com/ovh-ux/ovh-ui-angular/commit/b50ac81))
+* **oui-navbar:** allow html in navbar links ([#330](https://github.com/ovh-ux/ovh-ui-angular/issues/330)) ([2c15b45](https://github.com/ovh-ux/ovh-ui-angular/commit/2c15b45))
+* **oui-radio:** add variant attribute ([#325](https://github.com/ovh-ux/ovh-ui-angular/issues/325)) ([3e78cb9](https://github.com/ovh-ux/ovh-ui-angular/commit/3e78cb9))
+* **oui-stepper:** add position attribute ([#313](https://github.com/ovh-ux/ovh-ui-angular/issues/313)) ([88aeedd](https://github.com/ovh-ux/ovh-ui-angular/commit/88aeedd))
+* **oui-tabs:** add tabs component ([#319](https://github.com/ovh-ux/ovh-ui-angular/issues/319)) ([727454a](https://github.com/ovh-ux/ovh-ui-angular/commit/727454a))
+
+
+
+<a name="2.22.2"></a>
+## [2.22.2](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.22.1...v2.22.2) (2018-11-23)
+
+
+### Bug Fixes
+
+* **oui-datagrid:** fix empty td when selectable-rows is active ([#321](https://github.com/ovh-ux/ovh-ui-angular/issues/321)) ([0ddeed0](https://github.com/ovh-ux/ovh-ui-angular/commit/0ddeed0))
+
+
+
 <a name="2.22.1"></a>
 ## [2.22.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.22.0...v2.22.1) (2018-11-16)
 

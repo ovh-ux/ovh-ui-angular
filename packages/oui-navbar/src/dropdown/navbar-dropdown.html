@@ -15,6 +15,6 @@
             ng-bind="$ctrl.iconBadge">
         </span>
     </span>
-    <span ng-bind="::$ctrl.text"></span>
+    <span ng-bind-html="::$ctrl.text"></span>
 </button>
 <div class="oui-navbar-menu__wrapper" ng-transclude></div>

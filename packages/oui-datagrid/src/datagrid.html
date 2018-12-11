@@ -88,7 +88,7 @@
                     <tbody class="oui-datagrid__body"
                         ng-show="!$ctrl.displayedRows.length || $ctrl.loading || $ctrl.firstLoading">
                         <tr class="oui-datagrid__row oui-datagrid__row_loading">
-                            <td ng-if="$ctrl.hasCheckboxes"
+                            <td ng-if="$ctrl.selectableRows"
                                 class="oui-datagrid__cell oui-datagrid__cell-sticky"></td>
                             <td class="oui-datagrid__cell"
                                 ng-attr-colspan="{{ $ctrl.columns.length }}"
