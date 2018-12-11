@@ -53,7 +53,7 @@
                 links="asideLink.subLinks"
                 limit-to="asideLink.limitTo"
                 header-template="asideLink.headerTemplate"
-                header-title="{{asideLink.title}}"
+                header-title="{{asideLink.headerTitle}}"
                 footer-template="asideLink.footerTemplate"
                 footer-title="{{asideLink.footerTitle}}"
                 footer-href="{{asideLink.footerUrl}}"
@@ -69,7 +69,7 @@
             <oui-navbar-menu ng-switch-default
                 header-class="oui-navbar_mobile-only"
                 header-breadcrumb="{{asideLink.headerBreadcrumb}}"
-                header-title="{{asideLink.title}}"
+                header-title="{{asideLink.headerTitle}}"
                 name="{{asideLink.name}}"
                 links="asideLink.subLinks"
                 align="end"
@@ -391,7 +391,7 @@ This property is only available for root links of `aside-links`.
                 links="asideLink.subLinks"
                 limit-to="asideLink.limitTo"
                 header-template="asideLink.headerTemplate"
-                header-title="{{asideLink.title}}"
+                header-title="{{asideLink.headerTitle}}"
                 footer-template="asideLink.footerTemplate"
                 footer-title="{{asideLink.footerTitle}}"
                 footer-href="{{asideLink.footerUrl}}"
@@ -407,7 +407,7 @@ This property is only available for root links of `aside-links`.
             <oui-navbar-menu ng-switch-default
                 header-class="oui-navbar_mobile-only"
                 header-breadcrumb="{{asideLink.headerBreadcrumb}}"
-                header-title="{{asideLink.title}}"
+                header-title="{{asideLink.headerTitle}}"
                 name="{{asideLink.name}}"
                 links="asideLink.subLinks"
                 align="end"
@@ -486,7 +486,7 @@ subLinks = [];
                 name="{{$ctrl.placeholderNotification[0].name}}"
                 links="$ctrl.placeholderNotification[0].subLinks"
                 limit-to="$ctrl.placeholderNotification[0].limitTo"
-                header-title="{{$ctrl.placeholderNotification[0].title}}"
+                header-title="{{$ctrl.placeholderNotification[0].headerTitle}}"
                 align="end"
                 fixed></oui-navbar-notification>
         </oui-navbar-dropdown>
