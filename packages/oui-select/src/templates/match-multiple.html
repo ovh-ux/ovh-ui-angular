@@ -1,16 +1,22 @@
 <span class="ui-select-match">
-    <span ng-repeat="$item in $select.selected track by $index">
-        <span class="ui-select-match-item" type="button"
+    <span class="ui-select-placeholder"
+        ng-hide="!$select.isEmpty() || ($select.searchEnabled && $select.open)"
+        ng-bind="::$select.placeholder">
+    </span>
+    <span class="ui-select-match-items">
+        <button type="button" class="oui-chip oui-chip_closable ui-select-match-item"
+            ng-repeat="$item in $select.selected track by $index"
             ng-disabled="$select.disabled"
-            ng-click="$selectMultiple.activeMatchIndex = $index;"
-            ng-class="{
-                'btn-primary': $selectMultiple.activeMatchIndex === $index,
-                'select-locked': $select.isLocked(this, $index)
-            }"
             ui-select-sort="$select.selected"
             tabindex="-1">
-            <span class="ui-select-match-close" ng-hide="$select.disabled" ng-click="$selectMultiple.removeChoice($index)">&nbsp;&times;</span>
             <span uis-transclude-append></span>
-        </span>
+            <span class="oui-chip__close"
+                ng-hide="$select.disabled"
+                ng-click="$ctrl.removeChoice($event, $index, $selectMultiple.removeChoice)"
+                tabindex="-1">
+                <span class="oui-icon oui-icon-close_thin" aria-hidden="true"></span>
+            </span>
+        </button>
     </span>
+    <span class="oui-icon oui-icon-chevron-down"></span>
 </span>
