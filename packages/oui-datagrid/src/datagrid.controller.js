@@ -1,8 +1,11 @@
 import { addBooleanParameter } from "@ovh-ui/common/component-utils";
 import find from "lodash/find";
 import { hasProperty } from "./util";
-
+import isEqual from "lodash/isEqual";
+import pull from "lodash/pull";
+import pullAll from "lodash/pullAll";
 import template from "./datagrid.html";
+import union from "lodash/union";
 
 const cssSorted = "oui-datagrid__cell_sorted";
 const cssSortable = "oui-datagrid__header_sortable";
@@ -35,6 +38,7 @@ export default class DatagridController {
         this.columnElements = [];
         this.actionColumnElements = [];
         this.extraTopElements = [];
+        this.currentSelectedRows = [];
         this.selectedRows = [];
         this.selectAllRows = false;
 
@@ -72,6 +76,7 @@ export default class DatagridController {
         this.criteria = [];
 
         addBooleanParameter(this, "selectableRows");
+        addBooleanParameter(this, "keepSelectedRows");
 
         if (this.id) {
             this.ouiDatagridService.registerDatagrid(this);
@@ -275,13 +280,11 @@ export default class DatagridController {
             this.displayedRows = DatagridController.createEmptyRows(this.paging.getCurrentPageSize());
         }
 
-        this.selectedRows = this.selectedRows.map(() => false);
-        this.selectAllRows = false;
-
         this.refreshDatagridPromise = this.$q.when((callback || angular.noop)())
             .then(() => this.paging.loadData(skipSortAndFilter, forceLoadRows))
             .then(result => {
                 this.displayedRows = result.data;
+                this.applyRowsSelection();
                 if (requireScrollToTop) {
                     this.scrollToTop();
                 }
@@ -321,18 +324,20 @@ export default class DatagridController {
     }
 
     getSelectedRows () {
-        return this.selectedRows.reduce((result, isSelected, index) => {
-            if (isSelected) {
-                result.push(this.displayedRows[index]);
-            }
-            return result;
-        }, []);
+        return this.selectedRows;
     }
 
     toggleRowSelection (index, isSelected) {
+        const row = this.displayedRows[index];
         const rowCount = this.displayedRows.length;
-        this.selectedRows[index] = isSelected;
-        const selectedRowsCount = this.getSelectedRows().length;
+        this.currentSelectedRows[index] = isSelected;
+        const selectedRowsCount = this.currentSelectedRows.filter(selected => selected).length;
+
+        if (isSelected) {
+            this.selectedRows.push(row);
+        } else {
+            pull(this.selectedRows, row);
+        }
 
         if (selectedRowsCount === rowCount) {
             this.selectAllRows = true;
@@ -343,22 +348,35 @@ export default class DatagridController {
         }
 
         this.onRowSelect({
-            $row: this.displayedRows[index],
+            $row: row,
             $rows: this.getSelectedRows()
         });
     }
 
     toggleAllRowsSelection (modelValue) {
-        if (modelValue === null) {
-            this.selectedRows = this.displayedRows.map(() => true);
+        const selectValue = modelValue === null ? true : modelValue;
+        this.currentSelectedRows = this.displayedRows.map(() => selectValue);
+        if (selectValue) {
+            this.selectedRows = union(this.selectedRows, this.displayedRows);
         } else {
-            this.selectedRows = this.displayedRows.map(() => modelValue);
+            this.selectedRows = pullAll(this.selectedRows, this.displayedRows);
         }
 
         this.onRowSelect({
             $row: null,
             $rows: this.getSelectedRows()
         });
+    }
+
+    applyRowsSelection () {
+        if (this.keepSelectedRows) {
+            this.currentSelectedRows = this.displayedRows.map(row => !!find(this.selectedRows, selectedRow => isEqual(selectedRow, row)));
+            this.selectAllRows = this.currentSelectedRows.filter(isSelected => isSelected).length === this.displayedRows.length;
+        } else {
+            this.selectedRows = [];
+            this.currentSelectedRows = this.currentSelectedRows.map(() => false);
+            this.selectAllRows = false;
+        }
     }
 
     static createEmptyRows (pageSize) {

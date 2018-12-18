@@ -58,7 +58,7 @@
                             ng-init="rowIndex = $index">
                             <td class="oui-datagrid__cell oui-datagrid__cell-sticky"
                                 ng-if="$ctrl.selectableRows">
-                                <oui-checkbox model="$ctrl.selectedRows[$index]"
+                                <oui-checkbox model="$ctrl.currentSelectedRows[$index]"
                                               on-change="$ctrl.toggleRowSelection($index, modelValue)">
                                 </oui-checkbox>
                             </td>

@@ -518,6 +518,42 @@ describe("ouiDatagrid", () => {
                 element.scope().$apply();
                 expect(element.find("oui-datagrid-extra-top").text()).toBe("5");
             });
+
+            it("should keep selection across pages", () => {
+                const element = TestUtils.compileTemplate(`
+                <oui-datagrid rows="$ctrl.rows" page-size="5" keep-selected-rows>
+                    <oui-column property="firstName"></oui-column>
+                    <oui-column property="lastName"></oui-column>
+                </oui-datagrid>`, {
+                    rows: fakeData.slice(0, 10)
+                });
+                const ctrl = element.controller("ouiDatagrid");
+                ctrl.toggleRowSelection(0, true);
+                getNextPagePaginationButton(element).triggerHandler("click");
+                element.scope().$apply();
+
+                const selected = ctrl.getSelectedRows();
+                expect(selected.length).toBe(1);
+                expect(selected[0]).toEqual(fakeData[0]);
+            });
+
+            it("should keep global selection across pages", () => {
+                const element = TestUtils.compileTemplate(`
+                <oui-datagrid rows="$ctrl.rows" page-size="5" keep-selected-rows>
+                    <oui-column property="firstName"></oui-column>
+                    <oui-column property="lastName"></oui-column>
+                </oui-datagrid>`, {
+                    rows: fakeData.slice(0, 10)
+                });
+                const ctrl = element.controller("ouiDatagrid");
+                ctrl.toggleAllRowsSelection(true);
+                getNextPagePaginationButton(element).triggerHandler("click");
+                element.scope().$apply();
+
+                const selected = ctrl.getSelectedRows();
+                expect(selected.length).toBe(5);
+                expect(selected).toEqual(fakeData.slice(0, 5));
+            });
         });
 
         describe("Remote rows", () => {

@@ -127,6 +127,38 @@ Clicked row action 1: <span ng-if="$ctrl.action1Row">{{$ctrl.action1Row.lastName
   When <code class="oui-doc-codespan">selectable-rows</code> is provided, you can listen to checkboxes changes with the <code class="oui-doc-codespan">on-row-select</code> event. It provides <strong>$row</strong> as the triggered row and <strong>$rows</strong> as the complete list of rows selected so far.
 </oui-message>
 
+#### Keep selection across pages 
+
+```html:preview
+<oui-datagrid rows="$ctrl.data" page-size="5" selectable-rows on-row-select="$ctrl.onRowSelect($row, $rows)" keep-selected-rows>
+  <oui-column title="'First name'" property="firstName" sortable="asc"></oui-column>
+  <oui-column title="'Last name'" property="lastName" sortable></oui-column>
+  <oui-column title="'Mother'" property="parents.mother.lastName" sortable>
+    {{$row.parents.mother.lastName}}, {{$row.parents.mother.firstName}}
+  </oui-column>
+  <oui-column title="'Father'" property="parents.father.lastName" sortable>
+    {{$row.parents.father.lastName}}, {{$row.parents.father.firstName}}
+  </oui-column>
+  <oui-column title="'Email'" property="email" sortable>
+    <a href="mailto:{{$value}}">{{$ctrl.label}}: {{$value}}</a>
+  </oui-column>
+  <oui-column title="'Phone'" property="phone"></oui-column>
+  <oui-column title="'Birth'" property="birth" sortable>
+    {{$value|date:short}}
+  </oui-column>
+  <oui-column title="'Selected'">
+    <span>{{ $isSelected }}</span>
+  </oui-column>
+  <oui-action-menu align="end" compact>
+      <oui-action-menu-item text="Some action" disabled="$isSelected" on-click="">
+      </oui-action-menu-item>
+  </oui-action-menu>
+  <extra-top>
+    <pre>You have selected {{ $selectedRows.length }} row(s).</pre>
+  </extra-top>
+</oui-datagrid>
+```
+
 ### Empty datagrid
 
 ```html:preview
@@ -718,6 +750,7 @@ call `rows-loader` and then a `row-loader` call for each line.
 | `columns-parameters`              | array     | <?        | no                  | n/a              | `undefined`  | columns parameters (see below)
 | `on-columns-parameters-change`    | function  | &         | no                  | n/a              | n/a          | triggered on column parameter change when datagrid is customizable
 | `on-row-select`                   | function  | &         | no                  | n/a              | n/a          | triggered when a row is selected
+| `keep-selected-rows`              | boolean   | <?        | no                  | `true`, `false`  | `false`      | if row selection should be kept across pages
 
 `columns-parameters` is an array describing all basic parameters of each column.
 
