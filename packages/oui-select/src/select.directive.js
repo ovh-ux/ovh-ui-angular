@@ -20,6 +20,7 @@ export default () => ({
         groupBy: "<?",
         required: "<?",
         disabled: "<?",
+        multiple: "<?",
         searchable: "<?",
         onBlur: "&",
         onFocus: "&",

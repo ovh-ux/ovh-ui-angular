@@ -172,13 +172,23 @@
     <oui-field label="Recovery OS" size="m">
         <oui-select name="recovery_os"
             model="$ctrl.recoveryOs"
-            data-title="Select the recovery OS"
+            title="Select the recovery OS"
             placeholder="Select the recovery OS..."
             items="$ctrl.osList"
-            required
             match="label"
-            data-align="start">
-            <span ng-bind="$item.label"></span>
+            required>
+        </oui-select>
+    </oui-field>
+
+    <oui-field label="Recovery OS" size="m">
+        <oui-select name="recovery_os2"
+            model="$ctrl.recoveryOs2"
+            title="Select the recovery OS"
+            placeholder="Select the recovery OS..."
+            items="$ctrl.osList"
+            match="label"
+            required
+            multiple>
         </oui-select>
     </oui-field>
 </form>

@@ -19,6 +19,8 @@ describe("ouiSelect", () => {
 
     const getContainer = element => element[0].querySelector(".ui-select-container");
     const getDropdownButton = element => element[0].querySelector(".ui-select-match");
+    const getMultipleDropdownButton = element => element[0].querySelector(".ui-select-match-container");
+    const getMultipleMatchItem = element => element[0].querySelectorAll(".ui-select-match-item");
     const getDropdown = element => element[0].querySelector(".ui-select-choices-content");
     const getFocusser = element => element[0].querySelector(".ui-select-focusser");
     const getItemsGroups = element => element[0].querySelectorAll(".ui-select-choices-group");
@@ -39,7 +41,6 @@ describe("ouiSelect", () => {
                     placeholder="${placeholder}"
                     items="$ctrl.countries"
                     match="name">
-                    <span ng-bind="$item.name"></span>
                 </oui-select>`, {
                 countries: data
             });
@@ -58,7 +59,6 @@ describe("ouiSelect", () => {
                     placeholder="Select a country..."
                     items="$ctrl.countries"
                     match="name">
-                    <span ng-bind="$item.name"></span>
                 </oui-select>`, {
                 countries: data
             });
@@ -140,6 +140,73 @@ describe("ouiSelect", () => {
             });
         });
 
+        describe("Multiple select", () => {
+            it("should not close dropdown when an item is selected", () => {
+                const element = TestUtils.compileTemplate(`
+                    <oui-select name="country"
+                        model="$ctrl.country"
+                        title="Select a country"
+                        placeholder="Select a country..."
+                        items="$ctrl.countries"
+                        match="name"
+                        multiple>
+                    </oui-select>`, {
+                    countries: data
+                });
+
+                const $triggerButton = angular.element(getMultipleDropdownButton(element));
+
+                expect($triggerButton.attr("aria-expanded")).toBe("false");
+
+                // Open the dropdown
+                $triggerButton.triggerHandler("click");
+
+                // Select 5th element and check if it's highlighted.
+                const $itemButton = angular.element(getDropdownItem(element, 4)); // eslint-disable-line no-magic-numbers
+                $itemButton.triggerHandler("click");
+
+                // The dropdown should stay opened.
+                expect($triggerButton.attr("aria-expanded")).toBe("true");
+            });
+
+            it("should remove item selected", () => {
+                const element = TestUtils.compileTemplate(`
+                    <oui-select name="country"
+                        model="$ctrl.country"
+                        title="Select a country"
+                        placeholder="Select a country..."
+                        items="$ctrl.countries"
+                        match="name"
+                        multiple>
+                    </oui-select>`, {
+                    countries: data
+                });
+
+                const $triggerButton = angular.element(getMultipleDropdownButton(element));
+
+                expect($triggerButton.attr("aria-expanded")).toBe("false");
+
+                // Open the dropdown
+                $triggerButton.triggerHandler("click");
+
+                // Select 5th element and check if it's highlighted.
+                let $itemButton = angular.element(getDropdownItem(element, 4)); // eslint-disable-line no-magic-numbers
+                $itemButton.triggerHandler("click");
+
+                $itemButton = angular.element(getDropdownItem(element, 4)); // eslint-disable-line no-magic-numbers
+                $itemButton.triggerHandler("click");
+
+                // The dropdown should stay opened.
+                let matchItems = getMultipleMatchItem(element);
+                expect(matchItems.length).toBe(2); // eslint-disable-line no-magic-numbers
+
+                angular.element(matchItems[0].querySelector(".oui-chip__close")).triggerHandler("click");
+                matchItems = getMultipleMatchItem(element);
+
+                expect(matchItems.length).toBe(1); // eslint-disable-line no-magic-numbers
+            });
+        });
+
         describe("Not grouped", () => {
             it("should display all the choices (objectArray)", () => {
                 const element = TestUtils.compileTemplate(`
@@ -149,7 +216,6 @@ describe("ouiSelect", () => {
                         placeholder="Select a country..."
                         items="$ctrl.countries"
                         match="name">
-                        <span ng-bind="$item.name"></span>
                     </oui-select>`, {
                     countries: data
                 });
@@ -171,7 +237,6 @@ describe("ouiSelect", () => {
                         title="Select a country"
                         model="$ctrl.country"
                         items="$ctrl.array">
-                        <span ng-bind="$item"></span>
                     </oui-select>`, {
                     array: stringArray
                 });
@@ -198,7 +263,6 @@ describe("ouiSelect", () => {
                         items="$ctrl.countries"
                         match="name"
                         group-by="$ctrl.groupByFirstLetter">
-                        <span ng-bind="$item.name"></span>
                     </oui-select>`, {
                     countries: data,
                     groupByFirstLetter
@@ -230,7 +294,6 @@ describe("ouiSelect", () => {
                         items="$ctrl.countries"
                         match="name"
                         on-blur="$ctrl.onBlur()">
-                        <span ng-bind="$item.name"></span>
                     </oui-select>`, {
                     onBlur
                 });
@@ -238,6 +301,10 @@ describe("ouiSelect", () => {
                 $timeout.flush();
 
                 angular.element(getFocusser(element)).triggerHandler("blur");
+
+                // Need to flush again for the callback
+                $timeout.flush();
+
                 expect(onBlur).toHaveBeenCalled();
             });
         });
@@ -253,7 +320,6 @@ describe("ouiSelect", () => {
                         items="$ctrl.countries"
                         match="name"
                         on-focus="$ctrl.onFocus()">
-                        <span ng-bind="$item.name"></span>
                     </oui-select>`, {
                     onFocus
                 });
@@ -261,6 +327,10 @@ describe("ouiSelect", () => {
                 $timeout.flush();
 
                 angular.element(getFocusser(element)).triggerHandler("focus");
+
+                // Need to flush again for the callback
+                $timeout.flush();
+
                 expect(onFocus).toHaveBeenCalled();
             });
         });
@@ -276,7 +346,6 @@ describe("ouiSelect", () => {
                         items="$ctrl.countries"
                         match="name"
                         on-change="$ctrl.onChange(modelValue)">
-                        <span ng-bind="$item.name"></span>
                     </oui-select>`, {
                     countries: data,
                     onChange
@@ -305,13 +374,12 @@ describe("ouiSelect", () => {
                 const disableCountry = (item) => item.name === data[3].name;
                 const element = TestUtils.compileTemplate(`
                     <oui-select name="country"
-                                model="$ctrl.country"
-                                title="Select a country"
-                                placeholder="Select a country..."
-                                items="$ctrl.countries"
-                                disable-items="$ctrl.disableCountry($item)"
-                                match="name">
-                        <span ng-bind="$item.name"></span>
+                        model="$ctrl.country"
+                        title="Select a country"
+                        placeholder="Select a country..."
+                        items="$ctrl.countries"
+                        disable-items="$ctrl.disableCountry($item)"
+                        match="name">
                     </oui-select>`, {
                     countries: data,
                     disableCountry
@@ -329,13 +397,12 @@ describe("ouiSelect", () => {
                 const disableCountry = (item) => item.code === "";
                 const element = TestUtils.compileTemplate(`
                     <oui-select name="country"
-                                model="$ctrl.country"
-                                title="Select a country"
-                                placeholder="Select a country..."
-                                items="$ctrl.countries"
-                                disable-items="$ctrl.disableCountry($item)"
-                                match="name">
-                        <span ng-bind="$item.name"></span>
+                        model="$ctrl.country"
+                        title="Select a country"
+                        placeholder="Select a country..."
+                        items="$ctrl.countries"
+                        disable-items="$ctrl.disableCountry($item)"
+                        match="name">
                     </oui-select>`, {
                     countries,
                     disableCountry
