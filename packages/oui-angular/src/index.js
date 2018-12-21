@@ -24,6 +24,7 @@ import Navbar from "@ovh-ui/oui-navbar";
 import Numeric from "@ovh-ui/oui-numeric";
 import PageHeader from "@ovh-ui/oui-page-header";
 import Pagination from "@ovh-ui/oui-pagination";
+import Password from "@ovh-ui/oui-password";
 import Popover from "@ovh-ui/oui-popover";
 import Progress from "@ovh-ui/oui-progress";
 import Radio from "@ovh-ui/oui-radio";
@@ -68,6 +69,7 @@ export default angular
         Numeric,
         PageHeader,
         Pagination,
+        Password,
         Popover,
         Progress,
         Radio,

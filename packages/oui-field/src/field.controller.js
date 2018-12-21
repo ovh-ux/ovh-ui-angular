@@ -192,7 +192,7 @@ export default class FieldController {
     }
 
     getMessageString (errorName) {
-        return (this.errorMessages && this.errorMessages[errorName]) || this.ouiFieldConfiguration.translations.errors[errorName];
+        return (this.errorMessages && this.errorMessages[errorName]) || this.ouiFieldConfiguration.translations.errors[errorName] || this.ouiFieldConfiguration.translations.errors.invalid;
     }
 
     getErrorMessage (errorName) {

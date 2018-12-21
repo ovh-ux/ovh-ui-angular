@@ -26,6 +26,7 @@ loadTests(require.context("../../oui-navbar/src/", true, /.*((\.spec)|(index))$/
 loadTests(require.context("../../oui-numeric/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-page-header/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-pagination/src/", true, /.*((\.spec)|(index))$/));
+loadTests(require.context("../../oui-password/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-popover/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-progress/src/", true, /.*((\.spec)|(index))$/));
 loadTests(require.context("../../oui-radio/src/", true, /.*((\.spec)|(index))$/));
