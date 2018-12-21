@@ -11,6 +11,7 @@ module.exports = function (config) {
         // 1. install corresponding karma launcher
         //    http://karma-runner.github.io/0.13/config/browsers.html
         // 2. add it to the `browsers` array below.
+        basePath: "../",
         browsers: ["PhantomJS"],
         frameworks: ["jasmine"],
         client: {
@@ -18,13 +19,12 @@ module.exports = function (config) {
                 includeStack: true
             }
         },
-        reporters: ["nyan"],
         files: [
             require.resolve("angular"), // eslint-disable-line no-undef
             require.resolve("angular-mocks"), // eslint-disable-line no-undef
             require.resolve("angular-aria"), // eslint-disable-line no-undef
             require.resolve("angular-sanitize"), // eslint-disable-line no-undef
-            "../packages/oui-angular/src/index.spec.js"
+            "packages/**/test/index.js"
         ],
         preprocessors: {
             // eslint-disable-next-line no-undef
@@ -33,7 +33,7 @@ module.exports = function (config) {
             [require.resolve("angular-mocks")]: ["webpack", "sourcemap"],
             [require.resolve("angular-aria")]: ["webpack", "sourcemap"],
             [require.resolve("angular-sanitize")]: ["webpack", "sourcemap"],
-            "../packages/oui-angular/src/index.spec.js": ["webpack", "sourcemap"]
+            "packages/**/test/index.js": ["webpack", "sourcemap"]
         },
         webpack: webpackConfig,
         webpackMiddleware: {
@@ -43,7 +43,7 @@ module.exports = function (config) {
             }
         },
         coverageReporter: {
-            dir: "../coverage/",
+            dir: "coverage/",
             reporters: [
                 { type: "text" },
                 { type: "lcov", subdir: "report-lcov" },

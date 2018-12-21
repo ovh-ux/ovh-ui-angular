@@ -24,10 +24,8 @@
     "build:watch": "webpack --progress --colors --config build/webpack.dist.config.js --watch",
     "eslint": "eslint ./packages",
     "eslint:fix": "eslint --fix ./packages",
-    "test": "npm run unit:ci",
-    "unit": "cross-env NODE_ENV=test babel-node node_modules/karma/bin/karma start build/karma.conf.js --reporters nyan,coverage --single-run",
-    "unit:ci": "cross-env NODE_ENV=test babel-node node_modules/karma/bin/karma start build/karma.conf.js --reporters spec,coverage --single-run",
-    "unit:watch": "cross-env NODE_ENV=test BABEL_ENV=test node -r babel-register node_modules/karma/bin/karma start build/karma.conf.js --watch"
+    "test": "cross-env NODE_ENV=test babel-node ./node_modules/karma/bin/karma start build/karma.conf.js --reporters spec,coverage --single-run",
+    "test:watch": "cross-env NODE_ENV=test BABEL_ENV=test node -r babel-register ./node_modules/karma/bin/karma start build/karma.conf.js --watch"
   },
   "config": {
     "commitizen": {
@@ -74,11 +72,8 @@
     "istanbul-instrumenter-loader": "^3.0.1",
     "jasmine-core": "^3.2.1",
     "karma": "^3.0.0",
-    "karma-chrome-launcher": "^2.2.0",
     "karma-coverage": "^1.1.2",
     "karma-jasmine": "^1.1.2",
-    "karma-junit-reporter": "^1.2.0",
-    "karma-nyan-reporter": "^0.2.5",
     "karma-phantomjs-launcher": "^1.0.4",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-spec-reporter": "^0.0.32",
