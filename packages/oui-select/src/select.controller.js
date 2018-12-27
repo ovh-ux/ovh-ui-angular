@@ -1,4 +1,5 @@
 import { addBooleanParameter } from "@ovh-ui/common/component-utils";
+import get from "lodash/get";
 
 export default class {
     constructor ($attrs, $compile, $element, $scope, $timeout) {
@@ -58,5 +59,9 @@ export default class {
         }
 
         this.onFocus();
+    }
+
+    getPropertyValue (item) {
+        return get(item, this.match, null);
     }
 }
