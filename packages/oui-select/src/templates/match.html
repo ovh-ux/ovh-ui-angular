@@ -14,8 +14,13 @@
             ng-bind="::$select.placeholder">
         </span>
         <span class="ui-select-match-text"
-            ng-hide="$select.isEmpty()"
-            ng-bind-html="$select.selected[$ctrl.match] || $select.selected">
+            ng-hide="$select.isEmpty()">
+            <span data-ng-if="$ctrl.match"
+                  ng-bind-html="$select.selected[$ctrl.match] || $select.selected">
+            </span>
+            <span data-ng-if="!$ctrl.match"
+                  ng-transclude>
+            </span>
         </span>
         <span class="oui-icon oui-icon-chevron-down"></span>
     </span>
