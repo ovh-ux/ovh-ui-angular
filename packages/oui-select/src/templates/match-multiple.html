@@ -4,16 +4,15 @@
         ng-bind="::$select.placeholder">
     </span>
     <span class="ui-select-match-items">
-        <button type="button" class="oui-chip oui-chip_closable ui-select-match-item"
+        <button type="button" class="oui-chip ui-select-match-item"
+            ng-class="{ 'oui-chip_closable': !$select.disabled }"
+            ng-click="$ctrl.removeChoice($event, $index, $selectMultiple.removeChoice)"
             ng-repeat="$item in $select.selected track by $index"
             ng-disabled="$select.disabled"
             ui-select-sort="$select.selected"
             tabindex="-1">
             <span uis-transclude-append></span>
-            <span class="oui-chip__close"
-                ng-hide="$select.disabled"
-                ng-click="$ctrl.removeChoice($event, $index, $selectMultiple.removeChoice)"
-                tabindex="-1">
+            <span class="oui-chip__close">
                 <span class="oui-icon oui-icon-close_thin" aria-hidden="true"></span>
             </span>
         </button>
