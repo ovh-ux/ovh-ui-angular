@@ -49,6 +49,9 @@ export default class {
         };
         this.minScore = 0;
         this.maxScore = Object.keys(this.scale).length;
+
+        // Avoid idle animation on Windows when undefined
+        this.score = this.score || this.minScore;
     }
 
     $postLink () {
