@@ -9,7 +9,8 @@ export default {
         id: "@?",
         heading: "@?",
         ariaLabel: "@?",
-        checked: "<?"
+        checked: "<?",
+        onActive: "&"
     },
     controller,
     template,
