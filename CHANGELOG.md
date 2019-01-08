@@ -1,3 +1,13 @@
+<a name="2.23.1"></a>
+## [2.23.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.23.0...v2.23.1) (2019-01-08)
+
+
+### Bug Fixes
+
+* **oui-select:** add nested property support for match attribute ([#338](https://github.com/ovh-ux/ovh-ui-angular/issues/338)) ([6c87d73](https://github.com/ovh-ux/ovh-ui-angular/commit/6c87d73)), closes [#MANAGER-2056](https://github.com/ovh-ux/ovh-ui-angular/issues/MANAGER-2056)
+
+
+
 <a name="2.23.0"></a>
 # [2.23.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.22.2...v2.23.0) (2018-12-11)
 
