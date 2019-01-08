@@ -67,9 +67,7 @@ export default class {
     }
 
     closeOnBoarding () {
-        if (this.onDismiss) {
-            this.onDismiss(event);
-        }
+        this.onDismiss();
 
         this.$document.off("keydown", evt => this._triggerKeyHandler(evt));
         this.$scope.$broadcast("oui:modalOnBoarding:afterClose", this.id);
