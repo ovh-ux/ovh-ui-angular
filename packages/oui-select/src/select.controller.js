@@ -121,6 +121,6 @@ export default class {
     }
 
     getPropertyValue (item) {
-        return get(item, this.match, null);
+        return get(item, this.match, item);
     }
 }

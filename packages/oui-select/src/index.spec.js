@@ -200,7 +200,7 @@ describe("ouiSelect", () => {
                 let matchItems = getMultipleMatchItem(element);
                 expect(matchItems.length).toBe(2); // eslint-disable-line no-magic-numbers
 
-                angular.element(matchItems[0].querySelector(".oui-chip__close")).triggerHandler("click");
+                angular.element(matchItems[0]).triggerHandler("click");
                 matchItems = getMultipleMatchItem(element);
 
                 expect(matchItems.length).toBe(1); // eslint-disable-line no-magic-numbers
