@@ -16,7 +16,7 @@
         </span>
         <span class="ui-select-match-text"
             ng-hide="$select.isEmpty()"
-            ng-bind-html="$select.selected[$ctrl.match] || $select.selected">
+            ng-bind-html="$ctrl.getPropertyValue($select.selected) || $select.selected">
         </span>
         <span class="oui-icon oui-icon-chevron-down"></span>
     </span>
