@@ -39,6 +39,7 @@ import Switch from "@ovh-ui/oui-switch";
 import Tabs from "@ovh-ui/oui-tabs";
 import Textarea from "@ovh-ui/oui-textarea";
 import Tile from "@ovh-ui/oui-tile";
+import Timepicker from "@ovh-ui/oui-timepicker";
 import Tooltip from "@ovh-ui/oui-tooltip";
 
 export default angular
@@ -84,6 +85,7 @@ export default angular
         Tabs,
         Textarea,
         Tile,
+        Timepicker,
         Tooltip
     ])
     .name;

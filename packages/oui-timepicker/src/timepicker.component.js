@@ -1,5 +1,5 @@
-import controller from "./calendar.controller";
-import template from "./calendar.html";
+import controller from "./timepicker.controller";
+import template from "./timepicker.html";
 
 export default {
     bindings: {
@@ -8,21 +8,14 @@ export default {
         id: "@?",
         name: "@?",
         placeholder: "@?",
-        mode: "@?",
         format: "@?",
         altFormat: "@?",
 
         appendToBody: "<?",
         inline: "<?",
         "static": "<?",
-        maxDate: "<?",
-        minDate: "<?",
-        disableDate: "<?",
-        enableDate: "<?",
-        enableTime: "<?",
-        weekNumbers: "<?",
-
-        options: "<?",
+        enableSeconds: "<?",
+        enableAmPm: "<?",
 
         disabled: "<?",
         required: "<?",
