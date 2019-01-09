@@ -1,3 +1,13 @@
+<a name="2.23.2"></a>
+## [2.23.2](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.23.1...v2.23.2) (2019-01-09)
+
+
+### Bug Fixes
+
+* **oui-slideshow:** fix onDismiss callback ([#342](https://github.com/ovh-ux/ovh-ui-angular/issues/342)) ([f14d033](https://github.com/ovh-ux/ovh-ui-angular/commit/f14d033))
+
+
+
 <a name="2.23.1"></a>
 ## [2.23.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.23.0...v2.23.1) (2019-01-08)
 
