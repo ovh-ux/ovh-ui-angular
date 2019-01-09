@@ -19,7 +19,7 @@
 <oui-select name="country"
     model="$ctrl.modelBasicObject"
     items="$ctrl.countries"
-    match="name">
+    match="country.name">
 </oui-select>
 ```
 
@@ -40,7 +40,7 @@
     model="$ctrl.modelSearchable"
     placeholder="Select a country..."
     items="$ctrl.countries"
-    match="name"
+    match="country.name"
     searchable>
 </oui-select>
 ```
@@ -52,7 +52,7 @@
     model="$ctrl.modelMultiple"
     placeholder="Select a country..."
     items="$ctrl.countries"
-    match="name"
+    match="country.name"
     multiple
     searchable>
 </oui-select>
@@ -65,7 +65,7 @@
     model="$ctrl.modelDisabled"
     placeholder="Select a country..."
     items="$ctrl.countries"
-    match="name"
+    match="country.name"
     disabled>
 </oui-select>
 ```
@@ -83,7 +83,7 @@
     placeholder="Select a country..."
     items="$ctrl.countries"
     disable-items="$ctrl.disableItems($item)"
-    match="name">
+    match="country.name">
 </oui-select>
 ```
 
@@ -95,7 +95,7 @@
     placeholder="Select a country..."
     items="$ctrl.countries"
     group-by="$ctrl.groupByFirstLetter"
-    match="name">
+    match="country.name">
 </oui-select>
 ```
 
@@ -112,10 +112,10 @@
     placeholder="Select a country..."
     items="$ctrl.countries"
     group-by="$ctrl.groupByFirstLetter"
-    match="name">
-    <span ng-bind="$item.name" class="d-inline-block text-truncate"></span><br>
+    match="country.name">
+    <span ng-bind="$item.country.name" class="d-inline-block text-truncate"></span><br>
     <small>
-        Code: <span ng-bind="$item.code"></span>
+        Code: <span ng-bind="$item.country.code"></span>
     </small>
 </oui-select>
 ```
@@ -139,11 +139,11 @@
     items="$ctrl.countries"
     required
     group-by="$ctrl.groupByFirstLetter"
-    match="name"
+    match="country.name"
     on-change="$ctrl.onChange(modelValue)"
     on-blur="$ctrl.onBlur()"
     on-focus="$ctrl.onFocus()">
-    <span ng-bind="$item.name"></span><br>
+    <span ng-bind="$item.country.name"></span><br>
     <small>
         Code: <span ng-bind="$item.code"></span>
     </small>
