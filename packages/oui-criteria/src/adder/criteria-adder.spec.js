@@ -1,5 +1,5 @@
 import find from "lodash/find";
-import mockData from "./index.spec.data.json";
+import mockData from "./criteria-adder.spec.data.json";
 
 const getValueComponent = $element => $element[0].querySelector("[name=barValue]");
 
@@ -7,11 +7,10 @@ describe("ouiCriteriaAdder", () => {
     let $timeout;
     let testUtils;
 
-    beforeEach(angular.mock.module("oui.criteria-adder"));
     beforeEach(angular.mock.module("oui.dropdown"));
     beforeEach(angular.mock.module("oui.field"));
     beforeEach(angular.mock.module("oui.select"));
-    beforeEach(angular.mock.module("oui.criteria-container"));
+    beforeEach(angular.mock.module("oui.criteria"));
     beforeEach(angular.mock.module("oui.test-utils"));
     beforeEach(angular.mock.module("test.configuration"));
 
@@ -24,7 +23,7 @@ describe("ouiCriteriaAdder", () => {
         let configuration;
 
         angular.module("test.configuration", [
-            "oui.criteria-adder"
+            "oui.criteria"
         ]).config(ouiCriteriaAdderConfigurationProvider => {
             const operatorsByType = ouiCriteriaAdderConfigurationProvider.operatorsByType;
             operatorsByType.foo = ["bar"];
@@ -318,13 +317,13 @@ describe("ouiCriteriaAdder", () => {
             it("should add criterion in criteria container", () => {
                 const onChangeSpy = jasmine.createSpy();
                 component = testUtils.compileTemplate(`
-                    <oui-criteria-container on-change="$ctrl.onChangeSpy(modelValue)">
+                    <oui-criteria on-change="$ctrl.onChangeSpy(modelValue)">
                         <oui-criteria-adder
                             id="foo"
                             name="bar"
                             properties="$ctrl.properties">
                         </oui-criteria-adder>
-                    </oui-criteria-container>
+                    </oui-criteria>
                 `, {
                     properties: mockData.properties,
                     onChangeSpy

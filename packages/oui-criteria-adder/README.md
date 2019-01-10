@@ -1,6 +1,6 @@
 # Criteria adder
 
-<component-status cx-design="complete" ux="complete"></component-status>
+<oui-message type="warning">For internal use only</oui-message>
 
 ## Usage
 

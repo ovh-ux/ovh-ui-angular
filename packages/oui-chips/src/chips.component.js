@@ -3,7 +3,7 @@ import template from "./chips.html";
 
 export default {
     require: {
-        criteriaContainer: "?^^ouiCriteriaContainer"
+        criteriaContainer: "?^^ouiCriteria"
     },
     template,
     controller,

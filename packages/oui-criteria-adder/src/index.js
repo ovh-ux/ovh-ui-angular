@@ -1,8 +1,7 @@
-import CriteriaAdder from "./criteria-adder.component";
-import CriteriaAdderProvider from "./criteria-adder.provider";
+import Criteria from "@ovh-ui/oui-criteria";
 
+// Deprecated: Support only for old use
+// Has been moved to 'oui.criteria'
 export default angular
-    .module("oui.criteria-adder", [])
-    .component("ouiCriteriaAdder", CriteriaAdder)
-    .provider("ouiCriteriaAdderConfiguration", CriteriaAdderProvider)
+    .module("oui.criteria-adder", [Criteria])
     .name;

@@ -6,7 +6,7 @@ describe("ouiChips", () => {
     let testUtils;
 
     beforeEach(angular.mock.module("oui.chips"));
-    beforeEach(angular.mock.module("oui.criteria-container"));
+    beforeEach(angular.mock.module("oui.criteria"));
     beforeEach(angular.mock.module("oui.test-utils"));
 
     beforeEach(inject((_$timeout_, _TestUtils_) => {
@@ -70,17 +70,17 @@ describe("ouiChips", () => {
             it("should remove criterion in criteria container", () => {
                 const onChangeSpy = jasmine.createSpy("onChangeSpy");
                 component = testUtils.compileTemplate(`
-                    <oui-criteria-container on-change="$ctrl.onChangeSpy(modelValue)">
+                    <oui-criteria on-change="$ctrl.onChangeSpy(modelValue)">
                         <oui-chips closable
                             items="$ctrl.items">
                         </oui-chips>
-                    </oui-criteria-container>
+                    </oui-criteria>
                 `, {
                     items: mockData.criteria,
                     onChangeSpy
                 });
 
-                const criteriaContainerController = component.controller("ouiCriteriaContainer");
+                const criteriaContainerController = component.controller("ouiCriteria");
                 criteriaContainerController.criteria = cloneDeep(mockData.criteria);
 
                 component.find("button").eq(0).triggerHandler("click");

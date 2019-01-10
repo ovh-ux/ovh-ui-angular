@@ -3,7 +3,7 @@ import template from "./criteria-adder.html";
 
 export default {
     require: {
-        criteriaContainer: "?^^ouiCriteriaContainer"
+        criteriaContainer: "?^^ouiCriteria"
     },
     bindings: {
         id: "@?",

@@ -1,4 +1,4 @@
-import controller from "./criteria-container.controller";
+import controller from "./criteria.controller";
 
 export default {
     template: "<ng-transclude></ng-transclude>",

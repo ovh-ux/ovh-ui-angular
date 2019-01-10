@@ -6,7 +6,7 @@ describe("ouiSearch", () => {
     const tooShortSearchText = "a";
 
     beforeEach(angular.mock.module("oui.search"));
-    beforeEach(angular.mock.module("oui.criteria-container"));
+    beforeEach(angular.mock.module("oui.criteria"));
     beforeEach(angular.mock.module("oui.test-utils"));
 
     beforeEach(inject((_$timeout_, _TestUtils_) => {
@@ -108,9 +108,9 @@ describe("ouiSearch", () => {
                 const searchText = goodSearchText;
                 const onChangeSpy = jasmine.createSpy();
                 const element = testUtils.compileTemplate(`
-                    <oui-criteria-container on-change="$ctrl.onChangeSpy(modelValue)">
+                    <oui-criteria on-change="$ctrl.onChangeSpy(modelValue)">
                         <oui-search model="$ctrl.searchText"></oui-search>
-                    </oui-criteria-container>
+                    </oui-criteria>
                 `, {
                     searchText,
                     onChangeSpy
@@ -133,9 +133,9 @@ describe("ouiSearch", () => {
                 const searchText = tooShortSearchText;
                 const onChangeSpy = jasmine.createSpy();
                 const element = testUtils.compileTemplate(`
-                    <oui-criteria-container on-change="$ctrl.onChangeSpy(modelValue)">
+                    <oui-criteria on-change="$ctrl.onChangeSpy(modelValue)">
                         <oui-search model="$ctrl.searchText"></oui-search>
-                    </oui-criteria-container>
+                    </oui-criteria>
                 `, {
                     searchText,
                     onChangeSpy
@@ -154,9 +154,9 @@ describe("ouiSearch", () => {
             it("should add criterion in criteria container", done => {
                 const onChangeSpy = jasmine.createSpy();
                 const element = testUtils.compileTemplate(`
-                    <oui-criteria-container on-change="$ctrl.onChangeSpy(modelValue)">
+                    <oui-criteria on-change="$ctrl.onChangeSpy(modelValue)">
                         <oui-search model="$ctrl.searchText"></oui-search>
-                    </oui-criteria-container>
+                    </oui-criteria>
                 `, {
                     onChangeSpy
                 });
@@ -180,9 +180,9 @@ describe("ouiSearch", () => {
             it("should not add criterion in criteria container if text is too short", done => {
                 const onChangeSpy = jasmine.createSpy();
                 const element = testUtils.compileTemplate(`
-                    <oui-criteria-container on-change="$ctrl.onChangeSpy(modelValue)">
+                    <oui-criteria on-change="$ctrl.onChangeSpy(modelValue)">
                         <oui-search model="$ctrl.searchText"></oui-search>
-                    </oui-criteria-container>
+                    </oui-criteria>
                 `, {
                     onChangeSpy
                 });
@@ -200,9 +200,9 @@ describe("ouiSearch", () => {
             it("should delete preview criterion if search becomes too short", done => {
                 const onChangeSpy = jasmine.createSpy();
                 const element = testUtils.compileTemplate(`
-                    <oui-criteria-container on-change="$ctrl.onChangeSpy(modelValue)">
+                    <oui-criteria on-change="$ctrl.onChangeSpy(modelValue)">
                         <oui-search model="$ctrl.searchText"></oui-search>
-                    </oui-criteria-container>
+                    </oui-criteria>
                 `, {
                     onChangeSpy
                 });
@@ -237,9 +237,9 @@ describe("ouiSearch", () => {
             it("should delete preview criterion", done => {
                 const onChangeSpy = jasmine.createSpy();
                 const element = testUtils.compileTemplate(`
-                    <oui-criteria-container on-change="$ctrl.onChangeSpy(modelValue)">
+                    <oui-criteria on-change="$ctrl.onChangeSpy(modelValue)">
                         <oui-search model="$ctrl.searchText"></oui-search>
-                    </oui-criteria-container>
+                    </oui-criteria>
                 `, {
                     onChangeSpy
                 });
@@ -275,9 +275,9 @@ describe("ouiSearch", () => {
 
             it("should reset component on escape", () => {
                 const element = testUtils.compileTemplate(`
-                    <oui-criteria-container on-change="$ctrl.onChangeSpy(modelValue)">
+                    <oui-criteria on-change="$ctrl.onChangeSpy(modelValue)">
                         <oui-search model="$ctrl.searchText"></oui-search>
-                    </oui-criteria-container>
+                    </oui-criteria>
                 `);
 
                 const controller = element.find("oui-search").controller("ouiSearch");
@@ -295,9 +295,9 @@ describe("ouiSearch", () => {
 
             it("should not reset component if pressed is not escape", () => {
                 const element = testUtils.compileTemplate(`
-                    <oui-criteria-container on-change="$ctrl.onChangeSpy(modelValue)">
+                    <oui-criteria on-change="$ctrl.onChangeSpy(modelValue)">
                         <oui-search model="$ctrl.searchText"></oui-search>
-                    </oui-criteria-container>
+                    </oui-criteria>
                 `);
 
                 const controller = element.find("oui-search").controller("ouiSearch");

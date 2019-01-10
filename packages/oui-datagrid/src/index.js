@@ -11,7 +11,7 @@ export default angular
     .module("oui.datagrid", [
         "oui.pagination",
         "oui.dropdown",
-        "oui.criteria-container",
+        "oui.criteria",
         "oui.search",
         "ngAria"
     ])

@@ -3,7 +3,7 @@ import template from "./search.html";
 
 export default {
     require: {
-        criteriaContainer: "?^^ouiCriteriaContainer"
+        criteriaContainer: "?^^ouiCriteria"
     },
     bindings: {
         model: "=",
