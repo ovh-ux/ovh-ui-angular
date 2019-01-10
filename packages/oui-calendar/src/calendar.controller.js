@@ -1,15 +1,17 @@
-import { addBooleanParameter } from "@ovh-ui/common/component-utils";
+import { addBooleanParameter, addDefaultParameter } from "@ovh-ui/common/component-utils";
 import Flatpickr from "flatpickr";
+import merge from "lodash/merge";
 
 export default class {
-    constructor ($attrs, $element, $timeout, ouiCalendarConfiguration) {
+    constructor ($attrs, $element, $scope, $timeout, ouiCalendarConfiguration) {
         "ngInject";
 
         this.$attrs = $attrs;
         this.$element = $element;
+        this.$id = $scope.$id;
         this.$timeout = $timeout;
         this.locale = ouiCalendarConfiguration.locale;
-        this.options = angular.copy(ouiCalendarConfiguration.options);
+        this.config = angular.copy(ouiCalendarConfiguration.options);
     }
 
     setModelValue (value) {
@@ -19,7 +21,7 @@ export default class {
     setEventHooks (hooks) {
         // Add a callback for each events
         hooks.forEach((hook) => {
-            this.options[hook] = (selectedDates, dateStr) => {
+            this.config[hook] = (selectedDates, dateStr) => {
                 this.model = dateStr;
                 this.$timeout(this[hook]({ selectedDates, dateStr }));
             };
@@ -28,11 +30,15 @@ export default class {
 
     setOptionsProperty (property, value) {
         if (angular.isDefined(value)) {
-            this.options[property] = value;
+            this.config[property] = value;
         }
     }
 
     initCalendarInstance () {
+        if (this.options) {
+            this.config = merge(this.config, this.options);
+        }
+
         // Set options from attributes
         this.setOptionsProperty("appendTo", this.appendTo);
         this.setOptionsProperty("defaultDate", this.model);
@@ -50,7 +56,7 @@ export default class {
         this.setOptionsProperty("dateFormat", this.format);
 
         if (angular.isDefined(this.altFormat)) {
-            this.setOptionsProperty("altInput", true);
+            this.setOptionsProperty("altInput", !this.disabled);
             this.setOptionsProperty("altFormat", this.altFormat);
         }
 
@@ -76,7 +82,7 @@ export default class {
         });
 
         // Init the flatpickr instance
-        this.flatpickr = new Flatpickr(this.$element.find("input")[0], this.options);
+        this.flatpickr = new Flatpickr(this.$element.find("input")[0], this.config);
     }
 
     $onInit () {
@@ -84,9 +90,13 @@ export default class {
         addBooleanParameter(this, "disabled");
         addBooleanParameter(this, "enableTime");
         addBooleanParameter(this, "inline");
+        addBooleanParameter(this, "noCalendar");
         addBooleanParameter(this, "required");
         addBooleanParameter(this, "static");
         addBooleanParameter(this, "weekNumbers");
+
+        addDefaultParameter(this, "id", `ouiCalendar${this.$id}`);
+        addDefaultParameter(this, "name", `ouiCalendar${this.$id}`);
 
         this.initCalendarInstance();
     }
@@ -96,16 +106,20 @@ export default class {
     }
 
     $postLink () {
-        // Avoid $element DOM unsync for jqLite methods
         this.$timeout(() => {
+            const controls = angular.element(this.$element[0].querySelectorAll(".oui-calendar__control"));
+
             this.$element
                 .addClass("oui-calendar")
                 .removeAttr("id")
                 .removeAttr("name");
 
-            // Add class for `inline`
+            // Avoid 'alt-input' to take bad value of placeholder
+            controls.attr("placeholder", this.placeholder);
+
             if (this.inline) {
                 this.$element.addClass("oui-calendar_inline");
+                controls.attr("type", "hidden");
             }
         });
     }

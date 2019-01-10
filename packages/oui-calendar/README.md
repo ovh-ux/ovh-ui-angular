@@ -160,6 +160,16 @@ Use `mode` to set a different selection mode for the calendar
 * `selectedDates` returns an array of Date objects selected by the user. When there are no dates selected, the array is empty.
 * `dateStr` returns a string representation of the latest selected Date object by the user. The string is formatted as per the `dateFormat` option.
 
+## Variants
+
+### Timepicker
+
+See <a href="#!/oui-angular/timepicker">Action menu component</a>.
+
+```html:preview
+<oui-timepicker model="$ctrl.timepickerModel" placeholder="HH:MM"></oui-timepicker>
+```
+
 ## API
 
 | Attribute         | Type      | Binding   | One-time Binding  | Values                                                                                    | Default   | Description
@@ -168,19 +178,19 @@ Use `mode` to set a different selection mode for the calendar
 | `id`              | string    | @?        | yes               | n/a                                                                                       | n/a       | id attribute of the field
 | `name`            | string    | @?        | yes               | n/a                                                                                       | n/a       | name attribute of the field
 | `placeholder`     | string    | @?        | yes               | n/a                                                                                       | n/a       | placeholder text
-| `inline`          | boolean   | <?        | no                | `true`, `false`                                                                           | `false`   | show the calendar below the input
-| `static`          | boolean   | <?        | no                | `true`, `false`                                                                           | `false`   | position the calendar relatively to the input
 | `mode`            | string    | @?        | yes               | `single`, `multiple`, `range`                                                             | `single`  | selection mode
 | `format`          | string    | @?        | yes               | See [Formatting Tokens](https://flatpickr.js.org/formatting/)                             | `Y-m-d`   | format the date of the model
 | `alt-format`      | string    | @?        | yes               | See [Formatting Tokens](https://flatpickr.js.org/formatting/)                             | `Y-m-d`   | format the date of the field. `format` is used if undefined
 | `append-to-body`  | boolean   | <?        | yes               | `true`, `false`                                                                           | `false`   | append the calendar to the body of the page
-| `inline`          | boolean   | <?        | yes               | `true`, `false`                                                                           | `false`   | show the calendar below the input in `inline-block`
+| `inline`          | boolean   | <?        | no                | `true`, `false`                                                                           | `false`   | show the calendar below the input
+| `static`          | boolean   | <?        | no                | `true`, `false`                                                                           | `false`   | position the calendar relatively to the input
 | `max-date`        | object    | <?        | yes               | See [Supplying Dates](https://flatpickr.js.org/examples/#supplying-dates-for-flatpickr)   | n/a       | specifies the maximum/latest date (inclusively) allowed for selection
 | `min-date`        | object    | <?        | yes               | See [Supplying Dates](https://flatpickr.js.org/examples/#supplying-dates-for-flatpickr)   | n/a       | specifies the minimum/earliest date (inclusively) allowed for selection
 | `disable-date`    | array     | <?        | yes               | See [Supplying Dates](https://flatpickr.js.org/examples/#supplying-dates-for-flatpickr)   | n/a       | make certain dates unavailable for selection
 | `enable-date`     | array     | <?        | yes               | See [Supplying Dates](https://flatpickr.js.org/examples/#supplying-dates-for-flatpickr)   | n/a       | make certain dates only available for selection
 | `enable-time`     | boolean   | <?        | yes               | `true`, `false`                                                                           | `false`   | enables time selection
 | `week-numbers`    | boolean   | <?        | yes               | `true`, `false`                                                                           | `false`   | week numbers flag
+| `options`         | object    | <?        | yes               | See [Options](https://flatpickr.js.org/options/)                                          | n/a       | flatpickr options for more advanced configuration
 | `disabled`        | boolean   | <?        | no                | `true`, `false`                                                                           | `false`   | disabled flag
 | `required`        | boolean   | <?        | no                | `true`, `false`                                                                           | `false`   | required flag
 | `on-change`       | function  | &         | no                | n/a                                                                                       | n/a       | handler triggered when the user selects a date, or changes the time on a selected date
