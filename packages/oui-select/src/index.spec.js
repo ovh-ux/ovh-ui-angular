@@ -40,7 +40,7 @@ describe("ouiSelect", () => {
                     title="${title}"
                     placeholder="${placeholder}"
                     items="$ctrl.countries"
-                    match="name">
+                    match="country.name">
                 </oui-select>`, {
                 countries: data
             });
@@ -58,7 +58,7 @@ describe("ouiSelect", () => {
                     title="Select a country"
                     placeholder="Select a country..."
                     items="$ctrl.countries"
-                    match="name">
+                    match="country.name">
                 </oui-select>`, {
                 countries: data
             });
@@ -84,8 +84,8 @@ describe("ouiSelect", () => {
                         title="Select a country"
                         placeholder="Select a country..."
                         items="$ctrl.countries"
-                        match="name">
-                        <span ng-bind="$item.name"></span>
+                        match="country.name">
+                        <span ng-bind="$item.country.name"></span>
                     </oui-select>
                     <button class="outside-button">Outside</button>
                 </div>`, {
@@ -111,8 +111,8 @@ describe("ouiSelect", () => {
                         title="Select a country"
                         placeholder="Select a country..."
                         items="$ctrl.countries"
-                        match="name">
-                        <span ng-bind="$item.name"></span>
+                        match="country.name">
+                        <span ng-bind="$item.country.name"></span>
                     </oui-select>`, {
                     countries: data
                 });
@@ -148,7 +148,7 @@ describe("ouiSelect", () => {
                         title="Select a country"
                         placeholder="Select a country..."
                         items="$ctrl.countries"
-                        match="name"
+                        match="country.name"
                         multiple>
                     </oui-select>`, {
                     countries: data
@@ -176,7 +176,7 @@ describe("ouiSelect", () => {
                         title="Select a country"
                         placeholder="Select a country..."
                         items="$ctrl.countries"
-                        match="name"
+                        match="country.name"
                         multiple>
                     </oui-select>`, {
                     countries: data
@@ -215,7 +215,7 @@ describe("ouiSelect", () => {
                         title="Select a country"
                         placeholder="Select a country..."
                         items="$ctrl.countries"
-                        match="name">
+                        match="country.name">
                     </oui-select>`, {
                     countries: data
                 });
@@ -225,8 +225,8 @@ describe("ouiSelect", () => {
                 $triggerButton.triggerHandler("click");
 
                 expect(getDropdownItems(element).length).toEqual(data.length);
-                expect(angular.element(getDropdownItem(element, 0)).text()).toContain(data[0].name);
-                expect(angular.element(getDropdownItem(element, data.length - 1)).text()).toContain(data[data.length - 1].name);
+                expect(angular.element(getDropdownItem(element, 0)).text()).toContain(data[0].country.name);
+                expect(angular.element(getDropdownItem(element, data.length - 1)).text()).toContain(data[data.length - 1].country.name);
                 expect(getItemsGroups(element).length).toEqual(1);
             });
 
@@ -254,14 +254,14 @@ describe("ouiSelect", () => {
 
         describe("Grouped", () => {
             it("should display all the choices", () => {
-                const groupByFirstLetter = (item) => item.name.substr(0, 1).toUpperCase();
+                const groupByFirstLetter = (item) => item.country.name.substr(0, 1).toUpperCase();
                 const element = TestUtils.compileTemplate(`
                     <oui-select name="country"
                         model="$ctrl.country"
                         title="Select a country"
                         placeholder="Select a country..."
                         items="$ctrl.countries"
-                        match="name"
+                        match="country.name"
                         group-by="$ctrl.groupByFirstLetter">
                     </oui-select>`, {
                     countries: data,
@@ -292,7 +292,7 @@ describe("ouiSelect", () => {
                         title="Select a country"
                         placeholder="Select a country..."
                         items="$ctrl.countries"
-                        match="name"
+                        match="country.name"
                         on-blur="$ctrl.onBlur()">
                     </oui-select>`, {
                     onBlur
@@ -318,7 +318,7 @@ describe("ouiSelect", () => {
                         title="Select a country"
                         placeholder="Select a country..."
                         items="$ctrl.countries"
-                        match="name"
+                        match="country.name"
                         on-focus="$ctrl.onFocus()">
                     </oui-select>`, {
                     onFocus
@@ -344,7 +344,7 @@ describe("ouiSelect", () => {
                         title="Select a country"
                         placeholder="Select a country..."
                         items="$ctrl.countries"
-                        match="name"
+                        match="country.name"
                         on-change="$ctrl.onChange(modelValue)">
                     </oui-select>`, {
                     countries: data,
@@ -371,7 +371,7 @@ describe("ouiSelect", () => {
 
         describe("Disable options", () => {
             it("should disable corresponding items", () => {
-                const disableCountry = (item) => item.name === data[3].name;
+                const disableCountry = (item) => item.country.name === data[3].country.name;
                 const element = TestUtils.compileTemplate(`
                     <oui-select name="country"
                         model="$ctrl.country"
@@ -379,7 +379,7 @@ describe("ouiSelect", () => {
                         placeholder="Select a country..."
                         items="$ctrl.countries"
                         disable-items="$ctrl.disableCountry($item)"
-                        match="name">
+                        match="country.name">
                     </oui-select>`, {
                     countries: data,
                     disableCountry
@@ -402,7 +402,7 @@ describe("ouiSelect", () => {
                         placeholder="Select a country..."
                         items="$ctrl.countries"
                         disable-items="$ctrl.disableCountry($item)"
-                        match="name">
+                        match="country.name">
                     </oui-select>`, {
                     countries,
                     disableCountry
