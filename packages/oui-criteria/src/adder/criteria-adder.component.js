@@ -7,8 +7,8 @@ export default {
     },
     bindings: {
         id: "@?",
-        name: "@",
-        align: "@?",
+        name: "@?",
+        placement: "@?",
         properties: "<",
         disabled: "<?",
         onSubmit: "&"

@@ -1,23 +1,12 @@
 <oui-criteria
     class="oui-datagrid-topbar"
+    model="$ctrl.appliedCriteria"
+    properties="$ctrl.filterableColumns"
+    searchable="$ctrl.isSearchTextVisible"
     on-change="$ctrl.onCriteriaChange(modelValue)">
-    <div class="oui-datagrid-topbar__actions">
-        <oui-datagrid-extra-top class="oui-datagrid-topbar__slot"
-            ng-if="$ctrl.hasExtraTopContent">
-        </oui-datagrid-extra-top>
-        <oui-search ng-if="$ctrl.isSearchTextVisible" model="$ctrl.searchText"></oui-search>
-        <oui-criteria-adder
-            ng-if="$ctrl.filterableColumns.length"
-            properties="$ctrl.filterableColumns"
-            align="end">
-        </oui-criteria-adder>
-    </div>
-    <oui-chips
-        class="oui-datagrid-topbar__criteria"
-        ng-if="$ctrl.appliedCriteria.length"
-        closable
-        items="$ctrl.appliedCriteria">
-    </oui-chips>
+    <oui-datagrid-extra-top class="oui-datagrid-topbar__slot"
+        ng-if="$ctrl.hasExtraTopContent">
+    </oui-datagrid-extra-top>
 </oui-criteria>
 <div class="oui-datagrid-responsive-container"
     ng-class="{

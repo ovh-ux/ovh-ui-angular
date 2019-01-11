@@ -27,9 +27,5 @@ export default class {
         const removed = angular.copy(this.items.splice(index, 1)[0]);
         const items = angular.copy(this.items);
         this.onRemove({ items, removed });
-
-        if (this.criteriaContainer) {
-            this.criteriaContainer.remove(removed);
-        }
     }
 }

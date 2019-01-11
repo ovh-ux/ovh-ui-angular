@@ -6,6 +6,9 @@
   "author": "OVH SAS",
   "dependencies": {
     "@ovh-ui/oui-chips": "^1.0.0",
-    "@ovh-ui/oui-search": "^1.0.0"
+    "@ovh-ui/oui-dropdown": "^1.0.0",
+    "@ovh-ui/oui-field": "^1.0.0",
+    "@ovh-ui/oui-search": "^1.0.0",
+    "@ovh-ui/oui-select": "^1.0.0"
   }
 }

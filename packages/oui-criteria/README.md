@@ -1,32 +1,63 @@
-# Criteria adder
+# Criteria
 
-<oui-message type="warning">For internal use only</oui-message>
+<component-status cx-design="complete" ux="complete"></component-status>
 
 ## Usage
 
-### Example
+### Basic
 
 ```html:preview
-<oui-criteria-adder
-    name="criteriaAdder"
-    properties="$ctrl.inputValue"
-    on-submit="$ctrl.onSubmit(modelValue)">
+<oui-criteria
+    model="$ctrl.basicModel"
+    properties="$ctrl.inputValue">
 </oui-criteria-adder>
+```
+
+### With search field
+
+```html:preview
+<oui-criteria 
+    model="$ctrl.searchableModel"
+    properties="$ctrl.inputValue"
+    searchable>
+</oui-criteria>
+```
+
+### Events
+
+```html:preview
+<oui-criteria
+    model="$ctrl.eventsModel"
+    properties="$ctrl.inputValue"
+    on-change="$ctrl.onSubmit(modelValue)"
+    searchable>
+</oui-criteria>
 <div class="oui-doc-preview-only">
-    <p>Input</p>
+    <p><strong>Input</strong></p>
     <pre class="oui-doc-code oui-doc-code_json">{{$ctrl.inputValue | json}}</pre>
-    <p>Output</p>
+    <p><strong>Output</strong></p>
     <pre class="oui-doc-code oui-doc-code_json">{{$ctrl.outputValue | json}}</pre>
 </div>
 ```
 
 ## API
 
+### oui-criteria
+
+| Attribute     | Type      | Binding   | One-time Binding  | Values                    | Default   | Description
+| ----          | ----      | ----      | ----              | ----                      | ----      | ----
+| `model`       | object    | =         | no                | n/a                       | n/a       | model bound to component
+| `properties`  | array     | <?        | no                | n/a                       | n/a       | array of objects with columns informations
+| `disabled`    | boolean   | <?        | no                | `true`, `false`           | `false`   | disabled flag
+| `on-change`   | function  | &         | no                | n/a                       | n/a       | handler triggered when model has changed
+
+### oui-criteria-adder
+
 | Attribute     | Type      | Binding   | One-time Binding  | Values                    | Default   | Description
 | ----          | ----      | ----      | ----              | ----                      | ----      | ----
 | `id`          | string    | @?        | yes               | n/a                       | n/a       | id attribute of the component
 | `name`        | string    | @         | yes               | n/a                       | n/a       | name attribute of the component
-| `align`       | string    | @?        | yes               | `start`, `center`, `end`  | `center`  | modifier for alignment
+| `placement`   | string    | @?        | yes               | `start`, `center`, `end`  | `center`  | modifier for the placement of the dropdown
 | `properties`  | array     | <         | no                | n/a                       | n/a       | array of objects with columns informations
 | `on-submit`   | function  | &         | no                | n/a                       | n/a       | handler triggered when form is submitted
 
@@ -41,41 +72,26 @@
 | `type`        | string    | Data type
 | `typeOptions` | object    | Specific options
 
+## Deprecated
+
+### Attributes
+
+* `align`: Replaced by `placement` attribute
+
 ## Configuration
 
 The pagination can be globally configured with a provider.
 
 ```js
 angular.module("myModule", [
-    "oui.criteria-adder"
+    "oui.criteria"
 ]).config(ouiCriteriaAdderConfigurationProvider => {
     ouiCriteriaAdderConfigurationProvider.setOperatorsByType({ // default operatorsByType
-        "boolean": [
-            "is",
-            "isNot"
-        ],
-        date: [
-            "is",
-            "isAfter",
-            "isBefore"
-        ],
-        number: [
-            "is",
-            "smaller",
-            "bigger"
-        ],
-        options: [
-            "is",
-            "isNot"
-        ],
-        string: [
-            "contains",
-            "containsNot",
-            "startsWith",
-            "endsWith",
-            "is",
-            "isNot"
-        ]
+        "boolean": ["is", "isNot"],
+        date: ["is", "isAfter", "isBefore"],
+        number: ["is", "smaller", "bigger"],
+        options: ["is", "isNot"],
+        string: ["contains", "containsNot", "startsWith", "endsWith", "is", "isNot"]
     });
     ouiCriteriaAdderConfigurationProvider.setTranslations({ // default translations
         column_label: "Column",

@@ -1,41 +1,58 @@
+import { addBooleanParameter } from "@ovh-ui/common/component-utils";
 import findIndex from "lodash/findIndex";
 
-export default class CriteriaController {
-    $onInit () {
-        this.criteria = [];
+export default class {
+    constructor ($attrs) {
+        "ngInject";
+
+        this.$attrs = $attrs; // For 'addBooleanParameter'
+
+        this.minLength = 2;
+        this.debounceDelay = 500;
     }
 
     triggerChange () {
         if (this.onChange) {
-            this.onChange({ modelValue: this.criteria });
+            this.onChange({ modelValue: angular.copy(this.model) });
+            this.criteria = this.model.filter(criterion => !criterion.preview);
         }
     }
 
     indexOfCriterion (criterion) {
-        let criterionIndex = this.criteria.length - 1;
-        while (criterionIndex >= 0 && !angular.equals(this.criteria[criterionIndex], criterion)) {
+        let criterionIndex = this.model.length - 1;
+        while (criterionIndex >= 0 && !angular.equals(this.model[criterionIndex], criterion)) {
             --criterionIndex;
         }
         return criterionIndex;
     }
 
     setPreviewCriterion (previewCriterion) {
-        const criterionIndex = findIndex(this.criteria, ["preview", true]);
+        const criterionIndex = findIndex(this.model, ["preview", true]);
         previewCriterion.preview = true;
         if (criterionIndex > -1) {
-            this.criteria[criterionIndex] = previewCriterion;
+            this.model[criterionIndex] = previewCriterion;
         } else {
-            this.criteria.push(previewCriterion);
+            this.model.push(previewCriterion);
         }
         this.triggerChange();
     }
 
     deletePreviewCriterion () {
-        const previewCriterionIndex = findIndex(this.criteria, ["preview", true]);
+        const previewCriterionIndex = findIndex(this.model, ["preview", true]);
         if (previewCriterionIndex > -1) {
-            this.criteria.splice(previewCriterionIndex, 1);
+            this.model.splice(previewCriterionIndex, 1);
             this.triggerChange();
         }
+    }
+
+
+    static getCriterion (modelValue) {
+        return {
+            title: modelValue,
+            property: null, // any property
+            operator: "contains",
+            value: modelValue
+        };
     }
 
     add (criterion) {
@@ -45,12 +62,12 @@ export default class CriteriaController {
 
         const previewCriterionIndex = this.indexOfCriterion(previewCriterion);
         if (previewCriterionIndex > -1) {
-            this.criteria.splice(previewCriterionIndex, 1);
+            this.model.splice(previewCriterionIndex, 1);
         }
 
         // Add the criterion if it does not exist.
         if (this.indexOfCriterion(criterion) < 0) {
-            this.criteria.push(criterion);
+            this.model.push(criterion);
             this.triggerChange();
         }
     }
@@ -58,18 +75,43 @@ export default class CriteriaController {
     remove (criterion) {
         const criterionIndex = this.indexOfCriterion(criterion);
         if (criterionIndex > -1) {
-            this.criteria.splice(criterionIndex, 1);
-            this.triggerChange();
+            this.model.splice(criterionIndex, 1);
         }
+        this.triggerChange();
     }
 
     set (criteria) {
-        this.criteria = criteria;
+        this.model = criteria;
         this.triggerChange();
     }
 
     clear () {
-        this.criteria = [];
+        this.model = [];
         this.triggerChange();
+    }
+
+    onCriterionChange (modelValue) {
+        if (modelValue && modelValue.length >= this.minLength) {
+            this.setPreviewCriterion(this.constructor.getCriterion(modelValue), true);
+        } else {
+            this.deletePreviewCriterion();
+        }
+    }
+
+    onCriterionReset () {
+        this.deletePreviewCriterion();
+    }
+
+    onCriterionSubmit (modelValue) {
+        if (modelValue && modelValue.length >= this.minLength) {
+            this.add(this.constructor.getCriterion(modelValue));
+            this.deletePreviewCriterion();
+        }
+    }
+
+    $onInit () {
+        addBooleanParameter(this, "searchable");
+
+        this.model = this.model || [];
     }
 }

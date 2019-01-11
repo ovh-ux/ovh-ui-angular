@@ -7,9 +7,6 @@ describe("ouiCriteriaAdder", () => {
     let $timeout;
     let testUtils;
 
-    beforeEach(angular.mock.module("oui.dropdown"));
-    beforeEach(angular.mock.module("oui.field"));
-    beforeEach(angular.mock.module("oui.select"));
     beforeEach(angular.mock.module("oui.criteria"));
     beforeEach(angular.mock.module("oui.test-utils"));
     beforeEach(angular.mock.module("test.configuration"));
@@ -317,7 +314,7 @@ describe("ouiCriteriaAdder", () => {
             it("should add criterion in criteria container", () => {
                 const onChangeSpy = jasmine.createSpy();
                 component = testUtils.compileTemplate(`
-                    <oui-criteria on-change="$ctrl.onChangeSpy(modelValue)">
+                    <oui-criteria model="$ctrl.model" on-change="$ctrl.onChangeSpy(modelValue)">
                         <oui-criteria-adder
                             id="foo"
                             name="bar"
@@ -325,6 +322,7 @@ describe("ouiCriteriaAdder", () => {
                         </oui-criteria-adder>
                     </oui-criteria>
                 `, {
+                    model: [],
                     properties: mockData.properties,
                     onChangeSpy
                 });
