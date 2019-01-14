@@ -14,38 +14,6 @@ export default class {
         this.valueModel = {};
     }
 
-    $onInit () {
-        // Set align to "end" if undefined
-        addDefaultParameter(this, "align", "center");
-
-        addDefaultParameter(this, "id", `ouiCriteriaAdder${this.$scope.$id}`);
-
-        this.$timeout(() => {
-            this.dropdownContent = this.$element[0];
-        });
-
-        // Auto select first column
-        if (this.properties) {
-            this.columnModel = this.properties[0];
-        }
-
-        this.selectableOperators = this.filterSelectableOperators();
-        this.operatorModel = this.selectableOperators[0];
-
-        this.resetValueModel();
-    }
-
-    $postLink () {
-        // Sometimes the digest cycle is done before dom manipulation,
-        // So we use $timeout to force the $apply
-        this.$timeout(() => {
-            this.$element
-                .addClass("oui-criteria-adder")
-                .removeAttr("id")
-                .removeAttr("name");
-        });
-    }
-
     getOperatorsByType (type) {
         const operators = this.operators[type] || [];
         return operators.map((operator) => ({
@@ -156,5 +124,39 @@ export default class {
             name: operator,
             title: this.translations[`operator_${type}_${operator}`]
         }));
+    }
+
+    $onInit () {
+        // Deprecated: Support for `align` attribute
+        // Will become addDefaultParameter(this, "placement", "center");
+        this.placement = this.placement || this.$attrs.align || "center";
+
+        addDefaultParameter(this, "id", `ouiCriteriaAdder${this.$scope.$id}`);
+        addDefaultParameter(this, "name", `ouiCriteriaAdder${this.$scope.$id}`);
+
+        this.$timeout(() => {
+            this.dropdownContent = this.$element[0];
+        });
+
+        // Auto select first column
+        if (this.properties) {
+            this.columnModel = this.properties[0];
+        }
+
+        this.selectableOperators = this.filterSelectableOperators();
+        this.operatorModel = this.selectableOperators[0];
+
+        this.resetValueModel();
+    }
+
+    $postLink () {
+        // Sometimes the digest cycle is done before dom manipulation,
+        // So we use $timeout to force the $apply
+        this.$timeout(() => {
+            this.$element
+                .addClass("oui-criteria-adder")
+                .removeAttr("id")
+                .removeAttr("name");
+        });
     }
 }

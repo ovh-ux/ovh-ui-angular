@@ -10,6 +10,9 @@
         ng-attr-name="{{::$ctrl.name}}"
         ng-attr-placeholder="{{::$ctrl.placeholder}}"
         ng-model="$ctrl.model"
+        ng-model-options="{ debounce: $ctrl.debounce }"
+        ng-maxlength="$ctrl.maxlength"
+        ng-minlength="$ctrl.minlength"
         ng-change="$ctrl.onSearchChange()"
         ng-disabled="$ctrl.disabled"
         ng-keydown="$ctrl.onKeyDown($event)" />

@@ -7,6 +7,7 @@ import Checkbox from "@ovh-ui/oui-checkbox";
 import Chips from "@ovh-ui/oui-chips";
 import Clipboard from "@ovh-ui/oui-clipboard";
 import Collapsible from "@ovh-ui/oui-collapsible";
+import Criteria from "@ovh-ui/oui-criteria";
 import CriteriaAdder from "@ovh-ui/oui-criteria-adder";
 import CriteriaContainer from "@ovh-ui/oui-criteria-container";
 import Datagrid from "@ovh-ui/oui-datagrid";
@@ -53,8 +54,9 @@ export default angular
         Chips,
         Clipboard,
         Collapsible,
-        CriteriaAdder,
-        CriteriaContainer,
+        Criteria,
+        CriteriaAdder, // Deprecated: Suppport only for old use
+        CriteriaContainer, // Deprecated: Suppport only for old use
         Datagrid,
         Dropdown,
         DualList,

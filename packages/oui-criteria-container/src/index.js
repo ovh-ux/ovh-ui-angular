@@ -1,6 +1,7 @@
-import CriteriaContainer from "./criteria-container.component";
+import Criteria from "@ovh-ui/oui-criteria";
 
+// Deprecated: Support only for old use
+// Has been moved to 'oui.criteria'
 export default angular
-    .module("oui.criteria-container", [])
-    .component("ouiCriteriaContainer", CriteriaContainer)
+    .module("oui.criteria-container", [Criteria])
     .name;
