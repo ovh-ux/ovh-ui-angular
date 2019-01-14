@@ -68,7 +68,7 @@ export default class SelectPickerController {
         });
     }
 
-    $destroy () {
+    $onDestroy () {
         this.labelElement.off("click");
     }
 

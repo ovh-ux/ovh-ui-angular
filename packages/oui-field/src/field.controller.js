@@ -106,7 +106,7 @@ export default class FieldController {
         });
     }
 
-    $destroy () {
+    $onDestroy () {
         Object.keys(this.controls).forEach(name => {
             const namedControls = this.controls[name];
             namedControls.forEach(control => {

@@ -35,7 +35,7 @@ export default class PopoverController {
         this.setTrigger();
     }
 
-    $destroy () {
+    $onDestroy () {
         this.closePopover();
     }
 

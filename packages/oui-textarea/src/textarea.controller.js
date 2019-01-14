@@ -54,7 +54,7 @@ export default class {
         }
     }
 
-    $destroy () {
+    $onDestroy () {
         this.$footer.off("click");
     }
 
