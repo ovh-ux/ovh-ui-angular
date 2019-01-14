@@ -4,9 +4,11 @@ export default class {
     constructor () {
         this.translations = {
             errors: {
+                invalid: "Invalid field.",
                 required: "Mandatory.",
                 number: "Invalid number.",
                 email: "Invalid email.",
+                password: "Invalid password.",
                 min: "Too low ({{min}} min).",
                 max: "Too high ({{max}} max).",
                 minlength: "Too short ({{minlength}} characters min).",

@@ -16,7 +16,7 @@ export default class {
 
         // Set first added tab active
         if (this.items.length === 1) {
-            this.setActiveTab(item.id);
+            this.setActiveTab(item);
         }
     }
 
@@ -29,12 +29,15 @@ export default class {
 
         // If was activeId, set first item as active
         if (this.items.length && item.id === this.activeId) {
-            this.setActiveTab(this.items[0].id);
+            this.setActiveTab(this.items[0]);
         }
     }
 
-    setActiveTab (id) {
-        this.activeId = id;
+    setActiveTab (item) {
+        this.activeId = item.id;
+        if (angular.isFunction(item.onActive)) {
+            item.onActive();
+        }
     }
 
     $onInit () {

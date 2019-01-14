@@ -28,7 +28,6 @@ describe("ouiDatagrid", () => {
     beforeEach(angular.mock.module("oui.datagrid"));
     beforeEach(angular.mock.module("oui.test-utils"));
     beforeEach(angular.mock.module("oui.action-menu"));
-    beforeEach(angular.mock.module("oui.checkbox"));
 
     beforeEach(inject((_TestUtils_, _$rootScope_, _$timeout_, _ouiDatagridService_) => {
         TestUtils = _TestUtils_;

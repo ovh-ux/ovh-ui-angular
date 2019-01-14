@@ -2,11 +2,7 @@ describe("ouiSearch", () => {
     let $timeout;
     let testUtils;
 
-    const goodSearchText = "aa";
-    const tooShortSearchText = "a";
-
     beforeEach(angular.mock.module("oui.search"));
-    beforeEach(angular.mock.module("oui.criteria-container"));
     beforeEach(angular.mock.module("oui.test-utils"));
 
     beforeEach(inject((_$timeout_, _TestUtils_) => {
@@ -63,6 +59,24 @@ describe("ouiSearch", () => {
             expect(buttons.attr("disabled")).toBe("disabled");
         });
 
+        it("should reset value on escape keypress", () => {
+            const escKeyCode = 27;
+            const fooKeyCode = 25;
+            const component = testUtils.compileTemplate('<oui-search model="$ctrl.model"></oui-search>', {
+                model: "foo"
+            });
+            const controller = component.controller("ouiSearch");
+            controller.onSearchReset = jasmine.createSpy("onSearchReset");
+
+            const $input = component.find("input");
+
+            $input.triggerHandler({ type: "keydown", which: fooKeyCode });
+            expect(controller.onSearchReset).not.toHaveBeenCalled();
+
+            $input.triggerHandler({ type: "keydown", which: escKeyCode });
+            expect(controller.onSearchReset).toHaveBeenCalled();
+        });
+
         it("should call function of onChange attribute, when input value has changed, with the model value", () => {
             const onChangeSpy = jasmine.createSpy("onChangeSpy");
             const component = testUtils.compileTemplate('<oui-search model="$ctrl.modelTest" on-change="$ctrl.onChangeSpy(modelValue)"></oui-search>', {
@@ -96,222 +110,6 @@ describe("ouiSearch", () => {
 
             component.find("form").triggerHandler("submit");
             expect(onSubmitSpy).toHaveBeenCalledWith("foo");
-        });
-    });
-
-    describe("With criteria container", () => {
-        // Unfortunately, lodash prevent setTimeout to be mocked
-        const debounceDelay = 800;
-
-        describe("on submit", () => {
-            it("should add criterion in criteria container", done => {
-                const searchText = goodSearchText;
-                const onChangeSpy = jasmine.createSpy();
-                const element = testUtils.compileTemplate(`
-                    <oui-criteria-container on-change="$ctrl.onChangeSpy(modelValue)">
-                        <oui-search model="$ctrl.searchText"></oui-search>
-                    </oui-criteria-container>
-                `, {
-                    searchText,
-                    onChangeSpy
-                });
-
-                element.find("form").triggerHandler("submit");
-
-                setTimeout(() => {
-                    expect(onChangeSpy).toHaveBeenCalledWith([{
-                        title: searchText,
-                        property: null,
-                        operator: "contains",
-                        value: searchText
-                    }]);
-                    done();
-                }, debounceDelay);
-            });
-
-            it("should not add criterion in criteria container if the text is too short", done => {
-                const searchText = tooShortSearchText;
-                const onChangeSpy = jasmine.createSpy();
-                const element = testUtils.compileTemplate(`
-                    <oui-criteria-container on-change="$ctrl.onChangeSpy(modelValue)">
-                        <oui-search model="$ctrl.searchText"></oui-search>
-                    </oui-criteria-container>
-                `, {
-                    searchText,
-                    onChangeSpy
-                });
-
-                element.find("form").triggerHandler("submit");
-
-                setTimeout(() => {
-                    expect(onChangeSpy).not.toHaveBeenCalled();
-                    done();
-                }, debounceDelay);
-            });
-        });
-
-        describe("on change", () => {
-            it("should add criterion in criteria container", done => {
-                const onChangeSpy = jasmine.createSpy();
-                const element = testUtils.compileTemplate(`
-                    <oui-criteria-container on-change="$ctrl.onChangeSpy(modelValue)">
-                        <oui-search model="$ctrl.searchText"></oui-search>
-                    </oui-criteria-container>
-                `, {
-                    onChangeSpy
-                });
-
-                const input = element.find("input");
-                input.val(goodSearchText);
-                input.triggerHandler("input");
-
-                setTimeout(() => {
-                    expect(onChangeSpy).toHaveBeenCalledWith([{
-                        title: goodSearchText,
-                        property: null,
-                        operator: "contains",
-                        value: goodSearchText,
-                        preview: true
-                    }]);
-                    done();
-                }, debounceDelay);
-            });
-
-            it("should not add criterion in criteria container if text is too short", done => {
-                const onChangeSpy = jasmine.createSpy();
-                const element = testUtils.compileTemplate(`
-                    <oui-criteria-container on-change="$ctrl.onChangeSpy(modelValue)">
-                        <oui-search model="$ctrl.searchText"></oui-search>
-                    </oui-criteria-container>
-                `, {
-                    onChangeSpy
-                });
-                const delay = 850;
-
-                setTimeout(() => {
-                    const input = element.find("input");
-                    input.val(tooShortSearchText);
-                    input.triggerHandler("input");
-                    expect(onChangeSpy).not.toHaveBeenCalled();
-                    done();
-                }, delay);
-            });
-
-            it("should delete preview criterion if search becomes too short", done => {
-                const onChangeSpy = jasmine.createSpy();
-                const element = testUtils.compileTemplate(`
-                    <oui-criteria-container on-change="$ctrl.onChangeSpy(modelValue)">
-                        <oui-search model="$ctrl.searchText"></oui-search>
-                    </oui-criteria-container>
-                `, {
-                    onChangeSpy
-                });
-
-                const input = element.find("input");
-
-                // Add preview criterion.
-                input.val(goodSearchText);
-                input.triggerHandler("input");
-
-                setTimeout(() => {
-                    expect(onChangeSpy).toHaveBeenCalledWith([{
-                        title: goodSearchText,
-                        property: null,
-                        operator: "contains",
-                        value: goodSearchText,
-                        preview: true
-                    }]);
-
-                    input.val(tooShortSearchText);
-                    input.triggerHandler("input");
-
-                    setTimeout(() => {
-                        expect(onChangeSpy).toHaveBeenCalledWith([]);
-                        done();
-                    }, debounceDelay);
-                }, debounceDelay);
-            });
-        });
-
-        describe("on reset", () => {
-            it("should delete preview criterion", done => {
-                const onChangeSpy = jasmine.createSpy();
-                const element = testUtils.compileTemplate(`
-                    <oui-criteria-container on-change="$ctrl.onChangeSpy(modelValue)">
-                        <oui-search model="$ctrl.searchText"></oui-search>
-                    </oui-criteria-container>
-                `, {
-                    onChangeSpy
-                });
-
-                const input = element.find("input");
-                const resetButton = element.find("button").eq(0);
-
-                // Add preview criterion.
-                input.val(goodSearchText);
-                input.triggerHandler("input");
-
-                setTimeout(() => {
-                    expect(onChangeSpy).toHaveBeenCalledWith([{
-                        title: goodSearchText,
-                        property: null,
-                        operator: "contains",
-                        value: goodSearchText,
-                        preview: true
-                    }]);
-
-                    resetButton.triggerHandler("click");
-
-                    setTimeout(() => {
-                        expect(onChangeSpy).toHaveBeenCalledWith([]);
-                        done();
-                    }, debounceDelay);
-                }, debounceDelay);
-            });
-        });
-
-        describe("on escape", () => {
-            const escKeyCode = 27;
-
-            it("should reset component on escape", () => {
-                const element = testUtils.compileTemplate(`
-                    <oui-criteria-container on-change="$ctrl.onChangeSpy(modelValue)">
-                        <oui-search model="$ctrl.searchText"></oui-search>
-                    </oui-criteria-container>
-                `);
-
-                const controller = element.find("oui-search").controller("ouiSearch");
-                const $input = element.find("input");
-
-                controller.onSearchReset = jasmine.createSpy("onSearchReset");
-
-                $input.triggerHandler({
-                    type: "keydown",
-                    keyCode: escKeyCode
-                });
-
-                expect(controller.onSearchReset).toHaveBeenCalled();
-            });
-
-            it("should not reset component if pressed is not escape", () => {
-                const element = testUtils.compileTemplate(`
-                    <oui-criteria-container on-change="$ctrl.onChangeSpy(modelValue)">
-                        <oui-search model="$ctrl.searchText"></oui-search>
-                    </oui-criteria-container>
-                `);
-
-                const controller = element.find("oui-search").controller("ouiSearch");
-                const $input = element.find("input");
-
-                controller.onSearchReset = jasmine.createSpy("onSearchReset");
-
-                $input.triggerHandler({
-                    type: "keydown",
-                    keyCode: 42
-                });
-
-                expect(controller.onSearchReset).not.toHaveBeenCalled();
-            });
         });
     });
 });

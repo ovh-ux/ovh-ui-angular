@@ -241,9 +241,8 @@ export default class DatagridController {
     }
 
     onCriteriaChange (criteria) {
-        this.criteria = criteria; // with preview criteria
-        this.appliedCriteria = this.criteria
-            .filter(criterion => !criterion.preview);
+        // Preview criteria are visually filtered by oui-criteria
+        this.criteria = criteria;
         this.refreshData(() => {
             this.paging.setOffset(1);
             this.paging.setCriteria(criteria);

@@ -6,7 +6,7 @@
         ng-attr-aria-label="{{::item.ariaLabel}}"
         ng-attr-aria-selected="{{item.id === $ctrl.activeId}}"
         ng-class="{ 'oui-tabs__tab_checked': item.checked }"
-        ng-click="$ctrl.setActiveTab(item.id)">
+        ng-click="$ctrl.setActiveTab(item)">
         <span class="oui-icon oui-icon-success"
             ng-if="::item.hasCheckmark">
         </span>

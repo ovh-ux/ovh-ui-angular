@@ -5,6 +5,10 @@
   "license": "BSD-3-Clause",
   "author": "OVH SAS",
   "dependencies": {
+    "@ovh-ui/oui-checkbox": "^1.0.0",
+    "@ovh-ui/oui-criteria": "^1.0.0",
+    "@ovh-ui/oui-pagination": "^1.0.0",
+    "@ovh-ui/oui-spinner": "^1.0.0",
     "escape-string-regexp": "^1.0.5"
   }
 }

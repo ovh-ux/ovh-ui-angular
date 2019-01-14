@@ -7,6 +7,7 @@ import Checkbox from "@ovh-ui/oui-checkbox";
 import Chips from "@ovh-ui/oui-chips";
 import Clipboard from "@ovh-ui/oui-clipboard";
 import Collapsible from "@ovh-ui/oui-collapsible";
+import Criteria from "@ovh-ui/oui-criteria";
 import CriteriaAdder from "@ovh-ui/oui-criteria-adder";
 import CriteriaContainer from "@ovh-ui/oui-criteria-container";
 import Datagrid from "@ovh-ui/oui-datagrid";
@@ -24,6 +25,7 @@ import Navbar from "@ovh-ui/oui-navbar";
 import Numeric from "@ovh-ui/oui-numeric";
 import PageHeader from "@ovh-ui/oui-page-header";
 import Pagination from "@ovh-ui/oui-pagination";
+import Password from "@ovh-ui/oui-password";
 import Popover from "@ovh-ui/oui-popover";
 import Progress from "@ovh-ui/oui-progress";
 import Radio from "@ovh-ui/oui-radio";
@@ -38,6 +40,7 @@ import Switch from "@ovh-ui/oui-switch";
 import Tabs from "@ovh-ui/oui-tabs";
 import Textarea from "@ovh-ui/oui-textarea";
 import Tile from "@ovh-ui/oui-tile";
+import Timepicker from "@ovh-ui/oui-timepicker";
 import Tooltip from "@ovh-ui/oui-tooltip";
 
 export default angular
@@ -51,8 +54,9 @@ export default angular
         Chips,
         Clipboard,
         Collapsible,
-        CriteriaAdder,
-        CriteriaContainer,
+        Criteria,
+        CriteriaAdder, // Deprecated: Suppport only for old use
+        CriteriaContainer, // Deprecated: Suppport only for old use
         Datagrid,
         Dropdown,
         DualList,
@@ -68,6 +72,7 @@ export default angular
         Numeric,
         PageHeader,
         Pagination,
+        Password,
         Popover,
         Progress,
         Radio,
@@ -82,6 +87,7 @@ export default angular
         Tabs,
         Textarea,
         Tile,
+        Timepicker,
         Tooltip
     ])
     .name;
