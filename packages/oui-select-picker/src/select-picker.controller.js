@@ -69,7 +69,9 @@ export default class SelectPickerController {
     }
 
     $onDestroy () {
-        this.labelElement.off("click");
+        if (this.labelElement) {
+            this.labelElement.off("click");
+        }
     }
 
     getFirstValueMatch (path) {

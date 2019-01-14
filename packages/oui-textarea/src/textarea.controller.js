@@ -55,7 +55,9 @@ export default class {
     }
 
     $onDestroy () {
-        this.$footer.off("click");
+        if (this.$footer) {
+            this.$footer.off("click");
+        }
     }
 
     onTextareaChange () {
