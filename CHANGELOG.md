@@ -1,3 +1,16 @@
+<a name="2.24.1"></a>
+## [2.24.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.24.0...v2.24.1) (2019-01-21)
+
+
+### Bug Fixes
+
+* fix  method ([1b09d1a](https://github.com/ovh-ux/ovh-ui-angular/commit/1b09d1a))
+* **oui-datagrid:** fix empty cells when loading data ([#348](https://github.com/ovh-ux/ovh-ui-angular/issues/348)) ([fb8ce2f](https://github.com/ovh-ux/ovh-ui-angular/commit/fb8ce2f))
+* **oui-dropdown:** fix dropdown menu positioning ([#349](https://github.com/ovh-ux/ovh-ui-angular/issues/349)) ([8e2ddce](https://github.com/ovh-ux/ovh-ui-angular/commit/8e2ddce))
+* **oui-select-picker:** fix svg support for picture attribute ([#350](https://github.com/ovh-ux/ovh-ui-angular/issues/350)) ([0fbc80c](https://github.com/ovh-ux/ovh-ui-angular/commit/0fbc80c))
+
+
+
 <a name="2.24.0"></a>
 # [2.24.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.23.2...v2.24.0) (2019-01-14)
 
