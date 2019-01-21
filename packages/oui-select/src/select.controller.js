@@ -46,7 +46,7 @@ export default class {
         this.unregisterFocus = this.$scope.$on("oui:focus", () => this.$select.setFocus());
     }
 
-    $destroy () {
+    $onDestroy () {
         if (this.unregisterFocus) {
             this.unregisterFocus();
         }

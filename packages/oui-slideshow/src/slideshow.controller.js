@@ -62,7 +62,7 @@ export default class {
         });
     }
 
-    $destroy () {
+    $onDestroy () {
         this.closeOnBoarding();
     }
 

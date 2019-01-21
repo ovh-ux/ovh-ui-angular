@@ -90,8 +90,8 @@ export default class FieldController {
             });
 
             // Handle click on label to set focus on form element.
-            this.label = angular.element(this.$element[0].querySelector(LABEL_SELECTOR));
-            this.label.on("click", () => {
+            this.labelElement = angular.element(this.$element[0].querySelector(LABEL_SELECTOR));
+            this.labelElement.on("click", () => {
                 this.$scope.$broadcast("oui:focus");
             });
 
@@ -106,7 +106,7 @@ export default class FieldController {
         });
     }
 
-    $destroy () {
+    $onDestroy () {
         Object.keys(this.controls).forEach(name => {
             const namedControls = this.controls[name];
             namedControls.forEach(control => {
@@ -115,8 +115,8 @@ export default class FieldController {
             });
         });
 
-        if (this.label) {
-            this.label.off("click");
+        if (this.labelElement) {
+            this.labelElement.off("click");
         }
     }
 
