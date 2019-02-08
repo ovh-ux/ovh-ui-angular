@@ -65,7 +65,7 @@ describe("ouiCalendar", () => {
 
             $timeout.flush();
 
-            expect(controller.options.inline).toBe(true);
+            expect(controller.config.inline).toBe(true);
             expect(component.hasClass("oui-calendar_inline")).toBe(true);
         });
 
@@ -76,7 +76,7 @@ describe("ouiCalendar", () => {
 
             $timeout.flush();
 
-            expect(controller.options.appendTo).toBeUndefined();
+            expect(controller.config.appendTo).toBeUndefined();
             expect(calendar).toBeNull();
         });
 
@@ -98,6 +98,8 @@ describe("ouiCalendar", () => {
             const component = testUtils.compileTemplate('<oui-calendar model="$ctrl.model" placeholder="foo"></oui-calendar>');
             const input = component.find("input");
 
+            $timeout.flush();
+
             expect(input.attr("placeholder")).toBe("foo");
         });
 
@@ -106,7 +108,7 @@ describe("ouiCalendar", () => {
             const ctrl = component.controller("ouiCalendar");
 
             ctrl.setOptionsProperty("foo", "bar");
-            expect(ctrl.options.foo).toBe("bar");
+            expect(ctrl.config.foo).toBe("bar");
         });
 
         it("should change the value formatting of the model and the input", () => {
@@ -124,9 +126,9 @@ describe("ouiCalendar", () => {
             const input = component[0].querySelector(".oui-calendar__control");
             const altInput = component[0].querySelector(".oui-calendar__control_alt");
 
-            expect(ctrl.options.dateFormat).toBe(format);
-            expect(ctrl.options.altInput).toBe(true);
-            expect(ctrl.options.altFormat).toBe(altFormat);
+            expect(ctrl.config.dateFormat).toBe(format);
+            expect(ctrl.config.altInput).toBe(true);
+            expect(ctrl.config.altFormat).toBe(altFormat);
             expect(input.value).toBe(formatDate);
             expect(altInput.value).toBe(altFormatDate);
         });
@@ -136,7 +138,7 @@ describe("ouiCalendar", () => {
             const ctrl = component.controller("ouiCalendar");
 
             ctrl.setEventHooks(["foo"]);
-            expect(typeof ctrl.options.foo).toBe("function");
+            expect(typeof ctrl.config.foo).toBe("function");
         });
 
         it("should call function of events attributes", () => {
@@ -153,7 +155,7 @@ describe("ouiCalendar", () => {
                 onOpenSpy
             });
             const ctrl = component.controller("ouiCalendar");
-            const today = ctrl.flatpickr.parseDate("today", ctrl.options.dateFormat);
+            const today = ctrl.flatpickr.parseDate("today", ctrl.config.dateFormat);
 
             ctrl.setModelValue(today);
             expect(onChangeSpy).toHaveBeenCalledWith([today], ctrl.model);
@@ -162,26 +164,5 @@ describe("ouiCalendar", () => {
             ctrl.flatpickr.close();
             expect(onCloseSpy).toHaveBeenCalledWith([today], ctrl.model);
         });
-
-        // it("should set the value to today's date when 'today' button is clicked", () => {
-        //     const component = testUtils.compileTemplate('<oui-calendar model="$ctrl.model"></oui-calendar>');
-        //     const ctrl = component.controller("ouiCalendar");
-        //     const button = component.find("button").eq(0);
-        //     const today = ctrl.flatpickr.formatDate(new Date(), ctrl.options.dateFormat);
-
-        //     button.triggerHandler("click");
-        //     expect(ctrl.model).toBe(today);
-        // });
-
-        // it("should reset the value when 'reset' button is clicked", () => {
-        //     const component = testUtils.compileTemplate('<oui-calendar model="$ctrl.model"></oui-calendar>', {
-        //         model: "today"
-        //     });
-        //     const ctrl = component.controller("ouiCalendar");
-        //     const button = component.find("button").eq(1);
-
-        //     button.triggerHandler("click");
-        //     expect(ctrl.model).toBe("");
-        // });
     });
 });

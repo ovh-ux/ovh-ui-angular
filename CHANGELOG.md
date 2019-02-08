@@ -1,3 +1,54 @@
+<a name="2.24.1"></a>
+## [2.24.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.24.0...v2.24.1) (2019-01-21)
+
+
+### Bug Fixes
+
+* fix  method ([1b09d1a](https://github.com/ovh-ux/ovh-ui-angular/commit/1b09d1a))
+* **oui-datagrid:** fix empty cells when loading data ([#348](https://github.com/ovh-ux/ovh-ui-angular/issues/348)) ([fb8ce2f](https://github.com/ovh-ux/ovh-ui-angular/commit/fb8ce2f))
+* **oui-dropdown:** fix dropdown menu positioning ([#349](https://github.com/ovh-ux/ovh-ui-angular/issues/349)) ([8e2ddce](https://github.com/ovh-ux/ovh-ui-angular/commit/8e2ddce))
+* **oui-select-picker:** fix svg support for picture attribute ([#350](https://github.com/ovh-ux/ovh-ui-angular/issues/350)) ([0fbc80c](https://github.com/ovh-ux/ovh-ui-angular/commit/0fbc80c))
+
+
+
+<a name="2.24.0"></a>
+# [2.24.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.23.2...v2.24.0) (2019-01-14)
+
+
+### Bug Fixes
+
+* **oui-select:** fix getPropertyValue in the root template ([5cf0a5f](https://github.com/ovh-ux/ovh-ui-angular/commit/5cf0a5f))
+
+
+### Features
+
+* **oui-password:** add password component ([#335](https://github.com/ovh-ux/ovh-ui-angular/issues/335)) ([bc01257](https://github.com/ovh-ux/ovh-ui-angular/commit/bc01257))
+* **oui-select:** add multiple selection ([#332](https://github.com/ovh-ux/ovh-ui-angular/issues/332)) ([94f0038](https://github.com/ovh-ux/ovh-ui-angular/commit/94f0038))
+* **oui-tabs:** add onActive callback ([#340](https://github.com/ovh-ux/ovh-ui-angular/issues/340)) ([18f1ea2](https://github.com/ovh-ux/ovh-ui-angular/commit/18f1ea2))
+* **oui-timepicker:** add timepicker component ([#344](https://github.com/ovh-ux/ovh-ui-angular/issues/344)) ([e2434da](https://github.com/ovh-ux/ovh-ui-angular/commit/e2434da))
+
+
+
+<a name="2.23.2"></a>
+## [2.23.2](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.23.1...v2.23.2) (2019-01-09)
+
+
+### Bug Fixes
+
+* **oui-slideshow:** fix onDismiss callback ([#342](https://github.com/ovh-ux/ovh-ui-angular/issues/342)) ([f14d033](https://github.com/ovh-ux/ovh-ui-angular/commit/f14d033))
+
+
+
+<a name="2.23.1"></a>
+## [2.23.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.23.0...v2.23.1) (2019-01-08)
+
+
+### Bug Fixes
+
+* **oui-select:** add nested property support for match attribute ([#338](https://github.com/ovh-ux/ovh-ui-angular/issues/338)) ([6c87d73](https://github.com/ovh-ux/ovh-ui-angular/commit/6c87d73)), closes [#MANAGER-2056](https://github.com/ovh-ux/ovh-ui-angular/issues/MANAGER-2056)
+
+
+
 <a name="2.23.0"></a>
 # [2.23.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.22.2...v2.23.0) (2018-12-11)
 

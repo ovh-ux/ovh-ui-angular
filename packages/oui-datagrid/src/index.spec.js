@@ -28,7 +28,6 @@ describe("ouiDatagrid", () => {
     beforeEach(angular.mock.module("oui.datagrid"));
     beforeEach(angular.mock.module("oui.test-utils"));
     beforeEach(angular.mock.module("oui.action-menu"));
-    beforeEach(angular.mock.module("oui.checkbox"));
 
     beforeEach(inject((_TestUtils_, _$rootScope_, _$timeout_, _ouiDatagridService_) => {
         TestUtils = _TestUtils_;
@@ -116,7 +115,7 @@ describe("ouiDatagrid", () => {
                 expect(getCell($firstRow, 2).children().html()).toBe(additionnalDataValue);
             }));
 
-            it("should keep undefined when a cell is not loaded", inject(($q) => {
+            it("should display a skeleton when a cell is not loaded", inject(($q) => {
                 const deferred = $q.defer();
                 const loadRowSpy = jasmine.createSpy("loadRow");
 
@@ -139,7 +138,7 @@ describe("ouiDatagrid", () => {
                 expect(loadRowSpy.calls.count()).toEqual(1);
 
                 expect(getCell($firstRow, 0).children().html()).toBe(fakeData[0].firstName);
-                expect(getCell($firstRow, 2).children().html()).toBeUndefined();
+                expect(getCell($firstRow, 2).children()[0].tagName.toLowerCase()).toBe("oui-skeleton");
             }));
 
             it("should load data later and display it", inject(($q) => {
@@ -558,7 +557,7 @@ describe("ouiDatagrid", () => {
                 expect(getCell($fifthRow, 1).children().html()).toBe(fakeData[4].lastName);
             });
 
-            it("should keep undefined when a cell is not loaded", inject(($q) => {
+            it("should display a skeleton when a cell is not loaded", inject(($q) => {
                 const deferred = $q.defer();
                 const loadRowSpy = jasmine.createSpy("loadRow");
 
@@ -591,7 +590,7 @@ describe("ouiDatagrid", () => {
                 expect(loadRowSpy.calls.count()).toEqual(1);
 
                 expect(getCell($firstRow, 0).children().html()).toBe(fakeData[0].firstName);
-                expect(getCell($firstRow, 2).children().html()).toBeUndefined();
+                expect(getCell($firstRow, 2).children()[0].tagName.toLowerCase()).toBe("oui-skeleton");
             }));
 
             it("should load data later and display it", inject(($q) => {

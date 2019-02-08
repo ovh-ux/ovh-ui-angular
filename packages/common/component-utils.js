@@ -9,9 +9,10 @@
  */
 export function addBooleanParameter (controller, parameterName) {
     const ctrl = controller;
-    if (angular.isDefined(ctrl.$attrs[parameterName]) &&
-        ctrl.$attrs[parameterName] === "") {
-        ctrl[parameterName] = true;
+    if (ctrl.$attrs) {
+        if (angular.isDefined(ctrl.$attrs[parameterName]) && ctrl.$attrs[parameterName] === "") {
+            ctrl[parameterName] = true;
+        }
     }
 }
 
@@ -27,9 +28,11 @@ export function addBooleanParameter (controller, parameterName) {
  */
 export function addDefaultParameter (controller, parameterName, defaultValue) {
     const ctrl = controller;
-    if (!angular.isDefined(ctrl.$attrs[parameterName]) ||
-        (angular.isDefined(ctrl.$attrs[parameterName]) && ctrl.$attrs[parameterName].trim() === "")) {
-        ctrl[parameterName] = defaultValue;
+    if (ctrl.$attrs) {
+        if (!angular.isDefined(ctrl.$attrs[parameterName]) ||
+            (angular.isDefined(ctrl.$attrs[parameterName]) && ctrl.$attrs[parameterName].trim() === "")) {
+            ctrl[parameterName] = defaultValue;
+        }
     }
 }
 

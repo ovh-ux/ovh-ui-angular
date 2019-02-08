@@ -14,16 +14,18 @@ export default {
 
         appendToBody: "<?",
         inline: "<?",
+        "static": "<?",
         maxDate: "<?",
         minDate: "<?",
         disableDate: "<?",
         enableDate: "<?",
-
         enableTime: "<?",
+        weekNumbers: "<?",
+
+        options: "<?",
 
         disabled: "<?",
         required: "<?",
-        weekNumbers: "<?",
 
         onChange: "&",
         onClose: "&",
