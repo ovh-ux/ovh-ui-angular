@@ -1,3 +1,5 @@
+import range from "lodash/range";
+
 export default class {
     constructor ($attrs, ouiPaginationConfiguration) {
         "ngInject";
@@ -35,17 +37,24 @@ export default class {
 
     processPaginationChange () {
         this.pageCount = this.getPageCount();
-        this.pageRange = this.getPageRange();
         this.currentPage = this.getCurrentPage();
+        this.inputPage = this.getCurrentPage(); // Update model for input
     }
 
     processTranslations () {
-        this.translations = Object.assign({}, this.config.translations);
+        const translations = Object.assign({}, this.config.translations);
+
+        this.translations = angular.copy(translations);
         this.translations.ofNResults = this.translations.ofNResults
             .replace("{{totalItems}}", this.totalItems);
         this.translations.currentPageOfPageCount = this.translations.currentPageOfPageCount
             .replace("{{currentPage}}", this.currentPage)
             .replace("{{pageCount}}", this.pageCount);
+
+        // For huge amount of pages, we replaced "{{currentPage}}" by a number input
+        this.translations.inputPageOfPageCount = translations.currentPageOfPageCount
+            .replace("{{pageCount}}", this.pageCount)
+            .split("{{currentPage}}");
     }
 
     getPageAriaLabel (page) {
@@ -71,7 +80,17 @@ export default class {
 
     onPageChange (page) {
         this.currentOffset = (this.pageSize * (page - 1)) + 1;
+        this.currentPage = this.getCurrentPage();
+        this.inputPage = this.getCurrentPage(); // Update model for input
         this._onChange();
+    }
+
+    checkPageRange (page) {
+        const currentPage = typeof page === "number" ?
+            Math.min(Math.max(page, 1), this.pageCount) :
+            this.currentPage;
+
+        this.onPageChange(currentPage);
     }
 
     getLastItemOffset () {
@@ -87,8 +106,7 @@ export default class {
     }
 
     getPageRange () {
-        return Array(...{ length: this.getPageCount() })
-            .map((item, index) => index + 1);
+        return range(1, this.getPageCount() + 1);
     }
 
     _onChange () {
