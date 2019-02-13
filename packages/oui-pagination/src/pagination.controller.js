@@ -42,9 +42,7 @@ export default class {
     }
 
     processTranslations () {
-        const translations = Object.assign({}, this.config.translations);
-
-        this.translations = angular.copy(translations);
+        this.translations = { ...this.config.translations };
         this.translations.ofNResults = this.translations.ofNResults
             .replace("{{totalItems}}", this.totalItems);
         this.translations.currentPageOfPageCount = this.translations.currentPageOfPageCount
@@ -52,6 +50,7 @@ export default class {
             .replace("{{pageCount}}", this.pageCount);
 
         // For huge amount of pages, we replaced "{{currentPage}}" by a number input
+        const translations = { ...this.config.translations };
         this.translations.inputPageOfPageCount = translations.currentPageOfPageCount
             .replace("{{pageCount}}", this.pageCount)
             .split("{{currentPage}}");
@@ -86,7 +85,7 @@ export default class {
     }
 
     checkPageRange (page) {
-        const currentPage = typeof page === "number" ?
+        const currentPage = Number.isInteger(page) ?
             Math.min(Math.max(page, 1), this.pageCount) :
             this.currentPage;
 
