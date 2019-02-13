@@ -1,3 +1,4 @@
+import clamp from "lodash/clamp";
 import range from "lodash/range";
 
 export default class {
@@ -86,7 +87,7 @@ export default class {
 
     checkPageRange (page) {
         const currentPage = Number.isInteger(page) ?
-            Math.min(Math.max(page, 1), this.pageCount) :
+            clamp(page, 1, this.pageCount) :
             this.currentPage;
 
         this.onPageChange(currentPage);
