@@ -1,3 +1,15 @@
+<a name="2.24.2"></a>
+## [2.24.2](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.24.1...v2.24.2) (2019-02-13)
+
+
+### Bug Fixes
+
+* **oui-collapsible:** add type button to collapsible button ([#357](https://github.com/ovh-ux/ovh-ui-angular/issues/357)) ([8dea2c1](https://github.com/ovh-ux/ovh-ui-angular/commit/8dea2c1))
+* **oui-file:** fix input hidden error from ng 1.7.6 ([#353](https://github.com/ovh-ux/ovh-ui-angular/issues/353)) ([b3763a5](https://github.com/ovh-ux/ovh-ui-angular/commit/b3763a5))
+* **oui-pagination:** add input search when huge amount of pages ([#358](https://github.com/ovh-ux/ovh-ui-angular/issues/358)) ([11c3c47](https://github.com/ovh-ux/ovh-ui-angular/commit/11c3c47))
+
+
+
 <a name="2.24.1"></a>
 ## [2.24.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.24.0...v2.24.1) (2019-01-21)
 
