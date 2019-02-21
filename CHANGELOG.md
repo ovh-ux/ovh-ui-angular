@@ -1,3 +1,13 @@
+<a name="2.24.3"></a>
+## [2.24.3](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.24.2...v2.24.3) (2019-02-21)
+
+
+### Bug Fixes
+
+* fix dropdown menu placement ([#362](https://github.com/ovh-ux/ovh-ui-angular/issues/362)) ([53c41ec](https://github.com/ovh-ux/ovh-ui-angular/commit/53c41ec))
+
+
+
 <a name="2.24.2"></a>
 ## [2.24.2](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.24.1...v2.24.2) (2019-02-13)
 
