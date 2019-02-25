@@ -9,6 +9,7 @@ export default () => {
             text: "@ouiPopover",
             title: "@?",
             placement: "@?ouiPopoverPlacement",
+            scope: "=?ouiPopoverScope",
             template: "@?ouiPopoverTemplate"
         },
         controller,
