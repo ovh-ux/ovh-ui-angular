@@ -128,7 +128,7 @@
 | ----                      | ----      | ----      | ----              | ----                                                                                          | ----              | ----
 | `oui-popover`             | string    | @         | no                | n/a                                                                                           | `title` attribute | popover content
 | `oui-popover-placement`   | string    | @?        | yes               | See [Popper placements](https://popper.js.org/popper-documentation.html#Popper.placements)    | `right`           | modifier for alignment
-| `oui-popover-scope`       | string    | =?        | no                | n/a                                                                                           | n/a               | scope of the popover template
+| `oui-popover-scope`       | string    | <?        | no                | n/a                                                                                           | n/a               | scope of the popover template
 | `oui-popover-template`    | string    | @?        | no                | n/a                                                                                           | n/a               | id of the popover template
 
 ## Deprecated
