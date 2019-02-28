@@ -88,6 +88,7 @@
 | `loading`     | boolean   | <?        | no                | `true`, `false`   | `false`   | display loader flag
 | `loop`        | boolean   | <?        | no                | `true`, `false`   | `false`   | whether the component should cycle continuously
 | `on-dismiss`  | function  | &         | no                | n/a               | n/a       | dismiss callback
+| `on-next`     | function  | &         | no                | n/a               | n/a       | handler triggered when on click of next slide
 
 ### oui-slideshow-panel
 

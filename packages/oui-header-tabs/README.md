@@ -97,6 +97,7 @@
 | `active`      | boolean   | <?        | no                | `true`, `false`   | `false`   | manual active flag
 | `disabled`    | boolean   | <?        | yes               | `true`, `false`   | `false`   | disabled flag
 | `external`    | boolean   | <?        | yes               | `true`, `false`   | `false`   | external link flag
+| `on-click`    | function  | &         | no                | n/a               | n/a       | handler triggered when clicked
 
 **Note**: `ui-router` is needed for the attributes `state` and `state-params`.
 

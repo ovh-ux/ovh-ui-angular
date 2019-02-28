@@ -9,6 +9,7 @@ export default {
         onDismiss: "&",
         loading: "<?",
         loop: "<?",
-        theme: "@?"
+        theme: "@?",
+        onNext: "&"
     }
 };
