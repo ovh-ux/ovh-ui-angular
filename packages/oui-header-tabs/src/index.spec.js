@@ -126,5 +126,21 @@ describe("ouiHeaderTabs", () => {
             expect($separator.hasClass("oui-dropdown-menu__divider")).toBe(true);
             expect($separator.attr("role")).toBe("separator");
         });
+
+        it("should call function of onClick attribute, when header tab item is clicked", () => {
+            const clickSpy = jasmine.createSpy("spy");
+            const element = TestUtils.compileTemplate(`
+                <oui-header-tabs>
+                    <oui-header-tabs-item text="Tab" href="/#" on-click="$ctrl.clickHandler()"></oui-header-tabs-item>
+                </oui-header-tabs>`, {
+                    clickHandler: clickSpy
+                }
+            );
+
+            const item = element[0].querySelector(".oui-header-tabs__item a");
+            angular.element(item).triggerHandler("click");
+            expect(clickSpy).toHaveBeenCalled();
+            expect(clickSpy.calls.count()).toEqual(1);
+        });
     });
 });

@@ -76,7 +76,6 @@ export default class {
     next () {
         if (!this._isSliding) {
             this._slide(Direction.NEXT);
-            this.onNext({ index: this.currentIndex });
         }
     }
 
