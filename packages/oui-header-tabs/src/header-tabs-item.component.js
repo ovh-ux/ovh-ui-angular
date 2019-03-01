@@ -11,6 +11,7 @@ export default {
         stateParams: "<?",
         external: "<?",
         active: "<?",
-        disabled: "<?"
+        disabled: "<?",
+        onClick: "&"
     }
 };
