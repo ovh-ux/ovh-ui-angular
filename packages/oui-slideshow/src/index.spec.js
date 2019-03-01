@@ -142,6 +142,22 @@ describe("ouiSlideshow", () => {
                 $timeout.flush();
                 expect($firstPanel.hasClass("active")).toBe(false);
             });
+
+            it("should call function of event with attributes", () => {
+                const onPanelChangeSpy = jasmine.createSpy("onPanelChangeSpy");
+                const element = TestUtils.compileTemplate(`
+                    <oui-slideshow on-panel-change="$ctrl.onPanelChangeSpy(direction, index)">
+                        <oui-slideshow-panel></oui-slideshow-panel>
+                        <oui-slideshow-panel></oui-slideshow-panel>
+                    </oui-slideshow>`, {
+                        onPanelChangeSpy
+                    });
+                const direction = "next";
+                const index = 1;
+                $timeout.flush();
+                getNextButton(element).triggerHandler("click");
+                expect(onPanelChangeSpy).toHaveBeenCalledWith(direction, index);
+            });
         });
     });
 });
