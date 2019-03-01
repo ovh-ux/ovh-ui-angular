@@ -1,3 +1,15 @@
+<a name="2.25.0"></a>
+# [2.25.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.24.3...v2.25.0) (2019-03-01)
+
+
+### Features
+
+* **oui-header-tabs:** add on click event ([#367](https://github.com/ovh-ux/ovh-ui-angular/issues/367)) ([9269a99](https://github.com/ovh-ux/ovh-ui-angular/commit/9269a99))
+* **oui-popover:** add scope attribute for template ([#365](https://github.com/ovh-ux/ovh-ui-angular/issues/365)) ([f105aa9](https://github.com/ovh-ux/ovh-ui-angular/commit/f105aa9))
+* **oui-slideshow:** add on-panel-change event ([#368](https://github.com/ovh-ux/ovh-ui-angular/issues/368)) ([9b17702](https://github.com/ovh-ux/ovh-ui-angular/commit/9b17702))
+
+
+
 <a name="2.24.3"></a>
 ## [2.24.3](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.24.2...v2.24.3) (2019-02-21)
 
