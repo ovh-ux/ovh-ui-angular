@@ -50,7 +50,10 @@ export default class PopoverController {
 
             // Support for attribute `oui-popover`
             // Create a new scope to compile the popover next to the trigger
-            const popoverScope = angular.extend(this.$scope.$new(true), { $popoverCtrl: this });
+            const popoverScope = angular.extend(this.$scope.$new(true), {
+                $popoverCtrl: this,
+                $ctrl: this.scope
+            });
             const popoverTemplate = this.$compile(template)(popoverScope);
 
             // Add compiled template after $element
