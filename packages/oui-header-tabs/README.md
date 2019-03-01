@@ -84,6 +84,19 @@
 </oui-page-header>
 ```
 
+
+### With action click
+
+```html:preview
+<oui-header-tabs>
+    <oui-header-tabs-item text="Home" href="/#" on-click="$ctrl.onActionClick()"></oui-header-tabs-item>
+    <oui-header-tabs-item text="Page Header" href="/#!/oui-angular/page-header"></oui-header-tabs-item>
+    <oui-header-tabs-item text="Header Tabs" href="/#!/oui-angular/header-tabs" active></oui-header-tabs-item>
+    <oui-header-tabs-item text="Pagination" href="/#!/oui-angular/pagination"></oui-header-tabs-item>
+    <oui-header-tabs-item text="Datagrid" href="/#!/oui-angular/datagrid" on-click="$ctrl.onActionClick()"></oui-header-tabs-item>
+</oui-header-tabs>
+```
+
 ## API
 
 ### oui-header-tabs-item
