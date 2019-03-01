@@ -9,6 +9,6 @@ export default {
         onDismiss: "&",
         loading: "<?",
         loop: "<?",
-        theme: "@?"
+        onPanelChange: "&"
     }
 };
