@@ -6,9 +6,10 @@ export default {
     controller,
     transclude: true,
     bindings: {
-        onDismiss: "&",
+        theme: "@?",
         loading: "<?",
         loop: "<?",
+        onDismiss: "&",
         onPanelChange: "&"
     }
 };
