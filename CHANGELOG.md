@@ -1,3 +1,13 @@
+<a name="2.25.1"></a>
+## [2.25.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.25.0...v2.25.1) (2019-03-04)
+
+
+### Bug Fixes
+
+* **oui-slideshow:** fix removed attribute theme ([82ccf3e](https://github.com/ovh-ux/ovh-ui-angular/commit/82ccf3e))
+
+
+
 <a name="2.25.0"></a>
 # [2.25.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.24.3...v2.25.0) (2019-03-01)
 
