@@ -1,3 +1,18 @@
+<a name="2.26.0"></a>
+# [2.26.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.25.1...v2.26.0) (2019-03-26)
+
+
+### Bug Fixes
+
+* **oui-modal:** hide content when loading ([#373](https://github.com/ovh-ux/ovh-ui-angular/issues/373)) ([411e594](https://github.com/ovh-ux/ovh-ui-angular/commit/411e594))
+
+
+### Features
+
+* **oui-collapsible:** add on-toggle event ([#372](https://github.com/ovh-ux/ovh-ui-angular/issues/372)) ([6b1adda](https://github.com/ovh-ux/ovh-ui-angular/commit/6b1adda))
+
+
+
 <a name="2.25.1"></a>
 ## [2.25.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.25.0...v2.25.1) (2019-03-04)
 
