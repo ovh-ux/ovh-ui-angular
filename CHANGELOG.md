@@ -1,3 +1,13 @@
+<a name="2.26.1"></a>
+## [2.26.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.26.0...v2.26.1) (2019-03-28)
+
+
+### Bug Fixes
+
+* **oui-tabs:** add button type ([#376](https://github.com/ovh-ux/ovh-ui-angular/issues/376)) ([b8736c1](https://github.com/ovh-ux/ovh-ui-angular/commit/b8736c1))
+
+
+
 <a name="2.26.0"></a>
 # [2.26.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.25.1...v2.26.0) (2019-03-26)
 
