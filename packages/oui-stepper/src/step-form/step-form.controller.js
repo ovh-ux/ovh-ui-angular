@@ -58,9 +58,8 @@ export default class StepFormController {
     }
 
     onFormSubmit (form) {
+        this.onSubmit({ form });
         if (form.$valid && this.valid) {
-            this.onSubmit({ form });
-
             // Focus next step
             this.stepperCtrl.addForm(form, this.stepper.index);
         }
