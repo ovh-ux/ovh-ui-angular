@@ -38,6 +38,12 @@ export default class SelectPickerController {
             }
         }
 
+        this.$scope.$watch(() => this.model, (newValue) => {
+            if (this.model && find(this.values, newValue)) {
+                this.selectedValue = newValue;
+            }
+        });
+
         this.sectionTransclude = this.$transclude.isSlotFilled("sectionSlot");
         this.deprecatedTransclude = this.$transclude.isSlotFilled("deprecatedSlot");
     }
