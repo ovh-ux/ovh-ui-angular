@@ -1,3 +1,14 @@
+<a name="2.27.0"></a>
+# [2.27.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.26.1...v2.27.0) (2019-04-04)
+
+
+### Bug Fixes
+
+* **oui-select-picker:** update when model changes ([#378](https://github.com/ovh-ux/ovh-ui-angular/issues/378)) ([a59bf96](https://github.com/ovh-ux/ovh-ui-angular/commit/a59bf96))
+* **oui-stepper:** call onSubmit when the form is not valid ([#379](https://github.com/ovh-ux/ovh-ui-angular/issues/379)) ([008583c](https://github.com/ovh-ux/ovh-ui-angular/commit/008583c))
+
+
+
 <a name="2.26.1"></a>
 ## [2.26.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.26.0...v2.26.1) (2019-03-28)
 
