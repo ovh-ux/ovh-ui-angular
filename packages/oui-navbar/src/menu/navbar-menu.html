@@ -13,7 +13,7 @@
         ng-if="::!!$ctrl.headerBreadcrumb"
         ng-bind="::$ctrl.headerBreadcrumb">
     </span>
-    <h3 class="oui-navbar-menu__title" ng-bind="::$ctrl.headerTitle"></h3>
+    <h3 class="oui-navbar-menu__title" ng-bind="::$ctrl.headerTitle" title="{{::$ctrl.headerTitle}}"></h3>
 </header>
 <ul class="oui-navbar-list">
     <li class="oui-navbar-list__item {{::!!menuLink.class ? menuLink.class : null}}"
