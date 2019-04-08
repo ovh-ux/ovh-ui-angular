@@ -1,3 +1,19 @@
+<a name="2.28.0"></a>
+# [2.28.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.27.0...v2.28.0) (2019-04-08)
+
+
+### Bug Fixes
+
+* **oui-navbar:** replace ng-bind with ng-bind-html for menu links ([#383](https://github.com/ovh-ux/ovh-ui-angular/issues/383)) ([2f3f129](https://github.com/ovh-ux/ovh-ui-angular/commit/2f3f129))
+
+
+### Features
+
+* **oui-navbar:** display full menu title on hover ([92a1f5d](https://github.com/ovh-ux/ovh-ui-angular/commit/92a1f5d))
+* **oui-stepper:** add editable attribute ([#381](https://github.com/ovh-ux/ovh-ui-angular/issues/381)) ([87ac063](https://github.com/ovh-ux/ovh-ui-angular/commit/87ac063))
+
+
+
 <a name="2.27.0"></a>
 # [2.27.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.26.1...v2.27.0) (2019-04-04)
 
