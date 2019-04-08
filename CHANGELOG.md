@@ -1,3 +1,40 @@
+<a name="2.28.0"></a>
+# [2.28.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.27.0...v2.28.0) (2019-04-08)
+
+
+### Bug Fixes
+
+* **oui-navbar:** replace ng-bind with ng-bind-html for menu links ([#383](https://github.com/ovh-ux/ovh-ui-angular/issues/383)) ([2f3f129](https://github.com/ovh-ux/ovh-ui-angular/commit/2f3f129))
+
+
+### Features
+
+* **oui-navbar:** display full menu title on hover ([92a1f5d](https://github.com/ovh-ux/ovh-ui-angular/commit/92a1f5d))
+* **oui-stepper:** add editable attribute ([#381](https://github.com/ovh-ux/ovh-ui-angular/issues/381)) ([87ac063](https://github.com/ovh-ux/ovh-ui-angular/commit/87ac063))
+
+
+
+<a name="2.27.0"></a>
+# [2.27.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.26.1...v2.27.0) (2019-04-04)
+
+
+### Bug Fixes
+
+* **oui-select-picker:** update when model changes ([#378](https://github.com/ovh-ux/ovh-ui-angular/issues/378)) ([a59bf96](https://github.com/ovh-ux/ovh-ui-angular/commit/a59bf96))
+* **oui-stepper:** call onSubmit when the form is not valid ([#379](https://github.com/ovh-ux/ovh-ui-angular/issues/379)) ([008583c](https://github.com/ovh-ux/ovh-ui-angular/commit/008583c))
+
+
+
+<a name="2.26.1"></a>
+## [2.26.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.26.0...v2.26.1) (2019-03-28)
+
+
+### Bug Fixes
+
+* **oui-tabs:** add button type ([#376](https://github.com/ovh-ux/ovh-ui-angular/issues/376)) ([b8736c1](https://github.com/ovh-ux/ovh-ui-angular/commit/b8736c1))
+
+
+
 <a name="2.26.0"></a>
 # [2.26.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.25.1...v2.26.0) (2019-03-26)
 
