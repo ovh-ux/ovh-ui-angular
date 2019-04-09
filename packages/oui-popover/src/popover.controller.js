@@ -31,8 +31,23 @@ export default class PopoverController {
     }
 
     $postLink () {
-        this.setPopover();
-        this.setTrigger();
+        this.setPopover()
+            .then(() => this.setTrigger())
+            .then(() => {
+                if (this.open) {
+                    this.openPopover();
+                }
+            });
+    }
+
+    $onChanges (changes) {
+        if (angular.isDefined(changes.open) && this.triggerElement) {
+            if (changes.open.currentValue) {
+                this.openPopover();
+            } else {
+                this.closePopover();
+            }
+        }
     }
 
     $onDestroy () {
@@ -40,7 +55,7 @@ export default class PopoverController {
     }
 
     setPopover () {
-        this.$timeout(() => {
+        return this.$timeout(() => {
             // Deprecated: Support for component `oui-popover-content`
             if (this.isComponent) {
                 this.popperElement = this.$element[0].querySelector(".oui-popover");
@@ -67,7 +82,7 @@ export default class PopoverController {
     }
 
     setTrigger () {
-        this.$timeout(() => {
+        return this.$timeout(() => {
             // Deprecated: Support for component `oui-popover-trigger`
             if (this.isComponent) {
                 this.triggerElement = this.$element[0].querySelector(".oui-popover__trigger");
@@ -84,8 +99,12 @@ export default class PopoverController {
                 .attr({
                     "aria-haspopup": true,
                     "aria-expanded": false
-                })
-                .on("click", () => this.onTriggerClick());
+                });
+
+            if (angular.isUndefined(this.$attrs.ouiPopoverOpen)) {
+                this.$triggerElement
+                    .on("click", () => this.onTriggerClick());
+            }
         });
     }
 
@@ -119,6 +138,9 @@ export default class PopoverController {
 
         // Support for attribute `oui-popover`
         this.$element.attr("aria-expanded", true);
+
+        // force the digest because the popover is outside the angular digest loop
+        this.$timeout(() => this.onOpen(), 0);
     }
 
     closePopover () {
@@ -134,6 +156,9 @@ export default class PopoverController {
 
         // Support for attribute `oui-popover`
         this.$element.attr("aria-expanded", false);
+
+        // force the digest because the popover is outside the angular digest loop
+        this.$timeout(() => this.onClose(), 0);
     }
 
     createPopper () {
