@@ -1,3 +1,13 @@
+<a name="2.29.1"></a>
+## [2.29.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.29.0...v2.29.1) (2019-04-12)
+
+
+### Bug Fixes
+
+* **oui-modal:** fix transclude loading by using ng-show ([d7f8635](https://github.com/ovh-ux/ovh-ui-angular/commit/d7f8635))
+
+
+
 <a name="2.29.0"></a>
 # [2.29.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.28.0...v2.29.0) (2019-04-09)
 
