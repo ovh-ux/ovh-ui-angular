@@ -18,7 +18,8 @@ export default () => {
             rowLoader: "&?",
             emptyPlaceholder: "@?",
             onColumnsParametersChange: "&",
-            onRowSelect: "&"
+            onRowSelect: "&",
+            onPageChange: "&"
         },
         compile: elm => {
             // Transclude can't be used here otherwise transcluded

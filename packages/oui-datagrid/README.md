@@ -281,6 +281,17 @@ Or you can use the `page-size` property. It takes precedence over value configur
 </oui-datagrid>
 ```
 
+You can also add custom behaviour on pagination changes 
+
+```html:preview
+<p>Page size : {{ $ctrl.pageSize }}</p>
+<p>Offset : {{ $ctrl.offset }}</p>
+<oui-datagrid rows="$ctrl.data" on-page-change="$ctrl.onPageChange($pagination)" page-size="5">
+  <oui-column title="'firstName'" property="firstName"></oui-column>
+  <oui-column title="$ctrl.lastNameText" property="lastName"></oui-column>
+</oui-datagrid>
+```
+
 ### Custom cell templates
 
 ```html
@@ -718,6 +729,7 @@ call `rows-loader` and then a `row-loader` call for each line.
 | `columns-parameters`              | array     | <?        | no                  | n/a              | `undefined`  | columns parameters (see below)
 | `on-columns-parameters-change`    | function  | &         | no                  | n/a              | n/a          | triggered on column parameter change when datagrid is customizable
 | `on-row-select`                   | function  | &         | no                  | n/a              | n/a          | triggered when a row is selected
+| `on-page-change`                  | function  | &         | no                  | n/a              | n/a          | triggered when pagination is changed
 
 `columns-parameters` is an array describing all basic parameters of each column.
 
