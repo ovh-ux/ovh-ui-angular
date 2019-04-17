@@ -283,7 +283,6 @@ export default class DatagridController {
                     setTimeout(() => this.checkScroll(), checkScrollOnRefreshDataDelay);
                 }
             })
-            .catch(error => console.log(error))
             .finally(() => {
                 this.loading = false;
                 this.firstLoading = false;
