@@ -28,7 +28,7 @@
         <legend class="oui-stepper__description" ng-bind="$ctrl.description"></legend>
 
         <!-- Step Loader -->
-        <section class="oui-stepper__loader" ng-show="$ctrl.loading">
+        <section class="oui-stepper__loader" ng-if="$ctrl.loading">
             <oui-spinner size="s"></oui-spinner>
             <span class="oui-stepper__label-loader"
                 ng-bind="$ctrl.loadingText">
@@ -36,7 +36,7 @@
         </section>
         <!-- /Step Loader -->
 
-        <section ng-show="!$ctrl.loading">
+        <section ng-if="!$ctrl.loading">
             <div ng-transclude></div>
         </section>
 
