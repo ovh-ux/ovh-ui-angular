@@ -98,6 +98,24 @@
 </oui-stepper>
 ```
 
+### Open Steps 
+
+```html:preview
+<oui-stepper
+    current-index="$ctrl.currentStep">
+    <oui-step-form
+        header="Step1">
+        <p>Random content</p>
+    </oui-step-form>
+     <oui-step-form
+        header="Step2">
+        <oui-button variant="link" on-click="$ctrl.currentStep = 0">
+            <span>Go to Step 1</span>
+        </oui-button>
+    </oui-step-form>
+</oui-stepper>
+```
+
 ### Events on `oui-stepper`
 
 **Note**: If you want to access the forms inside `on-finish` callback, you need to use the `forms` variable as below.
@@ -154,6 +172,7 @@
 | ----              | ----      | ----      | ----              | ----              | ----      | ----
 | `name`            | string    | @?        | yes               | n/a               | n/a       | stepper name used to identify step
 | `id`              | string    | @?        | yes               | n/a               | n/a       | stepper id used to identify step
+| `current-index`   | number    | =?        | no                | n/a               | 0         | current step index 
 | `on-init`         | function  | &         | no                | n/a               | n/a       | initialization function
 | `on-finish`       | function  | &         | no                | n/a               | n/a       | submit all steps function
 
