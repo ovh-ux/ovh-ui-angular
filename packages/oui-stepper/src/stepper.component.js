@@ -6,7 +6,8 @@ export default {
         name: "@",
         id: "@",
         onInit: "&",
-        onFinish: "&"
+        onFinish: "&",
+        currentIndex: "=?"
     },
     controller,
     template,
