@@ -62,6 +62,32 @@
 </form>
 ```
 
+#### Confirm Validation
+
+Useful when you have a password field and a confirm password field. The confirm property takes the expression, the value of which should match with it's model value.
+
+```html:preview
+<form name="form3" novalidate>
+    <oui-field label="Password" size="xl">
+        <oui-password model="$ctrl.modelTriggerValidation">
+            <oui-password-rule validator="$ctrl.checkPasswordLength(modelValue)">
+                Must contain between 8 and 30 characters
+            </oui-password-rule>
+            <oui-password-rule pattern="[0-9]+">
+                Have at least one number
+            </oui-password-rule>
+            <oui-password-rule pattern="[A-Z]+">
+                Have at least capital letter
+            </oui-password-rule>
+        </oui-password>
+    </oui-field>
+    <oui-field label="Confirm Password" size="xl">
+        <oui-password model="$ctrl.modelTriggerValidationConfirmPassword" confirm="$ctrl.modelTriggerValidation">
+        </oui-password>
+    </oui-field>
+</form>
+```
+
 #### Custom strength feedback
 
 The feedback of password strength can be overridden by adding your custom feedback in `oui-password-strength`.
@@ -105,6 +131,7 @@ It can also be globally changed with `ouiPasswordProvider` (see **Configuration*
 | `pattern`     | string&lt;regexp&gt;  | @?        | yes               | n/a                   | n/a       | pattern of the model value
 | `required`    | boolean               | <?        | no                | `true`, `false`       | `false`   | required flag
 | `on-change`   | function              | &         | no                | n/a                   | n/a       | handler triggered when value has changed
+| `confirm`     | string                | <?        | no                | n/a                   | n/a       | an expression, used for confirm password, which should match with the model value 
 
 ### oui-rule
 
