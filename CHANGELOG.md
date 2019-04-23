@@ -1,3 +1,15 @@
+<a name="2.30.0"></a>
+# [2.30.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.29.1...v2.30.0) (2019-04-23)
+
+
+### Features
+
+* **oui-datagrid:** add page change event ([#389](https://github.com/ovh-ux/ovh-ui-angular/issues/389)) ([b094289](https://github.com/ovh-ux/ovh-ui-angular/commit/b094289))
+* **oui-password:** add confirm attribute ([#390](https://github.com/ovh-ux/ovh-ui-angular/issues/390)) ([de19bd9](https://github.com/ovh-ux/ovh-ui-angular/commit/de19bd9))
+* **oui-stepper:** add ability to set opened step ([#393](https://github.com/ovh-ux/ovh-ui-angular/issues/393)) ([1441a71](https://github.com/ovh-ux/ovh-ui-angular/commit/1441a71))
+
+
+
 <a name="2.29.1"></a>
 ## [2.29.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.29.0...v2.29.1) (2019-04-12)
 
