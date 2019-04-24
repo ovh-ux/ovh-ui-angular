@@ -1,6 +1,6 @@
 # OVH UI Kit (AngularJS)
 
-![OVH component](https://user-images.githubusercontent.com/3379410/27423240-3f944bc4-5731-11e7-87bb-3ff603aff8a7.png)
+![OVH component deprecated](https://user-images.githubusercontent.com/3379410/27423263-520b94d8-5731-11e7-996a-f8579e70c33b.png)
 
 A set of maintainable components for the OVH ecosystem (AngularJS).
 
@@ -9,6 +9,14 @@ A set of maintainable components for the OVH ecosystem (AngularJS).
 ![Project status stable](https://img.shields.io/badge/status-stable-blue.svg)
 [![Maintenance](https://img.shields.io/maintenance/yes/2018.svg)]()
 [![Chat on gitter](https://img.shields.io/gitter/room/ovh/ux.svg)](https://gitter.im/ovh/ux)
+
+---
+
+<div align="center">
+:bookmark: `ovh-ui-angular` is now deprecated. Please take a look at our <a href="https://github.com/ovh-ux/ovh-ui-kit">OVH UI Kit - Master UI Framework</a>.
+</div>
+
+---
 
 ## Installation
 
