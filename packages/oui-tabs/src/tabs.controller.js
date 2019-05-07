@@ -1,3 +1,5 @@
+import find from "lodash/find";
+
 export default class {
     constructor ($element, $timeout) {
         "ngInject";
@@ -13,11 +15,6 @@ export default class {
         } else {
             this.items.push(item);
         }
-
-        // Set first added tab active
-        if (this.items.length === 1) {
-            this.setActiveTab(item);
-        }
     }
 
     removeItem (item) {
@@ -27,14 +24,14 @@ export default class {
             this.items.splice(index, 1);
         }
 
-        // If was activeId, set first item as active
-        if (this.items.length && item.id === this.activeId) {
+        // If was model, set first item as active
+        if (this.items.length && item.id === this.model) {
             this.setActiveTab(this.items[0]);
         }
     }
 
     setActiveTab (item) {
-        this.activeId = item.id;
+        this.model = item.id;
         if (angular.isFunction(item.onActive)) {
             item.onActive();
         }
@@ -50,5 +47,9 @@ export default class {
                 .addClass("oui-tabs")
                 .removeAttr("aria-label")
         );
+
+        if (this.items.length > 0) {
+            this.setActiveTab(find(this.items, { id: this.model }) || this.items[0]);
+        }
     }
 }
