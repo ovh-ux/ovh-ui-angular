@@ -442,7 +442,7 @@ describe("ouiNavbar", () => {
                 expect(menu.hasClass(navbarMenuFixedClass)).toBeTruthy();
             });
 
-            it("should be have custom content", () => {
+            it("should have custom content", () => {
                 component = testUtils.compileTemplate(`
                     <oui-navbar>
                         <oui-navbar-aside>
