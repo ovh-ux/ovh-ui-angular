@@ -45,7 +45,7 @@
     "angular-aria": ">=1.6.x",
     "angular-sanitize": ">=1.6.x",
     "flatpickr": "^4.5.2",
-    "ovh-ui-kit": "^2.25.0"
+    "ovh-ui-kit": "^2.32.0"
   },
   "devDependencies": {
     "angular": ">=1.6.x",
