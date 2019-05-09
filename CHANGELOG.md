@@ -1,3 +1,19 @@
+<a name="3.0.0"></a>
+# [3.0.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.30.0...v3.0.0) (2019-05-09)
+
+
+### Bug Fixes
+
+* **oui-clipboard:** set button type ([#397](https://github.com/ovh-ux/ovh-ui-angular/issues/397)) ([1f1bf40](https://github.com/ovh-ux/ovh-ui-angular/commit/1f1bf40))
+
+
+### Features
+
+* **oui-navbar:** allow to have custom content in menu header ([#396](https://github.com/ovh-ux/ovh-ui-angular/issues/396)) ([82da42e](https://github.com/ovh-ux/ovh-ui-angular/commit/82da42e))
+* **oui-tabs:** allow to select active tab item ([5626bcd](https://github.com/ovh-ux/ovh-ui-angular/commit/5626bcd))
+
+
+
 <a name="2.30.0"></a>
 # [2.30.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.29.1...v2.30.0) (2019-04-23)
 
