@@ -46,9 +46,8 @@
             icon-class="{{asideLink.iconClass}}"
             on-click="asideLink.onClick"
             ng-repeat="asideLink in $ctrl.asideLinks track by $index"
-            ng-class="asideLink.class"
-            ng-switch="asideLink.name">
-            <oui-navbar-notification ng-switch-when="notifications"
+            ng-class="asideLink.class">
+            <oui-navbar-notification ng-if="asideLink.name === 'notifications'"
                 name="{{asideLink.name}}"
                 links="asideLink.subLinks"
                 limit-to="asideLink.limitTo"
@@ -59,14 +58,14 @@
                 footer-href="{{asideLink.footerUrl}}"
                 align="end"
                 fixed></oui-navbar-notification>
-            <oui-navbar-menu ng-switch-when="user"
+            <oui-navbar-menu ng-if="asideLink.name === 'user'"
                 header-breadcrumb="{{asideLink.nichandle}}"
                 header-title="{{asideLink.fullName}}"
                 name="{{asideLink.name}}"
                 links="asideLink.subLinks"
                 align="end"
                 fixed></oui-navbar-menu>
-            <oui-navbar-menu ng-switch-default
+            <oui-navbar-menu ng-if="asideLink.name !== 'notifications' && asideLink.name !== 'user'"
                 header-class="oui-navbar_mobile-only"
                 header-breadcrumb="{{asideLink.headerBreadcrumb}}"
                 header-title="{{asideLink.headerTitle}}"
@@ -334,6 +333,16 @@ It defines the menu in reponsive mode. It will be visible only for screen resolu
 
 **Note**: By using this mode, you disable the internal `oui-navbar-backdrop` and toggler navigation.
 
+### Add custom header to menus 
+
+```html:preview
+<oui-navbar active-link="lorem">
+    <oui-navbar-toggler links="$ctrl.togglerLinks">
+        <span>Custom header content</span>
+    </oui-navbar-toggler>
+</oui-navbar>
+```
+
 ## Aside Links
 
 ### With attribute `aside-links`
@@ -384,9 +393,8 @@ This property is only available for root links of `aside-links`.
             icon-animated="asideLink.name === 'notifications'"
             on-click="asideLink.onClick"
             ng-repeat="asideLink in $ctrl.asideLinks track by $index"
-            ng-class="asideLink.class"
-            ng-switch="asideLink.name">
-            <oui-navbar-notification ng-switch-when="notifications"
+            ng-class="asideLink.class">
+            <oui-navbar-notification ng-if="asideLink.name === 'notifications'"
                 name="{{asideLink.name}}"
                 links="asideLink.subLinks"
                 limit-to="asideLink.limitTo"
@@ -397,14 +405,15 @@ This property is only available for root links of `aside-links`.
                 footer-href="{{asideLink.footerUrl}}"
                 align="end"
                 fixed></oui-navbar-notification>
-            <oui-navbar-menu ng-switch-when="user"
+            <oui-navbar-menu ng-if="asideLink.name === 'user'"
                 header-breadcrumb="{{asideLink.nichandle}}"
                 header-title="{{asideLink.fullName}}"
+                back-button="true"
                 name="{{asideLink.name}}"
                 links="asideLink.subLinks"
                 align="end"
                 fixed></oui-navbar-menu>
-            <oui-navbar-menu ng-switch-default
+            <oui-navbar-menu ng-if="asideLink.name !== 'notifications' && asideLink.name !== 'user'"
                 header-class="oui-navbar_mobile-only"
                 header-breadcrumb="{{asideLink.headerBreadcrumb}}"
                 header-title="{{asideLink.headerTitle}}"
