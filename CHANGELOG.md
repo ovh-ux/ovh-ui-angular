@@ -1,3 +1,13 @@
+<a name="3.0.1"></a>
+## [3.0.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.0.0...v3.0.1) (2019-05-10)
+
+
+### Bug Fixes
+
+* **oui-tabs:** select dynamically active tab ([4a20ae7](https://github.com/ovh-ux/ovh-ui-angular/commit/4a20ae7))
+
+
+
 <a name="3.0.0"></a>
 # [3.0.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.30.0...v3.0.0) (2019-05-09)
 
