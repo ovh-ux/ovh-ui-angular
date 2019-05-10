@@ -1,10 +1,11 @@
 import find from "lodash/find";
 
 export default class {
-    constructor ($element, $timeout) {
+    constructor ($element, $scope, $timeout) {
         "ngInject";
 
         this.$element = $element;
+        this.$scope = $scope;
         this.$timeout = $timeout;
     }
 
@@ -48,8 +49,10 @@ export default class {
                 .removeAttr("aria-label")
         );
 
-        if (this.items.length > 0) {
-            this.setActiveTab(find(this.items, { id: this.model }) || this.items[0]);
-        }
+        this.$scope.$watch(() => this.items.length, () => {
+            if (this.items.length > 0) {
+                this.setActiveTab(find(this.items, { id: this.model }) || this.items[0]);
+            }
+        });
     }
 }
