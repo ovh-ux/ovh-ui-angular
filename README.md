@@ -12,8 +12,8 @@ A set of maintainable components for the OVH ecosystem (AngularJS).
 
 ---
 
-<div align="center">
-:bookmark: `ovh-ui-angular` is now deprecated. Please take a look at our <a href="https://github.com/ovh-ux/ovh-ui-kit">OVH UI Kit - Master UI Framework</a>.
+<div style="text-align: center;">
+:bookmark: <code class="oui-doc-codespan">ovh-ui-angular</code> is now deprecated. Please take a look at our <a href="https://github.com/ovh-ux/ovh-ui-kit">OVH UI Kit - Master UI Framework</a>.
 </div>
 
 ---
