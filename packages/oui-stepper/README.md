@@ -144,6 +144,8 @@
 
 **Note**: If you want to access the form inside `on-submit` callback, you need to use the `form` variable as below.
 
+**Note** When the form is submitted the `oui-step-form.submit` event is emitted having `form` as a parameter to allow global actions on form submission
+
 ```html:preview
 <oui-stepper>
     <oui-step-form
