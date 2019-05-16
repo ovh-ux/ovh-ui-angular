@@ -1,3 +1,13 @@
+<a name="3.1.0"></a>
+# [3.1.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.0.1...v3.1.0) (2019-05-16)
+
+
+### Features
+
+* **oui-stepper:** emit event on form submit ([a9059c2](https://github.com/ovh-ux/ovh-ui-angular/commit/a9059c2))
+
+
+
 <a name="3.0.2"></a>
 ## [3.0.2](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.0.1...v3.0.2) (2019-05-13)
 
