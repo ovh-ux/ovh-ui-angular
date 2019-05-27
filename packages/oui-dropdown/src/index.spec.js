@@ -91,9 +91,9 @@ describe("ouiDropdown", () => {
             expect(element[0].querySelector("[x-arrow]")).toBeDefined();
         });
 
-        it("should display the dropdown aligned with the left border", () => {
+        it("should display at bottom with the arrow centered by default", () => {
             const element = TestUtils.compileTemplate(`
-                <oui-dropdown align="start">
+                <oui-dropdown arrow>
                   <button class="oui-button" oui-dropdown-trigger></button>
                   <div oui-dropdown-content>
                     <b>the menu</b>
@@ -107,9 +107,25 @@ describe("ouiDropdown", () => {
             controller.toggle();
 
             expect(controller.popper.options.placement).toEqual("bottom-start");
+            expect(element[0].querySelector("[x-arrow]")).toBeDefined();
+        });
 
-            // Popper.js must not manage the arrow position in this case.
-            expect(element[0].querySelector("[x-arrow]")).toBeNull();
+        it("should give the correct placement", () => {
+            const element = TestUtils.compileTemplate(`
+                <oui-dropdown align="left-start">
+                  <button class="oui-button" oui-dropdown-trigger></button>
+                  <div oui-dropdown-content>
+                    <b>the menu</b>
+                  </div>
+                </oui-dropdown>`
+            );
+
+            $timeout.flush();
+
+            const controller = element.controller("ouiDropdown");
+            controller.toggle();
+
+            expect(controller.popper.options.placement).toEqual("left-start");
         });
 
         it("should display the dropdown aligned with the right border", () => {

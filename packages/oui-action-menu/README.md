@@ -28,6 +28,19 @@
 </oui-action-menu>
 ```
 
+### Open on the side 
+
+```html:preview
+<oui-action-menu align="right" compact text="Actions">
+    <oui-action-menu-item href="#">Action 1 (link)</oui-action-menu-item>
+    <oui-action-menu-item on-click="$ctrl.onActionClick()">Action 2 (button)</oui-action-menu-item>
+    <oui-action-menu-item disabled>Action 3 (disabled)</oui-action-menu-item>
+    <oui-action-menu-divider></oui-action-menu-divider>
+    <oui-action-menu-item href="#" external>External link</oui-action-menu-item>
+</oui-action-menu>
+```
+
+
 ### Disabled
 
 ```html:preview
@@ -93,7 +106,7 @@
 | ----              | ----            | ----    | ----             | ----                      | ----       | ----
 | `text`            | string          | @       | yes              | n/a                       | n/a        | button label
 | `aria-label`      | string          | @?      | yes              | n/a                       | n/a        | accessibility label
-| `align`           | string          | @?      | yes              | `start`, `center`, `end`  | `center`   | menu alignment
+| `align`           | string    | @?        | yes               |  See [Popper placements](https://popper.js.org/popper-documentation.html#Popper.placements)  | `bottom-start`   | modifier for alignment
 | `compact`         | boolean         | <?      | yes              | `true`, `false`           | `false`    | use the compact button
 | `disabled`        | boolean         | <?      | no               | `true`, `false`           | `false`    | disable flag
 
