@@ -2,6 +2,7 @@ const formatter = require("eslint-friendly-formatter");
 const webpack = require("webpack");
 const path = require("path");
 const LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const exclude = [/node_modules/, /dist/];
 
@@ -17,6 +18,10 @@ module.exports = {
         new LodashModuleReplacementPlugin({
             shorthands: true,
             paths: true
+        }),
+        new MiniCssExtractPlugin({
+            filename: "[name].css",
+            chunkFilename: "[id].css"
         })
     ],
 
@@ -65,6 +70,15 @@ module.exports = {
                         limit: 10000
                     }
                 }]
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: "css-loader" // translates CSS into CommonJS
+                    }
+                ]
             }
         ]
     }

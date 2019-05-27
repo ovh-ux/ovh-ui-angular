@@ -44,7 +44,6 @@
     "angular": ">=1.6.x",
     "angular-aria": ">=1.6.x",
     "angular-sanitize": ">=1.6.x",
-    "flatpickr": "^4.5.2",
     "ovh-ui-kit": "^2.32.0"
   },
   "devDependencies": {
@@ -64,6 +63,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "babel-register": "^6.26.0",
     "cross-env": "^5.2.0",
+    "css-loader": "^2.1.1",
     "eslint": "^4.3.0",
     "eslint-config-ovh": "^0.1.1",
     "eslint-friendly-formatter": "^4.0.1",
@@ -80,8 +80,10 @@
     "karma-webpack": "^4.0.0-rc.2",
     "lodash": "^4.17.11",
     "lodash-webpack-plugin": "^0.11.5",
+    "mini-css-extract-plugin": "^0.6.0",
     "npm-scripts-config": "^0.0.2",
     "npm-scripts-conventional-changelog": "^0.1.0",
+    "resolve-url-loader": "^3.1.0",
     "rimraf": "^2.6.2",
     "webpack": "^4.19.1",
     "webpack-cli": "^3.1.0",

@@ -1,3 +1,5 @@
+import "flatpickr/dist/flatpickr.min.css";
+
 import Calendar from "./calendar.component.js";
 import CalendarProvider from "./calendar.provider";
 
