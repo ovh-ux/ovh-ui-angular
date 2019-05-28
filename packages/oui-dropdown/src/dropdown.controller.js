@@ -1,4 +1,5 @@
 import { addBooleanParameter, addDefaultParameter } from "@ovh-ui/common/component-utils";
+import includes from "lodash/includes";
 import Popper from "popper.js";
 
 const KEY_ESCAPE = 27;
@@ -132,6 +133,7 @@ export default class {
 
     createPopper () {
         let placement = this.align;
+        const center = this.align === "center" || (!includes(this.align, "start") && !includes(this.align, "end"));
 
         if (["start", "end"].indexOf(this.align) >= 0) {
             placement = `bottom-${this.align}`;
@@ -142,7 +144,7 @@ export default class {
         }
 
         // Let Popper.js manage the arrow position when it's centered (default).
-        if (this.arrowElement && this.align === "center") {
+        if (this.arrowElement && center) {
             this.arrowElement.setAttribute("x-arrow", "");
         }
 
