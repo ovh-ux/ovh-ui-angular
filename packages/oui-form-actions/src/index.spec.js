@@ -75,8 +75,7 @@ describe("ouiFormActions", () => {
             expect(cancelButton.text().trim()).toBe("testCancel");
         });
 
-        it("should not have submit button disabled at any time", () => {
-            // Submit should always be active according to guidelines
+        it("should not have disable submit button", () => {
             const component = testUtils.compileTemplate(`
                 <oui-form-actions
                     on-submit="$ctrl.submit()"
@@ -85,7 +84,7 @@ describe("ouiFormActions", () => {
                 </oui-form-actions>`);
             const submitButton = component.find("button").eq(0);
 
-            expect(submitButton.attr("disabled")).not.toBe("disabled");
+            expect(submitButton.attr("disabled")).toBe("disabled");
         });
 
         it("should have visible cancel button when action provided", () => {

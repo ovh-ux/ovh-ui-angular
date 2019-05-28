@@ -23,6 +23,18 @@
 </oui-form-actions>
 ```
 
+### Disable primary action
+
+```html:preview
+<oui-form-actions
+    disabled="true"
+    submit-text="Apply"
+    href="#"
+    cancel-text="Close">
+</oui-form-actions>
+```
+
+
 ### on-submit and on-cancel events
 
 ```html:preview
@@ -44,6 +56,7 @@
 | `submit-text` | string    | @?        | yes               | n/a       | `Submit`  | submit button text
 | `cancel-text` | string    | @?        | yes               | n/a       | `Cancel`  | cancel button text
 | `href`        | string    | @?        | yes               | n/a       | n/a       | link url on cancel
+| `disabled`    | boolean   | <?        | yes               | `true` `false`       | `false`       | should submit action be disabled
 | `on-submit`   | function  | &         | no                | n/a       | n/a       | button submit click handler
 | `on-cancel`   | function  | &?        | no                | n/a       | n/a       | button cancel click handler
 
