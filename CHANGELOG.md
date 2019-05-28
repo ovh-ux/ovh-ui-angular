@@ -1,3 +1,14 @@
+<a name="3.2.0"></a>
+# [3.2.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.1.0...v3.2.0) (2019-05-28)
+
+
+### Features
+
+* **oui-dropdown:** allow to pass placement to oui-action-menu ([#404](https://github.com/ovh-ux/ovh-ui-angular/issues/404)) ([883cdca](https://github.com/ovh-ux/ovh-ui-angular/commit/883cdca))
+* **oui-form-actions:** allow submit button to be disabled ([#406](https://github.com/ovh-ux/ovh-ui-angular/issues/406)) ([43f738f](https://github.com/ovh-ux/ovh-ui-angular/commit/43f738f))
+
+
+
 <a name="3.1.0"></a>
 # [3.1.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.0.1...v3.1.0) (2019-05-16)
 
