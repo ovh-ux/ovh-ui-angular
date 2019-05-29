@@ -1,3 +1,13 @@
+<a name="3.2.1"></a>
+## [3.2.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.2.0...v3.2.1) (2019-05-29)
+
+
+### Bug Fixes
+
+* **oui-dropdown:** fix automatic center positionning ([#407](https://github.com/ovh-ux/ovh-ui-angular/issues/407)) ([a45156d](https://github.com/ovh-ux/ovh-ui-angular/commit/a45156d))
+
+
+
 <a name="3.2.0"></a>
 # [3.2.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.1.0...v3.2.0) (2019-05-28)
 
