@@ -1,3 +1,13 @@
+<a name="3.2.2"></a>
+## [3.2.2](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.2.1...v3.2.2) (2019-06-07)
+
+
+### Bug Fixes
+
+* **oui-select:** remove invalid hideErrors method call ([#408](https://github.com/ovh-ux/ovh-ui-angular/issues/408)) ([0d53bd8](https://github.com/ovh-ux/ovh-ui-angular/commit/0d53bd8))
+
+
+
 <a name="3.2.1"></a>
 ## [3.2.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.2.0...v3.2.1) (2019-05-29)
 
