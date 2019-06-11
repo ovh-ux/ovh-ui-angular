@@ -1,3 +1,13 @@
+<a name="3.2.3"></a>
+## [3.2.3](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.2.2...v3.2.3) (2019-06-11)
+
+
+### Bug Fixes
+
+* **oui-dropdown:** prevent popper from changing the placement ([#409](https://github.com/ovh-ux/ovh-ui-angular/issues/409)) ([e8459c9](https://github.com/ovh-ux/ovh-ui-angular/commit/e8459c9))
+
+
+
 <a name="3.2.2"></a>
 ## [3.2.2](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.2.1...v3.2.2) (2019-06-07)
 
