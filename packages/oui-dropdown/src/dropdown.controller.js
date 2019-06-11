@@ -154,7 +154,7 @@ export default class {
             placement,
             modifiers: {
                 flip: {
-                    boundariesElement: "viewport"
+                    enabled: false
                 },
                 keepTogether: {
                     enabled: true
