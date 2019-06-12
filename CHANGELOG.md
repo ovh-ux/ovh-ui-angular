@@ -1,3 +1,13 @@
+<a name="3.2.4"></a>
+## [3.2.4](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.2.3...v3.2.4) (2019-06-12)
+
+
+### Bug Fixes
+
+* **oui-stepper:** fix modify step button appearance ([#410](https://github.com/ovh-ux/ovh-ui-angular/issues/410)) ([42ca0d9](https://github.com/ovh-ux/ovh-ui-angular/commit/42ca0d9))
+
+
+
 <a name="3.2.3"></a>
 ## [3.2.3](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.2.2...v3.2.3) (2019-06-11)
 
