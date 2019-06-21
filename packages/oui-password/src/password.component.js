@@ -15,7 +15,8 @@ export default {
         minlength: "<?",
         pattern: "@?",
         required: "<?",
-        onChange: "&"
+        onChange: "&",
+        confirm: "<?"
     },
     controller,
     template,

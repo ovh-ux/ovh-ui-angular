@@ -1,4 +1,5 @@
 import { addBooleanParameter, addDefaultParameter } from "@ovh-ui/common/component-utils";
+import includes from "lodash/includes";
 import Popper from "popper.js";
 
 const KEY_ESCAPE = 27;
@@ -21,7 +22,7 @@ export default class {
 
         addBooleanParameter(this, "arrow");
         addBooleanParameter(this, "persistent");
-        addDefaultParameter(this, "align", "start");
+        addDefaultParameter(this, "align", "bottom-start");
 
         // Use internal id to map trigger and content with aria-label and aria-labelledby.
         this.id = `ouiDropdown${this.$scope.$id}`;
@@ -131,21 +132,38 @@ export default class {
     }
 
     createPopper () {
-        let placement = "bottom";
+        let placement = this.align;
+        const center = this.align === "center" || (!includes(this.align, "start") && !includes(this.align, "end"));
 
         if (["start", "end"].indexOf(this.align) >= 0) {
-            placement += `-${this.align}`;
+            placement = `bottom-${this.align}`;
+        }
+
+        if (["center"].indexOf(this.align) >= 0) {
+            placement = "bottom";
         }
 
         // Let Popper.js manage the arrow position when it's centered (default).
-        if (this.arrowElement && placement === "bottom") {
+        if (this.arrowElement && center) {
             this.arrowElement.setAttribute("x-arrow", "");
         }
 
         this.popperElement.style.minWidth = `${this.getTriggerWidth()}px`;
 
         this.popper = new Popper(this.triggerElement, this.popperElement, {
-            placement
+            placement,
+            modifiers: {
+                flip: {
+                    enabled: false
+                },
+                keepTogether: {
+                    enabled: true
+                },
+                preventOverflow: {
+                    boundariesElement: "viewport",
+                    escapeWithReference: true
+                }
+            }
         });
     }
 

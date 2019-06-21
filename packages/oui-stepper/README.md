@@ -98,6 +98,24 @@
 </oui-stepper>
 ```
 
+### Open Steps 
+
+```html:preview
+<oui-stepper
+    current-index="$ctrl.currentStep">
+    <oui-step-form
+        header="Step1">
+        <p>Random content</p>
+    </oui-step-form>
+     <oui-step-form
+        header="Step2">
+        <oui-button variant="link" on-click="$ctrl.currentStep = 0">
+            <span>Go to Step 1</span>
+        </oui-button>
+    </oui-step-form>
+</oui-stepper>
+```
+
 ### Events on `oui-stepper`
 
 **Note**: If you want to access the forms inside `on-finish` callback, you need to use the `forms` variable as below.
@@ -125,6 +143,8 @@
 ### Events on `oui-step-form`
 
 **Note**: If you want to access the form inside `on-submit` callback, you need to use the `form` variable as below.
+
+**Note** When the form is submitted the `oui-step-form.submit` event is emitted having `form` as a parameter to allow global actions on form submission
 
 ```html:preview
 <oui-stepper>
@@ -154,6 +174,7 @@
 | ----              | ----      | ----      | ----              | ----              | ----      | ----
 | `name`            | string    | @?        | yes               | n/a               | n/a       | stepper name used to identify step
 | `id`              | string    | @?        | yes               | n/a               | n/a       | stepper id used to identify step
+| `current-index`   | number    | =?        | no                | n/a               | 0         | current step index 
 | `on-init`         | function  | &         | no                | n/a               | n/a       | initialization function
 | `on-finish`       | function  | &         | no                | n/a               | n/a       | submit all steps function
 
@@ -171,6 +192,7 @@
 | `loading-text`    | string    | @?        | no                | n/a               | n/a       | text for the loading state
 | `loading`         | boolean   | <?        | no                | `true`, `false`   | `false`   | display the loading state
 | `disabled`        | boolean   | <?        | no                | `true`, `false`   | `false`   | disable the step and shrink it
+| `editable`        | boolean   | <?        | no                | `true`, `false`   | `true`    | Define if user can go back on a step and edit it again 
 | `navigation`      | boolean   | <?        | no                | `true`, `false`   | `true`    | show the navigation buttons
 | `skippable`       | boolean   | <?        | no                | `true`, `false`   | `false`   | add button to skip facultative step
 | `valid`           | boolean   | <?        | no                | `true`, `false`   | `true`    | custom validation for the form

@@ -5,7 +5,8 @@ export default {
     controller,
     template,
     bindings: {
-        ariaLabel: "@?"
+        ariaLabel: "@?",
+        model: "=?"
     },
     transclude: {
         item: "?ouiTabsItem"

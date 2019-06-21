@@ -4,13 +4,15 @@
     <a ng-attr-rel="{{::$ctrl.linkRel}}"
        ng-attr-target="{{::$ctrl.linkTarget}}"
        ng-href="{{::$ctrl.href}}"
-       ng-if="!!$ctrl.href && !$ctrl.disabled">
+       ng-if="!!$ctrl.href && !$ctrl.disabled"
+       ng-click="$ctrl.onClick()">
         <span ng-bind="::$ctrl.text"></span>
         <span class="oui-icon oui-icon-external_link" aria-hidden="true"
               ng-if="::$ctrl.external">
         </span>
     </a>
     <a ng-bind="::$ctrl.text"
+       ng-click="$ctrl.onClick()"
        ng-if="!!$ctrl.state && !$ctrl.disabled"
        ui-sref="{{::$ctrl.getFullSref()}}">
     </a>

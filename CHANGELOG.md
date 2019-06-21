@@ -1,3 +1,223 @@
+<a name="3.2.4"></a>
+## [3.2.4](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.2.3...v3.2.4) (2019-06-12)
+
+
+### Bug Fixes
+
+* **oui-stepper:** fix modify step button appearance ([#410](https://github.com/ovh-ux/ovh-ui-angular/issues/410)) ([42ca0d9](https://github.com/ovh-ux/ovh-ui-angular/commit/42ca0d9))
+
+
+
+<a name="3.2.3"></a>
+## [3.2.3](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.2.2...v3.2.3) (2019-06-11)
+
+
+### Bug Fixes
+
+* **oui-dropdown:** prevent popper from changing the placement ([#409](https://github.com/ovh-ux/ovh-ui-angular/issues/409)) ([e8459c9](https://github.com/ovh-ux/ovh-ui-angular/commit/e8459c9))
+
+
+
+<a name="3.2.2"></a>
+## [3.2.2](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.2.1...v3.2.2) (2019-06-07)
+
+
+### Bug Fixes
+
+* **oui-select:** remove invalid hideErrors method call ([#408](https://github.com/ovh-ux/ovh-ui-angular/issues/408)) ([0d53bd8](https://github.com/ovh-ux/ovh-ui-angular/commit/0d53bd8))
+
+
+
+<a name="3.2.1"></a>
+## [3.2.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.2.0...v3.2.1) (2019-05-29)
+
+
+### Bug Fixes
+
+* **oui-dropdown:** fix automatic center positionning ([#407](https://github.com/ovh-ux/ovh-ui-angular/issues/407)) ([a45156d](https://github.com/ovh-ux/ovh-ui-angular/commit/a45156d))
+
+
+
+<a name="3.2.0"></a>
+# [3.2.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.1.0...v3.2.0) (2019-05-28)
+
+
+### Features
+
+* **oui-dropdown:** allow to pass placement to oui-action-menu ([#404](https://github.com/ovh-ux/ovh-ui-angular/issues/404)) ([883cdca](https://github.com/ovh-ux/ovh-ui-angular/commit/883cdca))
+* **oui-form-actions:** allow submit button to be disabled ([#406](https://github.com/ovh-ux/ovh-ui-angular/issues/406)) ([43f738f](https://github.com/ovh-ux/ovh-ui-angular/commit/43f738f))
+
+
+
+<a name="3.1.0"></a>
+# [3.1.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.0.1...v3.1.0) (2019-05-16)
+
+
+### Features
+
+* **oui-stepper:** emit event on form submit ([a9059c2](https://github.com/ovh-ux/ovh-ui-angular/commit/a9059c2))
+
+
+
+<a name="3.0.2"></a>
+## [3.0.2](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.0.1...v3.0.2) (2019-05-13)
+
+
+
+<a name="3.0.1"></a>
+## [3.0.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.0.0...v3.0.1) (2019-05-10)
+
+
+### Bug Fixes
+
+* **oui-tabs:** select dynamically active tab ([4a20ae7](https://github.com/ovh-ux/ovh-ui-angular/commit/4a20ae7))
+
+
+
+<a name="3.0.0"></a>
+# [3.0.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.30.0...v3.0.0) (2019-05-09)
+
+
+### Bug Fixes
+
+* **oui-clipboard:** set button type ([#397](https://github.com/ovh-ux/ovh-ui-angular/issues/397)) ([1f1bf40](https://github.com/ovh-ux/ovh-ui-angular/commit/1f1bf40))
+
+
+### Features
+
+* **oui-navbar:** allow to have custom content in menu header ([#396](https://github.com/ovh-ux/ovh-ui-angular/issues/396)) ([82da42e](https://github.com/ovh-ux/ovh-ui-angular/commit/82da42e))
+* **oui-tabs:** allow to select active tab item ([5626bcd](https://github.com/ovh-ux/ovh-ui-angular/commit/5626bcd))
+
+
+
+<a name="2.30.0"></a>
+# [2.30.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.29.1...v2.30.0) (2019-04-23)
+
+
+### Features
+
+* **oui-datagrid:** add page change event ([#389](https://github.com/ovh-ux/ovh-ui-angular/issues/389)) ([b094289](https://github.com/ovh-ux/ovh-ui-angular/commit/b094289))
+* **oui-password:** add confirm attribute ([#390](https://github.com/ovh-ux/ovh-ui-angular/issues/390)) ([de19bd9](https://github.com/ovh-ux/ovh-ui-angular/commit/de19bd9))
+* **oui-stepper:** add ability to set opened step ([#393](https://github.com/ovh-ux/ovh-ui-angular/issues/393)) ([1441a71](https://github.com/ovh-ux/ovh-ui-angular/commit/1441a71))
+
+
+
+<a name="2.29.1"></a>
+## [2.29.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.29.0...v2.29.1) (2019-04-12)
+
+
+### Bug Fixes
+
+* **oui-modal:** fix transclude loading by using ng-show ([d7f8635](https://github.com/ovh-ux/ovh-ui-angular/commit/d7f8635))
+
+
+
+<a name="2.29.0"></a>
+# [2.29.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.28.0...v2.29.0) (2019-04-09)
+
+
+### Features
+
+* **oui-popover:** add open, on-open and on-close bindings ([#385](https://github.com/ovh-ux/ovh-ui-angular/issues/385)) ([dac5381](https://github.com/ovh-ux/ovh-ui-angular/commit/dac5381))
+
+
+
+<a name="2.28.0"></a>
+# [2.28.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.27.0...v2.28.0) (2019-04-08)
+
+
+### Bug Fixes
+
+* **oui-navbar:** replace ng-bind with ng-bind-html for menu links ([#383](https://github.com/ovh-ux/ovh-ui-angular/issues/383)) ([2f3f129](https://github.com/ovh-ux/ovh-ui-angular/commit/2f3f129))
+
+
+### Features
+
+* **oui-navbar:** display full menu title on hover ([92a1f5d](https://github.com/ovh-ux/ovh-ui-angular/commit/92a1f5d))
+* **oui-stepper:** add editable attribute ([#381](https://github.com/ovh-ux/ovh-ui-angular/issues/381)) ([87ac063](https://github.com/ovh-ux/ovh-ui-angular/commit/87ac063))
+
+
+
+<a name="2.27.0"></a>
+# [2.27.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.26.1...v2.27.0) (2019-04-04)
+
+
+### Bug Fixes
+
+* **oui-select-picker:** update when model changes ([#378](https://github.com/ovh-ux/ovh-ui-angular/issues/378)) ([a59bf96](https://github.com/ovh-ux/ovh-ui-angular/commit/a59bf96))
+* **oui-stepper:** call onSubmit when the form is not valid ([#379](https://github.com/ovh-ux/ovh-ui-angular/issues/379)) ([008583c](https://github.com/ovh-ux/ovh-ui-angular/commit/008583c))
+
+
+
+<a name="2.26.1"></a>
+## [2.26.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.26.0...v2.26.1) (2019-03-28)
+
+
+### Bug Fixes
+
+* **oui-tabs:** add button type ([#376](https://github.com/ovh-ux/ovh-ui-angular/issues/376)) ([b8736c1](https://github.com/ovh-ux/ovh-ui-angular/commit/b8736c1))
+
+
+
+<a name="2.26.0"></a>
+# [2.26.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.25.1...v2.26.0) (2019-03-26)
+
+
+### Bug Fixes
+
+* **oui-modal:** hide content when loading ([#373](https://github.com/ovh-ux/ovh-ui-angular/issues/373)) ([411e594](https://github.com/ovh-ux/ovh-ui-angular/commit/411e594))
+
+
+### Features
+
+* **oui-collapsible:** add on-toggle event ([#372](https://github.com/ovh-ux/ovh-ui-angular/issues/372)) ([6b1adda](https://github.com/ovh-ux/ovh-ui-angular/commit/6b1adda))
+
+
+
+<a name="2.25.1"></a>
+## [2.25.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.25.0...v2.25.1) (2019-03-04)
+
+
+### Bug Fixes
+
+* **oui-slideshow:** fix removed attribute theme ([82ccf3e](https://github.com/ovh-ux/ovh-ui-angular/commit/82ccf3e))
+
+
+
+<a name="2.25.0"></a>
+# [2.25.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.24.3...v2.25.0) (2019-03-01)
+
+
+### Features
+
+* **oui-header-tabs:** add on click event ([#367](https://github.com/ovh-ux/ovh-ui-angular/issues/367)) ([9269a99](https://github.com/ovh-ux/ovh-ui-angular/commit/9269a99))
+* **oui-popover:** add scope attribute for template ([#365](https://github.com/ovh-ux/ovh-ui-angular/issues/365)) ([f105aa9](https://github.com/ovh-ux/ovh-ui-angular/commit/f105aa9))
+* **oui-slideshow:** add on-panel-change event ([#368](https://github.com/ovh-ux/ovh-ui-angular/issues/368)) ([9b17702](https://github.com/ovh-ux/ovh-ui-angular/commit/9b17702))
+
+
+
+<a name="2.24.3"></a>
+## [2.24.3](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.24.2...v2.24.3) (2019-02-21)
+
+
+### Bug Fixes
+
+* fix dropdown menu placement ([#362](https://github.com/ovh-ux/ovh-ui-angular/issues/362)) ([53c41ec](https://github.com/ovh-ux/ovh-ui-angular/commit/53c41ec))
+
+
+
+<a name="2.24.2"></a>
+## [2.24.2](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.24.1...v2.24.2) (2019-02-13)
+
+
+### Bug Fixes
+
+* **oui-collapsible:** add type button to collapsible button ([#357](https://github.com/ovh-ux/ovh-ui-angular/issues/357)) ([8dea2c1](https://github.com/ovh-ux/ovh-ui-angular/commit/8dea2c1))
+* **oui-file:** fix input hidden error from ng 1.7.6 ([#353](https://github.com/ovh-ux/ovh-ui-angular/issues/353)) ([b3763a5](https://github.com/ovh-ux/ovh-ui-angular/commit/b3763a5))
+* **oui-pagination:** add input search when huge amount of pages ([#358](https://github.com/ovh-ux/ovh-ui-angular/issues/358)) ([11c3c47](https://github.com/ovh-ux/ovh-ui-angular/commit/11c3c47))
+
+
+
 <a name="2.24.1"></a>
 ## [2.24.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v2.24.0...v2.24.1) (2019-01-21)
 

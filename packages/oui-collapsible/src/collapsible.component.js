@@ -8,7 +8,8 @@ export default {
         id: "@",
         heading: "@",
         ariaLabel: "@?",
-        expanded: "<?"
+        expanded: "<?",
+        onToggle: "&"
     },
     transclude: true
 };

@@ -63,6 +63,34 @@
 </oui-tabs>
 ```
 
+### Active tab
+
+```html:preview
+<div class="oui-doc-preview-only-keep-children"
+    ng-init="$ctrl.activeTab = 'basic2'">
+<oui-tabs model="$ctrl.activeTab">
+    <oui-tabs-item id="basic1" heading="Basic1">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet congue urna. Praesent ultricies id ex convallis dictum. Pellentesque malesuada faucibus consectetur. Quisque vehicula tincidunt leo, quis auctor nisi luctus quis. Etiam purus lectus, placerat vitae vehicula at, molestie nec erat. Duis enim odio, maximus at laoreet in, finibus nec mi. Nam ultrices, lacus vitae egestas volutpat, libero odio gravida turpis, vitae dapibus ex mi nec quam. Pellentesque a tempor nibh.</p>
+    </oui-tabs-item>
+    <oui-tabs-item id="basic2" heading="Basic2">
+        <p>Proin egestas fermentum lectus nec euismod. Vivamus eu congue dui. Pellentesque sit amet pellentesque quam. Morbi posuere sem nec rutrum placerat. Vestibulum porttitor arcu eu risus tempor consectetur. Fusce aliquam bibendum aliquet. Morbi semper egestas iaculis. Ut sit amet sem et neque porta cursus pellentesque nec augue. Nullam semper in metus et luctus. Nunc molestie non ipsum a consequat. Etiam pellentesque laoreet lectus ut luctus. Nulla maximus, leo a mattis gravida, ligula felis vulputate libero, vitae fringilla nibh mauris nec dui. Fusce sed massa at arcu euismod dictum id sit amet lorem. Aliquam sed viverra sem, quis vehicula ligula. Vivamus blandit varius condimentum.</p>
+    </oui-tabs-item>
+    <oui-tabs-item id="basic3" heading="Basic3">
+        <p>Duis egestas nulla at euismod semper. Nullam bibendum auctor viverra. Sed posuere neque nulla, id cursus nisi molestie vel. Nulla ornare elit sit amet congue faucibus. Aliquam eget lorem id justo ornare pretium in sit amet lectus. Sed maximus odio id porttitor rhoncus. Quisque pulvinar mauris ut sapien dictum, ultrices fermentum orci efficitur. Cras nec auctor ante. Aliquam ornare eleifend neque, at condimentum lacus aliquet elementum. Mauris mattis porttitor tortor vel vehicula. Phasellus venenatis nibh nec viverra sollicitudin. Ut lobortis mattis mauris, vel euismod nibh faucibus a.</p>
+    </oui-tabs-item>
+</oui-tabs>
+</div>
+
+<div class="oui-doc-preview-only">
+    <p class="oui-doc-preview-only">Active Tab Id: {{ $ctrl.activeTab }}</p>
+    <button class="oui-button oui-button_primary" type="text"
+        ng-disabled="$ctrl.activeTab === 'basic2'"
+        ng-click="$ctrl.activeTab = 'basic2'">
+        Focus on "Basic 2" tab
+    </button>
+</div>
+```
+
 ## API
 
 ### oui-tabs
@@ -70,6 +98,7 @@
 | Attribute     | Type      | Binding   | One-time Binding  | Values            | Default   | Description
 | ----          | ----      | ----      | ----              | ----              | ----      | ----
 | `aria-label`  | string    | @?        | yes               | n/a               | n/a       | accessibility label
+| `model`       | object    | =?        | no                | n/a               | n/a       | `id` of the current active tab item
 
 ### oui-tabs-item
 

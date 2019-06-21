@@ -9,7 +9,11 @@ export default () => {
             text: "@ouiPopover",
             title: "@?",
             placement: "@?ouiPopoverPlacement",
-            template: "@?ouiPopoverTemplate"
+            scope: "<?ouiPopoverScope",
+            template: "@?ouiPopoverTemplate",
+            open: "<?ouiPopoverOpen",
+            onOpen: "&ouiPopoverOnOpen",
+            onClose: "&ouiPopoverOnClose"
         },
         controller,
         controllerAs: "$popoverCtrl"
