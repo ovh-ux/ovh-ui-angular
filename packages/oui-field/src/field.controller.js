@@ -151,6 +151,15 @@ export default class FieldController {
         }
 
         this.checkAllErrors();
+
+        if (this.errorDisplay && angular.isFunction(this.errorDisplay())) {
+            return this.errorDisplay()(this);
+        }
+
+        if (this.ouiFieldConfiguration.globalErrorVisible) {
+            return this.ouiFieldConfiguration.globalErrorVisible(this);
+        }
+
         return this.invalid && !this.hasFocus && (this.blurred || this.form.$submitted);
     }
 

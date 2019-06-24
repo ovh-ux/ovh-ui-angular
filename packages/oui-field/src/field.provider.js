@@ -17,6 +17,8 @@ export default class {
                 pattern: "Invalid format."
             }
         };
+
+        this.globalErrorVisible = null;
     }
 
     /**
@@ -28,9 +30,16 @@ export default class {
         return this;
     }
 
+    setGlobalErrorVisible (func) {
+        if (func && angular.isFunction(func)) {
+            this.globalErrorVisible = func;
+        }
+    }
+
     $get () {
         return {
-            translations: this.translations
+            translations: this.translations,
+            globalErrorVisible: this.globalErrorVisible
         };
     }
 }

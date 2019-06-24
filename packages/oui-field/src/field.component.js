@@ -7,7 +7,8 @@ export default {
         helpText: "@?",
         size: "@?",
         errorMessages: "<?",
-        labelPopover: "@?"
+        labelPopover: "@?",
+        errorDisplay: "&?"
     },
     controller,
     require: {
