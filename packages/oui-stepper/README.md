@@ -6,7 +6,7 @@
 
 ### Linear stepper
 
-**Note**: The value of the custom validation attribute doesn't override the angular form validation `form.$valid`. Both are needed to be `true` to enable the submission.
+**Note**: The value of the custom validation attribute doesn't override the angular form validation `form.$valid`. Both are needed to be `true` to enable the submission. If you set `prevent-next`, the "next" button will stay disabled until both conditions are fulfilled.
 
 ```html:preview
 <oui-stepper>
@@ -197,6 +197,7 @@
 | `skippable`       | boolean   | <?        | no                | `true`, `false`   | `false`   | add button to skip facultative step
 | `valid`           | boolean   | <?        | no                | `true`, `false`   | `true`    | custom validation for the form
 | `position`        | number    | @?        | no                | n/a               | n/a       | position where to insert step if used with ngIf
+| `prevent-next`    | boolean   | <?        | no                | `true`, `false`   | `false`   | disable the "next" button when the form is invalid
 | `on-cancel`       | function  | &?        | no                | n/a               | n/a       | cancel step function
 | `on-focus`        | function  | &         | no                | n/a               | n/a       | focused step function
 | `on-submit`       | function  | &         | no                | n/a               | n/a       | submit step function

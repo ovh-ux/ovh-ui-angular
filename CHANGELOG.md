@@ -1,3 +1,13 @@
+<a name="3.3.0"></a>
+# [3.3.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.2.4...v3.3.0) (2019-06-26)
+
+
+### Features
+
+* **oui-stepper:** disable next button when invalid (backport from v3) ([#412](https://github.com/ovh-ux/ovh-ui-angular/issues/412)) ([a36b9d4](https://github.com/ovh-ux/ovh-ui-angular/commit/a36b9d4))
+
+
+
 <a name="3.2.4"></a>
 ## [3.2.4](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.2.3...v3.2.4) (2019-06-12)
 
