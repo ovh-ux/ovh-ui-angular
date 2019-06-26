@@ -133,8 +133,8 @@ describe("ouiHeaderTabs", () => {
                 <oui-header-tabs>
                     <oui-header-tabs-item text="Tab" href="/#" on-click="$ctrl.clickHandler()"></oui-header-tabs-item>
                 </oui-header-tabs>`, {
-                    clickHandler: clickSpy
-                }
+                clickHandler: clickSpy
+            }
             );
 
             const item = element[0].querySelector(".oui-header-tabs__item a");

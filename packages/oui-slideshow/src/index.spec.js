@@ -150,8 +150,8 @@ describe("ouiSlideshow", () => {
                         <oui-slideshow-panel></oui-slideshow-panel>
                         <oui-slideshow-panel></oui-slideshow-panel>
                     </oui-slideshow>`, {
-                        onPanelChangeSpy
-                    });
+                    onPanelChangeSpy
+                });
                 const direction = "next";
                 const index = 1;
                 $timeout.flush();
