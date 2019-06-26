@@ -45,6 +45,7 @@ export default class {
         const indexOfStep = this.steps.indexOf(step);
         if (indexOfStep > -1) {
             this.steps.splice(indexOfStep, 1);
+            this.focusStep(this.currentIndex);
         }
     }
 
