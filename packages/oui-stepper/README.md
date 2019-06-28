@@ -98,7 +98,7 @@
 </oui-stepper>
 ```
 
-### Open Steps 
+### Open Steps
 
 ```html:preview
 <oui-stepper
@@ -174,7 +174,7 @@
 | ----              | ----      | ----      | ----              | ----              | ----      | ----
 | `name`            | string    | @?        | yes               | n/a               | n/a       | stepper name used to identify step
 | `id`              | string    | @?        | yes               | n/a               | n/a       | stepper id used to identify step
-| `current-index`   | number    | =?        | no                | n/a               | 0         | current step index 
+| `current-index`   | number    | =?        | no                | n/a               | 0         | current step index
 | `on-init`         | function  | &         | no                | n/a               | n/a       | initialization function
 | `on-finish`       | function  | &         | no                | n/a               | n/a       | submit all steps function
 
@@ -184,15 +184,15 @@
 | ----              | ----      | ----      | ----              | ----              | ----      | ----
 | `name`            | string    | @?        | yes               | n/a               | n/a       | step form name, same as normal form
 | `id`              | string    | @?        | yes               | n/a               | n/a       | step form id, same as normal form
-| `header`          | string    | @?        | yes               | n/a               | n/a       | title of the step
-| `description`     | string    | @?        | yes               | n/a               | n/a       | description of the step
+| `header`          | string    | @?        | no                | n/a               | n/a       | title of the step
+| `description`     | string    | @?        | no                | n/a               | n/a       | description of the step
 | `cancel-href`     | string    | @?        | yes               | n/a               | n/a       | link url on cancel
 | `cancel-text`     | string    | @?        | yes               | n/a               | n/a       | text for the cancel button
 | `submit-text`     | string    | @?        | no                | n/a               | `Submit`  | text for the submit button
 | `loading-text`    | string    | @?        | no                | n/a               | n/a       | text for the loading state
 | `loading`         | boolean   | <?        | no                | `true`, `false`   | `false`   | display the loading state
 | `disabled`        | boolean   | <?        | no                | `true`, `false`   | `false`   | disable the step and shrink it
-| `editable`        | boolean   | <?        | no                | `true`, `false`   | `true`    | Define if user can go back on a step and edit it again 
+| `editable`        | boolean   | <?        | no                | `true`, `false`   | `true`    | Define if user can go back on a step and edit it again
 | `navigation`      | boolean   | <?        | no                | `true`, `false`   | `true`    | show the navigation buttons
 | `skippable`       | boolean   | <?        | no                | `true`, `false`   | `false`   | add button to skip facultative step
 | `valid`           | boolean   | <?        | no                | `true`, `false`   | `true`    | custom validation for the form
