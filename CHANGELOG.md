@@ -1,3 +1,13 @@
+<a name="3.3.1"></a>
+## [3.3.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.3.0...v3.3.1) (2019-06-28)
+
+
+### Bug Fixes
+
+* remove some one time bindings ([a878e02](https://github.com/ovh-ux/ovh-ui-angular/commit/a878e02))
+
+
+
 <a name="3.3.0"></a>
 # [3.3.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.2.4...v3.3.0) (2019-06-26)
 
