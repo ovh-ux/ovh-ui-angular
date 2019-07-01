@@ -1,3 +1,13 @@
+<a name="3.3.3"></a>
+## [3.3.3](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.3.2...v3.3.3) (2019-07-01)
+
+
+### Bug Fixes
+
+* remove dead space ([2b39d45](https://github.com/ovh-ux/ovh-ui-angular/commit/2b39d45))
+
+
+
 <a name="3.3.2"></a>
 ## [3.3.2](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.3.1...v3.3.2) (2019-07-01)
 
