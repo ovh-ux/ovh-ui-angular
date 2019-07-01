@@ -342,7 +342,7 @@ describe("ouiField", () => {
                 expect(getError(element)).not.toBeNull();
             });
 
-            it("should hide the error on focus, when the field is already in error", () => {
+            it("should show the error on focus, when the field is already in error", () => {
                 const element = TestUtils.compileTemplate(`
                     <form name="form">
                         <oui-field label="{{'Age'}}">
@@ -368,7 +368,7 @@ describe("ouiField", () => {
 
                 $control.triggerHandler("focus");
                 $timeout.flush();
-                expect(getError(element)).toBeNull();
+                expect(getError(element)).not.toBeNull();
             });
         });
 
@@ -678,7 +678,7 @@ describe("ouiField", () => {
                 expect(element[0].querySelector(".oui-field__error")).not.toBeNull();
             });
 
-            it("should hide error on focus after on submit", () => {
+            it("should show error on focus after on submit", () => {
                 const element = TestUtils.compileTemplate(`
                     <form name="form" ng-submit="$ctrl.noop()">
                         <oui-field label="{{'username'}}">
@@ -707,7 +707,7 @@ describe("ouiField", () => {
 
                 $control.triggerHandler("focus");
                 $timeout.flush();
-                expect(element[0].querySelector(".oui-field__error")).toBeNull();
+                expect(element[0].querySelector(".oui-field__error")).not.toBeNull();
             });
         });
     });
