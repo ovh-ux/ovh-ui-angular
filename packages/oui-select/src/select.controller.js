@@ -88,7 +88,6 @@ export default class {
             // We need to check if the blur event is the one we really need (only in single mode)
             if (this.multiple || !this.$select.open) {
                 if (this.fieldCtrl) {
-                    this.fieldCtrl.hasFocus = false;
                     this.fieldCtrl.checkControlErrors(this.$select.$element[0], this.name);
                 }
 
@@ -108,10 +107,6 @@ export default class {
             // Since UI Select toggle focus between focusInput and searchInput
             // We need to check if the focus event is the one we really need (only in single mode)
             if (this.multiple || this.$select.open || (!this.$select.open && !this.isOpen)) {
-                if (this.fieldCtrl) {
-                    this.fieldCtrl.hasFocus = true;
-                }
-
                 this.onFocus();
             } else {
                 this.isOpen = false;
