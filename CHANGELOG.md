@@ -1,3 +1,13 @@
+<a name="3.3.2"></a>
+## [3.3.2](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.3.1...v3.3.2) (2019-07-01)
+
+
+### Bug Fixes
+
+* **oui-field:** display error even on field focus (backport from v3) ([#414](https://github.com/ovh-ux/ovh-ui-angular/issues/414)) ([2eea5ec](https://github.com/ovh-ux/ovh-ui-angular/commit/2eea5ec))
+
+
+
 <a name="3.3.1"></a>
 ## [3.3.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.3.0...v3.3.1) (2019-06-28)
 
