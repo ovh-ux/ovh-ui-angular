@@ -15,6 +15,7 @@ describe("ouiTile", () => {
     const getTileButton = (element) => angular.element(element[0].querySelector(".oui-tile__button"));
     const getTileDefinitionTerm = (element) => angular.element(element[0].querySelector(".oui-tile__term"));
     const getTileDefinitionDesc = (element) => angular.element(element[0].querySelector(".oui-tile__description"));
+    const getTileDefinitionActions = element => angular.element(element[0].querySelector(".oui-tile__actions"));
     const getActionMenu = (element) => angular.element(element[0].querySelector(".oui-tile__actions"));
 
     describe("Component", () => {
@@ -157,14 +158,15 @@ describe("ouiTile", () => {
             const description = "my description";
             const element = TestUtils.compileTemplate(
                 `<oui-tile>
-                    <oui-tile-definition term="${term}" description="${description}"></oui-tile-button>
+                    <oui-tile-definition term="${term}" description="${description}"></oui-tile-definition>
                 </oui-tile>`);
 
             const element2 = TestUtils.compileTemplate(
                 `<oui-tile>
-                    <oui-tile-definition term="${term}">
+                    <oui-tile-definition>
+                        <oui-tile-term>${term}</oui-tile-term>
                         <oui-tile-description>${description}</oui-tile-description>
-                    </oui-tile-button>
+                    </oui-tile-definition>
                 </oui-tile>`);
 
             expect(getTileDefinitionTerm(element).html()).toContain(term);
@@ -174,12 +176,26 @@ describe("ouiTile", () => {
             expect(getTileDefinitionDesc(element2).html()).toContain(description);
         });
 
+
+        it("should display actions", () => {
+            const actions = "my actions";
+            const element = TestUtils.compileTemplate(
+                `<oui-tile>
+                    <oui-tile-definition>
+                        <oui-tile-actions>${actions}</oui-tile-actions>
+                    </oui-tile-definition>
+                </oui-tile>`
+            );
+
+            expect(getTileDefinitionActions(element).html()).toContain(actions);
+        });
+
         it("should define a term-popover", () => {
             const termPopover = "my popover";
 
             const element = TestUtils.compileTemplate(
                 `<oui-tile>
-                    <oui-tile-definition term-popover="${termPopover}"></oui-tile-button>
+                    <oui-tile-definition term-popover="${termPopover}"></oui-tile-definition>
                 </oui-tile>`);
 
             const popoverButton = angular.element(element[0].querySelector(".oui-popover-button"));
@@ -196,12 +212,12 @@ describe("ouiTile", () => {
                         <oui-action-menu>
                             <oui-action-menu-item></oui-action-menu-item>
                         </oui-action-menu>
-                    </oui-tile-button>
+                    </oui-tile-definition>
                 </oui-tile>`);
 
             const element2 = TestUtils.compileTemplate(
                 `<oui-tile>
-                    <oui-tile-definition></oui-tile-button>
+                    <oui-tile-definition></oui-tile-definition>
                 </oui-tile>`);
 
             expect(getActionMenu(element).length).not.toBe(0);

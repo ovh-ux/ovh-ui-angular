@@ -34,8 +34,19 @@
 ```html:preview
 <oui-tile heading="Title">
     <oui-tile-definition term="Term" description="This is a description"></oui-tile-definition>
-    <oui-tile-definition term="Term">
+    <oui-tile-definition>
+        <oui-tile-term>Term</oui-tile-term>
         <oui-tile-description>This is a description</oui-tile-description>
+        <oui-tile-actions>
+            <oui-dropdown placement="end">
+                <oui-dropdown-trigger text="Actions"></oui-dropdown-trigger>
+                <oui-dropdown-content>
+                    <oui-dropdown-item href="#">Action 1</oui-dropdown-item>
+                    <oui-dropdown-item href="#">Action 2</oui-dropdown-item>
+                    <oui-dropdown-item href="#">Action 3</oui-dropdown-item>
+                </oui-dropdown-content>
+            </oui-dropdown>
+        </oui-tile-actions>
     </oui-tile-definition>
     <oui-tile-definition term="Term" term-popover="This is a popover text" description="This is a description"></oui-tile-definition>
     <oui-tile-definition term="Progress">
@@ -104,3 +115,19 @@
 | `term`            | string   | @?         | yes               | n/a               | n/a       | definition term item
 | `term-popover`    | string   | @?         | yes               | n/a               | n/a       | definition term item popover
 | `description`     | string   | @?         | yes               | n/a               | n/a       | definition description item
+
+### Transclude slots
+
+| Attribute                   | Description
+| ----                        | ----
+| `<oui-title-term>`          | definition term slot, override attribute `term`
+| `<oui-title-description>`   | definition description slot, override attribute `description`
+| `<oui-title-actions>`       | definition actions slot
+
+```html
+<oui-title-definition>
+    <oui-title-term>Term</oui-title-term>
+    <oui-title-description>Descriptions</oui-title-description>
+    <oui-title-actions>Actions</oui-title-actions>
+<oui-title-definition>
+```
