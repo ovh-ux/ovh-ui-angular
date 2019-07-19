@@ -11,6 +11,7 @@ export default () => {
             id: "@?",
             columnsDescription: "<?columns",
             columnsParameters: "<?",
+            criteria: "<?",
             customizable: "<?",
             pageSize: "@?",
             rows: "<?",
@@ -19,7 +20,9 @@ export default () => {
             emptyPlaceholder: "@?",
             onColumnsParametersChange: "&",
             onRowSelect: "&",
-            onPageChange: "&"
+            onPageChange: "&",
+            onCriteriaChanged: "&",
+            onSortChange: "&"
         },
         compile: elm => {
             // Transclude can't be used here otherwise transcluded
