@@ -2,10 +2,13 @@ import { addBooleanParameter } from "@ovh-ui/common/component-utils";
 import findIndex from "lodash/findIndex";
 
 export default class {
-    constructor ($attrs) {
+    constructor ($attrs, ouiCriteriaAdderConfiguration) {
         "ngInject";
 
         this.$attrs = $attrs; // For 'addBooleanParameter'
+
+        this.operators = ouiCriteriaAdderConfiguration.operatorsByType;
+        this.translations = ouiCriteriaAdderConfiguration.translations;
 
         this.minLength = 2;
         this.debounceDelay = 500;
@@ -14,7 +17,12 @@ export default class {
     triggerChange () {
         if (this.onChange) {
             this.onChange({ modelValue: angular.copy(this.model) });
-            this.criteria = this.model.filter(criterion => !criterion.preview);
+            this.criteria = this.model
+                .filter(criterion => !criterion.preview)
+                .map((criterion) => ({
+                    title: this.buildTitle(criterion),
+                    ...criterion
+                }));
         }
     }
 
@@ -113,5 +121,30 @@ export default class {
         addBooleanParameter(this, "searchable");
 
         this.model = this.model || [];
+
+        this.criteria = this.model
+            .filter(criterion => !criterion.preview)
+            .map((criterion) => ({
+                title: this.buildTitle(criterion),
+                ...criterion
+            }));
+    }
+
+    $doCheck () {
+        if (this.previousModel !== this.model) {
+            this.criteria = this.model
+                .filter(criterion => !criterion.preview)
+                .map((criterion) => ({
+                    title: this.buildTitle(criterion),
+                    ...criterion
+                }));
+            this.previousModel = this.model;
+        }
+    }
+
+    buildTitle (criterion) {
+        const columnModel = this.properties.find((column) => column.name === criterion.property);
+        const operator = this.translations[`operator_${columnModel.type}_${criterion.operator}`];
+        return `${columnModel.title} ${operator} ${criterion.value}`;
     }
 }
