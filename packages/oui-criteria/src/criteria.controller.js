@@ -14,8 +14,8 @@ export default class {
         this.debounceDelay = 500;
     }
 
-    triggerChange () {
-        if (this.onChange) {
+    triggerChange (force = false) {
+        if (this.onChange || force) {
             this.onChange({ modelValue: angular.copy(this.model) });
             this.criteria = this.model
                 .filter(criterion => !criterion.preview)
@@ -27,11 +27,10 @@ export default class {
     }
 
     indexOfCriterion (criterion) {
-        let criterionIndex = this.model.length - 1;
-        while (criterionIndex >= 0 && !angular.equals(this.model[criterionIndex], criterion)) {
-            --criterionIndex;
-        }
-        return criterionIndex;
+        return findIndex(this.model, (crit) => crit.operator === criterion.operator &&
+                crit.value === criterion.value &&
+                crit.property === criterion.property
+        );
     }
 
     setPreviewCriterion (previewCriterion) {
@@ -82,10 +81,11 @@ export default class {
 
     remove (criterion) {
         const criterionIndex = this.indexOfCriterion(criterion);
+
         if (criterionIndex > -1) {
             this.model.splice(criterionIndex, 1);
         }
-        this.triggerChange();
+        this.triggerChange(true);
     }
 
     set (criteria) {
