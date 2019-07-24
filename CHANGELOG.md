@@ -1,3 +1,13 @@
+<a name="3.4.0"></a>
+# [3.4.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.3.3...v3.4.0) (2019-07-18)
+
+
+### Features
+
+* **oui-tile:** add transclude for term and actions ([#416](https://github.com/ovh-ux/ovh-ui-angular/issues/416)) ([3b230c3](https://github.com/ovh-ux/ovh-ui-angular/commit/3b230c3))
+
+
+
 <a name="3.3.3"></a>
 ## [3.3.3](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.3.2...v3.3.3) (2019-07-01)
 
