@@ -1,3 +1,13 @@
+<a name="3.5.1"></a>
+## [3.5.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.5.0...v3.5.1) (2019-07-25)
+
+
+### Bug Fixes
+
+* **oui-criteria:** move hideOperators in typeOptions property ([bd79ca3](https://github.com/ovh-ux/ovh-ui-angular/commit/bd79ca3))
+
+
+
 <a name="3.5.0"></a>
 # [3.5.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.4.0...v3.5.0) (2019-07-25)
 
