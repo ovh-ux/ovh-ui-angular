@@ -106,16 +106,10 @@ export default class {
     }
 
     onInputChanged () {
-    // if user clears input, set value to lower bound
-        if (this.model === null) {
-            this.setModelValue(this.min);
-
-            // if user input is not valid, ignore it and reset to previous value
-        } else if (!angular.isNumber(this.model) ||
-               this.model < this.min ||
-               this.model > this.max) {
-            this.model = this.previousValue;
-        } else {
+        if (this.model !== null &&
+            angular.isNumber(this.model) &&
+            this.model >= this.min &&
+            this.model <= this.max) {
             this.setModelValue(this.model);
         }
     }
