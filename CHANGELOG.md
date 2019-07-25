@@ -1,3 +1,19 @@
+<a name="3.5.0"></a>
+# [3.5.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.4.0...v3.5.0) (2019-07-25)
+
+
+### Bug Fixes
+
+* **oui-criteria:** fix fields size to medium ([#419](https://github.com/ovh-ux/ovh-ui-angular/issues/419)) ([f29d217](https://github.com/ovh-ux/ovh-ui-angular/commit/f29d217))
+* **oui-numeric:** fix change value using keyboard ([#420](https://github.com/ovh-ux/ovh-ui-angular/issues/420)) ([f0fbba1](https://github.com/ovh-ux/ovh-ui-angular/commit/f0fbba1))
+
+
+### Features
+
+* **oui-criteria:** add ability to hide operators field ([#417](https://github.com/ovh-ux/ovh-ui-angular/issues/417)) ([902de83](https://github.com/ovh-ux/ovh-ui-angular/commit/902de83))
+
+
+
 <a name="3.4.0"></a>
 # [3.4.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.3.3...v3.4.0) (2019-07-18)
 
