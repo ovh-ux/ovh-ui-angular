@@ -728,8 +728,10 @@ call `rows-loader` and then a `row-loader` call for each line.
 | `selectable-rows`                 | boolean   | <?        | no                  | `true`, `false`  | `false`      | if rows can be selected
 | `columns-parameters`              | array     | <?        | no                  | n/a              | `undefined`  | columns parameters (see below)
 | `on-columns-parameters-change`    | function  | &         | no                  | n/a              | n/a          | triggered on column parameter change when datagrid is customizable
+| `on-criteria-change`              | function  | &         | no                  | n/a              | n/a          | triggered when criteria changed. Use `$criteria` in your callback to get the result
 | `on-row-select`                   | function  | &         | no                  | n/a              | n/a          | triggered when a row is selected
 | `on-page-change`                  | function  | &         | no                  | n/a              | n/a          | triggered when pagination is changed
+| `on-sort-change`                  | function  | &         | no                  | n/a              | n/a          | triggered when sort is triggered. Use `$sort` in your callback to get the result
 
 `columns-parameters` is an array describing all basic parameters of each column.
 
