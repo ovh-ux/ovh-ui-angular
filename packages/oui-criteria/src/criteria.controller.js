@@ -2,6 +2,7 @@ import { addBooleanParameter } from "@ovh-ui/common/component-utils";
 import find from "lodash/find";
 import findIndex from "lodash/findIndex";
 import isEmpty from "lodash/isEmpty";
+import isNil from "lodash/isNil";
 
 export default class {
     constructor ($attrs, ouiCriteriaAdderConfiguration) {
@@ -149,6 +150,12 @@ export default class {
         if (isEmpty(this.properties)) {
             return "";
         }
+
+        // Support for search field
+        if (isNil(criterion.property)) {
+            return criterion.value;
+        }
+
         const columnModel = find(this.properties, (column) => column.name === criterion.property);
         const operator = this.translations[`operator_${columnModel.type}_${criterion.operator}`];
         return `${columnModel.title} ${operator} ${criterion.value}`;
