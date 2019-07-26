@@ -21,7 +21,7 @@ export default () => {
             onColumnsParametersChange: "&",
             onRowSelect: "&",
             onPageChange: "&",
-            onCriteriaChanged: "&",
+            onCriteriaChanged: "&onCriteriaChange",
             onSortChange: "&"
         },
         compile: elm => {

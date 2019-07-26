@@ -41,5 +41,12 @@
                 "contains"
             ]
         }
+    }, {
+        "name": "example.string.noOperators",
+        "title": "Example No operators",
+        "type": "string",
+        "typeOptions": {
+            "hideOperators": true
+        }
     }]
 }

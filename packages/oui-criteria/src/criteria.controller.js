@@ -1,5 +1,7 @@
 import { addBooleanParameter } from "@ovh-ui/common/component-utils";
+import find from "lodash/find";
 import findIndex from "lodash/findIndex";
+import isEmpty from "lodash/isEmpty";
 
 export default class {
     constructor ($attrs, ouiCriteriaAdderConfiguration) {
@@ -29,7 +31,8 @@ export default class {
     indexOfCriterion (criterion) {
         return findIndex(this.model, (crit) => crit.operator === criterion.operator &&
                 crit.value === criterion.value &&
-                crit.property === criterion.property
+                crit.property === criterion.property &&
+                crit.preview === criterion.preview
         );
     }
 
@@ -143,7 +146,10 @@ export default class {
     }
 
     buildTitle (criterion) {
-        const columnModel = this.properties.find((column) => column.name === criterion.property);
+        if (isEmpty(this.properties)) {
+            return "";
+        }
+        const columnModel = find(this.properties, (column) => column.name === criterion.property);
         const operator = this.translations[`operator_${columnModel.type}_${criterion.operator}`];
         return `${columnModel.title} ${operator} ${criterion.value}`;
     }

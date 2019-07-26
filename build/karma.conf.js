@@ -24,7 +24,7 @@ module.exports = function (config) {
             require.resolve("angular-mocks"), // eslint-disable-line no-undef
             require.resolve("angular-aria"), // eslint-disable-line no-undef
             require.resolve("angular-sanitize"), // eslint-disable-line no-undef
-            "packages/**/tests/index.js"
+            "packages/oui-criteria/tests/index.js"
         ],
         preprocessors: {
             // eslint-disable-next-line no-undef
@@ -33,7 +33,7 @@ module.exports = function (config) {
             [require.resolve("angular-mocks")]: ["webpack", "sourcemap"],
             [require.resolve("angular-aria")]: ["webpack", "sourcemap"],
             [require.resolve("angular-sanitize")]: ["webpack", "sourcemap"],
-            "packages/**/tests/index.js": ["webpack", "sourcemap"]
+            "packages/oui-criteria/tests/index.js": ["webpack", "sourcemap"]
         },
         webpack: webpackConfig,
         webpackMiddleware: {
