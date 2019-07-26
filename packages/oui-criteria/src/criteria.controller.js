@@ -1,29 +1,39 @@
 import { addBooleanParameter } from "@ovh-ui/common/component-utils";
+import find from "lodash/find";
 import findIndex from "lodash/findIndex";
+import isEmpty from "lodash/isEmpty";
 
 export default class {
-    constructor ($attrs) {
+    constructor ($attrs, ouiCriteriaAdderConfiguration) {
         "ngInject";
 
         this.$attrs = $attrs; // For 'addBooleanParameter'
+
+        this.operators = ouiCriteriaAdderConfiguration.operatorsByType;
+        this.translations = ouiCriteriaAdderConfiguration.translations;
 
         this.minLength = 2;
         this.debounceDelay = 500;
     }
 
-    triggerChange () {
-        if (this.onChange) {
+    triggerChange (force = false) {
+        if (this.onChange || force) {
             this.onChange({ modelValue: angular.copy(this.model) });
-            this.criteria = this.model.filter(criterion => !criterion.preview);
+            this.criteria = this.model
+                .filter(criterion => !criterion.preview)
+                .map((criterion) => ({
+                    title: this.buildTitle(criterion),
+                    ...criterion
+                }));
         }
     }
 
     indexOfCriterion (criterion) {
-        let criterionIndex = this.model.length - 1;
-        while (criterionIndex >= 0 && !angular.equals(this.model[criterionIndex], criterion)) {
-            --criterionIndex;
-        }
-        return criterionIndex;
+        return findIndex(this.model, (crit) => crit.operator === criterion.operator &&
+                crit.value === criterion.value &&
+                crit.property === criterion.property &&
+                crit.preview === criterion.preview
+        );
     }
 
     setPreviewCriterion (previewCriterion) {
@@ -74,10 +84,11 @@ export default class {
 
     remove (criterion) {
         const criterionIndex = this.indexOfCriterion(criterion);
+
         if (criterionIndex > -1) {
             this.model.splice(criterionIndex, 1);
         }
-        this.triggerChange();
+        this.triggerChange(true);
     }
 
     set (criteria) {
@@ -113,5 +124,33 @@ export default class {
         addBooleanParameter(this, "searchable");
 
         this.model = this.model || [];
+
+        this.criteria = this.model
+            .filter(criterion => !criterion.preview)
+            .map((criterion) => ({
+                title: this.buildTitle(criterion),
+                ...criterion
+            }));
+    }
+
+    $doCheck () {
+        if (this.previousModel !== this.model) {
+            this.criteria = this.model
+                .filter(criterion => !criterion.preview)
+                .map((criterion) => ({
+                    title: this.buildTitle(criterion),
+                    ...criterion
+                }));
+            this.previousModel = this.model;
+        }
+    }
+
+    buildTitle (criterion) {
+        if (isEmpty(this.properties)) {
+            return "";
+        }
+        const columnModel = find(this.properties, (column) => column.name === criterion.property);
+        const operator = this.translations[`operator_${columnModel.type}_${criterion.operator}`];
+        return `${columnModel.title} ${operator} ${criterion.value}`;
     }
 }

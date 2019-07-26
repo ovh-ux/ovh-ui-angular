@@ -68,6 +68,7 @@ describe("ouiCriteria", () => {
 
         it("should not add an existing criteria", () => {
             controller.model.push(criterion);
+
             expect(controller.model.length).toEqual(1);
 
             controller.add(criterion);
