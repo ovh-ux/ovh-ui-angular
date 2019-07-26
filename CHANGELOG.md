@@ -1,3 +1,13 @@
+<a name="3.6.1"></a>
+## [3.6.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.6.0...v3.6.1) (2019-07-26)
+
+
+### Bug Fixes
+
+* **oui-criteria:** fix tag title of search value ([ea5aec9](https://github.com/ovh-ux/ovh-ui-angular/commit/ea5aec9))
+
+
+
 <a name="3.6.0"></a>
 # [3.6.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.5.1...v3.6.0) (2019-07-26)
 
