@@ -1,3 +1,13 @@
+<a name="3.6.0"></a>
+# [3.6.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.5.1...v3.6.0) (2019-07-26)
+
+
+### Features
+
+* **oui-datagrid:** add events onSortChange and onCriteriaChanged ([#418](https://github.com/ovh-ux/ovh-ui-angular/issues/418)) ([63cae88](https://github.com/ovh-ux/ovh-ui-angular/commit/63cae88))
+
+
+
 <a name="3.5.1"></a>
 ## [3.5.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.5.0...v3.5.1) (2019-07-25)
 
