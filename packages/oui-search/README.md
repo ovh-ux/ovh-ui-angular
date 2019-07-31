@@ -86,6 +86,7 @@ See [Autocomplete](#!/oui-angular/autocomplete) directive for more informations.
 | `minlength`               | number    | <?        | no                | n/a               | n/a       | min length of the model value
 | `maxlength`               | number    | <?        | no                | n/a               | n/a       | max length of the model value
 | `disabled`                | boolean   | <?        | no                | `true`, `false`   | `false`   | disabled flag
+| `reset-on-submit`         | boolean   | <?        | no                | `true`, `false`   | `false`   | reset model when submitted
 | `on-change`               | function  | &         | no                | n/a               | n/a       | handler triggered when model has changed
 | `on-reset`                | function  | &         | no                | n/a               | n/a       | handler triggered when form is reseted
 | `on-submit`               | function  | &         | no                | n/a               | n/a       | handler triggered when form is submitted

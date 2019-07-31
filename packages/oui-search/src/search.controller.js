@@ -26,7 +26,9 @@ export default class {
     }
 
     onSearchSubmit (modelValue) {
-        this.model = undefined;
+        if (this.resetOnSubmit) {
+            this.model = undefined;
+        }
 
         this.onSubmit({ modelValue });
     }
@@ -41,6 +43,7 @@ export default class {
     $onInit () {
         // Support presence of attribute 'disabled'
         addBooleanParameter(this, "disabled");
+        addBooleanParameter(this, "resetOnSubmit");
     }
 
     $postLink () {
