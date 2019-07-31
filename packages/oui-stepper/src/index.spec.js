@@ -8,6 +8,7 @@ describe("ouiStepper", () => {
 
     beforeEach(angular.mock.module("oui.stepper"));
     beforeEach(angular.mock.module("oui.button"));
+    beforeEach(angular.mock.module("oui.field"));
     beforeEach(angular.mock.module("oui.test-utils"));
 
     beforeEach(inject((_TestUtils_, _$timeout_) => {
@@ -33,14 +34,17 @@ describe("ouiStepper", () => {
             });
 
             it("should add a header to step", () => {
-                const title = "my step title";
+                const header = "Header";
+                const description = "Description";
                 const element = TestUtils.compileTemplate(`
                     <oui-stepper>
-                        <oui-step-form header="${title}"></oui-step-form>
+                        <oui-step-form header="${header}" description="${description}"></oui-step-form>
                     </oui-stepper>`);
-                const span = angular.element(element[0].querySelector(".oui-stepper__title"));
+                const headerTag = angular.element(element[0].querySelector(".oui-stepper__title"));
+                const descriptionTag = angular.element(element[0].querySelector(".oui-stepper__description"));
 
-                expect(span.html()).toContain(title);
+                expect(headerTag.html()).toContain(header);
+                expect(descriptionTag.html()).toContain(description);
             });
 
             it("should display an active step", () => {
