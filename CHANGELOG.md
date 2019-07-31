@@ -1,3 +1,18 @@
+<a name="3.7.0"></a>
+# [3.7.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.6.1...v3.7.0) (2019-07-31)
+
+
+### Bug Fixes
+
+* **oui-stepper:** allow html for header and description ([67fb255](https://github.com/ovh-ux/ovh-ui-angular/commit/67fb255))
+
+
+### Features
+
+* **oui-search:** add boolean attribute to reset on submit ([549ba77](https://github.com/ovh-ux/ovh-ui-angular/commit/549ba77))
+
+
+
 <a name="3.6.1"></a>
 ## [3.6.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.6.0...v3.6.1) (2019-07-26)
 
