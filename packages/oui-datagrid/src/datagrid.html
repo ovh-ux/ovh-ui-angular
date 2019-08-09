@@ -3,7 +3,7 @@
     model="$ctrl.appliedCriteria"
     properties="$ctrl.filterableColumns"
     searchable="$ctrl.isSearchTextVisible"
-    on-change="$ctrl.onCriteriaChange(modelValue)">
+    on-change="$ctrl.onCriteriaChange(modelValue, preview)">
     <oui-datagrid-extra-top class="oui-datagrid-topbar__slot"
         ng-if="$ctrl.hasExtraTopContent">
     </oui-datagrid-extra-top>
