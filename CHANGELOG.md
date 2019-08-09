@@ -1,3 +1,13 @@
+<a name="3.7.1"></a>
+## [3.7.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.7.0...v3.7.1) (2019-08-09)
+
+
+### Bug Fixes
+
+* **oui-datagrid:** fix preview search shouldn't trigger onCriteriaChange ([b9fecc5](https://github.com/ovh-ux/ovh-ui-angular/commit/b9fecc5))
+
+
+
 <a name="3.7.0"></a>
 # [3.7.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.6.1...v3.7.0) (2019-07-31)
 
