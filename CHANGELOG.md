@@ -1,3 +1,13 @@
+<a name="3.7.2"></a>
+## [3.7.2](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.7.1...v3.7.2) (2019-08-14)
+
+
+### Bug Fixes
+
+* **oui-datagrid:** allow searching in number columns ([#421](https://github.com/ovh-ux/ovh-ui-angular/issues/421)) ([1452143](https://github.com/ovh-ux/ovh-ui-angular/commit/1452143))
+
+
+
 <a name="3.7.1"></a>
 ## [3.7.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.7.0...v3.7.1) (2019-08-09)
 
