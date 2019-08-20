@@ -1,3 +1,13 @@
+<a name="3.7.3"></a>
+## [3.7.3](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.7.2...v3.7.3) (2019-08-20)
+
+
+### Bug Fixes
+
+* **oui-datagrid:** allow columns configuration from attribute and tag ([#422](https://github.com/ovh-ux/ovh-ui-angular/issues/422)) ([22374b7](https://github.com/ovh-ux/ovh-ui-angular/commit/22374b7))
+
+
+
 <a name="3.7.2"></a>
 ## [3.7.2](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.7.1...v3.7.2) (2019-08-14)
 
