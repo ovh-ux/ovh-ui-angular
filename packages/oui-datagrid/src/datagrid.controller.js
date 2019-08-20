@@ -158,9 +158,11 @@ export default class DatagridController {
     }
 
     buildColumns () {
-        const builtColumns = this.columnsDescription && this.columnsDescription.length ?
-            this.ouiDatagridColumnBuilder.buildFromJs(this.columnsDescription, this.getParentScope()) :
-            this.ouiDatagridColumnBuilder.build(this.columnElements, this.getParentScope());
+        const builtColumns = this.ouiDatagridColumnBuilder.parseColumns(
+            this.columnElements,
+            this.columnsDescription,
+            this.getParentScope()
+        );
 
         if (this.actionColumnElements.length) {
             this.actionColumn = this.ouiDatagridColumnBuilder.buildActionColumn(this.actionColumnElements[0]);
