@@ -1,3 +1,24 @@
+<a name="3.7.4"></a>
+## [3.7.4](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.5.1...v3.7.4) (2019-08-27)
+
+
+### Bug Fixes
+
+* **oui-criteria:** fix tag title of search value ([ea5aec9](https://github.com/ovh-ux/ovh-ui-angular/commit/ea5aec9))
+* **oui-datagrid:** allow columns configuration from attribute and tag ([#422](https://github.com/ovh-ux/ovh-ui-angular/issues/422)) ([22374b7](https://github.com/ovh-ux/ovh-ui-angular/commit/22374b7))
+* **oui-datagrid:** allow no property on oui-column ([#424](https://github.com/ovh-ux/ovh-ui-angular/issues/424)) ([6bb3f54](https://github.com/ovh-ux/ovh-ui-angular/commit/6bb3f54))
+* **oui-datagrid:** allow searching in number columns ([#421](https://github.com/ovh-ux/ovh-ui-angular/issues/421)) ([1452143](https://github.com/ovh-ux/ovh-ui-angular/commit/1452143))
+* **oui-datagrid:** fix preview search shouldn't trigger onCriteriaChange ([b9fecc5](https://github.com/ovh-ux/ovh-ui-angular/commit/b9fecc5))
+* **oui-stepper:** allow html for header and description ([67fb255](https://github.com/ovh-ux/ovh-ui-angular/commit/67fb255))
+
+
+### Features
+
+* **oui-datagrid:** add events onSortChange and onCriteriaChanged ([#418](https://github.com/ovh-ux/ovh-ui-angular/issues/418)) ([63cae88](https://github.com/ovh-ux/ovh-ui-angular/commit/63cae88))
+* **oui-search:** add boolean attribute to reset on submit ([549ba77](https://github.com/ovh-ux/ovh-ui-angular/commit/549ba77))
+
+
+
 <a name="3.7.3"></a>
 ## [3.7.3](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.7.2...v3.7.3) (2019-08-20)
 
