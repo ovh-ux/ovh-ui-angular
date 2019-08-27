@@ -238,7 +238,7 @@ export default class DatagridController {
     }
 
     hasProperty (obj, prop) { // eslint-disable-line
-        if (!obj) {
+        if (!obj || !prop) {
             return false;
         }
 
