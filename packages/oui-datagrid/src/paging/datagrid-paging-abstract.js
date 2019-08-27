@@ -93,7 +93,6 @@ export default class DatagridPagingAbstract {
                 .finally(() => {
                     delete row.$promise;
                 });
-
             return row.$promise;
 
             // TODO: Find a way to forward those error to datagrid
@@ -109,7 +108,7 @@ export default class DatagridPagingAbstract {
      * @return {Boolean}     true if loaded
      */
     isRowLoaded (row) {
-        return this.columns.map(column => hasProperty(row, column.name))
+        return this.columns.map(column => hasProperty(row, column.name || ""))
             .reduce((a, b) => a && b, true);
     }
 

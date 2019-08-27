@@ -1406,6 +1406,22 @@ describe("ouiDatagrid", () => {
                 const firstRow = getRow(element, 0);
                 expect(getCell(firstRow, 0).text().trim()).toEqual("Raymond");
             });
+
+            it("should support undefined properties", () => {
+                const element = TestUtils.compileTemplate(`
+                    <oui-datagrid data-rows="$ctrl.rows">
+                        <oui-column data-title="'First name'">
+                            <span data-ng-bind="$row.firstName"></span>
+                        </oui-column>
+                    </oui-datagrid>
+                `, {
+                    rows: fakeData.slice(0, 5)
+                });
+
+                // Check that property is still rendered in the cell.
+                const firstRow = getRow(element, 0);
+                expect(getCell(firstRow, 0).text().trim()).toEqual("Raymond");
+            });
         });
     });
 
