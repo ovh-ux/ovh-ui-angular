@@ -1,3 +1,13 @@
+<a name="3.7.5"></a>
+## [3.7.5](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.7.4...v3.7.5) (2019-09-09)
+
+
+### Bug Fixes
+
+* **oui-dropdown:** display button when item has href and is disabled ([#426](https://github.com/ovh-ux/ovh-ui-angular/issues/426)) ([ac76116](https://github.com/ovh-ux/ovh-ui-angular/commit/ac76116))
+
+
+
 <a name="3.7.4"></a>
 ## [3.7.4](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.5.1...v3.7.4) (2019-08-27)
 
