@@ -1,3 +1,13 @@
+<a name="3.7.6"></a>
+## [3.7.6](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.7.5...v3.7.6) (2019-09-10)
+
+
+### Bug Fixes
+
+* **oui-dropdown:** remove one time binding href ([#427](https://github.com/ovh-ux/ovh-ui-angular/issues/427)) ([aaa91af](https://github.com/ovh-ux/ovh-ui-angular/commit/aaa91af))
+
+
+
 <a name="3.7.5"></a>
 ## [3.7.5](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.7.4...v3.7.5) (2019-09-09)
 
