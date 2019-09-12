@@ -4,9 +4,8 @@ import isEmpty from "lodash/isEmpty";
 import remove from "lodash/remove";
 
 export default class {
+    /* @ngInject */
     constructor ($attrs, $compile, $element, $filter, $scope, $timeout, $window, ouiFileConfiguration) {
-        "ngInject";
-
         this.$attrs = $attrs;
         this.$compile = $compile;
         this.$element = $element;

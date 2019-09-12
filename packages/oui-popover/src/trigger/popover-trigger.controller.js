@@ -1,8 +1,7 @@
 // Deprecated: Support only for old use
 export default class {
+    /* @ngInject */
     constructor ($element, $scope, $timeout) {
-        "ngInject";
-
         this.$element = $element;
         this.$scope = $scope;
         this.$timeout = $timeout;

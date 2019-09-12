@@ -1,7 +1,6 @@
 class TestUtils {
+    /* @ngInject */
     constructor ($compile, $rootScope) {
-        "ngInject";
-
         this.$compile = $compile;
         this.$rootScope = $rootScope;
     }

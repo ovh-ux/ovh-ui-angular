@@ -2,9 +2,8 @@ import { addDefaultParameter } from "@ovh-ui/common/component-utils";
 import filter from "lodash/filter";
 
 export default class {
+    /* @ngInject */
     constructor ($attrs, $element, $scope, $timeout, ouiInlineAdderConfiguration) {
-        "ngInject";
-
         this.$attrs = $attrs;
         this.$element = $element;
         this.$scope = $scope;

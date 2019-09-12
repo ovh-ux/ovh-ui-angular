@@ -23,8 +23,8 @@ const VALIDATION_PARAMETERS = {
 const MESSAGES_ORDER = ["required", "number", "email", "minlength", "maxlength", "min", "max", "pattern"];
 
 export default class FieldController {
+    /* @ngInject */
     constructor ($element, $scope, $timeout, ouiFieldConfiguration) {
-        "ngInject";
         this.$element = $element;
         this.$scope = $scope;
         this.$timeout = $timeout;

@@ -2,8 +2,8 @@
 import Clipboard from "clipboard/dist/clipboard.min";
 
 export default class {
+    /* @ngInject */
     constructor ($attrs, $element, $timeout, ouiClipboardConfiguration) {
-        "ngInject";
         this.$attrs = $attrs;
         this.$element = $element;
         this.$timeout = $timeout;

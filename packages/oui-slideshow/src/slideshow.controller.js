@@ -10,9 +10,8 @@ const Direction = {
 };
 
 export default class {
+    /* @ngInject */
     constructor ($scope, $element, $attrs, $document, $timeout) {
-        "ngInject";
-
         this.$scope = $scope;
         this.$element = $element;
         this.$attrs = $attrs;

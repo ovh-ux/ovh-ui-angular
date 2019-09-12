@@ -1,7 +1,6 @@
 export default class {
+    /* @ngInject */
     constructor ($attrs, $element, ouiNavbarConfiguration, KEYBOARD_KEYS) {
-        "ngInject";
-
         this.$attrs = $attrs;
         this.$element = $element;
         this.config = ouiNavbarConfiguration;

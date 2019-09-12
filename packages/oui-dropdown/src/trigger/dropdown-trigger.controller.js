@@ -2,9 +2,8 @@ import { addBooleanParameter } from "@ovh-ui/common/component-utils";
 import template from "./dropdown-trigger.html";
 
 export default class {
+    /* @ngInject */
     constructor ($attrs, $compile, $element, $scope, $timeout) {
-        "ngInject";
-
         this.$attrs = $attrs;
         this.$compile = $compile;
         this.$element = $element;

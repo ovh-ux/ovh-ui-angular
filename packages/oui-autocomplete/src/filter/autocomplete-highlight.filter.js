@@ -1,6 +1,4 @@
-export default ($sce) => {
-    "ngInject";
-
+export default /* @ngInject */($sce) => {
     const highlight = '<mark class="oui-autocomplete-highlight">$&</mark>';
     const escapeRegexp = (query) =>
         query.replace(/([.?*+^$[\]\\(){}|-])/g, "\\$1");

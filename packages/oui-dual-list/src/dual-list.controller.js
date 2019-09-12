@@ -2,9 +2,8 @@ import get from "lodash/get";
 import remove from "lodash/remove";
 
 export default class {
+    /* @ngInject */
     constructor ($attrs, $element, $filter, $timeout) {
-        "ngInject";
-
         this.$attrs = $attrs;
         this.$element = $element;
         this.$filter = $filter;

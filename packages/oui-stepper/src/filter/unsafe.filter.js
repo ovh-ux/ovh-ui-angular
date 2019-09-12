@@ -1,5 +1,1 @@
-export default ($sce) => {
-    "ngInject";
-
-    return $sce.trustAsHtml;
-};
+export default /* @ngInject */($sce) => $sce.trustAsHtml;

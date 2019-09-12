@@ -5,9 +5,8 @@ const componentClass = "oui-search";
 const escKeyCode = 27;
 
 export default class {
+    /* @ngInject */
     constructor ($attrs, $element, $timeout) {
-        "ngInject";
-
         this.$attrs = $attrs;
         this.$element = $element;
         this.$timeout = $timeout;

@@ -3,9 +3,8 @@ import Flatpickr from "flatpickr";
 import merge from "lodash/merge";
 
 export default class {
+    /* @ngInject */
     constructor ($attrs, $element, $scope, $timeout, ouiCalendarConfiguration) {
-        "ngInject";
-
         this.$attrs = $attrs;
         this.$element = $element;
         this.$id = $scope.$id;

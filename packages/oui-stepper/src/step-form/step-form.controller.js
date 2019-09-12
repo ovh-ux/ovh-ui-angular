@@ -1,9 +1,8 @@
 import { addBooleanParameter, addDefaultParameter } from "@ovh-ui/common/component-utils";
 
 export default class StepFormController {
+    /* @ngInject */
     constructor ($attrs, $element, $scope, $timeout, ouiStepperConfiguration) {
-        "ngInject";
-
         this.$attrs = $attrs;
         this.$element = $element;
         this.$scope = $scope;

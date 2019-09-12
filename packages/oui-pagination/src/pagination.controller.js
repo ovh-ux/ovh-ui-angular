@@ -2,9 +2,8 @@ import clamp from "lodash/clamp";
 import range from "lodash/range";
 
 export default class {
+    /* @ngInject */
     constructor ($attrs, ouiPaginationConfiguration) {
-        "ngInject";
-
         this.$attrs = $attrs;
         this.config = ouiPaginationConfiguration;
         this.pageSizeList = this.config.pageSizeList.slice();

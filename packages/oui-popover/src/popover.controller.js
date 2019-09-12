@@ -5,9 +5,8 @@ import template from "./popover.html";
 const KEY_ESCAPE = 27;
 
 export default class PopoverController {
+    /* @ngInject */
     constructor ($attrs, $compile, $document, $element, $scope, $timeout) {
-        "ngInject";
-
         this.$attrs = $attrs;
         this.$compile = $compile;
         this.$document = $document;
