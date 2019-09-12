@@ -573,6 +573,7 @@ The property `name` **must be** `"user"`.
 | `header-class`        | string    | @?        | yes               | n/a                                   | n/a       | classname of the header
 | `header-title`        | string    | @?        | yes               | n/a                                   | n/a       | text of the header title
 | `header-breadcrumb`   | string    | @?        | yes               | n/a                                   | n/a       | text of the header breadcrumb
+| `header-href`         | string    | @?        | yes               | n/a                                   | n/a       | llink for the header
 | `align`               | string    | @?        | yes               | `start`, `end`                        | `start`   | alignment of the menu to his trigger
 | `back-button`         | boolean   | <?        | yes               | `true`, `false`                       | `false`   | display a back button in the header title
 | `fixed`               | boolean   | <?        | yes               | `true`, `false`                       | `false`   | flag for responsive menu
