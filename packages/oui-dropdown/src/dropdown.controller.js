@@ -5,9 +5,8 @@ import Popper from "popper.js";
 const KEY_ESCAPE = 27;
 
 export default class {
+    /* @ngInject */
     constructor ($attrs, $document, $element, $scope, $timeout) {
-        "ngInject";
-
         this.$attrs = $attrs;
         this.$document = $document;
         this.$element = $element;

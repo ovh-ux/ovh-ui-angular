@@ -3,9 +3,8 @@ import Popper from "popper.js";
 import template from "./tooltip.html";
 
 export default class {
+    /* @ngInject */
     constructor ($attrs, $compile, $element, $scope, $timeout) {
-        "ngInject";
-
         this.$attrs = $attrs; // Used for addDefaultParameter()
         this.$compile = $compile;
         this.$element = $element;

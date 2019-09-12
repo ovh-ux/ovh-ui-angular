@@ -1,7 +1,6 @@
 export default class {
+    /* @ngInject */
     constructor ($attrs, $transclude) {
-        "ngInject";
-
         this.$attrs = $attrs;
         this.$transclude = $transclude;
     }

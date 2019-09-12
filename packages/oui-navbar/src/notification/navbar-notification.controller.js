@@ -2,9 +2,8 @@ import { addBooleanParameter, addDefaultParameter } from "@ovh-ui/common/compone
 
 const defaultLimitTo = 10;
 export default class {
+    /* @ngInject */
     constructor ($attrs, $element, $timeout, ouiNavbarConfiguration) {
-        "ngInject";
-
         this.$attrs = $attrs;
         this.$element = $element;
         this.$timeout = $timeout;

@@ -16,11 +16,10 @@ const cssSortableDesc = "oui-datagrid__header_sortable-desc";
 const checkScrollOnRefreshDataDelay = 1000;
 
 export default class DatagridController {
+    /* @ngInject */
     constructor ($attrs, $compile, $element, $transclude, $q, $scope, $window, $timeout,
                  ouiDatagridPaging, ouiDatagridColumnBuilder, ouiDatagridConfiguration,
                  ouiDatagridService) {
-        "ngInject";
-
         this.$attrs = $attrs;
         this.$compile = $compile;
         this.$element = $element;

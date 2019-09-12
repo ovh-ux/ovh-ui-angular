@@ -1,9 +1,8 @@
 const checkScrollDelay = 800;
 
 export default class {
+    /* @ngInject */
     constructor ($attrs, $element, $interval, $scope, $timeout, $window) {
-        "ngInject";
-
         this.$attrs = $attrs;
         this.$element = $element;
         this.$interval = $interval;

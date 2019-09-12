@@ -8,9 +8,8 @@ const errorClass = "oui-textarea_error";
 const footerClass = "oui-textarea__footer";
 
 export default class {
+    /* @ngInject */
     constructor ($attrs, $element, $timeout, ouiTextareaConfiguration) {
-        "ngInject";
-
         this.$attrs = $attrs;
         this.$element = $element;
         this.$timeout = $timeout;

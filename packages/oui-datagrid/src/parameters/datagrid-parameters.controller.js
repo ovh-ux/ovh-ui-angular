@@ -1,7 +1,6 @@
 export default class DatagridParametersController {
+    /* @ngInject */
     constructor ($element, $timeout) {
-        "ngInject";
-
         this.$element = $element;
         this.$timeout = $timeout;
     }

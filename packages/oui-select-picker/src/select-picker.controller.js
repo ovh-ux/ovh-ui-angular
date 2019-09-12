@@ -3,9 +3,8 @@ import find from "lodash/find";
 import get from "lodash/get";
 
 export default class SelectPickerController {
+    /* @ngInject */
     constructor ($scope, $element, $attrs, $timeout, $transclude) {
-        "ngInject";
-
         this.$scope = $scope;
         this.$element = $element;
         this.$attrs = $attrs;

@@ -1,9 +1,8 @@
 import { addBooleanParameter } from "@ovh-ui/common/component-utils";
 
 export default class {
+    /* @ngInject */
     constructor ($attrs, ouiFormActionsConfiguration) {
-        "ngInject";
-
         this.$attrs = $attrs;
         this.config = ouiFormActionsConfiguration;
     }

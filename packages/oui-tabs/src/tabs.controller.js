@@ -1,9 +1,8 @@
 import find from "lodash/find";
 
 export default class {
+    /* @ngInject */
     constructor ($element, $scope, $timeout) {
-        "ngInject";
-
         this.$element = $element;
         this.$scope = $scope;
         this.$timeout = $timeout;

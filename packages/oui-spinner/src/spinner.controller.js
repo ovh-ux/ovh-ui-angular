@@ -1,7 +1,6 @@
 export default class {
+    /* @ngInject */
     constructor ($element) {
-        "ngInject";
-
         this.$element = $element;
     }
 

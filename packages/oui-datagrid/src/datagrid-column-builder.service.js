@@ -13,9 +13,8 @@ const filterableTypes = [
 ];
 
 export default class DatagridColumnBuilder {
+    /* @ngInject */
     constructor ($parse, $compile) {
-        "ngInject";
-
         this.$parse = $parse;
         this.$compile = $compile;
     }

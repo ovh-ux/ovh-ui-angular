@@ -6,9 +6,8 @@ const MIN_VALUE = 0;
 const MAX_VALUE = 99999;
 
 export default class {
+    /* @ngInject */
     constructor ($attrs, $element, $log, $scope, $timeout) {
-        "ngInject";
-
         this.$attrs = $attrs;
         this.$element = $element;
         this.$log = $log;

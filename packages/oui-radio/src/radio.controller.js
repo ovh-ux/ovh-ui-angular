@@ -1,9 +1,8 @@
 import { addBooleanParameter, addDefaultParameter } from "@ovh-ui/common/component-utils";
 
 export default class {
+    /* @ngInject */
     constructor ($scope, $element, $attrs, $timeout) {
-        "ngInject";
-
         this.$scope = $scope;
         this.$element = $element;
         this.$attrs = $attrs;

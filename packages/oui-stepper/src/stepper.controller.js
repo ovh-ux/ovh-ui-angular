@@ -1,9 +1,8 @@
 import get from "lodash/get";
 
 export default class {
+    /* @ngInject */
     constructor ($attrs, $element, $scope, $timeout) {
-        "ngInject";
-
         this.$attrs = $attrs;
         this.$element = $element;
         this.$scope = $scope;
