@@ -1,3 +1,15 @@
+<a name="3.7.7"></a>
+## [3.7.7](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.7.4...v3.7.7) (2019-09-12)
+
+
+### Bug Fixes
+
+* **oui-dropdown:** display button when item has href and is disabled ([#426](https://github.com/ovh-ux/ovh-ui-angular/issues/426)) ([ac76116](https://github.com/ovh-ux/ovh-ui-angular/commit/ac76116))
+* **oui-dropdown:** remove one time binding href ([#427](https://github.com/ovh-ux/ovh-ui-angular/issues/427)) ([aaa91af](https://github.com/ovh-ux/ovh-ui-angular/commit/aaa91af))
+* switch to /* [@ng](https://github.com/ng)Inject */ annotation ([#428](https://github.com/ovh-ux/ovh-ui-angular/issues/428)) ([2a2b3a0](https://github.com/ovh-ux/ovh-ui-angular/commit/2a2b3a0))
+
+
+
 <a name="3.7.6"></a>
 ## [3.7.6](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.7.5...v3.7.6) (2019-09-10)
 
