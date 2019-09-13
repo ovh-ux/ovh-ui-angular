@@ -1,3 +1,13 @@
+<a name="3.8.0"></a>
+# [3.8.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.7.7...v3.8.0) (2019-09-13)
+
+
+### Features
+
+* **oui-navbar:** allow to create link as menu header ([#429](https://github.com/ovh-ux/ovh-ui-angular/issues/429)) ([86b80eb](https://github.com/ovh-ux/ovh-ui-angular/commit/86b80eb))
+
+
+
 <a name="3.7.7"></a>
 ## [3.7.7](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.7.4...v3.7.7) (2019-09-12)
 
