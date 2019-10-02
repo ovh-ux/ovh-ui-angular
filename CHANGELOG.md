@@ -1,3 +1,13 @@
+<a name="3.8.2"></a>
+## [3.8.2](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.8.1...v3.8.2) (2019-10-02)
+
+
+### Bug Fixes
+
+* **oui-numeric:** allow custom min and max values ([#430](https://github.com/ovh-ux/ovh-ui-angular/issues/430)) ([0387606](https://github.com/ovh-ux/ovh-ui-angular/commit/0387606))
+
+
+
 <a name="3.8.1"></a>
 ## [3.8.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.8.0...v3.8.1) (2019-09-17)
 
