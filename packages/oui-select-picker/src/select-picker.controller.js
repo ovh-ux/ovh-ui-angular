@@ -43,8 +43,19 @@ export default class SelectPickerController {
             }
         });
 
-        this.sectionTransclude = this.$transclude.isSlotFilled("sectionSlot");
         this.deprecatedTransclude = this.$transclude.isSlotFilled("deprecatedSlot");
+    }
+
+    hasFooter () {
+        return this.$transclude.isSlotFilled("footerSlot") || this.footer;
+    }
+
+    hasPicture () {
+        return this.$transclude.isSlotFilled("pictureSlot") || this.picture;
+    }
+
+    hasSection () {
+        return this.$transclude.isSlotFilled("sectionSlot");
     }
 
     $postLink () {
