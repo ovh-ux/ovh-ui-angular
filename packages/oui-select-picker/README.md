@@ -39,6 +39,23 @@
     disabled></oui-select-picker>
 ```
 
+### Picture
+
+```html:preview
+<oui-select-picker label="Checked"
+    picture="oui-icon oui-icon-ovh"
+    description="Checked select picker">
+    <oui-select-picker-picture>
+        <span class="oui-status oui-status_success">Best Seller</span>
+    </oui-select-picker-picture>
+</oui-select-picker>
+<oui-select-picker label="Checked"
+    picture="oui-icon oui-icon-ovh"
+    description="Checked select picker"
+    disabled>
+</oui-select-picker>
+```
+
 ### Sections using `oui-select-picker-section`
 
 ```html:preview
@@ -76,6 +93,25 @@
 ```
 
 **Note**: This use is **deprecated** and will be removed in the next major version
+
+### Footer
+
+```html:preview
+<oui-select-picker label="Checked"
+    description="Checked select picker"
+    footer="Lorem ipsum">
+    <span class="oui-select-picker__section">Section 1</span>
+    <span class="oui-select-picker__section">Section 2</span>
+</oui-select-picker>
+<oui-select-picker label="Disabled"
+    description="Disabled select picker"
+    disabled>
+    <oui-select-picker-footer>
+        Lorem ipsum<br />
+        <small>Dolor sit amet</small>
+    </oui-select-picker-footer>
+</oui-select-picker>
+```
 
 ### On change
 

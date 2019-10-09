@@ -5,6 +5,8 @@ export default {
     template,
     controller,
     transclude: {
+        footerSlot: "?ouiSelectPickerFooter",
+        pictureSlot: "?ouiSelectPickerPicture",
         sectionSlot: "?ouiSelectPickerSection",
         deprecatedSlot: "?span" // Deprecated: Replaced by "oui-select-picker-section"
     },
@@ -15,6 +17,7 @@ export default {
         text: "@", // Deprecated: Replaced by "label"
         label: "@",
         description: "@?",
+        footer: "@?",
         placeholder: "@?",
         picture: "@?",
         match: "@",
