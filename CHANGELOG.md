@@ -1,3 +1,13 @@
+<a name="3.9.1"></a>
+## [3.9.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.9.0...v3.9.1) (2019-10-10)
+
+
+### Bug Fixes
+
+* **oui-header-tabs:** remove replaceWith that cause item duplication ([#432](https://github.com/ovh-ux/ovh-ui-angular/issues/432)) ([506a801](https://github.com/ovh-ux/ovh-ui-angular/commit/506a801))
+
+
+
 <a name="3.9.0"></a>
 # [3.9.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.8.2...v3.9.0) (2019-10-10)
 
