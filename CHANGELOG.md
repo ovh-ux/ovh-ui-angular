@@ -1,3 +1,8 @@
+<a name="3.9.0"></a>
+# [3.9.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.8.2...v3.9.0) (2019-10-10)
+
+
+
 <a name="3.8.2"></a>
 ## [3.8.2](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.8.1...v3.8.2) (2019-10-02)
 
