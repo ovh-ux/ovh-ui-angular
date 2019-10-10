@@ -1,14 +1,9 @@
 import { addBooleanParameter } from "@ovh-ui/common/component-utils";
-import template from "./header-tabs-item.html";
 
 export default class {
     /* @ngInject */
-    constructor ($attrs, $compile, $element, $scope, $timeout) {
+    constructor ($attrs) {
         this.$attrs = $attrs;
-        this.$compile = $compile;
-        this.$element = $element;
-        this.$scope = $scope;
-        this.$timeout = $timeout;
     }
 
     $onInit () {
@@ -20,12 +15,6 @@ export default class {
             this.linkTarget = "_blank";
             this.linkRel = "noopener";
         }
-    }
-
-    $postLink () {
-        this.$compile(template)(this.$scope, clone => {
-            this.$element.replaceWith(clone);
-        });
     }
 
     // Return value of "ui-sref"
