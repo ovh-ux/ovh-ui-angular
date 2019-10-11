@@ -1,3 +1,13 @@
+<a name="3.9.2"></a>
+## [3.9.2](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.9.1...v3.9.2) (2019-10-11)
+
+
+### Bug Fixes
+
+* **oui-datagrid:** apply default criteria if not using rows-load… ([#433](https://github.com/ovh-ux/ovh-ui-angular/issues/433)) ([2d52c12](https://github.com/ovh-ux/ovh-ui-angular/commit/2d52c12))
+
+
+
 <a name="3.9.1"></a>
 ## [3.9.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.9.0...v3.9.1) (2019-10-10)
 
