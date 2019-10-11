@@ -149,7 +149,9 @@ export default class FieldController {
     checkAllErrors () {
         this.invalid = Object.keys(this.controls)
             .map(name => {
-                if (this.form[name].$invalid && !this.currentErrorField) {
+                if (!(name in this.form)) {
+                    return false;
+                } else if (this.form[name].$invalid && !this.currentErrorField) {
                     this.currentErrorField = name;
                 }
                 return this.form[name].$invalid;
