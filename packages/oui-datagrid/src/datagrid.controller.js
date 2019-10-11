@@ -103,6 +103,9 @@ export default class DatagridController {
         } else {
             this.paging = this.ouiDatagridPaging.createLocal(this.columns, builtColumns.currentSorting, this.pageSize, this.rowLoader, this.rows);
 
+            this.paging.setCriteria(this.criteria);
+            this.appliedCriteria = this.criteria;
+
             if (this.rows) {
                 this.refreshData(() => this.paging.setRows(this.rows));
             }
