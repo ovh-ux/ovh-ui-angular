@@ -1,3 +1,13 @@
+<a name="3.9.3"></a>
+## [3.9.3](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.9.2...v3.9.3) (2019-10-14)
+
+
+### Bug Fixes
+
+* **oui-field:** checkAllErrors avoid undefined value ([#434](https://github.com/ovh-ux/ovh-ui-angular/issues/434)) ([063b35e](https://github.com/ovh-ux/ovh-ui-angular/commit/063b35e))
+
+
+
 <a name="3.9.2"></a>
 ## [3.9.2](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.9.1...v3.9.2) (2019-10-11)
 
