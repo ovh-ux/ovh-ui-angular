@@ -95,6 +95,7 @@ angular.module("myModule", [
         string: ["contains", "containsNot", "startsWith", "endsWith", "is", "isNot"]
     });
     ouiCriteriaAdderConfigurationProvider.setTranslations({ // default translations
+        filter_label: "Filter",       
         column_label: "Column",
         operator_label: "Operator",
 
