@@ -1,3 +1,13 @@
+<a name="3.9.4"></a>
+## [3.9.4](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.9.3...v3.9.4) (2019-10-16)
+
+
+### Features
+
+* **oui-criteria:** add filter description ([#435](https://github.com/ovh-ux/ovh-ui-angular/issues/435)) ([14ccf2e](https://github.com/ovh-ux/ovh-ui-angular/commit/14ccf2e))
+
+
+
 <a name="3.9.3"></a>
 ## [3.9.3](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.9.2...v3.9.3) (2019-10-14)
 
