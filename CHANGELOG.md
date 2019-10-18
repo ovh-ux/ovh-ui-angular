@@ -1,3 +1,13 @@
+<a name="3.9.5"></a>
+## [3.9.5](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.9.4...v3.9.5) (2019-10-18)
+
+
+### Bug Fixes
+
+* **oui-autocomplete:** check focus before opening the autocomple… ([#436](https://github.com/ovh-ux/ovh-ui-angular/issues/436)) ([ea67fd8](https://github.com/ovh-ux/ovh-ui-angular/commit/ea67fd8))
+
+
+
 <a name="3.9.4"></a>
 ## [3.9.4](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.9.3...v3.9.4) (2019-10-16)
 
