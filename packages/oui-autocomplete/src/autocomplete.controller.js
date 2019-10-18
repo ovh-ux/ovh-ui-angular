@@ -49,7 +49,7 @@ export default class {
             this.navIndex = undefined;
 
             this.datalist = datum;
-            this.isOpen = true;
+            this.isOpen = this.isFocused;
 
             // Init keyboard navigation
             if (!this.isNavigable) {
@@ -232,6 +232,12 @@ export default class {
                 .attr("autocomplete", "off")
                 .attr("list", this.id)
                 .one("focus", () => this.createDatalist()) // One time bind to create the popper helper
+                .on("focus", () => {
+                    this.isFocused = true;
+                })
+                .on("blur", () => {
+                    this.isFocused = false;
+                })
                 .on("click", (e) => e.stopPropagation()) // Avoid click propagation on $element
                 .after(this.autocomplete); // Add compiled template after $element
         });
