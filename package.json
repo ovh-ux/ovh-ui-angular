@@ -36,7 +36,6 @@
     "bloodhound-js": "^1.2.3",
     "clipboard": "^2.0.1",
     "escape-string-regexp": "^1.0.5",
-    "flatpickr": "^4.5.2",
     "popper.js": "^1.14.4",
     "ui-select": "^0.19.8"
   },
@@ -44,7 +43,7 @@
     "angular": ">=1.6.x",
     "angular-aria": ">=1.6.x",
     "angular-sanitize": ">=1.6.x",
-    "flatpickr": "^4.5.2",
+    "flatpickr": "~4.5.2",
     "ovh-ui-kit": "^2.32.0"
   },
   "devDependencies": {
@@ -68,6 +67,7 @@
     "eslint-config-ovh": "^0.1.1",
     "eslint-friendly-formatter": "^4.0.1",
     "eslint-loader": "^2.1.1",
+    "flatpickr": "~4.5.2",
     "html-loader": "^0.5.5",
     "istanbul-instrumenter-loader": "^3.0.1",
     "jasmine-core": "^3.2.1",
