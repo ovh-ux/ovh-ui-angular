@@ -72,7 +72,11 @@ export default class {
     }
 
     _findItemToGo (direction) {
-        const tabsList = [].slice.call(this._tabsElement.querySelectorAll(":scope > .oui-header-tabs__item"));
+        if (!this.tabsElement || !direction) {
+            return undefined;
+        }
+
+        const tabsList = [].slice.call(this._tabsElement.querySelectorAll(":scope > oui-header-tabs-item"));
         const tabsOffset = this._tabsElement.offsetLeft;
         const tabsStart = this._tabsElement.scrollLeft;
         const tabsEnd = tabsStart + this._tabsElement.offsetWidth;
@@ -97,6 +101,10 @@ export default class {
     }
 
     _scrollToItem (direction, item) {
+        if (this.tabsElement || item || direction) {
+            return;
+        }
+
         const duration = 500;
         const stepDuration = 15;
         const step = this._tabsElement.scrollWidth / (duration / stepDuration);
