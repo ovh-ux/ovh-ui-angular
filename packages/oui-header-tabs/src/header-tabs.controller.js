@@ -72,7 +72,7 @@ export default class {
     }
 
     _findItemToGo (direction) {
-        if (!this.tabsElement || !direction) {
+        if (!this._tabsElement || !direction) {
             return undefined;
         }
 
@@ -97,11 +97,12 @@ export default class {
                 break;
             }
         }
+
         return itemToGo;
     }
 
     _scrollToItem (direction, item) {
-        if (this.tabsElement || item || direction) {
+        if (!this._tabsElement || !item || !direction) {
             return;
         }
 
