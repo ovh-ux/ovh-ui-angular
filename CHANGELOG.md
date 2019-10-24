@@ -1,3 +1,13 @@
+<a name="3.9.8"></a>
+## [3.9.8](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.9.7...v3.9.8) (2019-10-24)
+
+
+### Bug Fixes
+
+* **oui-header-tabs:** fix scroll checks ([da1f5a0](https://github.com/ovh-ux/ovh-ui-angular/commit/da1f5a0))
+
+
+
 <a name="3.9.7"></a>
 ## [3.9.7](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.9.6...v3.9.7) (2019-10-24)
 
