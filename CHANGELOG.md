@@ -1,3 +1,13 @@
+<a name="3.9.9"></a>
+## [3.9.9](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.9.8...v3.9.9) (2019-10-24)
+
+
+### Bug Fixes
+
+* **oui-select-picker:** fix footer placement with dynamic height ([#440](https://github.com/ovh-ux/ovh-ui-angular/issues/440)) ([36f4e03](https://github.com/ovh-ux/ovh-ui-angular/commit/36f4e03))
+
+
+
 <a name="3.9.8"></a>
 ## [3.9.8](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.9.7...v3.9.8) (2019-10-24)
 
