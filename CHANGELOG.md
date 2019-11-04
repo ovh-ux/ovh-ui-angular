@@ -1,3 +1,13 @@
+<a name="3.9.10"></a>
+## [3.9.10](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.9.9...v3.9.10) (2019-11-04)
+
+
+### Bug Fixes
+
+* **oui-stepper:** fix multiple calls on focus step ([#441](https://github.com/ovh-ux/ovh-ui-angular/issues/441)) ([bd332be](https://github.com/ovh-ux/ovh-ui-angular/commit/bd332be))
+
+
+
 <a name="3.9.9"></a>
 ## [3.9.9](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.9.8...v3.9.9) (2019-10-24)
 
