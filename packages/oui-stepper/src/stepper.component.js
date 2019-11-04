@@ -5,9 +5,9 @@ export default {
     bindings: {
         name: "@",
         id: "@",
+        indexToFocus: "=?currentIndex",
         onInit: "&",
-        onFinish: "&",
-        currentIndex: "=?"
+        onFinish: "&"
     },
     controller,
     template,
