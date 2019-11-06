@@ -1,3 +1,13 @@
+<a name="3.10.0"></a>
+# [3.10.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.9.10...v3.10.0) (2019-11-06)
+
+
+### Features
+
+* **oui-select-picker:** add tranclude slot for description ([#442](https://github.com/ovh-ux/ovh-ui-angular/issues/442)) ([7b445e4](https://github.com/ovh-ux/ovh-ui-angular/commit/7b445e4))
+
+
+
 <a name="3.9.10"></a>
 ## [3.9.10](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.9.9...v3.9.10) (2019-11-04)
 
