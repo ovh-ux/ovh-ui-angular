@@ -46,6 +46,10 @@ export default class SelectPickerController {
         this.deprecatedTransclude = this.$transclude.isSlotFilled("deprecatedSlot");
     }
 
+    hasDescription () {
+        return this.$transclude.isSlotFilled("descriptionSlot") || this.description;
+    }
+
     hasFooter () {
         return this.$transclude.isSlotFilled("footerSlot") || this.footer;
     }
