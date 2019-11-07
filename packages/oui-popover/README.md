@@ -169,7 +169,7 @@
 | Attribute                 | Type      | Binding   | One-time Binding  | Values                                                                                        | Default           | Description
 | ----                      | ----      | ----      | ----              | ----                                                                                          | ----              | ----
 | `oui-popover`             | string    | @         | no                | n/a                                                                                           | `title` attribute | popover content
-| `oui-popover-open`        | boolean   | <?        | no                | `true`, `false`                                                                               | `false`           | open or close the popover
+| `oui-popover-open`        | boolean   | <?        | no                | `true`, `false`                                                                               | `undefined`       | open or close the popover, `onClick` on trigger should be done manually
 | `oui-popover-placement`   | string    | @?        | yes               | See [Popper placements](https://popper.js.org/popper-documentation.html#Popper.placements)    | `right`           | modifier for alignment
 | `oui-popover-scope`       | string    | <?        | no                | n/a                                                                                           | n/a               | scope of the popover template
 | `oui-popover-template`    | string    | @?        | no                | n/a                                                                                           | n/a               | id of the popover template
