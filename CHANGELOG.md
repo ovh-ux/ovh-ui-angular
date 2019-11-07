@@ -1,3 +1,13 @@
+<a name="3.10.1"></a>
+## [3.10.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.10.0...v3.10.1) (2019-11-07)
+
+
+### Bug Fixes
+
+* **oui-popover:** fix popover icon size ([#443](https://github.com/ovh-ux/ovh-ui-angular/issues/443)) ([d7aec49](https://github.com/ovh-ux/ovh-ui-angular/commit/d7aec49))
+
+
+
 <a name="3.10.0"></a>
 # [3.10.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.9.10...v3.10.0) (2019-11-06)
 
