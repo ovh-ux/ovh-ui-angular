@@ -132,7 +132,7 @@ describe("ouiField", () => {
                 $timeout.flush();
 
                 const $control = getControl(controller, "username");
-                const $popoverContent = getElementByClass(element, ".oui-field__label-popover");
+                const $popoverContent = getElementByClass(element, ".oui-popover__content-container");
                 expect($control[0].getAttribute("aria-describedby")).toEqual($popoverContent[0].getAttribute("id"));
             });
         });

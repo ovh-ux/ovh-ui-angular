@@ -2,6 +2,7 @@ describe("ouiTile", () => {
     let $timeout;
     let TestUtils;
 
+    beforeEach(angular.mock.module("oui.popover"));
     beforeEach(angular.mock.module("oui.tile"));
     beforeEach(angular.mock.module("oui.test-utils"));
 
@@ -198,8 +199,10 @@ describe("ouiTile", () => {
                     <oui-tile-definition term-popover="${termPopover}"></oui-tile-definition>
                 </oui-tile>`);
 
+            $timeout.flush();
+
             const popoverButton = angular.element(element[0].querySelector(".oui-popover-button"));
-            const popoverContent = angular.element(element[0].querySelector("oui-popover-content"));
+            const popoverContent = angular.element(element[0].querySelector(".oui-popover__content-container"));
 
             expect(popoverButton).toBeDefined();
             expect(popoverContent.html()).toContain(termPopover);
