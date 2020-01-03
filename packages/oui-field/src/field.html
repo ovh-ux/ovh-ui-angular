@@ -12,7 +12,8 @@
         </label>
         <button type="button" class="oui-popover-button"
             aria-label="Help"
-            oui-popover="{{$ctrl.labelPopover}}">
+            oui-popover="{{$ctrl.labelPopover}}"
+            oui-popover-id="{{::$ctrl.popoverId}}">
         </button>
     </div>
     <div ng-class=":: 'oui-field__control oui-field__control_' + $ctrl.size" ng-transclude></div>

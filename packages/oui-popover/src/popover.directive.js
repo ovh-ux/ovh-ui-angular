@@ -4,6 +4,7 @@ export default () => ({
     restrict: "AE",
     bindToController: {
         text: "@ouiPopover",
+        id: "@?ouiPopoverId",
         title: "@?",
         placement: "@?ouiPopoverPlacement",
         scope: "<?ouiPopoverScope",
