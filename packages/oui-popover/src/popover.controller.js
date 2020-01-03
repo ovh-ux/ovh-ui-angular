@@ -23,9 +23,9 @@ export default class PopoverController {
         // Deprecated: Support for `placement` attribute
         this.placement = this.placement || this.$attrs.placement;
 
-        this.id = `ouiPopover${this.$scope.$id}`;
         this.isPopoverOpen = false;
 
+        addDefaultParameter(this, "id", `ouiPopover${this.$scope.$id}`);
         addDefaultParameter(this, "placement", "right");
     }
 
