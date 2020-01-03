@@ -1,3 +1,18 @@
+<a name="3.11.0"></a>
+# [3.11.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.10.1...v3.11.0) (2020-01-03)
+
+
+### Bug Fixes
+
+* **oui-dropdown:** afterClose should remove the focus ([#449](https://github.com/ovh-ux/ovh-ui-angular/issues/449)) ([48ee700](https://github.com/ovh-ux/ovh-ui-angular/commit/48ee700))
+
+
+### Features
+
+* **oui-popover:** add popover id attribute ([#450](https://github.com/ovh-ux/ovh-ui-angular/issues/450)) ([b245e1b](https://github.com/ovh-ux/ovh-ui-angular/commit/b245e1b))
+
+
+
 <a name="3.10.1"></a>
 ## [3.10.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.10.0...v3.10.1) (2019-11-07)
 
