@@ -610,9 +610,9 @@ angular-sanitize@>=1.6.x:
   integrity sha512-i5NoK6lo21N/CDRtkXpUuqaXeyncP7icLNCGzCUCD6CQvfVh3nY9Nsiw+tHtiIeD34ppcbl5Wb6ihY7RKDoDVw==
 
 angular@>=1.6.x:
-  version "1.7.4"
-  resolved "https://registry.yarnpkg.com/angular/-/angular-1.7.4.tgz#c1bf4884c2d470c06907737a1bf0835a9f646f31"
-  integrity sha512-nYTWc9CpZjTY57l8EA1+DGpQNzI6HewQ34bfRYoGXBYysIoPYjfcgTGWC+Vl3AaeCnhAb3VTkysVESvCBpUIoA==
+  version "1.7.9"
+  resolved "https://registry.yarnpkg.com/angular/-/angular-1.7.9.tgz#e52616e8701c17724c3c238cfe4f9446fd570bc4"
+  integrity sha512-5se7ZpcOtu0MBFlzGv5dsM1quQDoDeUTwZrWjGtTNA7O88cD8TEk5IEKCTDa3uECV9XnvKREVUr7du1ACiWGFQ==
 
 ansi-colors@^3.0.0:
   version "3.0.5"
