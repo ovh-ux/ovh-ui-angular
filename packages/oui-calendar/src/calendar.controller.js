@@ -100,6 +100,27 @@ export default class {
         this.initCalendarInstance();
     }
 
+    $onChanges ({ minDate, maxDate }) {
+        if (this.flatpickr) {
+            if (this.flatpickr.altInput) {
+                // Fix disabled state when there is an alt input
+                if (this.disabled) {
+                    angular.element(this.flatpickr.altInput).attr("disabled", "disabled");
+                } else {
+                    angular.element(this.flatpickr.altInput).removeAttr("disabled");
+                }
+            }
+
+            if (maxDate) {
+                this.flatpickr.set("maxDate", maxDate.currentValue);
+            }
+
+            if (minDate) {
+                this.flatpickr.set("minDate", minDate.currentValue);
+            }
+        }
+    }
+
     $onDestroy () {
         this.flatpickr.destroy();
     }
