@@ -101,7 +101,6 @@ export default class {
     }
 
     $onChanges ({ minDate, maxDate }) {
-        console.log(this.flatpickr);
         if (this.flatpickr) {
             if (this.flatpickr.altInput) {
                 // Fix disabled state when there is an alt input
