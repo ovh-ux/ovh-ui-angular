@@ -56,8 +56,10 @@
 <oui-calendar model="$ctrl.minMaxModel" min-date="$ctrl.minDate" max-date="$ctrl.maxDate">
 </oui-calendar>
 <div class="oui-doc-preview-only">
-    <p><strong>minDate value:</strong> {{$ctrl.minDate | json}}</p>
-    <p><strong>maxDate value:</strong> {{$ctrl.maxDate | json}}</p>
+    <oui-calendar model="$ctrl.minDate" inline>
+    </oui-calendar>
+    <oui-calendar model="$ctrl.maxDate" inline>
+    </oui-calendar>
 </div>
 ```
 
