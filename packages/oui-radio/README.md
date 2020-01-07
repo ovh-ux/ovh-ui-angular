@@ -122,6 +122,19 @@
 </div>
 ```
 
+### Vertical
+
+```html:preview
+<div ng-init="$ctrl.groupValue = 'second'" class="oui-doc-preview-only-keep-children">
+<oui-radio-toggle-group direction="column" model="$ctrl.groupValue">
+    <oui-radio value="'first'">First</oui-radio>
+    <oui-radio value="'second'">Second</oui-radio>
+    <oui-radio value="'third'">Third</oui-radio>
+</oui-radio-toggle-group>
+</div>
+```
+
+
 ### Disabled
 
 ```html:preview
@@ -178,8 +191,9 @@
 
 ### oui-radio-toggle-group
 
-| Attribute     | Type      | Binding   | One-time Binding  | Values    | Default   | Description
-| ----          | ----      | ----      | ----              | ----      | ----      | ----
-| `model`       | Object    | =?        | no                | n/a       | n/a       | current value of the radio
-| `name`        | string    | @?        | yes               | n/a       | n/a       | name attribute of the radio
-| `on-change`   | function  | &         | no                | n/a       | n/a       | handler triggered when model has changed
+| Attribute     | Type      | Binding   | One-time Binding  | Values            | Default   | Description
+| ----          | ----      | ----      | ----              | ----              | ----      | ----
+| `model`       | Object    | =?        | no                | n/a               | n/a       | current value of the radio
+| `direction`   | string    | @?        | no                | `row`, `column`   | `row`     | flex direction of the radio
+| `name`        | string    | @?        | yes               | n/a               | n/a       | name attribute of the radio
+| `on-change`   | function  | &         | no                | n/a               | n/a       | handler triggered when model has changed
