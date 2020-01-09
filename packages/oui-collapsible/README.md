@@ -20,6 +20,19 @@
 </oui-collapsible>
 ```
 
+### Loading
+
+```html:preview
+<oui-collapsible
+    heading="Click to load content"
+    loading="$ctrl.loading"
+    aria-label="Action"
+    expanded="$ctrl.expanded"
+    on-toggle="$ctrl.onToggle(expanded, this)">
+    <span ng-bind="$ctrl.content"></span>
+</oui-collapsible>
+```
+
 ### Event handler
 
 ```html:preview
@@ -32,9 +45,10 @@
 
 ### oui-collapsible
 
-| Attribute     | Type      | Binding | One-time binding    | Values    | Default   | Description
-| ----          | ----      | ----    | ----                | ----      | ----      | ----
-| `heading`     | string    | @       | no                  | n/a       | n/a       | text of the heading
-| `aria-label`  | string    | @?      | yes                 | n/a       | n/a       | accessibility label
-| `expanded`    | boolean   | <?      | yes                 | n/a       | `false`   | initial expanded state
-| `on-toggle`   | function  | &       | no                  | n/a       | n/a       | on collapsible state changed event handler
+| Attribute     | Type      | Binding | One-time binding    | Values            | Default   | Description
+| ----          | ----      | ----    | ----                | ----              | ----      | ----
+| `heading`     | string    | @       | no                  | n/a               | n/a       | text of the heading
+| `aria-label`  | string    | @?      | yes                 | n/a               | n/a       | accessibility label
+| `expanded`    | boolean   | <?      | yes                 | n/a               | `false`   | initial expanded state
+| `loading`     | boolean   | <?      | no                  | `true`, `false`   | `false`   | loading state, disable toggle when `true`
+| `on-toggle`   | function  | &       | no                  | n/a               | n/a       | on collapsible state changed event handler
