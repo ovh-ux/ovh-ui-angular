@@ -1,9 +1,10 @@
 import { addDefaultParameter, removeHtmlTags } from "@ovh-ui/common/component-utils";
 
 export default class {
-    constructor ($attrs, $element, $scope, $timeout, $window) {
+    constructor ($attrs, $document, $element, $scope, $timeout, $window) {
         "ngInject";
         this.$attrs = $attrs;
+        this.$document = $document;
         this.$element = $element;
         this.$scope = $scope;
         this.$timeout = $timeout;
@@ -42,7 +43,22 @@ export default class {
             .on("resize", () => this.$scope.$apply());
     }
 
+
+    close () {
+        if (this.expanded) {
+            this.toggle();
+        }
+    }
+
     toggle () {
+        // Close opened items from the same group before opening this one
+        if (this.group && !this.expanded) {
+            const items = this.$document[0].querySelectorAll(`oui-collapsible[group="${this.group}"]`);
+
+            // `items` is a jqLite Array
+            angular.forEach(items, item => angular.element(item).controller("ouiCollapsible").close());
+        }
+
         this.expanded = !this.expanded;
         this.onToggle({ expanded: this.expanded });
     }
