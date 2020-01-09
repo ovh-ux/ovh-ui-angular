@@ -33,6 +33,46 @@
 </oui-collapsible>
 ```
 
+### Group (Accordion)
+
+If you want to have an accordion mode with multiple collapsible panels, add a group name in the value of this attribute.
+When opening a collapsible panel, this will close all others opened panels of the same group.
+
+```html:preview
+<oui-collapsible
+    heading="Title"
+    group="lorem">
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+    Veniam eveniet, commodi nisi officia iusto minus repellat
+    magnam in vel? Nisi, ea? Nam cupiditate sint ullam temporibus
+    perspiciatis, nostrum pariatur amet?
+</oui-collapsible>
+<oui-collapsible
+    heading="Title"
+    group="lorem">
+    Corporis dicta porro labore repellendus accusantium.
+    Aperiam dolore velit corrupti ex accusantium nihil doloremque
+    rerum voluptate reprehenderit cum molestias cumque mollitia obcaecati,
+    est saepe quod dolorum magni non quidem aliquid?
+</oui-collapsible>
+<oui-collapsible
+    heading="Title"
+    group="lorem">
+    Ut dolore commodi dolorem veniam. Fugiat tempora sunt officiis
+    dolores officia eveniet blanditiis minus nisi quaerat voluptate
+    maxime necessitatibus voluptas qui rerum, incidunt illo amet
+    quae eius error. Autem, impedit.
+</oui-collapsible>
+<oui-collapsible
+    heading="Title"
+    group="lorem">
+    Non, laborum enim. Magni commodi dolorem sit necessitatibus incidunt,
+    iste rerum est mollitia quod voluptatem autem aspernatur illum obcaecati
+    quos laboriosam, repudiandae numquam nostrum voluptate,
+    in adipisci? Quis, autem repudiandae!
+</oui-collapsible>
+```
+
 ### Event handler
 
 ```html:preview
@@ -45,10 +85,11 @@
 
 ### oui-collapsible
 
-| Attribute     | Type      | Binding | One-time binding    | Values            | Default   | Description
-| ----          | ----      | ----    | ----                | ----              | ----      | ----
-| `heading`     | string    | @       | no                  | n/a               | n/a       | text of the heading
-| `aria-label`  | string    | @?      | yes                 | n/a               | n/a       | accessibility label
-| `expanded`    | boolean   | <?      | yes                 | n/a               | `false`   | initial expanded state
-| `loading`     | boolean   | <?      | no                  | `true`, `false`   | `false`   | loading state, disable toggle when `true`
-| `on-toggle`   | function  | &       | no                  | n/a               | n/a       | on collapsible state changed event handler
+| Attribute     | Type      | Binding | One-time binding    | Values          | Default   | Description
+| ----          | ----      | ----    | ----                | ----            | ----      | ----
+| `heading`     | string    | @       | no                  | n/a             | n/a       | text of the heading
+| `group`       | string    | @       | no                  | n/a             | n/a       | group name for the accordion mode
+| `aria-label`  | string    | @?      | yes                 | n/a             | n/a       | accessibility label
+| `expanded`    | boolean   | <?      | no                  | `true`, `false` | `false`   | initial expanded state
+| `loading`     | boolean   | <?      | no                  | `true`, `false` | `false`   | loading state, disable toggle when `true`
+| `on-toggle`   | function  | &       | no                  | n/a             | n/a       | on collapsible state changed event handler
