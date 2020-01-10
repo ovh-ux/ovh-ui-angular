@@ -1,3 +1,22 @@
+<a name="3.12.0"></a>
+# [3.12.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.11.0...v3.12.0) (2020-01-10)
+
+
+### Bug Fixes
+
+* **oui-calendar:** dynamic changes for min and max date ([#451](https://github.com/ovh-ux/ovh-ui-angular/issues/451)) ([3342aec](https://github.com/ovh-ux/ovh-ui-angular/commit/3342aec))
+* **oui-collapsible:** add helper to remove html on heading ([#452](https://github.com/ovh-ux/ovh-ui-angular/issues/452)) ([021410b](https://github.com/ovh-ux/ovh-ui-angular/commit/021410b))
+* **oui-datagrid:** use lodash get to check properties ([#453](https://github.com/ovh-ux/ovh-ui-angular/issues/453)) ([bdad166](https://github.com/ovh-ux/ovh-ui-angular/commit/bdad166)), closes [#448](https://github.com/ovh-ux/ovh-ui-angular/issues/448)
+
+
+### Features
+
+* **oui-collapsible:** add group attribute for accordion mode ([137071f](https://github.com/ovh-ux/ovh-ui-angular/commit/137071f))
+* **oui-collapsible:** add loading attribute ([f1a95b5](https://github.com/ovh-ux/ovh-ui-angular/commit/f1a95b5))
+* **oui-radio:** add column direction ([#454](https://github.com/ovh-ux/ovh-ui-angular/issues/454)) ([10ba356](https://github.com/ovh-ux/ovh-ui-angular/commit/10ba356))
+
+
+
 <a name="3.11.0"></a>
 # [3.11.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.10.1...v3.11.0) (2020-01-03)
 
