@@ -1,6 +1,8 @@
 import { addDefaultParameter } from "@ovh-ui/common/component-utils";
+import isEmpty from "lodash/isEmpty";
 import Popper from "popper.js";
 import template from "./tooltip.html";
+import trim from "lodash/trim";
 
 export default class {
     /* @ngInject */
@@ -31,14 +33,20 @@ export default class {
                 this.$element.attr("aria-label", this.text);
             }
 
+            const isTextEmptyOrWhitespace = isEmpty(trim(this.text));
+
             // Create a new scope to compile the tooltip next to the trigger
-            const tooltipScope = angular.extend(this.$scope.$new(true), { $tooltipCtrl: this });
+            const tooltipScope = angular.extend(this.$scope.$new(true), {
+                $tooltipCtrl: this
+            });
             const tooltipTemplate = this.$compile(template)(tooltipScope);
 
-            this.$element
-                .addClass("oui-tooltip__trigger") // Add classname for 'focus' and 'hover' CSS events
-                .one("focus mouseenter", () => this.createPopper()) // One time bind to create the popper helper
-                .after(tooltipTemplate); // Add compiled template after $element
+            if (!isTextEmptyOrWhitespace) {
+                this.$element
+                    .addClass("oui-tooltip__trigger") // Add classname for 'focus' and 'hover' CSS events
+                    .one("focus mouseenter", () => this.createPopper()) // One time bind to create the popper helper
+                    .after(tooltipTemplate); // Add compiled template after $element
+            }
         });
     }
 
