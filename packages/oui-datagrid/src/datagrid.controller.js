@@ -78,6 +78,7 @@ export default class DatagridController {
 
     $postLink () {
         addBooleanParameter(this, "customizable");
+        addBooleanParameter(this, "refreshable");
 
         this.$compile(template)(this.$scope, (clone) => {
             this.$element.append(clone);

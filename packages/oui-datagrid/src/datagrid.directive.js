@@ -19,7 +19,8 @@ export default () => ({
         onRowSelect: "&",
         onPageChange: "&",
         onCriteriaChanged: "&onCriteriaChange",
-        onSortChange: "&"
+        onSortChange: "&",
+        refreshable: "<?"
     },
     compile: elm => {
         // Transclude can't be used here otherwise transcluded
