@@ -596,6 +596,29 @@ You can use `row-loader`. It take the current row as argument and must return a 
 
 ### Refresh
 
+Datagrid has inbuilt refresh button. Clicking on it, calls row-loader and rows-loader. This will re-fetch the data. To enable this icon, set refreshable attribute on oui-datagrid.
+
+```html:preview
+<oui-datagrid
+  page-size="5"
+  id="localRefreshDatagrid"
+  rows="$ctrl.data"
+  row-loader="$ctrl.loadRandom($row)"
+  refreshable>
+  <oui-column
+    title="'Firstname'"
+    property="firstName"></oui-column>
+  <oui-column
+    title="'Lastname'"
+    property="lastName"></oui-column>
+  <oui-column
+    title="'Random value'"
+    property="number"></oui-column>
+</oui-datagrid>
+```
+
+### Refresh via code
+
 #### Local datagrid
 
 Local datagrid can be refreshed by simply mutate `rows` value.
@@ -732,6 +755,7 @@ call `rows-loader` and then a `row-loader` call for each line.
 | `on-row-select`                   | function  | &         | no                  | n/a              | n/a          | triggered when a row is selected
 | `on-page-change`                  | function  | &         | no                  | n/a              | n/a          | triggered when pagination is changed
 | `on-sort-change`                  | function  | &         | no                  | n/a              | n/a          | triggered when sort is triggered. Use `$sort` in your callback to get the result
+| `refreshable`                    | boolean   | <?        | no                  | `true`, `false`  | `false`      | if true, shows a refresh icon and calls row-loader and rows-loader clicking on it
 
 `columns-parameters` is an array describing all basic parameters of each column.
 

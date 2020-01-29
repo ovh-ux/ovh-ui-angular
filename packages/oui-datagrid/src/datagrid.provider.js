@@ -3,8 +3,10 @@ import merge from "lodash/merge";
 export default class {
     constructor () {
         this.pageSize = 25;
+        this.refreshable = false;
         this.translations = {
-            emptyPlaceholder: "No data available"
+            emptyPlaceholder: "No data available",
+            ariaRefreshButtonLabel: "Refresh"
         };
     }
 
@@ -14,6 +16,15 @@ export default class {
      */
     setPageSize (pageSize) {
         this.pageSize = pageSize;
+        return this;
+    }
+
+    /**
+     * Set the default refresh
+     * @param {Boolean} refresh the default refresh
+     */
+    setRefreshable (refresh) {
+        this.refreshable = refresh;
         return this;
     }
 
@@ -29,7 +40,8 @@ export default class {
     $get () {
         return {
             pageSize: this.pageSize,
-            translations: this.translations
+            translations: this.translations,
+            refreshable: this.refreshable
         };
     }
 }
