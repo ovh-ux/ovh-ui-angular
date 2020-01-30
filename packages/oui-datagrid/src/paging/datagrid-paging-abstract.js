@@ -1,5 +1,3 @@
-import { hasProperty } from "../util";
-
 export default class DatagridPagingAbstract {
     constructor (columns, currentSorting, pageSize, rowLoader, pagingService) {
         this.columns = columns;
@@ -87,7 +85,7 @@ export default class DatagridPagingAbstract {
     }
 
     loadRowData (row) {
-        if (!this.isRowLoaded(row) && !row.$promise) {
+        if (!row.$promise) {
             row.$promise = this.$q.when(this.rowLoader({ $row: row }))
                 .then(fullRow => Object.assign(row, fullRow))
                 .finally(() => {
@@ -100,16 +98,6 @@ export default class DatagridPagingAbstract {
         }
 
         return this.$q.when();
-    }
-
-    /**
-     * Check if all data is loaded on this row
-     * @param  {object}  row a row
-     * @return {Boolean}     true if loaded
-     */
-    isRowLoaded (row) {
-        return this.columns.map(column => hasProperty(row, column.name || ""))
-            .reduce((a, b) => a && b, true);
     }
 
     reloadRows () {
