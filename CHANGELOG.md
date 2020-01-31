@@ -1,3 +1,14 @@
+<a name="3.13.0"></a>
+# [3.13.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.12.0...v3.13.0) (2020-01-31)
+
+
+### Features
+
+* **oui-datagrid:** always call row-loader ([566dfc8](https://github.com/ovh-ux/ovh-ui-angular/commit/566dfc8))
+* **oui-datagrid:** refresh datagrid ([2ed8670](https://github.com/ovh-ux/ovh-ui-angular/commit/2ed8670))
+
+
+
 <a name="3.12.0"></a>
 # [3.12.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.11.0...v3.12.0) (2020-01-10)
 
