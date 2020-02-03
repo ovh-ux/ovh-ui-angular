@@ -1,3 +1,13 @@
+<a name="3.13.1"></a>
+## [3.13.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.13.0...v3.13.1) (2020-02-03)
+
+
+### Bug Fixes
+
+* **oui-datagrid:** show loaders on refresh button ([21fa6c3](https://github.com/ovh-ux/ovh-ui-angular/commit/21fa6c3))
+
+
+
 <a name="3.13.0"></a>
 # [3.13.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.12.0...v3.13.0) (2020-01-31)
 
