@@ -57,14 +57,16 @@
                 footer-title="{{asideLink.footerTitle}}"
                 footer-href="{{asideLink.footerUrl}}"
                 align="end"
-                fixed></oui-navbar-notification>
+                variant="panel">
+            </oui-navbar-notification>
             <oui-navbar-menu ng-if="asideLink.name === 'user'"
                 header-breadcrumb="{{asideLink.nichandle}}"
                 header-title="{{asideLink.fullName}}"
                 name="{{asideLink.name}}"
                 links="asideLink.subLinks"
                 align="end"
-                fixed></oui-navbar-menu>
+                variant="panel">
+            </oui-navbar-menu>
             <oui-navbar-menu ng-if="asideLink.name !== 'notifications' && asideLink.name !== 'user'"
                 header-class="oui-navbar_mobile-only"
                 header-breadcrumb="{{asideLink.headerBreadcrumb}}"
@@ -72,7 +74,8 @@
                 name="{{asideLink.name}}"
                 links="asideLink.subLinks"
                 align="end"
-                fixed></oui-navbar-menu>
+                variant="panel">
+            </oui-navbar-menu>
         </oui-navbar-dropdown>
     </oui-navbar-aside>
 </oui-navbar>
@@ -575,6 +578,7 @@ The property `name` **must be** `"user"`.
 | `header-breadcrumb`   | string    | @?        | yes               | n/a                                   | n/a       | text of the header breadcrumb
 | `header-href`         | string    | @?        | yes               | n/a                                   | n/a       | llink for the header
 | `align`               | string    | @?        | yes               | `start`, `end`                        | `start`   | alignment of the menu to his trigger
+| `variant`             | string    | @?        | no                | `panel`                               | n/a       | variant of the menu
 | `back-button`         | boolean   | <?        | yes               | `true`, `false`                       | `false`   | display a back button in the header title
 | `fixed`               | boolean   | <?        | yes               | `true`, `false`                       | `false`   | flag for responsive menu
 
@@ -591,6 +595,7 @@ The property `name` **must be** `"user"`.
 | `footer-title`        | string    | @?        | yes               | n/a                                   | n/a       | text of the footer link
 | `footer-href`         | string    | @?        | yes               | n/a                                   | n/a       | url of the footer link
 | `align`               | string    | @?        | yes               | `start`, `end`                        | `start`   | alignment of the menu to his trigger
+| `variant`             | string    | @?        | no                | `panel`                               | n/a       | variant of the menu
 | `fixed`               | boolean   | <?        | yes               | `true`, `false`                       | `false`   | flag for responsive menu
 
 ### oui-navbar-toggler
