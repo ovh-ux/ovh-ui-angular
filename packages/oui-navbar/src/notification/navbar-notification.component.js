@@ -15,6 +15,7 @@ export default {
         footerTitle: "@?",
         footerHref: "@?",
         align: "@?",
+        variant: "@?",
         fixed: "<?"
     },
     controller,
