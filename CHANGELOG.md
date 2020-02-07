@@ -1,3 +1,13 @@
+<a name="3.14.0"></a>
+# [3.14.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.13.1...v3.14.0) (2020-02-07)
+
+
+### Features
+
+* **oui-navbar:** add variant attribute on menu ([#459](https://github.com/ovh-ux/ovh-ui-angular/issues/459)) ([0fd4289](https://github.com/ovh-ux/ovh-ui-angular/commit/0fd4289))
+
+
+
 <a name="3.13.1"></a>
 ## [3.13.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.13.0...v3.13.1) (2020-02-03)
 
