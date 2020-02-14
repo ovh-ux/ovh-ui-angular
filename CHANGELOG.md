@@ -1,3 +1,13 @@
+<a name="3.15.0"></a>
+# [3.15.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.14.0...v3.15.0) (2020-02-14)
+
+
+### Features
+
+* **oui-select-picker:** add transclusion for label ([#460](https://github.com/ovh-ux/ovh-ui-angular/issues/460)) ([45cff55](https://github.com/ovh-ux/ovh-ui-angular/commit/45cff55))
+
+
+
 <a name="3.14.0"></a>
 # [3.14.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.13.1...v3.14.0) (2020-02-07)
 
