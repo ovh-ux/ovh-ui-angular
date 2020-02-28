@@ -1,3 +1,13 @@
+<a name="3.15.1"></a>
+## [3.15.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.15.0...v3.15.1) (2020-02-28)
+
+
+### Bug Fixes
+
+* **oui-select:** trigger onChange when element is removed ([#461](https://github.com/ovh-ux/ovh-ui-angular/issues/461)) ([bd6b8a9](https://github.com/ovh-ux/ovh-ui-angular/commit/bd6b8a9))
+
+
+
 <a name="3.15.0"></a>
 # [3.15.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.14.0...v3.15.0) (2020-02-14)
 
