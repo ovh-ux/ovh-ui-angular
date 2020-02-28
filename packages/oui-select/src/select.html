@@ -6,6 +6,7 @@
     ng-required="$ctrl.required && !$select.open"
     ng-disabled="$ctrl.disabled"
     close-on-select="{{!$ctrl.multiple}}"
+    on-remove="$ctrl.onUiSelectRemove($model)"
     on-select="$ctrl.onUiSelectChange($model)"
     search-enabled="{{::!!$ctrl.searchable}}"
     theme="oui-ui-select">
