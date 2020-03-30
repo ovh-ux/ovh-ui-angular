@@ -1,3 +1,13 @@
+<a name="3.15.2"></a>
+## [3.15.2](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.15.1...v3.15.2) (2020-03-30)
+
+
+### Bug Fixes
+
+* **oui-tabs:** fix on-active call in responsive ([a6be133](https://github.com/ovh-ux/ovh-ui-angular/commit/a6be133))
+
+
+
 <a name="3.15.1"></a>
 ## [3.15.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.15.0...v3.15.1) (2020-02-28)
 
