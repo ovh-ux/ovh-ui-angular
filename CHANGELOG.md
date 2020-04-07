@@ -1,3 +1,13 @@
+<a name="3.16.0"></a>
+# [3.16.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.15.2...v3.16.0) (2020-04-07)
+
+
+### Features
+
+* **oui-datagrid:** add tooltip on parameters ([#462](https://github.com/ovh-ux/ovh-ui-angular/issues/462)) ([2702bef](https://github.com/ovh-ux/ovh-ui-angular/commit/2702bef))
+
+
+
 <a name="3.15.2"></a>
 ## [3.15.2](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.15.1...v3.15.2) (2020-03-30)
 
