@@ -6,6 +6,7 @@ export default class {
         this.refreshable = false;
         this.translations = {
             emptyPlaceholder: "No data available",
+            ariaShowHideColumnsLabel: "Show/Hide columns",
             ariaRefreshButtonLabel: "Refresh"
         };
     }
