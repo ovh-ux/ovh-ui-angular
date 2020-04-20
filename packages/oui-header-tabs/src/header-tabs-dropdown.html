@@ -1,6 +1,11 @@
 <oui-dropdown align="center" arrow>
-    <oui-dropdown-trigger text="{{::$ctrl.text}}"
-                          disabled="$ctrl.disabled"></oui-dropdown-trigger>
+    <button type="button"
+        class="oui-header-tabs__dropdown oui-button oui-button_dropdown"
+        ng-disabled="$ctrl.disabled"
+        oui-dropdown-trigger>
+        <span ng-bind="::$ctrl.text"></span>
+        <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+    </button>
     <oui-dropdown-content class="oui-header-tabs__dropdown-container" role="list"
                           ng-transclude>
     </oui-dropdown-content>
