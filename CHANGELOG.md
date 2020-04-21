@@ -1,3 +1,8 @@
+<a name="3.16.1"></a>
+## [3.16.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.16.0...v3.16.1) (2020-04-21)
+
+
+
 <a name="3.16.0"></a>
 # [3.16.0](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.15.2...v3.16.0) (2020-04-07)
 
