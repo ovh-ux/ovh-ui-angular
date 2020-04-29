@@ -7,7 +7,8 @@ export default {
         iconAlt: "@?",
         iconClass: "@?",
         iconSrc: "@?",
-        href: "@?"
+        href: "@?",
+        onClick: "&"
     },
     controller: class {
         /* @ngInject */
