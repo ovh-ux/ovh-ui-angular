@@ -1,3 +1,13 @@
+<a name="3.16.2"></a>
+## [3.16.2](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.16.1...v3.16.2) (2020-04-30)
+
+
+### Features
+
+* **oui-navbar:** add onClick attribute for brand component ([6581e47](https://github.com/ovh-ux/ovh-ui-angular/commit/6581e47))
+
+
+
 <a name="3.16.1"></a>
 ## [3.16.1](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.16.0...v3.16.1) (2020-04-21)
 
