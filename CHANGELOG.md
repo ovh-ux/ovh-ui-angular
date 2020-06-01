@@ -1,3 +1,13 @@
+<a name="3.16.3"></a>
+## [3.16.3](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.16.2...v3.16.3) (2020-06-01)
+
+
+### Bug Fixes
+
+* **oui-header-tabs:** set as button when no href ([56745d7](https://github.com/ovh-ux/ovh-ui-angular/commit/56745d7))
+
+
+
 <a name="3.16.2"></a>
 ## [3.16.2](https://github.com/ovh-ux/ovh-ui-angular/compare/v3.16.1...v3.16.2) (2020-04-30)
 
