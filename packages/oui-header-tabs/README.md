@@ -13,6 +13,7 @@
     <oui-header-tabs-item text="Header Tabs" href="/#!/oui-angular/header-tabs" active></oui-header-tabs-item>
     <oui-header-tabs-item text="Pagination" href="/#!/oui-angular/pagination"></oui-header-tabs-item>
     <oui-header-tabs-item text="Datagrid" href="/#!/oui-angular/datagrid"></oui-header-tabs-item>
+    <oui-header-tabs-item text="Button"></oui-header-tabs-item>
 </oui-header-tabs>
 ```
 
@@ -28,6 +29,7 @@
         <oui-header-tabs-divider></oui-header-tabs-divider>
         <oui-header-tabs-item text="Select" href="/#!/oui-angular/select"></oui-header-tabs-item>
         <oui-header-tabs-item text="Select Picker" href="/#!/oui-angular/select-picker"></oui-header-tabs-item>
+    <oui-header-tabs-item text="Button"></oui-header-tabs-item>
     </oui-header-tabs-dropdown>
     <oui-header-tabs-dropdown text="Datagrid">
         <oui-header-tabs-item text="Datagrid" href="/#!/oui-angular/datagrid"></oui-header-tabs-item>
